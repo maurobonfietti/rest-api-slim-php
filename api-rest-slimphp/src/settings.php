@@ -15,5 +15,13 @@ return [
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        // Database connection settings
+        "db" => [
+            "host" => "localhost",
+            "dbname" => "api-rest-slimphp",
+            "user" => "root",
+            "pass" => ""
+        ],
     ],
 ];
