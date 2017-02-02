@@ -66,7 +66,17 @@ $app->put('/todo/[{id}]', function ($request, $response, $args) {
 
 // get version
 $app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.3']];
+    $msg = ['info' => ['api_version' => '0.1.4']];
+
+    return $this->response->withJson($msg);
+});
+
+// get help
+$app->get('/', function () {
+    $msg = ['info' => [
+            'todos' => 'View Tasks: /todos',
+            'version' => 'View Api Version: /version',
+    ]];
 
     return $this->response->withJson($msg);
 });
