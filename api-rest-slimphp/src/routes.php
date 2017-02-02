@@ -1,7 +1,7 @@
 <?php
 
 // get all todos
-$app->get('/todos', function ($request, $response, $args) {
+$app->get('/todos', function () {
     $sth = $this->db->prepare('SELECT * FROM tasks ORDER BY task');
     $sth->execute();
     $todos = $sth->fetchAll();
@@ -31,7 +31,7 @@ $app->get('/todos/search/[{query}]', function ($request, $response, $args) {
 });
 
 // Add a new todo
-$app->post('/todo', function ($request, $response) {
+$app->post('/todo', function ($request) {
     $input = $request->getParsedBody();
     $sql = 'INSERT INTO tasks (task) VALUES (:task)';
     $sth = $this->db->prepare($sql);
@@ -47,9 +47,8 @@ $app->delete('/todo/[{id}]', function ($request, $response, $args) {
     $sth = $this->db->prepare('DELETE FROM tasks WHERE id=:id');
     $sth->bindParam('id', $args['id']);
     $sth->execute();
-    $todos = $sth->fetchAll();
 
-    return $this->response->withJson($todos);
+    return true;
 });
 
 // Update todo with given id
@@ -66,8 +65,8 @@ $app->put('/todo/[{id}]', function ($request, $response, $args) {
 });
 
 // get version
-$app->get('/version', function ($request, $response, $args) {
-    $msg = ['info' => ['api_version' => '0.1.2']];
+$app->get('/version', function () {
+    $msg = ['info' => ['api_version' => '0.1.3']];
 
     return $this->response->withJson($msg);
 });
