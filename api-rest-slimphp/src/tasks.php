@@ -2,7 +2,7 @@
 
 class tasks
 {
-    public static function getAllTasks($db)
+    public static function getTasks($db)
     {
         $sth = $db->prepare('SELECT * FROM tasks ORDER BY task');
         $sth->execute();
@@ -11,20 +11,20 @@ class tasks
         return $todos;
     }
 
-    public static function getTask($request, $response, $args, $db)
+    public static function getTask($db, $id)
     {
         $sth = $db->prepare('SELECT * FROM tasks WHERE id=:id');
-        $sth->bindParam('id', $args['id']);
+        $sth->bindParam('id', $id);
         $sth->execute();
         $todos = $sth->fetchObject();
 
         return $todos;
     }
 
-    public static function searchtTasks($request, $response, $args, $db)
+    public static function searchTasks($db, $taskStr)
     {
         $sth = $db->prepare('SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task');
-        $query = '%'.$args['query'].'%';
+        $query = '%'.$taskStr.'%';
         $sth->bindParam('query', $query);
         $sth->execute();
         $todos = $sth->fetchAll();
@@ -32,7 +32,7 @@ class tasks
         return $todos;
     }
 
-    public static function createTask($request, $db)
+    public static function createTask($db, $request)
     {
         $input = $request->getParsedBody();
         $sql = 'INSERT INTO tasks (task) VALUES (:task)';
@@ -44,23 +44,23 @@ class tasks
         return $input;
     }
 
-    public static function updateTask($request, $response, $args, $db)
+    public static function updateTask($db, $request, $id)
     {
         $input = $request->getParsedBody();
         $sql = 'UPDATE tasks SET task=:task WHERE id=:id';
         $sth = $db->prepare($sql);
-        $sth->bindParam('id', $args['id']);
+        $sth->bindParam('id', $id);
         $sth->bindParam('task', $input['task']);
         $sth->execute();
-        $input['id'] = $args['id'];
+        $input['id'] = $id;
 
         return $input;
     }
 
-    public static function deleteTask($request, $response, $args, $db)
+    public static function deleteTask($db, $id)
     {
         $sth = $db->prepare('DELETE FROM tasks WHERE id=:id');
-        $sth->bindParam('id', $args['id']);
+        $sth->bindParam('id', $id);
         $sth->execute();
 
         return true;
