@@ -1,82 +1,60 @@
 <?php
 
+// get help
+$app->get('/', function () {
+    $msg = ['info' => [
+            'tasks' => 'View All Tasks: /todos',
+            'version' => 'View Api Version: /version',
+    ]];
+
+    return $this->response->withJson($msg);
+});
+
+// get version
+$app->get('/version', function () {
+    $msg = ['info' => ['api_version' => '0.1.5']];
+
+    return $this->response->withJson($msg);
+});
+
 // get all todos
 $app->get('/todos', function () {
-    $sth = $this->db->prepare('SELECT * FROM tasks ORDER BY task');
-    $sth->execute();
-    $todos = $sth->fetchAll();
+    $todos = tasks::getAllTasks($this->db);
 
     return $this->response->withJson($todos);
 });
 
 // Retrieve todo with id
 $app->get('/todo/[{id}]', function ($request, $response, $args) {
-    $sth = $this->db->prepare('SELECT * FROM tasks WHERE id=:id');
-    $sth->bindParam('id', $args['id']);
-    $sth->execute();
-    $todos = $sth->fetchObject();
+    $todos = tasks::getTask($request, $response, $args, $this->db);
 
     return $this->response->withJson($todos);
 });
 
 // Search for todo with given search teram in their name
 $app->get('/todos/search/[{query}]', function ($request, $response, $args) {
-    $sth = $this->db->prepare('SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task');
-    $query = '%'.$args['query'].'%';
-    $sth->bindParam('query', $query);
-    $sth->execute();
-    $todos = $sth->fetchAll();
+    $todos = tasks::searchtTasks($request, $response, $args, $this->db);
 
     return $this->response->withJson($todos);
 });
 
 // Add a new todo
 $app->post('/todo', function ($request) {
-    $input = $request->getParsedBody();
-    $sql = 'INSERT INTO tasks (task) VALUES (:task)';
-    $sth = $this->db->prepare($sql);
-    $sth->bindParam('task', $input['task']);
-    $sth->execute();
-    $input['id'] = $this->db->lastInsertId();
+    $input = tasks::createTask($request, $this->db);
 
     return $this->response->withJson($input);
-});
-
-// DELETE a todo with given id
-$app->delete('/todo/[{id}]', function ($request, $response, $args) {
-    $sth = $this->db->prepare('DELETE FROM tasks WHERE id=:id');
-    $sth->bindParam('id', $args['id']);
-    $sth->execute();
-
-    return true;
 });
 
 // Update todo with given id
 $app->put('/todo/[{id}]', function ($request, $response, $args) {
-    $input = $request->getParsedBody();
-    $sql = 'UPDATE tasks SET task=:task WHERE id=:id';
-    $sth = $this->db->prepare($sql);
-    $sth->bindParam('id', $args['id']);
-    $sth->bindParam('task', $input['task']);
-    $sth->execute();
-    $input['id'] = $args['id'];
+    $input = tasks::updateTask($request, $response, $args, $this->db);
 
     return $this->response->withJson($input);
 });
 
-// get version
-$app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.4']];
+// Delete a todo with given id
+$app->delete('/todo/[{id}]', function ($request, $response, $args) {
+    tasks::deleteTask($request, $response, $args, $this->db);
 
-    return $this->response->withJson($msg);
-});
-
-// get help
-$app->get('/', function () {
-    $msg = ['info' => [
-            'todos' => 'View Tasks: /todos',
-            'version' => 'View Api Version: /version',
-    ]];
-
-    return $this->response->withJson($msg);
+    return true;
 });
