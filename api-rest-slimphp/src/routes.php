@@ -50,3 +50,9 @@ $app->delete('/tasks/[{id}]', function ($request, $response, $args) {
 
     return true;
 });
+
+$app->get('/users', function () {
+    $users = users::getUsers($this->db);
+
+    return $this->response->withJson($users);
+});
