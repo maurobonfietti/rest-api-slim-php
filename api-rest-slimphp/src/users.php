@@ -43,4 +43,26 @@ class users
 
         return $input;
     }
+
+    public static function updateUser($db, $request, $id)
+    {
+        $input = $request->getParsedBody();
+        $sql = 'UPDATE users SET name=:name WHERE id=:id';
+        $sth = $db->prepare($sql);
+        $sth->bindParam('id', $id);
+        $sth->bindParam('name', $input['name']);
+        $sth->execute();
+        $input['id'] = $id;
+
+        return $input;
+    }
+
+    public static function deleteUser($db, $id)
+    {
+        $sth = $db->prepare('DELETE FROM users WHERE id=:id');
+        $sth->bindParam('id', $id);
+        $sth->execute();
+
+        return true;
+    }
 }

@@ -74,3 +74,15 @@ $app->post('/users', function ($request) {
 
     return $this->response->withJson($input);
 });
+
+$app->put('/users/[{id}]', function ($request, $response, $args) {
+    $input = users::updateUser($this->db, $request, $args['id']);
+
+    return $this->response->withJson($input);
+});
+
+$app->delete('/users/[{id}]', function ($request, $response, $args) {
+    users::deleteUser($this->db, $args['id']);
+
+    return true;
+});
