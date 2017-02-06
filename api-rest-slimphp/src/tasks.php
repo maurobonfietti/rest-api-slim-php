@@ -21,10 +21,10 @@ class tasks
         return $todos;
     }
 
-    public static function searchTasks($db, $taskStr)
+    public static function searchTasks($db, $tasks)
     {
         $sth = $db->prepare('SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task');
-        $query = '%'.$taskStr.'%';
+        $query = '%'.$tasks.'%';
         $sth->bindParam('query', $query);
         $sth->execute();
         $todos = $sth->fetchAll();

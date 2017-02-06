@@ -10,7 +10,7 @@ $app->get('/', function () {
 });
 
 $app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.7 [Feb. 2017]']];
+    $msg = ['info' => ['api_version' => '0.1.8 [05 Febrero 2017]']];
 
     return $this->response->withJson($msg);
 });
@@ -55,4 +55,22 @@ $app->get('/users', function () {
     $users = users::getUsers($this->db);
 
     return $this->response->withJson($users);
+});
+
+$app->get('/users/[{id}]', function ($request, $response, $args) {
+    $user = users::getUser($this->db, $args['id']);
+
+    return $this->response->withJson($user);
+});
+
+$app->get('/users/search/[{query}]', function ($request, $response, $args) {
+    $users = users::searchUsers($this->db, $args['query']);
+
+    return $this->response->withJson($users);
+});
+
+$app->post('/users', function ($request) {
+    $input = users::createUser($this->db, $request);
+
+    return $this->response->withJson($input);
 });
