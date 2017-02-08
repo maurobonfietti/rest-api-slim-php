@@ -2,43 +2,53 @@
 
 class users
 {
-    public static function getUsers($db)
+    public static function checkExistUser($db, $id)
     {
-        $sth = $db->prepare('SELECT * FROM users ORDER BY id');
-        $sth->execute();
-        $users = $sth->fetchAll();
-
-        return $users;
-    }
-
-    public static function getUser($db, $id)
-    {
-        $sth = $db->prepare('SELECT * FROM users WHERE id=:id');
-        $sth->bindParam('id', $id);
-        $sth->execute();
-        $user = $sth->fetchObject();
+        $statement = $db->prepare('SELECT * FROM users WHERE id=:id');
+        $statement->bindParam('id', $id);
+        $statement->execute();
+        $user = $statement->fetchObject();
+        if (!$user) {
+            header('Content-Type: application/json');
+            http_response_code(404);
+            $response = array('error' => 'El usuario solicitado no existe.');
+            echo json_encode($response, JSON_PRETTY_PRINT);
+            exit;
+        }
 
         return $user;
     }
 
+    public static function getUsers($db)
+    {
+        $statement = $db->prepare('SELECT * FROM users ORDER BY id');
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
+    public static function getUser($db, $id)
+    {
+        return self::checkExistUser($db, $id);
+    }
+
     public static function searchUsers($db, $usersStr)
     {
-        $sth = $db->prepare('SELECT * FROM users WHERE UPPER(name) LIKE :query ORDER BY id');
+        $statement = $db->prepare('SELECT * FROM users WHERE UPPER(name) LIKE :query ORDER BY id');
         $query = '%'.$usersStr.'%';
-        $sth->bindParam('query', $query);
-        $sth->execute();
-        $users = $sth->fetchAll();
+        $statement->bindParam('query', $query);
+        $statement->execute();
 
-        return $users;
+        return $statement->fetchAll();
     }
 
     public static function createUser($db, $request)
     {
         $input = $request->getParsedBody();
         $sql = 'INSERT INTO users (name) VALUES (:name)';
-        $sth = $db->prepare($sql);
-        $sth->bindParam('name', $input['name']);
-        $sth->execute();
+        $statement = $db->prepare($sql);
+        $statement->bindParam('name', $input['name']);
+        $statement->execute();
         $input['id'] = $db->lastInsertId();
 
         return $input;
@@ -48,10 +58,10 @@ class users
     {
         $input = $request->getParsedBody();
         $sql = 'UPDATE users SET name=:name WHERE id=:id';
-        $sth = $db->prepare($sql);
-        $sth->bindParam('id', $id);
-        $sth->bindParam('name', $input['name']);
-        $sth->execute();
+        $statement = $db->prepare($sql);
+        $statement->bindParam('id', $id);
+        $statement->bindParam('name', $input['name']);
+        $statement->execute();
         $input['id'] = $id;
 
         return $input;
@@ -59,9 +69,9 @@ class users
 
     public static function deleteUser($db, $id)
     {
-        $sth = $db->prepare('DELETE FROM users WHERE id=:id');
-        $sth->bindParam('id', $id);
-        $sth->execute();
+        $statement = $db->prepare('DELETE FROM users WHERE id=:id');
+        $statement->bindParam('id', $id);
+        $statement->execute();
 
         return true;
     }
