@@ -2,7 +2,8 @@
 
 $app->get('/', function () {
     $msg = ['help' => [
-            'tasks' => 'Ver Tareas: /tasks',
+            'tareas' => 'Ver Tareas: /tasks',
+            'usuarios' => 'Ver Usuarios: /users',
             'version' => 'Ver Version: /version',
     ]];
 
@@ -10,7 +11,7 @@ $app->get('/', function () {
 });
 
 $app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.8 [05 Febrero 2017]']];
+    $msg = ['info' => ['api_version' => '0.1.9 [08 Febrero 2017]']];
 
     return $this->response->withJson($msg);
 });
@@ -52,33 +53,33 @@ $app->delete('/tasks/[{id}]', function ($request, $response, $args) {
 });
 
 $app->get('/users', function () {
-    $users = users::getUsers($this->db);
+    $result = users::getUsers($this->db);
 
-    return $this->response->withJson($users);
+    return $this->response->withJson($result, $result['code']);
 });
 
 $app->get('/users/[{id}]', function ($request, $response, $args) {
-    $user = users::getUser($this->db, $args['id']);
+    $result = users::getUser($this->db, $args['id']);
 
-    return $this->response->withJson($user);
+    return $this->response->withJson($result, $result['code']);
 });
 
 $app->get('/users/search/[{query}]', function ($request, $response, $args) {
-    $users = users::searchUsers($this->db, $args['query']);
+    $result = users::searchUsers($this->db, $args['query']);
 
-    return $this->response->withJson($users);
+    return $this->response->withJson($result, $result['code']);
 });
 
 $app->post('/users', function ($request) {
     $result = users::createUser($this->db, $request);
 
-    return $this->response->withJson($result);
+    return $this->response->withJson($result, $result['code']);
 });
 
 $app->put('/users/[{id}]', function ($request, $response, $args) {
     $result = users::updateUser($this->db, $request, $args['id']);
 
-    return $this->response->withJson($result);
+    return $this->response->withJson($result, $result['code']);
 });
 
 $app->delete('/users/[{id}]', function ($request, $response, $args) {

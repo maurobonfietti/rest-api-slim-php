@@ -19,16 +19,24 @@ class users
     {
         $statement = $db->prepare('SELECT * FROM users ORDER BY id');
         $statement->execute();
+        $response = [
+            'success' => $statement->fetchAll(),
+            'code' => 200,
+        ];
 
-        return $statement->fetchAll();
+        return $response;
     }
 
     public static function getUser($db, $id)
     {
         try {
             $user = self::checkUser($db, $id);
+            $response = [
+                'success' => $user,
+                'code' => 200,
+            ];
 
-            return $user;
+            return $response;
         } catch (Exception $ex) {
             $response = [
                 'error' => $ex->getMessage(),
@@ -54,8 +62,12 @@ class users
 
             return $response;
         }
+        $response = [
+            'success' => $users,
+            'code' => 200,
+        ];
 
-        return $users;
+        return $response;
     }
 
     public static function createUser($db, $request)
@@ -66,8 +78,12 @@ class users
         $statement->bindParam('name', $input['name']);
         $statement->execute();
         $input['id'] = $db->lastInsertId();
+        $response = [
+            'success' => $input,
+            'code' => 200,
+        ];
 
-        return $input;
+        return $response;
     }
 
     public static function updateUser($db, $request, $id)
@@ -81,8 +97,12 @@ class users
             $statement->bindParam('name', $input['name']);
             $statement->execute();
             $input['id'] = $id;
+            $response = [
+                'success' => $input,
+                'code' => 200,
+            ];
 
-            return $input;
+            return $response;
         } catch (Exception $ex) {
             $response = [
                 'error' => $ex->getMessage(),
