@@ -84,5 +84,5 @@ $app->put('/users/[{id}]', function ($request, $response, $args) {
 $app->delete('/users/[{id}]', function ($request, $response, $args) {
     $result = users::deleteUser($this->db, $args['id']);
 
-    return $this->response->withJson($result);
+    return $this->response->withJson($result, $result['code']);
 });
