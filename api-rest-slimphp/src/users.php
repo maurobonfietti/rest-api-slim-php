@@ -2,6 +2,17 @@
 
 class users
 {
+    public static function response($status, $message, $code)
+    {
+        $response = [
+            'status' => $status,
+            'message' => $message,
+            'code' => $code,
+        ];
+
+        return $response;
+    }
+
     public static function checkUser($db, $id)
     {
         $statement = $db->prepare('SELECT * FROM users WHERE id=:id');
@@ -19,31 +30,18 @@ class users
     {
         $statement = $db->prepare('SELECT * FROM users ORDER BY id');
         $statement->execute();
-        $response = [
-            'success' => $statement->fetchAll(),
-            'code' => 200,
-        ];
 
-        return $response;
+        return self::response('success', $statement->fetchAll(), 200);
     }
 
     public static function getUser($db, $id)
     {
         try {
             $user = self::checkUser($db, $id);
-            $response = [
-                'success' => $user,
-                'code' => 200,
-            ];
 
-            return $response;
+            return self::response('success', $user, 200);
         } catch (Exception $ex) {
-            $response = [
-                'error' => $ex->getMessage(),
-                'code' => $ex->getCode(),
-            ];
-
-            return $response;
+            return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
@@ -55,19 +53,10 @@ class users
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
-            $response = [
-                'error' => 'No se encontraron usuarios con ese nombre.',
-                'code' => 404,
-            ];
-
-            return $response;
+            return self::response('error', 'No se encontraron usuarios con ese nombre.', 404);
         }
-        $response = [
-            'success' => $users,
-            'code' => 200,
-        ];
 
-        return $response;
+        return self::response('success', $users, 200);
     }
 
     public static function createUser($db, $request)
@@ -78,12 +67,8 @@ class users
         $statement->bindParam('name', $input['name']);
         $statement->execute();
         $input['id'] = $db->lastInsertId();
-        $response = [
-            'success' => $input,
-            'code' => 200,
-        ];
 
-        return $response;
+        return self::response('success', $input, 200);
     }
 
     public static function updateUser($db, $request, $id)
@@ -97,19 +82,10 @@ class users
             $statement->bindParam('name', $input['name']);
             $statement->execute();
             $input['id'] = $id;
-            $response = [
-                'success' => $input,
-                'code' => 200,
-            ];
 
-            return $response;
+            return self::response('success', $input, 200);
         } catch (Exception $ex) {
-            $response = [
-                'error' => $ex->getMessage(),
-                'code' => $ex->getCode(),
-            ];
-
-            return $response;
+            return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
@@ -120,19 +96,10 @@ class users
             $statement = $db->prepare('DELETE FROM users WHERE id=:id');
             $statement->bindParam('id', $id);
             $statement->execute();
-            $response = [
-                'success' => 'El usuario fue eliminado correctamente.',
-                'code' => 200,
-            ];
 
-            return $response;
+            return self::response('success', 'El usuario fue eliminado correctamente.', 200);
         } catch (Exception $ex) {
-            $response = [
-                'error' => $ex->getMessage(),
-                'code' => $ex->getCode(),
-            ];
-
-            return $response;
+            return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
 }
