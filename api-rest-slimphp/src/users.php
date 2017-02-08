@@ -2,21 +2,13 @@
 
 class users
 {
-    public static function checkExistUser($db, $id)
+    public static function response($code = 200, $status = '', $message = '')
     {
-        $statement = $db->prepare('SELECT * FROM users WHERE id=:id');
-        $statement->bindParam('id', $id);
-        $statement->execute();
-        $user = $statement->fetchObject();
-        if (!$user) {
-            header('Content-Type: application/json');
-            http_response_code(404);
-            $response = array('error' => 'El usuario solicitado no existe.');
-            echo json_encode($response, JSON_PRETTY_PRINT);
-            exit;
-        }
-
-        return $user;
+        header('Content-Type: application/json');
+        http_response_code($code);
+        $response = array($status => $message);
+        echo json_encode($response, JSON_PRETTY_PRINT);
+        exit;
     }
 
     public static function getUsers($db)
@@ -29,7 +21,15 @@ class users
 
     public static function getUser($db, $id)
     {
-        return self::checkExistUser($db, $id);
+        $statement = $db->prepare('SELECT * FROM users WHERE id=:id');
+        $statement->bindParam('id', $id);
+        $statement->execute();
+        $user = $statement->fetchObject();
+        if (!$user) {
+            self::response(404, 'error', 'El usuario solicitado no existe.');
+        }
+
+        return $user;
     }
 
     public static function searchUsers($db, $usersStr)
@@ -38,8 +38,12 @@ class users
         $query = '%'.$usersStr.'%';
         $statement->bindParam('query', $query);
         $statement->execute();
+        $users = $statement->fetchAll();
+        if (!$users) {
+            self::response(404, 'error', 'No se encontraron usuarios con ese nombre.');
+        }
 
-        return $statement->fetchAll();
+        return $users;
     }
 
     public static function createUser($db, $request)
@@ -56,6 +60,7 @@ class users
 
     public static function updateUser($db, $request, $id)
     {
+        self::getUser($db, $id);
         $input = $request->getParsedBody();
         $sql = 'UPDATE users SET name=:name WHERE id=:id';
         $statement = $db->prepare($sql);
@@ -69,10 +74,11 @@ class users
 
     public static function deleteUser($db, $id)
     {
+        self::getUser($db, $id);
         $statement = $db->prepare('DELETE FROM users WHERE id=:id');
         $statement->bindParam('id', $id);
         $statement->execute();
 
-        return true;
+        return self::response(200, 'success', 'El usuario fue eliminado correctamente.');
     }
 }

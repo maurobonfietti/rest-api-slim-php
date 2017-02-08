@@ -76,11 +76,12 @@ class ApiRestTest extends BaseTestCase
 
     public function testDeleteUser()
     {
-        $response = $this->runApp('DELETE', '/users/3', array('name' => 'Tommy'));
+        $response = $this->runApp('DELETE', '/users/3');
 
-        //print_r((string) $response->getBody());
+//        print_r((string) $response->getBody());
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains('success', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
     }
 }

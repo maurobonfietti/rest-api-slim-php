@@ -70,19 +70,19 @@ $app->get('/users/search/[{query}]', function ($request, $response, $args) {
 });
 
 $app->post('/users', function ($request) {
-    $input = users::createUser($this->db, $request);
+    $result = users::createUser($this->db, $request);
 
-    return $this->response->withJson($input);
+    return $this->response->withJson($result);
 });
 
 $app->put('/users/[{id}]', function ($request, $response, $args) {
-    $input = users::updateUser($this->db, $request, $args['id']);
+    $result = users::updateUser($this->db, $request, $args['id']);
 
-    return $this->response->withJson($input);
+    return $this->response->withJson($result);
 });
 
 $app->delete('/users/[{id}]', function ($request, $response, $args) {
-    users::deleteUser($this->db, $args['id']);
+    $result = users::deleteUser($this->db, $args['id']);
 
-    return true;
+    return $this->response->withJson($result);
 });
