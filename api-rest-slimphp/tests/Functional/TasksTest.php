@@ -3,9 +3,8 @@
 namespace Tests\Functional;
 
 require __DIR__.'/../../src/tasks.php';
-require __DIR__.'/../../src/users.php';
 
-class ApiRestTest extends BaseTestCase
+class TasksTest extends BaseTestCase
 {
     public function testApiHelp()
     {
@@ -19,69 +18,69 @@ class ApiRestTest extends BaseTestCase
         $this->assertNotContains('Failed', (string) $response->getBody());
     }
 
-    public function testGetUsers()
+    public function testGetTasks()
     {
-        $response = $this->runApp('GET', '/users');
+        $response = $this->runApp('GET', '/tasks');
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('name', (string) $response->getBody());
-        $this->assertContains('Juan', (string) $response->getBody());
+        $this->assertContains('task', (string) $response->getBody());
+        $this->assertContains('Fix', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
     }
 
-    public function testGetUser()
+    public function testGetTask()
     {
-        $response = $this->runApp('GET', '/users/1');
+        $response = $this->runApp('GET', '/tasks/1');
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('name', (string) $response->getBody());
-        $this->assertContains('Juan', (string) $response->getBody());
+        $this->assertContains('task', (string) $response->getBody());
+        $this->assertContains('Find', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
     }
 
-    public function testSearchUsers()
+    public function testSearchTasks()
     {
-        $response = $this->runApp('GET', '/users/search/j');
+        $response = $this->runApp('GET', '/tasks/search/bug');
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('name', (string) $response->getBody());
-        $this->assertContains('juan', (string) $response->getBody());
+        $this->assertContains('task', (string) $response->getBody());
+        $this->assertContains('bugs', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
     }
 
-    public function testCreateUser()
+    public function testCreateTask()
     {
-        $response = $this->runApp('POST', '/users', array('name' => 'Esteban'));
+        $response = $this->runApp('POST', '/tasks', array('task' => 'Nueva Tarea'));
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('name', (string) $response->getBody());
-        $this->assertContains('Esteban', (string) $response->getBody());
+        $this->assertContains('task', (string) $response->getBody());
+        $this->assertContains('Tarea', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
     }
 
-    public function testUpdateUser()
+    public function testUpdateTask()
     {
-        $response = $this->runApp('PUT', '/users/4', array('name' => 'Tommy'));
+        $response = $this->runApp('PUT', '/tasks/4', array('task' => 'Ir al super.'));
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('name', (string) $response->getBody());
-        $this->assertContains('Tommy', (string) $response->getBody());
+        $this->assertContains('task', (string) $response->getBody());
+        $this->assertContains('super', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
     }
 
-    public function testDeleteUser()
+    public function testDeleteTask()
     {
-        $response = $this->runApp('DELETE', '/users/3');
+        $response = $this->runApp('DELETE', '/tasks/5');
 
 //        print_r((string) $response->getBody());
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('success', (string) $response->getBody());
+//        $this->assertContains('success', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
     }
 }
