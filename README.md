@@ -4,6 +4,19 @@ Ejemplo de API REST con Slim PHP.
 
 
 ```
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+SET FOREIGN_KEY_CHECKS=1;
+
+
 TRUNCATE users;
 
 INSERT INTO `users` VALUES ('1', 'Juan', 'juanmartin@delpotro.com');
