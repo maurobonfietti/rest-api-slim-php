@@ -1,7 +1,23 @@
 # API REST SLIM PHP
 
-Ejemplo de API REST con Slim PHP.
+Ejemplo de API REST con Slim PHP Framework.
 
+
+## INSTALACIÓN:
+
+1- Descargar el proyecto:
+
+```
+$ cd path-to-projects
+$ git clone https://github.com/maurobonfietti/api-rest-slimphp.git
+$ composer install
+```
+
+
+2- Crear nueva base de datos MySQL. Por ejemplo: "api-rest-slimphp".
+
+
+3- Crear las tablas "users" y "tasks":
 
 ```
 -- ----------------------------
@@ -29,8 +45,12 @@ CREATE TABLE IF NOT EXISTS `tasks` (
  
 ALTER TABLE `tasks` ADD PRIMARY KEY (`id`);
 ALTER TABLE `tasks` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+```
 
 
+4- Cargar algunos datos de prueba en la base de datos:
+
+```
 TRUNCATE users;
 
 INSERT INTO `users` VALUES ('1', 'Juan', 'juanmartin@delpotro.com');
@@ -47,4 +67,38 @@ INSERT INTO `tasks` (`id`, `task`, `status`, `created_at`) VALUES
 (3, 'Fix bugs', 1, '2016-04-10 23:50:40'),
 (4, 'Refactor Code', 1, '2016-04-10 23:50:40'),
 (5, 'Push to prod', 1, '2016-04-10 23:50:50');
+```
+
+
+5- Configurar los datos de acceso a la base de datos.
+
+Archivo: src/settings.php
+```
+        // Database connection settings
+        'db' => [
+            'host' => '127.0.0.1',
+            'dbname' => 'api-rest-slimphp',
+            'user' => 'root',
+            'pass' => '',
+        ],
+```
+
+
+## TESTS:
+
+Acceder a la ruta del proyecto y ejecutar tests con phpunit:
+```
+$ cd api-rest-slimphp/
+$ phpunit
+```
+
+Ejemplo de salida:
+```
+PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
+
+..............                                                    14 / 14 (100%)
+
+Time: 173 ms, Memory: 4.00MB
+
+OK (14 tests, 63 assertions)
 ```
