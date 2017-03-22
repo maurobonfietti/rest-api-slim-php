@@ -11,7 +11,7 @@ $app->get('/', function () {
 });
 
 $app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.9 [08 Febrero 2017]']];
+    $msg = ['info' => ['api_version' => '0.1.10 [21 Marzo 2017]']];
 
     return $this->response->withJson($msg);
 });
