@@ -6,7 +6,6 @@ Ejemplo de API REST con Slim PHP Framework.
 ## INSTALACIÓN:
 
 1- Descargar el proyecto:
-
 ```
 $ cd path-to-projects
 $ git clone https://github.com/maurobonfietti/api-rest-slimphp.git
@@ -18,7 +17,6 @@ $ composer install
 
 
 3- Crear las tablas "users" y "tasks":
-
 ```
 -- ----------------------------
 -- Table structure for users
@@ -49,7 +47,6 @@ ALTER TABLE `tasks` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 
 4- Cargar algunos datos de prueba en la base de datos:
-
 ```
 TRUNCATE users;
 
@@ -84,6 +81,22 @@ Archivo: src/settings.php
 ```
 
 
+## INICIAR SERVIDOR:
+
+Se puede iniciar el servidor web integrado de PHP ejecutando:
+```
+$ composer start
+```
+
+
+### NOTA:
+
+El comando/script "composer start" sería el equivalente a:
+```
+$ php -S 0.0.0.0:8080 -t public public/index.php
+```
+
+
 ## TESTS:
 
 Acceder a la ruta del proyecto y ejecutar tests con phpunit:
@@ -96,9 +109,9 @@ Ejemplo de salida:
 ```
 PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 
-..............                                                    14 / 14 (100%)
+..................                                                18 / 18 (100%)
 
-Time: 173 ms, Memory: 4.00MB
+Time: 199 ms, Memory: 4.00MB
 
-OK (14 tests, 63 assertions)
+OK (18 tests, 78 assertions)
 ```
