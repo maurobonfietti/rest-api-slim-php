@@ -28,21 +28,19 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-SET FOREIGN_KEY_CHECKS=1;
 
 
 --
 -- Table structure for `tasks`
 --
+DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE IF NOT EXISTS `tasks` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `task` varchar(200) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
- 
-ALTER TABLE `tasks` ADD PRIMARY KEY (`id`);
-ALTER TABLE `tasks` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 ```
 
 
@@ -55,12 +53,11 @@ INSERT INTO `users` VALUES ('4', 'Carlos', null);
 INSERT INTO `users` VALUES ('5', 'Diego', 'diego@gmail.com');
 
 
-INSERT INTO `tasks` (`id`, `task`, `status`, `created_at`) VALUES
-(1, 'Find bugs', 1, '2016-04-10 23:50:40'),
-(2, 'Review code', 1, '2016-04-10 23:50:40'),
-(3, 'Fix bugs', 1, '2016-04-10 23:50:40'),
-(4, 'Refactor Code', 1, '2016-04-10 23:50:40'),
-(5, 'Push to prod', 1, '2016-04-10 23:50:50');
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (1, 'Find bugs', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (2, 'Review code', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (3, 'Fix bugs', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (4, 'Refactor Code', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (5, 'Push to prod', 0);
 ```
 
 
