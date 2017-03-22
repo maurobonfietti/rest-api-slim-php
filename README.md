@@ -7,7 +7,7 @@ Ejemplo de API REST con Slim PHP Framework.
 
 1- Descargar el proyecto:
 ```
-$ cd path-to-projects
+$ cd path-to-your-projects
 $ git clone https://github.com/maurobonfietti/api-rest-slimphp.git
 $ composer install
 ```
@@ -48,15 +48,12 @@ ALTER TABLE `tasks` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 4- Cargar algunos datos de prueba en la base de datos:
 ```
-TRUNCATE users;
-
 INSERT INTO `users` VALUES ('1', 'Juan', 'juanmartin@delpotro.com');
 INSERT INTO `users` VALUES ('2', 'Federico', null);
 INSERT INTO `users` VALUES ('3', 'Leo', null);
 INSERT INTO `users` VALUES ('4', 'Carlos', null);
 INSERT INTO `users` VALUES ('5', 'Diego', 'diego@gmail.com');
 
-TRUNCATE tasks;
 
 INSERT INTO `tasks` (`id`, `task`, `status`, `created_at`) VALUES
 (1, 'Find bugs', 1, '2016-04-10 23:50:40'),
@@ -91,7 +88,7 @@ $ composer start
 
 ### NOTA:
 
-El comando/script "composer start" sería el equivalente a:
+El comando/script "composer start" sería el equivalente a ejecutar:
 ```
 $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
@@ -99,14 +96,10 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## TESTS:
 
-Acceder a la ruta del proyecto y ejecutar tests con phpunit:
+Acceder a la ruta del proyecto y ejecutar los tests con phpunit:
 ```
 $ cd api-rest-slimphp/
 $ phpunit
-```
-
-Ejemplo de salida:
-```
 PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 
 ..................                                                18 / 18 (100%)
@@ -114,4 +107,5 @@ PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 Time: 199 ms, Memory: 4.00MB
 
 OK (18 tests, 78 assertions)
+
 ```
