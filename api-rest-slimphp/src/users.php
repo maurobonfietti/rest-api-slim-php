@@ -2,7 +2,15 @@
 
 class users
 {
-    public static function response($status, $message, $code)
+    /**
+     * Response with a standard format.
+     *
+     * @param  string $status
+     * @param  mixed  $message
+     * @param  int    $code
+     * @return array  $response
+     */
+    private static function response($status, $message, $code)
     {
         $response = [
             'status' => $status,
@@ -13,7 +21,15 @@ class users
         return $response;
     }
 
-    public static function checkUser($db, $id)
+    /**
+     * Check if the user exists.
+     *
+     * @param mixed $db
+     * @param int   $id
+     * @return object
+     * @throws Exception
+     */
+    private static function checkUser($db, $id)
     {
         $statement = $db->prepare('SELECT * FROM users WHERE id=:id');
         $statement->bindParam('id', $id);
