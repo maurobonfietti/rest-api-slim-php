@@ -61,24 +61,27 @@ class tasks
         }
     }
 
-    public static function searchTasks($db, $tasks)
+    public static function searchTasks($db, $tasksName)
     {
-        $sth = $db->prepare('SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task');
-        $query = '%'.$tasks.'%';
-        $sth->bindParam('query', $query);
-        $sth->execute();
-        $todos = $sth->fetchAll();
+        $statement = $db->prepare('SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task');
+        $query = '%'.$tasksName.'%';
+        $statement->bindParam('query', $query);
+        $statement->execute();
+        $tasks = $statement->fetchAll();
+        if (!$tasks) {
+            return self::response('error', 'No se encontraron tareas con ese nombre.', 404);
+        }
 
-        return $todos;
+        return self::response('success', $tasks, 200);
     }
 
     public static function createTask($db, $request)
     {
         $input = $request->getParsedBody();
         $sql = 'INSERT INTO tasks (task) VALUES (:task)';
-        $sth = $db->prepare($sql);
-        $sth->bindParam('task', $input['task']);
-        $sth->execute();
+        $statement = $db->prepare($sql);
+        $statement->bindParam('task', $input['task']);
+        $statement->execute();
         $input['id'] = $db->lastInsertId();
 
         return $input;
@@ -86,23 +89,33 @@ class tasks
 
     public static function updateTask($db, $request, $id)
     {
-        $input = $request->getParsedBody();
-        $sql = 'UPDATE tasks SET task=:task WHERE id=:id';
-        $sth = $db->prepare($sql);
-        $sth->bindParam('id', $id);
-        $sth->bindParam('task', $input['task']);
-        $sth->execute();
-        $input['id'] = $id;
+        try {
+            self::checkTask($db, $id);
+            $input = $request->getParsedBody();
+            $sql = 'UPDATE tasks SET task=:task WHERE id=:id';
+            $statement = $db->prepare($sql);
+            $statement->bindParam('id', $id);
+            $statement->bindParam('task', $input['task']);
+            $statement->execute();
+            $input['id'] = $id;
 
-        return $input;
+            return self::response('success', $input, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     public static function deleteTask($db, $id)
     {
-        $sth = $db->prepare('DELETE FROM tasks WHERE id=:id');
-        $sth->bindParam('id', $id);
-        $sth->execute();
+        try {
+            self::checkTask($db, $id);
+            $statement = $db->prepare('DELETE FROM tasks WHERE id=:id');
+            $statement->bindParam('id', $id);
+            $statement->execute();
 
-        return true;
+            return self::response('success', 'La tarea fue eliminada correctamente.', 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 }
