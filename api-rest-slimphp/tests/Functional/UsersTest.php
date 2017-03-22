@@ -6,18 +6,6 @@ require __DIR__.'/../../src/users.php';
 
 class UsersTest extends BaseTestCase
 {
-    public function testApiHelp()
-    {
-        $response = $this->runApp('GET', '/');
-
-        //print_r((string) $response->getBody());
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('help', (string) $response->getBody());
-        $this->assertNotContains('ERROR', (string) $response->getBody());
-        $this->assertNotContains('Failed', (string) $response->getBody());
-    }
-
     public function testGetUsers()
     {
         $response = $this->runApp('GET', '/users');
@@ -40,6 +28,16 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', (string) $response->getBody());
     }
 
+    public function testGetUserNotFound()
+    {
+        $response = $this->runApp('GET', '/users/123456');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertNotContains('id', (string) $response->getBody());
+        $this->assertNotContains('name', (string) $response->getBody());
+        $this->assertContains('error', (string) $response->getBody());
+    }
+
     public function testSearchUsers()
     {
         $response = $this->runApp('GET', '/users/search/j');
@@ -49,6 +47,16 @@ class UsersTest extends BaseTestCase
         $this->assertContains('name', (string) $response->getBody());
         $this->assertContains('juan', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
+    }
+
+    public function testSearchUserNotFound()
+    {
+        $response = $this->runApp('GET', '/users/search/123456');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertNotContains('id', (string) $response->getBody());
+        $this->assertNotContains('name', (string) $response->getBody());
+        $this->assertContains('error', (string) $response->getBody());
     }
 
     public function testCreateUser()
@@ -73,14 +81,31 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', (string) $response->getBody());
     }
 
+    public function testUpdateUserNotFound()
+    {
+        $response = $this->runApp('PUT', '/users/123456', array('name' => 'Tommy'));
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertNotContains('id', (string) $response->getBody());
+        $this->assertNotContains('name', (string) $response->getBody());
+        $this->assertContains('error', (string) $response->getBody());
+    }
+
     public function testDeleteUser()
     {
         $response = $this->runApp('DELETE', '/users/3');
 
-//        print_r((string) $response->getBody());
-
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('success', (string) $response->getBody());
         $this->assertNotContains('error', (string) $response->getBody());
+    }
+
+    public function testDeleteUserNotFound()
+    {
+        $response = $this->runApp('DELETE', '/users/123456');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertNotContains('success', (string) $response->getBody());
+        $this->assertContains('error', (string) $response->getBody());
     }
 }

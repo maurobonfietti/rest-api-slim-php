@@ -6,18 +6,6 @@ require __DIR__.'/../../src/tasks.php';
 
 class TasksTest extends BaseTestCase
 {
-    public function testApiHelp()
-    {
-        $response = $this->runApp('GET', '/');
-
-        //print_r((string) $response->getBody());
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('help', (string) $response->getBody());
-        $this->assertNotContains('ERROR', (string) $response->getBody());
-        $this->assertNotContains('Failed', (string) $response->getBody());
-    }
-
     public function testGetTasks()
     {
         $response = $this->runApp('GET', '/tasks');
