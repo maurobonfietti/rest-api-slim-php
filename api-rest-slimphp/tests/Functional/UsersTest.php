@@ -6,6 +6,8 @@ require __DIR__.'/../../src/users.php';
 
 class UsersTest extends BaseTestCase
 {
+    private static $id;
+
     public function testGetUsers()
     {
         $response = $this->runApp('GET', '/users');
@@ -63,6 +65,8 @@ class UsersTest extends BaseTestCase
     {
         $response = $this->runApp('POST', '/users', array('name' => 'Esteban'));
 
+        self::$id = json_decode((string) $response->getBody())->message->id;
+
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
         $this->assertContains('name', (string) $response->getBody());
@@ -72,7 +76,7 @@ class UsersTest extends BaseTestCase
 
     public function testUpdateUser()
     {
-        $response = $this->runApp('PUT', '/users/4', array('name' => 'Tommy'));
+        $response = $this->runApp('PUT', '/users/' . self::$id, array('name' => 'Tommy'));
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
@@ -93,7 +97,7 @@ class UsersTest extends BaseTestCase
 
     public function testDeleteUser()
     {
-        $response = $this->runApp('DELETE', '/users/3');
+        $response = $this->runApp('DELETE', '/users/' . self::$id);
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('success', (string) $response->getBody());

@@ -6,6 +6,8 @@ require __DIR__.'/../../src/tasks.php';
 
 class TasksTest extends BaseTestCase
 {
+    private static $id;
+
     public function testGetTasks()
     {
         $response = $this->runApp('GET', '/tasks');
@@ -43,6 +45,8 @@ class TasksTest extends BaseTestCase
     {
         $response = $this->runApp('POST', '/tasks', array('task' => 'Nueva Tarea'));
 
+        self::$id = json_decode((string) $response->getBody())->id;
+
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
         $this->assertContains('task', (string) $response->getBody());
@@ -52,7 +56,7 @@ class TasksTest extends BaseTestCase
 
     public function testUpdateTask()
     {
-        $response = $this->runApp('PUT', '/tasks/4', array('task' => 'Ir al super.'));
+        $response = $this->runApp('PUT', '/tasks/' . self::$id, array('task' => 'Ir al super.'));
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', (string) $response->getBody());
@@ -63,7 +67,7 @@ class TasksTest extends BaseTestCase
 
     public function testDeleteTask()
     {
-        $response = $this->runApp('DELETE', '/tasks/5');
+        $response = $this->runApp('DELETE', '/tasks/' . self::$id);
 
 //        print_r((string) $response->getBody());
 
