@@ -1,6 +1,6 @@
 # API REST SLIM PHP
 
-Ejemplo de API REST con Slim PHP Framework.
+Ejemplo de API REST con MicroFramework Slim PHP.
 
 
 ## INSTALACIÓN:

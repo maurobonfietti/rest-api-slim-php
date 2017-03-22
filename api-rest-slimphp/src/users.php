@@ -24,9 +24,9 @@ class users
     /**
      * Check if the user exists.
      *
-     * @param mixed $db
-     * @param int   $id
-     * @return object
+     * @param mixed   $db
+     * @param int     $id
+     * @return object $user
      * @throws Exception
      */
     private static function checkUser($db, $id)

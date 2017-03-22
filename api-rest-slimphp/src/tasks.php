@@ -2,23 +2,63 @@
 
 class tasks
 {
+    /**
+     * Response with a standard format.
+     *
+     * @param  string $status
+     * @param  mixed  $message
+     * @param  int    $code
+     * @return array  $response
+     */
+    private static function response($status, $message, $code)
+    {
+        $response = [
+            'status' => $status,
+            'message' => $message,
+            'code' => $code,
+        ];
+
+        return $response;
+    }
+
+    /**
+     * Check if the task exists.
+     *
+     * @param mixed   $db
+     * @param int     $id
+     * @return object $task
+     * @throws Exception
+     */
+    private static function checkTask($db, $id)
+    {
+        $statement = $db->prepare('SELECT * FROM tasks WHERE id=:id');
+        $statement->bindParam('id', $id);
+        $statement->execute();
+        $task = $statement->fetchObject();
+        if (!$task) {
+            throw new Exception('La tarea solicitada no existe.', 404);
+        }
+
+        return $task;
+    }
+
     public static function getTasks($db)
     {
-        $sth = $db->prepare('SELECT * FROM tasks ORDER BY task');
-        $sth->execute();
-        $todos = $sth->fetchAll();
+        $statement = $db->prepare('SELECT * FROM tasks ORDER BY task');
+        $statement->execute();
 
-        return $todos;
+        return self::response('success', $statement->fetchAll(), 200);
     }
 
     public static function getTask($db, $id)
     {
-        $sth = $db->prepare('SELECT * FROM tasks WHERE id=:id');
-        $sth->bindParam('id', $id);
-        $sth->execute();
-        $todos = $sth->fetchObject();
+        try {
+            $task = self::checkTask($db, $id);
 
-        return $todos;
+            return self::response('success', $task, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     public static function searchTasks($db, $tasks)
