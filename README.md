@@ -16,7 +16,7 @@ $ composer install
 2- Crear nueva base de datos MySQL. Por ejemplo: "api-rest-slimphp".
 
 
-3- Crear las tablas "users" y "tasks":
+3- Crear la estructura de la base de datos:
 ```
 -- ----------------------------
 -- Table structure for users
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 ```
 
 
-4- Cargar algunos datos de prueba en la base de datos:
+4- Cargar datos de prueba en la base de datos:
 ```
 INSERT INTO `users` VALUES ('1', 'Juan', 'juanmartin@delpotro.com');
 INSERT INTO `users` VALUES ('2', 'Federico', null);
@@ -85,7 +85,7 @@ $ composer start
 
 ### NOTA:
 
-El comando/script "composer start" sería el equivalente a ejecutar:
+El comando o script "composer start" sería el equivalente a ejecutar:
 ```
 $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
@@ -99,10 +99,10 @@ $ cd api-rest-slimphp/
 $ phpunit
 PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 
-..................                                                18 / 18 (100%)
+......................                                            22 / 22 (100%)
 
-Time: 199 ms, Memory: 4.00MB
+Time: 188 ms, Memory: 4.00MB
 
-OK (18 tests, 78 assertions)
+OK (22 tests, 96 assertions)
 
 ```
