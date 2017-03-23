@@ -30,6 +30,16 @@ class TasksTest extends BaseTestCase
         $this->assertNotContains('error', (string) $response->getBody());
     }
 
+    public function testGetTaskNotFound()
+    {
+        $response = $this->runApp('GET', '/tasks/123456');
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertNotContains('id', (string) $response->getBody());
+        $this->assertNotContains('task', (string) $response->getBody());
+        $this->assertContains('error', (string) $response->getBody());
+    }
+
     public function testSearchTasks()
     {
         $response = $this->runApp('GET', '/tasks/search/bug');
