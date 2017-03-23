@@ -16,7 +16,7 @@ $app->get('/', function () {
  * Version Route.
  */
 $app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.10 [21 Marzo 2017]']];
+    $msg = ['info' => ['api_version' => '0.1.11 [22 Marzo 2017]']];
     return $this->response->withJson($msg);
 });
 
@@ -25,28 +25,28 @@ $app->get('/version', function () {
  */
 $app->group('/tasks', function () use ($app) {
     $app->get('', function () {
-        $todos = tasks::getTasks($this->db);
-        return $this->response->withJson($todos);
+        $result = tasks::getTasks($this->db);
+        return $this->response->withJson($result, $result['code']);
     });
     $app->get('/[{id}]', function ($request, $response, $args) {
-        $todos = tasks::getTask($this->db, $args['id']);
-        return $this->response->withJson($todos);
+        $result = tasks::getTask($this->db, $args['id']);
+        return $this->response->withJson($result, $result['code']);
     });
     $app->get('/search/[{query}]', function ($request, $response, $args) {
-        $todos = tasks::searchTasks($this->db, $args['query']);
-        return $this->response->withJson($todos);
+        $result = tasks::searchTasks($this->db, $args['query']);
+        return $this->response->withJson($result, $result['code']);
     });
     $app->post('', function ($request) {
-        $input = tasks::createTask($this->db, $request);
-        return $this->response->withJson($input);
+        $result = tasks::createTask($this->db, $request);
+        return $this->response->withJson($result, $result['code']);
     });
     $app->put('/[{id}]', function ($request, $response, $args) {
-        $input = tasks::updateTask($this->db, $request, $args['id']);
-        return $this->response->withJson($input);
+        $result = tasks::updateTask($this->db, $request, $args['id']);
+        return $this->response->withJson($result, $result['code']);
     });
     $app->delete('/[{id}]', function ($request, $response, $args) {
-        tasks::deleteTask($this->db, $args['id']);
-        return true;
+        $result = tasks::deleteTask($this->db, $args['id']);
+        return $this->response->withJson($result, $result['code']);
     });
 });
 

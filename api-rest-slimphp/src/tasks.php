@@ -84,7 +84,7 @@ class tasks
         $statement->execute();
         $input['id'] = $db->lastInsertId();
 
-        return $input;
+        return self::response('success', $input, 200);
     }
 
     public static function updateTask($db, $request, $id)
