@@ -82,7 +82,9 @@ class tasks
      */
     public static function searchTasks($db, $tasksName)
     {
-        $statement = $db->prepare('SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task');
+        $statement = $db->prepare(
+            'SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task'
+        );
         $query = '%'.$tasksName.'%';
         $statement->bindParam('query', $query);
         $statement->execute();

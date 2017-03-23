@@ -83,7 +83,9 @@ class users
      */
     public static function searchUsers($db, $usersStr)
     {
-        $statement = $db->prepare('SELECT * FROM users WHERE UPPER(name) LIKE :query ORDER BY id');
+        $statement = $db->prepare(
+            'SELECT * FROM users WHERE UPPER(name) LIKE :query ORDER BY id'
+        );
         $query = '%'.$usersStr.'%';
         $statement->bindParam('query', $query);
         $statement->execute();

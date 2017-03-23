@@ -12,106 +12,126 @@ class TasksTest extends BaseTestCase
     {
         $response = $this->runApp('GET', '/tasks');
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('task', (string) $response->getBody());
-        $this->assertContains('Fix', (string) $response->getBody());
-        $this->assertNotContains('error', (string) $response->getBody());
+        $this->assertContains('id', $result);
+        $this->assertContains('task', $result);
+        $this->assertContains('Fix', $result);
+        $this->assertNotContains('error', $result);
     }
 
     public function testGetTask()
     {
         $response = $this->runApp('GET', '/tasks/1');
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('task', (string) $response->getBody());
-        $this->assertContains('Find', (string) $response->getBody());
-        $this->assertNotContains('error', (string) $response->getBody());
+        $this->assertContains('id', $result);
+        $this->assertContains('task', $result);
+        $this->assertContains('Find', $result);
+        $this->assertNotContains('error', $result);
     }
 
     public function testGetTaskNotFound()
     {
         $response = $this->runApp('GET', '/tasks/123456');
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(404, $response->getStatusCode());
-        $this->assertNotContains('id', (string) $response->getBody());
-        $this->assertNotContains('task', (string) $response->getBody());
-        $this->assertContains('error', (string) $response->getBody());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('task', $result);
+        $this->assertContains('error', $result);
     }
 
     public function testSearchTasks()
     {
         $response = $this->runApp('GET', '/tasks/search/bug');
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('task', (string) $response->getBody());
-        $this->assertContains('bugs', (string) $response->getBody());
-        $this->assertNotContains('error', (string) $response->getBody());
+        $this->assertContains('id', $result);
+        $this->assertContains('task', $result);
+        $this->assertContains('bugs', $result);
+        $this->assertNotContains('error', $result);
     }
 
     public function testSearchTaskNotFound()
     {
         $response = $this->runApp('GET', '/tasks/search/bug123456789');
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(404, $response->getStatusCode());
-        $this->assertNotContains('id', (string) $response->getBody());
-        $this->assertNotContains('task', (string) $response->getBody());
-        $this->assertNotContains('bugs', (string) $response->getBody());
-        $this->assertContains('error', (string) $response->getBody());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('task', $result);
+        $this->assertNotContains('bugs', $result);
+        $this->assertContains('error', $result);
     }
 
     public function testCreateTask()
     {
         $response = $this->runApp('POST', '/tasks', array('task' => 'Nueva Tarea'));
 
-        self::$id = json_decode((string) $response->getBody())->message->id;
+        $result = (string) $response->getBody();
+
+        self::$id = json_decode($result)->message->id;
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('task', (string) $response->getBody());
-        $this->assertContains('Tarea', (string) $response->getBody());
-        $this->assertNotContains('error', (string) $response->getBody());
+        $this->assertContains('id', $result);
+        $this->assertContains('task', $result);
+        $this->assertContains('Tarea', $result);
+        $this->assertNotContains('error', $result);
     }
 
     public function testUpdateTask()
     {
         $response = $this->runApp('PUT', '/tasks/' . self::$id, array('task' => 'Ir al super.'));
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('id', (string) $response->getBody());
-        $this->assertContains('task', (string) $response->getBody());
-        $this->assertContains('super', (string) $response->getBody());
-        $this->assertNotContains('error', (string) $response->getBody());
+        $this->assertContains('id', $result);
+        $this->assertContains('task', $result);
+        $this->assertContains('super', $result);
+        $this->assertNotContains('error', $result);
     }
 
     public function testUpdateTaskNotFound()
     {
-        $response = $this->runApp('PUT', '/tasks/123456789', array('task' => 'Ir a dormir :-p'));
+        $response = $this->runApp('PUT', '/tasks/123456789', array('task' => 'Ir a dormir :-P'));
+
+        $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
-        $this->assertNotContains('id', (string) $response->getBody());
-        $this->assertNotContains('task', (string) $response->getBody());
-        $this->assertNotContains('dormir', (string) $response->getBody());
-        $this->assertContains('error', (string) $response->getBody());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('task', $result);
+        $this->assertNotContains('dormir', $result);
+        $this->assertContains('error', $result);
     }
 
     public function testDeleteTask()
     {
         $response = $this->runApp('DELETE', '/tasks/' . self::$id);
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('success', (string) $response->getBody());
-        $this->assertNotContains('error', (string) $response->getBody());
+        $this->assertContains('success', $result);
+        $this->assertNotContains('error', $result);
     }
 
     public function testDeleteTaskNotFound()
     {
         $response = $this->runApp('DELETE', '/tasks/123456');
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(404, $response->getStatusCode());
-        $this->assertNotContains('success', (string) $response->getBody());
-        $this->assertContains('error', (string) $response->getBody());
+        $this->assertNotContains('success', $result);
+        $this->assertContains('error', $result);
     }
 }
