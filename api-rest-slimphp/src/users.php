@@ -5,10 +5,10 @@ class users
     /**
      * Response with a standard format.
      *
-     * @param  string $status
-     * @param  mixed  $message
-     * @param  int    $code
-     * @return array  $response
+     * @param string $status
+     * @param mixed $message
+     * @param int $code
+     * @return array $response
      */
     private static function response($status, $message, $code)
     {
@@ -24,8 +24,8 @@ class users
     /**
      * Check if the user exists.
      *
-     * @param mixed   $db
-     * @param int     $id
+     * @param mixed $db
+     * @param int $id
      * @return object $user
      * @throws Exception
      */
@@ -42,6 +42,12 @@ class users
         return $user;
     }
 
+    /**
+     * Get all users
+     *
+     * @param mixed $db
+     * @return array
+     */
     public static function getUsers($db)
     {
         $statement = $db->prepare('SELECT * FROM users ORDER BY id');
@@ -50,6 +56,13 @@ class users
         return self::response('success', $statement->fetchAll(), 200);
     }
 
+    /**
+     * Get one user by id
+     *
+     * @param mixed $db
+     * @param int $id
+     * @return array
+     */
     public static function getUser($db, $id)
     {
         try {
@@ -61,6 +74,13 @@ class users
         }
     }
 
+    /**
+     * Search users by name
+     *
+     * @param mixed $db
+     * @param string $usersStr
+     * @return array
+     */
     public static function searchUsers($db, $usersStr)
     {
         $statement = $db->prepare('SELECT * FROM users WHERE UPPER(name) LIKE :query ORDER BY id');
@@ -75,6 +95,13 @@ class users
         return self::response('success', $users, 200);
     }
 
+    /**
+     * Create user
+     *
+     * @param mixed $db
+     * @param mixed $request
+     * @return array
+     */
     public static function createUser($db, $request)
     {
         $input = $request->getParsedBody();
@@ -87,6 +114,14 @@ class users
         return self::response('success', $input, 200);
     }
 
+    /**
+     * Update user
+     *
+     * @param mixed $db
+     * @param mixed $request
+     * @param int $id
+     * @return array
+     */
     public static function updateUser($db, $request, $id)
     {
         try {
@@ -105,6 +140,13 @@ class users
         }
     }
 
+    /**
+     * Delete user
+     *
+     * @param mixed $db
+     * @param int $id
+     * @return array
+     */
     public static function deleteUser($db, $id)
     {
         try {

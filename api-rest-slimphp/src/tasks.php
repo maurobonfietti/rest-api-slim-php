@@ -5,10 +5,10 @@ class tasks
     /**
      * Response with a standard format.
      *
-     * @param  string $status
-     * @param  mixed  $message
-     * @param  int    $code
-     * @return array  $response
+     * @param string $status
+     * @param mixed $message
+     * @param int $code
+     * @return array $response
      */
     private static function response($status, $message, $code)
     {
@@ -24,8 +24,8 @@ class tasks
     /**
      * Check if the task exists.
      *
-     * @param mixed   $db
-     * @param int     $id
+     * @param mixed $db
+     * @param int $id
      * @return object $task
      * @throws Exception
      */
@@ -42,6 +42,11 @@ class tasks
         return $task;
     }
 
+    /**
+     * Get all tasks
+     * @param mixed $db
+     * @return array
+     */
     public static function getTasks($db)
     {
         $statement = $db->prepare('SELECT * FROM tasks ORDER BY task');
@@ -50,6 +55,13 @@ class tasks
         return self::response('success', $statement->fetchAll(), 200);
     }
 
+    /**
+     * Get one task by id
+     *
+     * @param mixed $db
+     * @param int $id
+     * @return array
+     */
     public static function getTask($db, $id)
     {
         try {
@@ -61,6 +73,13 @@ class tasks
         }
     }
 
+    /**
+     * Search tasks by name
+     *
+     * @param mixed $db
+     * @param string $tasksName
+     * @return array
+     */
     public static function searchTasks($db, $tasksName)
     {
         $statement = $db->prepare('SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task');
@@ -75,6 +94,13 @@ class tasks
         return self::response('success', $tasks, 200);
     }
 
+    /**
+     * Create task
+     *
+     * @param mixed $db
+     * @param mixed $request
+     * @return array
+     */
     public static function createTask($db, $request)
     {
         $input = $request->getParsedBody();
@@ -87,6 +113,14 @@ class tasks
         return self::response('success', $input, 200);
     }
 
+    /**
+     * Update task
+     *
+     * @param mixed $db
+     * @param mixed $request
+     * @param int $id
+     * @return array
+     */
     public static function updateTask($db, $request, $id)
     {
         try {
@@ -105,6 +139,13 @@ class tasks
         }
     }
 
+    /**
+     * Delete task
+     *
+     * @param mixed $db
+     * @param int $id
+     * @return array
+     */
     public static function deleteTask($db, $id)
     {
         try {
