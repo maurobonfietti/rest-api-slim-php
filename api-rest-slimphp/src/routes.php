@@ -16,7 +16,7 @@ $app->get('/', function () {
  * Version Route.
  */
 $app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.11 [22 Marzo 2017]']];
+    $msg = ['info' => ['api_version' => '0.1.12 [23 Marzo 2017]']];
     return $this->response->withJson($msg);
 });
 

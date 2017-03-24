@@ -2,6 +2,14 @@
 
 class tasks
 {
+    const TASK_NOT_FOUND = 'La tarea solicitada no existe.';
+
+    const TASK_NAME_NOT_FOUND = 'No se encontraron tareas con ese nombre.';
+
+    const TASK_NAME_REQUIRED = 'Ingrese el nombre de la tarea.';
+
+    const TASK_DELETED = 'La tarea fue eliminada correctamente.';
+
     /**
      * Response with a standard format.
      *
@@ -13,9 +21,9 @@ class tasks
     private static function response($status, $message, $code)
     {
         $response = [
-            'status' => $status,
+            'status'  => $status,
+            'code'    => $code,
             'message' => $message,
-            'code' => $code,
         ];
 
         return $response;
@@ -36,7 +44,7 @@ class tasks
         $statement->execute();
         $task = $statement->fetchObject();
         if (!$task) {
-            throw new Exception('La tarea solicitada no existe.', 404);
+            throw new Exception(self::TASK_NOT_FOUND, 404);
         }
 
         return $task;
@@ -90,7 +98,7 @@ class tasks
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
-            return self::response('error', 'No se encontraron tareas con ese nombre.', 404);
+            return self::response('error', self::TASK_NAME_NOT_FOUND, 404);
         }
 
         return self::response('success', $tasks, 200);
@@ -107,7 +115,7 @@ class tasks
     {
         $input = $request->getParsedBody();
         if (empty($input['task'])) {
-            return self::response('error', 'Ingrese el nombre de la tarea.', 400);
+            return self::response('error', self::TASK_NAME_REQUIRED, 400);
         }
         $sql = 'INSERT INTO tasks (task) VALUES (:task)';
         $statement = $db->prepare($sql);
@@ -132,7 +140,7 @@ class tasks
             self::checkTask($db, $id);
             $input = $request->getParsedBody();
             if (empty($input['task'])) {
-                return self::response('error', 'Ingrese el nombre de la tarea.', 400);
+                return self::response('error', self::TASK_NAME_REQUIRED, 400);
             }
             $sql = 'UPDATE tasks SET task=:task WHERE id=:id';
             $statement = $db->prepare($sql);
@@ -162,7 +170,7 @@ class tasks
             $statement->bindParam('id', $id);
             $statement->execute();
 
-            return self::response('success', 'La tarea fue eliminada correctamente.', 200);
+            return self::response('success', self::TASK_DELETED, 200);
         } catch (Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }

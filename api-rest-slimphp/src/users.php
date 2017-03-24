@@ -2,6 +2,14 @@
 
 class users
 {
+    const USER_NOT_FOUND = 'El usuario solicitado no existe.';
+
+    const USER_NAME_NOT_FOUND = 'No se encontraron usuarios con ese nombre.';
+
+    const USER_NAME_REQUIRED = 'Ingrese el nombre del usuario.';
+
+    const USER_DELETED = 'El usuario fue eliminado correctamente.';
+
     /**
      * Response with a standard format.
      *
@@ -36,7 +44,7 @@ class users
         $statement->execute();
         $user = $statement->fetchObject();
         if (!$user) {
-            throw new Exception('El usuario solicitado no existe.', 404);
+            throw new Exception(self::USER_NOT_FOUND, 404);
         }
 
         return $user;
@@ -91,7 +99,7 @@ class users
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
-            return self::response('error', 'No se encontraron usuarios con ese nombre.', 404);
+            return self::response('error', self::USER_NAME_NOT_FOUND, 404);
         }
 
         return self::response('success', $users, 200);
@@ -108,7 +116,7 @@ class users
     {
         $input = $request->getParsedBody();
         if (empty($input['name'])) {
-            return self::response('error', 'Ingrese el nombre del usuario.', 400);
+            return self::response('error', self::USER_NAME_REQUIRED, 400);
         }
         $sql = 'INSERT INTO users (name) VALUES (:name)';
         $statement = $db->prepare($sql);
@@ -133,7 +141,7 @@ class users
             self::checkUser($db, $id);
             $input = $request->getParsedBody();
             if (empty($input['name'])) {
-                return self::response('error', 'Ingrese el nombre del usuario.', 400);
+                return self::response('error', self::USER_NAME_REQUIRED, 400);
             }
             $sql = 'UPDATE users SET name=:name WHERE id=:id';
             $statement = $db->prepare($sql);
@@ -163,7 +171,7 @@ class users
             $statement->bindParam('id', $id);
             $statement->execute();
 
-            return self::response('success', 'El usuario fue eliminado correctamente.', 200);
+            return self::response('success', self::USER_DELETED, 200);
         } catch (Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
