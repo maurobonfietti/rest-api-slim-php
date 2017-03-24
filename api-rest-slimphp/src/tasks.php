@@ -1,6 +1,6 @@
 <?php
 
-class tasks
+class tasks extends base
 {
     const TASK_NOT_FOUND = 'La tarea solicitada no existe.';
 
@@ -9,25 +9,6 @@ class tasks
     const TASK_NAME_REQUIRED = 'Ingrese el nombre de la tarea.';
 
     const TASK_DELETED = 'La tarea fue eliminada correctamente.';
-
-    /**
-     * Response with a standard format.
-     *
-     * @param string $status
-     * @param mixed $message
-     * @param int $code
-     * @return array $response
-     */
-    private static function response($status, $message, $code)
-    {
-        $response = [
-            'status'  => $status,
-            'code'    => $code,
-            'message' => $message,
-        ];
-
-        return $response;
-    }
 
     /**
      * Check if the task exists.

@@ -2,10 +2,6 @@
 
 namespace Tests\Functional;
 
-require __DIR__.'/../../src/users.php';
-
-require __DIR__.'/../../src/queries.php';
-
 class UsersTest extends BaseTestCase
 {
     private static $id;

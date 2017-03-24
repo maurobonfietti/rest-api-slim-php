@@ -26,6 +26,9 @@ require __DIR__ . '/../src/middleware.php';
 // Register routes
 require __DIR__ . '/../src/routes.php';
 
+// Register class base
+require __DIR__.'/../src/base.php';
+
 // Register class tasks
 require __DIR__.'/../src/tasks.php';
 

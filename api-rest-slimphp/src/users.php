@@ -1,6 +1,6 @@
 <?php
 
-class users
+class users extends base
 {
     const USER_NOT_FOUND = 'El usuario solicitado no existe.';
 
@@ -9,25 +9,6 @@ class users
     const USER_NAME_REQUIRED = 'Ingrese el nombre del usuario.';
 
     const USER_DELETED = 'El usuario fue eliminado correctamente.';
-
-    /**
-     * Response with a standard format.
-     *
-     * @param string $status
-     * @param mixed $message
-     * @param int $code
-     * @return array $response
-     */
-    private static function response($status, $message, $code)
-    {
-        $response = [
-            'status'  => $status,
-            'code'    => $code,
-            'message' => $message,
-        ];
-
-        return $response;
-    }
 
     /**
      * Check if the user exists.

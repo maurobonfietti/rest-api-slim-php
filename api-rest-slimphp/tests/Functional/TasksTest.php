@@ -2,8 +2,6 @@
 
 namespace Tests\Functional;
 
-require __DIR__.'/../../src/tasks.php';
-
 class TasksTest extends BaseTestCase
 {
     private static $id;
