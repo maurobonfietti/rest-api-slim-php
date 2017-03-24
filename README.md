@@ -85,8 +85,10 @@ $ composer start
 
 ### NOTA:
 
-Si todo fue bien :sunglasses:, se puede visualizar el proyecto ingresando a: [localhost](http://localhost:8080).
-Ver [Usuarios](http://localhost:8080/users). Ver [Tareas](http://localhost:8080/tasks).
+Si todo fue bien :sunglasses:, se puede visualizar el proyecto ingresando a: 
+[Ayuda](http://localhost:8080), 
+[Usuarios](http://localhost:8080/users), 
+[Tareas](http://localhost:8080/tasks).
 
 El comando `composer start` sería el equivalente a ejecutar:
 ```
@@ -135,10 +137,9 @@ Respuesta:
   ]
 }
 ```
-***
 
 
-### Ver usuario por id:
+### Ver usuario:
 ```
 $ curl http://localhost:8080/users/1
 ```
@@ -155,7 +156,6 @@ Respuesta:
   }
 }
 ```
-***
 
 
 ### Buscar usuarios por nombre:
@@ -177,7 +177,6 @@ Respuesta:
   ]
 }
 ```
-***
 
 
 ### Crear usuario:
@@ -196,7 +195,6 @@ Respuesta:
   }
 }
 ```
-***
 
 
 ### Actualizar usuario:
@@ -215,7 +213,6 @@ Respuesta:
   }
 }
 ```
-***
 
 
 ### Eliminar usuario:
@@ -231,6 +228,156 @@ Respuesta:
   "message": "El usuario fue eliminado correctamente."
 }
 ```
+
+
+***
+
+
+### Ver tareas:
+```
+$ curl http://localhost:8080/tasks
+```
+
+Respuesta:
+```
+{
+  "code": 200,
+  "status": "success",
+  "message": [
+    {
+      "id": "4",
+      "task": "Comprar cereales",
+      "status": "1",
+      "created_at": "2017-03-24 19:26:47"
+    },
+    {
+      "id": "2",
+      "task": "Comprar zapatillas",
+      "status": "1",
+      "created_at": "2017-03-24 19:26:47"
+    },
+    {
+      "id": "5",
+      "task": "Hacer tarea...",
+      "status": "0",
+      "created_at": "2017-03-24 19:26:47"
+    },
+    {
+      "id": "1",
+      "task": "Ir al centro",
+      "status": "1",
+      "created_at": "2017-03-24 19:26:47"
+    },
+    {
+      "id": "3",
+      "task": "Ir al super",
+      "status": "1",
+      "created_at": "2017-03-24 19:26:47"
+    }
+  ]
+}
+```
+
+
+### Ver tarea:
+```
+$ curl http://localhost:8080/tasks/3
+```
+
+Respuesta:
+```
+{
+  "code": 200,
+  "status": "success",
+  "message": {
+    "id": "3",
+    "task": "Ir al super",
+    "status": "1",
+    "created_at": "2017-03-24 19:26:47"
+  }
+}
+```
+
+
+### Buscar tareas por nombre:
+```
+$ curl http://localhost:8080/tasks/search/ir
+```
+
+Respuesta:
+```
+{
+  "code": 200,
+  "status": "success",
+  "message": [
+    {
+      "id": "1",
+      "task": "Ir al centro",
+      "status": "1",
+      "created_at": "2017-03-24 19:26:47"
+    },
+    {
+      "id": "3",
+      "task": "Ir al super",
+      "status": "1",
+      "created_at": "2017-03-24 19:26:47"
+    }
+  ]
+}
+```
+
+
+### Crear tarea:
+```
+$ curl -X POST http://localhost:8080/tasks --data "task=Comprar carne"
+```
+
+Respuesta:
+```
+{
+  "code": 200,
+  "status": "success",
+  "message": {
+    "task": "Comprar carne",
+    "id": "27"
+  }
+}
+```
+
+
+### Actualizar tarea:
+```
+$ curl -X PUT http://localhost:8080/tasks/4 --data "task=Ir al aeropuerto"
+```
+
+Respuesta:
+```
+{
+  "code": 200,
+  "status": "success",
+  "message": {
+    "task": "Ir al aeropuerto",
+    "id": "4"
+  }
+}
+```
+
+
+### Eliminar tarea:
+```
+$ curl -X DELETE http://localhost:8080/tasks/5
+```
+
+Respuesta:
+```
+{
+  "code": 200,
+  "status": "success",
+  "message": "La tarea fue eliminada correctamente."
+}
+```
+
+
 ***
 
 
