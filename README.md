@@ -93,23 +93,6 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
 
-## TESTS:
-
-Acceder a la ruta del proyecto y ejecutar los tests con phpunit:
-```
-$ cd api-rest-slimphp/
-$ phpunit
-PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
-
-......................                                            22 / 22 (100%)
-
-Time: 188 ms, Memory: 4.00MB
-
-OK (22 tests, 96 assertions)
-
-```
-
-
 ## MODO DE USO:
 
 ### Ver usuarios:
@@ -154,7 +137,7 @@ Respuesta:
 ***
 
 
-### Ver usuario por Id:
+### Ver usuario por id:
 ```
 $ curl http://localhost:8080/users/1
 ```
@@ -194,4 +177,75 @@ Respuesta:
 }
 ```
 ***
+
+
+### Crear usuario:
+```
+$ curl -X POST http://localhost:8080/users --data "name=Sergio"
+```
+
+Respuesta:
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": {
+    "name": "Sergio",
+    "id": "11"
+  }
+}
+```
+***
+
+
+### Actualizar usuario:
+```
+$ curl -X PUT http://localhost:8080/users/1 --data "name=Javier"
+```
+
+Respuesta:
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": {
+    "name": "Javier",
+    "id": "1"
+  }
+}
+```
+***
+
+
+### Eliminar usuario:
+```
+$ curl -X DELETE http://localhost:8080/users/1
+```
+
+Respuesta:
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": "El usuario fue eliminado correctamente."
+}
+```
+***
+
+
+## TESTS:
+
+Acceder a la ruta del proyecto y ejecutar los tests con phpunit:
+```
+$ cd api-rest-slimphp/
+$ phpunit
+PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
+
+......................                                            22 / 22 (100%)
+
+Time: 188 ms, Memory: 4.00MB
+
+OK (22 tests, 96 assertions)
+
+```
 
