@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Users administration.
+ */
 class users extends base
 {
     /**

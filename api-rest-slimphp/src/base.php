@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Centralized and useful base class :-)
+ */
 class base
 {
     const USER_NOT_FOUND = 'El usuario solicitado no existe.';

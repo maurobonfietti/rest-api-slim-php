@@ -1,7 +1,12 @@
 <?php
 
+/**
+ * Query Repository.
+ */
 class queries
 {
+    /* Users Query Repository */
+
     public static function getUserQuery()
     {
         return 'SELECT * FROM users WHERE id=:id';
@@ -32,7 +37,7 @@ class queries
         return 'DELETE FROM users WHERE id=:id';
     }
 
-    /**/
+    /* Tasks Query Repository */
 
     public static function getTaskQuery()
     {

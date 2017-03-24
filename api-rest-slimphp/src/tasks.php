@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Tasks administration.
+ */
 class tasks extends base
 {
     /**

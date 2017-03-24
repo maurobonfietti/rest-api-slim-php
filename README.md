@@ -241,11 +241,9 @@ $ cd api-rest-slimphp/
 $ phpunit
 PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 
-......................                                            22 / 22 (100%)
+..........................                                        26 / 26 (100%)
 
-Time: 188 ms, Memory: 4.00MB
+Time: 225 ms, Memory: 4.00MB
 
-OK (22 tests, 96 assertions)
-
+OK (26 tests, 112 assertions)
 ```
-
