@@ -63,7 +63,7 @@ INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (5, 'Hacer tarea...', 0);
 
 5- Configurar los datos de acceso a la base de datos.
 
-Archivo: src/settings.php
+Archivo: `src/settings.php`
 ```
     // Database connection settings
     'db' => [
@@ -85,9 +85,9 @@ $ composer start
 
 ### NOTA:
 
-Si todo fue bien, se puede visualizar el proyecto ingresando a: http://localhost:8080/
+Si todo fue bien, :sunglasses:, se puede visualizar el proyecto ingresando a: [localhost](http://localhost:8080).
 
-El comando o script "composer start" sería el equivalente a ejecutar:
+El comando `composer start` sería el equivalente a ejecutar:
 ```
 $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
@@ -235,15 +235,15 @@ Respuesta:
 
 ## TESTS:
 
-Acceder a la ruta del proyecto y ejecutar los tests con phpunit:
+Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
 ```
 $ cd api-rest-slimphp/
 $ phpunit
 PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 
-..........................                                        26 / 26 (100%)
+..........................                                                                                                                                               26 / 26 (100%)
 
-Time: 225 ms, Memory: 4.00MB
+Time: 221 ms, Memory: 4.00MB
 
-OK (26 tests, 112 assertions)
+OK (26 tests, 111 assertions)
 ```
