@@ -65,13 +65,13 @@ INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (5, 'Push to prod', 0);
 
 Archivo: src/settings.php
 ```
-        // Database connection settings
-        'db' => [
-            'host' => '127.0.0.1',
-            'dbname' => 'api-rest-slimphp',
-            'user' => 'root',
-            'pass' => '',
-        ],
+    // Database connection settings
+    'db' => [
+        'host' => '127.0.0.1',
+        'dbname' => 'api-rest-slimphp',
+        'user' => 'root',
+        'pass' => '',
+    ],
 ```
 
 
@@ -106,3 +106,67 @@ Time: 188 ms, Memory: 4.00MB
 OK (22 tests, 96 assertions)
 
 ```
+
+
+## MODO DE USO:
+
+### Ver usuarios:
+```
+$ curl http://localhost:8080/users
+```
+
+Respuesta:
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": [
+    {
+      "id": "1",
+      "name": "Juan",
+      "email": "juanmartin@delpotro.com"
+    },
+    {
+      "id": "2",
+      "name": "Federico",
+      "email": null
+    },
+    {
+      "id": "3",
+      "name": "Leo",
+      "email": null
+    },
+    {
+      "id": "4",
+      "name": "Carlos",
+      "email": null
+    },
+    {
+      "id": "5",
+      "name": "Diego",
+      "email": "diego@gmail.com"
+    }
+  ]
+}
+```
+===
+
+
+### Ver usuario por Id:
+```
+$ curl http://localhost:8080/users/1
+```
+
+Respuesta:
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": {
+    "id": "1",
+    "name": "Juan",
+    "email": "juanmartin@delpotro.com"
+  }
+}
+```
+===

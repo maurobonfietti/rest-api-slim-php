@@ -13,9 +13,9 @@ class users
     private static function response($status, $message, $code)
     {
         $response = [
-            'status' => $status,
+            'status'  => $status,
+            'code'    => $code,
             'message' => $message,
-            'code' => $code,
         ];
 
         return $response;
