@@ -39,7 +39,8 @@ class users
      */
     private static function checkUser($db, $id)
     {
-        $statement = $db->prepare('SELECT * FROM users WHERE id=:id');
+        $query = self::getUserQuery();
+        $statement = $db->prepare($query);
         $statement->bindParam('id', $id);
         $statement->execute();
         $user = $statement->fetchObject();
@@ -58,7 +59,8 @@ class users
      */
     public static function getUsers($db)
     {
-        $statement = $db->prepare('SELECT * FROM users ORDER BY id');
+        $query = self::getUsersQuery();
+        $statement = $db->prepare($query);
         $statement->execute();
 
         return self::response('success', $statement->fetchAll(), 200);
@@ -91,11 +93,10 @@ class users
      */
     public static function searchUsers($db, $usersStr)
     {
-        $statement = $db->prepare(
-            'SELECT * FROM users WHERE UPPER(name) LIKE :query ORDER BY id'
-        );
-        $query = '%'.$usersStr.'%';
-        $statement->bindParam('query', $query);
+        $query = self::searchUsersQuery();
+        $statement = $db->prepare($query);
+        $name = '%'.$usersStr.'%';
+        $statement->bindParam('name', $name);
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
@@ -118,8 +119,8 @@ class users
         if (empty($input['name'])) {
             return self::response('error', self::USER_NAME_REQUIRED, 400);
         }
-        $sql = 'INSERT INTO users (name) VALUES (:name)';
-        $statement = $db->prepare($sql);
+        $query = self::createUserQuery();
+        $statement = $db->prepare($query);
         $statement->bindParam('name', $input['name']);
         $statement->execute();
         $input['id'] = $db->lastInsertId();
@@ -143,8 +144,8 @@ class users
             if (empty($input['name'])) {
                 return self::response('error', self::USER_NAME_REQUIRED, 400);
             }
-            $sql = 'UPDATE users SET name=:name WHERE id=:id';
-            $statement = $db->prepare($sql);
+            $query = self::updateUserQuery();
+            $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->bindParam('name', $input['name']);
             $statement->execute();
@@ -167,7 +168,8 @@ class users
     {
         try {
             self::checkUser($db, $id);
-            $statement = $db->prepare('DELETE FROM users WHERE id=:id');
+            $query = self::deleteUserQuery();
+            $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->execute();
 
@@ -175,5 +177,35 @@ class users
         } catch (Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
+    }
+
+    private static function getUserQuery()
+    {
+        return 'SELECT * FROM users WHERE id=:id';
+    }
+
+    private static function getUsersQuery()
+    {
+        return 'SELECT * FROM users ORDER BY id';
+    }
+
+    private static function searchUsersQuery()
+    {
+        return 'SELECT * FROM users WHERE UPPER(name) LIKE :name ORDER BY id';
+    }
+
+    private static function createUserQuery()
+    {
+        return 'INSERT INTO users (name) VALUES (:name)';
+    }
+
+    private static function updateUserQuery()
+    {
+        return 'UPDATE users SET name=:name WHERE id=:id';
+    }
+
+    private static function deleteUserQuery()
+    {
+        return 'DELETE FROM users WHERE id=:id';
     }
 }

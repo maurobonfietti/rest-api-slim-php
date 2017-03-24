@@ -39,7 +39,8 @@ class tasks
      */
     private static function checkTask($db, $id)
     {
-        $statement = $db->prepare('SELECT * FROM tasks WHERE id=:id');
+        $query = self::getTaskQuery();
+        $statement = $db->prepare($query);
         $statement->bindParam('id', $id);
         $statement->execute();
         $task = $statement->fetchObject();
@@ -57,7 +58,8 @@ class tasks
      */
     public static function getTasks($db)
     {
-        $statement = $db->prepare('SELECT * FROM tasks ORDER BY task');
+        $query = self::getTasksQuery();
+        $statement = $db->prepare($query);
         $statement->execute();
 
         return self::response('success', $statement->fetchAll(), 200);
@@ -90,9 +92,8 @@ class tasks
      */
     public static function searchTasks($db, $tasksName)
     {
-        $statement = $db->prepare(
-            'SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task'
-        );
+        $query = self::searchTasksQuery();
+        $statement = $db->prepare($query);
         $query = '%'.$tasksName.'%';
         $statement->bindParam('query', $query);
         $statement->execute();
@@ -117,8 +118,8 @@ class tasks
         if (empty($input['task'])) {
             return self::response('error', self::TASK_NAME_REQUIRED, 400);
         }
-        $sql = 'INSERT INTO tasks (task) VALUES (:task)';
-        $statement = $db->prepare($sql);
+        $query = self::createTaskQuery();
+        $statement = $db->prepare($query);
         $statement->bindParam('task', $input['task']);
         $statement->execute();
         $input['id'] = $db->lastInsertId();
@@ -142,8 +143,8 @@ class tasks
             if (empty($input['task'])) {
                 return self::response('error', self::TASK_NAME_REQUIRED, 400);
             }
-            $sql = 'UPDATE tasks SET task=:task WHERE id=:id';
-            $statement = $db->prepare($sql);
+            $query = self::updateTaskQuery();
+            $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->bindParam('task', $input['task']);
             $statement->execute();
@@ -166,7 +167,8 @@ class tasks
     {
         try {
             self::checkTask($db, $id);
-            $statement = $db->prepare('DELETE FROM tasks WHERE id=:id');
+            $query = self::deleteTaskQuery();
+            $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->execute();
 
@@ -174,5 +176,35 @@ class tasks
         } catch (Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
+    }
+    
+    private static function getTaskQuery()
+    {
+        return 'SELECT * FROM tasks WHERE id=:id';
+    }
+
+    private static function getTasksQuery()
+    {
+        return 'SELECT * FROM tasks ORDER BY task';
+    }
+
+    private static function searchTasksQuery()
+    {
+        return 'SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task';
+    }
+
+    private static function createTaskQuery()
+    {
+        return 'INSERT INTO tasks (task) VALUES (:task)';
+    }
+
+    private static function updateTaskQuery()
+    {
+        return 'UPDATE tasks SET task=:task WHERE id=:id';
+    }
+
+    private static function deleteTaskQuery()
+    {
+        return 'DELETE FROM tasks WHERE id=:id';
     }
 }
