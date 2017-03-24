@@ -39,7 +39,7 @@ class users
      */
     private static function checkUser($db, $id)
     {
-        $query = self::getUserQuery();
+        $query = queries::getUserQuery();
         $statement = $db->prepare($query);
         $statement->bindParam('id', $id);
         $statement->execute();
@@ -59,7 +59,7 @@ class users
      */
     public static function getUsers($db)
     {
-        $query = self::getUsersQuery();
+        $query = queries::getUsersQuery();
         $statement = $db->prepare($query);
         $statement->execute();
 
@@ -93,7 +93,7 @@ class users
      */
     public static function searchUsers($db, $usersStr)
     {
-        $query = self::searchUsersQuery();
+        $query = queries::searchUsersQuery();
         $statement = $db->prepare($query);
         $name = '%'.$usersStr.'%';
         $statement->bindParam('name', $name);
@@ -119,7 +119,7 @@ class users
         if (empty($input['name'])) {
             return self::response('error', self::USER_NAME_REQUIRED, 400);
         }
-        $query = self::createUserQuery();
+        $query = queries::createUserQuery();
         $statement = $db->prepare($query);
         $statement->bindParam('name', $input['name']);
         $statement->execute();
@@ -144,7 +144,7 @@ class users
             if (empty($input['name'])) {
                 return self::response('error', self::USER_NAME_REQUIRED, 400);
             }
-            $query = self::updateUserQuery();
+            $query = queries::updateUserQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->bindParam('name', $input['name']);
@@ -168,7 +168,7 @@ class users
     {
         try {
             self::checkUser($db, $id);
-            $query = self::deleteUserQuery();
+            $query = queries::deleteUserQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->execute();
@@ -177,35 +177,5 @@ class users
         } catch (Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
-    }
-
-    private static function getUserQuery()
-    {
-        return 'SELECT * FROM users WHERE id=:id';
-    }
-
-    private static function getUsersQuery()
-    {
-        return 'SELECT * FROM users ORDER BY id';
-    }
-
-    private static function searchUsersQuery()
-    {
-        return 'SELECT * FROM users WHERE UPPER(name) LIKE :name ORDER BY id';
-    }
-
-    private static function createUserQuery()
-    {
-        return 'INSERT INTO users (name) VALUES (:name)';
-    }
-
-    private static function updateUserQuery()
-    {
-        return 'UPDATE users SET name=:name WHERE id=:id';
-    }
-
-    private static function deleteUserQuery()
-    {
-        return 'DELETE FROM users WHERE id=:id';
     }
 }

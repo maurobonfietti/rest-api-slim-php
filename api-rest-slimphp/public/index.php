@@ -32,5 +32,8 @@ require __DIR__.'/../src/tasks.php';
 // Register class users
 require __DIR__.'/../src/users.php';
 
+// Register class queries
+require __DIR__.'/../src/queries.php';
+
 // Run app
 $app->run();

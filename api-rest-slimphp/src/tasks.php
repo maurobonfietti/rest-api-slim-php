@@ -39,7 +39,7 @@ class tasks
      */
     private static function checkTask($db, $id)
     {
-        $query = self::getTaskQuery();
+        $query = queries::getTaskQuery();
         $statement = $db->prepare($query);
         $statement->bindParam('id', $id);
         $statement->execute();
@@ -58,7 +58,7 @@ class tasks
      */
     public static function getTasks($db)
     {
-        $query = self::getTasksQuery();
+        $query = queries::getTasksQuery();
         $statement = $db->prepare($query);
         $statement->execute();
 
@@ -92,7 +92,7 @@ class tasks
      */
     public static function searchTasks($db, $tasksName)
     {
-        $query = self::searchTasksQuery();
+        $query = queries::searchTasksQuery();
         $statement = $db->prepare($query);
         $query = '%'.$tasksName.'%';
         $statement->bindParam('query', $query);
@@ -118,7 +118,7 @@ class tasks
         if (empty($input['task'])) {
             return self::response('error', self::TASK_NAME_REQUIRED, 400);
         }
-        $query = self::createTaskQuery();
+        $query = queries::createTaskQuery();
         $statement = $db->prepare($query);
         $statement->bindParam('task', $input['task']);
         $statement->execute();
@@ -143,7 +143,7 @@ class tasks
             if (empty($input['task'])) {
                 return self::response('error', self::TASK_NAME_REQUIRED, 400);
             }
-            $query = self::updateTaskQuery();
+            $query = queries::updateTaskQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->bindParam('task', $input['task']);
@@ -167,7 +167,7 @@ class tasks
     {
         try {
             self::checkTask($db, $id);
-            $query = self::deleteTaskQuery();
+            $query = queries::deleteTaskQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->execute();
@@ -176,35 +176,5 @@ class tasks
         } catch (Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
-    }
-    
-    private static function getTaskQuery()
-    {
-        return 'SELECT * FROM tasks WHERE id=:id';
-    }
-
-    private static function getTasksQuery()
-    {
-        return 'SELECT * FROM tasks ORDER BY task';
-    }
-
-    private static function searchTasksQuery()
-    {
-        return 'SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task';
-    }
-
-    private static function createTaskQuery()
-    {
-        return 'INSERT INTO tasks (task) VALUES (:task)';
-    }
-
-    private static function updateTaskQuery()
-    {
-        return 'UPDATE tasks SET task=:task WHERE id=:id';
-    }
-
-    private static function deleteTaskQuery()
-    {
-        return 'DELETE FROM tasks WHERE id=:id';
     }
 }
