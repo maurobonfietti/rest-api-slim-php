@@ -75,15 +75,17 @@ Archivo: src/settings.php
 ```
 
 
-## INICIAR SERVIDOR:
+## SERVIDOR LOCAL:
 
-Se puede iniciar el servidor web integrado de PHP ejecutando:
+Se puede iniciar el servidor web interno de PHP ejecutando:
 ```
 $ composer start
 ```
 
 
 ### NOTA:
+
+Si todo fue bien, se puede visualizar el proyecto ingresando a: http://localhost:8080/
 
 El comando o script "composer start" sería el equivalente a ejecutar:
 ```
@@ -149,7 +151,7 @@ Respuesta:
   ]
 }
 ```
-===
+***
 
 
 ### Ver usuario por Id:
@@ -169,4 +171,27 @@ Respuesta:
   }
 }
 ```
-===
+***
+
+
+### Buscar usuarios por nombre:
+```
+$ curl http://localhost:8080/users/search/le
+```
+
+Respuesta:
+```
+{
+  "status": "success",
+  "code": 200,
+  "message": [
+    {
+      "id": "3",
+      "name": "Leo",
+      "email": null
+    }
+  ]
+}
+```
+***
+

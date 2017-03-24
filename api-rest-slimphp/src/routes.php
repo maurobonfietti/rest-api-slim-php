@@ -5,8 +5,8 @@
  */
 $app->get('/', function () {
     $msg = ['help' => [
-        'tareas' => 'Ver Tareas: /tasks',
-        'usuarios' => 'Ver Usuarios: /users',
+        'tasks' => 'Ver Tareas: /tasks',
+        'users' => 'Ver Usuarios: /users',
         'version' => 'Ver Version: /version',
     ]];
     return $this->response->withJson($msg);
