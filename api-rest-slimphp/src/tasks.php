@@ -106,6 +106,9 @@ class tasks
     public static function createTask($db, $request)
     {
         $input = $request->getParsedBody();
+        if (empty($input['task'])) {
+            return self::response('error', 'Ingrese el nombre de la tarea.', 400);
+        }
         $sql = 'INSERT INTO tasks (task) VALUES (:task)';
         $statement = $db->prepare($sql);
         $statement->bindParam('task', $input['task']);
@@ -128,6 +131,9 @@ class tasks
         try {
             self::checkTask($db, $id);
             $input = $request->getParsedBody();
+            if (empty($input['task'])) {
+                return self::response('error', 'Ingrese el nombre de la tarea.', 400);
+            }
             $sql = 'UPDATE tasks SET task=:task WHERE id=:id';
             $statement = $db->prepare($sql);
             $statement->bindParam('id', $id);

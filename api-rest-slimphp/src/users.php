@@ -107,6 +107,9 @@ class users
     public static function createUser($db, $request)
     {
         $input = $request->getParsedBody();
+        if (empty($input['name'])) {
+            return self::response('error', 'Ingrese el nombre del usuario.', 400);
+        }
         $sql = 'INSERT INTO users (name) VALUES (:name)';
         $statement = $db->prepare($sql);
         $statement->bindParam('name', $input['name']);
@@ -129,6 +132,9 @@ class users
         try {
             self::checkUser($db, $id);
             $input = $request->getParsedBody();
+            if (empty($input['name'])) {
+                return self::response('error', 'Ingrese el nombre del usuario.', 400);
+            }
             $sql = 'UPDATE users SET name=:name WHERE id=:id';
             $statement = $db->prepare($sql);
             $statement->bindParam('id', $id);
