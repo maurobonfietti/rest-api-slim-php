@@ -26,8 +26,8 @@ class base
     protected static function response($status, $message, $code)
     {
         $response = [
-            'status'  => $status,
             'code'    => $code,
+            'status'  => $status,
             'message' => $message,
         ];
 

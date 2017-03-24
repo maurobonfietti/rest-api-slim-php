@@ -50,14 +50,14 @@ INSERT INTO `users` VALUES ('1', 'Juan', 'juanmartin@delpotro.com');
 INSERT INTO `users` VALUES ('2', 'Federico', null);
 INSERT INTO `users` VALUES ('3', 'Leo', null);
 INSERT INTO `users` VALUES ('4', 'Carlos', null);
-INSERT INTO `users` VALUES ('5', 'Diego', 'diego@gmail.com');
+INSERT INTO `users` VALUES ('5', 'Diego', 'diego10@gmail.com');
 
 
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (1, 'Find bugs', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (2, 'Review code', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (3, 'Fix bugs', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (4, 'Refactor Code', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (5, 'Push to prod', 0);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (1, 'Ir al centro', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (2, 'Comprar zapatillas', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (3, 'Ir al super', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (4, 'Comprar cereales', 1);
+INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (5, 'Hacer tarea...', 0);
 ```
 
 
@@ -103,8 +103,8 @@ $ curl http://localhost:8080/users
 Respuesta:
 ```
 {
-  "status": "success",
   "code": 200,
+  "status": "success",
   "message": [
     {
       "id": "1",
@@ -145,8 +145,8 @@ $ curl http://localhost:8080/users/1
 Respuesta:
 ```
 {
-  "status": "success",
   "code": 200,
+  "status": "success",
   "message": {
     "id": "1",
     "name": "Juan",
@@ -165,8 +165,8 @@ $ curl http://localhost:8080/users/search/le
 Respuesta:
 ```
 {
-  "status": "success",
   "code": 200,
+  "status": "success",
   "message": [
     {
       "id": "3",
@@ -187,8 +187,8 @@ $ curl -X POST http://localhost:8080/users --data "name=Sergio"
 Respuesta:
 ```
 {
-  "status": "success",
   "code": 200,
+  "status": "success",
   "message": {
     "name": "Sergio",
     "id": "11"
@@ -206,8 +206,8 @@ $ curl -X PUT http://localhost:8080/users/1 --data "name=Javier"
 Respuesta:
 ```
 {
-  "status": "success",
   "code": 200,
+  "status": "success",
   "message": {
     "name": "Javier",
     "id": "1"
@@ -225,8 +225,8 @@ $ curl -X DELETE http://localhost:8080/users/1
 Respuesta:
 ```
 {
-  "status": "success",
   "code": 200,
+  "status": "success",
   "message": "El usuario fue eliminado correctamente."
 }
 ```

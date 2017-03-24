@@ -34,7 +34,7 @@ class UsersTest extends BaseTestCase
 
     public function testGetUserNotFound()
     {
-        $response = $this->runApp('GET', '/users/123456');
+        $response = $this->runApp('GET', '/users/123456789');
 
         $result = (string) $response->getBody();
 
@@ -53,13 +53,13 @@ class UsersTest extends BaseTestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('juan', $result);
+        $this->assertContains('Juan', $result);
         $this->assertNotContains('error', $result);
     }
 
     public function testSearchUserNotFound()
     {
-        $response = $this->runApp('GET', '/users/search/123456');
+        $response = $this->runApp('GET', '/users/search/123456789');
 
         $result = (string) $response->getBody();
 
@@ -98,14 +98,16 @@ class UsersTest extends BaseTestCase
 
     public function testUpdateUser()
     {
-        $response = $this->runApp('PUT', '/users/' . self::$id, array('name' => 'Tommy'));
+        $response = $this->runApp(
+            'PUT', '/users/' . self::$id, array('name' => 'Victor')
+        );
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Tommy', $result);
+        $this->assertContains('Victor', $result);
         $this->assertNotContains('error', $result);
     }
 
@@ -123,7 +125,9 @@ class UsersTest extends BaseTestCase
 
     public function testUpdateUserNotFound()
     {
-        $response = $this->runApp('PUT', '/users/123456', array('name' => 'Tommy'));
+        $response = $this->runApp(
+            'PUT', '/users/123456789', array('name' => 'Victor')
+        );
 
         $result = (string) $response->getBody();
 
@@ -146,7 +150,7 @@ class UsersTest extends BaseTestCase
 
     public function testDeleteUserNotFound()
     {
-        $response = $this->runApp('DELETE', '/users/123456');
+        $response = $this->runApp('DELETE', '/users/123456789');
 
         $result = (string) $response->getBody();
 
