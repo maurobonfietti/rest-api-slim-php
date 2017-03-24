@@ -87,6 +87,18 @@ class TasksTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    public function testCreateTaskWithOutTaskName()
+    {
+        $response = $this->runApp('POST', '/tasks');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('name', $result);
+        $this->assertContains('error', $result);
+    }
+
     public function testUpdateTask()
     {
         $response = $this->runApp('PUT', '/tasks/' . self::$id, array('task' => 'Ir al super.'));
@@ -98,6 +110,18 @@ class TasksTest extends BaseTestCase
         $this->assertContains('task', $result);
         $this->assertContains('super', $result);
         $this->assertNotContains('error', $result);
+    }
+
+    public function testUpdateTaskWithOutTaskName()
+    {
+        $response = $this->runApp('PUT', '/tasks/' . self::$id);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('name', $result);
+        $this->assertContains('error', $result);
     }
 
     public function testUpdateTaskNotFound()

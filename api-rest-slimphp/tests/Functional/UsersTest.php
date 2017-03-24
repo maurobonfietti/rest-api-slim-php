@@ -86,6 +86,18 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    public function testCreateUserWithOutName()
+    {
+        $response = $this->runApp('POST', '/users');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('name', $result);
+        $this->assertContains('error', $result);
+    }
+
     public function testUpdateUser()
     {
         $response = $this->runApp('PUT', '/users/' . self::$id, array('name' => 'Tommy'));
@@ -97,6 +109,18 @@ class UsersTest extends BaseTestCase
         $this->assertContains('name', $result);
         $this->assertContains('Tommy', $result);
         $this->assertNotContains('error', $result);
+    }
+
+    public function testUpdateUserWithOutName()
+    {
+        $response = $this->runApp('PUT', '/users/' . self::$id);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('name', $result);
+        $this->assertContains('error', $result);
     }
 
     public function testUpdateUserNotFound()
