@@ -85,7 +85,8 @@ $ composer start
 
 ### NOTA:
 
-Si todo fue bien, :sunglasses:, se puede visualizar el proyecto ingresando a: [localhost](http://localhost:8080).
+Si todo fue bien :sunglasses:, se puede visualizar el proyecto ingresando a: [localhost](http://localhost:8080).
+Ver [Usuarios](http://localhost:8080/users). Ver [Tareas](http://localhost:8080/tasks).
 
 El comando `composer start` sería el equivalente a ejecutar:
 ```
@@ -241,9 +242,9 @@ $ cd api-rest-slimphp/
 $ phpunit
 PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 
-..........................                                                                                                                                               26 / 26 (100%)
+..........................                                        26 / 26 (100%)
 
-Time: 221 ms, Memory: 4.00MB
+Time: 204 ms, Memory: 4.00MB
 
 OK (26 tests, 111 assertions)
 ```
