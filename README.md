@@ -9,6 +9,7 @@ Ejemplo de API REST con microframework Slim PHP.
 ```
 $ cd path-to-your-projects
 $ git clone https://github.com/maurobonfietti/api-rest-slimphp.git
+$ cd api-rest-slimphp/api-rest-slimphp/
 $ composer install
 ```
 
@@ -28,7 +29,6 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 
 --
 -- Table structure for `tasks`
@@ -52,7 +52,6 @@ INSERT INTO `users` VALUES ('3', 'Leo', null);
 INSERT INTO `users` VALUES ('4', 'Carlos', null);
 INSERT INTO `users` VALUES ('5', 'Diego', 'diego10@gmail.com');
 
-
 INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (1, 'Ir al centro', 1);
 INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (2, 'Comprar zapatillas', 1);
 INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (3, 'Ir al super', 1);
@@ -61,17 +60,17 @@ INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (5, 'Hacer tarea...', 0);
 ```
 
 
-5- Configurar los datos de acceso a la base de datos.
+5- Configurar los datos de acceso a MySQL.
 
-Archivo: `src/settings.php`
+Editar archivo de configuración: `src/settings.php`
 ```
-    // Database connection settings
-    'db' => [
-        'host' => '127.0.0.1',
-        'dbname' => 'api-rest-slimphp',
-        'user' => 'root',
-        'pass' => '',
-    ],
+// Database connection settings
+'db' => [
+    'host' => '127.0.0.1',
+    'dbname' => 'api-rest-slimphp',
+    'user' => 'YourMysqlUser',
+    'pass' => 'YourMysqlPass',
+],
 ```
 
 
@@ -85,7 +84,7 @@ $ composer start
 
 ### NOTA:
 
-Si todo fue bien :sunglasses:, se puede visualizar el proyecto ingresando a: 
+Si todo fue bien :sunglasses:, se puede acceder localmente al proyecto ingresando a: 
 [Ayuda](http://localhost:8080), 
 [Usuarios](http://localhost:8080/users), 
 [Tareas](http://localhost:8080/tasks).
@@ -385,7 +384,6 @@ Respuesta:
 
 Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
 ```
-$ cd api-rest-slimphp/
 $ phpunit
 PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
 
