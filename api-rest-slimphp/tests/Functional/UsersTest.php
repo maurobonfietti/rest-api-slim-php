@@ -6,6 +6,9 @@ class UsersTest extends BaseTestCase
 {
     private static $id;
 
+    /**
+     * Test Get All Users.
+     */
     public function testGetUsers()
     {
         $response = $this->runApp('GET', '/users');
@@ -19,6 +22,9 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Get One User.
+     */
     public function testGetUser()
     {
         $response = $this->runApp('GET', '/users/1');
@@ -32,6 +38,9 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Get User Not Found.
+     */
     public function testGetUserNotFound()
     {
         $response = $this->runApp('GET', '/users/123456789');
@@ -44,6 +53,9 @@ class UsersTest extends BaseTestCase
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Search Users.
+     */
     public function testSearchUsers()
     {
         $response = $this->runApp('GET', '/users/search/j');
@@ -57,6 +69,9 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Search User Not Found.
+     */
     public function testSearchUserNotFound()
     {
         $response = $this->runApp('GET', '/users/search/123456789');
@@ -69,6 +84,9 @@ class UsersTest extends BaseTestCase
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Create User.
+     */
     public function testCreateUser()
     {
         $response = $this->runApp('POST', '/users', array('name' => 'Esteban'));
@@ -84,7 +102,10 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
-    public function testCreateUserWithOutName()
+    /**
+     * Test Create User Without Name.
+     */
+    public function testCreateUserWithoutName()
     {
         $response = $this->runApp('POST', '/users');
 
@@ -96,6 +117,9 @@ class UsersTest extends BaseTestCase
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Update User.
+     */
     public function testUpdateUser()
     {
         $response = $this->runApp(
@@ -111,6 +135,9 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Update User Without Name.
+     */
     public function testUpdateUserWithOutName()
     {
         $response = $this->runApp('PUT', '/users/' . self::$id);
@@ -123,6 +150,9 @@ class UsersTest extends BaseTestCase
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Update User Not Found.
+     */
     public function testUpdateUserNotFound()
     {
         $response = $this->runApp(
@@ -137,6 +167,9 @@ class UsersTest extends BaseTestCase
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Delete User.
+     */
     public function testDeleteUser()
     {
         $response = $this->runApp('DELETE', '/users/' . self::$id);
@@ -148,6 +181,9 @@ class UsersTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Delete User Not Found.
+     */
     public function testDeleteUserNotFound()
     {
         $response = $this->runApp('DELETE', '/users/123456789');

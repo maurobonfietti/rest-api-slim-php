@@ -6,6 +6,9 @@ class TasksTest extends BaseTestCase
 {
     private static $id;
 
+    /**
+     * Test Get All Tasks.
+     */
     public function testGetTasks()
     {
         $response = $this->runApp('GET', '/tasks');
@@ -19,6 +22,9 @@ class TasksTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Get One Task.
+     */
     public function testGetTask()
     {
         $response = $this->runApp('GET', '/tasks/3');
@@ -32,6 +38,9 @@ class TasksTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Get Task Not Found.
+     */
     public function testGetTaskNotFound()
     {
         $response = $this->runApp('GET', '/tasks/123456789');
@@ -44,6 +53,9 @@ class TasksTest extends BaseTestCase
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Search Tasks.
+     */
     public function testSearchTasks()
     {
         $response = $this->runApp('GET', '/tasks/search/super');
@@ -57,6 +69,9 @@ class TasksTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Search Task Not Found.
+     */
     public function testSearchTaskNotFound()
     {
         $response = $this->runApp('GET', '/tasks/search/bug123456789');
@@ -69,6 +84,9 @@ class TasksTest extends BaseTestCase
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Create Task.
+     */
     public function testCreateTask()
     {
         $response = $this->runApp(
@@ -86,6 +104,9 @@ class TasksTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Create Task Without Name.
+     */
     public function testCreateTaskWithOutTaskName()
     {
         $response = $this->runApp('POST', '/tasks');
@@ -94,10 +115,13 @@ class TasksTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
+        $this->assertNotContains('task', $result);
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Update Task.
+     */
     public function testUpdateTask()
     {
         $response = $this->runApp(
@@ -113,6 +137,9 @@ class TasksTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Update Task Without TaskName.
+     */
     public function testUpdateTaskWithOutTaskName()
     {
         $response = $this->runApp('PUT', '/tasks/' . self::$id);
@@ -121,10 +148,13 @@ class TasksTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
+        $this->assertNotContains('task', $result);
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Update Task Not Found.
+     */
     public function testUpdateTaskNotFound()
     {
         $response = $this->runApp(
@@ -140,6 +170,9 @@ class TasksTest extends BaseTestCase
         $this->assertContains('error', $result);
     }
 
+    /**
+     * Test Delete Task.
+     */
     public function testDeleteTask()
     {
         $response = $this->runApp('DELETE', '/tasks/' . self::$id);
@@ -151,6 +184,9 @@ class TasksTest extends BaseTestCase
         $this->assertNotContains('error', $result);
     }
 
+    /**
+     * Test Delete Task Not Found.
+     */
     public function testDeleteTaskNotFound()
     {
         $response = $this->runApp('DELETE', '/tasks/123456789');
