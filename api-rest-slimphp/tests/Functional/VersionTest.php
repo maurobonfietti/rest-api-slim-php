@@ -9,6 +9,9 @@ require __DIR__.'/../../src/queries.php';
 
 class VersionTest extends BaseTestCase
 {
+    /**
+     * Test that default endpoint show a help.
+     */
     public function testApiHelp()
     {
         $response = $this->runApp('GET', '/');
@@ -19,6 +22,9 @@ class VersionTest extends BaseTestCase
         $this->assertNotContains('Failed', (string) $response->getBody());
     }
 
+    /**
+     * Test that version endpoint, show the api version.
+     */
     public function testVersion()
     {
         $response = $this->runApp('GET', '/version');
