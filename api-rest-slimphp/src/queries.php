@@ -61,7 +61,7 @@ class queries
 
     public static function updateTaskQuery()
     {
-        return 'UPDATE tasks SET task=:task WHERE id=:id';
+        return 'UPDATE tasks SET task=:task, status=:status WHERE id=:id';
     }
 
     public static function deleteTaskQuery()

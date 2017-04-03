@@ -114,15 +114,18 @@ class tasks extends base
     public static function updateTask($db, $request, $id)
     {
         try {
-            self::checkTask($db, $id);
+            $task = self::checkTask($db, $id);
             $input = $request->getParsedBody();
-            if (empty($input['task'])) {
-                return self::response('error', self::TASK_NAME_REQUIRED, 400);
+            if (empty($input['task']) && empty($input['status'])) {
+                return self::response('error', self::TASK_INFO_REQUIRED, 400);
             }
+            $taskname = isset($input['task']) ? $input['task'] : $task->task;
+            $status = isset($input['status']) ? $input['status'] : $task->status;
             $query = queries::updateTaskQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
-            $statement->bindParam('task', $input['task']);
+            $statement->bindParam('task', $taskname);
+            $statement->bindParam('status', $status);
             $statement->execute();
             $input['id'] = $id;
 
