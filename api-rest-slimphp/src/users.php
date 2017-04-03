@@ -99,9 +99,9 @@ class users extends base
         $statement = $db->prepare($query);
         $statement->bindParam('name', $input['name']);
         $statement->execute();
-        $input['id'] = $db->lastInsertId();
+        $user = self::checkUser($db, $db->lastInsertId());
 
-        return self::response('success', $input, 200);
+        return self::response('success', $user, 200);
     }
 
     /**
@@ -125,9 +125,9 @@ class users extends base
             $statement->bindParam('id', $id);
             $statement->bindParam('name', $input['name']);
             $statement->execute();
-            $input['id'] = $id;
+            $user = self::checkUser($db, $id);
 
-            return self::response('success', $input, 200);
+            return self::response('success', $user, 200);
         } catch (Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }

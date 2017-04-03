@@ -98,9 +98,9 @@ class tasks extends base
         $statement = $db->prepare($query);
         $statement->bindParam('task', $input['task']);
         $statement->execute();
-        $input['id'] = $db->lastInsertId();
+        $task = self::checkTask($db, $db->lastInsertId());
 
-        return self::response('success', $input, 200);
+        return self::response('success', $task, 200);
     }
 
     /**
@@ -127,9 +127,9 @@ class tasks extends base
             $statement->bindParam('task', $taskname);
             $statement->bindParam('status', $status);
             $statement->execute();
-            $input['id'] = $id;
+            $task = self::checkTask($db, $id);
 
-            return self::response('success', $input, 200);
+            return self::response('success', $task, 200);
         } catch (Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
