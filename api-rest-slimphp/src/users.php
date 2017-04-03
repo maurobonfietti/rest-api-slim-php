@@ -115,15 +115,18 @@ class users extends base
     public static function updateUser($db, $request, $id)
     {
         try {
-            self::checkUser($db, $id);
+            $user = self::checkUser($db, $id);
             $input = $request->getParsedBody();
-            if (empty($input['name'])) {
-                return self::response('error', self::USER_NAME_REQUIRED, 400);
+            if (empty($input['name']) && empty($input['email'])) {
+                return self::response('error', self::USER_INFO_REQUIRED, 400);
             }
+            $username = isset($input['name']) ? $input['name'] : $user->name;
+            $email = isset($input['email']) ? $input['email'] : $user->email;
             $query = queries::updateUserQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
-            $statement->bindParam('name', $input['name']);
+            $statement->bindParam('name', $username);
+            $statement->bindParam('email', $email);
             $statement->execute();
             $user = self::checkUser($db, $id);
 

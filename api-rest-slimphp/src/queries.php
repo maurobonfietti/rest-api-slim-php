@@ -29,7 +29,7 @@ class queries
 
     public static function updateUserQuery()
     {
-        return 'UPDATE users SET name=:name WHERE id=:id';
+        return 'UPDATE users SET name=:name, email=:email WHERE id=:id';
     }
 
     public static function deleteUserQuery()
