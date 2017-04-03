@@ -27,6 +27,8 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -38,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `task` varchar(200) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 ```
@@ -46,11 +49,11 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 
 4- Cargar datos de prueba en la base de datos:
 ```
-INSERT INTO `users` VALUES ('1', 'Juan', 'juanmartin@delpotro.com');
-INSERT INTO `users` VALUES ('2', 'Federico', null);
-INSERT INTO `users` VALUES ('3', 'Leo', null);
-INSERT INTO `users` VALUES ('4', 'Carlos', null);
-INSERT INTO `users` VALUES ('5', 'Diego', 'diego10@gmail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('1', 'Juan', 'juanmartin@delpotro.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('2', 'Federico', null);
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('3', 'Leo', null);
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('4', 'Carlos', null);
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('5', 'Diego', 'diego10@gmail.com');
 
 INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (1, 'Ir al centro', 1);
 INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (2, 'Comprar zapatillas', 1);
