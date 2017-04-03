@@ -16,7 +16,7 @@ $app->get('/', function () {
  * Version Route.
  */
 $app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.13 [25 Marzo 2017]']];
+    $msg = ['info' => ['api_version' => '0.1.14 [03/04/2017]']];
     return $this->response->withJson($msg);
 });
 
@@ -25,27 +25,27 @@ $app->get('/version', function () {
  */
 $app->group('/tasks', function () use ($app) {
     $app->get('', function () {
-        $result = tasks::getTasks($this->db);
+        $result = Tasks::getTasks($this->db);
         return $this->response->withJson($result, $result['code']);
     });
     $app->get('/[{id}]', function ($request, $response, $args) {
-        $result = tasks::getTask($this->db, $args['id']);
+        $result = Tasks::getTask($this->db, $args['id']);
         return $this->response->withJson($result, $result['code']);
     });
     $app->get('/search/[{query}]', function ($request, $response, $args) {
-        $result = tasks::searchTasks($this->db, $args['query']);
+        $result = Tasks::searchTasks($this->db, $args['query']);
         return $this->response->withJson($result, $result['code']);
     });
     $app->post('', function ($request) {
-        $result = tasks::createTask($this->db, $request);
+        $result = Tasks::createTask($this->db, $request);
         return $this->response->withJson($result, $result['code']);
     });
     $app->put('/[{id}]', function ($request, $response, $args) {
-        $result = tasks::updateTask($this->db, $request, $args['id']);
+        $result = Tasks::updateTask($this->db, $request, $args['id']);
         return $this->response->withJson($result, $result['code']);
     });
     $app->delete('/[{id}]', function ($request, $response, $args) {
-        $result = tasks::deleteTask($this->db, $args['id']);
+        $result = Tasks::deleteTask($this->db, $args['id']);
         return $this->response->withJson($result, $result['code']);
     });
 });
@@ -55,27 +55,27 @@ $app->group('/tasks', function () use ($app) {
  */
 $app->group('/users', function () use ($app) {
     $app->get('', function () {
-        $result = users::getUsers($this->db);
+        $result = Users::getUsers($this->db);
         return $this->response->withJson($result, $result['code']);
     });
     $app->get('/[{id}]', function ($request, $response, $args) {
-        $result = users::getUser($this->db, $args['id']);
+        $result = Users::getUser($this->db, $args['id']);
         return $this->response->withJson($result, $result['code']);
     });
     $app->get('/search/[{query}]', function ($request, $response, $args) {
-        $result = users::searchUsers($this->db, $args['query']);
+        $result = Users::searchUsers($this->db, $args['query']);
         return $this->response->withJson($result, $result['code']);
     });
     $app->post('', function ($request) {
-        $result = users::createUser($this->db, $request);
+        $result = Users::createUser($this->db, $request);
         return $this->response->withJson($result, $result['code']);
     });
     $app->put('/[{id}]', function ($request, $response, $args) {
-        $result = users::updateUser($this->db, $request, $args['id']);
+        $result = Users::updateUser($this->db, $request, $args['id']);
         return $this->response->withJson($result, $result['code']);
     });
     $app->delete('/[{id}]', function ($request, $response, $args) {
-        $result = users::deleteUser($this->db, $args['id']);
+        $result = Users::deleteUser($this->db, $args['id']);
         return $this->response->withJson($result, $result['code']);
     });
 });

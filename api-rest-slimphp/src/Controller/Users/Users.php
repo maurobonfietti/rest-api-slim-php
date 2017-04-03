@@ -3,7 +3,7 @@
 /**
  * Users administration.
  */
-class users extends base
+class Users extends base
 {
     /**
      * Check if the user exists.

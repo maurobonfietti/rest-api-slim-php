@@ -27,16 +27,16 @@ require __DIR__ . '/../src/middleware.php';
 require __DIR__ . '/../src/routes.php';
 
 // Register class base
-require __DIR__.'/../src/base.php';
+require __DIR__.'/../src/Controller/base.php';
 
 // Register class tasks
-require __DIR__.'/../src/tasks.php';
+require __DIR__.'/../src/Controller/Tasks/Tasks.php';
 
 // Register class users
-require __DIR__.'/../src/users.php';
+require __DIR__.'/../src/Controller/Users/Users.php';
 
 // Register class queries
-require __DIR__.'/../src/queries.php';
+require __DIR__.'/../src/Repository/queries.php';
 
 // Run app
 $app->run();

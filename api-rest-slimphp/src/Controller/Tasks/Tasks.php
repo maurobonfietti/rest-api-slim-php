@@ -3,7 +3,7 @@
 /**
  * Tasks administration.
  */
-class tasks extends base
+class Tasks extends base
 {
     /**
      * Check if the task exists.

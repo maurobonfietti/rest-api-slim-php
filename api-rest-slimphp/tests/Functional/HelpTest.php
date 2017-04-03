@@ -2,10 +2,10 @@
 
 namespace Tests\Functional;
 
-require __DIR__.'/../../src/base.php';
-require __DIR__.'/../../src/users.php';
-require __DIR__.'/../../src/tasks.php';
-require __DIR__.'/../../src/queries.php';
+require __DIR__.'/../../src/Controller/base.php';
+require __DIR__.'/../../src/Controller/Tasks/Tasks.php';
+require __DIR__.'/../../src/Controller/Users/Users.php';
+require __DIR__.'/../../src/Repository/queries.php';
 
 class HelpTest extends BaseTestCase
 {
