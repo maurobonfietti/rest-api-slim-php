@@ -138,7 +138,7 @@ class UsersTest extends BaseTestCase
     /**
      * Test Update User Without Send Data.
      */
-    public function testUpdateUserWithOutData()
+    public function testUpdateUserWithOutSendData()
     {
         $response = $this->runApp('PUT', '/users/' . self::$id);
 

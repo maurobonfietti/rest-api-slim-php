@@ -138,9 +138,9 @@ class TasksTest extends BaseTestCase
     }
 
     /**
-     * Test Update Task Without TaskName.
+     * Test Update Task Without Send Data.
      */
-    public function testUpdateTaskWithOutTaskName()
+    public function testUpdateTaskWithOutSendData()
     {
         $response = $this->runApp('PUT', '/tasks/' . self::$id);
 
