@@ -100,6 +100,9 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## MODO DE USO:
 
+[DOC.md](DOC.md).
+<a href="DOC.md">DOC.md</a>
+
 ### Ver usuarios:
 ```
 $ curl http://localhost:8080/users
