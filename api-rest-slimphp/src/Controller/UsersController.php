@@ -3,7 +3,7 @@
 /**
  * Users administration.
  */
-class Users extends base
+class UsersController extends Base
 {
     /**
      * Check if the user exists.
@@ -15,7 +15,7 @@ class Users extends base
      */
     private static function checkUser($db, $id)
     {
-        $query = queries::getUserQuery();
+        $query = UsersRepository::getUserQuery();
         $statement = $db->prepare($query);
         $statement->bindParam('id', $id);
         $statement->execute();
@@ -35,7 +35,7 @@ class Users extends base
      */
     public static function getUsers($db)
     {
-        $query = queries::getUsersQuery();
+        $query = UsersRepository::getUsersQuery();
         $statement = $db->prepare($query);
         $statement->execute();
 
@@ -69,7 +69,7 @@ class Users extends base
      */
     public static function searchUsers($db, $usersStr)
     {
-        $query = queries::searchUsersQuery();
+        $query = UsersRepository::searchUsersQuery();
         $statement = $db->prepare($query);
         $name = '%'.$usersStr.'%';
         $statement->bindParam('name', $name);
@@ -95,7 +95,7 @@ class Users extends base
         if (empty($input['name'])) {
             return self::response('error', self::USER_NAME_REQUIRED, 400);
         }
-        $query = queries::createUserQuery();
+        $query = UsersRepository::createUserQuery();
         $statement = $db->prepare($query);
         $statement->bindParam('name', $input['name']);
         $statement->execute();
@@ -122,7 +122,7 @@ class Users extends base
             }
             $username = isset($input['name']) ? $input['name'] : $user->name;
             $email = isset($input['email']) ? $input['email'] : $user->email;
-            $query = queries::updateUserQuery();
+            $query = UsersRepository::updateUserQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->bindParam('name', $username);
@@ -147,7 +147,7 @@ class Users extends base
     {
         try {
             self::checkUser($db, $id);
-            $query = queries::deleteUserQuery();
+            $query = UsersRepository::deleteUserQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->execute();

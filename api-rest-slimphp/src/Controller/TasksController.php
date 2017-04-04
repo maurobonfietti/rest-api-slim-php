@@ -3,7 +3,7 @@
 /**
  * Tasks administration.
  */
-class Tasks extends base
+class TasksController extends Base
 {
     /**
      * Check if the task exists.
@@ -15,7 +15,7 @@ class Tasks extends base
      */
     private static function checkTask($db, $id)
     {
-        $query = queries::getTaskQuery();
+        $query = TasksRepository::getTaskQuery();
         $statement = $db->prepare($query);
         $statement->bindParam('id', $id);
         $statement->execute();
@@ -34,7 +34,7 @@ class Tasks extends base
      */
     public static function getTasks($db)
     {
-        $query = queries::getTasksQuery();
+        $query = TasksRepository::getTasksQuery();
         $statement = $db->prepare($query);
         $statement->execute();
 
@@ -68,7 +68,7 @@ class Tasks extends base
      */
     public static function searchTasks($db, $tasksName)
     {
-        $query = queries::searchTasksQuery();
+        $query = TasksRepository::searchTasksQuery();
         $statement = $db->prepare($query);
         $query = '%'.$tasksName.'%';
         $statement->bindParam('query', $query);
@@ -94,7 +94,7 @@ class Tasks extends base
         if (empty($input['task'])) {
             return self::response('error', self::TASK_NAME_REQUIRED, 400);
         }
-        $query = queries::createTaskQuery();
+        $query = TasksRepository::createTaskQuery();
         $statement = $db->prepare($query);
         $statement->bindParam('task', $input['task']);
         $statement->execute();
@@ -121,7 +121,7 @@ class Tasks extends base
             }
             $taskname = isset($input['task']) ? $input['task'] : $task->task;
             $status = isset($input['status']) ? $input['status'] : $task->status;
-            $query = queries::updateTaskQuery();
+            $query = TasksRepository::updateTaskQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->bindParam('task', $taskname);
@@ -146,7 +146,7 @@ class Tasks extends base
     {
         try {
             self::checkTask($db, $id);
-            $query = queries::deleteTaskQuery();
+            $query = TasksRepository::deleteTaskQuery();
             $statement = $db->prepare($query);
             $statement->bindParam('id', $id);
             $statement->execute();

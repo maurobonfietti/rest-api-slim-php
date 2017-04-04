@@ -3,7 +3,7 @@
 /**
  * Centralized and useful base class :-)
  */
-class base
+class Base
 {
     const USER_NOT_FOUND = 'El usuario solicitado no existe.';
     const USER_NAME_NOT_FOUND = 'No se encontraron usuarios con ese nombre.';
