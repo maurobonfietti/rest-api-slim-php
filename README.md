@@ -100,8 +100,11 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## MODO DE USO:
 
-[DOC.md](DOC.md).
-<a href="DOC.md">DOC.md</a>
+***
+
+Se puede encontrar más información sobre el uso de la API REST en el siguiente documento (en construcción): [DOC.md](DOC.md).
+
+***
 
 ### Ver usuarios:
 ```
