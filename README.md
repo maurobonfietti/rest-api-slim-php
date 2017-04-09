@@ -100,7 +100,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## MODO DE USO:
 
-Para más información sobre el uso de la API REST, ver el siguiente documento: [Modo de Uso](DOC.md).
+Para más información sobre el uso de la API REST, ver el siguiente documento con el [Modo de Uso](DOC.md).
 
 
 ## TESTS:

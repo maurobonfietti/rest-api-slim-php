@@ -3,7 +3,7 @@
 
 ### Ver usuarios:
 ```
-$ curl -s http://localhost:8080/users
+$ curl http://localhost:8080/users
 ```
 
 Respuesta:
@@ -16,36 +16,36 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         }
     ]
 }
@@ -54,7 +54,7 @@ Respuesta:
 
 ### Ver usuario:
 ```
-$ curl -s http://localhost:8080/users/1
+$ curl http://localhost:8080/users/1
 ```
 
 Respuesta:
@@ -66,8 +66,8 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "created": "2017-04-09 15:09:49",
-        "updated": "2017-04-09 15:09:49"
+        "created": "2017-04-09 15:33:12",
+        "updated": "2017-04-09 15:33:12"
     }
 }
 ```
@@ -75,7 +75,7 @@ Respuesta:
 
 ### Buscar usuarios por nombre:
 ```
-$ curl -s http://localhost:8080/users/search/le
+$ curl http://localhost:8080/users/search/le
 ```
 
 Respuesta:
@@ -88,8 +88,8 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         }
     ]
 }
@@ -98,7 +98,7 @@ Respuesta:
 
 ### Crear usuario:
 ```
-$ curl -s -X POST http://localhost:8080/users --data name=Sergio
+$ curl -X POST http://localhost:8080/users --data name=Sergio
 ```
 
 Respuesta:
@@ -110,8 +110,8 @@ Respuesta:
         "id": "6",
         "name": "Sergio",
         "email": null,
-        "created": "2017-04-09 15:09:51",
-        "updated": "2017-04-09 15:09:51"
+        "created": "2017-04-09 15:33:14",
+        "updated": "2017-04-09 15:33:14"
     }
 }
 ```
@@ -119,7 +119,7 @@ Respuesta:
 
 ### Actualizar usuario:
 ```
-$ curl -s -X PUT http://localhost:8080/users/1 --data name=Javier
+$ curl -X PUT http://localhost:8080/users/1 --data name=Javier
 ```
 
 Respuesta:
@@ -131,8 +131,8 @@ Respuesta:
         "id": "1",
         "name": "Javier",
         "email": "juanmartin@delpotro.com",
-        "created": "2017-04-09 15:09:49",
-        "updated": "2017-04-09 15:09:51"
+        "created": "2017-04-09 15:33:12",
+        "updated": "2017-04-09 15:33:14"
     }
 }
 ```
@@ -140,7 +140,7 @@ Respuesta:
 
 ### Eliminar usuario:
 ```
-$ curl -s -X DELETE http://localhost:8080/users/1
+$ curl -X DELETE http://localhost:8080/users/1
 ```
 
 Respuesta:
@@ -155,7 +155,7 @@ Respuesta:
 
 ### Ver tareas:
 ```
-$ curl -s http://localhost:8080/tasks
+$ curl http://localhost:8080/tasks
 ```
 
 Respuesta:
@@ -168,36 +168,36 @@ Respuesta:
             "id": "4",
             "task": "Comprar cereales",
             "status": "1",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "2",
             "task": "Comprar zapatillas",
             "status": "1",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "5",
             "task": "Hacer tarea...",
             "status": "0",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         }
     ]
 }
@@ -206,7 +206,7 @@ Respuesta:
 
 ### Ver tarea:
 ```
-$ curl -s http://localhost:8080/tasks/3
+$ curl http://localhost:8080/tasks/3
 ```
 
 Respuesta:
@@ -218,8 +218,8 @@ Respuesta:
         "id": "3",
         "task": "Ir al super",
         "status": "1",
-        "created": "2017-04-09 15:09:49",
-        "updated": "2017-04-09 15:09:49"
+        "created": "2017-04-09 15:33:12",
+        "updated": "2017-04-09 15:33:12"
     }
 }
 ```
@@ -227,7 +227,7 @@ Respuesta:
 
 ### Buscar tareas por nombre:
 ```
-$ curl -s http://localhost:8080/tasks/search/ir
+$ curl http://localhost:8080/tasks/search/ir
 ```
 
 Respuesta:
@@ -240,15 +240,15 @@ Respuesta:
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "created": "2017-04-09 15:09:49",
-            "updated": "2017-04-09 15:09:49"
+            "created": "2017-04-09 15:33:12",
+            "updated": "2017-04-09 15:33:12"
         }
     ]
 }
@@ -257,7 +257,7 @@ Respuesta:
 
 ### Crear tarea:
 ```
-$ curl -s -X POST http://localhost:8080/tasks --data task=Super
+$ curl -X POST http://localhost:8080/tasks --data task=Super
 ```
 
 Respuesta:
@@ -269,8 +269,8 @@ Respuesta:
         "id": "6",
         "task": "Super",
         "status": "0",
-        "created": "2017-04-09 15:09:51",
-        "updated": "2017-04-09 15:09:51"
+        "created": "2017-04-09 15:33:14",
+        "updated": "2017-04-09 15:33:14"
     }
 }
 ```
@@ -278,7 +278,7 @@ Respuesta:
 
 ### Actualizar tarea:
 ```
-$ curl -s -X PUT http://localhost:8080/tasks/4 --data task=Viajar
+$ curl -X PUT http://localhost:8080/tasks/4 --data task=Viajar
 ```
 
 Respuesta:
@@ -290,8 +290,8 @@ Respuesta:
         "id": "4",
         "task": "Viajar",
         "status": "1",
-        "created": "2017-04-09 15:09:49",
-        "updated": "2017-04-09 15:09:51"
+        "created": "2017-04-09 15:33:12",
+        "updated": "2017-04-09 15:33:14"
     }
 }
 ```
@@ -299,7 +299,7 @@ Respuesta:
 
 ### Eliminar tarea:
 ```
-$ curl -s -X DELETE http://localhost:8080/tasks/5
+$ curl -X DELETE http://localhost:8080/tasks/5
 ```
 
 Respuesta:
