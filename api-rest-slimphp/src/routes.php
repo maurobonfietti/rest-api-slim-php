@@ -16,8 +16,8 @@ $app->get('/', function () {
  * Version Route.
  */
 $app->get('/version', function () {
-    $msg = ['info' => ['api_version' => '0.1.15 [03/04/2017]']];
-    return $this->response->withJson($msg, 200, JSON_PRETTY_PRINT);
+    $result = Base::getVersion();
+    return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
 });
 
 /**

@@ -5,6 +5,8 @@
  */
 class Base
 {
+    const API_VERSION = '17.04';
+
     const USER_NOT_FOUND = 'El usuario solicitado no existe.';
     const USER_NAME_NOT_FOUND = 'No se encontraron usuarios con ese nombre.';
     const USER_NAME_REQUIRED = 'Ingrese el nombre del usuario.';
@@ -34,5 +36,16 @@ class Base
         ];
 
         return $response;
+    }
+
+    /**
+     * Get Api Version.
+     *
+     * @return array
+     */
+    public static function getVersion()
+    {
+        $version = ['api_version' => self::API_VERSION];
+        return self::response('success', $version, 200);
     }
 }
