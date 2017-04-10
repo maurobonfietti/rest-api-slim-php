@@ -39,6 +39,21 @@ class Base
     }
 
     /**
+     * Get Help.
+     *
+     * @return array
+     */
+    public static function getHelp()
+    {
+        $message = ['help' => [
+            'tasks' => 'Ver Tareas: /tasks',
+            'users' => 'Ver Usuarios: /users',
+            'version' => 'Ver Version: /version',
+        ]];
+        return self::response('success', $message, 200);
+    }
+
+    /**
      * Get Api Version.
      *
      * @return array

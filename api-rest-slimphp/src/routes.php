@@ -4,12 +4,8 @@
  * Help Route.
  */
 $app->get('/', function () {
-    $msg = ['help' => [
-        'tasks' => 'Ver Tareas: /tasks',
-        'users' => 'Ver Usuarios: /users',
-        'version' => 'Ver Version: /version',
-    ]];
-    return $this->response->withJson($msg, 200, JSON_PRETTY_PRINT);
+    $result = Base::getHelp();
+    return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
 });
 
 /**
