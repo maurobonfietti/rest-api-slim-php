@@ -19,12 +19,14 @@ $ composer install
 
 3- Crear la estructura y cargar datos de prueba en la base de datos.
 
-```
-mysql -uroot -p -e 'CREATE DATABASE api_rest_slimphp;'
-mysql -uroot -p api_rest_slimphp < database.sql
-```
+La base de datos se puede actualizar manualmente utilizando el siguiente archivo: [database.sql](database.sql).
 
-La base de datos se puede actualizar manualmente utilizando el archivo: [database](database.sql)
+También se puede crear desde la línea de comandos, ejecutando por ejemplo:
+
+```
+mysql -e 'CREATE DATABASE api_rest_slimphp;'
+mysql api_rest_slimphp < database.sql
+```
 
 
 4- Configurar los datos de acceso a MySQL.
