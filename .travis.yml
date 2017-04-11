@@ -8,8 +8,8 @@ services:
   - mysql
 
 before_install:
-  - mysql -uroot -p -e 'CREATE DATABASE api_rest_slimphp;'
+  - mysql -e 'CREATE DATABASE api_rest_slimphp;'
 
 before_script:
-  - mysql -uroot -p api_rest_slimphp < database.sql
+  - mysql api_rest_slimphp < database.sql
   - composer install
