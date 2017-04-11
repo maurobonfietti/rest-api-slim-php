@@ -14,56 +14,20 @@ $ composer install
 ```
 
 
-2- Crear nueva base de datos MySQL. Por ejemplo: "api-rest-slimphp".
+2- Crear nueva base de datos MySQL. Por ejemplo: "api_rest_slimphp".
 
 
-3- Crear la estructura de la base de datos:
+3- Crear la estructura y cargar datos de prueba en la base de datos.
+
 ```
--- ----------------------------
--- Table structure for users
--- ----------------------------
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Table structure for `tasks`
---
-DROP TABLE IF EXISTS `tasks`;
-CREATE TABLE IF NOT EXISTS `tasks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `task` varchar(200) NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '0',
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+mysql -uroot -p -e 'CREATE DATABASE api_rest_slimphp;'
+mysql -uroot -p api_rest_slimphp < database.sql
 ```
 
-
-4- Cargar datos de prueba en la base de datos:
-```
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('1', 'Juan', 'juanmartin@delpotro.com');
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('2', 'Federico', null);
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('3', 'Leo', null);
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('4', 'Carlos', null);
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('5', 'Diego', 'diego10@gmail.com');
-
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (1, 'Ir al centro', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (2, 'Comprar zapatillas', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (3, 'Ir al super', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (4, 'Comprar cereales', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (5, 'Hacer tarea...', 0);
-```
+La base de datos se puede actualizar manualmente utilizando el archivo: [database](database.sql)
 
 
-5- Configurar los datos de acceso a MySQL.
+4- Configurar los datos de acceso a MySQL.
 
 Editar archivo de configuración: `src/settings.php`
 ```

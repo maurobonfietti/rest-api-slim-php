@@ -20,7 +20,7 @@ return [
         // Database connection settings
         'db' => [
             'host' => '127.0.0.1',
-            'dbname' => 'api-rest-slimphp',
+            'dbname' => 'api_rest_slimphp',
             'user' => 'root',
             'pass' => '',
         ],
