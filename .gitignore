@@ -1,2 +1,5 @@
-/nbproject/private/
-/nbproject/
+/vendor/
+/logs/*
+!/logs/README.md
+/coverage/
+*.php_cs.cache
