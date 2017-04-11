@@ -9,7 +9,7 @@ Ejemplo de API REST con microframework Slim PHP.
 ```
 $ cd path-to-your-projects
 $ git clone https://github.com/maurobonfietti/api-rest-slimphp.git
-$ cd api-rest-slimphp/api-rest-slimphp/
+$ cd api-rest-slimphp
 $ composer install
 ```
 
