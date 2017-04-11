@@ -16,36 +16,31 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         }
     ]
 }
@@ -66,8 +61,7 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "created": "2017-04-09 15:33:12",
-        "updated": "2017-04-09 15:33:12"
+        "updated": "2017-04-10 23:40:40"
     }
 }
 ```
@@ -88,8 +82,7 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         }
     ]
 }
@@ -107,11 +100,10 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "id": "6",
+        "id": "7",
         "name": "Sergio",
         "email": null,
-        "created": "2017-04-09 15:33:14",
-        "updated": "2017-04-09 15:33:14"
+        "updated": "2017-04-10 23:41:17"
     }
 }
 ```
@@ -131,8 +123,7 @@ Respuesta:
         "id": "1",
         "name": "Javier",
         "email": "juanmartin@delpotro.com",
-        "created": "2017-04-09 15:33:12",
-        "updated": "2017-04-09 15:33:14"
+        "updated": "2017-04-10 23:41:17"
     }
 }
 ```
@@ -168,36 +159,31 @@ Respuesta:
             "id": "4",
             "task": "Comprar cereales",
             "status": "1",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "2",
             "task": "Comprar zapatillas",
             "status": "1",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "5",
             "task": "Hacer tarea...",
             "status": "0",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         }
     ]
 }
@@ -218,8 +204,7 @@ Respuesta:
         "id": "3",
         "task": "Ir al super",
         "status": "1",
-        "created": "2017-04-09 15:33:12",
-        "updated": "2017-04-09 15:33:12"
+        "updated": "2017-04-10 23:40:40"
     }
 }
 ```
@@ -240,15 +225,13 @@ Respuesta:
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "created": "2017-04-09 15:33:12",
-            "updated": "2017-04-09 15:33:12"
+            "updated": "2017-04-10 23:40:40"
         }
     ]
 }
@@ -266,11 +249,10 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "id": "6",
+        "id": "7",
         "task": "Super",
         "status": "0",
-        "created": "2017-04-09 15:33:14",
-        "updated": "2017-04-09 15:33:14"
+        "updated": "2017-04-10 23:41:17"
     }
 }
 ```
@@ -290,8 +272,7 @@ Respuesta:
         "id": "4",
         "task": "Viajar",
         "status": "1",
-        "created": "2017-04-09 15:33:12",
-        "updated": "2017-04-09 15:33:14"
+        "updated": "2017-04-10 23:41:17"
     }
 }
 ```
