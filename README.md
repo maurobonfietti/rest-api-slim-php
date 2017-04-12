@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/maurobonfietti/api-rest-slimphp.svg?branch=master)](https://travis-ci.org/maurobonfietti/api-rest-slimphp)
+
+
 # API REST SLIM PHP
 
 Ejemplo de API REST con microframework Slim PHP.
