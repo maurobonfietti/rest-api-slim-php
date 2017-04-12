@@ -19,7 +19,7 @@ $ composer install
 
 3- Crear la estructura y cargar datos de prueba en la base de datos.
 
-La base de datos se puede actualizar manualmente utilizando el siguiente archivo: [database.sql](database.sql).
+La base de datos se puede actualizar manualmente utilizando el siguiente archivo: [database.sql](data/database.sql).
 
 También se puede crear desde la línea de comandos, ejecutando por ejemplo:
 
