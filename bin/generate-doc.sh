@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source endpoints.sh
+source bin/endpoints.sh
 
 echo -e "## MODO DE USO:\n\n"
 

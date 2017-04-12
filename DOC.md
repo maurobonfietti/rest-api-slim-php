@@ -16,31 +16,31 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:27"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:27"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         }
     ]
 }
@@ -61,7 +61,7 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "updated": "2017-04-10 23:40:40"
+        "updated": "2017-04-11 21:49:27"
     }
 }
 ```
@@ -82,7 +82,7 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         }
     ]
 }
@@ -100,10 +100,10 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "id": "7",
+        "id": "6",
         "name": "Sergio",
         "email": null,
-        "updated": "2017-04-10 23:41:17"
+        "updated": "2017-04-11 21:49:28"
     }
 }
 ```
@@ -111,7 +111,7 @@ Respuesta:
 
 ### Actualizar usuario:
 ```
-$ curl -X PUT http://localhost:8080/users/1 --data name=Javier
+$ curl -X PUT http://localhost:8080/users/6 --data name=Javier
 ```
 
 Respuesta:
@@ -120,10 +120,10 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "id": "1",
+        "id": "6",
         "name": "Javier",
-        "email": "juanmartin@delpotro.com",
-        "updated": "2017-04-10 23:41:17"
+        "email": null,
+        "updated": "2017-04-11 21:49:28"
     }
 }
 ```
@@ -131,7 +131,7 @@ Respuesta:
 
 ### Eliminar usuario:
 ```
-$ curl -X DELETE http://localhost:8080/users/1
+$ curl -X DELETE http://localhost:8080/users/6
 ```
 
 Respuesta:
@@ -159,31 +159,31 @@ Respuesta:
             "id": "4",
             "task": "Comprar cereales",
             "status": "1",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         },
         {
             "id": "2",
             "task": "Comprar zapatillas",
             "status": "1",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         },
         {
             "id": "5",
             "task": "Hacer tarea...",
             "status": "0",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         },
         {
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         }
     ]
 }
@@ -204,7 +204,7 @@ Respuesta:
         "id": "3",
         "task": "Ir al super",
         "status": "1",
-        "updated": "2017-04-10 23:40:40"
+        "updated": "2017-04-11 21:49:28"
     }
 }
 ```
@@ -225,13 +225,13 @@ Respuesta:
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "updated": "2017-04-10 23:40:40"
+            "updated": "2017-04-11 21:49:28"
         }
     ]
 }
@@ -249,10 +249,10 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "id": "7",
+        "id": "6",
         "task": "Super",
         "status": "0",
-        "updated": "2017-04-10 23:41:17"
+        "updated": "2017-04-11 21:49:28"
     }
 }
 ```
@@ -260,7 +260,7 @@ Respuesta:
 
 ### Actualizar tarea:
 ```
-$ curl -X PUT http://localhost:8080/tasks/4 --data task=Viajar
+$ curl -X PUT http://localhost:8080/tasks/6 --data task=Viajar
 ```
 
 Respuesta:
@@ -269,10 +269,10 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "id": "4",
+        "id": "6",
         "task": "Viajar",
-        "status": "1",
-        "updated": "2017-04-10 23:41:17"
+        "status": "0",
+        "updated": "2017-04-11 21:49:28"
     }
 }
 ```
@@ -280,7 +280,7 @@ Respuesta:
 
 ### Eliminar tarea:
 ```
-$ curl -X DELETE http://localhost:8080/tasks/5
+$ curl -X DELETE http://localhost:8080/tasks/6
 ```
 
 Respuesta:
