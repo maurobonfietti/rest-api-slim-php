@@ -18,5 +18,9 @@ before_script:
   - mysql api_rest_slimphp < data/database.sql
   - composer install
 
+script:
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
+
 after_success:
   - vendor/bin/test-reporter
+  - bash <(curl -s https://codecov.io/bash)
