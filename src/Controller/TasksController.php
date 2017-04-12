@@ -15,9 +15,8 @@ class TasksController extends Base
      */
     private static function checkTask($database, $id)
     {
-//        $query = TasksRepository::getTaskQuery();
-        $tasksRepository = new TasksRepository;
-        $query = $tasksRepository->getTaskQuery();
+        $repository = new TasksRepository;
+        $query = $repository->getTaskQuery();
         $statement = $database->prepare($query);
         $statement->bindParam('id', $id);
         $statement->execute();
@@ -36,9 +35,8 @@ class TasksController extends Base
      */
     public static function getTasks($database)
     {
-//        $query = TasksRepository::getTasksQuery();
-        $tasksRepository = new TasksRepository;
-        $query = $tasksRepository->getTasksQuery();
+        $repository = new TasksRepository;
+        $query = $repository->getTasksQuery();
         $statement = $database->prepare($query);
         $statement->execute();
 
@@ -72,9 +70,8 @@ class TasksController extends Base
      */
     public static function searchTasks($database, $tasksName)
     {
-//        $query = TasksRepository::searchTasksQuery();
-        $tasksRepository = new TasksRepository;
-        $query = $tasksRepository->searchTasksQuery();
+        $repository = new TasksRepository;
+        $query = $repository->searchTasksQuery();
         $statement = $database->prepare($query);
         $query = '%'.$tasksName.'%';
         $statement->bindParam('query', $query);
@@ -100,9 +97,8 @@ class TasksController extends Base
         if (empty($input['task'])) {
             return self::response('error', self::TASK_NAME_REQUIRED, 400);
         }
-//        $query = TasksRepository::createTaskQuery();
-        $tasksRepository = new TasksRepository;
-        $query = $tasksRepository->createTaskQuery();
+        $repository = new TasksRepository;
+        $query = $repository->createTaskQuery();
         $statement = $database->prepare($query);
         $statement->bindParam('task', $input['task']);
         $statement->execute();
@@ -129,9 +125,8 @@ class TasksController extends Base
             }
             $taskname = isset($input['task']) ? $input['task'] : $task->task;
             $status = isset($input['status']) ? $input['status'] : $task->status;
-//            $query = TasksRepository::updateTaskQuery();
-            $tasksRepository = new TasksRepository;
-            $query = $tasksRepository->updateTaskQuery();
+            $repository = new TasksRepository;
+            $query = $repository->updateTaskQuery();
             $statement = $database->prepare($query);
             $statement->bindParam('id', $id);
             $statement->bindParam('task', $taskname);
@@ -156,9 +151,8 @@ class TasksController extends Base
     {
         try {
             self::checkTask($database, $id);
-//            $query = TasksRepository::deleteTaskQuery();
-            $tasksRepository = new TasksRepository;
-            $query = $tasksRepository->deleteTaskQuery();
+            $repository = new TasksRepository;
+            $query = $repository->deleteTaskQuery();
             $statement = $database->prepare($query);
             $statement->bindParam('id', $id);
             $statement->execute();
