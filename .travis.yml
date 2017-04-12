@@ -20,7 +20,8 @@ before_script:
 
 script:
   - vendor/bin/phpunit --whitelist src --coverage-clover=coverage.xml
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist src
 
 after_success:
-  - vendor/bin/test-reporter
+  - CODECLIMATE_REPO_TOKEN=0e991e38f9941a6bfd8d7876880e8ed04eaf40529f1c120025668e6f5367284d vendor/bin/test-reporter
   - bash <(curl -s https://codecov.io/bash)
