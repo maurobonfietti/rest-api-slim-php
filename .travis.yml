@@ -7,16 +7,16 @@ php:
 services:
   - mysql
 
+addons:
+  code_climate:
+    repo_token: 0e991e38f9941a6bfd8d7876880e8ed04eaf40529f1c120025668e6f5367284d
+
 before_install:
   - mysql -e 'CREATE DATABASE api_rest_slimphp;'
 
 before_script:
   - mysql api_rest_slimphp < data/database.sql
   - composer install
-
-addons:
-  code_climate:
-    repo_token: 0e991e38f9941a6bfd8d7876880e8ed04eaf40529f1c120025668e6f5367284d
 
 after_success:
   - vendor/bin/test-reporter
