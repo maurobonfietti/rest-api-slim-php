@@ -1,11 +1,12 @@
-[![Build Status](https://travis-ci.org/maurobonfietti/api-rest-slimphp.svg?branch=master)](https://travis-ci.org/maurobonfietti/api-rest-slimphp)
-
-[![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
-
 
 # API REST SLIM PHP
 
 Ejemplo de API REST con microframework Slim PHP.
+
+
+[![Build Status](https://travis-ci.org/maurobonfietti/api-rest-slimphp.svg?branch=master)](https://travis-ci.org/maurobonfietti/api-rest-slimphp)
+[![Code Climate](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/gpa.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp)
+[![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 
 
 ## INSTALACIÓN:
