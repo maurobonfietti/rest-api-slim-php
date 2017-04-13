@@ -7,6 +7,7 @@ require __DIR__.'/../../src/Controller/TasksController.php';
 require __DIR__.'/../../src/Controller/UsersController.php';
 require __DIR__.'/../../src/Repository/TasksRepository.php';
 require __DIR__.'/../../src/Repository/UsersRepository.php';
+require __DIR__.'/../../src/Service/TasksService.php';
 
 class HelpTest extends BaseTestCase
 {

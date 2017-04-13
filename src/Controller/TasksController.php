@@ -1,33 +1,10 @@
 <?php
 
 /**
- * Tasks administration.
+ * Tasks Controller.
  */
 class TasksController extends Base
 {
-    /**
-     * Check if the task exists.
-     *
-     * @param mixed $database
-     * @param int $taskId
-     * @return object $task
-     * @throws Exception
-     */
-    private static function checkTask($database, $taskId)
-    {
-        $repository = new TasksRepository;
-        $query = $repository->getTaskQuery();
-        $statement = $database->prepare($query);
-        $statement->bindParam('id', $taskId);
-        $statement->execute();
-        $task = $statement->fetchObject();
-        if (!$task) {
-            throw new Exception(self::TASK_NOT_FOUND, 404);
-        }
-
-        return $task;
-    }
-
     /**
      * Get all tasks
      *
@@ -36,12 +13,9 @@ class TasksController extends Base
      */
     public static function getTasks($database)
     {
-        $repository = new TasksRepository;
-        $query = $repository->getTasksQuery();
-        $statement = $database->prepare($query);
-        $statement->execute();
+        $service = new TasksService;
 
-        return self::response('success', $statement->fetchAll(), 200);
+        return $service->getTasks($database);
     }
 
     /**
@@ -53,13 +27,9 @@ class TasksController extends Base
      */
     public static function getTask($database, $taskId)
     {
-        try {
-            $task = self::checkTask($database, $taskId);
+        $service = new TasksService;
 
-            return self::response('success', $task, 200);
-        } catch (Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
-        }
+        return $service->getTask($database, $taskId);
     }
 
     /**
@@ -71,18 +41,9 @@ class TasksController extends Base
      */
     public static function searchTasks($database, $tasksName)
     {
-        $repository = new TasksRepository;
-        $query = $repository->searchTasksQuery();
-        $statement = $database->prepare($query);
-        $query = '%'.$tasksName.'%';
-        $statement->bindParam('query', $query);
-        $statement->execute();
-        $tasks = $statement->fetchAll();
-        if (!$tasks) {
-            return self::response('error', self::TASK_NAME_NOT_FOUND, 404);
-        }
+        $service = new TasksService;
 
-        return self::response('success', $tasks, 200);
+        return $service->searchTasks($database, $tasksName);
     }
 
     /**
@@ -94,18 +55,9 @@ class TasksController extends Base
      */
     public static function createTask($database, $request)
     {
-        $input = $request->getParsedBody();
-        if (empty($input['task'])) {
-            return self::response('error', self::TASK_NAME_REQUIRED, 400);
-        }
-        $repository = new TasksRepository;
-        $query = $repository->createTaskQuery();
-        $statement = $database->prepare($query);
-        $statement->bindParam('task', $input['task']);
-        $statement->execute();
-        $task = self::checkTask($database, $database->lastInsertId());
+        $service = new TasksService;
 
-        return self::response('success', $task, 200);
+        return $service->createTask($database, $request);
     }
 
     /**
@@ -118,27 +70,9 @@ class TasksController extends Base
      */
     public static function updateTask($database, $request, $taskId)
     {
-        try {
-            $task = self::checkTask($database, $taskId);
-            $input = $request->getParsedBody();
-            if (empty($input['task']) && empty($input['status'])) {
-                return self::response('error', self::TASK_INFO_REQUIRED, 400);
-            }
-            $taskname = isset($input['task']) ? $input['task'] : $task->task;
-            $status = isset($input['status']) ? $input['status'] : $task->status;
-            $repository = new TasksRepository;
-            $query = $repository->updateTaskQuery();
-            $statement = $database->prepare($query);
-            $statement->bindParam('id', $taskId);
-            $statement->bindParam('task', $taskname);
-            $statement->bindParam('status', $status);
-            $statement->execute();
-            $task = self::checkTask($database, $taskId);
+        $service = new TasksService;
 
-            return self::response('success', $task, 200);
-        } catch (Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
-        }
+        return $service->updateTask($database, $request, $taskId);
     }
 
     /**
@@ -150,17 +84,8 @@ class TasksController extends Base
      */
     public static function deleteTask($database, $taskId)
     {
-        try {
-            self::checkTask($database, $taskId);
-            $repository = new TasksRepository;
-            $query = $repository->deleteTaskQuery();
-            $statement = $database->prepare($query);
-            $statement->bindParam('id', $taskId);
-            $statement->execute();
+        $service = new TasksService;
 
-            return self::response('success', self::TASK_DELETED, 200);
-        } catch (Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
-        }
+        return $service->deleteTask($database, $taskId);
     }
 }

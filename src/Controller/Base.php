@@ -39,6 +39,29 @@ class Base
     }
 
     /**
+     * Check if the task exists.
+     *
+     * @param mixed $database
+     * @param int $taskId
+     * @return object $task
+     * @throws Exception
+     */
+    public static function checkTask($database, $taskId)
+    {
+        $repository = new TasksRepository;
+        $query = $repository->getTaskQuery();
+        $statement = $database->prepare($query);
+        $statement->bindParam('id', $taskId);
+        $statement->execute();
+        $task = $statement->fetchObject();
+        if (!$task) {
+            throw new Exception(self::TASK_NOT_FOUND, 404);
+        }
+
+        return $task;
+    }
+
+    /**
      * Get Help.
      *
      * @return array
