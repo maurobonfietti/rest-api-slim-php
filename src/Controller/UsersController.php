@@ -6,7 +6,7 @@
 class UsersController extends Base
 {
     /**
-     * Get all users
+     * Get all users.
      *
      * @param mixed $database
      * @return array
@@ -14,12 +14,13 @@ class UsersController extends Base
     public static function getUsers($database)
     {
         $service = new UsersService;
+        $response = $service->getUsers($database);
 
-        return $service->getUsers($database);
+        return self::response('success', $response, 200);
     }
 
     /**
-     * Get one user by id
+     * Get one user by id.
      *
      * @param mixed $database
      * @param int $userId
@@ -27,13 +28,18 @@ class UsersController extends Base
      */
     public static function getUser($database, $userId)
     {
-        $service = new UsersService;
+        try {
+            $service = new UsersService;
+            $response = $service->getUser($database, $userId);
 
-        return $service->getUser($database, $userId);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
-     * Search users by name
+     * Search users by name.
      *
      * @param mixed $database
      * @param string $usersStr
@@ -41,13 +47,18 @@ class UsersController extends Base
      */
     public static function searchUsers($database, $usersStr)
     {
-        $service = new UsersService;
+        try {
+            $service = new UsersService;
+            $response = $service->searchUsers($database, $usersStr);
 
-        return $service->searchUsers($database, $usersStr);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
-     * Create user
+     * Create user.
      *
      * @param mixed $database
      * @param mixed $request
@@ -55,13 +66,18 @@ class UsersController extends Base
      */
     public static function createUser($database, $request)
     {
-        $service = new UsersService;
+        try {
+            $service = new UsersService;
+            $response = $service->createUser($database, $request);
 
-        return $service->createUser($database, $request);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
-     * Update user
+     * Update user.
      *
      * @param mixed $database
      * @param mixed $request
@@ -70,13 +86,18 @@ class UsersController extends Base
      */
     public static function updateUser($database, $request, $userId)
     {
-        $service = new UsersService;
+        try {
+            $service = new UsersService;
+            $response = $service->updateUser($database, $request, $userId);
 
-        return $service->updateUser($database, $request, $userId);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
-     * Delete user
+     * Delete user.
      *
      * @param mixed $database
      * @param int $userId
@@ -84,8 +105,13 @@ class UsersController extends Base
      */
     public static function deleteUser($database, $userId)
     {
-        $service = new UsersService;
+        try {
+            $service = new UsersService;
+            $response = $service->deleteUser($database, $userId);
 
-        return $service->deleteUser($database, $userId);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 }

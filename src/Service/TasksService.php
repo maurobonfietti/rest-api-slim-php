@@ -6,7 +6,7 @@
 class TasksService extends Base
 {
     /**
-     * Get all tasks
+     * Get all tasks.
      *
      * @param mixed $database
      * @return array
@@ -22,7 +22,7 @@ class TasksService extends Base
     }
 
     /**
-     * Get one task by id
+     * Get one task by id.
      *
      * @param mixed $database
      * @param int $taskId
@@ -36,11 +36,12 @@ class TasksService extends Base
     }
 
     /**
-     * Search tasks by name
+     * Search tasks by name.
      *
      * @param mixed $database
      * @param string $tasksName
      * @return array
+     * @throws Exception
      */
     public static function searchTasks($database, $tasksName)
     {
@@ -59,11 +60,12 @@ class TasksService extends Base
     }
 
     /**
-     * Create task
+     * Create task.
      *
      * @param mixed $database
      * @param mixed $request
      * @return array
+     * @throws Exception
      */
     public static function createTask($database, $request)
     {
@@ -82,12 +84,13 @@ class TasksService extends Base
     }
 
     /**
-     * Update task
+     * Update task.
      *
      * @param mixed $database
      * @param mixed $request
      * @param int $taskId
      * @return array
+     * @throws Exception
      */
     public static function updateTask($database, $request, $taskId)
     {
@@ -110,7 +113,7 @@ class TasksService extends Base
     }
 
     /**
-     * Delete task
+     * Delete task.
      *
      * @param mixed $database
      * @param int $taskId

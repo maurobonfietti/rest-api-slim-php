@@ -6,7 +6,7 @@
 class UsersService extends Base
 {
     /**
-     * Get all users
+     * Get all users.
      *
      * @param mixed $database
      * @return array
@@ -18,11 +18,11 @@ class UsersService extends Base
         $statement = $database->prepare($query);
         $statement->execute();
 
-        return self::response('success', $statement->fetchAll(), 200);
+        return $statement->fetchAll();
     }
 
     /**
-     * Get one user by id
+     * Get one user by id.
      *
      * @param mixed $database
      * @param int $userId
@@ -30,21 +30,18 @@ class UsersService extends Base
      */
     public static function getUser($database, $userId)
     {
-        try {
-            $user = self::checkUser($database, $userId);
+        $user = self::checkUser($database, $userId);
 
-            return self::response('success', $user, 200);
-        } catch (Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
-        }
+        return self::response('success', $user, 200);
     }
 
     /**
-     * Search users by name
+     * Search users by name.
      *
      * @param mixed $database
      * @param string $usersStr
      * @return array
+     * @throws Exception
      */
     public static function searchUsers($database, $usersStr)
     {
@@ -56,24 +53,25 @@ class UsersService extends Base
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
-            return self::response('error', self::USER_NAME_NOT_FOUND, 404);
+            throw new Exception(self::USER_NAME_NOT_FOUND, 404);
         }
 
-        return self::response('success', $users, 200);
+        return $users;
     }
 
     /**
-     * Create user
+     * Create user.
      *
      * @param mixed $database
      * @param mixed $request
      * @return array
+     * @throws Exception
      */
     public static function createUser($database, $request)
     {
         $input = $request->getParsedBody();
         if (empty($input['name'])) {
-            return self::response('error', self::USER_NAME_REQUIRED, 400);
+            throw new Exception(self::USER_NAME_REQUIRED, 400);
         }
         $repository = new UsersRepository;
         $query = $repository->createUserQuery();
@@ -82,44 +80,40 @@ class UsersService extends Base
         $statement->execute();
         $user = self::checkUser($database, $database->lastInsertId());
 
-        return self::response('success', $user, 200);
+        return $user;
     }
 
     /**
-     * Update user
+     * Update user.
      *
      * @param mixed $database
      * @param mixed $request
      * @param int $userId
      * @return array
+     * @throws Exception
      */
     public static function updateUser($database, $request, $userId)
     {
-        try {
-            $user = self::checkUser($database, $userId);
-            $input = $request->getParsedBody();
-            if (empty($input['name']) && empty($input['email'])) {
-                return self::response('error', self::USER_INFO_REQUIRED, 400);
-            }
-            $username = isset($input['name']) ? $input['name'] : $user->name;
-            $email = isset($input['email']) ? $input['email'] : $user->email;
-            $repository = new UsersRepository;
-            $query = $repository->updateUserQuery();
-            $statement = $database->prepare($query);
-            $statement->bindParam('id', $userId);
-            $statement->bindParam('name', $username);
-            $statement->bindParam('email', $email);
-            $statement->execute();
-            $user = self::checkUser($database, $userId);
-
-            return self::response('success', $user, 200);
-        } catch (Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
+        $user = self::checkUser($database, $userId);
+        $input = $request->getParsedBody();
+        if (empty($input['name']) && empty($input['email'])) {
+            throw new Exception(self::USER_INFO_REQUIRED, 400);
         }
+        $username = isset($input['name']) ? $input['name'] : $user->name;
+        $email = isset($input['email']) ? $input['email'] : $user->email;
+        $repository = new UsersRepository;
+        $query = $repository->updateUserQuery();
+        $statement = $database->prepare($query);
+        $statement->bindParam('id', $userId);
+        $statement->bindParam('name', $username);
+        $statement->bindParam('email', $email);
+        $statement->execute();
+
+        return self::checkUser($database, $userId);
     }
 
     /**
-     * Delete user
+     * Delete user.
      *
      * @param mixed $database
      * @param int $userId
@@ -127,17 +121,13 @@ class UsersService extends Base
      */
     public static function deleteUser($database, $userId)
     {
-        try {
-            self::checkUser($database, $userId);
-            $repository = new UsersRepository;
-            $query = $repository->deleteUserQuery();
-            $statement = $database->prepare($query);
-            $statement->bindParam('id', $userId);
-            $statement->execute();
+        self::checkUser($database, $userId);
+        $repository = new UsersRepository;
+        $query = $repository->deleteUserQuery();
+        $statement = $database->prepare($query);
+        $statement->bindParam('id', $userId);
+        $statement->execute();
 
-            return self::response('success', self::USER_DELETED, 200);
-        } catch (Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
-        }
+        return self::USER_DELETED;
     }
 }

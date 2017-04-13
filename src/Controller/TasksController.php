@@ -6,7 +6,7 @@
 class TasksController extends Base
 {
     /**
-     * Get all tasks
+     * Get all tasks.
      *
      * @param mixed $database
      * @return array
@@ -20,7 +20,7 @@ class TasksController extends Base
     }
 
     /**
-     * Get one task by id
+     * Get one task by id.
      *
      * @param mixed $database
      * @param int $taskId
@@ -29,7 +29,7 @@ class TasksController extends Base
     public static function getTask($database, $taskId)
     {
         try {
-            $service = new TasksService;
+            $service = new TasksService();
             $response = $service->getTask($database, $taskId);
 
             return self::response('success', $response, 200);
@@ -39,7 +39,7 @@ class TasksController extends Base
     }
 
     /**
-     * Search tasks by name
+     * Search tasks by name.
      *
      * @param mixed $database
      * @param string $tasksName
@@ -58,7 +58,7 @@ class TasksController extends Base
     }
 
     /**
-     * Create task
+     * Create task.
      *
      * @param mixed $database
      * @param mixed $request
@@ -77,7 +77,7 @@ class TasksController extends Base
     }
 
     /**
-     * Update task
+     * Update task.
      *
      * @param mixed $database
      * @param mixed $request
@@ -97,7 +97,7 @@ class TasksController extends Base
     }
 
     /**
-     * Delete task
+     * Delete task.
      *
      * @param mixed $database
      * @param int $taskId
