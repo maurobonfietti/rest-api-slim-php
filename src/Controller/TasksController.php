@@ -6,6 +6,8 @@
 class TasksController extends Base
 {
     /**
+     * Check if the task exists.
+     *
      * @param mixed $database
      * @param int $taskId
      * @return object $task
