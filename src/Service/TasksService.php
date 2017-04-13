@@ -18,7 +18,7 @@ class TasksService extends Base
         $statement = $database->prepare($query);
         $statement->execute();
 
-        return self::response('success', $statement->fetchAll(), 200);
+        return $statement->fetchAll();
     }
 
     /**
@@ -30,13 +30,9 @@ class TasksService extends Base
      */
     public static function getTask($database, $taskId)
     {
-        try {
-            $task = self::checkTask($database, $taskId);
+        $task = self::checkTask($database, $taskId);
 
-            return self::response('success', $task, 200);
-        } catch (Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
-        }
+        return $task;
     }
 
     /**

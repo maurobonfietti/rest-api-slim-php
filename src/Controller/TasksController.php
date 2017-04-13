@@ -13,9 +13,14 @@ class TasksController extends Base
      */
     public static function getTasks($database)
     {
-        $service = new TasksService;
+        try {
+            $service = new TasksService;
+            $response = $service->getTasks($database);
 
-        return $service->getTasks($database);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
@@ -27,9 +32,14 @@ class TasksController extends Base
      */
     public static function getTask($database, $taskId)
     {
-        $service = new TasksService;
+        try {
+            $service = new TasksService;
+            $response = $service->getTask($database, $taskId);
 
-        return $service->getTask($database, $taskId);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
