@@ -13,14 +13,10 @@ class TasksController extends Base
      */
     public static function getTasks($database)
     {
-        try {
-            $service = new TasksService;
-            $response = $service->getTasks($database);
+        $service = new TasksService;
+        $response = $service->getTasks($database);
 
-            return self::response('success', $response, 200);
-        } catch (Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
-        }
+        return self::response('success', $response, 200);
     }
 
     /**
@@ -51,9 +47,14 @@ class TasksController extends Base
      */
     public static function searchTasks($database, $tasksName)
     {
-        $service = new TasksService;
+        try {
+            $service = new TasksService;
+            $response = $service->searchTasks($database, $tasksName);
 
-        return $service->searchTasks($database, $tasksName);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
@@ -65,9 +66,14 @@ class TasksController extends Base
      */
     public static function createTask($database, $request)
     {
-        $service = new TasksService;
+        try {
+            $service = new TasksService;
+            $response = $service->createTask($database, $request);
 
-        return $service->createTask($database, $request);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
@@ -80,9 +86,14 @@ class TasksController extends Base
      */
     public static function updateTask($database, $request, $taskId)
     {
-        $service = new TasksService;
+        try {
+            $service = new TasksService;
+            $response = $service->updateTask($database, $request, $taskId);
 
-        return $service->updateTask($database, $request, $taskId);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 
     /**
@@ -94,8 +105,13 @@ class TasksController extends Base
      */
     public static function deleteTask($database, $taskId)
     {
-        $service = new TasksService;
+        try {
+            $service = new TasksService;
+            $response = $service->deleteTask($database, $taskId);
 
-        return $service->deleteTask($database, $taskId);
+            return self::response('success', $response, 200);
+        } catch (Exception $ex) {
+            return self::response('error', $ex->getMessage(), $ex->getCode());
+        }
     }
 }
