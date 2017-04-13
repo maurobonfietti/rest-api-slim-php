@@ -6,8 +6,6 @@
 class UsersController extends Base
 {
     /**
-     * Check if the user exists.
-     *
      * @param mixed $database
      * @param int $userId
      * @return object $user
