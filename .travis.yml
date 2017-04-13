@@ -7,10 +7,6 @@ php:
 services:
   - mysql
 
-addons:
-  code_climate:
-    repo_token: 0e991e38f9941a6bfd8d7876880e8ed04eaf40529f1c120025668e6f5367284d
-
 before_install:
   - mysql -e 'CREATE DATABASE api_rest_slimphp;'
 
@@ -19,9 +15,7 @@ before_script:
   - composer install
 
 script:
-  - vendor/bin/phpunit --whitelist src --coverage-clover=coverage.xml
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist src
 
 after_success:
   - CODECLIMATE_REPO_TOKEN=0e991e38f9941a6bfd8d7876880e8ed04eaf40529f1c120025668e6f5367284d vendor/bin/test-reporter
-  - bash <(curl -s https://codecov.io/bash)
