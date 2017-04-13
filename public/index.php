@@ -44,5 +44,8 @@ require __DIR__.'/../src/Repository/UsersRepository.php';
 // Register class tasks service
 require __DIR__.'/../src/Service/TasksService.php';
 
+// Register class users service
+require __DIR__.'/../src/Service/UsersService.php';
+
 // Run app
 $app->run();

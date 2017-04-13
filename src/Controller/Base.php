@@ -62,6 +62,27 @@ class Base
     }
 
     /**
+     * @param mixed $database
+     * @param int $userId
+     * @return object $user
+     * @throws Exception
+     */
+    public static function checkUser($database, $userId)
+    {
+        $repository = new UsersRepository;
+        $query = $repository->getUserQuery();
+        $statement = $database->prepare($query);
+        $statement->bindParam('id', $userId);
+        $statement->execute();
+        $user = $statement->fetchObject();
+        if (!$user) {
+            throw new Exception(self::USER_NOT_FOUND, 404);
+        }
+
+        return $user;
+    }
+
+    /**
      * Get Help.
      *
      * @return array
