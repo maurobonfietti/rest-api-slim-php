@@ -9,16 +9,16 @@ class TasksController extends Base
      * Check if the task exists.
      *
      * @param mixed $database
-     * @param int $id
+     * @param int $taskId
      * @return object $task
      * @throws Exception
      */
-    private static function checkTask($database, $id)
+    private static function checkTask($database, $taskId)
     {
         $repository = new TasksRepository;
         $query = $repository->getTaskQuery();
         $statement = $database->prepare($query);
-        $statement->bindParam('id', $id);
+        $statement->bindParam('id', $taskId);
         $statement->execute();
         $task = $statement->fetchObject();
         if (!$task) {
@@ -47,13 +47,13 @@ class TasksController extends Base
      * Get one task by id
      *
      * @param mixed $database
-     * @param int $id
+     * @param int $taskId
      * @return array
      */
-    public static function getTask($database, $id)
+    public static function getTask($database, $taskId)
     {
         try {
-            $task = self::checkTask($database, $id);
+            $task = self::checkTask($database, $taskId);
 
             return self::response('success', $task, 200);
         } catch (Exception $ex) {
@@ -112,13 +112,13 @@ class TasksController extends Base
      *
      * @param mixed $database
      * @param mixed $request
-     * @param int $id
+     * @param int $taskId
      * @return array
      */
-    public static function updateTask($database, $request, $id)
+    public static function updateTask($database, $request, $taskId)
     {
         try {
-            $task = self::checkTask($database, $id);
+            $task = self::checkTask($database, $taskId);
             $input = $request->getParsedBody();
             if (empty($input['task']) && empty($input['status'])) {
                 return self::response('error', self::TASK_INFO_REQUIRED, 400);
@@ -128,11 +128,11 @@ class TasksController extends Base
             $repository = new TasksRepository;
             $query = $repository->updateTaskQuery();
             $statement = $database->prepare($query);
-            $statement->bindParam('id', $id);
+            $statement->bindParam('id', $taskId);
             $statement->bindParam('task', $taskname);
             $statement->bindParam('status', $status);
             $statement->execute();
-            $task = self::checkTask($database, $id);
+            $task = self::checkTask($database, $taskId);
 
             return self::response('success', $task, 200);
         } catch (Exception $ex) {
@@ -144,17 +144,17 @@ class TasksController extends Base
      * Delete task
      *
      * @param mixed $database
-     * @param int $id
+     * @param int $taskId
      * @return array
      */
-    public static function deleteTask($database, $id)
+    public static function deleteTask($database, $taskId)
     {
         try {
-            self::checkTask($database, $id);
+            self::checkTask($database, $taskId);
             $repository = new TasksRepository;
             $query = $repository->deleteTaskQuery();
             $statement = $database->prepare($query);
-            $statement->bindParam('id', $id);
+            $statement->bindParam('id', $taskId);
             $statement->execute();
 
             return self::response('success', self::TASK_DELETED, 200);
