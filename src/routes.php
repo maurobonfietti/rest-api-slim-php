@@ -21,7 +21,8 @@ $app->get('/version', function () {
  */
 $app->group('/tasks', function () use ($app) {
     $app->get('', function () {
-        $result = TasksController::getTasks($this->db);
+        $tasks = new TasksController($this->db);
+        $result = $tasks->getTasks();
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->get('/[{id}]', function ($request, $response, $args) {

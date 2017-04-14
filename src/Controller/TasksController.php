@@ -5,16 +5,27 @@
  */
 class TasksController extends Base
 {
+    private $database;
+
+    /**
+     * Constructor of the class.
+     *
+     * @param type $database
+     */
+    public function __construct($database = null)
+    {
+        $this->database = $database;
+    }
+
     /**
      * Get all tasks.
      *
-     * @param mixed $database
      * @return array
      */
-    public static function getTasks($database)
+    public function getTasks()
     {
-        $service = new TasksService($database);
-        $response = $service->getTasks($database);
+        $service = new TasksService($this->database);
+        $response = $service->getTasks();
 
         return self::response('success', $response, 200);
     }
@@ -67,8 +78,8 @@ class TasksController extends Base
     public static function createTask($database, $request)
     {
         try {
-            $service = new TasksService;
-            $response = $service->createTask($database, $request);
+            $service = new TasksService($database);
+            $response = $service->createTask($request);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
@@ -87,8 +98,8 @@ class TasksController extends Base
     public static function updateTask($database, $request, $taskId)
     {
         try {
-            $service = new TasksService;
-            $response = $service->updateTask($database, $request, $taskId);
+            $service = new TasksService($database);
+            $response = $service->updateTask($request, $taskId);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
@@ -106,8 +117,8 @@ class TasksController extends Base
     public static function deleteTask($database, $taskId)
     {
         try {
-            $service = new TasksService;
-            $response = $service->deleteTask($database, $taskId);
+            $service = new TasksService($database);
+            $response = $service->deleteTask($taskId);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
