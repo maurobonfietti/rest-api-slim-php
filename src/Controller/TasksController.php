@@ -12,9 +12,12 @@ class TasksController extends Base
      *
      * @param object $database
      */
-    public function __construct(PDO $database)
+    public function __construct(Slim\Container $asd)
     {
-        $this->database = $database;
+//        $this->database = $database;
+        $this->database = $asd->db;
+//        var_dump($asd->db);
+//        exit;
     }
 
     /**
@@ -22,12 +25,21 @@ class TasksController extends Base
      *
      * @return array
      */
-    public function getTasks()
+    public function getTasks($request, $response, $args)
     {
+//        var_dump($this->database);
+//        exit;
         $service = new TasksService($this->database);
-        $response = $service->getTasks();
+        $response2 = $service->getTasks();
+//        var_dump($response2);
+//        exit;
 
-        return self::response('success', $response, 200);
+        $asd = self::response('success', $response2, 200);
+//        var_dump($asd);
+//        return $asd;
+        return $response->withJson($asd, 200, JSON_PRETTY_PRINT);
+//        exit;
+//        return self::response('success', $response, 200);
     }
 
     /**
@@ -36,14 +48,17 @@ class TasksController extends Base
      * @param int $taskId
      * @return array
      */
-    public function getTask($taskId)
+    public function getTask($request, $response, $args)
     {
         try {
             $service = new TasksService($this->database);
-            $response = $service->getTask($taskId);
+            $response2 = $service->getTask($args['id']);
+            $asd = self::response('success', $response2, 200);
+            return $response->withJson($asd, 200, JSON_PRETTY_PRINT);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
+            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -54,14 +69,17 @@ class TasksController extends Base
      * @param string $tasksName
      * @return array
      */
-    public function searchTasks($tasksName)
+    public function searchTasks($request, $response, $args)
     {
         try {
             $service = new TasksService($this->database);
-            $response = $service->searchTasks($tasksName);
-
+            $response2 = $service->searchTasks($args['query']);
+            $asd = self::response('success', $response2, 200);
+            return $response->withJson($asd, 200, JSON_PRETTY_PRINT);
+            
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
+            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -72,14 +90,17 @@ class TasksController extends Base
      * @param mixed $request
      * @return array
      */
-    public function createTask($request)
+    public function createTask($request, $response, $args)
     {
         try {
             $service = new TasksService($this->database);
-            $response = $service->createTask($request);
+            $response2 = $service->createTask($request);
+            $asd = self::response('success', $response2, 200);
+            return $response->withJson($asd, 200, JSON_PRETTY_PRINT);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
+            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -91,14 +112,17 @@ class TasksController extends Base
      * @param int $taskId
      * @return array
      */
-    public function updateTask($request, $taskId)
+    public function updateTask($request, $response, $args)
     {
         try {
             $service = new TasksService($this->database);
-            $response = $service->updateTask($request, $taskId);
+            $response2 = $service->updateTask($request, $args['id']);
+            $asd = self::response('success', $response2, 200);
+            return $response->withJson($asd, 200, JSON_PRETTY_PRINT);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
+            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -109,14 +133,17 @@ class TasksController extends Base
      * @param int $taskId
      * @return array
      */
-    public function deleteTask($taskId)
+    public function deleteTask($request, $response, $args)
     {
         try {
             $service = new TasksService($this->database);
-            $response = $service->deleteTask($taskId);
+            $response2 = $service->deleteTask($args['id']);
+            $asd = self::response('success', $response2, 200);
+            return $response->withJson($asd, 200, JSON_PRETTY_PRINT);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
+            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
