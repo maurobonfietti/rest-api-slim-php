@@ -5,17 +5,28 @@
  */
 class TasksService extends Base
 {
+    private $database;
+
+    /**
+     * Constructor of the class.
+     *
+     * @param type $database
+     */
+    public function __construct($database = null)
+    {
+        $this->database = $database;
+    }
+
     /**
      * Get all tasks.
      *
-     * @param mixed $database
      * @return array
      */
-    public static function getTasks($database)
+    public function getTasks()
     {
         $repository = new TasksRepository;
         $query = $repository->getTasksQuery();
-        $statement = $database->prepare($query);
+        $statement = $this->database->prepare($query);
         $statement->execute();
 
         return $statement->fetchAll();
@@ -24,13 +35,12 @@ class TasksService extends Base
     /**
      * Get one task by id.
      *
-     * @param mixed $database
      * @param int $taskId
      * @return array
      */
-    public static function getTask($database, $taskId)
+    public function getTask($taskId)
     {
-        $task = self::checkTask($database, $taskId);
+        $task = self::checkTask($this->database, $taskId);
 
         return $task;
     }
@@ -38,16 +48,15 @@ class TasksService extends Base
     /**
      * Search tasks by name.
      *
-     * @param mixed $database
      * @param string $tasksName
      * @return array
      * @throws Exception
      */
-    public static function searchTasks($database, $tasksName)
+    public function searchTasks($tasksName)
     {
         $repository = new TasksRepository;
         $query = $repository->searchTasksQuery();
-        $statement = $database->prepare($query);
+        $statement = $this->database->prepare($query);
         $query = '%'.$tasksName.'%';
         $statement->bindParam('query', $query);
         $statement->execute();

@@ -13,7 +13,7 @@ class TasksController extends Base
      */
     public static function getTasks($database)
     {
-        $service = new TasksService;
+        $service = new TasksService($database);
         $response = $service->getTasks($database);
 
         return self::response('success', $response, 200);
@@ -29,8 +29,8 @@ class TasksController extends Base
     public static function getTask($database, $taskId)
     {
         try {
-            $service = new TasksService();
-            $response = $service->getTask($database, $taskId);
+            $service = new TasksService($database);
+            $response = $service->getTask($taskId);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
@@ -48,8 +48,8 @@ class TasksController extends Base
     public static function searchTasks($database, $tasksName)
     {
         try {
-            $service = new TasksService;
-            $response = $service->searchTasks($database, $tasksName);
+            $service = new TasksService($database);
+            $response = $service->searchTasks($tasksName);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
