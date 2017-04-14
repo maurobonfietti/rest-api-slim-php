@@ -12,7 +12,7 @@ class TasksController extends Base
      *
      * @param type $database
      */
-    public function __construct($database = null)
+    public function __construct(PDO $database)
     {
         $this->database = $database;
     }
@@ -33,14 +33,13 @@ class TasksController extends Base
     /**
      * Get one task by id.
      *
-     * @param mixed $database
      * @param int $taskId
      * @return array
      */
-    public static function getTask($database, $taskId)
+    public function getTask($taskId)
     {
         try {
-            $service = new TasksService($database);
+            $service = new TasksService($this->database);
             $response = $service->getTask($taskId);
 
             return self::response('success', $response, 200);
@@ -52,14 +51,13 @@ class TasksController extends Base
     /**
      * Search tasks by name.
      *
-     * @param mixed $database
      * @param string $tasksName
      * @return array
      */
-    public static function searchTasks($database, $tasksName)
+    public function searchTasks($tasksName)
     {
         try {
-            $service = new TasksService($database);
+            $service = new TasksService($this->database);
             $response = $service->searchTasks($tasksName);
 
             return self::response('success', $response, 200);
@@ -71,14 +69,13 @@ class TasksController extends Base
     /**
      * Create task.
      *
-     * @param mixed $database
      * @param mixed $request
      * @return array
      */
-    public static function createTask($database, $request)
+    public function createTask($request)
     {
         try {
-            $service = new TasksService($database);
+            $service = new TasksService($this->database);
             $response = $service->createTask($request);
 
             return self::response('success', $response, 200);
@@ -90,15 +87,14 @@ class TasksController extends Base
     /**
      * Update task.
      *
-     * @param mixed $database
      * @param mixed $request
      * @param int $taskId
      * @return array
      */
-    public static function updateTask($database, $request, $taskId)
+    public function updateTask($request, $taskId)
     {
         try {
-            $service = new TasksService($database);
+            $service = new TasksService($this->database);
             $response = $service->updateTask($request, $taskId);
 
             return self::response('success', $response, 200);
@@ -110,14 +106,13 @@ class TasksController extends Base
     /**
      * Delete task.
      *
-     * @param mixed $database
      * @param int $taskId
      * @return array
      */
-    public static function deleteTask($database, $taskId)
+    public function deleteTask($taskId)
     {
         try {
-            $service = new TasksService($database);
+            $service = new TasksService($this->database);
             $response = $service->deleteTask($taskId);
 
             return self::response('success', $response, 200);

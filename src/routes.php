@@ -26,23 +26,28 @@ $app->group('/tasks', function () use ($app) {
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->get('/[{id}]', function ($request, $response, $args) {
-        $result = TasksController::getTask($this->db, $args['id']);
+        $tasks = new TasksController($this->db);
+        $result = $tasks->getTask($args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->get('/search/[{query}]', function ($request, $response, $args) {
-        $result = TasksController::searchTasks($this->db, $args['query']);
+        $tasks = new TasksController($this->db);
+        $result = $tasks->searchTasks($args['query']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->post('', function ($request) {
-        $result = TasksController::createTask($this->db, $request);
+        $tasks = new TasksController($this->db);
+        $result = $tasks->createTask($request);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->put('/[{id}]', function ($request, $response, $args) {
-        $result = TasksController::updateTask($this->db, $request, $args['id']);
+        $tasks = new TasksController($this->db);
+        $result = $tasks->updateTask($request, $args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->delete('/[{id}]', function ($request, $response, $args) {
-        $result = TasksController::deleteTask($this->db, $args['id']);
+        $tasks = new TasksController($this->db);
+        $result = $tasks->deleteTask($args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
 });
