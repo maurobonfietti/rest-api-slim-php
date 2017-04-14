@@ -18,6 +18,28 @@ class UsersService extends Base
     }
 
     /**
+     * Check if the user exists.
+     *
+     * @param int $userId
+     * @return object $user
+     * @throws Exception
+     */
+    public function checkUser($userId)
+    {
+        $usersRepository = new UsersRepository;
+        $query = $usersRepository->getUserQuery();
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('id', $userId);
+        $statement->execute();
+        $user = $statement->fetchObject();
+        if (!$user) {
+            throw new Exception(self::USER_NOT_FOUND, 404);
+        }
+
+        return $user;
+    }
+
+    /**
      * Get all users.
      *
      * @return array
@@ -40,7 +62,7 @@ class UsersService extends Base
      */
     public function getUser($userId)
     {
-        $user = self::checkUser($this->database, $userId);
+        $user = $this->checkUser($userId);
 
         return $user;
     }
@@ -86,7 +108,7 @@ class UsersService extends Base
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $input['name']);
         $statement->execute();
-        $user = self::checkUser($this->database, $this->database->lastInsertId());
+        $user = $this->checkUser($this->database->lastInsertId());
 
         return $user;
     }
@@ -101,7 +123,7 @@ class UsersService extends Base
      */
     public function updateUser($request, $userId)
     {
-        $user = self::checkUser($this->database, $userId);
+        $user = $this->checkUser($userId);
         $input = $request->getParsedBody();
         if (empty($input['name']) && empty($input['email'])) {
             throw new Exception(self::USER_INFO_REQUIRED, 400);
@@ -116,7 +138,7 @@ class UsersService extends Base
         $statement->bindParam('email', $email);
         $statement->execute();
 
-        return self::checkUser($this->database, $userId);
+        return $this->checkUser($userId);
     }
 
     /**
@@ -127,7 +149,7 @@ class UsersService extends Base
      */
     public function deleteUser($userId)
     {
-        self::checkUser($this->database, $userId);
+        $this->checkUser($userId);
         $repository = new UsersRepository;
         $query = $repository->deleteUserQuery();
         $statement = $this->database->prepare($query);

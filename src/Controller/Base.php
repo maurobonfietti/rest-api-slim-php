@@ -39,50 +39,6 @@ class Base
     }
 
     /**
-     * Check if the task exists.
-     *
-     * @param mixed $database
-     * @param int $taskId
-     * @return object $task
-     * @throws Exception
-     */
-    public static function checkTask($database, $taskId)
-    {
-        $tasksRepository = new TasksRepository;
-        $query = $tasksRepository->getTaskQuery();
-        $statement = $database->prepare($query);
-        $statement->bindParam('id', $taskId);
-        $statement->execute();
-        $task = $statement->fetchObject();
-        if (!$task) {
-            throw new Exception(self::TASK_NOT_FOUND, 404);
-        }
-
-        return $task;
-    }
-
-    /**
-     * @param mixed $database
-     * @param int $userId
-     * @return object $user
-     * @throws Exception
-     */
-    public static function checkUser($database, $userId)
-    {
-        $usersRepository = new UsersRepository;
-        $query = $usersRepository->getUserQuery();
-        $statement = $database->prepare($query);
-        $statement->bindParam('id', $userId);
-        $statement->execute();
-        $user = $statement->fetchObject();
-        if (!$user) {
-            throw new Exception(self::USER_NOT_FOUND, 404);
-        }
-
-        return $user;
-    }
-
-    /**
      * Get Help.
      *
      * @return array

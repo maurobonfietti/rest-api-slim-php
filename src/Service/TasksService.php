@@ -18,6 +18,28 @@ class TasksService extends Base
     }
 
     /**
+     * Check if the task exists.
+     *
+     * @param int $taskId
+     * @return object $task
+     * @throws Exception
+     */
+    public function checkTask($taskId)
+    {
+        $tasksRepository = new TasksRepository;
+        $query = $tasksRepository->getTaskQuery();
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('id', $taskId);
+        $statement->execute();
+        $task = $statement->fetchObject();
+        if (!$task) {
+            throw new Exception(self::TASK_NOT_FOUND, 404);
+        }
+
+        return $task;
+    }
+
+    /**
      * Get all tasks.
      *
      * @return array
@@ -40,7 +62,7 @@ class TasksService extends Base
      */
     public function getTask($taskId)
     {
-        $task = self::checkTask($this->database, $taskId);
+        $task = $this->checkTask($taskId);
 
         return $task;
     }
@@ -86,7 +108,7 @@ class TasksService extends Base
         $statement = $this->database->prepare($query);
         $statement->bindParam('task', $input['task']);
         $statement->execute();
-        $task = self::checkTask($this->database, $this->database->lastInsertId());
+        $task = $this->checkTask($this->database->lastInsertId());
 
         return $task;
     }
@@ -101,7 +123,7 @@ class TasksService extends Base
      */
     public function updateTask($request, $taskId)
     {
-        $task = self::checkTask($this->database, $taskId);
+        $task = $this->checkTask($taskId);
         $input = $request->getParsedBody();
         if (empty($input['task']) && empty($input['status'])) {
             throw new Exception(self::TASK_INFO_REQUIRED, 400);
@@ -116,7 +138,7 @@ class TasksService extends Base
         $statement->bindParam('status', $status);
         $statement->execute();
 
-        return self::checkTask($this->database, $taskId);
+        return $this->checkTask($taskId);
     }
 
     /**
@@ -127,7 +149,7 @@ class TasksService extends Base
      */
     public function deleteTask($taskId)
     {
-        self::checkTask($this->database, $taskId);
+        $this->checkTask($taskId);
         $repository = new TasksRepository;
         $query = $repository->deleteTaskQuery();
         $statement = $this->database->prepare($query);
