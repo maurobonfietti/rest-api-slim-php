@@ -10,7 +10,7 @@ class TasksService extends Base
     /**
      * Constructor of the class.
      *
-     * @param type $database
+     * @param object $database
      */
     public function __construct(PDO $database)
     {

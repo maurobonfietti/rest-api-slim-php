@@ -5,17 +5,28 @@
  */
 class UsersService extends Base
 {
+    private $database;
+
+    /**
+     * Constructor of the class.
+     *
+     * @param object $database
+     */
+    public function __construct(PDO $database = null)
+    {
+        $this->database = $database;
+    }
+
     /**
      * Get all users.
      *
-     * @param mixed $database
      * @return array
      */
-    public static function getUsers($database)
+    public function getUsers()
     {
         $repository = new UsersRepository;
         $query = $repository->getUsersQuery();
-        $statement = $database->prepare($query);
+        $statement = $this->database->prepare($query);
         $statement->execute();
 
         return $statement->fetchAll();
@@ -24,15 +35,14 @@ class UsersService extends Base
     /**
      * Get one user by id.
      *
-     * @param mixed $database
      * @param int $userId
      * @return array
      */
-    public static function getUser($database, $userId)
+    public function getUser($userId)
     {
-        $user = self::checkUser($database, $userId);
+        $user = self::checkUser($this->database, $userId);
 
-        return self::response('success', $user, 200);
+        return $user;
     }
 
     /**

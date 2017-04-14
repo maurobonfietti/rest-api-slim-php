@@ -5,16 +5,27 @@
  */
 class UsersController extends Base
 {
+    private $database;
+
+    /**
+     * Constructor of the class.
+     *
+     * @param object $database
+     */
+    public function __construct(PDO $database = null)
+    {
+        $this->database = $database;
+    }
+
     /**
      * Get all users.
      *
-     * @param mixed $database
      * @return array
      */
-    public static function getUsers($database)
+    public function getUsers()
     {
-        $service = new UsersService;
-        $response = $service->getUsers($database);
+        $service = new UsersService($this->database);
+        $response = $service->getUsers();
 
         return self::response('success', $response, 200);
     }
@@ -22,15 +33,14 @@ class UsersController extends Base
     /**
      * Get one user by id.
      *
-     * @param mixed $database
      * @param int $userId
      * @return array
      */
-    public static function getUser($database, $userId)
+    public function getUser($userId)
     {
         try {
-            $service = new UsersService;
-            $response = $service->getUser($database, $userId);
+            $service = new UsersService($this->database);
+            $response = $service->getUser($userId);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {

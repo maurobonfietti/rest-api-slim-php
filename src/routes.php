@@ -57,11 +57,13 @@ $app->group('/tasks', function () use ($app) {
  */
 $app->group('/users', function () use ($app) {
     $app->get('', function () {
-        $result = UsersController::getUsers($this->db);
+        $users = new UsersController($this->db);
+        $result = $users->getUsers();
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->get('/[{id}]', function ($request, $response, $args) {
-        $result = UsersController::getUser($this->db, $args['id']);
+        $users = new UsersController($this->db);
+        $result = $users->getUser($args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->get('/search/[{query}]', function ($request, $response, $args) {
