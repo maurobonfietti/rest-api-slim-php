@@ -48,8 +48,8 @@ class Base
      */
     public static function checkTask($database, $taskId)
     {
-        $repository = new TasksRepository;
-        $query = $repository->getTaskQuery();
+        $tasksRepository = new TasksRepository;
+        $query = $tasksRepository->getTaskQuery();
         $statement = $database->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->execute();
@@ -69,8 +69,8 @@ class Base
      */
     public static function checkUser($database, $userId)
     {
-        $repository = new UsersRepository;
-        $query = $repository->getUserQuery();
+        $usersRepository = new UsersRepository;
+        $query = $usersRepository->getUserQuery();
         $statement = $database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();

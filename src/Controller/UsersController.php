@@ -12,7 +12,7 @@ class UsersController extends Base
      *
      * @param object $database
      */
-    public function __construct(PDO $database = null)
+    public function __construct(PDO $database)
     {
         $this->database = $database;
     }
@@ -51,15 +51,14 @@ class UsersController extends Base
     /**
      * Search users by name.
      *
-     * @param mixed $database
      * @param string $usersStr
      * @return array
      */
-    public static function searchUsers($database, $usersStr)
+    public function searchUsers($usersStr)
     {
         try {
-            $service = new UsersService;
-            $response = $service->searchUsers($database, $usersStr);
+            $service = new UsersService($this->database);
+            $response = $service->searchUsers($usersStr);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
@@ -70,15 +69,14 @@ class UsersController extends Base
     /**
      * Create user.
      *
-     * @param mixed $database
      * @param mixed $request
      * @return array
      */
-    public static function createUser($database, $request)
+    public function createUser($request)
     {
         try {
-            $service = new UsersService;
-            $response = $service->createUser($database, $request);
+            $service = new UsersService($this->database);
+            $response = $service->createUser($request);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
@@ -89,16 +87,15 @@ class UsersController extends Base
     /**
      * Update user.
      *
-     * @param mixed $database
      * @param mixed $request
      * @param int $userId
      * @return array
      */
-    public static function updateUser($database, $request, $userId)
+    public function updateUser($request, $userId)
     {
         try {
-            $service = new UsersService;
-            $response = $service->updateUser($database, $request, $userId);
+            $service = new UsersService($this->database);
+            $response = $service->updateUser($request, $userId);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {
@@ -109,15 +106,14 @@ class UsersController extends Base
     /**
      * Delete user.
      *
-     * @param mixed $database
      * @param int $userId
      * @return array
      */
-    public static function deleteUser($database, $userId)
+    public function deleteUser($userId)
     {
         try {
-            $service = new UsersService;
-            $response = $service->deleteUser($database, $userId);
+            $service = new UsersService($this->database);
+            $response = $service->deleteUser($userId);
 
             return self::response('success', $response, 200);
         } catch (Exception $ex) {

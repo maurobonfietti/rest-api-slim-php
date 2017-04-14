@@ -67,19 +67,23 @@ $app->group('/users', function () use ($app) {
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->get('/search/[{query}]', function ($request, $response, $args) {
-        $result = UsersController::searchUsers($this->db, $args['query']);
+        $users = new UsersController($this->db);
+        $result = $users->searchUsers($args['query']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->post('', function ($request) {
-        $result = UsersController::createUser($this->db, $request);
+        $users = new UsersController($this->db);
+        $result = $users->createUser($request);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->put('/[{id}]', function ($request, $response, $args) {
-        $result = UsersController::updateUser($this->db, $request, $args['id']);
+        $users = new UsersController($this->db);
+        $result = $users->updateUser($request, $args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
     $app->delete('/[{id}]', function ($request, $response, $args) {
-        $result = UsersController::deleteUser($this->db, $args['id']);
+        $users = new UsersController($this->db);
+        $result = $users->deleteUser($args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
 });

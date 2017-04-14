@@ -12,7 +12,7 @@ class UsersService extends Base
      *
      * @param object $database
      */
-    public function __construct(PDO $database = null)
+    public function __construct(PDO $database)
     {
         $this->database = $database;
     }
@@ -48,16 +48,15 @@ class UsersService extends Base
     /**
      * Search users by name.
      *
-     * @param mixed $database
      * @param string $usersStr
      * @return array
      * @throws Exception
      */
-    public static function searchUsers($database, $usersStr)
+    public function searchUsers($usersStr)
     {
         $repository = new UsersRepository;
         $query = $repository->searchUsersQuery();
-        $statement = $database->prepare($query);
+        $statement = $this->database->prepare($query);
         $name = '%'.$usersStr.'%';
         $statement->bindParam('name', $name);
         $statement->execute();
@@ -72,12 +71,11 @@ class UsersService extends Base
     /**
      * Create user.
      *
-     * @param mixed $database
      * @param mixed $request
      * @return array
      * @throws Exception
      */
-    public static function createUser($database, $request)
+    public function createUser($request)
     {
         $input = $request->getParsedBody();
         if (empty($input['name'])) {
@@ -85,10 +83,10 @@ class UsersService extends Base
         }
         $repository = new UsersRepository;
         $query = $repository->createUserQuery();
-        $statement = $database->prepare($query);
+        $statement = $this->database->prepare($query);
         $statement->bindParam('name', $input['name']);
         $statement->execute();
-        $user = self::checkUser($database, $database->lastInsertId());
+        $user = self::checkUser($this->database, $this->database->lastInsertId());
 
         return $user;
     }
@@ -96,15 +94,14 @@ class UsersService extends Base
     /**
      * Update user.
      *
-     * @param mixed $database
      * @param mixed $request
      * @param int $userId
      * @return array
      * @throws Exception
      */
-    public static function updateUser($database, $request, $userId)
+    public function updateUser($request, $userId)
     {
-        $user = self::checkUser($database, $userId);
+        $user = self::checkUser($this->database, $userId);
         $input = $request->getParsedBody();
         if (empty($input['name']) && empty($input['email'])) {
             throw new Exception(self::USER_INFO_REQUIRED, 400);
@@ -113,28 +110,27 @@ class UsersService extends Base
         $email = isset($input['email']) ? $input['email'] : $user->email;
         $repository = new UsersRepository;
         $query = $repository->updateUserQuery();
-        $statement = $database->prepare($query);
+        $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->bindParam('name', $username);
         $statement->bindParam('email', $email);
         $statement->execute();
 
-        return self::checkUser($database, $userId);
+        return self::checkUser($this->database, $userId);
     }
 
     /**
      * Delete user.
      *
-     * @param mixed $database
      * @param int $userId
      * @return array
      */
-    public static function deleteUser($database, $userId)
+    public function deleteUser($userId)
     {
-        self::checkUser($database, $userId);
+        self::checkUser($this->database, $userId);
         $repository = new UsersRepository;
         $query = $repository->deleteUserQuery();
-        $statement = $database->prepare($query);
+        $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();
 
