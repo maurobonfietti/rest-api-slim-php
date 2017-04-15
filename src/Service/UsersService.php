@@ -5,9 +5,12 @@
  */
 class UsersService extends Base
 {
+
     public function __construct(PDO $database)
     {
+
         $this->database = $database;
+
     }
 
     /**

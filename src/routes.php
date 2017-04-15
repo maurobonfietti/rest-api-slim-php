@@ -11,6 +11,7 @@ $app->get('/', function () {
 /**
  * Version Route.
  */
+//$app->get('/version', '\Base:getVersionTest');
 $app->get('/version', function () {
     $result = Base::getVersion();
     return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);

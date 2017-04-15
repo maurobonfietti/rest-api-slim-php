@@ -3,7 +3,7 @@
 /**
  * Centralized and useful base class :-)
  */
-class Base
+abstract class Base
 {
     const API_VERSION = '17.04';
 
@@ -19,20 +19,20 @@ class Base
     const TASK_INFO_REQUIRED = 'Ingrese los datos a actualizar de la tarea.';
     const TASK_DELETED = 'La tarea fue eliminada correctamente.';
 
-    public $database;
+    protected $database;
 
-    public $request;
+    protected $request;
 
-    public $response;
+    protected $response;
 
-    public $args;
+    protected $args;
 
     /**
      * @param type $request
      * @param type $response
      * @param type $args
      */
-    public function setParams($request, $response, $args)
+    protected function setParams($request, $response, $args)
     {
         $this->request = $request;
         $this->response = $response;
@@ -40,12 +40,14 @@ class Base
     }
 
     /**
+     * Send response with json as standard format.
+     *
      * @param type $status
      * @param type $message
      * @param type $code
      * @return array
      */
-    public function jsonResponse($status, $message, $code)
+    protected function jsonResponse($status, $message, $code)
     {
         $result = [
             'code' => $code,
@@ -87,6 +89,7 @@ class Base
             'users' => 'Ver Usuarios: /users',
             'version' => 'Ver Version: /version',
         ]];
+
         return self::response('success', $message, 200);
     }
 
@@ -98,6 +101,20 @@ class Base
     public static function getVersion()
     {
         $version = ['api_version' => self::API_VERSION];
+
         return self::response('success', $version, 200);
+    }
+
+    /**
+     * Get Api Version.
+     *
+     * @return array
+     */
+    public function getVersionTest($request, $response, $args)
+    {
+        $this->setParams($request, $response, $args);
+        $version = ['api_version' => self::API_VERSION];
+        
+        return $this->jsonResponse('success', $version, 200);
     }
 }
