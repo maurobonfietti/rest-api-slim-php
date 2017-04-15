@@ -5,11 +5,6 @@
  */
 class UsersService extends Base
 {
-    /**
-     * Constructor of the class.
-     *
-     * @param object $database
-     */
     public function __construct(PDO $database)
     {
         $this->database = $database;
