@@ -12,7 +12,7 @@ class TasksService extends Base
      *
      * @param object $database
      */
-    public function __construct(PDO $database = null)
+    public function __construct(PDO $database)
     {
         $this->database = $database;
     }
@@ -46,13 +46,9 @@ class TasksService extends Base
      */
     public function getTasks()
     {
-//        var_dump($this->database);
-//        exit;
         $repository = new TasksRepository;
         $query = $repository->getTasksQuery();
         $statement = $this->database->prepare($query);
-//        var_dump($statement);
-//        exit;
         $statement->execute();
 
         return $statement->fetchAll();
