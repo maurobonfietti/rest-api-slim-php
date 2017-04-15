@@ -7,6 +7,12 @@ class TasksController extends Base
 {
     private $database;
 
+    private $request;
+
+    private $response;
+
+    private $args;
+
     /**
      * Constructor of the class.
      *
@@ -17,6 +23,24 @@ class TasksController extends Base
         $this->database = $container->db;
     }
 
+    public function setParams($request, $response, $args)
+    {
+        $this->request = $request;
+        $this->response = $response;
+        $this->args = $args;
+    }
+
+    protected function response2($status, $message, $code)
+    {
+        $result = [
+            'code' => $code,
+            'status' => $status,
+            'message' => $message,
+        ];
+
+        return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
+    }
+
     /**
      * Get all tasks.
      *
@@ -24,11 +48,11 @@ class TasksController extends Base
      */
     public function getTasks($request, $response, $args)
     {
+        $this->setParams($request, $response, $args);
         $service = new TasksService($this->database);
-        $tasks = $service->getTasks();
-        $result = self::response('success', $tasks, 200);
+        $result = $service->getTasks();
 
-        return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+        return $this->response2('success', $result, 200);
     }
 
     /**
@@ -40,13 +64,13 @@ class TasksController extends Base
     public function getTask($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $task = $service->getTask($args['id']);
-            $result = self::response('success', $task, 200);
+            $result = $service->getTask($args['id']);
 
-            return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+            return $this->response2('success', $result, 200);
         } catch (Exception $ex) {
-            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
+            return $this->response2('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
