@@ -5,6 +5,9 @@
  */
 class TasksService extends Base
 {
+    /**
+     * @var PDO 
+     */
     private $database;
 
     /**

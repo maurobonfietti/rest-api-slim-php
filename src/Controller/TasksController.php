@@ -23,14 +23,25 @@ class TasksController extends Base
         $this->database = $container->db;
     }
 
-    public function setParams($request, $response, $args)
+    /**
+     * @param type $request
+     * @param type $response
+     * @param type $args
+     */
+    private function setParams($request, $response, $args)
     {
         $this->request = $request;
         $this->response = $response;
         $this->args = $args;
     }
 
-    protected function response2($status, $message, $code)
+    /**
+     * @param type $status
+     * @param type $message
+     * @param type $code
+     * @return array
+     */
+    private function jsonResponse($status, $message, $code)
     {
         $result = [
             'code' => $code,
@@ -44,6 +55,9 @@ class TasksController extends Base
     /**
      * Get all tasks.
      *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
     public function getTasks($request, $response, $args)
@@ -52,13 +66,15 @@ class TasksController extends Base
         $service = new TasksService($this->database);
         $result = $service->getTasks();
 
-        return $this->response2('success', $result, 200);
+        return $this->jsonResponse('success', $result, 200);
     }
 
     /**
      * Get one task by id.
      *
-     * @param int $taskId
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
     public function getTask($request, $response, $args)
@@ -68,86 +84,93 @@ class TasksController extends Base
             $service = new TasksService($this->database);
             $result = $service->getTask($args['id']);
 
-            return $this->response2('success', $result, 200);
+            return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
-            return $this->response2('error', $ex->getMessage(), $ex->getCode());
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
     /**
      * Search tasks by name.
      *
-     * @param string $tasksName
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
     public function searchTasks($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $tasks = $service->searchTasks($args['query']);
-            $result = self::response('success', $tasks, 200);
+            $result = $service->searchTasks($args['query']);
 
-            return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+            return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
-            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
     /**
      * Create task.
      *
-     * @param mixed $request
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
     public function createTask($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $task = $service->createTask($request);
-            $result = self::response('success', $task, 200);
+            $result = $service->createTask($request);
 
-            return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+            return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
-            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
     /**
      * Update task.
      *
-     * @param mixed $request
-     * @param int $taskId
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
     public function updateTask($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $task = $service->updateTask($request, $args['id']);
-            $result = self::response('success', $task, 200);
+            $result = $service->updateTask($request, $args['id']);
 
-            return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+            return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
-            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
     /**
      * Delete task.
      *
-     * @param int $taskId
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
     public function deleteTask($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $task = $service->deleteTask($args['id']);
-            $result = self::response('success', $task, 200);
+            $result = $service->deleteTask($args['id']);
 
-            return $response->withJson($result, 200, JSON_PRETTY_PRINT);
+            return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
-            return $response->withJson(self::response('error', $ex->getMessage(), $ex->getCode()), $ex->getCode(), JSON_PRETTY_PRINT);
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 }
