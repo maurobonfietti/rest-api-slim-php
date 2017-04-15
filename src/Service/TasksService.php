@@ -6,11 +6,6 @@
 class TasksService extends Base
 {
     /**
-     * @var PDO
-     */
-    private $database;
-
-    /**
      * Constructor of the class.
      *
      * @param object $database

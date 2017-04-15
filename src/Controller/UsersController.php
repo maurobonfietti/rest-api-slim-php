@@ -5,8 +5,6 @@
  */
 class UsersController extends Base
 {
-    private $database;
-
     /**
      * Constructor of the class.
      *

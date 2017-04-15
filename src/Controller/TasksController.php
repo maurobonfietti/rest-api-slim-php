@@ -5,14 +5,6 @@
  */
 class TasksController extends Base
 {
-    private $database;
-
-    private $request;
-
-    private $response;
-
-    private $args;
-
     /**
      * Constructor of the class.
      *
@@ -21,35 +13,6 @@ class TasksController extends Base
     public function __construct(Slim\Container $container)
     {
         $this->database = $container->db;
-    }
-
-    /**
-     * @param type $request
-     * @param type $response
-     * @param type $args
-     */
-    private function setParams($request, $response, $args)
-    {
-        $this->request = $request;
-        $this->response = $response;
-        $this->args = $args;
-    }
-
-    /**
-     * @param type $status
-     * @param type $message
-     * @param type $code
-     * @return array
-     */
-    private function jsonResponse($status, $message, $code)
-    {
-        $result = [
-            'code' => $code,
-            'status' => $status,
-            'message' => $message,
-        ];
-
-        return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
     }
 
     /**
