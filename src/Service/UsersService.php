@@ -5,14 +5,6 @@
  */
 class UsersService extends Base
 {
-
-    public function __construct(PDO $database)
-    {
-
-        $this->database = $database;
-
-    }
-
     /**
      * Check if the user exists.
      *
@@ -188,5 +180,10 @@ class UsersService extends Base
         $statement->execute();
 
         return self::USER_DELETED;
+    }
+
+    public function __construct(PDO $database)
+    {
+        $this->database = $database;
     }
 }

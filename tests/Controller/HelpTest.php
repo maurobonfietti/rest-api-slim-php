@@ -3,6 +3,7 @@
 namespace Tests\Controller;
 
 require __DIR__.'/../../src/Controller/Base.php';
+require __DIR__.'/../../src/Controller/DefaultController.php';
 require __DIR__.'/../../src/Controller/TasksController.php';
 require __DIR__.'/../../src/Controller/UsersController.php';
 require __DIR__.'/../../src/Repository/TasksRepository.php';

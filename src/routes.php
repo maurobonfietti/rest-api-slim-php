@@ -3,19 +3,12 @@
 /**
  * Help Route.
  */
-$app->get('/', function () {
-    $result = Base::getHelp();
-    return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
-});
+$app->get('/', '\DefaultController:getHelp');
 
 /**
  * Version Route.
  */
-//$app->get('/version', '\Base:getVersionTest');
-$app->get('/version', function () {
-    $result = Base::getVersion();
-    return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
-});
+$app->get('/version', '\DefaultController:getVersion');
 
 /**
  * Tasks Routes Groups.
