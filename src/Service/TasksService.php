@@ -91,13 +91,12 @@ class TasksService extends Base
     /**
      * Create task.
      *
-     * @param mixed $request
+     * @param array $input
      * @return array
      * @throws Exception
      */
-    public function createTask($request)
+    public function createTask($input)
     {
-        $input = $request->getParsedBody();
         if (empty($input['task'])) {
             throw new Exception(self::TASK_NAME_REQUIRED, 400);
         }
@@ -114,15 +113,14 @@ class TasksService extends Base
     /**
      * Update task.
      *
-     * @param mixed $request
+     * @param array $input
      * @param int $taskId
      * @return array
      * @throws Exception
      */
-    public function updateTask($request, $taskId)
+    public function updateTask($input, $taskId)
     {
         $task = $this->checkTask($taskId);
-        $input = $request->getParsedBody();
         if (empty($input['task']) && empty($input['status'])) {
             throw new Exception(self::TASK_INFO_REQUIRED, 400);
         }

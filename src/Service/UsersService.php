@@ -14,7 +14,6 @@ class UsersService extends Base
      */
     public function checkUser($userId)
     {
-
         $usersRepository = new UsersRepository;
 
         $query = $usersRepository->getUserQuery();
@@ -71,7 +70,6 @@ class UsersService extends Base
      */
     public function searchUsers($usersStr)
     {
-
         $repository = new UsersRepository;
 
         $query = $repository->searchUsersQuery();
@@ -102,7 +100,6 @@ class UsersService extends Base
      */
     public function createUser($request)
     {
-
         $input = $request->getParsedBody();
 
         if (empty($input['name'])) {
@@ -134,7 +131,6 @@ class UsersService extends Base
      */
     public function updateUser($request, $userId)
     {
-
         $user = $this->checkUser($userId);
 
         $input = $request->getParsedBody();

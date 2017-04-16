@@ -45,7 +45,7 @@ class TasksController extends Base
         try {
             $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $result = $service->getTask($args['id']);
+            $result = $service->getTask($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
@@ -66,7 +66,7 @@ class TasksController extends Base
         try {
             $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $result = $service->searchTasks($args['query']);
+            $result = $service->searchTasks($this->args['query']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
@@ -87,7 +87,8 @@ class TasksController extends Base
         try {
             $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $result = $service->createTask($request);
+            $input = $this->request->getParsedBody();
+            $result = $service->createTask($input);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
@@ -108,7 +109,8 @@ class TasksController extends Base
         try {
             $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $result = $service->updateTask($request, $args['id']);
+            $input = $this->request->getParsedBody();
+            $result = $service->updateTask($input, $this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
@@ -129,7 +131,7 @@ class TasksController extends Base
         try {
             $this->setParams($request, $response, $args);
             $service = new TasksService($this->database);
-            $result = $service->deleteTask($args['id']);
+            $result = $service->deleteTask($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
