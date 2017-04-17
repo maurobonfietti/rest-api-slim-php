@@ -14,17 +14,17 @@ class UsersService extends Base
      */
     public function checkUser($userId)
     {
-        $usersRepository = new UsersRepository;
+        $repo = new UsersRepository;
 
-        $query = $usersRepository->getUserQuery();
+        $sql = $repo->getUserQuery();
 
-        $statement = $this->database->prepare($query);
+        $stmt = $this->database->prepare($sql);
 
-        $statement->bindParam('id', $userId);
+        $stmt->bindParam('id', $userId);
 
-        $statement->execute();
+        $stmt->execute();
 
-        $user = $statement->fetchObject();
+        $user = $stmt->fetchObject();
 
         if (!$user) {
             throw new Exception(self::USER_NOT_FOUND, 404);
@@ -64,25 +64,25 @@ class UsersService extends Base
     /**
      * Search users by name.
      *
-     * @param string $usersStr
+     * @param string $str
      * @return array
      * @throws Exception
      */
-    public function searchUsers($usersStr)
+    public function searchUsers($str)
     {
-        $repository = new UsersRepository;
+        $repo = new UsersRepository;
 
-        $query = $repository->searchUsersQuery();
+        $sql = $repo->searchUsersQuery();
 
-        $statement = $this->database->prepare($query);
+        $stmt = $this->database->prepare($sql);
 
-        $name = '%'.$usersStr.'%';
+        $name = '%' . $str . '%';
 
-        $statement->bindParam('name', $name);
+        $stmt->bindParam('name', $name);
 
-        $statement->execute();
+        $stmt->execute();
 
-        $users = $statement->fetchAll();
+        $users = $stmt->fetchAll();
 
         if (!$users) {
             throw new Exception(self::USER_NAME_NOT_FOUND, 404);

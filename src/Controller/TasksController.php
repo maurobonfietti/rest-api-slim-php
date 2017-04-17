@@ -75,7 +75,7 @@ class TasksController extends Base
     }
 
     /**
-     * Create task.
+     * Create a task.
      *
      * @param Request $request
      * @param Response $response
@@ -97,7 +97,7 @@ class TasksController extends Base
     }
 
     /**
-     * Update task.
+     * Update a task.
      *
      * @param Request $request
      * @param Response $response
@@ -108,8 +108,11 @@ class TasksController extends Base
     {
         try {
             $this->setParams($request, $response, $args);
+
             $service = new TasksService($this->database);
+
             $input = $this->request->getParsedBody();
+
             $result = $service->updateTask($input, $this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
@@ -119,7 +122,7 @@ class TasksController extends Base
     }
 
     /**
-     * Delete task.
+     * Delete a task.
      *
      * @param Request $request
      * @param Response $response
