@@ -5,27 +5,12 @@
  */
 class UsersService extends Base
 {
-    /**
-     * Check if the user exists.
-     *
-     * @param int $userId
-     * @return object $user
-     * @throws Exception
-     */
     public function checkUser($userId)
     {
-        $repo = new UsersRepository;
-
-        $sql = $repo->getUserQuery();
-
-        $stmt = $this->database->prepare($sql);
-
+        $stmt = $this->database->prepare(UsersRepository::getUserQuery());
         $stmt->bindParam('id', $userId);
-
         $stmt->execute();
-
         $user = $stmt->fetchObject();
-
         if (!$user) {
             throw new Exception(self::USER_NOT_FOUND, 404);
         }
@@ -61,27 +46,12 @@ class UsersService extends Base
         return $user;
     }
 
-    /**
-     * Search users by name.
-     *
-     * @param string $str
-     * @return array
-     * @throws Exception
-     */
     public function searchUsers($str)
     {
-        $repo = new UsersRepository;
-
-        $sql = $repo->searchUsersQuery();
-
-        $stmt = $this->database->prepare($sql);
-
+        $stmt = $this->database->prepare(UsersRepository::searchUsersQuery());
         $name = '%' . $str . '%';
-
         $stmt->bindParam('name', $name);
-
         $stmt->execute();
-
         $users = $stmt->fetchAll();
 
         if (!$users) {

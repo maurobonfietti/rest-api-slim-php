@@ -106,15 +106,11 @@ class TasksController extends Base
      */
     public function updateTask($request, $response, $args)
     {
+        $this->setParams($request, $response, $args);
+        $input = $this->request->getParsedBody();
+        $service = new TasksService($this->database);
         try {
-            $this->setParams($request, $response, $args);
-
-            $service = new TasksService($this->database);
-
-            $input = $this->request->getParsedBody();
-
             $result = $service->updateTask($input, $this->args['id']);
-
             return $this->jsonResponse('success', $result, 200);
         } catch (Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
