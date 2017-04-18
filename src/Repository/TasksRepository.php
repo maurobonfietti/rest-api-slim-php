@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Repository;
+
 /**
  * Tasks Repository.
  */

@@ -38,9 +38,6 @@ require __DIR__.'/../src/Controller/TasksController.php';
 // Register class users controller
 require __DIR__.'/../src/Controller/UsersController.php';
 
-// Register class tasks repository
-require __DIR__.'/../src/Repository/TasksRepository.php';
-
 // Register class users repository
 require __DIR__.'/../src/Repository/UsersRepository.php';
 

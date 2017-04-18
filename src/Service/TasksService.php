@@ -1,5 +1,7 @@
 <?php
 
+use App\Repository\TasksRepository;
+
 /**
  * Tasks Service.
  */
