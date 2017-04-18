@@ -21,16 +21,21 @@ $ composer install
 
 2- Crear nueva base de datos MySQL. Por ejemplo: "api_rest_slimphp".
 
+Desde la línea de comandos ejecutar:
+
+```
+mysql -e 'CREATE DATABASE api_rest_slimphp;'
+```
+
 
 3- Crear la estructura y cargar datos de prueba en la base de datos.
 
 La base de datos se puede actualizar manualmente utilizando el siguiente archivo: [database.sql](data/database.sql).
 
-También se puede crear desde la línea de comandos, ejecutando por ejemplo:
+También se puede ejecutar desde la línea de comandos:
 
 ```
-mysql -e 'CREATE DATABASE api_rest_slimphp;'
-mysql api_rest_slimphp < database.sql
+mysql api_rest_slimphp < data/database.sql
 ```
 
 
