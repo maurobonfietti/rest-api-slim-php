@@ -7,7 +7,8 @@ class UsersService extends Base
 {
     public function checkUser($userId)
     {
-        $stmt = $this->database->prepare(UsersRepository::getUserQuery());
+        $repo = new UsersRepository;
+        $stmt = $this->database->prepare($repo->getUserQuery());
         $stmt->bindParam('id', $userId);
         $stmt->execute();
         $user = $stmt->fetchObject();
@@ -48,7 +49,8 @@ class UsersService extends Base
 
     public function searchUsers($str)
     {
-        $stmt = $this->database->prepare(UsersRepository::searchUsersQuery());
+        $repo = new UsersRepository;
+        $stmt = $this->database->prepare($repo->searchUsersQuery());
         $name = '%' . $str . '%';
         $stmt->bindParam('name', $name);
         $stmt->execute();
