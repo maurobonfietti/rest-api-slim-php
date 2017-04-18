@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controller;
+
+use App\Controller\Base;
+use App\Service\UsersService;
+
 /**
  * Users administration.
  */
@@ -10,7 +15,7 @@ class UsersController extends Base
      *
      * @param object $database
      */
-    public function __construct(PDO $database)
+    public function __construct(\PDO $database)
     {
         $this->database = $database;
     }
@@ -41,7 +46,7 @@ class UsersController extends Base
             $response = $service->getUser($userId);
 
             return self::response('success', $response, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -59,7 +64,7 @@ class UsersController extends Base
             $response = $service->searchUsers($usersStr);
 
             return self::response('success', $response, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -77,7 +82,7 @@ class UsersController extends Base
             $response = $service->createUser($request);
 
             return self::response('success', $response, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -96,7 +101,7 @@ class UsersController extends Base
             $response = $service->updateUser($request, $userId);
 
             return self::response('success', $response, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -114,7 +119,7 @@ class UsersController extends Base
             $response = $service->deleteUser($userId);
 
             return self::response('success', $response, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return self::response('error', $ex->getMessage(), $ex->getCode());
         }
     }

@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controller;
+
+use App\Controller\Base;
+use App\Service\TasksService;
+
 /**
  * Tasks Controller.
  */
@@ -10,7 +15,7 @@ class TasksController extends Base
      *
      * @param object $container
      */
-    public function __construct(Slim\Container $container)
+    public function __construct(\Slim\Container $container)
     {
         $this->database = $container->db;
     }
@@ -48,7 +53,7 @@ class TasksController extends Base
             $result = $service->getTask($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -69,7 +74,7 @@ class TasksController extends Base
             $result = $service->searchTasks($this->args['query']);
 
             return $this->jsonResponse('success', $result, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -91,7 +96,7 @@ class TasksController extends Base
             $result = $service->createTask($input);
 
             return $this->jsonResponse('success', $result, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -112,7 +117,7 @@ class TasksController extends Base
         try {
             $result = $service->updateTask($input, $this->args['id']);
             return $this->jsonResponse('success', $result, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
@@ -133,7 +138,7 @@ class TasksController extends Base
             $result = $service->deleteTask($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
-        } catch (Exception $ex) {
+        } catch (\Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }

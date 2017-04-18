@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Controller;
+
 /**
  * Centralized and useful base class :-)
  */

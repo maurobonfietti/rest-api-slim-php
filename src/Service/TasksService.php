@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Service;
+
+use App\Controller\Base;
 use App\Repository\TasksRepository;
 
 /**
@@ -12,7 +15,7 @@ class TasksService extends Base
      *
      * @param object $database
      */
-    public function __construct(PDO $database)
+    public function __construct(\PDO $database)
     {
         $this->database = $database;
     }
@@ -33,7 +36,7 @@ class TasksService extends Base
         $statement->execute();
         $task = $statement->fetchObject();
         if (!$task) {
-            throw new Exception(self::TASK_NOT_FOUND, 404);
+            throw new \Exception(self::TASK_NOT_FOUND, 404);
         }
 
         return $task;
@@ -84,7 +87,7 @@ class TasksService extends Base
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
-            throw new Exception(self::TASK_NOT_FOUND, 404);
+            throw new \Exception(self::TASK_NOT_FOUND, 404);
         }
 
         return $tasks;
@@ -100,7 +103,7 @@ class TasksService extends Base
     public function createTask($input)
     {
         if (empty($input['task'])) {
-            throw new Exception(self::TASK_NAME_REQUIRED, 400);
+            throw new \Exception(self::TASK_NAME_REQUIRED, 400);
         }
         $repository = new TasksRepository;
         $query = $repository->createTaskQuery();
@@ -124,7 +127,7 @@ class TasksService extends Base
     {
         $task = $this->checkTask($taskId);
         if (empty($input['task']) && empty($input['status'])) {
-            throw new Exception(self::TASK_INFO_REQUIRED, 400);
+            throw new \Exception(self::TASK_INFO_REQUIRED, 400);
         }
         $taskname = isset($input['task']) ? $input['task'] : $task->task;
         $status = isset($input['status']) ? $input['status'] : $task->status;

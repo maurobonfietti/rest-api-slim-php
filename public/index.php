@@ -26,26 +26,5 @@ require __DIR__ . '/../src/middleware.php';
 // Register routes
 require __DIR__ . '/../src/routes.php';
 
-// Register class base
-require __DIR__.'/../src/Controller/Base.php';
-
-// Register class default controller
-require __DIR__.'/../src/Controller/DefaultController.php';
-
-// Register class tasks controller
-require __DIR__.'/../src/Controller/TasksController.php';
-
-// Register class users controller
-require __DIR__.'/../src/Controller/UsersController.php';
-
-// Register class users repository
-require __DIR__.'/../src/Repository/UsersRepository.php';
-
-// Register class tasks service
-require __DIR__.'/../src/Service/TasksService.php';
-
-// Register class users service
-require __DIR__.'/../src/Service/UsersService.php';
-
 // Run app
 $app->run();

@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controller;
+
+use App\Controller\Base;
+
 /**
  * Default Controller.
  */

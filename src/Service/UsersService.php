@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Service;
+
+use App\Controller\Base;
+use App\Repository\UsersRepository;
+
 /**
  * Users Service.
  */
@@ -13,7 +18,7 @@ class UsersService extends Base
         $stmt->execute();
         $user = $stmt->fetchObject();
         if (!$user) {
-            throw new Exception(self::USER_NOT_FOUND, 404);
+            throw new \Exception(self::USER_NOT_FOUND, 404);
         }
 
         return $user;
@@ -57,7 +62,7 @@ class UsersService extends Base
         $users = $stmt->fetchAll();
 
         if (!$users) {
-            throw new Exception(self::USER_NAME_NOT_FOUND, 404);
+            throw new \Exception(self::USER_NAME_NOT_FOUND, 404);
         }
 
         return $users;
@@ -75,7 +80,7 @@ class UsersService extends Base
         $input = $request->getParsedBody();
 
         if (empty($input['name'])) {
-            throw new Exception(self::USER_NAME_REQUIRED, 400);
+            throw new \Exception(self::USER_NAME_REQUIRED, 400);
         }
 
         $repository = new UsersRepository;
@@ -108,7 +113,7 @@ class UsersService extends Base
         $input = $request->getParsedBody();
 
         if (empty($input['name']) && empty($input['email'])) {
-            throw new Exception(self::USER_INFO_REQUIRED, 400);
+            throw new \Exception(self::USER_INFO_REQUIRED, 400);
         }
 
         $username = isset($input['name']) ? $input['name'] : $user->name;
@@ -150,7 +155,7 @@ class UsersService extends Base
         return self::USER_DELETED;
     }
 
-    public function __construct(PDO $database)
+    public function __construct(\PDO $database)
     {
         $this->database = $database;
     }
