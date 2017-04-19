@@ -81,7 +81,13 @@ class UsersService extends Base
         if (empty($input['name'])) {
             throw new \Exception(self::USER_NAME_REQUIRED, 400);
         }
-        $email = isset($input['email']) ? $input['email'] : null;
+        $email = null;
+        if (isset($input['email'])) {
+            $email = filter_var($input['email'], FILTER_SANITIZE_EMAIL);
+            if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+                throw new \Exception(self::USER_EMAIL_INVALID, 400);
+            }
+        }
         $repository = new UsersRepository;
         $query = $repository->createUserQuery();
         $statement = $this->database->prepare($query);
@@ -104,29 +110,24 @@ class UsersService extends Base
     public function updateUser($request, $userId)
     {
         $user = $this->checkUser($userId);
-
         $input = $request->getParsedBody();
-
         if (empty($input['name']) && empty($input['email'])) {
             throw new \Exception(self::USER_INFO_REQUIRED, 400);
         }
-
         $username = isset($input['name']) ? $input['name'] : $user->name;
-
-        $email = isset($input['email']) ? $input['email'] : $user->email;
-
+        $email = $user->email;
+        if (isset($input['email'])) {
+            $email = filter_var($input['email'], FILTER_SANITIZE_EMAIL);
+            if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+                throw new \Exception(self::USER_EMAIL_INVALID, 400);
+            }
+        }
         $repository = new UsersRepository;
-
         $query = $repository->updateUserQuery();
-
         $statement = $this->database->prepare($query);
-
         $statement->bindParam('id', $userId);
-
         $statement->bindParam('name', $username);
-
         $statement->bindParam('email', $email);
-
         $statement->execute();
 
         return $this->checkUser($userId);
