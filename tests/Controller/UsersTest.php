@@ -190,6 +190,24 @@ class UsersTest extends BaseTestCase
     }
 
     /**
+     * Test Update User With Invalid Data.
+     */
+    public function testUpdateUserWithInvalidData()
+    {
+        $response = $this->runApp(
+            'PUT', '/users/' . self::$id,
+            array('name' => 'Victor', 'email' => 'emailIncorrecto...')
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('name', $result);
+        $this->assertContains('error', $result);
+    }
+
+    /**
      * Test Delete User.
      */
     public function testDeleteUser()
