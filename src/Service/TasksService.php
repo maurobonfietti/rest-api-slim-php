@@ -82,7 +82,7 @@ class TasksService extends Base
         $repository = new TasksRepository;
         $query = $repository->searchTasksQuery();
         $statement = $this->database->prepare($query);
-        $query = '%'.$tasksName.'%';
+        $query = '%' . $tasksName . '%';
         $statement->bindParam('query', $query);
         $statement->execute();
         $tasks = $statement->fetchAll();

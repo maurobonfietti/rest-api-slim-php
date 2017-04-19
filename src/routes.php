@@ -13,7 +13,7 @@ $app->get('/version', 'App\Controller\DefaultController:getVersion');
 /**
  * Tasks Routes Groups.
  */
-$app->group('/tasks', function () use ($app) {
+$app->group('/tasks', function() use ($app) {
     $app->get('', 'App\Controller\TasksController:getTasks');
     $app->get('/[{id}]', 'App\Controller\TasksController:getTask');
     $app->get('/search/[{query}]', 'App\Controller\TasksController:searchTasks');
@@ -25,33 +25,33 @@ $app->group('/tasks', function () use ($app) {
 /**
  * Users Routes Groups.
  */
-$app->group('/users', function () use ($app) {
-    $app->get('', function () {
+$app->group('/users', function() use ($app) {
+    $app->get('', function() {
         $users = new App\Controller\UsersController($this->db);
         $result = $users->getUsers();
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
-    $app->get('/[{id}]', function ($request, $response, $args) {
+    $app->get('/[{id}]', function($request, $response, $args) {
         $users = new App\Controller\UsersController($this->db);
         $result = $users->getUser($args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
-    $app->get('/search/[{query}]', function ($request, $response, $args) {
+    $app->get('/search/[{query}]', function($request, $response, $args) {
         $users = new App\Controller\UsersController($this->db);
         $result = $users->searchUsers($args['query']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
-    $app->post('', function ($request) {
+    $app->post('', function($request) {
         $users = new App\Controller\UsersController($this->db);
         $result = $users->createUser($request);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
-    $app->put('/[{id}]', function ($request, $response, $args) {
+    $app->put('/[{id}]', function($request, $response, $args) {
         $users = new App\Controller\UsersController($this->db);
         $result = $users->updateUser($request, $args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
     });
-    $app->delete('/[{id}]', function ($request, $response, $args) {
+    $app->delete('/[{id}]', function($request, $response, $args) {
         $users = new App\Controller\UsersController($this->db);
         $result = $users->deleteUser($args['id']);
         return $this->response->withJson($result, $result['code'], JSON_PRETTY_PRINT);
