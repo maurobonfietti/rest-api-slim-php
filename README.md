@@ -6,6 +6,7 @@ Ejemplo de API REST con microframework Slim PHP.
 [![Build Status](https://travis-ci.org/maurobonfietti/api-rest-slimphp.svg?branch=master)](https://travis-ci.org/maurobonfietti/api-rest-slimphp)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Code Climate](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/gpa.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp)
+[![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 
 
 ## INSTALACIÓN:
@@ -84,11 +85,11 @@ Para más información sobre el uso de la API REST, ver el siguiente documento c
 Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
 ```
 $ phpunit
-PHPUnit 5.7.17 by Sebastian Bergmann and contributors.
+PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
 
-..........................                                        26 / 26 (100%)
+..........................                                        28 / 28 (100%)
 
-Time: 204 ms, Memory: 4.00MB
+Time: 198 ms, Memory: 8.00MB
 
-OK (26 tests, 111 assertions)
+OK (28 tests, 120 assertions)
 ```
