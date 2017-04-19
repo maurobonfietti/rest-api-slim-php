@@ -13,7 +13,7 @@ class TasksController extends Base
     /**
      * Constructor of the class.
      *
-     * @param object $container
+     * @param \Slim\Container $container
      */
     public function __construct(\Slim\Container $container)
     {
