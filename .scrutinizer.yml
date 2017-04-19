@@ -1,4 +1,15 @@
 # .scrutinizer.yml
+filter:
+    excluded_paths:
+        - 'tests/*'
+        - 'bin/*'
+checks:
+    php: false
+coding_style:
+    php:
+        spaces:
+            around_operators:
+                concatenation: true
 build:
     environment:
         php:
