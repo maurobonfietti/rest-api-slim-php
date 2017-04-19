@@ -6,121 +6,140 @@ use App\Controller\Base;
 use App\Service\UsersService;
 
 /**
- * Users administration.
+ * Users Controller.
  */
 class UsersController extends Base
 {
     /**
      * Constructor of the class.
      *
-     * @param object $database
+     * @param \Slim\Container $container
      */
-    public function __construct(\PDO $database)
+    public function __construct(\Slim\Container $container)
     {
-        $this->database = $database;
+        $this->database = $container->db;
     }
 
     /**
      * Get all users.
      *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
-    public function getUsers()
+    public function getUsers($request, $response, $args)
     {
+        $this->setParams($request, $response, $args);
         $service = new UsersService($this->database);
-        $response = $service->getUsers();
+        $result = $service->getUsers();
 
-        return self::response('success', $response, 200);
+        return $this->jsonResponse('success', $result, 200);
     }
 
     /**
      * Get one user by id.
      *
-     * @param int $userId
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
-    public function getUser($userId)
+    public function getUser($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new UsersService($this->database);
-            $response = $service->getUser($userId);
+            $result = $service->getUser($this->args['id']);
 
-            return self::response('success', $response, 200);
+            return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
     /**
      * Search users by name.
      *
-     * @param string $usersStr
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
-    public function searchUsers($usersStr)
+    public function searchUsers($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new UsersService($this->database);
-            $response = $service->searchUsers($usersStr);
+            $result = $service->searchUsers($this->args['query']);
 
-            return self::response('success', $response, 200);
+            return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
     /**
-     * Create user.
+     * Create a user.
      *
-     * @param mixed $request
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
-    public function createUser($request)
+    public function createUser($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new UsersService($this->database);
-            $response = $service->createUser($request);
+            $input = $this->request->getParsedBody();
+            $result = $service->createUser($input);
 
-            return self::response('success', $response, 200);
+            return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
     /**
-     * Update user.
+     * Update a user.
      *
-     * @param mixed $request
-     * @param int $userId
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
-    public function updateUser($request, $userId)
+    public function updateUser($request, $response, $args)
     {
+        $this->setParams($request, $response, $args);
+        $input = $this->request->getParsedBody();
+        $service = new UsersService($this->database);
         try {
-            $service = new UsersService($this->database);
-            $response = $service->updateUser($request, $userId);
-
-            return self::response('success', $response, 200);
+            $result = $service->updateUser($input, $this->args['id']);
+            return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 
     /**
-     * Delete user.
+     * Delete a user.
      *
-     * @param int $userId
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
-    public function deleteUser($userId)
+    public function deleteUser($request, $response, $args)
     {
         try {
+            $this->setParams($request, $response, $args);
             $service = new UsersService($this->database);
-            $response = $service->deleteUser($userId);
+            $result = $service->deleteUser($this->args['id']);
 
-            return self::response('success', $response, 200);
+            return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
-            return self::response('error', $ex->getMessage(), $ex->getCode());
+            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
     }
 }

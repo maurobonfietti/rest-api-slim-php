@@ -10,6 +10,23 @@ use App\Repository\UsersRepository;
  */
 class UsersService extends Base
 {
+    /**
+     * Constructor of the class.
+     *
+     * @param object $database
+     */
+    public function __construct(\PDO $database)
+    {
+        $this->database = $database;
+    }
+
+    /**
+     * Check if the user exists.
+     *
+     * @param int $userId
+     * @return object $user
+     * @throws \Exception
+     */
     public function checkUser($userId)
     {
         $repo = new UsersRepository;
@@ -52,6 +69,13 @@ class UsersService extends Base
         return $user;
     }
 
+    /**
+     * Search users by name.
+     *
+     * @param string $str
+     * @return array
+     * @throws \Exception
+     */
     public function searchUsers($str)
     {
         $repo = new UsersRepository;
@@ -69,15 +93,14 @@ class UsersService extends Base
     }
 
     /**
-     * Create user.
+     * Create a user.
      *
-     * @param mixed $request
+     * @param array $input
      * @return array
      * @throws Exception
      */
-    public function createUser($request)
+    public function createUser($input)
     {
-        $input = $request->getParsedBody();
         if (empty($input['name'])) {
             throw new \Exception(self::USER_NAME_REQUIRED, 400);
         }
@@ -100,17 +123,16 @@ class UsersService extends Base
     }
 
     /**
-     * Update user.
+     * Update a user.
      *
-     * @param mixed $request
+     * @param array $input
      * @param int $userId
      * @return array
      * @throws Exception
      */
-    public function updateUser($request, $userId)
+    public function updateUser($input, $userId)
     {
         $user = $this->checkUser($userId);
-        $input = $request->getParsedBody();
         if (empty($input['name']) && empty($input['email'])) {
             throw new \Exception(self::USER_INFO_REQUIRED, 400);
         }
@@ -134,7 +156,7 @@ class UsersService extends Base
     }
 
     /**
-     * Delete user.
+     * Delete a user.
      *
      * @param int $userId
      * @return array
@@ -151,8 +173,5 @@ class UsersService extends Base
         return self::USER_DELETED;
     }
 
-    public function __construct(\PDO $database)
-    {
-        $this->database = $database;
-    }
+
 }

@@ -94,7 +94,7 @@ class TasksService extends Base
     }
 
     /**
-     * Create task.
+     * Create a task.
      *
      * @param array $input
      * @return array
@@ -118,7 +118,7 @@ class TasksService extends Base
     }
 
     /**
-     * Update task.
+     * Update a task.
      *
      * @param array $input
      * @param int $taskId
@@ -145,7 +145,7 @@ class TasksService extends Base
     }
 
     /**
-     * Delete task.
+     * Delete a task.
      *
      * @param int $taskId
      * @return array

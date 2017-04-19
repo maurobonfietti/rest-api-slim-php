@@ -3,7 +3,7 @@
 $container = $app->getContainer();
 
 // PDO database library
-$container['db'] = function($c) {
+$container['db'] = function ($c) {
     $settings = $c->get('settings')['db'];
     $pdo = new PDO(
         'mysql:host=' . $settings['host'] . ';dbname=' . $settings['dbname'],
