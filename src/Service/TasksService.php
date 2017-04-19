@@ -105,10 +105,12 @@ class TasksService extends Base
         if (empty($input['task'])) {
             throw new \Exception(self::TASK_NAME_REQUIRED, 400);
         }
+        $status = isset($input['status']) ? $input['status'] : 0;
         $repository = new TasksRepository;
         $query = $repository->createTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('task', $input['task']);
+        $statement->bindParam('status', $status);
         $statement->execute();
         $task = $this->checkTask($this->database->lastInsertId());
 

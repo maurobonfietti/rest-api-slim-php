@@ -24,7 +24,7 @@ class TasksRepository
 
     public static function createTaskQuery()
     {
-        return 'INSERT INTO tasks (task) VALUES (:task)';
+        return 'INSERT INTO tasks (task, status) VALUES (:task, :status)';
     }
 
     public static function updateTaskQuery()

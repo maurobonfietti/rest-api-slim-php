@@ -78,21 +78,16 @@ class UsersService extends Base
     public function createUser($request)
     {
         $input = $request->getParsedBody();
-
         if (empty($input['name'])) {
             throw new \Exception(self::USER_NAME_REQUIRED, 400);
         }
-
+        $email = isset($input['email']) ? $input['email'] : null;
         $repository = new UsersRepository;
-
         $query = $repository->createUserQuery();
-
         $statement = $this->database->prepare($query);
-
         $statement->bindParam('name', $input['name']);
-
+        $statement->bindParam('email', $email);
         $statement->execute();
-
         $user = $this->checkUser($this->database->lastInsertId());
 
         return $user;

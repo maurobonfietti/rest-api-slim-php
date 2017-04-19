@@ -24,7 +24,7 @@ class UsersRepository
 
     public static function createUserQuery()
     {
-        return 'INSERT INTO users (name) VALUES (:name)';
+        return 'INSERT INTO users (name, email) VALUES (:name, :email)';
     }
 
     public static function updateUserQuery()
