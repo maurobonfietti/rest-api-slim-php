@@ -106,10 +106,7 @@ class UsersService extends Base
         }
         $email = null;
         if (isset($input['email'])) {
-            $email = filter_var($input['email'], FILTER_SANITIZE_EMAIL);
-            if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-                throw new \Exception(self::USER_EMAIL_INVALID, 400);
-            }
+            $email = $this->validateEmail($input['email']);
         }
         $repository = new UsersRepository;
         $query = $repository->createUserQuery();
@@ -139,10 +136,7 @@ class UsersService extends Base
         $username = isset($input['name']) ? $input['name'] : $user->name;
         $email = $user->email;
         if (isset($input['email'])) {
-            $email = filter_var($input['email'], FILTER_SANITIZE_EMAIL);
-            if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-                throw new \Exception(self::USER_EMAIL_INVALID, 400);
-            }
+            $email = $this->validateEmail($input['email']);
         }
         $repository = new UsersRepository;
         $query = $repository->updateUserQuery();

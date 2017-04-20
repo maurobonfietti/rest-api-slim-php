@@ -57,4 +57,21 @@ abstract class Base
 
         return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
     }
+
+    /**
+     * Validate and sanitize a email address.
+     *
+     * @param string $emailValue
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateEmail($emailValue)
+    {
+        $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+            throw new \Exception(self::USER_EMAIL_INVALID, 400);
+        }
+
+        return $email;
+    }
 }
