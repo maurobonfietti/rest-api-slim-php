@@ -12,6 +12,9 @@ class DefaultController extends Base
     /**
      * Get Help.
      *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
     public function getHelp($request, $response, $args)
@@ -29,6 +32,9 @@ class DefaultController extends Base
     /**
      * Get Api Version.
      *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      * @return array
      */
     public function getVersion($request, $response, $args)

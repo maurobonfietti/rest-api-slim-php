@@ -28,9 +28,9 @@ abstract class Base
     protected $args;
 
     /**
-     * @param type $request
-     * @param type $response
-     * @param type $args
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
      */
     protected function setParams($request, $response, $args)
     {
@@ -42,10 +42,10 @@ abstract class Base
     /**
      * Send response with json as standard format.
      *
-     * @param type $status
-     * @param type $message
-     * @param type $code
-     * @return array
+     * @param string $status
+     * @param mixed $message
+     * @param int $code
+     * @return array $response
      */
     protected function jsonResponse($status, $message, $code)
     {
