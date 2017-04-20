@@ -125,7 +125,8 @@ class TasksTest extends BaseTestCase
     public function testUpdateTask()
     {
         $response = $this->runApp(
-            'PUT', '/tasks/' . self::$id, array('task' => 'Actualizar Tarea')
+            'PUT', '/tasks/' . self::$id,
+            array('task' => 'Actualizar Tarea', 'status' => 1)
         );
 
         $result = (string) $response->getBody();
@@ -134,6 +135,7 @@ class TasksTest extends BaseTestCase
         $this->assertContains('id', $result);
         $this->assertContains('task', $result);
         $this->assertContains('Tarea', $result);
+        $this->assertContains('status', $result);
         $this->assertNotContains('error', $result);
     }
 

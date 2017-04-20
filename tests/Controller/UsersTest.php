@@ -90,7 +90,7 @@ class UsersTest extends BaseTestCase
     public function testCreateUser()
     {
         $response = $this->runApp(
-            'POST', '/users', 
+            'POST', '/users',
             array('name' => 'Esteban', 'email' => 'estu@gmail.com')
         );
 
@@ -127,7 +127,7 @@ class UsersTest extends BaseTestCase
     public function testCreateUserWithInvalidEmail()
     {
         $response = $this->runApp(
-            'POST', '/users', 
+            'POST', '/users',
             array('name' => 'Esteban', 'email' => 'email.incorrecto')
         );
 
@@ -145,7 +145,8 @@ class UsersTest extends BaseTestCase
     public function testUpdateUser()
     {
         $response = $this->runApp(
-            'PUT', '/users/' . self::$id, array('name' => 'Victor')
+            'PUT', '/users/' . self::$id,
+            array('name' => 'Victor', 'email' => 'victor@hotmail.com')
         );
 
         $result = (string) $response->getBody();
@@ -154,6 +155,7 @@ class UsersTest extends BaseTestCase
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
         $this->assertContains('Victor', $result);
+        $this->assertContains('hotmail', $result);
         $this->assertNotContains('error', $result);
     }
 

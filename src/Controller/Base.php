@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 /**
- * Centralized and useful base class :-)
+ * Base Class.
  */
 abstract class Base
 {
@@ -59,24 +59,5 @@ abstract class Base
         ];
 
         return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
-    }
-
-    /**
-     * Response with a standard format.
-     *
-     * @param string $status
-     * @param mixed $message
-     * @param int $code
-     * @return array $response
-     */
-    protected static function response($status, $message, $code)
-    {
-        $response = [
-            'code'    => $code,
-            'status'  => $status,
-            'message' => $message,
-        ];
-
-        return $response;
     }
 }

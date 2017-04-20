@@ -97,7 +97,7 @@ class UsersService extends Base
      *
      * @param array $input
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
     public function createUser($input)
     {
@@ -128,7 +128,7 @@ class UsersService extends Base
      * @param array $input
      * @param int $userId
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
     public function updateUser($input, $userId)
     {
@@ -172,6 +172,4 @@ class UsersService extends Base
 
         return self::USER_DELETED;
     }
-
-
 }

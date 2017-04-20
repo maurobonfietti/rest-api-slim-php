@@ -25,7 +25,7 @@ class TasksService extends Base
      *
      * @param int $taskId
      * @return object $task
-     * @throws Exception
+     * @throws \Exception
      */
     public function checkTask($taskId)
     {
@@ -75,7 +75,7 @@ class TasksService extends Base
      *
      * @param string $tasksName
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
     public function searchTasks($tasksName)
     {
@@ -98,7 +98,7 @@ class TasksService extends Base
      *
      * @param array $input
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
     public function createTask($input)
     {
@@ -123,7 +123,7 @@ class TasksService extends Base
      * @param array $input
      * @param int $taskId
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
     public function updateTask($input, $taskId)
     {
