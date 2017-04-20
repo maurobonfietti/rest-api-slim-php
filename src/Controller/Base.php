@@ -23,11 +23,8 @@ abstract class Base
     const TASK_DELETED = 'La tarea fue eliminada correctamente.';
 
     protected $database;
-
     protected $request;
-
     protected $response;
-
     protected $args;
 
     /**

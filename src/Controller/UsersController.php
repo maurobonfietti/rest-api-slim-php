@@ -11,16 +11,6 @@ use App\Service\UsersService;
 class UsersController extends Base
 {
     /**
-     * Constructor of the class.
-     *
-     * @param \Slim\Container $container
-     */
-    public function __construct(\Slim\Container $container)
-    {
-        $this->database = $container->db;
-    }
-
-    /**
      * Get all users.
      *
      * @param Request $request
@@ -141,5 +131,15 @@ class UsersController extends Base
         } catch (\Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
+    }
+
+    /**
+     * Constructor of the class.
+     *
+     * @param \Slim\Container $container
+     */
+    public function __construct(\Slim\Container $container)
+    {
+        $this->database = $container->db;
     }
 }

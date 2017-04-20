@@ -7,32 +7,32 @@ namespace App\Repository;
  */
 class UsersRepository
 {
-    public static function getUserQuery()
+    public function getUserQuery()
     {
         return 'SELECT * FROM users WHERE id=:id';
     }
 
-    public static function getUsersQuery()
+    public function getUsersQuery()
     {
         return 'SELECT * FROM users ORDER BY id';
     }
 
-    public static function searchUsersQuery()
+    public function searchUsersQuery()
     {
         return 'SELECT * FROM users WHERE UPPER(name) LIKE :name ORDER BY id';
     }
 
-    public static function createUserQuery()
+    public function createUserQuery()
     {
         return 'INSERT INTO users (name, email) VALUES (:name, :email)';
     }
 
-    public static function updateUserQuery()
+    public function updateUserQuery()
     {
         return 'UPDATE users SET name=:name, email=:email WHERE id=:id';
     }
 
-    public static function deleteUserQuery()
+    public function deleteUserQuery()
     {
         return 'DELETE FROM users WHERE id=:id';
     }

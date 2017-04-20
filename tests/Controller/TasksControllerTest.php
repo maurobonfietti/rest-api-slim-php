@@ -90,7 +90,7 @@ class TasksTest extends BaseTestCase
     public function testCreateTask()
     {
         $response = $this->runApp(
-            'POST', '/tasks', array('task' => 'Nueva Tarea')
+            'POST', '/tasks', ['task' => 'Nueva Tarea']
         );
 
         $result = (string) $response->getBody();
@@ -126,7 +126,7 @@ class TasksTest extends BaseTestCase
     {
         $response = $this->runApp(
             'PUT', '/tasks/' . self::$id,
-            array('task' => 'Actualizar Tarea', 'status' => 1)
+            ['task' => 'Actualizar Tarea', 'status' => 1]
         );
 
         $result = (string) $response->getBody();
@@ -160,7 +160,7 @@ class TasksTest extends BaseTestCase
     public function testUpdateTaskNotFound()
     {
         $response = $this->runApp(
-            'PUT', '/tasks/123456789', array('task' => 'Actualizar Tarea')
+            'PUT', '/tasks/123456789', ['task' => 'Actualizar Tarea']
         );
 
         $result = (string) $response->getBody();

@@ -91,7 +91,7 @@ class UsersTest extends BaseTestCase
     {
         $response = $this->runApp(
             'POST', '/users',
-            array('name' => 'Esteban', 'email' => 'estu@gmail.com')
+            ['name' => 'Esteban', 'email' => 'estu@gmail.com']
         );
 
         $result = (string) $response->getBody();
@@ -128,7 +128,7 @@ class UsersTest extends BaseTestCase
     {
         $response = $this->runApp(
             'POST', '/users',
-            array('name' => 'Esteban', 'email' => 'email.incorrecto')
+            ['name' => 'Esteban', 'email' => 'email.incorrecto']
         );
 
         $result = (string) $response->getBody();
@@ -146,7 +146,7 @@ class UsersTest extends BaseTestCase
     {
         $response = $this->runApp(
             'PUT', '/users/' . self::$id,
-            array('name' => 'Victor', 'email' => 'victor@hotmail.com')
+            ['name' => 'Victor', 'email' => 'victor@hotmail.com']
         );
 
         $result = (string) $response->getBody();
@@ -180,7 +180,7 @@ class UsersTest extends BaseTestCase
     public function testUpdateUserNotFound()
     {
         $response = $this->runApp(
-            'PUT', '/users/123456789', array('name' => 'Victor')
+            'PUT', '/users/123456789', ['name' => 'Victor']
         );
 
         $result = (string) $response->getBody();
@@ -198,7 +198,7 @@ class UsersTest extends BaseTestCase
     {
         $response = $this->runApp(
             'PUT', '/users/' . self::$id,
-            array('name' => 'Victor', 'email' => 'emailIncorrecto...')
+            ['name' => 'Victor', 'email' => 'emailIncorrecto...']
         );
 
         $result = (string) $response->getBody();
