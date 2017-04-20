@@ -140,6 +140,6 @@ class UsersController extends Base
      */
     public function __construct(\Slim\Container $container)
     {
-        $this->database = $container->db;
+        $this->database = $container->get('db');
     }
 }
