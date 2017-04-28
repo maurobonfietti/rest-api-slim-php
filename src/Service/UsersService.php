@@ -93,14 +93,7 @@ class UsersService extends Base
         return $users;
     }
 
-    /**
-     * Create a user.
-     *
-     * @param array $input
-     * @return array
-     * @throws \Exception
-     */
-    public function createUser($input)
+    private function validateInput($input)
     {
         if (!isset($input['name'])) {
             throw new \Exception(self::USER_NAME_REQUIRED, 400);
@@ -114,6 +107,25 @@ class UsersService extends Base
         if (isset($input['email'])) {
             $email = $this->validateEmail($input['email']);
         }
+        $data = [
+            'name' => $name,
+            'email' => $email,
+        ];
+        return $data;
+    }
+
+    /**
+     * Create a user.
+     *
+     * @param array $input
+     * @return array
+     * @throws \Exception
+     */
+    public function createUser($input)
+    {
+        $data = $this->validateInput($input);
+        $name = $data['name'];
+        $email = $data['email'];
         $repository = new UsersRepository;
         $query = $repository->createUserQuery();
         $statement = $this->database->prepare($query);
