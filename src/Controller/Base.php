@@ -68,7 +68,7 @@ abstract class Base
      * @return string
      * @throws \Exception
      */
-    protected function validateInputOnCreate($input)
+    protected function validateInputOnCreateUser($input)
     {
         if (!isset($input['name'])) {
             throw new \Exception(self::USER_NAME_REQUIRED, 400);
@@ -90,7 +90,7 @@ abstract class Base
      * @return string
      * @throws \Exception
      */
-    protected function validateInputOnUpdate($input, $user)
+    protected function validateInputOnUpdateUser($input, $user)
     {
         if (!isset($input['name']) && !isset($input['email'])) {
             throw new \Exception(self::USER_INFO_REQUIRED, 400);

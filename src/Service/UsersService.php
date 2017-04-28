@@ -101,14 +101,12 @@ class UsersService extends Base
      */
     public function createUser($input)
     {
-        $data = $this->validateInputOnCreate($input);
-        $name = $data['name'];
-        $email = $data['email'];
+        $data = $this->validateInputOnCreateUser($input);
         $repository = new UsersRepository;
         $query = $repository->createUserQuery();
         $statement = $this->database->prepare($query);
-        $statement->bindParam('name', $name);
-        $statement->bindParam('email', $email);
+        $statement->bindParam('name', $data['name']);
+        $statement->bindParam('email', $data['email']);
         $statement->execute();
         $user = $this->checkUser($this->database->lastInsertId());
 
@@ -126,15 +124,13 @@ class UsersService extends Base
     public function updateUser($input, $userId)
     {
         $user = $this->checkUser($userId);
-        $data = $this->validateInputOnUpdate($input, $user);
-        $name = $data['name'];
-        $email = $data['email'];
+        $data = $this->validateInputOnUpdateUser($input, $user);
         $repository = new UsersRepository;
         $query = $repository->updateUserQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
-        $statement->bindParam('name', $name);
-        $statement->bindParam('email', $email);
+        $statement->bindParam('name', $data['name']);
+        $statement->bindParam('email', $data['email']);
         $statement->execute();
 
         return $this->checkUser($userId);
