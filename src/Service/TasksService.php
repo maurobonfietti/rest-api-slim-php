@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Controller\Base;
 use App\Repository\TasksRepository;
+use Respect\Validation\Validator as v;
 
 /**
  * Tasks Service.
@@ -106,6 +107,9 @@ class TasksService extends Base
             throw new \Exception(self::TASK_NAME_REQUIRED, 400);
         }
         $status = isset($input['status']) ? $input['status'] : 0;
+        if (!v::numeric()->between(0, 1)->validate($status)) {
+            throw new \Exception(self::TASK_STATUS_INVALID, 400);
+        }
         $repository = new TasksRepository;
         $query = $repository->createTaskQuery();
         $statement = $this->database->prepare($query);
