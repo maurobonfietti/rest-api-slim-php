@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Controller\Base;
 use App\Repository\UsersRepository;
+use Respect\Validation\Validator as v;
 
 /**
  * Users Service.
@@ -101,8 +102,13 @@ class UsersService extends Base
      */
     public function createUser($input)
     {
-        if (empty($input['name'])) {
+        if (!isset($input['name'])) {
             throw new \Exception(self::USER_NAME_REQUIRED, 400);
+        }
+        $name = $input['name'];
+        $usernameValidator = v::alnum()->length(1, 100);
+        if (!$usernameValidator->validate($name)) {
+            throw new \Exception(self::USER_NAME_INVALID, 400);
         }
         $email = null;
         if (isset($input['email'])) {
@@ -111,7 +117,7 @@ class UsersService extends Base
         $repository = new UsersRepository;
         $query = $repository->createUserQuery();
         $statement = $this->database->prepare($query);
-        $statement->bindParam('name', $input['name']);
+        $statement->bindParam('name', $name);
         $statement->bindParam('email', $email);
         $statement->execute();
         $user = $this->checkUser($this->database->lastInsertId());
