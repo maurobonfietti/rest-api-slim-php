@@ -126,19 +126,14 @@ class UsersService extends Base
     public function updateUser($input, $userId)
     {
         $user = $this->checkUser($userId);
-        if (empty($input['name']) && empty($input['email'])) {
-            throw new \Exception(self::USER_INFO_REQUIRED, 400);
-        }
-        $username = isset($input['name']) ? $input['name'] : $user->name;
-        $email = $user->email;
-        if (isset($input['email'])) {
-            $email = $this->validateEmail($input['email']);
-        }
+        $data = $this->validateInputUpdate($input, $user);
+        $name = $data['name'];
+        $email = $data['email'];
         $repository = new UsersRepository;
         $query = $repository->updateUserQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
-        $statement->bindParam('name', $username);
+        $statement->bindParam('name', $name);
         $statement->bindParam('email', $email);
         $statement->execute();
 

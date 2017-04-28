@@ -73,20 +73,54 @@ abstract class Base
         if (!isset($input['name'])) {
             throw new \Exception(self::USER_NAME_REQUIRED, 400);
         }
-        $name = $input['name'];
-        $usernameValidator = v::alnum()->length(1, 100);
-        if (!$usernameValidator->validate($name)) {
-            throw new \Exception(self::USER_NAME_INVALID, 400);
-        }
+        $name = $this->validateName($input['name']);
         $email = null;
         if (isset($input['email'])) {
             $email = $this->validateEmail($input['email']);
         }
-        $data = [
-            'name' => $name,
-            'email' => $email,
-        ];
-        return $data;
+
+        return ['name' => $name, 'email' => $email];
+    }
+
+    /**
+     * Validate and sanitize a user input.
+     *
+     * @param array $input
+     * @param object $user
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateInputUpdate($input, $user)
+    {
+        if (!isset($input['name']) && !isset($input['email'])) {
+            throw new \Exception(self::USER_INFO_REQUIRED, 400);
+        }
+        $name = $user->name;
+        if (isset($input['name'])) {
+            $name = $this->validateName($input['name']);
+        }
+        $email = $user->email;
+        if (isset($input['email'])) {
+            $email = $this->validateEmail($input['email']);
+        }
+
+        return ['name' => $name, 'email' => $email];
+    }
+
+    /**
+     * Validate and sanitize a username.
+     *
+     * @param string $name
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateName($name)
+    {
+        if (!v::alnum()->length(2, 100)->validate($name)) {
+            throw new \Exception(self::USER_NAME_INVALID, 400);
+        }
+
+        return $name;
     }
 
     /**
