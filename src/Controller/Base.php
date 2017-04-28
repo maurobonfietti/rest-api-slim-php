@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use Respect\Validation\Validator as v;
+
 /**
  * Base Class.
  */
@@ -60,6 +62,34 @@ abstract class Base
     }
 
     /**
+     * Validate and sanitize a user input.
+     *
+     * @param array $input
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateInput($input)
+    {
+        if (!isset($input['name'])) {
+            throw new \Exception(self::USER_NAME_REQUIRED, 400);
+        }
+        $name = $input['name'];
+        $usernameValidator = v::alnum()->length(1, 100);
+        if (!$usernameValidator->validate($name)) {
+            throw new \Exception(self::USER_NAME_INVALID, 400);
+        }
+        $email = null;
+        if (isset($input['email'])) {
+            $email = $this->validateEmail($input['email']);
+        }
+        $data = [
+            'name' => $name,
+            'email' => $email,
+        ];
+        return $data;
+    }
+
+    /**
      * Validate and sanitize a email address.
      *
      * @param string $emailValue
@@ -69,7 +99,7 @@ abstract class Base
     protected function validateEmail($emailValue)
     {
         $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+        if (!v::email()->validate($email)) {
             throw new \Exception(self::USER_EMAIL_INVALID, 400);
         }
 
