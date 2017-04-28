@@ -87,9 +87,9 @@ Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
 $ phpunit
 PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
 
-............................                                      28 / 28 (100%)
+............................                                      29 / 29 (100%)
 
 Time: 167 ms, Memory: 4.00MB
 
-OK (28 tests, 122 assertions)
+OK (29 tests, 126 assertions)
 ```

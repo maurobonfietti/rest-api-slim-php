@@ -122,6 +122,24 @@ class UsersTest extends BaseTestCase
     }
 
     /**
+     * Test Create User With Invalid Name.
+     */
+    public function testCreateUserWithInvalidName()
+    {
+        $response = $this->runApp(
+            'POST', '/users',
+            ['name' => 'z', 'email' => 'email@example.com']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('name', $result);
+        $this->assertContains('error', $result);
+    }
+
+    /**
      * Test Create User With Invalid Email.
      */
     public function testCreateUserWithInvalidEmail()
@@ -198,7 +216,7 @@ class UsersTest extends BaseTestCase
     {
         $response = $this->runApp(
             'PUT', '/users/' . self::$id,
-            ['name' => 'Victor', 'email' => 'emailIncorrecto...']
+            ['name' => 'z', 'email' => 'email-incorrecto...']
         );
 
         $result = (string) $response->getBody();
