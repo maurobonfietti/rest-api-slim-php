@@ -101,7 +101,7 @@ class UsersService extends Base
      */
     public function createUser($input)
     {
-        $data = $this->validateInput($input);
+        $data = $this->validateInputOnCreate($input);
         $name = $data['name'];
         $email = $data['email'];
         $repository = new UsersRepository;
@@ -126,7 +126,7 @@ class UsersService extends Base
     public function updateUser($input, $userId)
     {
         $user = $this->checkUser($userId);
-        $data = $this->validateInputUpdate($input, $user);
+        $data = $this->validateInputOnUpdate($input, $user);
         $name = $data['name'];
         $email = $data['email'];
         $repository = new UsersRepository;

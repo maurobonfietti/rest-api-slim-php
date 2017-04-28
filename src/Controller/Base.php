@@ -62,13 +62,13 @@ abstract class Base
     }
 
     /**
-     * Validate and sanitize a user input.
+     * Validate and sanitize input data when create new user.
      *
      * @param array $input
      * @return string
      * @throws \Exception
      */
-    protected function validateInput($input)
+    protected function validateInputOnCreate($input)
     {
         if (!isset($input['name'])) {
             throw new \Exception(self::USER_NAME_REQUIRED, 400);
@@ -83,14 +83,14 @@ abstract class Base
     }
 
     /**
-     * Validate and sanitize a user input.
+     * Validate and sanitize input data when update a user.
      *
      * @param array $input
      * @param object $user
      * @return string
      * @throws \Exception
      */
-    protected function validateInputUpdate($input, $user)
+    protected function validateInputOnUpdate($input, $user)
     {
         if (!isset($input['name']) && !isset($input['email'])) {
             throw new \Exception(self::USER_INFO_REQUIRED, 400);
