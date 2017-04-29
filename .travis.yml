@@ -11,7 +11,7 @@ before_install:
   - mysql -e 'CREATE DATABASE api_rest_slimphp;'
 
 before_script:
-  - mysql api_rest_slimphp < data/database.sql
+  - mysql api_rest_slimphp < app/data/database.sql
   - composer install
 
 script:
