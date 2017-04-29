@@ -85,11 +85,11 @@ Para más información sobre el uso de la API REST, ver el siguiente documento c
 Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
 ```
 $ phpunit
-PHPUnit 5.7.19 by Sebastian Bergmann and contributors.
+PHPUnit 6.1.2 by Sebastian Bergmann and contributors.
 
-............................                                      29 / 29 (100%)
+..............................                                    30 / 30 (100%)
 
-Time: 167 ms, Memory: 4.00MB
+Time: 202 ms, Memory: 4.00MB
 
-OK (29 tests, 126 assertions)
+OK (30 tests, 130 assertions)
 ```

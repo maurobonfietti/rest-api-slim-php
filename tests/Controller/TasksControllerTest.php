@@ -120,6 +120,23 @@ class TasksTest extends BaseTestCase
     }
 
     /**
+     * Test Create Task With Invalid Status.
+     */
+    public function testCreateTaskWithInvalidStatus()
+    {
+        $response = $this->runApp(
+            'POST', '/tasks', ['task' => 'ToDo', 'status' => 123]
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('task', $result);
+        $this->assertContains('error', $result);
+    }
+
+    /**
      * Test Update Task.
      */
     public function testUpdateTask()
