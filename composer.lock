@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeclimate/php-test-reporter.git",
-                "reference": "3cea87608673a5e4fab212da8d9e8ba1d377d946"
+                "reference": "4eac73dc737c09961b1a6b8b73825666ebea28b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/3cea87608673a5e4fab212da8d9e8ba1d377d946",
-                "reference": "3cea87608673a5e4fab212da8d9e8ba1d377d946",
+                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/4eac73dc737c09961b1a6b8b73825666ebea28b5",
+                "reference": "4eac73dc737c09961b1a6b8b73825666ebea28b5",
                 "shasum": ""
             },
             "require": {
@@ -63,7 +63,7 @@
                 "codeclimate",
                 "coverage"
             ],
-            "time": "2017-04-10 16:12:53"
+            "time": "2017-04-24 15:47:41"
         },
         {
             "name": "container-interop/container-interop",
