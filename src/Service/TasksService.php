@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use App\Repository\TasksRepository;
-use Respect\Validation\Validator as v;
 
 /**
  * Tasks Service.
@@ -102,18 +101,12 @@ class TasksService extends BaseService
      */
     public function createTask($input)
     {
-        if (empty($input['task'])) {
-            throw new \Exception(self::TASK_NAME_REQUIRED, 400);
-        }
-        $status = isset($input['status']) ? $input['status'] : 0;
-        if (!v::numeric()->between(0, 1)->validate($status)) {
-            throw new \Exception(self::TASK_STATUS_INVALID, 400);
-        }
+        $data = $this->validateInputOnCreateTask($input);
         $repository = new TasksRepository;
         $query = $repository->createTaskQuery();
         $statement = $this->database->prepare($query);
-        $statement->bindParam('task', $input['task']);
-        $statement->bindParam('status', $status);
+        $statement->bindParam('task', $data['task']);
+        $statement->bindParam('status', $data['status']);
         $statement->execute();
         $task = $this->checkTask($this->database->lastInsertId());
 

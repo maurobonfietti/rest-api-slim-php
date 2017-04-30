@@ -22,6 +22,7 @@ abstract class BaseService
     const TASK_NAME_REQUIRED = 'Ingrese el nombre de la tarea.';
     const TASK_INFO_REQUIRED = 'Ingrese los datos a actualizar de la tarea.';
     const TASK_DELETED = 'La tarea fue eliminada correctamente.';
+    const TASK_NAME_INVALID = 'La tarea ingresada es incorrecta.';
     const TASK_STATUS_INVALID = 'El estado ingresado es incorrecto.';
 
     protected $database;
@@ -76,6 +77,27 @@ abstract class BaseService
     }
 
     /**
+     * Validate and sanitize input data when create new user.
+     *
+     * @param array $input
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateInputOnCreateTask($input)
+    {
+        if (empty($input['task'])) {
+            throw new \Exception(self::TASK_NAME_REQUIRED, 400);
+        }
+        $task = $this->validateTaskName($input['task']);
+        $status = isset($input['status']) ? $input['status'] : 0;
+        if (!v::numeric()->between(0, 1)->validate($status)) {
+            throw new \Exception(self::TASK_STATUS_INVALID, 400);
+        }
+
+        return ['task' => $task, 'status' => $status];
+    }
+
+    /**
      * Validate and sanitize a username.
      *
      * @param string $name
@@ -106,5 +128,14 @@ abstract class BaseService
         }
 
         return $email;
+    }
+
+    protected function validateTaskName($name)
+    {
+        if (!v::alnum()->length(2, 100)->validate($name)) {
+            throw new \Exception(self::TASK_NAME_INVALID, 400);
+        }
+
+        return $name;
     }
 }
