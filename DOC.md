@@ -16,31 +16,31 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         }
     ]
 }
@@ -61,7 +61,7 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "updated": "2017-04-30 04:38:43"
+        "updated": "2017-04-30 04:45:03"
     }
 }
 ```
@@ -82,7 +82,7 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         }
     ]
 }
@@ -103,7 +103,7 @@ Respuesta:
         "id": "6",
         "name": "Sergio",
         "email": null,
-        "updated": "2017-04-30 04:38:43"
+        "updated": "2017-04-30 04:45:03"
     }
 }
 ```
@@ -123,7 +123,7 @@ Respuesta:
         "id": "6",
         "name": "Javier",
         "email": null,
-        "updated": "2017-04-30 04:38:43"
+        "updated": "2017-04-30 04:45:03"
     }
 }
 ```
@@ -159,31 +159,31 @@ Respuesta:
             "id": "4",
             "task": "Comprar cereales",
             "status": "1",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "2",
             "task": "Comprar zapatillas",
             "status": "1",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "5",
             "task": "Hacer tarea...",
             "status": "0",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         }
     ]
 }
@@ -204,7 +204,7 @@ Respuesta:
         "id": "3",
         "task": "Ir al super",
         "status": "1",
-        "updated": "2017-04-30 04:38:43"
+        "updated": "2017-04-30 04:45:03"
     }
 }
 ```
@@ -225,13 +225,13 @@ Respuesta:
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "updated": "2017-04-30 04:38:43"
+            "updated": "2017-04-30 04:45:03"
         }
     ]
 }
@@ -252,7 +252,7 @@ Respuesta:
         "id": "6",
         "task": "Super",
         "status": "0",
-        "updated": "2017-04-30 04:38:43"
+        "updated": "2017-04-30 04:45:03"
     }
 }
 ```
@@ -272,7 +272,7 @@ Respuesta:
         "id": "6",
         "task": "Viajar",
         "status": "0",
-        "updated": "2017-04-30 04:38:43"
+        "updated": "2017-04-30 04:45:03"
     }
 }
 ```
@@ -289,6 +289,44 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": "La tarea fue eliminada correctamente."
+}
+```
+
+
+### Ver ayuda:
+```
+$ curl http://localhost:8080
+```
+
+Respuesta:
+```
+{
+    "code": 200,
+    "status": "success",
+    "message": {
+        "help": {
+            "tasks": "Ver Tareas: \/tasks",
+            "users": "Ver Usuarios: \/users",
+            "version": "Ver Version: \/version"
+        }
+    }
+}
+```
+
+
+### Ver version:
+```
+$ curl http://localhost:8080/version
+```
+
+Respuesta:
+```
+{
+    "code": 200,
+    "status": "success",
+    "message": {
+        "api_version": "17.04"
+    }
 }
 ```
 
