@@ -83,7 +83,6 @@ class UsersService extends BaseService
         $stmt->bindParam('name', $name);
         $stmt->execute();
         $users = $stmt->fetchAll();
-
         if (!$users) {
             throw new \Exception(self::USER_NAME_NOT_FOUND, 404);
         }

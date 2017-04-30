@@ -5,7 +5,7 @@ namespace App\Service;
 use Respect\Validation\Validator as v;
 
 /**
- * Base Service Class.
+ * Base Service.
  */
 abstract class BaseService
 {

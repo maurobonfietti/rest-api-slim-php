@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 /**
- * Base Controller Class.
+ * Base Controller.
  */
 abstract class BaseController
 {
