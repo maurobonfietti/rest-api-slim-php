@@ -10,6 +10,16 @@ use App\Controller\Base;
 class DefaultController extends Base
 {
     /**
+     * Constructor of the class.
+     *
+     * @param \Slim\Container $container
+     */
+    public function __construct(\Slim\Container $container)
+    {
+        $this->logger = $container->get('logger');
+    }
+
+    /**
      * Get Help.
      *
      * @param Request $request
