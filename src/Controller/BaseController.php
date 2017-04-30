@@ -49,6 +49,7 @@ abstract class BaseController
             'status' => $status,
             'message' => $message,
         ];
+        $this->logger->info(json_encode($result));
 
         return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
     }

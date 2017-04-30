@@ -24,7 +24,6 @@ abstract class BaseService
     const TASK_DELETED = 'La tarea fue eliminada correctamente.';
     const TASK_STATUS_INVALID = 'El estado ingresado es incorrecto.';
 
-    protected $logger;
     protected $database;
     protected $request;
     protected $response;
