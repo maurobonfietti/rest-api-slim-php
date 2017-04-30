@@ -5,9 +5,9 @@ namespace App\Controller;
 use Respect\Validation\Validator as v;
 
 /**
- * Base Class.
+ * Base Controller Class.
  */
-abstract class Base
+abstract class BaseController
 {
     const API_VERSION = '17.04';
 

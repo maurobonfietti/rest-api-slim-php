@@ -2,13 +2,13 @@
 
 namespace App\Service;
 
-use App\Controller\Base;
+use App\Controller\BaseController;
 use App\Repository\UsersRepository;
 
 /**
  * Users Service.
  */
-class UsersService extends Base
+class UsersService extends BaseController
 {
     /**
      * Constructor of the class.

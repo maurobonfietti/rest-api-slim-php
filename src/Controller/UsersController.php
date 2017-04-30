@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Controller\Base;
+use App\Controller\BaseController;
 use App\Service\UsersService;
 
 /**
  * Users Controller.
  */
-class UsersController extends Base
+class UsersController extends BaseController
 {
     /**
      * Get all users.

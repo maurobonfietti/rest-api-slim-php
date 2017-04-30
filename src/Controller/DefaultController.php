@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Controller\Base;
+use App\Controller\BaseController;
 
 /**
  * Default Controller.
  */
-class DefaultController extends Base
+class DefaultController extends BaseController
 {
     /**
      * Constructor of the class.

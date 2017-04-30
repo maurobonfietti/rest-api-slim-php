@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Controller\Base;
+use App\Controller\BaseController;
 use App\Service\TasksService;
 
 /**
  * Tasks Controller.
  */
-class TasksController extends Base
+class TasksController extends BaseController
 {
     /**
      * Constructor of the class.

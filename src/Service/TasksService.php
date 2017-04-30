@@ -2,14 +2,14 @@
 
 namespace App\Service;
 
-use App\Controller\Base;
+use App\Controller\BaseController;
 use App\Repository\TasksRepository;
 use Respect\Validation\Validator as v;
 
 /**
  * Tasks Service.
  */
-class TasksService extends Base
+class TasksService extends BaseController
 {
     /**
      * Constructor of the class.
