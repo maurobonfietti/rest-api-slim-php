@@ -26,6 +26,7 @@ abstract class Base
     const TASK_DELETED = 'La tarea fue eliminada correctamente.';
     const TASK_STATUS_INVALID = 'El estado ingresado es incorrecto.';
 
+    protected $logger;
     protected $database;
     protected $request;
     protected $response;
@@ -41,6 +42,13 @@ abstract class Base
         $this->request = $request;
         $this->response = $response;
         $this->args = $args;
+        $info = [
+            'method' => $this->request->getAttribute('route')->getMethods(),
+            'path' => $this->request->getUri()->getPath(),
+            'input' => $this->request->getParsedBody(),
+            'args' => $this->args,
+        ];
+        $this->logger->info(json_encode($info));
     }
 
     /**

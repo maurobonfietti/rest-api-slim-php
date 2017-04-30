@@ -17,6 +17,7 @@ class TasksController extends Base
      */
     public function __construct(\Slim\Container $container)
     {
+        $this->logger = $container->get('logger');
         $this->database = $container->get('db');
     }
 
