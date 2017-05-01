@@ -7,6 +7,8 @@ namespace App\Service;
  */
 abstract class MessageService
 {
+    const API_VERSION = '17.05';
+
     const USER_NOT_FOUND = 'El usuario solicitado no existe.';
     const USER_NAME_NOT_FOUND = 'No se encontraron usuarios con ese nombre.';
     const USER_NAME_REQUIRED = 'Ingrese el nombre del usuario.';

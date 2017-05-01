@@ -7,8 +7,6 @@ namespace App\Controller;
  */
 abstract class BaseController
 {
-    const API_VERSION = '17.05';
-
     protected $logger;
 
     protected $database;
