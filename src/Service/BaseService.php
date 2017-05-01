@@ -97,6 +97,14 @@ abstract class BaseService
         return ['task' => $task, 'status' => $status];
     }
 
+    /**
+     * Validate and sanitize input data when update a task.
+     *
+     * @param array $input
+     * @param object $task
+     * @return string
+     * @throws \Exception
+     */
     protected function validateInputOnUpdateTask($input, $task)
     {
         if (!isset($input['task']) && !isset($input['status'])) {
@@ -147,6 +155,13 @@ abstract class BaseService
         return $email;
     }
 
+    /**
+     * Validate and sanitize a task name.
+     *
+     * @param string $name
+     * @return string
+     * @throws \Exception
+     */
     protected function validateTaskName($name)
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
@@ -156,6 +171,13 @@ abstract class BaseService
         return $name;
     }
 
+    /**
+     * Validate and sanitize a task status.
+     *
+     * @param int $status
+     * @return string
+     * @throws \Exception
+     */
     protected function validateStatus($status)
     {
         if (!v::numeric()->between(0, 1)->validate($status)) {
