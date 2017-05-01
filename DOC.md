@@ -2,6 +2,8 @@
 
 
 ### Ver usuarios:
+
+Petición:
 ```
 $ curl http://localhost:8080/users
 ```
@@ -16,31 +18,31 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         }
     ]
 }
@@ -48,6 +50,8 @@ Respuesta:
 
 
 ### Ver usuario:
+
+Petición:
 ```
 $ curl http://localhost:8080/users/1
 ```
@@ -61,13 +65,15 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "updated": "2017-05-01 14:28:14"
+        "updated": "2017-05-01 14:37:28"
     }
 }
 ```
 
 
 ### Buscar usuarios por nombre:
+
+Petición:
 ```
 $ curl http://localhost:8080/users/search/le
 ```
@@ -82,7 +88,7 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         }
     ]
 }
@@ -90,6 +96,8 @@ Respuesta:
 
 
 ### Crear usuario:
+
+Petición:
 ```
 $ curl -X POST http://localhost:8080/users --data name=Sergio
 ```
@@ -103,13 +111,15 @@ Respuesta:
         "id": "6",
         "name": "Sergio",
         "email": null,
-        "updated": "2017-05-01 14:28:14"
+        "updated": "2017-05-01 14:37:28"
     }
 }
 ```
 
 
 ### Actualizar usuario:
+
+Petición:
 ```
 $ curl -X PUT http://localhost:8080/users/6 --data name=Javier
 ```
@@ -123,13 +133,15 @@ Respuesta:
         "id": "6",
         "name": "Javier",
         "email": null,
-        "updated": "2017-05-01 14:28:14"
+        "updated": "2017-05-01 14:37:28"
     }
 }
 ```
 
 
 ### Eliminar usuario:
+
+Petición:
 ```
 $ curl -X DELETE http://localhost:8080/users/6
 ```
@@ -145,6 +157,8 @@ Respuesta:
 
 
 ### Ver tareas:
+
+Petición:
 ```
 $ curl http://localhost:8080/tasks
 ```
@@ -159,31 +173,31 @@ Respuesta:
             "id": "4",
             "task": "Comprar cereales",
             "status": "1",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "2",
             "task": "Comprar zapatillas",
             "status": "1",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "5",
             "task": "Hacer tarea...",
             "status": "0",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         }
     ]
 }
@@ -191,6 +205,8 @@ Respuesta:
 
 
 ### Ver tarea:
+
+Petición:
 ```
 $ curl http://localhost:8080/tasks/3
 ```
@@ -204,13 +220,15 @@ Respuesta:
         "id": "3",
         "task": "Ir al super",
         "status": "1",
-        "updated": "2017-05-01 14:28:14"
+        "updated": "2017-05-01 14:37:28"
     }
 }
 ```
 
 
 ### Buscar tareas por nombre:
+
+Petición:
 ```
 $ curl http://localhost:8080/tasks/search/ir
 ```
@@ -225,13 +243,13 @@ Respuesta:
             "id": "1",
             "task": "Ir al centro",
             "status": "1",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         },
         {
             "id": "3",
             "task": "Ir al super",
             "status": "1",
-            "updated": "2017-05-01 14:28:14"
+            "updated": "2017-05-01 14:37:28"
         }
     ]
 }
@@ -239,6 +257,8 @@ Respuesta:
 
 
 ### Crear tarea:
+
+Petición:
 ```
 $ curl -X POST http://localhost:8080/tasks --data task=Super
 ```
@@ -252,13 +272,15 @@ Respuesta:
         "id": "6",
         "task": "Super",
         "status": "0",
-        "updated": "2017-05-01 14:28:15"
+        "updated": "2017-05-01 14:37:28"
     }
 }
 ```
 
 
 ### Actualizar tarea:
+
+Petición:
 ```
 $ curl -X PUT http://localhost:8080/tasks/6 --data task=Viajar
 ```
@@ -272,13 +294,15 @@ Respuesta:
         "id": "6",
         "task": "Viajar",
         "status": "0",
-        "updated": "2017-05-01 14:28:15"
+        "updated": "2017-05-01 14:37:28"
     }
 }
 ```
 
 
 ### Eliminar tarea:
+
+Petición:
 ```
 $ curl -X DELETE http://localhost:8080/tasks/6
 ```
@@ -294,6 +318,8 @@ Respuesta:
 
 
 ### Ver ayuda:
+
+Petición:
 ```
 $ curl http://localhost:8080
 ```
@@ -315,6 +341,8 @@ Respuesta:
 
 
 ### Ver version:
+
+Petición:
 ```
 $ curl http://localhost:8080/version
 ```
@@ -325,7 +353,7 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "api_version": "17.04"
+        "api_version": "17.05"
     }
 }
 ```
