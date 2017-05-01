@@ -124,17 +124,13 @@ class TasksService extends BaseService
     public function updateTask($input, $taskId)
     {
         $task = $this->checkTask($taskId);
-        if (empty($input['task']) && empty($input['status'])) {
-            throw new \Exception(self::TASK_INFO_REQUIRED, 400);
-        }
-        $taskname = isset($input['task']) ? $input['task'] : $task->task;
-        $status = isset($input['status']) ? $input['status'] : $task->status;
+        $data = $this->validateInputOnUpdateTask($input, $task);
         $repository = new TasksRepository;
         $query = $repository->updateTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
-        $statement->bindParam('task', $taskname);
-        $statement->bindParam('status', $status);
+        $statement->bindParam('task', $data['task']);
+        $statement->bindParam('status', $data['status']);
         $statement->execute();
 
         return $this->checkTask($taskId);

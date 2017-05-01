@@ -77,7 +77,7 @@ abstract class BaseService
     }
 
     /**
-     * Validate and sanitize input data when create new user.
+     * Validate and sanitize input data when create new task.
      *
      * @param array $input
      * @return string
@@ -89,12 +89,29 @@ abstract class BaseService
             throw new \Exception(self::TASK_NAME_REQUIRED, 400);
         }
         $task = $this->validateTaskName($input['task']);
-        $status = isset($input['status']) ? $input['status'] : 0;
-        if (!v::numeric()->between(0, 1)->validate($status)) {
-            throw new \Exception(self::TASK_STATUS_INVALID, 400);
+        $status = 0;
+        if (isset($input['status'])) {
+            $status = $this->validateStatus($input['status']);
         }
 
         return ['task' => $task, 'status' => $status];
+    }
+
+    protected function validateInputOnUpdateTask($input, $task)
+    {
+        if (!isset($input['task']) && !isset($input['status'])) {
+            throw new \Exception(self::TASK_INFO_REQUIRED, 400);
+        }
+        $name = $task->task;
+        if (isset($input['task'])) {
+            $name = $this->validateTaskName($input['task']);
+        }
+        $status = $task->status;
+        if (isset($input['status'])) {
+            $status = $this->validateStatus($input['status']);
+        }
+
+        return ['task' => $name, 'status' => $status];
     }
 
     /**
@@ -137,5 +154,14 @@ abstract class BaseService
         }
 
         return $name;
+    }
+
+    protected function validateStatus($status)
+    {
+        if (!v::numeric()->between(0, 1)->validate($status)) {
+            throw new \Exception(self::TASK_STATUS_INVALID, 400);
+        }
+
+        return $status;
     }
 }
