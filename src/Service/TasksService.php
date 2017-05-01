@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Service\Messages;
+use App\Service\ValidationService as vs;
 use App\Repository\TasksRepository;
 
 /**
@@ -102,7 +103,7 @@ class TasksService extends BaseService
      */
     public function createTask($input)
     {
-        $data = $this->validateInputOnCreateTask($input);
+        $data = vs::validateInputOnCreateTask($input);
         $repository = new TasksRepository;
         $query = $repository->createTaskQuery();
         $statement = $this->database->prepare($query);
@@ -125,7 +126,7 @@ class TasksService extends BaseService
     public function updateTask($input, $taskId)
     {
         $task = $this->checkTask($taskId);
-        $data = $this->validateInputOnUpdateTask($input, $task);
+        $data = vs::validateInputOnUpdateTask($input, $task);
         $repository = new TasksRepository;
         $query = $repository->updateTaskQuery();
         $statement = $this->database->prepare($query);

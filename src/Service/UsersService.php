@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Service\Messages;
+use App\Service\ValidationService as vs;
 use App\Repository\UsersRepository;
 
 /**
@@ -100,7 +101,7 @@ class UsersService extends BaseService
      */
     public function createUser($input)
     {
-        $data = $this->validateInputOnCreateUser($input);
+        $data = vs::validateInputOnCreateUser($input);
         $repository = new UsersRepository;
         $query = $repository->createUserQuery();
         $statement = $this->database->prepare($query);
@@ -123,7 +124,7 @@ class UsersService extends BaseService
     public function updateUser($input, $userId)
     {
         $user = $this->checkUser($userId);
-        $data = $this->validateInputOnUpdateUser($input, $user);
+        $data = vs::validateInputOnUpdateUser($input, $user);
         $repository = new UsersRepository;
         $query = $repository->updateUserQuery();
         $statement = $this->database->prepare($query);
