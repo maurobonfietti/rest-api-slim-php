@@ -63,7 +63,6 @@ abstract class BaseController
         $this->logger->info('* REQUEST: ' . $route->getCallable()[1]);
         $this->logger->info('* ' . $route->getMethods()[0] . ' ' . $routeInfo['request'][1]);
         $this->logger->info('* BODY: ' . json_encode($this->request->getParsedBody()));
-//        $this->logger->info('* ARGS: ' . json_encode($this->args));
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controller;
+namespace Tests\Functional;
 
 use Slim\App;
 use Slim\Http\Request;

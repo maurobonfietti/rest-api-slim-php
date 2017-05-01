@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Service\Messages;
+use App\Service\MessageService;
 use App\Service\ValidationService as vs;
 use App\Repository\TasksRepository;
 
@@ -37,7 +37,7 @@ class TasksService extends BaseService
         $statement->execute();
         $task = $statement->fetchObject();
         if (!$task) {
-            throw new \Exception(Messages::TASK_NOT_FOUND, 404);
+            throw new \Exception(MessageService::TASK_NOT_FOUND, 404);
         }
 
         return $task;
@@ -88,7 +88,7 @@ class TasksService extends BaseService
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
-            throw new \Exception(Messages::TASK_NOT_FOUND, 404);
+            throw new \Exception(MessageService::TASK_NOT_FOUND, 404);
         }
 
         return $tasks;
@@ -153,6 +153,6 @@ class TasksService extends BaseService
         $statement->bindParam('id', $taskId);
         $statement->execute();
 
-        return Messages::TASK_DELETED;
+        return MessageService::TASK_DELETED;
     }
 }

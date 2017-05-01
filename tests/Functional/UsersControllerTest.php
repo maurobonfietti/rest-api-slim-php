@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Controller;
+namespace Tests\Functional;
 
 class UsersTest extends BaseTestCase
 {

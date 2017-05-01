@@ -3,9 +3,9 @@
 namespace App\Service;
 
 /**
- * Default Messages.
+ * Message Service.
  */
-abstract class Messages
+abstract class MessageService
 {
     const USER_NOT_FOUND = 'El usuario solicitado no existe.';
     const USER_NAME_NOT_FOUND = 'No se encontraron usuarios con ese nombre.';
