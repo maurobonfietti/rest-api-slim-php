@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Service\Messages;
 use Respect\Validation\Validator as v;
 
 /**
@@ -9,26 +10,78 @@ use Respect\Validation\Validator as v;
  */
 abstract class BaseService
 {
-    const USER_NOT_FOUND = 'El usuario solicitado no existe.';
-    const USER_NAME_NOT_FOUND = 'No se encontraron usuarios con ese nombre.';
-    const USER_NAME_REQUIRED = 'Ingrese el nombre del usuario.';
-    const USER_INFO_REQUIRED = 'Ingrese los datos a actualizar del usuario.';
-    const USER_DELETED = 'El usuario fue eliminado correctamente.';
-    const USER_NAME_INVALID = 'El nombre ingresado es incorrecto.';
-    const USER_EMAIL_INVALID = 'El email ingresado es incorrecto.';
-
-    const TASK_NOT_FOUND = 'La tarea solicitada no existe.';
-    const TASK_NAME_NOT_FOUND = 'No se encontraron tareas con ese nombre.';
-    const TASK_NAME_REQUIRED = 'Ingrese el nombre de la tarea.';
-    const TASK_INFO_REQUIRED = 'Ingrese los datos a actualizar de la tarea.';
-    const TASK_DELETED = 'La tarea fue eliminada correctamente.';
-    const TASK_NAME_INVALID = 'La tarea ingresada es incorrecta.';
-    const TASK_STATUS_INVALID = 'El estado ingresado es incorrecto.';
-
     protected $database;
+
     protected $request;
+
     protected $response;
+
     protected $args;
+
+    /**
+     * Validate and sanitize a username.
+     *
+     * @param string $name
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateName($name)
+    {
+        if (!v::alnum()->length(2, 100)->validate($name)) {
+            throw new \Exception(Messages::USER_NAME_INVALID, 400);
+        }
+
+        return $name;
+    }
+
+    /**
+     * Validate and sanitize a email address.
+     *
+     * @param string $emailValue
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateEmail($emailValue)
+    {
+        $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
+        if (!v::email()->validate($email)) {
+            throw new \Exception(Messages::USER_EMAIL_INVALID, 400);
+        }
+
+        return $email;
+    }
+
+    /**
+     * Validate and sanitize a task name.
+     *
+     * @param string $name
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateTaskName($name)
+    {
+        if (!v::alnum()->length(2, 100)->validate($name)) {
+            throw new \Exception(Messages::TASK_NAME_INVALID, 400);
+        }
+
+        return $name;
+    }
+
+    /**
+     * Validate and sanitize a task status.
+     *
+     * @param int $status
+     * @return string
+     * @throws \Exception
+     */
+    protected function validateStatus($status)
+    {
+        if (!v::numeric()->between(0, 1)->validate($status)) {
+            throw new \Exception(Messages::TASK_STATUS_INVALID, 400);
+        }
+
+        return $status;
+    }
 
     /**
      * Validate and sanitize input data when create new user.
@@ -40,7 +93,7 @@ abstract class BaseService
     protected function validateInputOnCreateUser($input)
     {
         if (!isset($input['name'])) {
-            throw new \Exception(self::USER_NAME_REQUIRED, 400);
+            throw new \Exception(Messages::USER_NAME_REQUIRED, 400);
         }
         $name = $this->validateName($input['name']);
         $email = null;
@@ -62,7 +115,7 @@ abstract class BaseService
     protected function validateInputOnUpdateUser($input, $user)
     {
         if (!isset($input['name']) && !isset($input['email'])) {
-            throw new \Exception(self::USER_INFO_REQUIRED, 400);
+            throw new \Exception(Messages::USER_INFO_REQUIRED, 400);
         }
         $name = $user->name;
         if (isset($input['name'])) {
@@ -86,7 +139,7 @@ abstract class BaseService
     protected function validateInputOnCreateTask($input)
     {
         if (empty($input['task'])) {
-            throw new \Exception(self::TASK_NAME_REQUIRED, 400);
+            throw new \Exception(Messages::TASK_NAME_REQUIRED, 400);
         }
         $task = $this->validateTaskName($input['task']);
         $status = 0;
@@ -108,7 +161,7 @@ abstract class BaseService
     protected function validateInputOnUpdateTask($input, $task)
     {
         if (!isset($input['task']) && !isset($input['status'])) {
-            throw new \Exception(self::TASK_INFO_REQUIRED, 400);
+            throw new \Exception(Messages::TASK_INFO_REQUIRED, 400);
         }
         $name = $task->task;
         if (isset($input['task'])) {
@@ -120,70 +173,5 @@ abstract class BaseService
         }
 
         return ['task' => $name, 'status' => $status];
-    }
-
-    /**
-     * Validate and sanitize a username.
-     *
-     * @param string $name
-     * @return string
-     * @throws \Exception
-     */
-    protected function validateName($name)
-    {
-        if (!v::alnum()->length(2, 100)->validate($name)) {
-            throw new \Exception(self::USER_NAME_INVALID, 400);
-        }
-
-        return $name;
-    }
-
-    /**
-     * Validate and sanitize a email address.
-     *
-     * @param string $emailValue
-     * @return string
-     * @throws \Exception
-     */
-    protected function validateEmail($emailValue)
-    {
-        $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
-        if (!v::email()->validate($email)) {
-            throw new \Exception(self::USER_EMAIL_INVALID, 400);
-        }
-
-        return $email;
-    }
-
-    /**
-     * Validate and sanitize a task name.
-     *
-     * @param string $name
-     * @return string
-     * @throws \Exception
-     */
-    protected function validateTaskName($name)
-    {
-        if (!v::alnum()->length(2, 100)->validate($name)) {
-            throw new \Exception(self::TASK_NAME_INVALID, 400);
-        }
-
-        return $name;
-    }
-
-    /**
-     * Validate and sanitize a task status.
-     *
-     * @param int $status
-     * @return string
-     * @throws \Exception
-     */
-    protected function validateStatus($status)
-    {
-        if (!v::numeric()->between(0, 1)->validate($status)) {
-            throw new \Exception(self::TASK_STATUS_INVALID, 400);
-        }
-
-        return $status;
     }
 }

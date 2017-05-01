@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Service\Messages;
 use App\Repository\TasksRepository;
 
 /**
@@ -35,7 +36,7 @@ class TasksService extends BaseService
         $statement->execute();
         $task = $statement->fetchObject();
         if (!$task) {
-            throw new \Exception(self::TASK_NOT_FOUND, 404);
+            throw new \Exception(Messages::TASK_NOT_FOUND, 404);
         }
 
         return $task;
@@ -86,7 +87,7 @@ class TasksService extends BaseService
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
-            throw new \Exception(self::TASK_NOT_FOUND, 404);
+            throw new \Exception(Messages::TASK_NOT_FOUND, 404);
         }
 
         return $tasks;
@@ -151,6 +152,6 @@ class TasksService extends BaseService
         $statement->bindParam('id', $taskId);
         $statement->execute();
 
-        return self::TASK_DELETED;
+        return Messages::TASK_DELETED;
     }
 }

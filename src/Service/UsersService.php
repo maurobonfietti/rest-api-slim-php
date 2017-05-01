@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Service\Messages;
 use App\Repository\UsersRepository;
 
 /**
@@ -34,7 +35,7 @@ class UsersService extends BaseService
         $stmt->execute();
         $user = $stmt->fetchObject();
         if (!$user) {
-            throw new \Exception(self::USER_NOT_FOUND, 404);
+            throw new \Exception(Messages::USER_NOT_FOUND, 404);
         }
 
         return $user;
@@ -84,7 +85,7 @@ class UsersService extends BaseService
         $stmt->execute();
         $users = $stmt->fetchAll();
         if (!$users) {
-            throw new \Exception(self::USER_NAME_NOT_FOUND, 404);
+            throw new \Exception(Messages::USER_NAME_NOT_FOUND, 404);
         }
 
         return $users;
@@ -149,6 +150,6 @@ class UsersService extends BaseService
         $statement->bindParam('id', $userId);
         $statement->execute();
 
-        return self::USER_DELETED;
+        return Messages::USER_DELETED;
     }
 }
