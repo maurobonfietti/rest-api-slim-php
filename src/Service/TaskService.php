@@ -4,12 +4,12 @@ namespace App\Service;
 
 use App\Service\MessageService;
 use App\Service\ValidationService as vs;
-use App\Repository\TasksRepository;
+use App\Repository\TaskRepository;
 
 /**
  * Tasks Service.
  */
-class TasksService extends BaseService
+class TaskService extends BaseService
 {
     /**
      * Constructor of the class.
@@ -30,7 +30,7 @@ class TasksService extends BaseService
      */
     public function checkTask($taskId)
     {
-        $tasksRepository = new TasksRepository;
+        $tasksRepository = new TaskRepository;
         $query = $tasksRepository->getTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
@@ -50,7 +50,7 @@ class TasksService extends BaseService
      */
     public function getTasks()
     {
-        $repository = new TasksRepository;
+        $repository = new TaskRepository;
         $query = $repository->getTasksQuery();
         $statement = $this->database->prepare($query);
         $statement->execute();
@@ -80,7 +80,7 @@ class TasksService extends BaseService
      */
     public function searchTasks($tasksName)
     {
-        $repository = new TasksRepository;
+        $repository = new TaskRepository;
         $query = $repository->searchTasksQuery();
         $statement = $this->database->prepare($query);
         $query = '%' . $tasksName . '%';
@@ -104,7 +104,7 @@ class TasksService extends BaseService
     public function createTask($input)
     {
         $data = vs::validateInputOnCreateTask($input);
-        $repository = new TasksRepository;
+        $repository = new TaskRepository;
         $query = $repository->createTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('task', $data['task']);
@@ -127,7 +127,7 @@ class TasksService extends BaseService
     {
         $task = $this->checkTask($taskId);
         $data = vs::validateInputOnUpdateTask($input, $task);
-        $repository = new TasksRepository;
+        $repository = new TaskRepository;
         $query = $repository->updateTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
@@ -147,7 +147,7 @@ class TasksService extends BaseService
     public function deleteTask($taskId)
     {
         $this->checkTask($taskId);
-        $repository = new TasksRepository;
+        $repository = new TaskRepository;
         $query = $repository->deleteTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);

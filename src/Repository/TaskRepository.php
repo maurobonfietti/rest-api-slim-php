@@ -5,7 +5,7 @@ namespace App\Repository;
 /**
  * Tasks Repository.
  */
-class TasksRepository
+class TaskRepository
 {
     public function getTaskQuery()
     {

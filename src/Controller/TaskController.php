@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use App\Controller\BaseController;
-use App\Service\TasksService;
+use App\Service\TaskService;
 
 /**
  * Tasks Controller.
  */
-class TasksController extends BaseController
+class TaskController extends BaseController
 {
     /**
      * Constructor of the class.
@@ -32,7 +32,7 @@ class TasksController extends BaseController
     public function getTasks($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $service = new TasksService($this->database);
+        $service = new TaskService($this->database);
         $result = $service->getTasks();
 
         return $this->jsonResponse('success', $result, 200);
@@ -50,7 +50,7 @@ class TasksController extends BaseController
     {
         try {
             $this->setParams($request, $response, $args);
-            $service = new TasksService($this->database);
+            $service = new TaskService($this->database);
             $result = $service->getTask($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
@@ -71,7 +71,7 @@ class TasksController extends BaseController
     {
         try {
             $this->setParams($request, $response, $args);
-            $service = new TasksService($this->database);
+            $service = new TaskService($this->database);
             $result = $service->searchTasks($this->args['query']);
 
             return $this->jsonResponse('success', $result, 200);
@@ -92,7 +92,7 @@ class TasksController extends BaseController
     {
         try {
             $this->setParams($request, $response, $args);
-            $service = new TasksService($this->database);
+            $service = new TaskService($this->database);
             $input = $this->request->getParsedBody();
             $result = $service->createTask($input);
 
@@ -114,7 +114,7 @@ class TasksController extends BaseController
     {
         $this->setParams($request, $response, $args);
         $input = $this->request->getParsedBody();
-        $service = new TasksService($this->database);
+        $service = new TaskService($this->database);
         try {
             $result = $service->updateTask($input, $this->args['id']);
             return $this->jsonResponse('success', $result, 200);
@@ -135,7 +135,7 @@ class TasksController extends BaseController
     {
         try {
             $this->setParams($request, $response, $args);
-            $service = new TasksService($this->database);
+            $service = new TaskService($this->database);
             $result = $service->deleteTask($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);

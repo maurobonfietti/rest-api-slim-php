@@ -4,12 +4,12 @@ namespace App\Service;
 
 use App\Service\MessageService;
 use App\Service\ValidationService as vs;
-use App\Repository\UsersRepository;
+use App\Repository\UserRepository;
 
 /**
  * Users Service.
  */
-class UsersService extends BaseService
+class UserService extends BaseService
 {
     /**
      * Constructor of the class.
@@ -30,7 +30,7 @@ class UsersService extends BaseService
      */
     public function checkUser($userId)
     {
-        $repo = new UsersRepository;
+        $repo = new UserRepository;
         $stmt = $this->database->prepare($repo->getUserQuery());
         $stmt->bindParam('id', $userId);
         $stmt->execute();
@@ -49,7 +49,7 @@ class UsersService extends BaseService
      */
     public function getUsers()
     {
-        $repository = new UsersRepository;
+        $repository = new UserRepository;
         $query = $repository->getUsersQuery();
         $statement = $this->database->prepare($query);
         $statement->execute();
@@ -79,7 +79,7 @@ class UsersService extends BaseService
      */
     public function searchUsers($str)
     {
-        $repo = new UsersRepository;
+        $repo = new UserRepository;
         $stmt = $this->database->prepare($repo->searchUsersQuery());
         $name = '%' . $str . '%';
         $stmt->bindParam('name', $name);
@@ -102,7 +102,7 @@ class UsersService extends BaseService
     public function createUser($input)
     {
         $data = vs::validateInputOnCreateUser($input);
-        $repository = new UsersRepository;
+        $repository = new UserRepository;
         $query = $repository->createUserQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $data['name']);
@@ -125,7 +125,7 @@ class UsersService extends BaseService
     {
         $user = $this->checkUser($userId);
         $data = vs::validateInputOnUpdateUser($input, $user);
-        $repository = new UsersRepository;
+        $repository = new UserRepository;
         $query = $repository->updateUserQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
@@ -145,7 +145,7 @@ class UsersService extends BaseService
     public function deleteUser($userId)
     {
         $this->checkUser($userId);
-        $repository = new UsersRepository;
+        $repository = new UserRepository;
         $query = $repository->deleteUserQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);

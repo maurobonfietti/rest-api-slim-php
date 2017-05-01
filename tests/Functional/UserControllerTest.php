@@ -2,7 +2,7 @@
 
 namespace Tests\Functional;
 
-class UsersTest extends BaseTestCase
+class UserTest extends BaseTestCase
 {
     private static $id;
 

@@ -5,7 +5,7 @@ namespace App\Repository;
 /**
  * Users Repository.
  */
-class UsersRepository
+class UserRepository
 {
     public function getUserQuery()
     {
