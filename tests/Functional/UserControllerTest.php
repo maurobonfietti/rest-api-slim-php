@@ -98,7 +98,7 @@ class UserTest extends BaseTestCase
 
         self::$id = json_decode($result)->message->id;
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(201, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
         $this->assertContains('Esteban', $result);

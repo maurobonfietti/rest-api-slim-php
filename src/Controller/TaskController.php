@@ -94,7 +94,7 @@ class TaskController extends BaseController
             $input = $this->request->getParsedBody();
             $result = $service->createTask($input);
 
-            return $this->jsonResponse('success', $result, 200);
+            return $this->jsonResponse('success', $result, 201);
         } catch (\Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
         }
