@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\BaseController;
-use App\Service\MessageService;
+use App\Message\MessageService;
 
 /**
  * Default Controller.

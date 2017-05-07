@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Service\MessageService;
+use App\Message\MessageService;
 use App\Service\ValidationService as vs;
 use App\Repository\UserRepository;
 
