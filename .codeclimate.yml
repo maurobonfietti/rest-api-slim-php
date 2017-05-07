@@ -1,0 +1,9 @@
+# .scrutinizer.yml
+build:
+    environment:
+        php:
+            version: 7.1       # Common versions: 5.4, 5.5, 5.6, 7.0, 7.1, or hhvm
+    project_setup:
+        before:
+            - mysql -e "CREATE DATABASE api_rest_slimphp"
+            - mysql api_rest_slimphp < app/data/database.sql
