@@ -2,8 +2,8 @@
 
 namespace App\Service;
 
-use App\Service\ValidationService as vs;
 use App\Repository\TaskRepository;
+use App\Validation\TaskValidation as vs;
 
 /**
  * Tasks Service.

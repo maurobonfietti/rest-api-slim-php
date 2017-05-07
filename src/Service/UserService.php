@@ -3,8 +3,8 @@
 namespace App\Service;
 
 use App\Message\UserMessage;
-use App\Service\ValidationService as vs;
 use App\Repository\UserRepository;
+use App\Validation\UserValidation as vs;
 
 /**
  * Users Service.
