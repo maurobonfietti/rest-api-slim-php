@@ -23,20 +23,12 @@ class TaskService extends BaseService
      * Check if the task exists.
      *
      * @param int $taskId
-     * @return object $task
-     * @throws \Exception
+     * @return array
      */
     public function checkTask($taskId)
     {
-        $tasksRepository = new TaskRepository($this->database);
-        $query = $tasksRepository->getTaskQuery();
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('id', $taskId);
-        $statement->execute();
-        $task = $statement->fetchObject();
-        if (!$task) {
-            throw new \Exception(MessageService::TASK_NOT_FOUND, 404);
-        }
+        $repository = new TaskRepository($this->database);
+        $task = $repository->checkTask($taskId);
 
         return $task;
     }
@@ -72,20 +64,11 @@ class TaskService extends BaseService
      *
      * @param string $tasksName
      * @return array
-     * @throws \Exception
      */
     public function searchTasks($tasksName)
     {
-        $repository = new TaskRepository;
-        $query = $repository->searchTasksQuery();
-        $statement = $this->database->prepare($query);
-        $query = '%' . $tasksName . '%';
-        $statement->bindParam('query', $query);
-        $statement->execute();
-        $tasks = $statement->fetchAll();
-        if (!$tasks) {
-            throw new \Exception(MessageService::TASK_NOT_FOUND, 404);
-        }
+        $repository = new TaskRepository($this->database);
+        $tasks = $repository->searchTasks($tasksName);
 
         return $tasks;
     }
