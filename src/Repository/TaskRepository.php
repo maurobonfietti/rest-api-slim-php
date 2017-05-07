@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Repository\Query\TaskQuery;
 use App\Service\MessageService;
 
 /**
@@ -26,7 +27,7 @@ class TaskRepository extends BaseRepository
      */
     public function checkTask($taskId)
     {
-        $query = $this->getTaskQuery();
+        $query = TaskQuery::getTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->execute();
@@ -45,7 +46,7 @@ class TaskRepository extends BaseRepository
      */
     public function getTasks()
     {
-        $query = $this->getTasksQuery();
+        $query = TaskQuery::getTasksQuery();
         $statement = $this->database->prepare($query);
         $statement->execute();
 
@@ -61,7 +62,7 @@ class TaskRepository extends BaseRepository
      */
     public function searchTasks($tasksName)
     {
-        $query = $this->searchTasksQuery();
+        $query = TaskQuery::searchTasksQuery();
         $statement = $this->database->prepare($query);
         $query = '%' . $tasksName . '%';
         $statement->bindParam('query', $query);
@@ -83,7 +84,7 @@ class TaskRepository extends BaseRepository
      */
     public function createTask($data)
     {
-        $query = $this->createTaskQuery();
+        $query = TaskQuery::createTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('task', $data['task']);
         $statement->bindParam('status', $data['status']);
@@ -102,7 +103,7 @@ class TaskRepository extends BaseRepository
      */
     public function updateTask($data, $taskId)
     {
-        $query = $this->updateTaskQuery();
+        $query = TaskQuery::updateTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->bindParam('task', $data['task']);
@@ -121,44 +122,9 @@ class TaskRepository extends BaseRepository
      */
     public function deleteTask($taskId)
     {
-        $query = $this->deleteTaskQuery();
+        $query = TaskQuery::deleteTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->execute();
-    }
-
-    /**
-     * Get Task Sql Query.
-     *
-     * @return string
-     */
-    public function getTaskQuery()
-    {
-        return 'SELECT * FROM tasks WHERE id=:id';
-    }
-
-    public function getTasksQuery()
-    {
-        return 'SELECT * FROM tasks ORDER BY task';
-    }
-
-    public function searchTasksQuery()
-    {
-        return 'SELECT * FROM tasks WHERE UPPER(task) LIKE :query ORDER BY task';
-    }
-
-    public function createTaskQuery()
-    {
-        return 'INSERT INTO tasks (task, status) VALUES (:task, :status)';
-    }
-
-    public function updateTaskQuery()
-    {
-        return 'UPDATE tasks SET task=:task, status=:status WHERE id=:id';
-    }
-
-    public function deleteTaskQuery()
-    {
-        return 'DELETE FROM tasks WHERE id=:id';
     }
 }
