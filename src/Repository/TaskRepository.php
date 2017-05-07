@@ -27,7 +27,7 @@ class TaskRepository extends BaseRepository
      */
     public function checkTask($taskId)
     {
-        $query = TaskQuery::getTaskQuery();
+        $query = TaskQuery::GET_TASK_QUERY;
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->execute();
@@ -46,7 +46,7 @@ class TaskRepository extends BaseRepository
      */
     public function getTasks()
     {
-        $query = TaskQuery::getTasksQuery();
+        $query = TaskQuery::GET_TASKS_QUERY;
         $statement = $this->database->prepare($query);
         $statement->execute();
 
@@ -62,7 +62,7 @@ class TaskRepository extends BaseRepository
      */
     public function searchTasks($tasksName)
     {
-        $query = TaskQuery::searchTasksQuery();
+        $query = TaskQuery::SEARCH_TASKS_QUERY;
         $statement = $this->database->prepare($query);
         $query = '%' . $tasksName . '%';
         $statement->bindParam('query', $query);
@@ -84,7 +84,7 @@ class TaskRepository extends BaseRepository
      */
     public function createTask($data)
     {
-        $query = TaskQuery::createTaskQuery();
+        $query = TaskQuery::CREATE_TASK_QUERY;
         $statement = $this->database->prepare($query);
         $statement->bindParam('task', $data['task']);
         $statement->bindParam('status', $data['status']);
@@ -103,7 +103,7 @@ class TaskRepository extends BaseRepository
      */
     public function updateTask($data, $taskId)
     {
-        $query = TaskQuery::updateTaskQuery();
+        $query = TaskQuery::UPDATE_TASK_QUERY;
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->bindParam('task', $data['task']);
@@ -122,7 +122,7 @@ class TaskRepository extends BaseRepository
      */
     public function deleteTask($taskId)
     {
-        $query = TaskQuery::deleteTaskQuery();
+        $query = TaskQuery::DELETE_TASK_QUERY;
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->execute();
