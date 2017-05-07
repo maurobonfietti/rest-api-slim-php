@@ -28,7 +28,7 @@ class TaskService extends BaseService
      */
     public function checkTask($taskId)
     {
-        $tasksRepository = new TaskRepository;
+        $tasksRepository = new TaskRepository($this->database);
         $query = $tasksRepository->getTaskQuery();
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $taskId);
@@ -48,12 +48,10 @@ class TaskService extends BaseService
      */
     public function getTasks()
     {
-        $repository = new TaskRepository;
-        $query = $repository->getTasksQuery();
-        $statement = $this->database->prepare($query);
-        $statement->execute();
+        $repository = new TaskRepository($this->database);
+        $tasks = $repository->getTasks();
 
-        return $statement->fetchAll();
+        return $tasks;
     }
 
     /**
