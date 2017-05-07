@@ -1,8 +1,8 @@
 <?php
 
-namespace Tests\Functional;
+namespace Tests\Api;
 
-class DefaultControllerTest extends BaseTestCase
+class DefaultTest extends BaseTestCase
 {
     /**
      * Test that default endpoint show a help.

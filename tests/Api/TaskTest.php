@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Functional;
+namespace Tests\Api;
 
 class TaskTest extends BaseTestCase
 {
