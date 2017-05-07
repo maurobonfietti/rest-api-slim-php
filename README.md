@@ -10,8 +10,9 @@ Ejemplo de API REST con microframework Slim PHP.
 
 ## INSTALACIÓN:
 
-1- Descargar el proyecto:
-```
+### 1- Descargar el proyecto:
+
+```bash
 $ cd path-to-your-projects
 $ git clone https://github.com/maurobonfietti/api-rest-slimphp.git
 $ cd api-rest-slimphp
@@ -19,16 +20,16 @@ $ composer install
 ```
 
 
-2- Crear nueva base de datos MySQL. Por ejemplo: "api_rest_slimphp".
+### 2- Crear nueva base de datos MySQL. Por ejemplo: "api_rest_slimphp".
 
 Desde la línea de comandos ejecutar:
 
-```
+```bash
 mysql -e 'CREATE DATABASE api_rest_slimphp;'
 ```
 
 
-3- Crear la estructura y cargar datos de prueba en la base de datos.
+### 3- Crear la estructura y cargar datos de prueba en la base de datos.
 
 La base de datos se puede actualizar manualmente utilizando el siguiente archivo: [database.sql](app/data/database.sql).
 
@@ -39,10 +40,11 @@ mysql api_rest_slimphp < app/data/database.sql
 ```
 
 
-4- Configurar los datos de acceso a MySQL.
+### 4- Configurar los datos de acceso a MySQL.
 
 Editar archivo de configuración: `app/settings.php`
-```
+
+```php
 // Database connection settings
 'db' => [
     'host' => '127.0.0.1',
@@ -56,7 +58,8 @@ Editar archivo de configuración: `app/settings.php`
 ## SERVIDOR LOCAL:
 
 Se puede iniciar el servidor web interno de PHP ejecutando:
-```
+
+```bash
 $ composer start
 ```
 
@@ -69,7 +72,8 @@ Si todo fue bien :sunglasses:, se puede acceder localmente al proyecto ingresand
 [Tareas](http://localhost:8080/tasks).
 
 El comando `composer start` sería el equivalente a ejecutar:
-```
+
+```bash
 $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
@@ -82,7 +86,8 @@ Para más información sobre el uso de la API REST, ver el siguiente documento c
 ## TESTS:
 
 Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
-```
+
+```bash
 $ phpunit
 PHPUnit 6.1.2 by Sebastian Bergmann and contributors.
 
