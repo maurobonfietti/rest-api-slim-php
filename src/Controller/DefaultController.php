@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\BaseController;
-use App\Message\MessageService;
+use App\Message\DefaultMessage;
 
 /**
  * Default Controller.
@@ -51,7 +51,7 @@ class DefaultController extends BaseController
     {
         $this->setParams($request, $response, $args);
         $version = [
-            'api_version' => MessageService::API_VERSION
+            'api_version' => DefaultMessage::API_VERSION
         ];
 
         return $this->jsonResponse('success', $version, 200);

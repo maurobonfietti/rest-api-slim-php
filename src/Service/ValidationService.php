@@ -2,7 +2,8 @@
 
 namespace App\Service;
 
-use App\Message\MessageService;
+use App\Message\TaskMessage;
+use App\Message\UserMessage;
 use Respect\Validation\Validator as v;
 
 /**
@@ -20,7 +21,7 @@ abstract class ValidationService
     protected static function validateName($name)
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
-            throw new \Exception(MessageService::USER_NAME_INVALID, 400);
+            throw new \Exception(UserMessage::USER_NAME_INVALID, 400);
         }
 
         return $name;
@@ -37,7 +38,7 @@ abstract class ValidationService
     {
         $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
         if (!v::email()->validate($email)) {
-            throw new \Exception(MessageService::USER_EMAIL_INVALID, 400);
+            throw new \Exception(UserMessage::USER_EMAIL_INVALID, 400);
         }
 
         return $email;
@@ -53,7 +54,7 @@ abstract class ValidationService
     protected static function validateTaskName($name)
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
-            throw new \Exception(MessageService::TASK_NAME_INVALID, 400);
+            throw new \Exception(TaskMessage::TASK_NAME_INVALID, 400);
         }
 
         return $name;
@@ -69,7 +70,7 @@ abstract class ValidationService
     protected static function validateStatus($status)
     {
         if (!v::numeric()->between(0, 1)->validate($status)) {
-            throw new \Exception(MessageService::TASK_STATUS_INVALID, 400);
+            throw new \Exception(TaskMessage::TASK_STATUS_INVALID, 400);
         }
 
         return $status;
@@ -85,7 +86,7 @@ abstract class ValidationService
     public static function validateInputOnCreateUser($input)
     {
         if (!isset($input['name'])) {
-            throw new \Exception(MessageService::USER_NAME_REQUIRED, 400);
+            throw new \Exception(UserMessage::USER_NAME_REQUIRED, 400);
         }
         $name = self::validateName($input['name']);
         $email = null;
@@ -107,7 +108,7 @@ abstract class ValidationService
     public static function validateInputOnUpdateUser($input, $user)
     {
         if (!isset($input['name']) && !isset($input['email'])) {
-            throw new \Exception(MessageService::USER_INFO_REQUIRED, 400);
+            throw new \Exception(UserMessage::USER_INFO_REQUIRED, 400);
         }
         $name = $user->name;
         if (isset($input['name'])) {
@@ -131,7 +132,7 @@ abstract class ValidationService
     public static function validateInputOnCreateTask($input)
     {
         if (empty($input['task'])) {
-            throw new \Exception(MessageService::TASK_NAME_REQUIRED, 400);
+            throw new \Exception(TaskMessage::TASK_NAME_REQUIRED, 400);
         }
         $task = self::validateTaskName($input['task']);
         $status = 0;
@@ -153,7 +154,7 @@ abstract class ValidationService
     public static function validateInputOnUpdateTask($input, $task)
     {
         if (!isset($input['task']) && !isset($input['status'])) {
-            throw new \Exception(MessageService::TASK_INFO_REQUIRED, 400);
+            throw new \Exception(TaskMessage::TASK_INFO_REQUIRED, 400);
         }
         $name = $task->task;
         if (isset($input['task'])) {

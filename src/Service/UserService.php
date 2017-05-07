@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-use App\Message\MessageService;
+use App\Message\UserMessage;
 use App\Service\ValidationService as vs;
 use App\Repository\UserRepository;
 
@@ -34,7 +34,7 @@ class UserService extends BaseService
         $stmt->execute();
         $user = $stmt->fetchObject();
         if (!$user) {
-            throw new \Exception(MessageService::USER_NOT_FOUND, 404);
+            throw new \Exception(UserMessage::USER_NOT_FOUND, 404);
         }
 
         return $user;
@@ -84,7 +84,7 @@ class UserService extends BaseService
         $stmt->execute();
         $users = $stmt->fetchAll();
         if (!$users) {
-            throw new \Exception(MessageService::USER_NAME_NOT_FOUND, 404);
+            throw new \Exception(UserMessage::USER_NAME_NOT_FOUND, 404);
         }
 
         return $users;
@@ -149,6 +149,6 @@ class UserService extends BaseService
         $statement->bindParam('id', $userId);
         $statement->execute();
 
-        return MessageService::USER_DELETED;
+        return UserMessage::USER_DELETED;
     }
 }

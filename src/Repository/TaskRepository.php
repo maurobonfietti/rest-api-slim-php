@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Message\MessageService;
+use App\Message\TaskMessage;
 use App\Repository\Query\TaskQuery;
 
 /**
@@ -32,7 +32,7 @@ class TaskRepository extends BaseRepository
         $statement->execute();
         $task = $statement->fetchObject();
         if (empty($task)) {
-            throw new \Exception(MessageService::TASK_NOT_FOUND, 404);
+            throw new \Exception(TaskMessage::TASK_NOT_FOUND, 404);
         }
 
         return $task;
@@ -66,7 +66,7 @@ class TaskRepository extends BaseRepository
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
-            throw new \Exception(MessageService::TASK_NOT_FOUND, 404);
+            throw new \Exception(TaskMessage::TASK_NOT_FOUND, 404);
         }
 
         return $tasks;
@@ -113,12 +113,14 @@ class TaskRepository extends BaseRepository
      * Delete a task.
      *
      * @param int $taskId
-     * @return void
+     * @return string
      */
     public function deleteTask($taskId)
     {
         $statement = $this->database->prepare(TaskQuery::DELETE_TASK_QUERY);
         $statement->bindParam('id', $taskId);
         $statement->execute();
+
+        return TaskMessage::TASK_DELETED;
     }
 }

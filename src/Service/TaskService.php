@@ -2,7 +2,6 @@
 
 namespace App\Service;
 
-use App\Message\MessageService;
 use App\Service\ValidationService as vs;
 use App\Repository\TaskRepository;
 
@@ -115,8 +114,8 @@ class TaskService extends BaseService
     {
         $this->checkTask($taskId);
         $repository = new TaskRepository($this->database);
-        $repository->deleteTask($taskId);
+        $response = $repository->deleteTask($taskId);
 
-        return MessageService::TASK_DELETED;
+        return $response;
     }
 }
