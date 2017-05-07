@@ -97,8 +97,8 @@ class TaskService extends BaseService
      */
     public function updateTask($input, $taskId)
     {
-        $otask = $this->checkTask($taskId);
-        $data = vs::validateInputOnUpdateTask($input, $otask);
+        $checkTask = $this->checkTask($taskId);
+        $data = vs::validateInputOnUpdateTask($input, $checkTask);
         $repository = new TaskRepository($this->database);
         $task = $repository->updateTask($data, $taskId);
 

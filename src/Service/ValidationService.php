@@ -146,7 +146,7 @@ abstract class ValidationService
      * Validate and sanitize input data when update a task.
      *
      * @param array $input
-     * @param object $task
+     * @param array $task
      * @return string
      * @throws \Exception
      */
