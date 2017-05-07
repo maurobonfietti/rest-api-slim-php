@@ -75,6 +75,59 @@ class TaskRepository extends BaseRepository
     }
 
     /**
+     * Create a task.
+     *
+     * @param array $data
+     * @return array
+     * @throws \Exception
+     */
+    public function createTask($data)
+    {
+        $query = $this->createTaskQuery();
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('task', $data['task']);
+        $statement->bindParam('status', $data['status']);
+        $statement->execute();
+        $task = $this->checkTask($this->database->lastInsertId());
+
+        return $task;
+    }
+
+    /**
+     * Update a task.
+     *
+     * @param array $data
+     * @param int $taskId
+     * @return array
+     */
+    public function updateTask($data, $taskId)
+    {
+        $query = $this->updateTaskQuery();
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('id', $taskId);
+        $statement->bindParam('task', $data['task']);
+        $statement->bindParam('status', $data['status']);
+        $statement->execute();
+        $task = $this->checkTask($taskId);
+
+        return $task;
+    }
+
+    /**
+     * Delete a task.
+     *
+     * @param int $taskId
+     * @return void
+     */
+    public function deleteTask($taskId)
+    {
+        $query = $this->deleteTaskQuery();
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('id', $taskId);
+        $statement->execute();
+    }
+
+    /**
      * Get Task Sql Query.
      *
      * @return string

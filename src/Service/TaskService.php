@@ -78,18 +78,12 @@ class TaskService extends BaseService
      *
      * @param array $input
      * @return array
-     * @throws \Exception
      */
     public function createTask($input)
     {
+        $repository = new TaskRepository($this->database);
         $data = vs::validateInputOnCreateTask($input);
-        $repository = new TaskRepository;
-        $query = $repository->createTaskQuery();
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('task', $data['task']);
-        $statement->bindParam('status', $data['status']);
-        $statement->execute();
-        $task = $this->checkTask($this->database->lastInsertId());
+        $task = $repository->createTask($data);
 
         return $task;
     }
@@ -100,37 +94,28 @@ class TaskService extends BaseService
      * @param array $input
      * @param int $taskId
      * @return array
-     * @throws \Exception
      */
     public function updateTask($input, $taskId)
     {
-        $task = $this->checkTask($taskId);
-        $data = vs::validateInputOnUpdateTask($input, $task);
-        $repository = new TaskRepository;
-        $query = $repository->updateTaskQuery();
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('id', $taskId);
-        $statement->bindParam('task', $data['task']);
-        $statement->bindParam('status', $data['status']);
-        $statement->execute();
+        $otask = $this->checkTask($taskId);
+        $data = vs::validateInputOnUpdateTask($input, $otask);
+        $repository = new TaskRepository($this->database);
+        $task = $repository->updateTask($data, $taskId);
 
-        return $this->checkTask($taskId);
+        return $task;
     }
 
     /**
      * Delete a task.
      *
      * @param int $taskId
-     * @return array
+     * @return string
      */
     public function deleteTask($taskId)
     {
         $this->checkTask($taskId);
-        $repository = new TaskRepository;
-        $query = $repository->deleteTaskQuery();
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('id', $taskId);
-        $statement->execute();
+        $repository = new TaskRepository($this->database);
+        $repository->deleteTask($taskId);
 
         return MessageService::TASK_DELETED;
     }
