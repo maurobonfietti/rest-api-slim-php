@@ -12,8 +12,6 @@ use App\Repository\UserRepository;
 class UserService extends BaseService
 {
     /**
-     * Constructor of the class.
-     *
      * @param object $database
      */
     public function __construct(\PDO $database)

@@ -11,8 +11,6 @@ use App\Service\MessageService;
 class DefaultController extends BaseController
 {
     /**
-     * Constructor of the class.
-     *
      * @param \Slim\Container $container
      */
     public function __construct(\Slim\Container $container)
@@ -31,11 +29,12 @@ class DefaultController extends BaseController
     public function getHelp($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $message = ['help' => [
-            'tasks' => 'Ver Tareas: /tasks',
-            'users' => 'Ver Usuarios: /users',
-            'version' => 'Ver Version: /version',
-        ]];
+        $message = [
+            'help' => '/',
+            'tasks' => '/tasks',
+            'users' => '/users',
+            'version' => '/version',
+        ];
 
         return $this->jsonResponse('success', $message, 200);
     }
@@ -51,7 +50,9 @@ class DefaultController extends BaseController
     public function getVersion($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $version = ['api_version' => MessageService::API_VERSION];
+        $version = [
+            'api_version' => MessageService::API_VERSION
+        ];
 
         return $this->jsonResponse('success', $version, 200);
     }

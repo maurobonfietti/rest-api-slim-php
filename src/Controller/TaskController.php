@@ -11,8 +11,6 @@ use App\Service\TaskService;
 class TaskController extends BaseController
 {
     /**
-     * Constructor of the class.
-     *
      * @param \Slim\Container $container
      */
     public function __construct(\Slim\Container $container)
