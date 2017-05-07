@@ -42,7 +42,7 @@ mysql api_rest_slimphp < app/data/database.sql
 
 4- Configurar los datos de acceso a MySQL.
 
-Editar archivo de configuración: `src/settings.php`
+Editar archivo de configuración: `app/settings.php`
 ```
 // Database connection settings
 'db' => [
