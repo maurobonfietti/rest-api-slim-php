@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Service\TaskService;
+
 /**
  * Base Controller.
  */
@@ -28,6 +30,16 @@ abstract class BaseController
         $this->response = $response;
         $this->args = $args;
         $this->logRequest();
+    }
+
+    /**
+     * @return TaskService
+     */
+    protected function getTaskService()
+    {
+        $service = new TaskService($this->database);
+
+        return $service;
     }
 
     /**

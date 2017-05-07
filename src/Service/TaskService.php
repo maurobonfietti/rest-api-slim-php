@@ -25,7 +25,7 @@ class TaskService extends BaseService
      * @param int $taskId
      * @return array
      */
-    public function checkTask($taskId)
+    protected function checkTask($taskId)
     {
         $repository = new TaskRepository($this->database);
         $task = $repository->checkTask($taskId);
