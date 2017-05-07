@@ -3,45 +3,12 @@
 namespace App\Validation;
 
 use App\Message\TaskMessage;
-use Respect\Validation\Validator as v;
 
 /**
  * Task Validation.
  */
-abstract class TaskValidation
+abstract class TaskValidation extends BaseValidation
 {
-    /**
-     * Validate and sanitize a task name.
-     *
-     * @param string $name
-     * @return string
-     * @throws \Exception
-     */
-    protected static function validateTaskName($name)
-    {
-        if (!v::alnum()->length(2, 100)->validate($name)) {
-            throw new \Exception(TaskMessage::TASK_NAME_INVALID, 400);
-        }
-
-        return $name;
-    }
-
-    /**
-     * Validate and sanitize a task status.
-     *
-     * @param int $status
-     * @return string
-     * @throws \Exception
-     */
-    protected static function validateStatus($status)
-    {
-        if (!v::numeric()->between(0, 1)->validate($status)) {
-            throw new \Exception(TaskMessage::TASK_STATUS_INVALID, 400);
-        }
-
-        return $status;
-    }
-
     /**
      * Validate and sanitize input data when create new task.
      *
