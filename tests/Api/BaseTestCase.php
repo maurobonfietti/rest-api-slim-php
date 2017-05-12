@@ -7,21 +7,8 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\Environment;
 
-/**
- * This is an example class that shows how you could set up a method that
- * runs the application. Note that it doesn't cover all use-cases and is
- * tuned to the specifics of this skeleton app, so if your needs are
- * different, you'll need to change it.
- */
 class BaseTestCase extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * Use middleware when running application?
-     *
-     * @var bool
-     */
-    protected $withMiddleware = true;
-
     /**
      * Process the application given a request method and URI
      *
@@ -48,9 +35,6 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
             $request = $request->withParsedBody($requestData);
         }
 
-        // Set up a response object
-        $response = new Response();
-
         // Use the application settings
         $settings = require __DIR__ . '/../../app/settings.php';
 
@@ -61,15 +45,13 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
         require __DIR__ . '/../../app/dependencies.php';
 
         // Register middleware
-        if ($this->withMiddleware) {
-            require __DIR__ . '/../../app/middleware.php';
-        }
+        require __DIR__ . '/../../app/middleware.php';
 
         // Register routes
         require __DIR__ . '/../../app/routes.php';
 
         // Process the application
-        $response = $app->process($request, $response);
+        $response = $app->process($request, new Response());
 
         // Return the response
         return $response;
