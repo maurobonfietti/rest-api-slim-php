@@ -120,6 +120,23 @@ class TaskTest extends BaseTestCase
     }
 
     /**
+     * Test Create Task With Invalid TaskName.
+     */
+    public function testCreateTaskWithInvalidTaskName()
+    {
+        $response = $this->runApp(
+            'POST', '/tasks', ['task' => 'z', 'status' => 1]
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('task', $result);
+        $this->assertContains('error', $result);
+    }
+
+    /**
      * Test Create Task With Invalid Status.
      */
     public function testCreateTaskWithInvalidStatus()

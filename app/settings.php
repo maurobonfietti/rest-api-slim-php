@@ -6,7 +6,7 @@ return [
 
         // Monolog settings
         'logger' => [
-            'enabled' => false,
+            'enabled' => true,
             'name' => 'slim-app',
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
