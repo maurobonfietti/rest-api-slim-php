@@ -67,6 +67,9 @@ abstract class BaseController
      */
     protected function logRequest()
     {
+        if (!$this->logger) {
+            return false;
+        }
         $routeInfo = $this->request->getAttribute('routeInfo');
         $route = $this->request->getAttribute('route');
         $this->logger->info('************');
@@ -82,6 +85,9 @@ abstract class BaseController
      */
     protected function logResponse($response)
     {
+        if (!$this->logger) {
+            return false;
+        }
         $this->logger->info('* RESPONSE: ' . json_encode($response));
         $this->logger->info('************');
     }

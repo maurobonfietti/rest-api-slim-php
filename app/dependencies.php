@@ -19,6 +19,9 @@ $container['db'] = function ($c) {
 // monolog
 $container['logger'] = function ($c) {
     $settings = $c->get('settings')['logger'];
+    if ($settings['enabled'] === false) {
+        return false;
+    }
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler(
