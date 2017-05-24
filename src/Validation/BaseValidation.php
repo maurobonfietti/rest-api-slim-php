@@ -2,8 +2,8 @@
 
 namespace App\Validation;
 
-use App\Message\TaskMessage;
 use App\Message\UserMessage;
+use App\Exception\TaskException;
 use Respect\Validation\Validator as v;
 
 /**
@@ -54,7 +54,7 @@ abstract class BaseValidation
     protected static function validateTaskName($name)
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
-            throw new \Exception(TaskMessage::TASK_NAME_INVALID, 400);
+            throw new TaskException(TaskException::TASK_NAME_INVALID, 400);
         }
 
         return $name;
@@ -70,7 +70,7 @@ abstract class BaseValidation
     protected static function validateStatus($status)
     {
         if (!v::numeric()->between(0, 1)->validate($status)) {
-            throw new \Exception(TaskMessage::TASK_STATUS_INVALID, 400);
+            throw new TaskException(TaskException::TASK_STATUS_INVALID, 400);
         }
 
         return $status;

@@ -2,7 +2,7 @@
 
 namespace App\Validation;
 
-use App\Message\TaskMessage;
+use App\Exception\TaskException;
 
 /**
  * Task Validation.
@@ -19,7 +19,7 @@ abstract class TaskValidation extends BaseValidation
     public static function validateInputOnCreateTask($input)
     {
         if (empty($input['task'])) {
-            throw new \Exception(TaskMessage::TASK_NAME_REQUIRED, 400);
+            throw new TaskException(TaskException::TASK_NAME_REQUIRED, 400);
         }
         $task = self::validateTaskName($input['task']);
         $status = 0;
@@ -41,7 +41,7 @@ abstract class TaskValidation extends BaseValidation
     public static function validateInputOnUpdateTask($input, $task)
     {
         if (!isset($input['task']) && !isset($input['status'])) {
-            throw new \Exception(TaskMessage::TASK_INFO_REQUIRED, 400);
+            throw new TaskException(TaskException::TASK_INFO_REQUIRED, 400);
         }
         $name = $task->task;
         if (isset($input['task'])) {
