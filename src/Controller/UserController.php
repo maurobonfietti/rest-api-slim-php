@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Controller\BaseController;
-use App\Service\UserService;
 
 /**
  * Users Controller.
@@ -30,8 +29,7 @@ class UserController extends BaseController
     public function getUsers($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $service = new UserService($this->database);
-        $result = $service->getUsers();
+        $result = $this->getUserService()->getUsers();
 
         return $this->jsonResponse('success', $result, 200);
     }
@@ -48,8 +46,7 @@ class UserController extends BaseController
     {
         try {
             $this->setParams($request, $response, $args);
-            $service = new UserService($this->database);
-            $result = $service->getUser($this->args['id']);
+            $result = $this->getUserService()->getUser($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
@@ -69,8 +66,7 @@ class UserController extends BaseController
     {
         try {
             $this->setParams($request, $response, $args);
-            $service = new UserService($this->database);
-            $result = $service->searchUsers($this->args['query']);
+            $result = $this->getUserService()->searchUsers($this->args['query']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
@@ -90,9 +86,8 @@ class UserController extends BaseController
     {
         try {
             $this->setParams($request, $response, $args);
-            $service = new UserService($this->database);
             $input = $this->request->getParsedBody();
-            $result = $service->createUser($input);
+            $result = $this->getUserService()->createUser($input);
 
             return $this->jsonResponse('success', $result, 201);
         } catch (\Exception $ex) {
@@ -110,11 +105,11 @@ class UserController extends BaseController
      */
     public function updateUser($request, $response, $args)
     {
-        $this->setParams($request, $response, $args);
-        $input = $this->request->getParsedBody();
-        $service = new UserService($this->database);
         try {
-            $result = $service->updateUser($input, $this->args['id']);
+            $this->setParams($request, $response, $args);
+            $input = $this->request->getParsedBody();
+            $result = $this->getUserService()->updateUser($input, $this->args['id']);
+
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
             return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
@@ -133,8 +128,7 @@ class UserController extends BaseController
     {
         try {
             $this->setParams($request, $response, $args);
-            $service = new UserService($this->database);
-            $result = $service->deleteUser($this->args['id']);
+            $result = $this->getUserService()->deleteUser($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\TaskService;
+use App\Service\UserService;
 
 /**
  * Base Controller.
@@ -38,6 +39,16 @@ abstract class BaseController
     protected function getTaskService()
     {
         $service = new TaskService($this->database);
+
+        return $service;
+    }
+
+    /**
+     * @return UserService
+     */
+    protected function getUserService()
+    {
+        $service = new UserService($this->database);
 
         return $service;
     }
