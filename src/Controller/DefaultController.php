@@ -29,11 +29,12 @@ class DefaultController extends BaseController
     public function getHelp($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
+        $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $message = [
-            'help' => '/',
-            'tasks' => '/tasks',
-            'users' => '/users',
-            'version' => '/version',
+            'help' => $url . '',
+            'tasks' => $url . 'tasks',
+            'users' => $url . 'users',
+            'version' => $url . 'version',
         ];
 
         return $this->jsonResponse('success', $message, 200);
