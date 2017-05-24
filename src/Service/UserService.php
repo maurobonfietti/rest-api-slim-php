@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Message\UserMessage;
+use App\Exception\UserException;
 use App\Repository\UserRepository;
 use App\Validation\UserValidation as vs;
 
@@ -34,7 +35,7 @@ class UserService extends BaseService
         $stmt->execute();
         $user = $stmt->fetchObject();
         if (!$user) {
-            throw new \Exception(UserMessage::USER_NOT_FOUND, 404);
+            throw new UserException(UserMessage::USER_NOT_FOUND, 404);
         }
 
         return $user;
