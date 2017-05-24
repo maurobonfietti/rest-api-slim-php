@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Message\TaskMessage;
+use App\Exception\TaskException;
 use App\Repository\Query\TaskQuery;
 
 /**
@@ -32,7 +33,7 @@ class TaskRepository extends BaseRepository
         $statement->execute();
         $task = $statement->fetchObject();
         if (empty($task)) {
-            throw new \Exception(TaskMessage::TASK_NOT_FOUND, 404);
+            throw new TaskException(TaskMessage::TASK_NOT_FOUND, 404);
         }
 
         return $task;
