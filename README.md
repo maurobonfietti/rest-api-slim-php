@@ -97,3 +97,8 @@ Time: 202 ms, Memory: 4.00MB
 
 OK (30 tests, 130 assertions)
 ```
+
+
+## DESCARGAR COLECCIÓN:
+
+Descargar e importar la colección con toda la información de la api, para utilizarla directamente como herramienta con postman: [Importar](https://www.getpostman.com/collections/49b08efe3c6f82ea83dd).
