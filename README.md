@@ -78,27 +78,26 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
 
-## MODO DE USO:
-
-Para más información sobre el uso de la API REST, ver el siguiente documento con el [Modo de Uso](DOC.md).
-
-
 ## TESTS:
 
 Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
 
 ```bash
-$ phpunit
-PHPUnit 6.1.2 by Sebastian Bergmann and contributors.
+PHPUnit 6.1.3 by Sebastian Bergmann and contributors.
 
-..............................                                    30 / 30 (100%)
+...............................                                   31 / 31 (100%)
 
-Time: 202 ms, Memory: 4.00MB
+Time: 102 ms, Memory: 6.00MB
 
-OK (30 tests, 130 assertions)
+OK (31 tests, 134 assertions)
 ```
 
 
-## DESCARGAR COLECCIÓN:
+## MANUAL DE USO:
 
-Descargar e importar la colección con toda la información de la api, para utilizarla directamente como herramienta con postman: [Importar](https://www.getpostman.com/collections/49b08efe3c6f82ea83dd).
+Para más información sobre el modo de uso de la API REST, ver el siguiente documento: [Manual de Uso](DOC.md).
+
+
+## DESCARGAR API EN POSTMAN:
+
+Descargar e importar la api como coleccion de postman. Toda la información de la api, lista para usar desde postman: [Importar Colección](https://www.getpostman.com/collections/49b08efe3c6f82ea83dd).
