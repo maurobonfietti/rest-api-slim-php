@@ -98,6 +98,6 @@ OK (31 tests, 134 assertions)
 Para más información sobre el modo de uso de la API REST, ver el siguiente documento: [Manual de Uso](DOC.md).
 
 
-## DESCARGAR API EN POSTMAN:
+## IMPORTAR EN POSTMAN:
 
-Descargar e importar la api como coleccion de postman. Toda la información de la api, lista para usar desde postman: [Importar Colección](https://www.getpostman.com/collections/49b08efe3c6f82ea83dd).
+Toda la información de la Api, lista para descargar y utilizar como colección de postman: [Importar Colección](https://www.getpostman.com/collections/49b08efe3c6f82ea83dd).
