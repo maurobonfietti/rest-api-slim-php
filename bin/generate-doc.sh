@@ -4,7 +4,7 @@ source bin/endpoints.sh
 
 echo -e "## MODO DE USO:\n\n"
 
-for i in {1..14}
+for i in {1..15}
 do
     echo "### ${ttl[$i]}:"
     echo

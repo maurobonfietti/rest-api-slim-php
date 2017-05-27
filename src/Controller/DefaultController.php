@@ -58,4 +58,22 @@ class DefaultController extends BaseController
 
         return $this->jsonResponse('success', $version, 200);
     }
+
+    /**
+     * Get Api Status.
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return array
+     */
+    public function getStatus($request, $response, $args)
+    {
+        $this->setParams($request, $response, $args);
+        $status = [
+            'api_status' => 'OK'
+        ];
+
+        return $this->jsonResponse('success', $status, 200);
+    }
 }

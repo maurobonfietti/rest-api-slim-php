@@ -1,8 +1,8 @@
 <?php
 
 $app->get('/', 'App\Controller\DefaultController:getHelp');
-
 $app->get('/version', 'App\Controller\DefaultController:getVersion');
+$app->get('/status', 'App\Controller\DefaultController:getStatus');
 
 $app->group('/tasks', function () use ($app) {
     $app->get('', 'App\Controller\TaskController:getTasks');
