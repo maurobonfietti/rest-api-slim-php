@@ -100,4 +100,4 @@ Para más información sobre el modo de uso de la API REST, ver el siguiente doc
 
 ## IMPORTAR EN POSTMAN:
 
-Toda la información de la Api, lista para descargar y utilizar como colección de postman: [Importar Colección](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
+Toda la información de la API, preparada para descargar y utilizar como colección de postman: [Importar Colección](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
