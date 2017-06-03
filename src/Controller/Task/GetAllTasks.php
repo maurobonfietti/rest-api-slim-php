@@ -3,7 +3,7 @@
 namespace App\Controller\Task;
 
 /**
- * Tasks Controller.
+ * Get All Tasks Controller.
  */
 class GetAllTasks extends BaseTaskController
 {

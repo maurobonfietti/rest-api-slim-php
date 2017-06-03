@@ -7,11 +7,11 @@ $app->get('/status', 'App\Controller\DefaultController:getStatus');
 $app->group('/api/v1', function () use ($app) {
     $app->group('/tasks', function () use ($app) {
         $app->get('', 'App\Controller\Task\GetAllTasks:getTasks');
-        $app->get('/[{id}]', 'App\Controller\Task\TaskController:getTask');
-        $app->get('/search/[{query}]', 'App\Controller\Task\TaskController:searchTasks');
-        $app->post('', 'App\Controller\Task\TaskController:createTask');
-        $app->put('/[{id}]', 'App\Controller\Task\TaskController:updateTask');
-        $app->delete('/[{id}]', 'App\Controller\Task\TaskController:deleteTask');
+        $app->get('/[{id}]', 'App\Controller\Task\GetOneTask:getTask');
+        $app->get('/search/[{query}]', 'App\Controller\Task\SearchTasks:searchTasks');
+        $app->post('', 'App\Controller\Task\CreateTask:createTask');
+        $app->put('/[{id}]', 'App\Controller\Task\UpdateTask:updateTask');
+        $app->delete('/[{id}]', 'App\Controller\Task\DeleteTask:deleteTask');
     });
     $app->group('/users', function () use ($app) {
         $app->get('', 'App\Controller\User\UserController:getUsers');
