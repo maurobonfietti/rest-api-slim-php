@@ -18,7 +18,7 @@
         "monolog/monolog": "^1.17",
         "codeclimate/php-test-reporter": "dev-master",
         "respect/validation": "^1.1",
-        "symfony/var-dumper": "^3.2"
+        "palanik/corsslim": "dev-slim3"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0"
