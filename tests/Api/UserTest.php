@@ -11,7 +11,7 @@ class UserTest extends BaseTestCase
      */
     public function testGetUsers()
     {
-        $response = $this->runApp('GET', '/users');
+        $response = $this->runApp('GET', '/api/v1/users');
 
         $result = (string) $response->getBody();
 
@@ -27,7 +27,7 @@ class UserTest extends BaseTestCase
      */
     public function testGetUser()
     {
-        $response = $this->runApp('GET', '/users/1');
+        $response = $this->runApp('GET', '/api/v1/users/1');
 
         $result = (string) $response->getBody();
 
@@ -43,7 +43,7 @@ class UserTest extends BaseTestCase
      */
     public function testGetUserNotFound()
     {
-        $response = $this->runApp('GET', '/users/123456789');
+        $response = $this->runApp('GET', '/api/v1/users/123456789');
 
         $result = (string) $response->getBody();
 
@@ -58,7 +58,7 @@ class UserTest extends BaseTestCase
      */
     public function testSearchUsers()
     {
-        $response = $this->runApp('GET', '/users/search/j');
+        $response = $this->runApp('GET', '/api/v1/users/search/j');
 
         $result = (string) $response->getBody();
 
@@ -74,7 +74,7 @@ class UserTest extends BaseTestCase
      */
     public function testSearchUserNotFound()
     {
-        $response = $this->runApp('GET', '/users/search/123456789');
+        $response = $this->runApp('GET', '/api/v1/users/search/123456789');
 
         $result = (string) $response->getBody();
 
@@ -90,7 +90,7 @@ class UserTest extends BaseTestCase
     public function testCreateUser()
     {
         $response = $this->runApp(
-            'POST', '/users',
+            'POST', '/api/v1/users',
             ['name' => 'Esteban', 'email' => 'estu@gmail.com']
         );
 
@@ -111,7 +111,7 @@ class UserTest extends BaseTestCase
      */
     public function testCreateUserWithoutName()
     {
-        $response = $this->runApp('POST', '/users');
+        $response = $this->runApp('POST', '/api/v1/users');
 
         $result = (string) $response->getBody();
 
@@ -127,7 +127,7 @@ class UserTest extends BaseTestCase
     public function testCreateUserWithInvalidName()
     {
         $response = $this->runApp(
-            'POST', '/users',
+            'POST', '/api/v1/users',
             ['name' => 'z', 'email' => 'email@example.com']
         );
 
@@ -145,7 +145,7 @@ class UserTest extends BaseTestCase
     public function testCreateUserWithInvalidEmail()
     {
         $response = $this->runApp(
-            'POST', '/users',
+            'POST', '/api/v1/users',
             ['name' => 'Esteban', 'email' => 'email.incorrecto']
         );
 
@@ -163,7 +163,7 @@ class UserTest extends BaseTestCase
     public function testUpdateUser()
     {
         $response = $this->runApp(
-            'PUT', '/users/' . self::$id,
+            'PUT', '/api/v1/users/' . self::$id,
             ['name' => 'Victor', 'email' => 'victor@hotmail.com']
         );
 
@@ -182,7 +182,7 @@ class UserTest extends BaseTestCase
      */
     public function testUpdateUserWithOutSendData()
     {
-        $response = $this->runApp('PUT', '/users/' . self::$id);
+        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id);
 
         $result = (string) $response->getBody();
 
@@ -198,7 +198,7 @@ class UserTest extends BaseTestCase
     public function testUpdateUserNotFound()
     {
         $response = $this->runApp(
-            'PUT', '/users/123456789', ['name' => 'Victor']
+            'PUT', '/api/v1/users/123456789', ['name' => 'Victor']
         );
 
         $result = (string) $response->getBody();
@@ -215,7 +215,7 @@ class UserTest extends BaseTestCase
     public function testUpdateUserWithInvalidData()
     {
         $response = $this->runApp(
-            'PUT', '/users/' . self::$id,
+            'PUT', '/api/v1/users/' . self::$id,
             ['name' => 'z', 'email' => 'email-incorrecto...']
         );
 
@@ -232,7 +232,7 @@ class UserTest extends BaseTestCase
      */
     public function testDeleteUser()
     {
-        $response = $this->runApp('DELETE', '/users/' . self::$id);
+        $response = $this->runApp('DELETE', '/api/v1/users/' . self::$id);
 
         $result = (string) $response->getBody();
 
@@ -246,7 +246,7 @@ class UserTest extends BaseTestCase
      */
     public function testDeleteUserNotFound()
     {
-        $response = $this->runApp('DELETE', '/users/123456789');
+        $response = $this->runApp('DELETE', '/api/v1/users/123456789');
 
         $result = (string) $response->getBody();
 

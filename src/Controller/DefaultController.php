@@ -31,10 +31,11 @@ class DefaultController extends BaseController
         $this->setParams($request, $response, $args);
         $url = 'http://localhost:8080/';
         $message = [
-            'help' => $url . '',
-            'tasks' => $url . 'tasks',
-            'users' => $url . 'users',
+            'tasks' => $url . 'api/v1/tasks',
+            'users' => $url . 'api/v1/users',
+            'status' => $url . 'status',
             'version' => $url . 'version',
+            'this help' => $url . '',
         ];
 
         return $this->jsonResponse('success', $message, 200);

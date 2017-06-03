@@ -11,7 +11,7 @@ class TaskTest extends BaseTestCase
      */
     public function testGetTasks()
     {
-        $response = $this->runApp('GET', '/tasks');
+        $response = $this->runApp('GET', '/api/v1/tasks');
 
         $result = (string) $response->getBody();
 
@@ -27,7 +27,7 @@ class TaskTest extends BaseTestCase
      */
     public function testGetTask()
     {
-        $response = $this->runApp('GET', '/tasks/3');
+        $response = $this->runApp('GET', '/api/v1/tasks/3');
 
         $result = (string) $response->getBody();
 
@@ -43,7 +43,7 @@ class TaskTest extends BaseTestCase
      */
     public function testGetTaskNotFound()
     {
-        $response = $this->runApp('GET', '/tasks/123456789');
+        $response = $this->runApp('GET', '/api/v1/tasks/123456789');
 
         $result = (string) $response->getBody();
 
@@ -58,7 +58,7 @@ class TaskTest extends BaseTestCase
      */
     public function testSearchTasks()
     {
-        $response = $this->runApp('GET', '/tasks/search/super');
+        $response = $this->runApp('GET', '/api/v1/tasks/search/super');
 
         $result = (string) $response->getBody();
 
@@ -74,7 +74,7 @@ class TaskTest extends BaseTestCase
      */
     public function testSearchTaskNotFound()
     {
-        $response = $this->runApp('GET', '/tasks/search/bug123456789');
+        $response = $this->runApp('GET', '/api/v1/tasks/search/bug123456789');
 
         $result = (string) $response->getBody();
 
@@ -90,7 +90,7 @@ class TaskTest extends BaseTestCase
     public function testCreateTask()
     {
         $response = $this->runApp(
-            'POST', '/tasks', ['name' => 'Nueva Tarea']
+            'POST', '/api/v1/tasks', ['name' => 'Nueva Tarea']
         );
 
         $result = (string) $response->getBody();
@@ -109,7 +109,7 @@ class TaskTest extends BaseTestCase
      */
     public function testCreateTaskWithOutTaskName()
     {
-        $response = $this->runApp('POST', '/tasks');
+        $response = $this->runApp('POST', '/api/v1/tasks');
 
         $result = (string) $response->getBody();
 
@@ -125,7 +125,7 @@ class TaskTest extends BaseTestCase
     public function testCreateTaskWithInvalidTaskName()
     {
         $response = $this->runApp(
-            'POST', '/tasks', ['name' => 'z', 'status' => 1]
+            'POST', '/api/v1/tasks', ['name' => 'z', 'status' => 1]
         );
 
         $result = (string) $response->getBody();
@@ -142,7 +142,7 @@ class TaskTest extends BaseTestCase
     public function testCreateTaskWithInvalidStatus()
     {
         $response = $this->runApp(
-            'POST', '/tasks', ['name' => 'ToDo', 'status' => 123]
+            'POST', '/api/v1/tasks', ['name' => 'ToDo', 'status' => 123]
         );
 
         $result = (string) $response->getBody();
@@ -159,7 +159,7 @@ class TaskTest extends BaseTestCase
     public function testUpdateTask()
     {
         $response = $this->runApp(
-            'PUT', '/tasks/' . self::$id,
+            'PUT', '/api/v1/tasks/' . self::$id,
             ['name' => 'Actualizar Tarea', 'status' => 1]
         );
 
@@ -178,7 +178,7 @@ class TaskTest extends BaseTestCase
      */
     public function testUpdateTaskWithOutSendData()
     {
-        $response = $this->runApp('PUT', '/tasks/' . self::$id);
+        $response = $this->runApp('PUT', '/api/v1/tasks/' . self::$id);
 
         $result = (string) $response->getBody();
 
@@ -194,7 +194,7 @@ class TaskTest extends BaseTestCase
     public function testUpdateTaskNotFound()
     {
         $response = $this->runApp(
-            'PUT', '/tasks/123456789', ['name' => 'Actualizar Tarea']
+            'PUT', '/api/v1/tasks/123456789', ['name' => 'Actualizar Tarea']
         );
 
         $result = (string) $response->getBody();
@@ -211,7 +211,7 @@ class TaskTest extends BaseTestCase
      */
     public function testDeleteTask()
     {
-        $response = $this->runApp('DELETE', '/tasks/' . self::$id);
+        $response = $this->runApp('DELETE', '/api/v1/tasks/' . self::$id);
 
         $result = (string) $response->getBody();
 
@@ -225,7 +225,7 @@ class TaskTest extends BaseTestCase
      */
     public function testDeleteTaskNotFound()
     {
-        $response = $this->runApp('DELETE', '/tasks/123456789');
+        $response = $this->runApp('DELETE', '/api/v1/tasks/123456789');
 
         $result = (string) $response->getBody();
 
