@@ -1,6 +1,6 @@
 <phpunit bootstrap="vendor/autoload.php">
     <testsuites>
-        <testsuite name="SlimSkeleton">
+        <testsuite name="api-rest-slimphp">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

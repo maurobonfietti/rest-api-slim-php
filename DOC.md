@@ -5,7 +5,7 @@
 
 Petición:
 ```
-$ curl http://localhost:8080/users
+$ curl http://localhost:8080/api/v1/users
 ```
 
 Respuesta:
@@ -18,31 +18,31 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         }
     ]
 }
@@ -53,7 +53,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl http://localhost:8080/users/1
+$ curl http://localhost:8080/api/v1/users/1
 ```
 
 Respuesta:
@@ -65,7 +65,7 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "updated": "2017-06-03 01:57:31"
+        "updated": "2017-06-03 02:51:31"
     }
 }
 ```
@@ -75,7 +75,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl http://localhost:8080/users/search/le
+$ curl http://localhost:8080/api/v1/users/search/le
 ```
 
 Respuesta:
@@ -88,7 +88,7 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         }
     ]
 }
@@ -99,7 +99,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X POST http://localhost:8080/users --data name=Sergio
+$ curl -X POST http://localhost:8080/api/v1/users --data name=Sergio
 ```
 
 Respuesta:
@@ -111,7 +111,7 @@ Respuesta:
         "id": "6",
         "name": "Sergio",
         "email": null,
-        "updated": "2017-06-03 01:57:31"
+        "updated": "2017-06-03 02:51:31"
     }
 }
 ```
@@ -121,7 +121,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X PUT http://localhost:8080/users/6 --data name=Javier
+$ curl -X PUT http://localhost:8080/api/v1/users/6 --data name=Javier
 ```
 
 Respuesta:
@@ -133,7 +133,7 @@ Respuesta:
         "id": "6",
         "name": "Javier",
         "email": null,
-        "updated": "2017-06-03 01:57:32"
+        "updated": "2017-06-03 02:51:31"
     }
 }
 ```
@@ -143,7 +143,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X DELETE http://localhost:8080/users/6
+$ curl -X DELETE http://localhost:8080/api/v1/users/6
 ```
 
 Respuesta:
@@ -160,7 +160,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl http://localhost:8080/tasks
+$ curl http://localhost:8080/api/v1/tasks
 ```
 
 Respuesta:
@@ -173,31 +173,31 @@ Respuesta:
             "id": "1",
             "name": "Ir al centro",
             "status": "1",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "2",
             "name": "Comprar zapatillas",
             "status": "1",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "3",
             "name": "Ir al super",
             "status": "1",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "4",
             "name": "Comprar cereales",
             "status": "1",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "5",
             "name": "Hacer tarea...",
             "status": "0",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         }
     ]
 }
@@ -208,7 +208,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl http://localhost:8080/tasks/3
+$ curl http://localhost:8080/api/v1/tasks/3
 ```
 
 Respuesta:
@@ -220,7 +220,7 @@ Respuesta:
         "id": "3",
         "name": "Ir al super",
         "status": "1",
-        "updated": "2017-06-03 01:57:31"
+        "updated": "2017-06-03 02:51:31"
     }
 }
 ```
@@ -230,7 +230,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl http://localhost:8080/tasks/search/ir
+$ curl http://localhost:8080/api/v1/tasks/search/ir
 ```
 
 Respuesta:
@@ -243,13 +243,13 @@ Respuesta:
             "id": "1",
             "name": "Ir al centro",
             "status": "1",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         },
         {
             "id": "3",
             "name": "Ir al super",
             "status": "1",
-            "updated": "2017-06-03 01:57:31"
+            "updated": "2017-06-03 02:51:31"
         }
     ]
 }
@@ -260,7 +260,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X POST http://localhost:8080/tasks --data name=Super
+$ curl -X POST http://localhost:8080/api/v1/tasks --data name=Super
 ```
 
 Respuesta:
@@ -272,7 +272,7 @@ Respuesta:
         "id": "6",
         "name": "Super",
         "status": "0",
-        "updated": "2017-06-03 01:57:32"
+        "updated": "2017-06-03 02:51:31"
     }
 }
 ```
@@ -282,7 +282,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X PUT http://localhost:8080/tasks/6 --data name=Viajar
+$ curl -X PUT http://localhost:8080/api/v1/tasks/6 --data name=Viajar
 ```
 
 Respuesta:
@@ -294,7 +294,7 @@ Respuesta:
         "id": "6",
         "name": "Viajar",
         "status": "0",
-        "updated": "2017-06-03 01:57:32"
+        "updated": "2017-06-03 02:51:31"
     }
 }
 ```
@@ -304,7 +304,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X DELETE http://localhost:8080/tasks/6
+$ curl -X DELETE http://localhost:8080/api/v1/tasks/6
 ```
 
 Respuesta:
@@ -330,10 +330,11 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "help": "http:\/\/localhost:8080\/",
-        "tasks": "http:\/\/localhost:8080\/tasks",
-        "users": "http:\/\/localhost:8080\/users",
-        "version": "http:\/\/localhost:8080\/version"
+        "tasks": "http:\/\/localhost:8080\/api\/v1\/tasks",
+        "users": "http:\/\/localhost:8080\/api\/v1\/users",
+        "status": "http:\/\/localhost:8080\/status",
+        "version": "http:\/\/localhost:8080\/version",
+        "this help": "http:\/\/localhost:8080\/"
     }
 }
 ```

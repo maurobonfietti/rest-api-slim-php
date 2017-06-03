@@ -1,49 +1,49 @@
 <?php
 
-namespace Tests\Api;
+namespace Tests\api;
 
-class UserTest extends BaseTestCase
+class TaskTest extends BaseTestCase
 {
     private static $id;
 
     /**
-     * Test Get All Users.
+     * Test Get All Tasks.
      */
-    public function testGetUsers()
+    public function testGetTasks()
     {
-        $response = $this->runApp('GET', '/api/v1/users');
+        $response = $this->runApp('GET', '/api/v1/tasks');
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Juan', $result);
+        $this->assertContains('super', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Get One User.
+     * Test Get One Task.
      */
-    public function testGetUser()
+    public function testGetTask()
     {
-        $response = $this->runApp('GET', '/api/v1/users/1');
+        $response = $this->runApp('GET', '/api/v1/tasks/3');
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Juan', $result);
+        $this->assertContains('super', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Get User Not Found.
+     * Test Get Task Not Found.
      */
-    public function testGetUserNotFound()
+    public function testGetTaskNotFound()
     {
-        $response = $this->runApp('GET', '/api/v1/users/123456789');
+        $response = $this->runApp('GET', '/api/v1/tasks/123456789');
 
         $result = (string) $response->getBody();
 
@@ -54,27 +54,27 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Search Users.
+     * Test Search Tasks.
      */
-    public function testSearchUsers()
+    public function testSearchTasks()
     {
-        $response = $this->runApp('GET', '/api/v1/users/search/j');
+        $response = $this->runApp('GET', '/api/v1/tasks/search/super');
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Juan', $result);
+        $this->assertContains('super', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Search User Not Found.
+     * Test Search Task Not Found.
      */
-    public function testSearchUserNotFound()
+    public function testSearchTaskNotFound()
     {
-        $response = $this->runApp('GET', '/api/v1/users/search/123456789');
+        $response = $this->runApp('GET', '/api/v1/tasks/search/bug123456789');
 
         $result = (string) $response->getBody();
 
@@ -85,13 +85,12 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Create User.
+     * Test Create Task.
      */
-    public function testCreateUser()
+    public function testCreateTask()
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
-            ['name' => 'Esteban', 'email' => 'estu@gmail.com']
+            'POST', '/api/v1/tasks', ['name' => 'Nueva Tarea']
         );
 
         $result = (string) $response->getBody();
@@ -101,17 +100,16 @@ class UserTest extends BaseTestCase
         $this->assertEquals(201, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Esteban', $result);
-        $this->assertContains('estu@gmail.com', $result);
+        $this->assertContains('Tarea', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Create User Without Name.
+     * Test Create Task Without Name.
      */
-    public function testCreateUserWithoutName()
+    public function testCreateTaskWithOutTaskName()
     {
-        $response = $this->runApp('POST', '/api/v1/users');
+        $response = $this->runApp('POST', '/api/v1/tasks');
 
         $result = (string) $response->getBody();
 
@@ -122,13 +120,12 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Create User With Invalid Name.
+     * Test Create Task With Invalid TaskName.
      */
-    public function testCreateUserWithInvalidName()
+    public function testCreateTaskWithInvalidTaskName()
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
-            ['name' => 'z', 'email' => 'email@example.com']
+            'POST', '/api/v1/tasks', ['name' => 'z', 'status' => 1]
         );
 
         $result = (string) $response->getBody();
@@ -140,13 +137,12 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Create User With Invalid Email.
+     * Test Create Task With Invalid Status.
      */
-    public function testCreateUserWithInvalidEmail()
+    public function testCreateTaskWithInvalidStatus()
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
-            ['name' => 'Esteban', 'email' => 'email.incorrecto']
+            'POST', '/api/v1/tasks', ['name' => 'ToDo', 'status' => 123]
         );
 
         $result = (string) $response->getBody();
@@ -158,13 +154,13 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Update User.
+     * Test Update Task.
      */
-    public function testUpdateUser()
+    public function testUpdateTask()
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/users/' . self::$id,
-            ['name' => 'Victor', 'email' => 'victor@hotmail.com']
+            'PUT', '/api/v1/tasks/' . self::$id,
+            ['name' => 'Actualizar Tarea', 'status' => 1]
         );
 
         $result = (string) $response->getBody();
@@ -172,17 +168,17 @@ class UserTest extends BaseTestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Victor', $result);
-        $this->assertContains('hotmail', $result);
+        $this->assertContains('Tarea', $result);
+        $this->assertContains('status', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Update User Without Send Data.
+     * Test Update Task Without Send Data.
      */
-    public function testUpdateUserWithOutSendData()
+    public function testUpdateTaskWithOutSendData()
     {
-        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id);
+        $response = $this->runApp('PUT', '/api/v1/tasks/' . self::$id);
 
         $result = (string) $response->getBody();
 
@@ -193,12 +189,12 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Update User Not Found.
+     * Test Update Task Not Found.
      */
-    public function testUpdateUserNotFound()
+    public function testUpdateTaskNotFound()
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/users/123456789', ['name' => 'Victor']
+            'PUT', '/api/v1/tasks/123456789', ['name' => 'Actualizar Tarea']
         );
 
         $result = (string) $response->getBody();
@@ -206,33 +202,16 @@ class UserTest extends BaseTestCase
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertNotContains('id', $result);
         $this->assertNotContains('name', $result);
+        $this->assertNotContains('Tarea', $result);
         $this->assertContains('error', $result);
     }
 
     /**
-     * Test Update User With Invalid Data.
+     * Test Delete Task.
      */
-    public function testUpdateUserWithInvalidData()
+    public function testDeleteTask()
     {
-        $response = $this->runApp(
-            'PUT', '/api/v1/users/' . self::$id,
-            ['name' => 'z', 'email' => 'email-incorrecto...']
-        );
-
-        $result = (string) $response->getBody();
-
-        $this->assertEquals(400, $response->getStatusCode());
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
-        $this->assertContains('error', $result);
-    }
-
-    /**
-     * Test Delete User.
-     */
-    public function testDeleteUser()
-    {
-        $response = $this->runApp('DELETE', '/api/v1/users/' . self::$id);
+        $response = $this->runApp('DELETE', '/api/v1/tasks/' . self::$id);
 
         $result = (string) $response->getBody();
 
@@ -242,11 +221,11 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Delete User Not Found.
+     * Test Delete Task Not Found.
      */
-    public function testDeleteUserNotFound()
+    public function testDeleteTaskNotFound()
     {
-        $response = $this->runApp('DELETE', '/api/v1/users/123456789');
+        $response = $this->runApp('DELETE', '/api/v1/tasks/123456789');
 
         $result = (string) $response->getBody();
 

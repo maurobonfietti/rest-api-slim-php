@@ -93,11 +93,13 @@ OK (32 tests, 138 assertions)
 ```
 
 
-## MANUAL DE USO:
+## DOCUMENTACIÓN:
+
+### AYUDA Y MANUAL DE USO:
 
 Para más información sobre el modo de uso de la API REST, ver el siguiente documento: [Manual de Uso](DOC.md).
 
 
-## IMPORTAR EN POSTMAN:
+### IMPORTAR EN POSTMAN:
 
 Toda la información de la API, preparada para descargar y utilizar como colección de postman: [Importar Colección](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
