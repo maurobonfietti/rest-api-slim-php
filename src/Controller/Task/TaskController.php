@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Task;
 
 use App\Controller\BaseController;
 
 /**
- * Users Controller.
+ * Tasks Controller.
  */
-class UserController extends BaseController
+class TaskController extends BaseController
 {
     /**
      * @param \Slim\Container $container
@@ -19,34 +19,34 @@ class UserController extends BaseController
     }
 
     /**
-     * Get all users.
+     * Get all tasks.
      *
      * @param Request $request
      * @param Response $response
      * @param array $args
      * @return array
      */
-    public function getUsers($request, $response, $args)
+    public function getTasks($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $result = $this->getUserService()->getUsers();
+        $result = $this->getTaskService()->getTasks();
 
         return $this->jsonResponse('success', $result, 200);
     }
 
     /**
-     * Get one user by id.
+     * Get one task by id.
      *
      * @param Request $request
      * @param Response $response
      * @param array $args
      * @return array
      */
-    public function getUser($request, $response, $args)
+    public function getTask($request, $response, $args)
     {
         try {
             $this->setParams($request, $response, $args);
-            $result = $this->getUserService()->getUser($this->args['id']);
+            $result = $this->getTaskService()->getTask($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
@@ -55,18 +55,18 @@ class UserController extends BaseController
     }
 
     /**
-     * Search users by name.
+     * Search tasks by name.
      *
      * @param Request $request
      * @param Response $response
      * @param array $args
      * @return array
      */
-    public function searchUsers($request, $response, $args)
+    public function searchTasks($request, $response, $args)
     {
         try {
             $this->setParams($request, $response, $args);
-            $result = $this->getUserService()->searchUsers($this->args['query']);
+            $result = $this->getTaskService()->searchTasks($this->args['query']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
@@ -75,19 +75,19 @@ class UserController extends BaseController
     }
 
     /**
-     * Create a user.
+     * Create a task.
      *
      * @param Request $request
      * @param Response $response
      * @param array $args
      * @return array
      */
-    public function createUser($request, $response, $args)
+    public function createTask($request, $response, $args)
     {
         try {
             $this->setParams($request, $response, $args);
             $input = $this->request->getParsedBody();
-            $result = $this->getUserService()->createUser($input);
+            $result = $this->getTaskService()->createTask($input);
 
             return $this->jsonResponse('success', $result, 201);
         } catch (\Exception $ex) {
@@ -96,19 +96,19 @@ class UserController extends BaseController
     }
 
     /**
-     * Update a user.
+     * Update a task.
      *
      * @param Request $request
      * @param Response $response
      * @param array $args
      * @return array
      */
-    public function updateUser($request, $response, $args)
+    public function updateTask($request, $response, $args)
     {
         try {
             $this->setParams($request, $response, $args);
             $input = $this->request->getParsedBody();
-            $result = $this->getUserService()->updateUser($input, $this->args['id']);
+            $result = $this->getTaskService()->updateTask($input, $this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
@@ -117,18 +117,18 @@ class UserController extends BaseController
     }
 
     /**
-     * Delete a user.
+     * Delete a task.
      *
      * @param Request $request
      * @param Response $response
      * @param array $args
      * @return array
      */
-    public function deleteUser($request, $response, $args)
+    public function deleteTask($request, $response, $args)
     {
         try {
             $this->setParams($request, $response, $args);
-            $result = $this->getUserService()->deleteUser($this->args['id']);
+            $result = $this->getTaskService()->deleteTask($this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
