@@ -4,7 +4,7 @@
 DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `task` varchar(200) NOT NULL,
+  `name` varchar(200) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `updated` timestamp DEFAULT NOW() ON UPDATE NOW() ,
   PRIMARY KEY (`id`)
@@ -13,11 +13,11 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 -- ----------------------------
 -- Records of tasks
 -- ----------------------------
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (1, 'Ir al centro', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (2, 'Comprar zapatillas', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (3, 'Ir al super', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (4, 'Comprar cereales', 1);
-INSERT INTO `tasks` (`id`, `task`, `status`) VALUES (5, 'Hacer tarea...', 0);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (1, 'Ir al centro', 1);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (2, 'Comprar zapatillas', 1);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (3, 'Ir al super', 1);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (4, 'Comprar cereales', 1);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (5, 'Hacer tarea...', 0);
 
 -- ----------------------------
 -- Table structure for users

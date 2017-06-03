@@ -17,7 +17,7 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
-        $this->assertContains('task', $result);
+        $this->assertContains('name', $result);
         $this->assertContains('super', $result);
         $this->assertNotContains('error', $result);
     }
@@ -33,7 +33,7 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
-        $this->assertContains('task', $result);
+        $this->assertContains('name', $result);
         $this->assertContains('super', $result);
         $this->assertNotContains('error', $result);
     }
@@ -49,7 +49,7 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('task', $result);
+        $this->assertNotContains('name', $result);
         $this->assertContains('error', $result);
     }
 
@@ -64,7 +64,7 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
-        $this->assertContains('task', $result);
+        $this->assertContains('name', $result);
         $this->assertContains('super', $result);
         $this->assertNotContains('error', $result);
     }
@@ -80,7 +80,7 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('task', $result);
+        $this->assertNotContains('name', $result);
         $this->assertContains('error', $result);
     }
 
@@ -90,7 +90,7 @@ class TaskTest extends BaseTestCase
     public function testCreateTask()
     {
         $response = $this->runApp(
-            'POST', '/tasks', ['task' => 'Nueva Tarea']
+            'POST', '/tasks', ['name' => 'Nueva Tarea']
         );
 
         $result = (string) $response->getBody();
@@ -99,7 +99,7 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(201, $response->getStatusCode());
         $this->assertContains('id', $result);
-        $this->assertContains('task', $result);
+        $this->assertContains('name', $result);
         $this->assertContains('Tarea', $result);
         $this->assertNotContains('error', $result);
     }
@@ -115,7 +115,7 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('task', $result);
+        $this->assertNotContains('name', $result);
         $this->assertContains('error', $result);
     }
 
@@ -125,14 +125,14 @@ class TaskTest extends BaseTestCase
     public function testCreateTaskWithInvalidTaskName()
     {
         $response = $this->runApp(
-            'POST', '/tasks', ['task' => 'z', 'status' => 1]
+            'POST', '/tasks', ['name' => 'z', 'status' => 1]
         );
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('task', $result);
+        $this->assertNotContains('name', $result);
         $this->assertContains('error', $result);
     }
 
@@ -142,14 +142,14 @@ class TaskTest extends BaseTestCase
     public function testCreateTaskWithInvalidStatus()
     {
         $response = $this->runApp(
-            'POST', '/tasks', ['task' => 'ToDo', 'status' => 123]
+            'POST', '/tasks', ['name' => 'ToDo', 'status' => 123]
         );
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('task', $result);
+        $this->assertNotContains('name', $result);
         $this->assertContains('error', $result);
     }
 
@@ -160,14 +160,14 @@ class TaskTest extends BaseTestCase
     {
         $response = $this->runApp(
             'PUT', '/tasks/' . self::$id,
-            ['task' => 'Actualizar Tarea', 'status' => 1]
+            ['name' => 'Actualizar Tarea', 'status' => 1]
         );
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
-        $this->assertContains('task', $result);
+        $this->assertContains('name', $result);
         $this->assertContains('Tarea', $result);
         $this->assertContains('status', $result);
         $this->assertNotContains('error', $result);
@@ -184,7 +184,7 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('task', $result);
+        $this->assertNotContains('name', $result);
         $this->assertContains('error', $result);
     }
 
@@ -194,14 +194,14 @@ class TaskTest extends BaseTestCase
     public function testUpdateTaskNotFound()
     {
         $response = $this->runApp(
-            'PUT', '/tasks/123456789', ['task' => 'Actualizar Tarea']
+            'PUT', '/tasks/123456789', ['name' => 'Actualizar Tarea']
         );
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('task', $result);
+        $this->assertNotContains('name', $result);
         $this->assertNotContains('Tarea', $result);
         $this->assertContains('error', $result);
     }

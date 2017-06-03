@@ -63,7 +63,7 @@ class TaskRepository extends BaseRepository
     {
         $statement = $this->database->prepare(TaskQuery::SEARCH_TASKS_QUERY);
         $query = '%' . $tasksName . '%';
-        $statement->bindParam('task', $query);
+        $statement->bindParam('name', $query);
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
@@ -83,7 +83,7 @@ class TaskRepository extends BaseRepository
     public function createTask($data)
     {
         $statement = $this->database->prepare(TaskQuery::CREATE_TASK_QUERY);
-        $statement->bindParam('task', $data['task']);
+        $statement->bindParam('name', $data['name']);
         $statement->bindParam('status', $data['status']);
         $statement->execute();
         $task = $this->checkTask($this->database->lastInsertId());
@@ -102,7 +102,7 @@ class TaskRepository extends BaseRepository
     {
         $statement = $this->database->prepare(TaskQuery::UPDATE_TASK_QUERY);
         $statement->bindParam('id', $taskId);
-        $statement->bindParam('task', $data['task']);
+        $statement->bindParam('name', $data['name']);
         $statement->bindParam('status', $data['status']);
         $statement->execute();
         $task = $this->checkTask($taskId);

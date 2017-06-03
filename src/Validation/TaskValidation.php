@@ -18,16 +18,16 @@ abstract class TaskValidation extends BaseValidation
      */
     public static function validateInputOnCreateTask($input)
     {
-        if (empty($input['task'])) {
+        if (empty($input['name'])) {
             throw new TaskException(TaskException::TASK_NAME_REQUIRED, 400);
         }
-        $task = self::validateTaskName($input['task']);
+        $task = self::validateTaskName($input['name']);
         $status = 0;
         if (isset($input['status'])) {
             $status = self::validateStatus($input['status']);
         }
 
-        return ['task' => $task, 'status' => $status];
+        return ['name' => $task, 'status' => $status];
     }
 
     /**
@@ -40,18 +40,18 @@ abstract class TaskValidation extends BaseValidation
      */
     public static function validateInputOnUpdateTask($input, $task)
     {
-        if (!isset($input['task']) && !isset($input['status'])) {
+        if (!isset($input['name']) && !isset($input['status'])) {
             throw new TaskException(TaskException::TASK_INFO_REQUIRED, 400);
         }
-        $name = $task->task;
-        if (isset($input['task'])) {
-            $name = self::validateTaskName($input['task']);
+        $name = $task->name;
+        if (isset($input['name'])) {
+            $name = self::validateTaskName($input['name']);
         }
         $status = $task->status;
         if (isset($input['status'])) {
             $status = self::validateStatus($input['status']);
         }
 
-        return ['task' => $name, 'status' => $status];
+        return ['name' => $name, 'status' => $status];
     }
 }

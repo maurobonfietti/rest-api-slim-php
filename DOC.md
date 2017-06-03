@@ -18,31 +18,31 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         }
     ]
 }
@@ -65,7 +65,7 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "updated": "2017-06-02 21:54:30"
+        "updated": "2017-06-02 22:30:20"
     }
 }
 ```
@@ -88,7 +88,7 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         }
     ]
 }
@@ -111,7 +111,7 @@ Respuesta:
         "id": "6",
         "name": "Sergio",
         "email": null,
-        "updated": "2017-06-02 21:54:30"
+        "updated": "2017-06-02 22:30:21"
     }
 }
 ```
@@ -133,7 +133,7 @@ Respuesta:
         "id": "6",
         "name": "Javier",
         "email": null,
-        "updated": "2017-06-02 21:54:30"
+        "updated": "2017-06-02 22:30:21"
     }
 }
 ```
@@ -171,33 +171,33 @@ Respuesta:
     "message": [
         {
             "id": "1",
-            "task": "Ir al centro",
+            "name": "Ir al centro",
             "status": "1",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "2",
-            "task": "Comprar zapatillas",
+            "name": "Comprar zapatillas",
             "status": "1",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "3",
-            "task": "Ir al super",
+            "name": "Ir al super",
             "status": "1",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "4",
-            "task": "Comprar cereales",
+            "name": "Comprar cereales",
             "status": "1",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "5",
-            "task": "Hacer tarea...",
+            "name": "Hacer tarea...",
             "status": "0",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         }
     ]
 }
@@ -218,9 +218,9 @@ Respuesta:
     "status": "success",
     "message": {
         "id": "3",
-        "task": "Ir al super",
+        "name": "Ir al super",
         "status": "1",
-        "updated": "2017-06-02 21:54:30"
+        "updated": "2017-06-02 22:30:20"
     }
 }
 ```
@@ -241,15 +241,15 @@ Respuesta:
     "message": [
         {
             "id": "1",
-            "task": "Ir al centro",
+            "name": "Ir al centro",
             "status": "1",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         },
         {
             "id": "3",
-            "task": "Ir al super",
+            "name": "Ir al super",
             "status": "1",
-            "updated": "2017-06-02 21:54:30"
+            "updated": "2017-06-02 22:30:20"
         }
     ]
 }
@@ -260,7 +260,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X POST http://localhost:8080/tasks --data task=Super
+$ curl -X POST http://localhost:8080/tasks --data name=Super
 ```
 
 Respuesta:
@@ -270,9 +270,9 @@ Respuesta:
     "status": "success",
     "message": {
         "id": "6",
-        "task": "Super",
+        "name": "Super",
         "status": "0",
-        "updated": "2017-06-02 21:54:30"
+        "updated": "2017-06-02 22:30:21"
     }
 }
 ```
@@ -282,7 +282,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X PUT http://localhost:8080/tasks/6 --data task=Viajar
+$ curl -X PUT http://localhost:8080/tasks/6 --data name=Viajar
 ```
 
 Respuesta:
@@ -292,9 +292,9 @@ Respuesta:
     "status": "success",
     "message": {
         "id": "6",
-        "task": "Viajar",
+        "name": "Viajar",
         "status": "0",
-        "updated": "2017-06-02 21:54:30"
+        "updated": "2017-06-02 22:30:21"
     }
 }
 ```
@@ -352,7 +352,7 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "api_version": "17.05"
+        "api_version": "17.06"
     }
 }
 ```
