@@ -5,7 +5,7 @@ namespace App\Controller\Task;
 /**
  * Search Tasks Controller.
  */
-class SearchTasks extends BaseTaskController
+class SearchTasks extends BaseTask
 {
     /**
      * Search tasks by name.

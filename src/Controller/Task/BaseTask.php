@@ -3,11 +3,12 @@
 namespace App\Controller\Task;
 
 use App\Controller\BaseController;
+use App\Service\TaskService;
 
 /**
  * Base Task Controller.
  */
-class BaseTaskController extends BaseController
+class BaseTask extends BaseController
 {
     /**
      * @param \Slim\Container $container
@@ -16,5 +17,15 @@ class BaseTaskController extends BaseController
     {
         $this->logger = $container->get('logger');
         $this->database = $container->get('db');
+    }
+
+    /**
+     * @return TaskService
+     */
+    protected function getTaskService()
+    {
+        $service = new TaskService($this->database);
+
+        return $service;
     }
 }

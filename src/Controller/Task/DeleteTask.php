@@ -5,7 +5,7 @@ namespace App\Controller\Task;
 /**
  * Delete Task Controller.
  */
-class DeleteTask extends BaseTaskController
+class DeleteTask extends BaseTask
 {
     /**
      * Delete a task.

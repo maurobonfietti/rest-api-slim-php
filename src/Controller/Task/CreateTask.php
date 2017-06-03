@@ -5,7 +5,7 @@ namespace App\Controller\Task;
 /**
  * Create Task Controller.
  */
-class CreateTask extends BaseTaskController
+class CreateTask extends BaseTask
 {
     /**
      * Create a task.

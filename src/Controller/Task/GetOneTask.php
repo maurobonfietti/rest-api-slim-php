@@ -5,7 +5,7 @@ namespace App\Controller\Task;
 /**
  * Get One Task Controller.
  */
-class GetOneTask extends BaseTaskController
+class GetOneTask extends BaseTask
 {
     /**
      * Get one task by id.

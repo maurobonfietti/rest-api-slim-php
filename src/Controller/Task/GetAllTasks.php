@@ -5,7 +5,7 @@ namespace App\Controller\Task;
 /**
  * Get All Tasks Controller.
  */
-class GetAllTasks extends BaseTaskController
+class GetAllTasks extends BaseTask
 {
     /**
      * Get all tasks.

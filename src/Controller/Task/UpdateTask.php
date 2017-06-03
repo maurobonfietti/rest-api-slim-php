@@ -5,7 +5,7 @@ namespace App\Controller\Task;
 /**
  * Update Task Controller.
  */
-class UpdateTask extends BaseTaskController
+class UpdateTask extends BaseTask
 {
     /**
      * Update a task.
