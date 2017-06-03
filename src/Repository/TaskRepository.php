@@ -63,7 +63,7 @@ class TaskRepository extends BaseRepository
     {
         $statement = $this->database->prepare(TaskQuery::SEARCH_TASKS_QUERY);
         $query = '%' . $tasksName . '%';
-        $statement->bindParam('query', $query);
+        $statement->bindParam('task', $query);
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {

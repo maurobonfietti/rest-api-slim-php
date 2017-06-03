@@ -63,7 +63,7 @@ class UserRepository extends BaseRepository
     {
         $statement = $this->database->prepare(UserQuery::SEARCH_USERS_QUERY);
         $query = '%' . $usersName . '%';
-        $statement->bindParam('query', $query);
+        $statement->bindParam('name', $query);
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
