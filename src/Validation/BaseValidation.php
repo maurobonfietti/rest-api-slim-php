@@ -2,8 +2,9 @@
 
 namespace App\Validation;
 
-use App\Message\UserMessage;
+//use App\Message\UserMessage;
 use App\Exception\TaskException;
+use App\Exception\UserException;
 use Respect\Validation\Validator as v;
 
 /**
@@ -21,7 +22,7 @@ abstract class BaseValidation
     protected static function validateName($name)
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
-            throw new \Exception(UserMessage::USER_NAME_INVALID, 400);
+            throw new UserException(UserException::USER_NAME_INVALID, 400);
         }
 
         return $name;
@@ -38,7 +39,7 @@ abstract class BaseValidation
     {
         $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
         if (!v::email()->validate($email)) {
-            throw new \Exception(UserMessage::USER_EMAIL_INVALID, 400);
+            throw new UserException(UserException::USER_EMAIL_INVALID, 400);
         }
 
         return $email;

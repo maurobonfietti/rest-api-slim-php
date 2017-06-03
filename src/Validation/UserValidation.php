@@ -2,7 +2,7 @@
 
 namespace App\Validation;
 
-use App\Message\UserMessage;
+use App\Exception\UserException;
 
 /**
  * User Validation.
@@ -19,7 +19,7 @@ abstract class UserValidation extends BaseValidation
     public static function validateInputOnCreateUser($input)
     {
         if (!isset($input['name'])) {
-            throw new \Exception(UserMessage::USER_NAME_REQUIRED, 400);
+            throw new UserException(UserException::USER_NAME_REQUIRED, 400);
         }
         $name = self::validateName($input['name']);
         $email = null;
@@ -41,7 +41,7 @@ abstract class UserValidation extends BaseValidation
     public static function validateInputOnUpdateUser($input, $user)
     {
         if (!isset($input['name']) && !isset($input['email'])) {
-            throw new \Exception(UserMessage::USER_INFO_REQUIRED, 400);
+            throw new UserException(UserException::USER_INFO_REQUIRED, 400);
         }
         $name = $user->name;
         if (isset($input['name'])) {

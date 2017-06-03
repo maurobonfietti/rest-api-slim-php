@@ -2,8 +2,6 @@
 
 namespace App\Service;
 
-use App\Message\UserMessage;
-use App\Exception\UserException;
 use App\Repository\UserRepository;
 use App\Validation\UserValidation as vs;
 
@@ -24,19 +22,12 @@ class UserService extends BaseService
      * Check if the user exists.
      *
      * @param int $userId
-     * @return object $user
-     * @throws \Exception
+     * @return array
      */
-    public function checkUser($userId)
+    protected function checkUser($userId)
     {
-        $repo = new UserRepository;
-        $stmt = $this->database->prepare($repo->getUserQuery());
-        $stmt->bindParam('id', $userId);
-        $stmt->execute();
-        $user = $stmt->fetchObject();
-        if (!$user) {
-            throw new UserException(UserMessage::USER_NOT_FOUND, 404);
-        }
+        $repository = new UserRepository($this->database);
+        $user = $repository->checkUser($userId);
 
         return $user;
     }
@@ -48,12 +39,10 @@ class UserService extends BaseService
      */
     public function getUsers()
     {
-        $repository = new UserRepository;
-        $query = $repository->getUsersQuery();
-        $statement = $this->database->prepare($query);
-        $statement->execute();
+        $repository = new UserRepository($this->database);
+        $users = $repository->getUsers();
 
-        return $statement->fetchAll();
+        return $users;
     }
 
     /**
@@ -72,21 +61,13 @@ class UserService extends BaseService
     /**
      * Search users by name.
      *
-     * @param string $str
+     * @param string $usersName
      * @return array
-     * @throws \Exception
      */
-    public function searchUsers($str)
+    public function searchUsers($usersName)
     {
-        $repo = new UserRepository;
-        $stmt = $this->database->prepare($repo->searchUsersQuery());
-        $name = '%' . $str . '%';
-        $stmt->bindParam('name', $name);
-        $stmt->execute();
-        $users = $stmt->fetchAll();
-        if (!$users) {
-            throw new \Exception(UserMessage::USER_NAME_NOT_FOUND, 404);
-        }
+        $repository = new UserRepository($this->database);
+        $users = $repository->searchUsers($usersName);
 
         return $users;
     }
@@ -96,18 +77,12 @@ class UserService extends BaseService
      *
      * @param array $input
      * @return array
-     * @throws \Exception
      */
     public function createUser($input)
     {
+        $repository = new UserRepository($this->database);
         $data = vs::validateInputOnCreateUser($input);
-        $repository = new UserRepository;
-        $query = $repository->createUserQuery();
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('name', $data['name']);
-        $statement->bindParam('email', $data['email']);
-        $statement->execute();
-        $user = $this->checkUser($this->database->lastInsertId());
+        $user = $repository->createUser($data);
 
         return $user;
     }
@@ -118,38 +93,29 @@ class UserService extends BaseService
      * @param array $input
      * @param int $userId
      * @return array
-     * @throws \Exception
      */
     public function updateUser($input, $userId)
     {
-        $user = $this->checkUser($userId);
-        $data = vs::validateInputOnUpdateUser($input, $user);
-        $repository = new UserRepository;
-        $query = $repository->updateUserQuery();
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('id', $userId);
-        $statement->bindParam('name', $data['name']);
-        $statement->bindParam('email', $data['email']);
-        $statement->execute();
+        $checkUser = $this->checkUser($userId);
+        $data = vs::validateInputOnUpdateUser($input, $checkUser);
+        $repository = new UserRepository($this->database);
+        $user = $repository->updateUser($data, $userId);
 
-        return $this->checkUser($userId);
+        return $user;
     }
 
     /**
      * Delete a user.
      *
      * @param int $userId
-     * @return array
+     * @return string
      */
     public function deleteUser($userId)
     {
         $this->checkUser($userId);
-        $repository = new UserRepository;
-        $query = $repository->deleteUserQuery();
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('id', $userId);
-        $statement->execute();
+        $repository = new UserRepository($this->database);
+        $response = $repository->deleteUser($userId);
 
-        return UserMessage::USER_DELETED;
+        return $response;
     }
 }

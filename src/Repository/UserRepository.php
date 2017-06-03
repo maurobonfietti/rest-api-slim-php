@@ -2,38 +2,126 @@
 
 namespace App\Repository;
 
+use App\Message\UserMessage;
+use App\Exception\UserException;
+use App\Repository\Query\UserQuery;
+
 /**
  * Users Repository.
  */
-class UserRepository
+class UserRepository extends BaseRepository
 {
-    public function getUserQuery()
+    /**
+     * @param object $database
+     */
+    public function __construct(\PDO $database = null)
     {
-        return 'SELECT * FROM users WHERE id=:id';
+        $this->database = $database;
     }
 
-    public function getUsersQuery()
+    /**
+     * Check if the user exists.
+     *
+     * @param int $userId
+     * @return array $user
+     * @throws \Exception
+     */
+    public function checkUser($userId)
     {
-        return 'SELECT * FROM users ORDER BY id';
+        $statement = $this->database->prepare(UserQuery::GET_USER_QUERY);
+        $statement->bindParam('id', $userId);
+        $statement->execute();
+        $user = $statement->fetchObject();
+        if (empty($user)) {
+            throw new UserException(UserException::USER_NOT_FOUND, 404);
+        }
+
+        return $user;
     }
 
-    public function searchUsersQuery()
+    /**
+     * Get all users.
+     *
+     * @return array
+     */
+    public function getUsers()
     {
-        return 'SELECT * FROM users WHERE UPPER(name) LIKE :name ORDER BY id';
+        $statement = $this->database->prepare(UserQuery::GET_USERS_QUERY);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 
-    public function createUserQuery()
+    /**
+     * Search users by name.
+     *
+     * @param string $usersName
+     * @return array
+     * @throws \Exception
+     */
+    public function searchUsers($usersName)
     {
-        return 'INSERT INTO users (name, email) VALUES (:name, :email)';
+        $statement = $this->database->prepare(UserQuery::SEARCH_USERS_QUERY);
+        $query = '%' . $usersName . '%';
+        $statement->bindParam('query', $query);
+        $statement->execute();
+        $users = $statement->fetchAll();
+        if (!$users) {
+            throw new UserException(UserException::USER_NOT_FOUND, 404);
+        }
+
+        return $users;
     }
 
-    public function updateUserQuery()
+    /**
+     * Create a user.
+     *
+     * @param array $data
+     * @return array
+     * @throws \Exception
+     */
+    public function createUser($data)
     {
-        return 'UPDATE users SET name=:name, email=:email WHERE id=:id';
+        $statement = $this->database->prepare(UserQuery::CREATE_USER_QUERY);
+        $statement->bindParam('name', $data['name']);
+        $statement->bindParam('email', $data['email']);
+        $statement->execute();
+        $user = $this->checkUser($this->database->lastInsertId());
+
+        return $user;
     }
 
-    public function deleteUserQuery()
+    /**
+     * Update a user.
+     *
+     * @param array $data
+     * @param int $userId
+     * @return array
+     */
+    public function updateUser($data, $userId)
     {
-        return 'DELETE FROM users WHERE id=:id';
+        $statement = $this->database->prepare(UserQuery::UPDATE_USER_QUERY);
+        $statement->bindParam('id', $userId);
+        $statement->bindParam('name', $data['name']);
+        $statement->bindParam('email', $data['email']);
+        $statement->execute();
+        $user = $this->checkUser($userId);
+
+        return $user;
+    }
+
+    /**
+     * Delete a user.
+     *
+     * @param int $userId
+     * @return string
+     */
+    public function deleteUser($userId)
+    {
+        $statement = $this->database->prepare(UserQuery::DELETE_USER_QUERY);
+        $statement->bindParam('id', $userId);
+        $statement->execute();
+
+        return UserMessage::USER_DELETED;
     }
 }
