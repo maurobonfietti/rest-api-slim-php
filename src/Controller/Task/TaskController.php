@@ -19,22 +19,6 @@ class TaskController extends BaseController
     }
 
     /**
-     * Get all tasks.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return array
-     */
-    public function getTasks($request, $response, $args)
-    {
-        $this->setParams($request, $response, $args);
-        $result = $this->getTaskService()->getTasks();
-
-        return $this->jsonResponse('success', $result, 200);
-    }
-
-    /**
      * Get one task by id.
      *
      * @param Request $request

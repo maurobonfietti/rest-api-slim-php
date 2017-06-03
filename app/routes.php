@@ -6,7 +6,7 @@ $app->get('/status', 'App\Controller\DefaultController:getStatus');
 
 $app->group('/api/v1', function () use ($app) {
     $app->group('/tasks', function () use ($app) {
-        $app->get('', 'App\Controller\Task\TaskController:getTasks');
+        $app->get('', 'App\Controller\Task\GetAllTasks:getTasks');
         $app->get('/[{id}]', 'App\Controller\Task\TaskController:getTask');
         $app->get('/search/[{query}]', 'App\Controller\Task\TaskController:searchTasks');
         $app->post('', 'App\Controller\Task\TaskController:createTask');
