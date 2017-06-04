@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Controller\Task;
+namespace App\Controller\User;
 
 use App\Controller\BaseController;
-use App\Service\TaskService;
+use App\Service\UserService;
 
 /**
- * Base Task Controller.
+ * Base User Controller.
  */
-abstract class BaseTask extends BaseController
+abstract class BaseUser extends BaseController
 {
     /**
      * @param \Slim\Container $container
@@ -20,11 +20,11 @@ abstract class BaseTask extends BaseController
     }
 
     /**
-     * @return TaskService
+     * @return UserService
      */
-    protected function getTaskService()
+    protected function getUserService()
     {
-        $service = new TaskService($this->database);
+        $service = new UserService($this->database);
 
         return $service;
     }

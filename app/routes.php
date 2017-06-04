@@ -14,11 +14,11 @@ $app->group('/api/v1', function () use ($app) {
         $app->delete('/[{id}]', 'App\Controller\Task\DeleteTask:deleteTask');
     });
     $app->group('/users', function () use ($app) {
-        $app->get('', 'App\Controller\User\UserController:getUsers');
-        $app->get('/[{id}]', 'App\Controller\User\UserController:getUser');
-        $app->get('/search/[{query}]', 'App\Controller\User\UserController:searchUsers');
-        $app->post('', 'App\Controller\User\UserController:createUser');
-        $app->put('/[{id}]', 'App\Controller\User\UserController:updateUser');
-        $app->delete('/[{id}]', 'App\Controller\User\UserController:deleteUser');
+        $app->get('', 'App\Controller\User\GetAllUsers:getUsers');
+        $app->get('/[{id}]', 'App\Controller\User\GetOneUser:getUser');
+        $app->get('/search/[{query}]', 'App\Controller\User\SearchUsers:searchUsers');
+        $app->post('', 'App\Controller\User\CreateUser:createUser');
+        $app->put('/[{id}]', 'App\Controller\User\UpdateUser:updateUser');
+        $app->delete('/[{id}]', 'App\Controller\User\DeleteUser:deleteUser');
     });
 });

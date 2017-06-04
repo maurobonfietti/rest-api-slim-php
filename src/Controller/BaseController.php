@@ -33,16 +33,6 @@ abstract class BaseController
     }
 
     /**
-     * @return UserService
-     */
-    protected function getUserService()
-    {
-        $service = new UserService($this->database);
-
-        return $service;
-    }
-
-    /**
      * Send response with json as standard format.
      *
      * @param string $status
