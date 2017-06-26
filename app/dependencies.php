@@ -1,9 +1,11 @@
 <?php
 
+use Psr\Container\ContainerInterface;
+
 $container = $app->getContainer();
 
 // PDO database library
-$container['db'] = function ($c) {
+$container['db'] = function (ContainerInterface $c) {
     $settings = $c->get('settings')['db'];
     $pdo = new PDO(
         'mysql:host=' . $settings['host'] . ';dbname=' . $settings['dbname'],
@@ -16,8 +18,8 @@ $container['db'] = function ($c) {
     return $pdo;
 };
 
-// monolog
-$container['logger'] = function ($c) {
+// Logger
+$container['logger'] = function (ContainerInterface $c) {
     $settings = $c->get('settings')['logger'];
     if ($settings['enabled'] === false) {
         return false;

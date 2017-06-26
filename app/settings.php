@@ -4,7 +4,7 @@ return [
     'settings' => [
         'displayErrorDetails' => true, // set to false in production
 
-        // Monolog settings
+        // Logger settings
         'logger' => [
             'enabled' => true,
             'name' => 'slim-app',

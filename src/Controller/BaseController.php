@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use Slim\Http\Request;
+
 /**
  * Base Controller.
  */
@@ -52,6 +54,8 @@ abstract class BaseController
 
     /**
      * Log each request.
+     *
+     * @return bool|void
      */
     protected function logRequest()
     {
@@ -70,6 +74,7 @@ abstract class BaseController
      * Log each response.
      *
      * @param array $response
+     * @return bool|void
      */
     protected function logResponse($response)
     {
