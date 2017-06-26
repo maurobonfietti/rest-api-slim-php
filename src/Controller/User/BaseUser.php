@@ -4,6 +4,7 @@ namespace App\Controller\User;
 
 use App\Controller\BaseController;
 use App\Service\UserService;
+use Slim\Container;
 
 /**
  * Base User Controller.
@@ -11,9 +12,9 @@ use App\Service\UserService;
 abstract class BaseUser extends BaseController
 {
     /**
-     * @param \Slim\Container $container
+     * @param Container $container
      */
-    public function __construct(\Slim\Container $container)
+    public function __construct(Container $container)
     {
         $this->logger = $container->get('logger');
         $this->database = $container->get('db');

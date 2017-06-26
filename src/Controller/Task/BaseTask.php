@@ -4,6 +4,7 @@ namespace App\Controller\Task;
 
 use App\Controller\BaseController;
 use App\Service\TaskService;
+use Slim\Container;
 
 /**
  * Base Task Controller.
@@ -11,9 +12,9 @@ use App\Service\TaskService;
 abstract class BaseTask extends BaseController
 {
     /**
-     * @param \Slim\Container $container
+     * @param Container $container
      */
-    public function __construct(\Slim\Container $container)
+    public function __construct(Container $container)
     {
         $this->logger = $container->get('logger');
         $this->database = $container->get('db');

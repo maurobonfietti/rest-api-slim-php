@@ -2,6 +2,9 @@
 
 namespace App\Controller\User;
 
+use Slim\Http\Request;
+use Slim\Http\Response;
+
 /**
  * Update User Controller.
  */

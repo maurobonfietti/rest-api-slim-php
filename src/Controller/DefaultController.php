@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
-use App\Controller\BaseController;
 use App\Message\DefaultMessage;
+use Slim\Container;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 /**
  * Default Controller.
@@ -11,9 +13,9 @@ use App\Message\DefaultMessage;
 class DefaultController extends BaseController
 {
     /**
-     * @param \Slim\Container $container
+     * @param Container $container
      */
-    public function __construct(\Slim\Container $container)
+    public function __construct(Container $container)
     {
         $this->logger = $container->get('logger');
     }

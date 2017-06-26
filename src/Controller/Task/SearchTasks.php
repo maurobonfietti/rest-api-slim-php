@@ -2,6 +2,9 @@
 
 namespace App\Controller\Task;
 
+use Slim\Http\Request;
+use Slim\Http\Response;
+
 /**
  * Search Tasks Controller.
  */
