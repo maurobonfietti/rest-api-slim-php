@@ -23,7 +23,7 @@ class TaskRepository extends BaseRepository
      * Check if the task exists.
      *
      * @param int $taskId
-     * @return array $task
+     * @return object $task
      * @throws \Exception
      */
     public function checkTask($taskId)
@@ -77,7 +77,7 @@ class TaskRepository extends BaseRepository
      * Create a task.
      *
      * @param array $data
-     * @return array
+     * @return object
      * @throws \Exception
      */
     public function createTask($data)
@@ -96,7 +96,7 @@ class TaskRepository extends BaseRepository
      *
      * @param array $data
      * @param int $taskId
-     * @return array
+     * @return object
      */
     public function updateTask($data, $taskId)
     {
