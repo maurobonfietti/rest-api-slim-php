@@ -11,7 +11,7 @@ use App\Validation\UserValidation as vs;
 class UserService extends BaseService
 {
     /**
-     * @param object $database
+     * @param \PDO $database
      */
     public function __construct(\PDO $database)
     {
@@ -82,6 +82,7 @@ class UserService extends BaseService
     {
         $repository = new UserRepository($this->database);
         $data = vs::validateInputOnCreateUser($input);
+        /** @var array $data */
         $user = $repository->createUser($data);
 
         return $user;

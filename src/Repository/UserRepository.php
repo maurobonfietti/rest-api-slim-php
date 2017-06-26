@@ -12,9 +12,9 @@ use App\Repository\Query\UserQuery;
 class UserRepository extends BaseRepository
 {
     /**
-     * @param object $database
+     * @param \PDO $database
      */
-    public function __construct(\PDO $database = null)
+    public function __construct(\PDO $database)
     {
         $this->database = $database;
     }

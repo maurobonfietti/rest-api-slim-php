@@ -12,9 +12,9 @@ use App\Repository\Query\TaskQuery;
 class TaskRepository extends BaseRepository
 {
     /**
-     * @param object $database
+     * @param \PDO $database
      */
-    public function __construct(\PDO $database = null)
+    public function __construct(\PDO $database)
     {
         $this->database = $database;
     }

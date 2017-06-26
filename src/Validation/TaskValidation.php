@@ -13,7 +13,7 @@ abstract class TaskValidation extends BaseValidation
      * Validate and sanitize input data when create new task.
      *
      * @param array $input
-     * @return string
+     * @return array
      * @throws \Exception
      */
     public static function validateInputOnCreateTask($input)
@@ -35,7 +35,7 @@ abstract class TaskValidation extends BaseValidation
      *
      * @param array $input
      * @param array $task
-     * @return string
+     * @return array
      * @throws \Exception
      */
     public static function validateInputOnUpdateTask($input, $task)

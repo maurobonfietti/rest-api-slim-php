@@ -11,7 +11,7 @@ use App\Validation\TaskValidation as vs;
 class TaskService extends BaseService
 {
     /**
-     * @param object $database
+     * @param \PDO $database
      */
     public function __construct(\PDO $database)
     {
