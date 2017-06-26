@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Service\UserService;
-
 /**
  * Base Controller.
  */
