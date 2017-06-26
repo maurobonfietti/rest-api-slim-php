@@ -22,7 +22,7 @@ class TaskService extends BaseService
      * Check if the task exists.
      *
      * @param int $taskId
-     * @return array
+     * @return object
      */
     protected function checkTask($taskId)
     {
@@ -49,7 +49,7 @@ class TaskService extends BaseService
      * Get one task by id.
      *
      * @param int $taskId
-     * @return array
+     * @return object
      */
     public function getTask($taskId)
     {
@@ -76,7 +76,7 @@ class TaskService extends BaseService
      * Create a task.
      *
      * @param array $input
-     * @return array
+     * @return object
      */
     public function createTask($input)
     {
@@ -92,7 +92,7 @@ class TaskService extends BaseService
      *
      * @param array $input
      * @param int $taskId
-     * @return array
+     * @return object
      */
     public function updateTask($input, $taskId)
     {

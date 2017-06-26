@@ -13,7 +13,7 @@ abstract class UserValidation extends BaseValidation
      * Validate and sanitize input data when create new user.
      *
      * @param array $input
-     * @return string
+     * @return array
      * @throws \Exception
      */
     public static function validateInputOnCreateUser($input)
@@ -34,7 +34,7 @@ abstract class UserValidation extends BaseValidation
      * Validate and sanitize input data when update a user.
      *
      * @param array $input
-     * @param array $user
+     * @param object $user
      * @return array
      * @throws \Exception
      */

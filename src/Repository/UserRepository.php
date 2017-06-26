@@ -23,7 +23,7 @@ class UserRepository extends BaseRepository
      * Check if the user exists.
      *
      * @param int $userId
-     * @return array $user
+     * @return object $user
      * @throws \Exception
      */
     public function checkUser($userId)
@@ -77,7 +77,7 @@ class UserRepository extends BaseRepository
      * Create a user.
      *
      * @param array $data
-     * @return array
+     * @return object
      * @throws \Exception
      */
     public function createUser($data)
@@ -96,7 +96,7 @@ class UserRepository extends BaseRepository
      *
      * @param array $data
      * @param int $userId
-     * @return array
+     * @return object
      */
     public function updateUser($data, $userId)
     {

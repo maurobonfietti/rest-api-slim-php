@@ -34,7 +34,7 @@ abstract class TaskValidation extends BaseValidation
      * Validate and sanitize input data when update a task.
      *
      * @param array $input
-     * @param array $task
+     * @param object $task
      * @return array
      * @throws \Exception
      */

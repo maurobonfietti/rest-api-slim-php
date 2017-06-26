@@ -22,7 +22,7 @@ class UserService extends BaseService
      * Check if the user exists.
      *
      * @param int $userId
-     * @return array
+     * @return object
      */
     protected function checkUser($userId)
     {
@@ -49,7 +49,7 @@ class UserService extends BaseService
      * Get one user by id.
      *
      * @param int $userId
-     * @return array
+     * @return object
      */
     public function getUser($userId)
     {
@@ -76,13 +76,12 @@ class UserService extends BaseService
      * Create a user.
      *
      * @param array $input
-     * @return array
+     * @return object
      */
     public function createUser($input)
     {
         $repository = new UserRepository($this->database);
         $data = vs::validateInputOnCreateUser($input);
-        /** @var array $data */
         $user = $repository->createUser($data);
 
         return $user;
@@ -93,7 +92,7 @@ class UserService extends BaseService
      *
      * @param array $input
      * @param int $userId
-     * @return array
+     * @return object
      */
     public function updateUser($input, $userId)
     {
