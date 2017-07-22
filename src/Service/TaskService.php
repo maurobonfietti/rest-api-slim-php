@@ -75,7 +75,7 @@ class TaskService extends BaseService
     /**
      * Create a task.
      *
-     * @param array $input
+     * @param array|object|null $input
      * @return object
      */
     public function createTask($input)
