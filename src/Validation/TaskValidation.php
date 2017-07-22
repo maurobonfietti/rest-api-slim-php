@@ -12,7 +12,7 @@ abstract class TaskValidation extends BaseValidation
     /**
      * Validate and sanitize input data when create new task.
      *
-     * @param array $input
+     * @param array|object|null $input
      * @return array
      * @throws \Exception
      */
@@ -33,7 +33,7 @@ abstract class TaskValidation extends BaseValidation
     /**
      * Validate and sanitize input data when update a task.
      *
-     * @param array $input
+     * @param array|object|null $input
      * @param object $task
      * @return array
      * @throws \Exception

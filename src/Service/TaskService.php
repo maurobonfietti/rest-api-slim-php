@@ -90,7 +90,7 @@ class TaskService extends BaseService
     /**
      * Update a task.
      *
-     * @param array $input
+     * @param array|object|null $input
      * @param int $taskId
      * @return object
      */
