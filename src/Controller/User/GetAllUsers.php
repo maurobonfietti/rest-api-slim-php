@@ -18,7 +18,7 @@ class GetAllUsers extends BaseUser
      * @param array $args
      * @return array
      */
-    public function getUsers($request, $response, $args)
+    public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
         $result = $this->getUserService()->getUsers();

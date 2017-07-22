@@ -18,7 +18,7 @@ class CreateUser extends BaseUser
      * @param array $args
      * @return array
      */
-    public function createUser($request, $response, $args)
+    public function __invoke($request, $response, $args)
     {
         try {
             $this->setParams($request, $response, $args);

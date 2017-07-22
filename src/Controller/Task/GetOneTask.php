@@ -18,7 +18,7 @@ class GetOneTask extends BaseTask
      * @param array $args
      * @return array
      */
-    public function getTask($request, $response, $args)
+    public function __invoke($request, $response, $args)
     {
         try {
             $this->setParams($request, $response, $args);
