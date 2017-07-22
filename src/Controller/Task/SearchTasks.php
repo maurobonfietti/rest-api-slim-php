@@ -18,7 +18,7 @@ class SearchTasks extends BaseTask
      * @param array $args
      * @return array
      */
-    public function searchTasks($request, $response, $args)
+    public function __invoke($request, $response, $args)
     {
         try {
             $this->setParams($request, $response, $args);
