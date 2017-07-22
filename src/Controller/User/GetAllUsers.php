@@ -16,7 +16,7 @@ class GetAllUsers extends BaseUser
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return array
+     * @return Response
      */
     public function __invoke($request, $response, $args)
     {
