@@ -12,7 +12,7 @@ abstract class UserValidation extends BaseValidation
     /**
      * Validate and sanitize input data when create new user.
      *
-     * @param array $input
+     * @param array|object|null $input
      * @return array
      * @throws \Exception
      */
@@ -33,7 +33,7 @@ abstract class UserValidation extends BaseValidation
     /**
      * Validate and sanitize input data when update a user.
      *
-     * @param array $input
+     * @param array|object|null $input
      * @param object $user
      * @return array
      * @throws \Exception
