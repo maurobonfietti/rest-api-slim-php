@@ -28,7 +28,7 @@ class TaskRepository extends BaseRepository
      */
     public function checkTask($taskId)
     {
-        $statement = $this->database->prepare(TaskQuery::GET_TASK_QUERY);
+        $statement = $this->getDb()->prepare(TaskQuery::GET_TASK_QUERY);
         $statement->bindParam('id', $taskId);
         $statement->execute();
         $task = $statement->fetchObject();
@@ -46,7 +46,7 @@ class TaskRepository extends BaseRepository
      */
     public function getTasks()
     {
-        $statement = $this->database->prepare(TaskQuery::GET_TASKS_QUERY);
+        $statement = $this->getDb()->prepare(TaskQuery::GET_TASKS_QUERY);
         $statement->execute();
         $tasks = $statement->fetchAll();
 
@@ -62,7 +62,7 @@ class TaskRepository extends BaseRepository
      */
     public function searchTasks($tasksName)
     {
-        $statement = $this->database->prepare(TaskQuery::SEARCH_TASKS_QUERY);
+        $statement = $this->getDb()->prepare(TaskQuery::SEARCH_TASKS_QUERY);
         $query = '%' . $tasksName . '%';
         $statement->bindParam('name', $query);
         $statement->execute();
@@ -83,7 +83,7 @@ class TaskRepository extends BaseRepository
      */
     public function createTask($data)
     {
-        $statement = $this->database->prepare(TaskQuery::CREATE_TASK_QUERY);
+        $statement = $this->getDb()->prepare(TaskQuery::CREATE_TASK_QUERY);
         $statement->bindParam('name', $data['name']);
         $statement->bindParam('status', $data['status']);
         $statement->execute();
@@ -101,7 +101,7 @@ class TaskRepository extends BaseRepository
      */
     public function updateTask($data, $taskId)
     {
-        $statement = $this->database->prepare(TaskQuery::UPDATE_TASK_QUERY);
+        $statement = $this->getDb()->prepare(TaskQuery::UPDATE_TASK_QUERY);
         $statement->bindParam('id', $taskId);
         $statement->bindParam('name', $data['name']);
         $statement->bindParam('status', $data['status']);
@@ -119,7 +119,7 @@ class TaskRepository extends BaseRepository
      */
     public function deleteTask($taskId)
     {
-        $statement = $this->database->prepare(TaskQuery::DELETE_TASK_QUERY);
+        $statement = $this->getDb()->prepare(TaskQuery::DELETE_TASK_QUERY);
         $statement->bindParam('id', $taskId);
         $statement->execute();
 
