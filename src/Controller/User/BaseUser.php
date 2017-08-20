@@ -29,4 +29,12 @@ abstract class BaseUser extends BaseController
 
         return $service;
     }
+
+    /**
+     * @return array
+     */
+    protected function getInput()
+    {
+        return $this->request->getParsedBody();
+    }
 }

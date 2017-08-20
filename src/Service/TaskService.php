@@ -80,9 +80,8 @@ class TaskService extends BaseService
      */
     public function createTask($input)
     {
-        $repository = new TaskRepository($this->database);
-        $data = vs::validateInputOnCreateTask($input);
-        $task = $repository->createTask($data);
+        $data = vs::validateInputOnCreateTask($input); 
+        $task = $this->getTaskRepository()->createTask($data);
 
         return $task;
     }

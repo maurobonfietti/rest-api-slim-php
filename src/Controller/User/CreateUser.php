@@ -22,7 +22,7 @@ class CreateUser extends BaseUser
     {
         try {
             $this->setParams($request, $response, $args);
-            $input = $this->request->getParsedBody();
+            $input = $this->getInput();
             $result = $this->getUserService()->createUser($input);
 
             return $this->jsonResponse('success', $result, 201);

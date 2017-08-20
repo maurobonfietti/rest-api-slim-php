@@ -22,7 +22,7 @@ class CreateTask extends BaseTask
     {
         try {
             $this->setParams($request, $response, $args);
-            $input = $this->request->getParsedBody();
+            $input = $this->getInput();
             $result = $this->getTaskService()->createTask($input);
 
             return $this->jsonResponse('success', $result, 201);

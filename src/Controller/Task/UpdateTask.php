@@ -22,7 +22,7 @@ class UpdateTask extends BaseTask
     {
         try {
             $this->setParams($request, $response, $args);
-            $input = $this->request->getParsedBody();
+            $input = $this->getInput();
             $result = $this->getTaskService()->updateTask($input, $this->args['id']);
 
             return $this->jsonResponse('success', $result, 200);
