@@ -22,7 +22,8 @@ class GetOneTask extends BaseTask
     {
         try {
             $this->setParams($request, $response, $args);
-            $result = $this->getTaskService()->getTask($this->args['id']);
+            $taskId = $this->args['id'];
+            $result = $this->getTaskService()->getTask($taskId);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {

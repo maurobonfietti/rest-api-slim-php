@@ -14,6 +14,11 @@ class UserException extends BaseException
     const USER_NAME_INVALID = 'El nombre ingresado es incorrecto.';
     const USER_EMAIL_INVALID = 'El email ingresado es incorrecto.';
 
+    /**
+     * @param string $message
+     * @param int $code
+     * @param \Exception $previous
+     */
     public function __construct($message = '', $code = null, \Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);

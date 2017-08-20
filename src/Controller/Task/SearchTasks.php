@@ -22,7 +22,8 @@ class SearchTasks extends BaseTask
     {
         try {
             $this->setParams($request, $response, $args);
-            $result = $this->getTaskService()->searchTasks($this->args['query']);
+            $taskName = $this->args['query'];
+            $result = $this->getTaskService()->searchTasks($taskName);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {

@@ -14,6 +14,11 @@ class TaskException extends BaseException
     const TASK_NAME_INVALID = 'La tarea ingresada es incorrecta.';
     const TASK_STATUS_INVALID = 'El estado ingresado es incorrecto.';
 
+    /**
+     * @param string $message
+     * @param int $code
+     * @param \Exception $previous
+     */
     public function __construct($message = '', $code = null, \Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);

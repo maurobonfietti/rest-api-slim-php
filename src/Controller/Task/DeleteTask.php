@@ -22,7 +22,8 @@ class DeleteTask extends BaseTask
     {
         try {
             $this->setParams($request, $response, $args);
-            $result = $this->getTaskService()->deleteTask($this->args['id']);
+            $taskId = $this->args['id'];
+            $result = $this->getTaskService()->deleteTask($taskId);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {

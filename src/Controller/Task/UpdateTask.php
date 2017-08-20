@@ -23,7 +23,8 @@ class UpdateTask extends BaseTask
         try {
             $this->setParams($request, $response, $args);
             $input = $this->getInput();
-            $result = $this->getTaskService()->updateTask($input, $this->args['id']);
+            $taskId = $this->args['id'];
+            $result = $this->getTaskService()->updateTask($input, $taskId);
 
             return $this->jsonResponse('success', $result, 200);
         } catch (\Exception $ex) {
