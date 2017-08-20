@@ -48,8 +48,9 @@ class TaskRepository extends BaseRepository
     {
         $statement = $this->database->prepare(TaskQuery::GET_TASKS_QUERY);
         $statement->execute();
+        $tasks = $statement->fetchAll();
 
-        return $statement->fetchAll();
+        return $tasks;
     }
 
     /**
