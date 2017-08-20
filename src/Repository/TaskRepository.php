@@ -67,7 +67,7 @@ class TaskRepository extends BaseRepository
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
-            throw new TaskException(TaskException::TASK_NOT_FOUND, 404);
+            throw new TaskException(TaskException::TASK_NAME_NOT_FOUND, 404);
         }
 
         return $tasks;

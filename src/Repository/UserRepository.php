@@ -67,7 +67,7 @@ class UserRepository extends BaseRepository
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
-            throw new UserException(UserException::USER_NOT_FOUND, 404);
+            throw new UserException(UserException::USER_NAME_NOT_FOUND, 404);
         }
 
         return $users;
