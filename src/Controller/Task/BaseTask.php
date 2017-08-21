@@ -12,12 +12,18 @@ use Slim\Container;
 abstract class BaseTask extends BaseController
 {
     /**
+     * @var Container
+     */
+    private $container;
+
+    /**
      * @param Container $container
      */
     public function __construct(Container $container)
     {
         $this->logger = $container->get('logger');
         $this->database = $container->get('db');
+        $this->container = $container;
     }
 
     /**

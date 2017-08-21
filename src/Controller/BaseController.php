@@ -4,18 +4,28 @@ namespace App\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Monolog\Logger;
 
 /**
  * Base Controller.
  */
 abstract class BaseController
 {
+    /**
+     * @var Logger $logger
+     */
     protected $logger;
 
     protected $database;
 
+    /**
+     * @var Request $request
+     */
     protected $request;
 
+    /**
+     * @var Response $response
+     */
     protected $response;
 
     protected $args;
@@ -39,7 +49,7 @@ abstract class BaseController
      * @param string $status
      * @param mixed $message
      * @param int $code
-     * @return array $response
+     * @return Response
      */
     protected function jsonResponse($status, $message, $code)
     {

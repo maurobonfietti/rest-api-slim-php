@@ -26,7 +26,7 @@ class DefaultController extends BaseController
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return array
+     * @return Response
      */
     public function getHelp($request, $response, $args)
     {
@@ -49,7 +49,7 @@ class DefaultController extends BaseController
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return array
+     * @return Response
      */
     public function getVersion($request, $response, $args)
     {
@@ -67,7 +67,7 @@ class DefaultController extends BaseController
      * @param Request $request
      * @param Response $response
      * @param array $args
-     * @return array
+     * @return Response
      */
     public function getStatus($request, $response, $args)
     {

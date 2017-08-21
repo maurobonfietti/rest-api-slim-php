@@ -1,10 +1,16 @@
 <?php
 
+use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
 
-// PDO database library
+/**
+ * PDO database library
+ *
+ * @param ContainerInterface $c
+ * @return PDO
+ */
 $container['db'] = function (ContainerInterface $c) {
     $db = $c->get('settings')['db'];
     $database = sprintf('mysql:host=%s;dbname=%s', $db['host'], $db['dbname']);
@@ -15,7 +21,12 @@ $container['db'] = function (ContainerInterface $c) {
     return $pdo;
 };
 
-// Logger
+/**
+ * Logger
+ *
+ * @param ContainerInterface $c
+ * @return bool|Logger
+ */
 $container['logger'] = function (ContainerInterface $c) {
     $settings = $c->get('settings')['logger'];
     if ($settings['enabled'] === false) {
