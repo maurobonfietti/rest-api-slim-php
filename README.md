@@ -68,8 +68,8 @@ $ composer start
 
 Si todo fue bien :sunglasses:, se puede acceder localmente al proyecto ingresando a: 
 [Ayuda](http://localhost:8080), 
-[Usuarios](http://localhost:8080/users), 
-[Tareas](http://localhost:8080/tasks).
+[Usuarios](http://localhost:8080/api/v1/users), 
+[Tareas](http://localhost:8080/api/v1/tasks).
 
 El comando `composer start` sería el equivalente a ejecutar:
 
