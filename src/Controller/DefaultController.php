@@ -55,7 +55,7 @@ class DefaultController extends BaseController
     {
         $this->setParams($request, $response, $args);
         $version = [
-            'api_version' => DefaultMessage::API_VERSION
+            'version' => DefaultMessage::API_VERSION,
         ];
 
         return $this->jsonResponse('success', $version, 200);
@@ -73,7 +73,7 @@ class DefaultController extends BaseController
     {
         $this->setParams($request, $response, $args);
         $status = [
-            'api_status' => 'OK'
+            'status' => 'OK',
         ];
 
         return $this->jsonResponse('success', $status, 200);
