@@ -47,6 +47,9 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
         // Register middleware
         require __DIR__ . '/../../app/middleware.php';
 
+        // Register services
+        require __DIR__ . '/../../app/services.php';
+
         // Register routes
         require __DIR__ . '/../../app/routes.php';
 
