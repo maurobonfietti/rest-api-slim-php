@@ -11,11 +11,11 @@ use App\Validation\UserValidation as vs;
 class UserService extends BaseService
 {
     /**
-     * @param \PDO $database
+     * @param UserRepository $userRepository
      */
-    public function __construct(\PDO $database)
+    public function __construct(UserRepository $userRepository)
     {
-        $this->database = $database;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -26,8 +26,7 @@ class UserService extends BaseService
      */
     protected function checkUser($userId)
     {
-        $repository = new UserRepository($this->database);
-        $user = $repository->checkUser($userId);
+        $user = $this->userRepository->checkUser($userId);
 
         return $user;
     }
@@ -39,8 +38,7 @@ class UserService extends BaseService
      */
     public function getUsers()
     {
-        $repository = new UserRepository($this->database);
-        $users = $repository->getUsers();
+        $users = $this->userRepository->getUsers();
 
         return $users;
     }
@@ -66,8 +64,7 @@ class UserService extends BaseService
      */
     public function searchUsers($usersName)
     {
-        $repository = new UserRepository($this->database);
-        $users = $repository->searchUsers($usersName);
+        $users = $this->userRepository->searchUsers($usersName);
 
         return $users;
     }
@@ -80,9 +77,8 @@ class UserService extends BaseService
      */
     public function createUser($input)
     {
-        $repository = new UserRepository($this->database);
         $data = vs::validateInputOnCreateUser($input);
-        $user = $repository->createUser($data);
+        $user = $this->userRepository->createUser($data);
 
         return $user;
     }
@@ -98,8 +94,7 @@ class UserService extends BaseService
     {
         $checkUser = $this->checkUser($userId);
         $data = vs::validateInputOnUpdateUser($input, $checkUser);
-        $repository = new UserRepository($this->database);
-        $user = $repository->updateUser($data, $userId);
+        $user = $this->userRepository->updateUser($data, $userId);
 
         return $user;
     }
@@ -113,8 +108,7 @@ class UserService extends BaseService
     public function deleteUser($userId)
     {
         $this->checkUser($userId);
-        $repository = new UserRepository($this->database);
-        $response = $repository->deleteUser($userId);
+        $response = $this->userRepository->deleteUser($userId);
 
         return $response;
     }

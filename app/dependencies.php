@@ -41,3 +41,11 @@ $container['logger'] = function (ContainerInterface $c) {
 
     return $logger;
 };
+
+$container['user_service'] = function ($container) {
+    return new App\Service\UserService($container->get('user_repository'));
+};
+
+$container['user_repository'] = function ($container) {
+    return new App\Repository\UserRepository($container->get('db'));
+};

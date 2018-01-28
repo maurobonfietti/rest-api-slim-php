@@ -18,6 +18,8 @@ abstract class BaseController
 
     protected $database;
 
+    protected $userService;
+
     /**
      * @var Request $request
      */

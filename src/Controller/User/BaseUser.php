@@ -12,18 +12,13 @@ use Slim\Container;
 abstract class BaseUser extends BaseController
 {
     /**
-     * @var Container
-     */
-    private $container;
-
-    /**
      * @param Container $container
      */
     public function __construct(Container $container)
     {
         $this->logger = $container->get('logger');
         $this->database = $container->get('db');
-        $this->container = $container;
+        $this->userService = $container->get('user_service');
     }
 
     /**
@@ -31,9 +26,7 @@ abstract class BaseUser extends BaseController
      */
     protected function getUserService()
     {
-        $service = new UserService($this->database);
-
-        return $service;
+        return $this->userService;
     }
 
     /**
