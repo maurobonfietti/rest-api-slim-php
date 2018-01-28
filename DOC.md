@@ -1,7 +1,7 @@
-## MODO DE USO:
+# MODO DE USO:
 
 
-### Ver usuarios:
+## Ver usuarios:
 
 Petición:
 ```
@@ -18,38 +18,38 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         }
     ]
 }
 ```
 
 
-### Ver usuario:
+## Ver usuario:
 
 Petición:
 ```
@@ -65,13 +65,13 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "updated": "2018-01-28 05:17:19"
+        "updated": "2018-01-28 05:29:35"
     }
 }
 ```
 
 
-### Buscar usuarios por nombre:
+## Buscar usuarios por nombre:
 
 Petición:
 ```
@@ -88,14 +88,14 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         }
     ]
 }
 ```
 
 
-### Crear usuario:
+## Crear usuario:
 
 Petición:
 ```
@@ -111,17 +111,17 @@ Respuesta:
         "id": "6",
         "name": "Sergio",
         "email": null,
-        "updated": "2018-01-28 05:17:19"
+        "updated": "2018-01-28 05:29:35"
     }
 }
 ```
 
 
-### Actualizar usuario:
+## Actualizar usuario:
 
 Petición:
 ```
-$ curl -X PUT http://localhost:8080/api/v1/users/3 --data name=Javier
+$ curl -X PUT http://localhost:8080/api/v1/users/6 --data name=Javier
 ```
 
 Respuesta:
@@ -130,16 +130,16 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "id": "3",
+        "id": "6",
         "name": "Javier",
         "email": null,
-        "updated": "2018-01-28 05:17:19"
+        "updated": "2018-01-28 05:29:35"
     }
 }
 ```
 
 
-### Eliminar usuario:
+## Eliminar usuario:
 
 Petición:
 ```
@@ -156,7 +156,7 @@ Respuesta:
 ```
 
 
-### Ver tareas:
+## Ver tareas:
 
 Petición:
 ```
@@ -173,38 +173,38 @@ Respuesta:
             "id": "1",
             "name": "Ir al centro",
             "status": "1",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "2",
             "name": "Comprar zapatillas",
             "status": "1",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "3",
             "name": "Ir al super",
             "status": "1",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "4",
             "name": "Comprar cereales",
             "status": "1",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "5",
             "name": "Hacer tarea...",
             "status": "0",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         }
     ]
 }
 ```
 
 
-### Ver tarea:
+## Ver tarea:
 
 Petición:
 ```
@@ -220,13 +220,13 @@ Respuesta:
         "id": "3",
         "name": "Ir al super",
         "status": "1",
-        "updated": "2018-01-28 05:17:19"
+        "updated": "2018-01-28 05:29:35"
     }
 }
 ```
 
 
-### Buscar tareas por nombre:
+## Buscar tareas por nombre:
 
 Petición:
 ```
@@ -243,20 +243,20 @@ Respuesta:
             "id": "1",
             "name": "Ir al centro",
             "status": "1",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         },
         {
             "id": "3",
             "name": "Ir al super",
             "status": "1",
-            "updated": "2018-01-28 05:17:19"
+            "updated": "2018-01-28 05:29:35"
         }
     ]
 }
 ```
 
 
-### Crear tarea:
+## Crear tarea:
 
 Petición:
 ```
@@ -272,13 +272,13 @@ Respuesta:
         "id": "6",
         "name": "Super",
         "status": "0",
-        "updated": "2018-01-28 05:17:19"
+        "updated": "2018-01-28 05:29:35"
     }
 }
 ```
 
 
-### Actualizar tarea:
+## Actualizar tarea:
 
 Petición:
 ```
@@ -294,13 +294,13 @@ Respuesta:
         "id": "6",
         "name": "Viajar",
         "status": "0",
-        "updated": "2018-01-28 05:17:19"
+        "updated": "2018-01-28 05:29:35"
     }
 }
 ```
 
 
-### Eliminar tarea:
+## Eliminar tarea:
 
 Petición:
 ```
@@ -317,7 +317,7 @@ Respuesta:
 ```
 
 
-### Ver ayuda:
+## Ver ayuda:
 
 Petición:
 ```
@@ -340,7 +340,7 @@ Respuesta:
 ```
 
 
-### Ver version:
+## Ver version:
 
 Petición:
 ```
@@ -359,7 +359,7 @@ Respuesta:
 ```
 
 
-### Ver status:
+## Ver status:
 
 Petición:
 ```
