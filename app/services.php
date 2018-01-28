@@ -9,6 +9,13 @@ use App\Handlers\ApiError;
 $container = $app->getContainer();
 
 /**
+ * @return ApiError
+ */
+$container["errorHandler"] = function () {
+    return new ApiError;
+};
+
+/**
  * @param ContainerInterface $container
  * @return UserService
  */
@@ -38,11 +45,4 @@ $container['task_service'] = function ($container) {
  */
 $container['task_repository'] = function ($container) {
     return new TaskRepository($container->get('db'));
-};
-
-/**
- * @return ApiError
- */
-$container["errorHandler"] = function () {
-    return new ApiError;
 };

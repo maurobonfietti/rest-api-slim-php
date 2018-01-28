@@ -20,14 +20,10 @@ class CreateUser extends BaseUser
      */
     public function __invoke($request, $response, $args)
     {
-        try {
-            $this->setParams($request, $response, $args);
-            $input = $this->getInput();
-            $result = $this->getUserService()->createUser($input);
+        $this->setParams($request, $response, $args);
+        $input = $this->getInput();
+        $result = $this->getUserService()->createUser($input);
 
-            return $this->jsonResponse('success', $result, 201);
-        } catch (\Exception $ex) {
-            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
-        }
+        return $this->jsonResponse('success', $result, 201);
     }
 }

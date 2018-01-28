@@ -20,15 +20,11 @@ class UpdateTask extends BaseTask
      */
     public function __invoke($request, $response, $args)
     {
-        try {
-            $this->setParams($request, $response, $args);
-            $input = $this->getInput();
-            $taskId = $this->args['id'];
-            $result = $this->getTaskService()->updateTask($input, $taskId);
+        $this->setParams($request, $response, $args);
+        $input = $this->getInput();
+        $taskId = $this->args['id'];
+        $result = $this->getTaskService()->updateTask($input, $taskId);
 
-            return $this->jsonResponse('success', $result, 200);
-        } catch (\Exception $ex) {
-            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
-        }
+        return $this->jsonResponse('success', $result, 200);
     }
 }
