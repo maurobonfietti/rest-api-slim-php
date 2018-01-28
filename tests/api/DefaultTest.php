@@ -41,7 +41,7 @@ class DefaultTest extends BaseTestCase
         $response = $this->runApp('GET', '/status');
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('api_status', (string) $response->getBody());
+        $this->assertContains('status', (string) $response->getBody());
         $this->assertNotContains('ERROR', (string) $response->getBody());
         $this->assertNotContains('Failed', (string) $response->getBody());
     }

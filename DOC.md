@@ -18,31 +18,31 @@ Respuesta:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@delpotro.com",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "2",
             "name": "Federico",
             "email": null,
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego10@gmail.com",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         }
     ]
 }
@@ -65,7 +65,7 @@ Respuesta:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@delpotro.com",
-        "updated": "2017-07-22 11:09:31"
+        "updated": "2018-01-28 05:17:19"
     }
 }
 ```
@@ -88,7 +88,7 @@ Respuesta:
             "id": "3",
             "name": "Leo",
             "email": null,
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         }
     ]
 }
@@ -111,7 +111,7 @@ Respuesta:
         "id": "6",
         "name": "Sergio",
         "email": null,
-        "updated": "2017-07-22 11:09:31"
+        "updated": "2018-01-28 05:17:19"
     }
 }
 ```
@@ -121,7 +121,7 @@ Respuesta:
 
 Petición:
 ```
-$ curl -X PUT http://localhost:8080/api/v1/users/6 --data name=Javier
+$ curl -X PUT http://localhost:8080/api/v1/users/3 --data name=Javier
 ```
 
 Respuesta:
@@ -130,10 +130,10 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "id": "6",
+        "id": "3",
         "name": "Javier",
         "email": null,
-        "updated": "2017-07-22 11:09:31"
+        "updated": "2018-01-28 05:17:19"
     }
 }
 ```
@@ -173,31 +173,31 @@ Respuesta:
             "id": "1",
             "name": "Ir al centro",
             "status": "1",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "2",
             "name": "Comprar zapatillas",
             "status": "1",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "3",
             "name": "Ir al super",
             "status": "1",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "4",
             "name": "Comprar cereales",
             "status": "1",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "5",
             "name": "Hacer tarea...",
             "status": "0",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         }
     ]
 }
@@ -220,7 +220,7 @@ Respuesta:
         "id": "3",
         "name": "Ir al super",
         "status": "1",
-        "updated": "2017-07-22 11:09:31"
+        "updated": "2018-01-28 05:17:19"
     }
 }
 ```
@@ -243,13 +243,13 @@ Respuesta:
             "id": "1",
             "name": "Ir al centro",
             "status": "1",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         },
         {
             "id": "3",
             "name": "Ir al super",
             "status": "1",
-            "updated": "2017-07-22 11:09:31"
+            "updated": "2018-01-28 05:17:19"
         }
     ]
 }
@@ -272,7 +272,7 @@ Respuesta:
         "id": "6",
         "name": "Super",
         "status": "0",
-        "updated": "2017-07-22 11:09:31"
+        "updated": "2018-01-28 05:17:19"
     }
 }
 ```
@@ -294,7 +294,7 @@ Respuesta:
         "id": "6",
         "name": "Viajar",
         "status": "0",
-        "updated": "2017-07-22 11:09:31"
+        "updated": "2018-01-28 05:17:19"
     }
 }
 ```
@@ -353,7 +353,7 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "api_version": "17.06"
+        "version": "18.01"
     }
 }
 ```
@@ -372,7 +372,7 @@ Respuesta:
     "code": 200,
     "status": "success",
     "message": {
-        "api_status": "OK"
+        "status": "OK"
     }
 }
 ```
