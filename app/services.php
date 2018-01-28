@@ -38,3 +38,7 @@ $container['task_service'] = function ($container) {
 $container['task_repository'] = function ($container) {
     return new TaskRepository($container->get('db'));
 };
+
+$container["errorHandler"] = function ($container) {
+    return new App\Handlers\ApiError;
+};

@@ -20,14 +20,10 @@ class GetOneTask extends BaseTask
      */
     public function __invoke($request, $response, $args)
     {
-        try {
-            $this->setParams($request, $response, $args);
-            $taskId = $this->args['id'];
-            $result = $this->getTaskService()->getTask($taskId);
+        $this->setParams($request, $response, $args);
+        $taskId = $this->args['id'];
+        $result = $this->getTaskService()->getTask($taskId);
 
-            return $this->jsonResponse('success', $result, 200);
-        } catch (\Exception $ex) {
-            return $this->jsonResponse('error', $ex->getMessage(), $ex->getCode());
-        }
+        return $this->jsonResponse('success', $result, 200);
     }
 }
