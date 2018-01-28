@@ -4,11 +4,12 @@ use App\Service\UserService;
 use App\Service\TaskService;
 use App\Repository\UserRepository;
 use App\Repository\TaskRepository;
+use App\Handlers\ApiError;
 
 $container = $app->getContainer();
 
 /**
- * @param ContainerInterface $c
+ * @param ContainerInterface $container
  * @return UserService
  */
 $container['user_service'] = function ($container) {
@@ -16,7 +17,7 @@ $container['user_service'] = function ($container) {
 };
 
 /**
- * @param ContainerInterface $c
+ * @param ContainerInterface $container
  * @return UserRepository
  */
 $container['user_repository'] = function ($container) {
@@ -24,7 +25,7 @@ $container['user_repository'] = function ($container) {
 };
 
 /**
- * @param ContainerInterface $c
+ * @param ContainerInterface $container
  * @return TaskService
  */
 $container['task_service'] = function ($container) {
@@ -32,13 +33,16 @@ $container['task_service'] = function ($container) {
 };
 
 /**
- * @param ContainerInterface $c
+ * @param ContainerInterface $container
  * @return TaskRepository
  */
 $container['task_repository'] = function ($container) {
     return new TaskRepository($container->get('db'));
 };
 
-$container["errorHandler"] = function ($container) {
-    return new App\Handlers\ApiError;
+/**
+ * @return ApiError
+ */
+$container["errorHandler"] = function () {
+    return new ApiError;
 };
