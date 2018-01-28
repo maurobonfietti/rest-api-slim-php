@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Repository\TaskRepository;
 use App\Validation\TaskValidation as vs;
 
 /**
@@ -10,11 +11,19 @@ use App\Validation\TaskValidation as vs;
 class TaskService extends BaseService
 {
     /**
-     * @param \PDO $database
+     * @param TaskRepository $taskRepository
      */
-    public function __construct(\PDO $database)
+    public function __construct(TaskRepository $taskRepository)
     {
-        $this->database = $database;
+        $this->taskRepository = $taskRepository;
+    }
+
+    /**
+     * @return TaskRepository
+     */
+    protected function getTaskRepository()
+    {
+        return $this->taskRepository;
     }
 
     /**

@@ -20,6 +20,8 @@ abstract class BaseController
 
     protected $userService;
 
+    protected $taskService;
+
     /**
      * @var Request $request
      */

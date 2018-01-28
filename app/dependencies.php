@@ -49,3 +49,11 @@ $container['user_service'] = function ($container) {
 $container['user_repository'] = function ($container) {
     return new App\Repository\UserRepository($container->get('db'));
 };
+
+$container['task_service'] = function ($container) {
+    return new App\Service\TaskService($container->get('task_repository'));
+};
+
+$container['task_repository'] = function ($container) {
+    return new App\Repository\TaskRepository($container->get('db'));
+};
