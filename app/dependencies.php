@@ -1,5 +1,9 @@
 <?php
 
+use App\Service\UserService;
+use App\Service\TaskService;
+use App\Repository\UserRepository;
+use App\Repository\TaskRepository;
 use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 
@@ -42,18 +46,34 @@ $container['logger'] = function (ContainerInterface $c) {
     return $logger;
 };
 
+/**
+ * @param ContainerInterface $c
+ * @return UserService
+ */
 $container['user_service'] = function ($container) {
-    return new App\Service\UserService($container->get('user_repository'));
+    return new UserService($container->get('user_repository'));
 };
 
+/**
+ * @param ContainerInterface $c
+ * @return UserRepository
+ */
 $container['user_repository'] = function ($container) {
-    return new App\Repository\UserRepository($container->get('db'));
+    return new UserRepository($container->get('db'));
 };
 
+/**
+ * @param ContainerInterface $c
+ * @return TaskService
+ */
 $container['task_service'] = function ($container) {
-    return new App\Service\TaskService($container->get('task_repository'));
+    return new TaskService($container->get('task_repository'));
 };
 
+/**
+ * @param ContainerInterface $c
+ * @return TaskRepository
+ */
 $container['task_repository'] = function ($container) {
-    return new App\Repository\TaskRepository($container->get('db'));
+    return new TaskRepository($container->get('db'));
 };

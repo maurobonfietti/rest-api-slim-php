@@ -16,8 +16,6 @@ abstract class BaseController
      */
     protected $logger;
 
-    protected $database;
-
     protected $userService;
 
     protected $taskService;

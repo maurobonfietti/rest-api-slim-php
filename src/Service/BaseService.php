@@ -7,8 +7,6 @@ namespace App\Service;
  */
 abstract class BaseService
 {
-    protected $database;
-
     protected $request;
 
     protected $response;
