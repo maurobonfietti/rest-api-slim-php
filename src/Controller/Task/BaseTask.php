@@ -12,6 +12,11 @@ use Slim\Container;
 abstract class BaseTask extends BaseController
 {
     /**
+     * @var TaskService 
+     */
+    protected $taskService;
+
+    /**
      * @param Container $container
      */
     public function __construct(Container $container)

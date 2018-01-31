@@ -16,10 +16,6 @@ abstract class BaseController
      */
     protected $logger;
 
-    protected $userService;
-
-    protected $taskService;
-
     /**
      * @var Request $request
      */
@@ -30,6 +26,9 @@ abstract class BaseController
      */
     protected $response;
 
+    /**
+     * @var array 
+     */
     protected $args;
 
     /**
