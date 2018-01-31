@@ -11,6 +11,11 @@ use App\Validation\UserValidation as vs;
 class UserService extends BaseService
 {
     /**
+     * @var UserRepository 
+     */
+    protected $userRepository;
+
+    /**
      * @param UserRepository $userRepository
      */
     public function __construct(UserRepository $userRepository)

@@ -11,6 +11,11 @@ use App\Validation\TaskValidation as vs;
 class TaskService extends BaseService
 {
     /**
+     * @var TaskRepository 
+     */
+    protected $taskRepository;
+
+    /**
      * @param TaskRepository $taskRepository
      */
     public function __construct(TaskRepository $taskRepository)
