@@ -11,7 +11,7 @@ $container = $app->getContainer();
  * @param ContainerInterface $c
  * @return PDO
  */
-$container['db'] = function (ContainerInterface $c) {
+$container['db'] = function(ContainerInterface $c) {
     $db = $c->get('settings')['db'];
     $database = sprintf('mysql:host=%s;dbname=%s', $db['host'], $db['dbname']);
     $pdo = new PDO($database, $db['user'], $db['pass']);
@@ -27,7 +27,7 @@ $container['db'] = function (ContainerInterface $c) {
  * @param ContainerInterface $c
  * @return bool|Logger
  */
-$container['logger'] = function (ContainerInterface $c) {
+$container['logger'] = function(ContainerInterface $c) {
     $settings = $c->get('settings')['logger'];
     if ($settings['enabled'] === false) {
         return false;
