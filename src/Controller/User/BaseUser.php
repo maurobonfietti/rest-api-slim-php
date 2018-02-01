@@ -12,7 +12,7 @@ use Slim\Container;
 abstract class BaseUser extends BaseController
 {
     /**
-     * @var UserService 
+     * @var UserService
      */
     protected $userService;
 

@@ -27,7 +27,7 @@ abstract class BaseController
     protected $response;
 
     /**
-     * @var array 
+     * @var array
      */
     protected $args;
 

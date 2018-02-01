@@ -11,7 +11,7 @@ use App\Validation\TaskValidation as vs;
 class TaskService extends BaseService
 {
     /**
-     * @var TaskRepository 
+     * @var TaskRepository
      */
     protected $taskRepository;
 
