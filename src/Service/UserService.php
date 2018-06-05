@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Exception\UserException;
 use App\Repository\UserRepository;
 use App\Validation\UserValidation as vs;
 
@@ -98,7 +99,11 @@ class UserService extends BaseService
     public function updateUser($input, $userId)
     {
         $checkUser = $this->checkUser($userId);
-        $data = vs::validateInputOnUpdateUser($input, $checkUser);
+        if (!isset($input['name']) && !isset($input['email'])) {
+            throw new UserException(UserException::USER_INFO_REQUIRED, 400);
+        }
+        $data['name'] = vs::validateNameOnUpdateUser($input, $checkUser);
+        $data['email'] = vs::validateEmailOnUpdateUser($input, $checkUser);
         $user = $this->userRepository->updateUser($data, $userId);
 
         return $user;

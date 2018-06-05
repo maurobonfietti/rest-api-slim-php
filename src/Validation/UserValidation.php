@@ -30,28 +30,23 @@ abstract class UserValidation extends BaseValidation
         return ['name' => $name, 'email' => $email];
     }
 
-    /**
-     * Validate and sanitize input data when update a user.
-     *
-     * @param array|object|null $input
-     * @param object $user
-     * @return array
-     * @throws \Exception
-     */
-    public static function validateInputOnUpdateUser($input, $user)
+    public static function validateNameOnUpdateUser($input, $user)
     {
-        if (!isset($input['name']) && !isset($input['email'])) {
-            throw new UserException(UserException::USER_INFO_REQUIRED, 400);
-        }
         $name = $user->name;
         if (isset($input['name'])) {
             $name = self::validateName($input['name']);
         }
+
+        return $name;
+    }
+
+    public static function validateEmailOnUpdateUser($input, $user)
+    {
         $email = $user->email;
         if (isset($input['email'])) {
             $email = self::validateEmail($input['email']);
         }
 
-        return ['name' => $name, 'email' => $email];
+        return $email;
     }
 }

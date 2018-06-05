@@ -18,7 +18,7 @@ abstract class BaseValidation
      * @return string
      * @throws \Exception
      */
-    protected static function validateName($name)
+    public static function validateName($name)
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
             throw new UserException(UserException::USER_NAME_INVALID, 400);
