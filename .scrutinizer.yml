@@ -6,4 +6,14 @@ build:
         before:
             - mysql -e "CREATE DATABASE api_rest_slimphp"
             - mysql api_rest_slimphp < app/data/database.sql
+    tests:
+        override:
             - php-scrutinizer-run
+            -
+                command: phpcs-run
+                use_website_config: true
+            -
+                command: 'vendor/bin/phpunit --coverage-clover build/logs/clover.xml'
+                coverage:
+                    file: 'build/logs/clover.xml'
+                    format: 'clover'
