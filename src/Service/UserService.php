@@ -102,6 +102,7 @@ class UserService extends BaseService
         if (!isset($input['name']) && !isset($input['email'])) {
             throw new UserException(UserException::USER_INFO_REQUIRED, 400);
         }
+        $data = [];
         $data['name'] = vs::validateNameOnUpdateUser($input, $checkUser);
         $data['email'] = vs::validateEmailOnUpdateUser($input, $checkUser);
         $user = $this->userRepository->updateUser($data, $userId);

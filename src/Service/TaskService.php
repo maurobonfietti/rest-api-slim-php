@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Exception\TaskException;
 use App\Repository\TaskRepository;
 use App\Validation\TaskValidation as vs;
 
@@ -106,7 +107,12 @@ class TaskService extends BaseService
     public function updateTask($input, $taskId)
     {
         $checkTask = $this->checkTask($taskId);
-        $data = vs::validateInputOnUpdateTask($input, $checkTask);
+        if (!isset($input['name']) && !isset($input['status'])) {
+            throw new TaskException(TaskException::TASK_INFO_REQUIRED, 400);
+        }
+        $data = [];
+        $data['name'] = vs::validateNameOnUpdateTask($input, $checkTask);
+        $data['status'] = vs::validateStatusOnUpdateTask($input, $checkTask);
         $task = $this->getTaskRepository()->updateTask($data, $taskId);
 
         return $task;

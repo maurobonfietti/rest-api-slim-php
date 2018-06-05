@@ -64,7 +64,7 @@ abstract class BaseValidation
      * Validate and sanitize a task status.
      *
      * @param int $status
-     * @return string
+     * @return int
      * @throws \Exception
      */
     protected static function validateStatus($status)
