@@ -2,7 +2,8 @@ language: php
 
 php:
   - '7.1'
-#  - hhvm
+  - '7.2'
+  - hhvm
 
 services:
   - mysql

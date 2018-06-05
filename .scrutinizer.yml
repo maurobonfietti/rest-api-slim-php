@@ -7,6 +7,7 @@ build:
             - mysql -e "CREATE DATABASE api_rest_slimphp"
             - mysql api_rest_slimphp < app/data/database.sql
         override:
+            - php-scrutinizer-run
             -
                 command: 'vendor/bin/phpunit --coverage-clover=clover.xml'
                 coverage:
