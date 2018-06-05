@@ -30,6 +30,11 @@ abstract class UserValidation extends BaseValidation
         return ['name' => $name, 'email' => $email];
     }
 
+    /**
+     * @param array $input
+     * @param object $user
+     * @return string
+     */
     public static function validateNameOnUpdateUser($input, $user)
     {
         $name = $user->name;
@@ -40,6 +45,11 @@ abstract class UserValidation extends BaseValidation
         return $name;
     }
 
+    /**
+     * @param array $input
+     * @param object $user
+     * @return string
+     */
     public static function validateEmailOnUpdateUser($input, $user)
     {
         $email = $user->email;
