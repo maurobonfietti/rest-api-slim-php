@@ -31,32 +31,7 @@ abstract class TaskValidation extends BaseValidation
     }
 
     /**
-     * Validate and sanitize input data when update a task.
-     *
      * @param array|object|null $input
-     * @param object $task
-     * @return array
-     * @throws \Exception
-     */
-    public static function validateInputOnUpdateTask($input, $task)
-    {
-        if (!isset($input['name']) && !isset($input['status'])) {
-            throw new TaskException(TaskException::TASK_INFO_REQUIRED, 400);
-        }
-        $name = $task->name;
-        if (isset($input['name'])) {
-            $name = self::validateTaskName($input['name']);
-        }
-        $status = $task->status;
-        if (isset($input['status'])) {
-            $status = self::validateStatus($input['status']);
-        }
-
-        return ['name' => $name, 'status' => $status];
-    }
-
-    /**
-     * @param array $input
      * @param object $task
      * @return string
      */
@@ -71,7 +46,7 @@ abstract class TaskValidation extends BaseValidation
     }
 
     /**
-     * @param array $input
+     * @param array|object|null $input
      * @param object $task
      * @return int
      */
