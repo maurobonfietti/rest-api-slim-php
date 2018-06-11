@@ -16,12 +16,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     && apt-get clean
 
-ENV PHPREDIS_VERSION php7
-
-#RUN pecl install -o -f redis \
-#&&  rm -rf /tmp/pear \
-#&&  docker-php-ext-enable redis
-
 RUN echo "date.timezone=UTC" >> /usr/local/etc/php/conf.d/timezone.ini
 
 COPY ./composer.* /app/
