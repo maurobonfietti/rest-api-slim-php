@@ -9,3 +9,19 @@ services:
       - 8080:80
     volumes:
       - .:/var/www/html
+    links:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_DATABASE: api_rest_slimphp
+      DB_USERNAME: app
+      DB_PASSWORD: password
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 13306:3306
+    environment:
+      MYSQL_DATABASE: api_rest_slimphp
+      MYSQL_USER: app
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
