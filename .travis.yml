@@ -24,7 +24,7 @@ before_script:
 
 script:
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist src
-#  - "phpunit --testsuite=unit --coverage-text --coverage-clover build/logs/clover.xml"
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
 
-after_success:
-  - CODECLIMATE_REPO_TOKEN=5acc45b5f48d4ca2a5baa0d22ee9a10890b29a76b3ef34a936fdd0ba8c5d7ba8 vendor/bin/test-reporter
+#after_success:
+#  - CODECLIMATE_REPO_TOKEN=5acc45b5f48d4ca2a5baa0d22ee9a10890b29a76b3ef34a936fdd0ba8c5d7ba8 vendor/bin/test-reporter
