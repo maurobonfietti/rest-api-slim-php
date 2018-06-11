@@ -14,10 +14,11 @@ return [
 
         // Database connection settings
         'db' => [
-            'host' => '127.0.0.1',
+//            'host' => '127.0.0.1',
+            'host' => 'mysql',
             'dbname' => 'api_rest_slimphp',
-            'user' => 'root',
-            'pass' => '',
+            'user' => 'app',
+            'pass' => 'password',
         ],
     ],
 ];

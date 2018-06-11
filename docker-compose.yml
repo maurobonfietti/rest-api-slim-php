@@ -19,7 +19,7 @@ services:
   mysql:
     image: mysql:5.7
     ports:
-      - 13306:3306
+      - 3306:3306
     environment:
       MYSQL_DATABASE: api_rest_slimphp
       MYSQL_USER: app
