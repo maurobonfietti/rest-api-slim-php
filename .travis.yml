@@ -8,15 +8,23 @@ php:
 services:
   - mysql
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=5acc45b5f48d4ca2a5baa0d22ee9a10890b29a76b3ef34a936fdd0ba8c5d7ba8
+
 before_install:
   - mysql -e 'CREATE DATABASE api_rest_slimphp;'
 
 before_script:
   - mysql api_rest_slimphp < app/data/database.sql
   - composer install
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter 
+  - chmod +x ./cc-test-reporter 
+  - ./cc-test-reporter before-build
 
 script:
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist src
+  - "phpunit --testsuite=unit --coverage-text --coverage-clover build/logs/clover.xml"
 
 after_success:
   - CODECLIMATE_REPO_TOKEN=5acc45b5f48d4ca2a5baa0d22ee9a10890b29a76b3ef34a936fdd0ba8c5d7ba8 vendor/bin/test-reporter
