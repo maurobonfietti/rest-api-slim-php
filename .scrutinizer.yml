@@ -1,5 +1,10 @@
 build:
     environment:
+        variables:
+            DB_HOSTNAME: '127.0.0.1'
+            DB_DATABASE: 'api_rest_slimphp'
+            DB_USERNAME: 'root'
+            DB_PASSWORD: ''
         php:
             version: 7.1
     project_setup:
