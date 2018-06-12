@@ -11,6 +11,10 @@ services:
 env:
   global:
     - CC_TEST_REPORTER_ID=5acc45b5f48d4ca2a5baa0d22ee9a10890b29a76b3ef34a936fdd0ba8c5d7ba8
+    - DB_HOSTNAME=127.0.0.1
+    - DB_DATABASE=api_rest_slimphp
+    - DB_USERNAME=root
+    - DB_PASSWORD=
 
 before_install:
   - mysql -e 'CREATE DATABASE api_rest_slimphp;'
