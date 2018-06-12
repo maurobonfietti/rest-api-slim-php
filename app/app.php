@@ -1,6 +1,12 @@
 <?php
 
 require __DIR__ . '/../vendor/autoload.php';
+define('ROOT_PATH', __DIR__ . '/../');
+$envFile = ROOT_PATH . '.env';
+if (file_exists($envFile)) {
+    $dotenv = new Dotenv\Dotenv(ROOT_PATH);
+    $dotenv->load();
+}
 $settings = require __DIR__ . '/../app/settings.php';
 $app = new \Slim\App($settings);
 require __DIR__ . '/../app/dependencies.php';

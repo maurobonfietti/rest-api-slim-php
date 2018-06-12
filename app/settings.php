@@ -12,17 +12,12 @@ return [
             'level' => \Monolog\Logger::INFO,
         ],
 
-        // TODO: use .env file.
         // Database connection settings
         'db' => [
-            'host' => '127.0.0.1',
-            'dbname' => 'api_rest_slimphp',
-            'user' => 'root',
-            'pass' => '',
-//            'host' => 'mysql',
-//            'dbname' => 'api_rest_slimphp',
-//            'user' => 'app',
-//            'pass' => 'password',
+            'host'   => getenv('DB_HOSTNAME'),
+            'dbname' => getenv('DB_DATABASE'),
+            'user'   => getenv('DB_USERNAME'),
+            'pass'   => getenv('DB_PASSWORD'),
         ],
     ],
 ];
