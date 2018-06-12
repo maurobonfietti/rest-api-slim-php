@@ -16,6 +16,7 @@ Ejemplo de API REST con microframework Slim PHP.
 $ cd path-to-your-projects
 $ git clone https://github.com/maurobonfietti/api-rest-slimphp.git
 $ cd api-rest-slimphp
+$ cp .env.example .env
 $ composer install
 ```
 
@@ -40,18 +41,15 @@ mysql api_rest_slimphp < app/data/database.sql
 ```
 
 
-### 4- Configurar los datos de acceso a MySQL.
+### 4- Configurar los datos de conexion con MySQL.
 
-Editar archivo de configuración: `app/settings.php`
+Editar y completar archivo de configuración: `.env`:
 
-```php
-// Database connection settings
-'db' => [
-    'host' => '127.0.0.1',
-    'dbname' => 'api-rest-slimphp',
-    'user' => 'YourMysqlUser',
-    'pass' => 'YourMysqlPass',
-],
+```
+DB_HOSTNAME = '127.0.0.1'
+DB_DATABASE = 'api_rest_slimphp'
+DB_USERNAME = 'root'
+DB_PASSWORD = ''
 ```
 
 
