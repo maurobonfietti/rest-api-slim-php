@@ -81,7 +81,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
 
 ```bash
-PHPUnit 6.1.3 by Sebastian Bergmann and contributors.
+PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
 ................................                                  32 / 32 (100%)
 

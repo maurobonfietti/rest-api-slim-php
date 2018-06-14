@@ -12,7 +12,7 @@ services:
     links:
       - mysql
     environment:
-      DB_HOST: mysql
+      DB_HOSTNAME: mysql
       DB_DATABASE: api_rest_slimphp
       DB_USERNAME: app
       DB_PASSWORD: password
