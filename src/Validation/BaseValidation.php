@@ -53,7 +53,7 @@ abstract class BaseValidation
      */
     protected static function validateTaskName($name)
     {
-        if (!v::alnum()->length(2, 100)->validate($name)) {
+        if (!v::length(2, 100)->validate($name)) {
             throw new TaskException(TaskException::TASK_NAME_INVALID, 400);
         }
 
