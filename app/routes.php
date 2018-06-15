@@ -3,10 +3,6 @@
 $app->get('/', '\App\Controller\DefaultController:getHelp');
 $app->get('/version', '\App\Controller\DefaultController:getVersion');
 $app->get('/status', '\App\Controller\DefaultController:getStatus');
-$app->get('/test', function ($request, $response, $args) {
-    // Show book identified by $args['id']
-    var_dump('hello'); exit;
-});
 
 $app->group('/api/v1', function () use ($app) {
     $app->group('/tasks', function () use ($app) {
