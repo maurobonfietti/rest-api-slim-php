@@ -4,16 +4,16 @@ use App\Service\UserService;
 use App\Service\TaskService;
 use App\Repository\UserRepository;
 use App\Repository\TaskRepository;
-use App\Handlers\ApiError;
+//use App\Handlers\ApiError;
 
 $container = $app->getContainer();
 
 /**
  * @return ApiError
  */
-$container["errorHandler"] = function() {
-    return new ApiError;
-};
+//$container["errorHandler"] = function() {
+//    return new ApiError;
+//};
 
 /**
  * @param ContainerInterface $container
