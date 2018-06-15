@@ -14,4 +14,4 @@ require __DIR__ . '/../app/middleware.php';
 require __DIR__ . '/../app/services.php';
 require __DIR__ . '/../app/routes.php';
 
-//var_dump($settings, $container); exit;
+var_dump($settings); exit;
