@@ -13,8 +13,8 @@ $container = $app->getContainer();
  */
 $container['db'] = function(ContainerInterface $c) {
     $db = $c->get('settings')['db'];
-    $database = sprintf('mysql:host=%s;dbname=%s', $db['host'], $db['dbname']);
-    $pdo = new PDO($database, $db['user'], $db['pass']);
+    $database = sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']);
+    $pdo = new PDO($database, $db['username'], $db['passname']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
@@ -34,10 +34,7 @@ $container['logger'] = function(ContainerInterface $c) {
     }
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
-    $logger->pushHandler(new Monolog\Handler\StreamHandler(
-        $settings['path'],
-        $settings['level']
-    ));
+    $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
 
     return $logger;
 };
