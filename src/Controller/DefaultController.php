@@ -41,6 +41,7 @@ class DefaultController extends BaseController
             'version' => $url . 'version',
             'this help' => $url . '',
         ];
+        var_dump($_SERVER); exit;
 
         return $this->jsonResponse('success', $message, 200);
     }
