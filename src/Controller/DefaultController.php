@@ -31,7 +31,9 @@ class DefaultController extends BaseController
     public function getHelp($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $url = 'http://localhost:8080/';
+        $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+        $domainName = $_SERVER['HTTP_HOST'] . '/';
+        $url = $protocol . $domainName;
         $message = [
             'tasks' => $url . 'api/v1/tasks',
             'users' => $url . 'api/v1/users',
