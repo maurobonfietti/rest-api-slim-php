@@ -31,7 +31,7 @@ class DefaultController extends BaseController
     public function getHelp($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $protocol = $_SERVER['HTTP_X_FORWARDED_PORT'] === 443 ? 'https://' : 'http://';
+        $protocol = ($_SERVER['HTTP_X_FORWARDED_PORT'] == 443) ? "https://" : "http://";
         $domainName = $_SERVER['HTTP_HOST'] . '/';
         $url = $protocol . $domainName;
         $message = [
@@ -41,6 +41,10 @@ class DefaultController extends BaseController
             'version' => $url . 'version',
             'this help' => $url . '',
         ];
+        echo "<pre>";
+        var_dump($url, '<hr>', $_SERVER);
+        echo "</pre>";
+        exit;
 
         return $this->jsonResponse('success', $message, 200);
     }
