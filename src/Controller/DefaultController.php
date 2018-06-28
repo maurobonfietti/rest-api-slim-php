@@ -31,9 +31,10 @@ class DefaultController extends BaseController
     public function getHelp($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $protocol = ($_SERVER['HTTP_X_FORWARDED_PORT'] == 443) ? "https://" : "http://";
-        $domainName = $_SERVER['HTTP_HOST'] . '/';
-        $url = $protocol . $domainName;
+//        $protocol = ($_SERVER['HTTP_X_FORWARDED_PORT'] == 443) ? "https://" : "http://";
+//        $domainName = $_SERVER['HTTP_HOST'] . '/';
+//        $url = $protocol . $domainName;
+        $url = '/';
         $message = [
             'tasks' => $url . 'api/v1/tasks',
             'users' => $url . 'api/v1/users',
