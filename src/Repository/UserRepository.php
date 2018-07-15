@@ -22,7 +22,7 @@ class UserRepository extends BaseRepository
     /**
      * Check if the user exists.
      *
-     * @param int $userId
+     * @param int|string $userId
      * @return object $user
      * @throws \Exception
      */

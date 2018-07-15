@@ -22,7 +22,7 @@ class TaskRepository extends BaseRepository
     /**
      * Check if the task exists.
      *
-     * @param int $taskId
+     * @param int|string $taskId
      * @return object $task
      * @throws \Exception
      */

@@ -78,7 +78,7 @@ class UserService extends BaseService
     /**
      * Create a user.
      *
-     * @param array|object|null $input
+     * @param array $input
      * @return object
      */
     public function createUser($input)
@@ -92,7 +92,7 @@ class UserService extends BaseService
     /**
      * Update a user.
      *
-     * @param array|object|null $input
+     * @param array $input
      * @param int $userId
      * @return object
      */

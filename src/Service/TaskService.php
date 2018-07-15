@@ -86,7 +86,7 @@ class TaskService extends BaseService
     /**
      * Create a task.
      *
-     * @param array|object|null $input
+     * @param array $input
      * @return object
      */
     public function createTask($input)
@@ -100,7 +100,7 @@ class TaskService extends BaseService
     /**
      * Update a task.
      *
-     * @param array|object|null $input
+     * @param array $input
      * @param int $taskId
      * @return object
      */

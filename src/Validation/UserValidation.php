@@ -12,7 +12,7 @@ abstract class UserValidation extends BaseValidation
     /**
      * Validate and sanitize input data when create new user.
      *
-     * @param array|object|null $input
+     * @param array $input
      * @return array
      * @throws \Exception
      */
