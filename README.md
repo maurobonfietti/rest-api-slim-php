@@ -43,7 +43,7 @@ mysql api_rest_slimphp < app/data/database.sql
 
 ### 4- Configure the connection data with MySQL.
 
-Edit and complete configuration file: `.env`:
+Edit and complete configuration file: `.env`. For example:
 
 ```
 DB_HOSTNAME = '127.0.0.1'
@@ -65,9 +65,9 @@ $ composer start
 ### NOTE:
 
 If everything went well :sunglasses:, you can access the project locally by entering:
-[Ayuda](http://localhost:8080), 
-[Usuarios](http://localhost:8080/api/v1/users), 
-[Tareas](http://localhost:8080/api/v1/tasks).
+[Help](http://localhost:8080), 
+[Users](http://localhost:8080/api/v1/users), 
+[Tasks](http://localhost:8080/api/v1/tasks).
 
 The `composer start` command would be the equivalent to execute:
 
@@ -78,7 +78,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## TESTS:
 
-Access the project route and run the tests with `phpunit`:
+Access the project route and run the tests with `phpunit`.
 
 ```bash
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -93,7 +93,7 @@ OK (32 tests, 138 assertions)
 
 ## DOCUMENTATION:
 
-### HELP AND USE MANUAL:
+### HELP AND DOCS:
 
 For more information on how to use the REST API, see the following document: [User's Manual](DOC.md).
 

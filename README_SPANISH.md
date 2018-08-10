@@ -1,6 +1,6 @@
 # API REST SLIM PHP
 
-Ejemplo de API REST con microframework Slim PHP.
+Ejemplo de API REST con micro framework Slim PHP.
 
 
 [![Build Status](https://travis-ci.org/maurobonfietti/api-rest-slimphp.svg?branch=master)](https://travis-ci.org/maurobonfietti/api-rest-slimphp)
@@ -41,9 +41,9 @@ mysql api_rest_slimphp < app/data/database.sql
 ```
 
 
-### 4- Configurar los datos de conexion con MySQL.
+### 4- Configurar los datos de conexión con MySQL.
 
-Editar y completar archivo de configuración: `.env`:
+Editar y completar archivo de configuración: `.env`. Por ejemplo:
 
 ```
 DB_HOSTNAME = '127.0.0.1'
@@ -78,7 +78,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## TESTS:
 
-Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
+Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`.
 
 ```bash
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
