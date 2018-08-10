@@ -1,6 +1,6 @@
-# API REST SLIM PHP
+# REST API SLIM PHP
 
-Ejemplo de API REST con microframework Slim PHP.
+Example of REST API with Slim PHP micro framework.
 
 
 [![Build Status](https://travis-ci.org/maurobonfietti/api-rest-slimphp.svg?branch=master)](https://travis-ci.org/maurobonfietti/api-rest-slimphp)
@@ -8,9 +8,9 @@ Ejemplo de API REST con microframework Slim PHP.
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 
 
-## INSTALACIÓN:
+## INSTALLATION:
 
-### 1- Descargar el proyecto:
+### 1- Download the project:
 
 ```bash
 $ cd path-to-your-projects
@@ -21,29 +21,29 @@ $ composer install
 ```
 
 
-### 2- Crear nueva base de datos MySQL. Por ejemplo: "api_rest_slimphp".
+### 2- Create new MySQL database. For example: "api_rest_slimphp".
 
-Desde la línea de comandos ejecutar:
+From the command line run:
 
 ```bash
 mysql -e 'CREATE DATABASE api_rest_slimphp;'
 ```
 
 
-### 3- Crear la estructura y cargar datos de prueba en la base de datos.
+### 3- Create the structure and load test data into the database.
 
-La base de datos se puede actualizar manualmente utilizando el siguiente archivo: [database.sql](app/data/database.sql).
+The database can be updated manually using the following file: [database.sql](app/data/database.sql).
 
-También se puede ejecutar desde la línea de comandos:
+It can also be run from the command line:
 
 ```
 mysql api_rest_slimphp < app/data/database.sql
 ```
 
 
-### 4- Configurar los datos de conexion con MySQL.
+### 4- Configure the connection data with MySQL.
 
-Editar y completar archivo de configuración: `.env`:
+Edit and complete configuration file: `.env`:
 
 ```
 DB_HOSTNAME = '127.0.0.1'
@@ -53,23 +53,23 @@ DB_PASSWORD = ''
 ```
 
 
-## SERVIDOR LOCAL:
+## LOCAL SERVER:
 
-Se puede iniciar el servidor web interno de PHP ejecutando:
+You can start the PHP internal web server by running:
 
 ```bash
 $ composer start
 ```
 
 
-### NOTA:
+### NOTE:
 
-Si todo fue bien :sunglasses:, se puede acceder localmente al proyecto ingresando a: 
+If everything went well :sunglasses:, you can access the project locally by entering:
 [Ayuda](http://localhost:8080), 
 [Usuarios](http://localhost:8080/api/v1/users), 
 [Tareas](http://localhost:8080/api/v1/tasks).
 
-El comando `composer start` sería el equivalente a ejecutar:
+The `composer start` command would be the equivalent to execute:
 
 ```bash
 $ php -S 0.0.0.0:8080 -t public public/index.php
@@ -78,7 +78,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## TESTS:
 
-Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`:
+Access the project route and run the tests with `phpunit`:
 
 ```bash
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -91,13 +91,13 @@ OK (32 tests, 138 assertions)
 ```
 
 
-## DOCUMENTACIÓN:
+## DOCUMENTATION:
 
-### AYUDA Y MANUAL DE USO:
+### HELP AND USE MANUAL:
 
-Para más información sobre el modo de uso de la API REST, ver el siguiente documento: [Manual de Uso](DOC.md).
+For more information on how to use the REST API, see the following document: [User's Manual](DOC.md).
 
 
-### IMPORTAR EN POSTMAN:
+### IMPORT WITH POSTMAN:
 
-Toda la información de la API, preparada para descargar y utilizar como colección de postman: [Importar Colección](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
+All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
