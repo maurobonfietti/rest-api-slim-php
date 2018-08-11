@@ -35,6 +35,14 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
             $request = $request->withParsedBody($requestData);
         }
 
+        // Load environment variables
+        $baseDir = __DIR__ . '/../../';
+        $envFile = $baseDir . '.env';
+        if (file_exists($envFile)) {
+            $dotenv = new \Dotenv\Dotenv($baseDir);
+            $dotenv->load();
+        }
+
         // Use the application settings
         $settings = require __DIR__ . '/../../app/settings.php';
 
