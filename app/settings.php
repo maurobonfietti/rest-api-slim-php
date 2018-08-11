@@ -13,7 +13,7 @@ return [
             'hostname' => getenv('DB_HOSTNAME'),
             'database' => getenv('DB_DATABASE'),
             'username' => getenv('DB_USERNAME'),
-            'passname' => getenv('DB_PASSWORD'),
+            'password' => getenv('DB_PASSWORD'),
         ],
     ],
 ];
