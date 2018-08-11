@@ -1,14 +1,14 @@
-# MODO DE USO:
+# USE:
 
 
-## Ver usuarios:
+## Get all users:
 
-Petición:
+Request:
 ```
 $ curl http://localhost:8080/api/v1/users
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
@@ -17,46 +17,46 @@ Respuesta:
         {
             "id": "1",
             "name": "Juan",
-            "email": "juanmartin@delpotro.com",
-            "updated": "2018-01-28 05:29:35"
+            "email": "juanmartin@mail.com",
+            "updated": "2018-08-11 19:40:04"
         },
         {
             "id": "2",
-            "name": "Federico",
+            "name": "James",
             "email": null,
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:05"
         },
         {
             "id": "3",
-            "name": "Leo",
+            "name": "Lionel",
             "email": null,
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:05"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:06"
         },
         {
             "id": "5",
             "name": "Diego",
-            "email": "diego10@gmail.com",
-            "updated": "2018-01-28 05:29:35"
+            "email": "diego1010@gmail.com",
+            "updated": "2018-08-11 19:40:06"
         }
     ]
 }
 ```
 
 
-## Ver usuario:
+## Get one user:
 
-Petición:
+Request:
 ```
 $ curl http://localhost:8080/api/v1/users/1
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
@@ -64,21 +64,21 @@ Respuesta:
     "message": {
         "id": "1",
         "name": "Juan",
-        "email": "juanmartin@delpotro.com",
-        "updated": "2018-01-28 05:29:35"
+        "email": "juanmartin@mail.com",
+        "updated": "2018-08-11 19:40:04"
     }
 }
 ```
 
 
-## Buscar usuarios por nombre:
+## Search users by name:
 
-Petición:
+Request:
 ```
-$ curl http://localhost:8080/api/v1/users/search/le
+$ curl http://localhost:8080/api/v1/users/search/lio
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
@@ -86,67 +86,67 @@ Respuesta:
     "message": [
         {
             "id": "3",
-            "name": "Leo",
+            "name": "Lionel",
             "email": null,
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:05"
         }
     ]
 }
 ```
 
 
-## Crear usuario:
+## Create user:
 
-Petición:
+Request:
 ```
-$ curl -X POST http://localhost:8080/api/v1/users --data name=Sergio
+$ curl -X POST http://localhost:8080/api/v1/users --data name=Michael
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 201,
     "status": "success",
     "message": {
         "id": "6",
-        "name": "Sergio",
+        "name": "Michael",
         "email": null,
-        "updated": "2018-01-28 05:29:35"
+        "updated": "2018-08-11 19:45:41"
     }
 }
 ```
 
 
-## Actualizar usuario:
+## Update user:
 
-Petición:
+Request:
 ```
-$ curl -X PUT http://localhost:8080/api/v1/users/6 --data name=Javier
+$ curl -X PUT http://localhost:8080/api/v1/users/6 --data name=John
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
     "status": "success",
     "message": {
         "id": "6",
-        "name": "Javier",
+        "name": "John",
         "email": null,
-        "updated": "2018-01-28 05:29:35"
+        "updated": "2018-08-11 19:45:43"
     }
 }
 ```
 
 
-## Eliminar usuario:
+## Delete user:
 
-Petición:
+Request:
 ```
 $ curl -X DELETE http://localhost:8080/api/v1/users/6
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
@@ -156,14 +156,14 @@ Respuesta:
 ```
 
 
-## Ver tareas:
+## Get all tasks:
 
-Petición:
+Request:
 ```
 $ curl http://localhost:8080/api/v1/tasks
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
@@ -171,69 +171,69 @@ Respuesta:
     "message": [
         {
             "id": "1",
-            "name": "Ir al centro",
+            "name": "Go to cinema",
             "status": "1",
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:01"
         },
         {
             "id": "2",
-            "name": "Comprar zapatillas",
+            "name": "Buying shoes",
             "status": "1",
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:02"
         },
         {
             "id": "3",
-            "name": "Ir al super",
+            "name": "Go to shopping",
             "status": "1",
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:02"
         },
         {
             "id": "4",
-            "name": "Comprar cereales",
+            "name": "Buy milk",
             "status": "1",
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:02"
         },
         {
             "id": "5",
-            "name": "Hacer tarea...",
+            "name": "Do homework...",
             "status": "0",
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:03"
         }
     ]
 }
 ```
 
 
-## Ver tarea:
+## Get one task:
 
-Petición:
+Request:
 ```
 $ curl http://localhost:8080/api/v1/tasks/3
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
     "status": "success",
     "message": {
         "id": "3",
-        "name": "Ir al super",
+        "name": "Go to shopping",
         "status": "1",
-        "updated": "2018-01-28 05:29:35"
+        "updated": "2018-08-11 19:40:02"
     }
 }
 ```
 
 
-## Buscar tareas por nombre:
+## Search tasks by name:
 
-Petición:
+Request:
 ```
-$ curl http://localhost:8080/api/v1/tasks/search/ir
+$ curl http://localhost:8080/api/v1/tasks/search/cine
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
@@ -241,73 +241,67 @@ Respuesta:
     "message": [
         {
             "id": "1",
-            "name": "Ir al centro",
+            "name": "Go to cinema",
             "status": "1",
-            "updated": "2018-01-28 05:29:35"
-        },
-        {
-            "id": "3",
-            "name": "Ir al super",
-            "status": "1",
-            "updated": "2018-01-28 05:29:35"
+            "updated": "2018-08-11 19:40:01"
         }
     ]
 }
 ```
 
 
-## Crear tarea:
+## Create task:
 
-Petición:
+Request:
 ```
-$ curl -X POST http://localhost:8080/api/v1/tasks --data name=Super
+$ curl -X POST http://localhost:8080/api/v1/tasks --data name=Cine
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 201,
     "status": "success",
     "message": {
         "id": "6",
-        "name": "Super",
+        "name": "Cine",
         "status": "0",
-        "updated": "2018-01-28 05:29:35"
+        "updated": "2018-08-11 19:46:17"
     }
 }
 ```
 
 
-## Actualizar tarea:
+## Update task:
 
-Petición:
+Request:
 ```
-$ curl -X PUT http://localhost:8080/api/v1/tasks/6 --data name=Viajar
+$ curl -X PUT http://localhost:8080/api/v1/tasks/6 --data name=Task
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
     "status": "success",
     "message": {
         "id": "6",
-        "name": "Viajar",
+        "name": "Task",
         "status": "0",
-        "updated": "2018-01-28 05:29:35"
+        "updated": "2018-08-11 19:46:25"
     }
 }
 ```
 
 
-## Eliminar tarea:
+## Detele task:
 
-Petición:
+Request:
 ```
 $ curl -X DELETE http://localhost:8080/api/v1/tasks/6
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
@@ -317,56 +311,56 @@ Respuesta:
 ```
 
 
-## Ver ayuda:
+## Get help:
 
-Petición:
+Request:
 ```
 $ curl http://localhost:8080
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
     "status": "success",
     "message": {
-        "tasks": "http:\/\/localhost:8080\/api\/v1\/tasks",
-        "users": "http:\/\/localhost:8080\/api\/v1\/users",
-        "status": "http:\/\/localhost:8080\/status",
-        "version": "http:\/\/localhost:8080\/version",
-        "this help": "http:\/\/localhost:8080\/"
+        "tasks": "\/api\/v1\/tasks",
+        "users": "\/api\/v1\/users",
+        "status": "\/status",
+        "version": "\/version",
+        "this help": "\/"
     }
 }
 ```
 
 
-## Ver version:
+## Get version:
 
-Petición:
+Request:
 ```
 $ curl http://localhost:8080/version
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
     "status": "success",
     "message": {
-        "version": "18.01"
+        "version": "18.08"
     }
 }
 ```
 
 
-## Ver status:
+## Check status:
 
-Petición:
+Request:
 ```
 $ curl http://localhost:8080/status
 ```
 
-Respuesta:
+Response:
 ```
 {
     "code": 200,
