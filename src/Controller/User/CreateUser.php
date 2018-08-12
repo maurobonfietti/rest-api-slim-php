@@ -23,7 +23,7 @@ class CreateUser extends BaseUser
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $result = $this->getUserService()->createUser($input);
-        $this->saveInCache($result->id, $result);
+//        $this->saveInCache($result->id, $result);
 
         return $this->jsonResponse('success', $result, 201);
     }

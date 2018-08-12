@@ -21,11 +21,11 @@ class GetOneUser extends BaseUser
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $result = $this->getFromCache($this->args['id']);
-        if (is_null($result)) {
+//        $result = $this->getFromCache($this->args['id']);
+//        if (is_null($result)) {
             $result = $this->getUserService()->getUser($this->args['id']);
-            $this->saveInCache($this->args['id'], $result);
-        }
+//            $this->saveInCache($this->args['id'], $result);
+//        }
 
         return $this->jsonResponse('success', $result, 200);
     }

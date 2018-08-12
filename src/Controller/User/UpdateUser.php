@@ -23,7 +23,7 @@ class UpdateUser extends BaseUser
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $result = $this->getUserService()->updateUser($input, $this->args['id']);
-        $this->saveInCache($this->args['id'], $result);
+//        $this->saveInCache($this->args['id'], $result);
 
         return $this->jsonResponse('success', $result, 200);
     }
