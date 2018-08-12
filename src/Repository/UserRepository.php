@@ -14,7 +14,7 @@ class UserRepository extends BaseRepository
     /**
      * @param \PDO $database
      */
-    public function __construct($database)
+    public function __construct(\PDO $database)
     {
         $this->database = $database;
     }

@@ -21,12 +21,6 @@ class GetOneUser extends BaseUser
      */
     public function __invoke($request, $response, $args)
     {
-//        $this->setParams($request, $response, $args);
-//        $result = $this->getUserService()->getUser($this->args['id']);
-//
-//        return $this->jsonResponse('success', $result, 200);
-        
-        
         $this->setParams($request, $response, $args);
         $client = new \Predis\Client();
         $key = 'api-rest-slimphp:user:'.$this->args['id'];
@@ -38,14 +32,6 @@ class GetOneUser extends BaseUser
             $client->set($key, json_encode($result));
         }
 
-        return $this->jsonResponse('success', $result, 200);
-        
-        $this->setParams($request, $response, $args);
-        $result = [
-            'status' => 'OK',
-        ];
-        $result = $this->getUserService()->getUser($this->args['id']);
-//        return $response->withJson($status, 200, JSON_PRETTY_PRINT);
         return $this->jsonResponse('success', $result, 200);
     }
 }

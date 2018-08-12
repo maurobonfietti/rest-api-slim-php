@@ -41,7 +41,7 @@ abstract class BaseController
         $this->request = $request;
         $this->response = $response;
         $this->args = $args;
-//        $this->logRequest();
+        $this->logRequest();
     }
 
     /**

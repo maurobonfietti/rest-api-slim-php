@@ -13,11 +13,8 @@ $container = $app->getContainer();
  */
 $container['db'] = function(ContainerInterface $c) {
     $db = $c->get('settings')['db'];
-//    return $db;
     $database = sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']);
-//    return $database;
     $pdo = new PDO($database, $db['username'], $db['password']);
-//    return $database;
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
