@@ -2,7 +2,6 @@
 
 namespace App\Controller\User;
 
-use App\Controller\BaseController;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
