@@ -23,7 +23,6 @@ abstract class BaseUser extends BaseController
     {
         $this->container = $container;
         $this->logger = $container->get('logger');
-        $this->userService = $container->get('user_service');
     }
 
     /**
@@ -31,8 +30,7 @@ abstract class BaseUser extends BaseController
      */
     protected function getUserService()
     {
-        return $this->userService;
-//        return $this->container->get('user_service');
+        return $this->container->get('user_service');
     }
 
     /**

@@ -21,15 +21,15 @@ class GetOneUser extends BaseUser
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $client = new \Predis\Client();
-        $key = 'api-rest-slimphp:user:'.$this->args['id'];
-        $value = $client->get($key);
-        if (!is_null($value)) {
-            $result = json_decode($value);
-        } else {
+//        $client = new \Predis\Client();
+//        $key = 'api-rest-slimphp:user:'.$this->args['id'];
+//        $value = $client->get($key);
+//        if (!is_null($value)) {
+//            $result = json_decode($value);
+//        } else {
             $result = $this->getUserService()->getUser($this->args['id']);
-            $client->set($key, json_encode($result));
-        }
+//            $client->set($key, json_encode($result));
+//        }
 
         return $this->jsonResponse('success', $result, 200);
     }
