@@ -23,10 +23,6 @@ class CreateUser extends BaseUser
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $result = $this->getUserService()->createUser($input);
-
-//        $client = new \Predis\Client();
-//        $key = 'api-rest-slimphp:user:'.$result->id;
-//        $client->set($key, json_encode($result));
         $this->saveInCache($result->id, $result);
 
         return $this->jsonResponse('success', $result, 201);

@@ -23,14 +23,6 @@ class UpdateUser extends BaseUser
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $result = $this->getUserService()->updateUser($input, $this->args['id']);
-
-//        $client = new \Predis\Client();
-//        $key = 'api-rest-slimphp:user:'.$this->args['id'];
-//        $client->set($key, json_encode($result));
-
-//        $redis = $this->getRedisClient();
-//        $key = 'api-rest-slimphp:user:'.$this->args['id'];
-//        $redis->set($key, json_encode($result));
         $this->saveInCache($this->args['id'], $result);
 
         return $this->jsonResponse('success', $result, 200);

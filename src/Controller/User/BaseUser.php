@@ -46,20 +46,10 @@ abstract class BaseUser extends BaseController
         return $this->container->get('redis');
     }
 
-    protected function saveInCache($id, $result)
-    {
-        $redis = $this->getRedisClient();
-        $key = 'api-rest-slimphp:user:'.$id;
-        $redis->set($key, json_encode($result));
-    }
-
-    protected function deleteFromCache($id)
-    {
-        $redis = $this->getRedisClient();
-        $key = 'api-rest-slimphp:user:'.$id;
-        $redis->del($key);
-    }
-
+    /**
+     * @param int $id
+     * @return mixed
+     */
     protected function getFromCache($id)
     {
         $redis = $this->getRedisClient();
@@ -67,5 +57,26 @@ abstract class BaseUser extends BaseController
         $value = $redis->get($key);
 
         return json_decode($value);
+    }
+
+    /**
+     * @param int $id
+     * @param mixed $result
+     */
+    protected function saveInCache($id, $result)
+    {
+        $redis = $this->getRedisClient();
+        $key = 'api-rest-slimphp:user:'.$id;
+        $redis->set($key, json_encode($result));
+    }
+
+    /**
+     * @param int $id
+     */
+    protected function deleteFromCache($id)
+    {
+        $redis = $this->getRedisClient();
+        $key = 'api-rest-slimphp:user:'.$id;
+        $redis->del($key);
     }
 }

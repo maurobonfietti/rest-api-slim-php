@@ -107,10 +107,6 @@ class UserService extends BaseService
         $data['email'] = vs::validateEmailOnUpdateUser($input, $checkUser);
         $user = $this->userRepository->updateUser($data, $userId);
 
-//        $client = new \Predis\Client();
-//        $key = 'api-rest-slimphp:user:'.$userId;
-//        $client->set($key, json_encode($user));
-
         return $user;
     }
 
