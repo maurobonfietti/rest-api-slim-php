@@ -23,6 +23,10 @@ class DeleteUser extends BaseUser
         $this->setParams($request, $response, $args);
         $result = $this->getUserService()->deleteUser($this->args['id']);
 
+        $client = new \Predis\Client();
+        $key = 'api-rest-slimphp:user:'.$this->args['id'];
+        $client->del($key);
+
         return $this->jsonResponse('success', $result, 200);
     }
 }
