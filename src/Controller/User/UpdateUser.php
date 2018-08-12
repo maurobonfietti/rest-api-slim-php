@@ -28,6 +28,11 @@ class UpdateUser extends BaseUser
 //        $key = 'api-rest-slimphp:user:'.$this->args['id'];
 //        $client->set($key, json_encode($result));
 
+//        $redis = $this->getRedisClient();
+//        $key = 'api-rest-slimphp:user:'.$this->args['id'];
+//        $redis->set($key, json_encode($result));
+        $this->saveInCache($this->args['id'], $result);
+
         return $this->jsonResponse('success', $result, 200);
     }
 }

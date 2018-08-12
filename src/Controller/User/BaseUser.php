@@ -40,4 +40,32 @@ abstract class BaseUser extends BaseController
     {
         return $this->request->getParsedBody();
     }
+
+    protected function getRedisClient()
+    {
+        return $this->container->get('redis');
+    }
+
+    protected function saveInCache($id, $result)
+    {
+        $redis = $this->getRedisClient();
+        $key = 'api-rest-slimphp:user:'.$id;
+        $redis->set($key, json_encode($result));
+    }
+
+    protected function deleteFromCache($id)
+    {
+        $redis = $this->getRedisClient();
+        $key = 'api-rest-slimphp:user:'.$id;
+        $redis->del($key);
+    }
+
+    protected function getFromCache($id)
+    {
+        $redis = $this->getRedisClient();
+        $key = 'api-rest-slimphp:user:'.$id;
+        $value = $redis->get($key);
+
+        return json_decode($value);
+    }
 }

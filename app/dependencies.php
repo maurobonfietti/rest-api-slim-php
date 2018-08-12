@@ -38,3 +38,7 @@ $container['logger'] = function(ContainerInterface $c) {
 
     return $logger;
 };
+
+$container['redis'] = function() {
+    return new \Predis\Client();
+};

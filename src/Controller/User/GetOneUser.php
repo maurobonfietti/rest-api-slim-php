@@ -27,9 +27,15 @@ class GetOneUser extends BaseUser
 //        if (!is_null($value)) {
 //            $result = json_decode($value);
 //        } else {
-            $result = $this->getUserService()->getUser($this->args['id']);
+//            $result = $this->getUserService()->getUser($this->args['id']);
 //            $client->set($key, json_encode($result));
 //        }
+
+        $result = $this->getFromCache($this->args['id']);
+        if (is_null($result)) {
+            $result = $this->getUserService()->getUser($this->args['id']);
+            $this->saveInCache($this->args['id'], $result);
+        }
 
         return $this->jsonResponse('success', $result, 200);
     }

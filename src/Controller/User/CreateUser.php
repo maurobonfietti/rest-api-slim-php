@@ -27,6 +27,7 @@ class CreateUser extends BaseUser
 //        $client = new \Predis\Client();
 //        $key = 'api-rest-slimphp:user:'.$result->id;
 //        $client->set($key, json_encode($result));
+        $this->saveInCache($result->id, $result);
 
         return $this->jsonResponse('success', $result, 201);
     }
