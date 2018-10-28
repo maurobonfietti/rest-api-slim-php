@@ -77,6 +77,7 @@ class DefaultController extends BaseController
         $this->setParams($request, $response, $args);
         $status = [
             'status' => 'OK',
+            'version' => DefaultMessage::API_VERSION,
         ];
 
         return $this->jsonResponse('success', $status, 200);
