@@ -7,5 +7,5 @@ namespace App\Message;
  */
 abstract class TaskMessage
 {
-    const TASK_DELETED = 'La tarea fue eliminada correctamente.';
+    const TASK_DELETED = 'The task was deleted.';
 }

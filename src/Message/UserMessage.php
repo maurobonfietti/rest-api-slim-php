@@ -7,5 +7,5 @@ namespace App\Message;
  */
 abstract class UserMessage
 {
-    const USER_DELETED = 'El usuario fue eliminado correctamente.';
+    const USER_DELETED = 'The user was deleted.';
 }
