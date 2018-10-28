@@ -78,6 +78,7 @@ class DefaultController extends BaseController
         $status = [
             'status' => 'OK',
             'version' => DefaultMessage::API_VERSION,
+            'timestamp' => time(),
         ];
 
         return $this->jsonResponse('success', $status, 200);
