@@ -1,4 +1,4 @@
-# API REST SLIM PHP
+# API REST EN SLIM PHP
 
 Ejemplo de API REST con micro framework Slim PHP.
 
@@ -6,7 +6,7 @@ Ejemplo de API REST con micro framework Slim PHP.
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 
-[README IN ENGLISH](README.md).
+[README IN ENGLISH](README.md)
 
 ## INSTALACIÓN:
 
