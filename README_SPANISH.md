@@ -14,19 +14,19 @@ Ejemplo de API REST con micro framework Slim PHP.
 
 ```bash
 $ cd path-to-your-projects
-$ git clone https://github.com/maurobonfietti/api-rest-slimphp.git
-$ cd api-rest-slimphp
+$ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
+$ cd rest-api-slim-php
 $ cp .env.example .env
 $ composer install
 ```
 
 
-### 2- Crear nueva base de datos MySQL. Por ejemplo: "api_rest_slimphp".
+### 2- Crear nueva base de datos MySQL. Por ejemplo: "rest_api_slim_php".
 
 Desde la línea de comandos ejecutar:
 
 ```bash
-mysql -e 'CREATE DATABASE api_rest_slimphp;'
+mysql -e 'CREATE DATABASE rest_api_slim_php;'
 ```
 
 
@@ -37,7 +37,7 @@ La base de datos se puede actualizar manualmente utilizando el siguiente archivo
 También se puede ejecutar desde la línea de comandos:
 
 ```
-mysql api_rest_slimphp < app/data/database.sql
+mysql rest_api_slim_php < app/data/database.sql
 ```
 
 
@@ -47,7 +47,7 @@ Editar y completar archivo de configuración: `.env`. Por ejemplo:
 
 ```
 DB_HOSTNAME = '127.0.0.1'
-DB_DATABASE = 'api_rest_slimphp'
+DB_DATABASE = 'rest_api_slim_php'
 DB_USERNAME = 'root'
 DB_PASSWORD = ''
 ```
@@ -66,6 +66,7 @@ $ composer start
 
 Si todo fue bien :sunglasses:, se puede acceder localmente al proyecto ingresando a: 
 [Ayuda](http://localhost:8080), 
+[Estado](http://localhost:8080/status), 
 [Usuarios](http://localhost:8080/api/v1/users), 
 [Tareas](http://localhost:8080/api/v1/tasks).
 
