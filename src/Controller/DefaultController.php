@@ -39,29 +39,10 @@ class DefaultController extends BaseController
             'tasks' => $url . 'api/v1/tasks',
             'users' => $url . 'api/v1/users',
             'status' => $url . 'status',
-            'version' => $url . 'version',
             'this help' => $url . '',
         ];
 
         return $this->jsonResponse('success', $message, 200);
-    }
-
-    /**
-     * Get Api Version.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
-     */
-    public function getVersion($request, $response, $args)
-    {
-        $this->setParams($request, $response, $args);
-        $version = [
-            'version' => DefaultMessage::API_VERSION,
-        ];
-
-        return $this->jsonResponse('success', $version, 200);
     }
 
     /**

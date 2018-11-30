@@ -1,7 +1,6 @@
 <?php
 
 $app->get('/', 'App\Controller\DefaultController:getHelp');
-$app->get('/version', 'App\Controller\DefaultController:getVersion');
 $app->get('/status', 'App\Controller\DefaultController:getStatus');
 
 $app->group('/api/v1', function () use ($app) {
