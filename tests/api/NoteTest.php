@@ -2,48 +2,49 @@
 
 namespace Tests\api;
 
-class UserTest extends BaseTestCase
+class NoteTest extends BaseTestCase
 {
     private static $id;
 
     /**
-     * Test Get All Users.
+     * Test Get All Notes.
      */
-    public function testGetUsers()
+    public function testGetNotes()
     {
-        $response = $this->runApp('GET', '/api/v1/users');
+        $response = $this->runApp('GET', '/api/v1/notes');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains('id', $result);
+        $this->assertContains('Note', $result);
+        $this->assertContains('online', $result);
+        $this->assertNotContains('error', $result);
+    }
+
+    /**
+     * Test Get One Note.
+     */
+    public function testGetNote()
+    {
+        $response = $this->runApp('GET', '/api/v1/notes/1');
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Juan', $result);
+        $this->assertContains('Note', $result);
+        $this->assertContains('online', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Get One User.
+     * Test Get Note Not Found.
      */
-    public function testGetUser()
+    public function testGetNoteNotFound()
     {
-        $response = $this->runApp('GET', '/api/v1/users/1');
-
-        $result = (string) $response->getBody();
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('id', $result);
-        $this->assertContains('name', $result);
-        $this->assertContains('Juan', $result);
-        $this->assertNotContains('error', $result);
-    }
-
-    /**
-     * Test Get User Not Found.
-     */
-    public function testGetUserNotFound()
-    {
-        $response = $this->runApp('GET', '/api/v1/users/123456789');
+        $response = $this->runApp('GET', '/api/v1/notes/123456789');
 
         $result = (string) $response->getBody();
 
@@ -54,27 +55,27 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Search Users.
+     * Test Search Notes.
      */
-    public function testSearchUsers()
+    public function testSearchNotes()
     {
-        $response = $this->runApp('GET', '/api/v1/users/search/j');
+        $response = $this->runApp('GET', '/api/v1/notes/search/n');
 
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Juan', $result);
+        $this->assertContains('Note', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Search User Not Found.
+     * Test Search Note Not Found.
      */
-    public function testSearchUserNotFound()
+    public function testSearchNoteNotFound()
     {
-        $response = $this->runApp('GET', '/api/v1/users/search/123456789');
+        $response = $this->runApp('GET', '/api/v1/notes/search/123456789');
 
         $result = (string) $response->getBody();
 
@@ -85,13 +86,13 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Create User.
+     * Test Create Note.
      */
-    public function testCreateUser()
+    public function testCreateNote()
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
-            ['name' => 'Esteban', 'email' => 'estu@gmail.com']
+            'POST', '/api/v1/notes',
+            ['name' => 'My Test Note', 'description' => 'New Note...']
         );
 
         $result = (string) $response->getBody();
@@ -101,17 +102,17 @@ class UserTest extends BaseTestCase
         $this->assertEquals(201, $response->getStatusCode());
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Esteban', $result);
-        $this->assertContains('estu@gmail.com', $result);
+        $this->assertContains('Note', $result);
+        $this->assertContains('New', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Create User Without Name.
+     * Test Create Note Without Name.
      */
-    public function testCreateUserWithoutName()
+    public function testCreateNoteWithoutName()
     {
-        $response = $this->runApp('POST', '/api/v1/users');
+        $response = $this->runApp('POST', '/api/v1/notes');
 
         $result = (string) $response->getBody();
 
@@ -122,13 +123,13 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Create User With Invalid Name.
+     * Test Create Note With Invalid Name.
      */
-    public function testCreateUserWithInvalidName()
+    public function testCreateNoteWithInvalidName()
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
-            ['name' => 'z', 'email' => 'email@example.com']
+            'POST', '/api/v1/notes',
+            ['name' => 'z']
         );
 
         $result = (string) $response->getBody();
@@ -140,31 +141,13 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Create User With Invalid Email.
+     * Test Update Note.
      */
-    public function testCreateUserWithInvalidEmail()
+    public function testUpdateNote()
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
-            ['name' => 'Esteban', 'email' => 'email.incorrecto']
-        );
-
-        $result = (string) $response->getBody();
-
-        $this->assertEquals(400, $response->getStatusCode());
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
-        $this->assertContains('error', $result);
-    }
-
-    /**
-     * Test Update User.
-     */
-    public function testUpdateUser()
-    {
-        $response = $this->runApp(
-            'PUT', '/api/v1/users/' . self::$id,
-            ['name' => 'Victor', 'email' => 'victor@hotmail.com']
+            'PUT', '/api/v1/notes/' . self::$id,
+            ['name' => 'Victor Notes', 'description' => 'Pep.']
         );
 
         $result = (string) $response->getBody();
@@ -173,16 +156,16 @@ class UserTest extends BaseTestCase
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
         $this->assertContains('Victor', $result);
-        $this->assertContains('hotmail', $result);
+        $this->assertContains('Pep', $result);
         $this->assertNotContains('error', $result);
     }
 
     /**
-     * Test Update User Without Send Data.
+     * Test Update Note Without Send Data.
      */
-    public function testUpdateUserWithOutSendData()
+    public function testUpdateNoteWithOutSendData()
     {
-        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id);
+        $response = $this->runApp('PUT', '/api/v1/notes/' . self::$id);
 
         $result = (string) $response->getBody();
 
@@ -193,12 +176,12 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Update User Not Found.
+     * Test Update Note Not Found.
      */
-    public function testUpdateUserNotFound()
+    public function testUpdateNoteNotFound()
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/users/123456789', ['name' => 'Victor']
+            'PUT', '/api/v1/notes/123456789', ['name' => 'Note']
         );
 
         $result = (string) $response->getBody();
@@ -210,29 +193,11 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Update User With Invalid Data.
+     * Test Delete Note.
      */
-    public function testUpdateUserWithInvalidData()
+    public function testDeleteNote()
     {
-        $response = $this->runApp(
-            'PUT', '/api/v1/users/' . self::$id,
-            ['name' => 'z', 'email' => 'email-incorrecto...']
-        );
-
-        $result = (string) $response->getBody();
-
-        $this->assertEquals(400, $response->getStatusCode());
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
-        $this->assertContains('error', $result);
-    }
-
-    /**
-     * Test Delete User.
-     */
-    public function testDeleteUser()
-    {
-        $response = $this->runApp('DELETE', '/api/v1/users/' . self::$id);
+        $response = $this->runApp('DELETE', '/api/v1/notes/' . self::$id);
 
         $result = (string) $response->getBody();
 
@@ -242,11 +207,11 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Delete User Not Found.
+     * Test Delete Note Not Found.
      */
-    public function testDeleteUserNotFound()
+    public function testDeleteNoteNotFound()
     {
-        $response = $this->runApp('DELETE', '/api/v1/users/123456789');
+        $response = $this->runApp('DELETE', '/api/v1/notes/123456789');
 
         $result = (string) $response->getBody();
 
