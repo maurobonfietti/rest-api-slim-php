@@ -31,14 +31,11 @@ class DefaultController extends BaseController
     public function getHelp($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-//        $protocol = ($_SERVER['HTTP_X_FORWARDED_PORT'] == 443) ? "https://" : "http://";
-//        $domainName = $_SERVER['HTTP_HOST'] . '/';
-//        $url = $protocol . $domainName;
-        $url = '/';
+        $url = getenv('APP_DOMAIN');
         $message = [
-            'tasks' => $url . 'api/v1/tasks',
-            'users' => $url . 'api/v1/users',
-            'status' => $url . 'status',
+            'tasks' => $url . '/api/v1/tasks',
+            'users' => $url . '/api/v1/users',
+            'status' => $url . '/status',
             'this help' => $url . '',
         ];
 
