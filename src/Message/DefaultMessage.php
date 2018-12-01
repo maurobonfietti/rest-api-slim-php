@@ -7,5 +7,5 @@ namespace App\Message;
  */
 abstract class DefaultMessage
 {
-    const API_VERSION = '18.11';
+    const API_VERSION = '18.12';
 }
