@@ -1,10 +1,16 @@
 #!/bin/bash
 
+echo -e "Reading environment variables..."
+source .env
+
 echo -e "Restarting demo database..."
-mysql -uroot -p -e 'DROP DATABASE IF EXITS api_rest_slimphp ; CREATE DATABASE api_rest_slimphp' 2> /dev/null
-echo -e "Creating test data..."
-mysql -uroot -p api_rest_slimphp < app/data/database.sql 2> /dev/null
+mysql -u$DB_USERNAME -p$DB_PASSWORD -h$DB_HOSTNAME -e 'DROP DATABASE IF EXITS $DB_DATABASE ; CREATE DATABASE $DB_DATABASE' 2> /dev/null
+
+echo -e "Creating testing data..."
+mysql -u$DB_USERNAME -p$DB_PASSWORD -h$DB_HOSTNAME $DB_DATABASE < app/data/database.sql 2> /dev/null
+
 echo -e "Generating example documentation..."
 ./bin/generate-doc.sh > DOC.md 2> /dev/null
+
 echo -e "Running unit tests..."
 ./vendor/bin/phpunit
