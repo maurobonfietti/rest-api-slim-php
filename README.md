@@ -84,11 +84,11 @@ Access the project route and run the tests with `phpunit`.
 ```bash
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
-................................                                  32 / 32 (100%)
+................................                                  31 / 31 (100%)
 
 Time: 212 ms, Memory: 8.00MB
 
-OK (32 tests, 138 assertions)
+OK (31 tests, 137 assertions)
 ```
 
 
