@@ -84,7 +84,7 @@ class NoteRepository extends BaseRepository
     {
         $statement = $this->database->prepare(NoteQuery::CREATE_NOTE_QUERY);
         $statement->bindParam('name', $data['name']);
-        $statement->bindParam('email', $data['email']);
+        $statement->bindParam('description', $data['description']);
         $statement->execute();
         $note = $this->checkNote($this->database->lastInsertId());
 
@@ -103,7 +103,7 @@ class NoteRepository extends BaseRepository
         $statement = $this->database->prepare(NoteQuery::UPDATE_NOTE_QUERY);
         $statement->bindParam('id', $noteId);
         $statement->bindParam('name', $data['name']);
-        $statement->bindParam('email', $data['email']);
+        $statement->bindParam('description', $data['description']);
         $statement->execute();
         $note = $this->checkNote($noteId);
 

@@ -21,13 +21,13 @@ abstract class NoteValidation extends BaseValidation
         if (!isset($input['name'])) {
             throw new NoteException(NoteException::NOTE_NAME_REQUIRED, 400);
         }
-        $name = self::validateName($input['name']);
-        $email = null;
-        if (isset($input['email'])) {
-            $email = self::validateEmail($input['email']);
+        $name = self::validateNoteName($input['name']);
+        $description = null;
+        if (isset($input['description'])) {
+            $description = $input['description'];
         }
 
-        return ['name' => $name, 'email' => $email];
+        return ['name' => $name, 'description' => $description];
     }
 
     /**
@@ -39,7 +39,7 @@ abstract class NoteValidation extends BaseValidation
     {
         $name = $note->name;
         if (isset($input['name'])) {
-            $name = self::validateName($input['name']);
+            $name = self::validateNoteName($input['name']);
         }
 
         return $name;
@@ -50,13 +50,13 @@ abstract class NoteValidation extends BaseValidation
      * @param object $note
      * @return string
      */
-    public static function validateEmailOnUpdateNote($input, $note)
+    public static function validateDescriptionOnUpdateNote($input, $note)
     {
-        $email = $note->email;
-        if (isset($input['email'])) {
-            $email = self::validateEmail($input['email']);
+        $description = $note->description;
+        if (isset($input['description'])) {
+            $description = $input['description'];
         }
 
-        return $email;
+        return $description;
     }
 }

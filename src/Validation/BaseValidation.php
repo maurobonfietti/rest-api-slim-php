@@ -4,6 +4,7 @@ namespace App\Validation;
 
 use App\Exception\TaskException;
 use App\Exception\UserException;
+use App\Exception\NoteException;
 use Respect\Validation\Validator as v;
 
 /**
@@ -74,5 +75,21 @@ abstract class BaseValidation
         }
 
         return $status;
+    }
+
+    /**
+     * Validate and sanitize a note name.
+     *
+     * @param string $name
+     * @return string
+     * @throws \Exception
+     */
+    protected static function validateNoteName($name)
+    {
+        if (!v::alnum()->length(2, 50)->validate($name)) {
+            throw new NoteException(NoteException::NOTE_NAME_INVALID, 400);
+        }
+
+        return $name;
     }
 }
