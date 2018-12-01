@@ -68,7 +68,8 @@ If everything went well :sunglasses:, you can access the project locally by ente
 [Help](http://localhost:8080), 
 [Status](http://localhost:8080/status), 
 [Users](http://localhost:8080/api/v1/users), 
-[Tasks](http://localhost:8080/api/v1/tasks).
+[Tasks](http://localhost:8080/api/v1/tasks) and
+[Notes](http://localhost:8080/api/v1/notes).
 
 The `composer start` command would be the equivalent to execute:
 
@@ -84,11 +85,11 @@ Access the project route and run the tests with `phpunit`.
 ```bash
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
-................................                                  31 / 31 (100%)
+................................                                  44 / 44 (100%)
 
-Time: 212 ms, Memory: 8.00MB
+Time: 312 ms, Memory: 8.00MB
 
-OK (31 tests, 137 assertions)
+OK (44 tests, 195 assertions)
 ```
 
 
