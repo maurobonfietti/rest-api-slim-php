@@ -2,9 +2,9 @@
 
 return [
     'settings' => [
-        'displayErrorDetails' => true, // set to false in production
+        'displayErrorDetails' => getenv('DISPLAY_ERROR_DETAILS'), // set to false in production
         'logger' => [
-            'enabled' => true,
+            'enabled' => getenv('LOGGER_ENABLED'),
             'name' => 'slim-app',
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::INFO,
