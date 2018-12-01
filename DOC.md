@@ -18,31 +18,31 @@ Response:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@mail.com",
-            "updated": "2018-08-11 19:40:04"
+            "updated": "2018-12-01 03:21:40"
         },
         {
             "id": "2",
             "name": "James",
             "email": null,
-            "updated": "2018-08-11 19:40:05"
+            "updated": "2018-12-01 03:21:41"
         },
         {
             "id": "3",
             "name": "Lionel",
             "email": null,
-            "updated": "2018-08-11 19:40:05"
+            "updated": "2018-12-01 03:21:41"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2018-08-11 19:40:06"
+            "updated": "2018-12-01 03:21:42"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego1010@gmail.com",
-            "updated": "2018-08-11 19:40:06"
+            "updated": "2018-12-01 03:21:43"
         }
     ]
 }
@@ -65,7 +65,7 @@ Response:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@mail.com",
-        "updated": "2018-08-11 19:40:04"
+        "updated": "2018-12-01 03:21:40"
     }
 }
 ```
@@ -88,7 +88,7 @@ Response:
             "id": "3",
             "name": "Lionel",
             "email": null,
-            "updated": "2018-08-11 19:40:05"
+            "updated": "2018-12-01 03:21:41"
         }
     ]
 }
@@ -111,7 +111,7 @@ Response:
         "id": "6",
         "name": "Michael",
         "email": null,
-        "updated": "2018-08-11 19:45:41"
+        "updated": "2018-12-01 03:22:21"
     }
 }
 ```
@@ -133,7 +133,7 @@ Response:
         "id": "6",
         "name": "John",
         "email": null,
-        "updated": "2018-08-11 19:45:43"
+        "updated": "2018-12-01 03:22:23"
     }
 }
 ```
@@ -151,7 +151,7 @@ Response:
 {
     "code": 200,
     "status": "success",
-    "message": "El usuario fue eliminado correctamente."
+    "message": "The user was deleted."
 }
 ```
 
@@ -173,31 +173,31 @@ Response:
             "id": "1",
             "name": "Go to cinema",
             "status": "1",
-            "updated": "2018-08-11 19:40:01"
+            "updated": "2018-12-01 03:21:36"
         },
         {
             "id": "2",
             "name": "Buying shoes",
             "status": "1",
-            "updated": "2018-08-11 19:40:02"
+            "updated": "2018-12-01 03:21:36"
         },
         {
             "id": "3",
             "name": "Go to shopping",
             "status": "1",
-            "updated": "2018-08-11 19:40:02"
+            "updated": "2018-12-01 03:21:37"
         },
         {
             "id": "4",
             "name": "Buy milk",
             "status": "1",
-            "updated": "2018-08-11 19:40:02"
+            "updated": "2018-12-01 03:21:37"
         },
         {
             "id": "5",
             "name": "Do homework...",
             "status": "0",
-            "updated": "2018-08-11 19:40:03"
+            "updated": "2018-12-01 03:21:37"
         }
     ]
 }
@@ -220,7 +220,7 @@ Response:
         "id": "3",
         "name": "Go to shopping",
         "status": "1",
-        "updated": "2018-08-11 19:40:02"
+        "updated": "2018-12-01 03:21:37"
     }
 }
 ```
@@ -243,7 +243,7 @@ Response:
             "id": "1",
             "name": "Go to cinema",
             "status": "1",
-            "updated": "2018-08-11 19:40:01"
+            "updated": "2018-12-01 03:21:36"
         }
     ]
 }
@@ -266,7 +266,7 @@ Response:
         "id": "6",
         "name": "Cine",
         "status": "0",
-        "updated": "2018-08-11 19:46:17"
+        "updated": "2018-12-01 03:22:56"
     }
 }
 ```
@@ -288,7 +288,7 @@ Response:
         "id": "6",
         "name": "Task",
         "status": "0",
-        "updated": "2018-08-11 19:46:25"
+        "updated": "2018-12-01 03:22:58"
     }
 }
 ```
@@ -306,7 +306,7 @@ Response:
 {
     "code": 200,
     "status": "success",
-    "message": "La tarea fue eliminada correctamente."
+    "message": "The task was deleted."
 }
 ```
 
@@ -327,27 +327,7 @@ Response:
         "tasks": "\/api\/v1\/tasks",
         "users": "\/api\/v1\/users",
         "status": "\/status",
-        "version": "\/version",
         "this help": "\/"
-    }
-}
-```
-
-
-## Get version:
-
-Request:
-```
-$ curl http://localhost:8080/version
-```
-
-Response:
-```
-{
-    "code": 200,
-    "status": "success",
-    "message": {
-        "version": "18.08"
     }
 }
 ```
@@ -366,9 +346,24 @@ Response:
     "code": 200,
     "status": "success",
     "message": {
-        "status": "OK"
+        "status": "OK",
+        "version": "18.11",
+        "timestamp": 1543634581
     }
 }
+```
+
+
+## :
+
+Request:
+```
+$ 
+```
+
+Response:
+```
+
 ```
 
 
