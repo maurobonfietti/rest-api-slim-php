@@ -35,6 +35,7 @@ class DefaultController extends BaseController
         $message = [
             'tasks' => $url . '/api/v1/tasks',
             'users' => $url . '/api/v1/users',
+            'notes' => $url . '/api/v1/notes',
             'status' => $url . '/status',
             'this help' => $url . '',
         ];

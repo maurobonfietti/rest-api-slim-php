@@ -40,3 +40,24 @@ INSERT INTO `users` (`id`, `name`, `email`) VALUES ('2', 'James', null);
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('3', 'Lionel', null);
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('4', 'Carlos', null);
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('5', 'Diego', 'diego1010@gmail.com');
+
+-- ----------------------------
+-- Table structure for notes
+-- ----------------------------
+DROP TABLE IF EXISTS `notes`;
+CREATE TABLE `notes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8_unicode_ci,
+  `updated` timestamp DEFAULT NOW() ON UPDATE NOW(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of notes
+-- ----------------------------
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('1', 'Note 1', 'My first online note');
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('2', 'Note 2', null);
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('3', 'Note 3', null);
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('4', 'Note 4', null);
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('5', 'Note 5', 'Freedom Random Note');

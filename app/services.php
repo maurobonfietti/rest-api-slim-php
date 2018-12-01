@@ -2,8 +2,10 @@
 
 use App\Service\UserService;
 use App\Service\TaskService;
+use App\Service\NoteService;
 use App\Repository\UserRepository;
 use App\Repository\TaskRepository;
+use App\Repository\NoteRepository;
 use App\Handlers\ApiError;
 
 $container = $app->getContainer();
@@ -45,4 +47,20 @@ $container['task_service'] = function($container) {
  */
 $container['task_repository'] = function($container) {
     return new TaskRepository($container->get('db'));
+};
+
+/**
+ * @param ContainerInterface $container
+ * @return NoteService
+ */
+$container['note_service'] = function($container) {
+    return new NoteService($container->get('note_repository'));
+};
+
+/**
+ * @param ContainerInterface $container
+ * @return NoteRepository
+ */
+$container['note_repository'] = function($container) {
+    return new NoteRepository($container->get('db'));
 };
