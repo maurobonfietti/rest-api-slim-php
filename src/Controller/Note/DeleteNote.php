@@ -25,7 +25,6 @@ class DeleteNote extends BaseNote
         if (getenv('USE_REDIS_CACHE') == true) {
             $this->deleteFromCache($this->args['id']);
         }
-//        $this->deleteFromCache($this->args['id']);
 
         return $this->jsonResponse('success', $result, 200);
     }

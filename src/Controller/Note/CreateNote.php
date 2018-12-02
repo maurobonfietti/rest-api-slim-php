@@ -26,7 +26,6 @@ class CreateNote extends BaseNote
         if (getenv('USE_REDIS_CACHE') == true) {
             $this->saveInCache($result->id, $result);
         }
-//        $this->saveInCache($result->id, $result);
 
         return $this->jsonResponse('success', $result, 201);
     }

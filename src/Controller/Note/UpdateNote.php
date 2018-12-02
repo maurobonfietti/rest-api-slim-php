@@ -26,7 +26,6 @@ class UpdateNote extends BaseNote
         if (getenv('USE_REDIS_CACHE') == true) {
             $this->saveInCache($this->args['id'], $result);
         }
-//        $this->saveInCache($this->args['id'], $result);
 
         return $this->jsonResponse('success', $result, 200);
     }
