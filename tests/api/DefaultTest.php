@@ -18,7 +18,7 @@ class DefaultTest extends BaseTestCase
     }
 
     /**
-     * Test that status endpoint, show the api status ok.
+     * Test that status endpoint, show the API status.
      */
     public function testStatus()
     {
@@ -26,7 +26,6 @@ class DefaultTest extends BaseTestCase
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('status', (string) $response->getBody());
-        $this->assertContains('OK', (string) $response->getBody());
         $this->assertContains('version', (string) $response->getBody());
         $this->assertContains('time', (string) $response->getBody());
         $this->assertNotContains('ERROR', (string) $response->getBody());
