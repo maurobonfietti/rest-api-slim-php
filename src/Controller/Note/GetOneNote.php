@@ -21,11 +21,15 @@ class GetOneNote extends BaseNote
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-//        $result = $this->getFromCache($this->args['id']);
-//        if (is_null($result)) {
+        if (getenv('USE_REDIS_CACHE') == true) {
+            $result = $this->getFromCache($this->args['id']);
+            if (is_null($result)) {
+                $result = $this->getNoteService()->getNote($this->args['id']);
+                $this->saveInCache($this->args['id'], $result);
+            }
+        } else {
             $result = $this->getNoteService()->getNote($this->args['id']);
-//            $this->saveInCache($this->args['id'], $result);
-//        }
+        }
 
         return $this->jsonResponse('success', $result, 200);
     }
