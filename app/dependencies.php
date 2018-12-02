@@ -40,5 +40,5 @@ $container['logger'] = function(ContainerInterface $c) {
 };
 
 $container['redis'] = function() {
-    return new \Predis\Client();
+    return new \Predis\Client(getenv('REDIS_URL'));
 };
