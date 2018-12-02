@@ -17,6 +17,7 @@ class DefaultController extends BaseController
      */
     public function __construct(Container $container)
     {
+        $this->container = $container;
         $this->logger = $container->get('logger');
     }
 
@@ -32,19 +33,24 @@ class DefaultController extends BaseController
     {
         $this->setParams($request, $response, $args);
         $url = getenv('APP_DOMAIN');
-        $message = [
+        $endpoints = [
             'tasks' => $url . '/api/v1/tasks',
             'users' => $url . '/api/v1/users',
             'notes' => $url . '/api/v1/notes',
             'status' => $url . '/status',
             'this help' => $url . '',
         ];
+        $message = [
+            'endpoints' => $endpoints,
+            'version' => DefaultMessage::API_VERSION,
+            'timestamp' => time(),
+        ];
 
         return $this->jsonResponse('success', $message, 200);
     }
 
     /**
-     * Get Api Status.
+     * Get API Status.
      *
      * @param Request $request
      * @param Response $response
@@ -54,8 +60,16 @@ class DefaultController extends BaseController
     public function getStatus($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
+        $userService = $this->container->get('user_service');
+        $taskService = $this->container->get('task_service');
+        $noteService = $this->container->get('note_service');
+        $db = [
+            'users' => count($userService->getUsers()),
+            'tasks' => count($taskService->getTasks()),
+            'notes' => count($noteService->getNotes()),
+        ];
         $status = [
-            'status' => 'OK',
+            'db' => $db,
             'version' => DefaultMessage::API_VERSION,
             'timestamp' => time(),
         ];
