@@ -93,6 +93,11 @@ OK (44 tests, 195 assertions)
 ```
 
 
+## GIVE IT A TRY:
+
+Demo hosted on Heroku: http://bit.ly/2DdwKkd
+
+
 ## DOCUMENTATION:
 
 ### HELP AND DOCS:
