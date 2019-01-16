@@ -18,31 +18,31 @@ Response:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@mail.com",
-            "updated": "2018-12-01 03:35:23"
+            "updated": "2019-01-16 03:56:38"
         },
         {
             "id": "2",
             "name": "James",
             "email": null,
-            "updated": "2018-12-01 03:35:23"
+            "updated": "2019-01-16 03:56:38"
         },
         {
             "id": "3",
             "name": "Lionel",
             "email": null,
-            "updated": "2018-12-01 03:35:23"
+            "updated": "2019-01-16 03:56:38"
         },
         {
             "id": "4",
             "name": "Carlos",
             "email": null,
-            "updated": "2018-12-01 03:35:24"
+            "updated": "2019-01-16 03:56:38"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego1010@gmail.com",
-            "updated": "2018-12-01 03:35:24"
+            "updated": "2019-01-16 03:56:38"
         }
     ]
 }
@@ -65,7 +65,7 @@ Response:
         "id": "1",
         "name": "Juan",
         "email": "juanmartin@mail.com",
-        "updated": "2018-12-01 03:35:23"
+        "updated": "2019-01-16 03:56:38"
     }
 }
 ```
@@ -88,7 +88,7 @@ Response:
             "id": "3",
             "name": "Lionel",
             "email": null,
-            "updated": "2018-12-01 03:35:23"
+            "updated": "2019-01-16 03:56:38"
         }
     ]
 }
@@ -111,7 +111,7 @@ Response:
         "id": "6",
         "name": "Michael",
         "email": null,
-        "updated": "2018-12-01 03:35:51"
+        "updated": "2019-01-16 03:56:43"
     }
 }
 ```
@@ -133,7 +133,7 @@ Response:
         "id": "6",
         "name": "John",
         "email": null,
-        "updated": "2018-12-01 03:36:01"
+        "updated": "2019-01-16 03:56:43"
     }
 }
 ```
@@ -173,31 +173,31 @@ Response:
             "id": "1",
             "name": "Go to cinema",
             "status": "1",
-            "updated": "2018-12-01 03:35:18"
+            "updated": "2019-01-16 03:56:37"
         },
         {
             "id": "2",
             "name": "Buying shoes",
             "status": "1",
-            "updated": "2018-12-01 03:35:19"
+            "updated": "2019-01-16 03:56:37"
         },
         {
             "id": "3",
             "name": "Go to shopping",
             "status": "1",
-            "updated": "2018-12-01 03:35:19"
+            "updated": "2019-01-16 03:56:38"
         },
         {
             "id": "4",
             "name": "Buy milk",
             "status": "1",
-            "updated": "2018-12-01 03:35:20"
+            "updated": "2019-01-16 03:56:38"
         },
         {
             "id": "5",
             "name": "Do homework...",
             "status": "0",
-            "updated": "2018-12-01 03:35:20"
+            "updated": "2019-01-16 03:56:38"
         }
     ]
 }
@@ -220,7 +220,7 @@ Response:
         "id": "3",
         "name": "Go to shopping",
         "status": "1",
-        "updated": "2018-12-01 03:35:19"
+        "updated": "2019-01-16 03:56:38"
     }
 }
 ```
@@ -243,7 +243,7 @@ Response:
             "id": "1",
             "name": "Go to cinema",
             "status": "1",
-            "updated": "2018-12-01 03:35:18"
+            "updated": "2019-01-16 03:56:37"
         }
     ]
 }
@@ -266,7 +266,7 @@ Response:
         "id": "6",
         "name": "Cine",
         "status": "0",
-        "updated": "2018-12-01 03:36:18"
+        "updated": "2019-01-16 03:56:43"
     }
 }
 ```
@@ -288,7 +288,7 @@ Response:
         "id": "6",
         "name": "Task",
         "status": "0",
-        "updated": "2018-12-01 03:36:25"
+        "updated": "2019-01-16 03:56:44"
     }
 }
 ```
@@ -324,10 +324,15 @@ Response:
     "code": 200,
     "status": "success",
     "message": {
-        "tasks": "\/api\/v1\/tasks",
-        "users": "\/api\/v1\/users",
-        "status": "\/status",
-        "this help": "\/"
+        "endpoints": {
+            "tasks": "http:\/\/localhost:8080\/api\/v1\/tasks",
+            "users": "http:\/\/localhost:8080\/api\/v1\/users",
+            "notes": "http:\/\/localhost:8080\/api\/v1\/notes",
+            "status": "http:\/\/localhost:8080\/status",
+            "this help": "http:\/\/localhost:8080"
+        },
+        "version": "19.01",
+        "timestamp": 1547611004
     }
 }
 ```
@@ -346,9 +351,13 @@ Response:
     "code": 200,
     "status": "success",
     "message": {
-        "status": "OK",
-        "version": "18.11",
-        "timestamp": 1543635387
+        "db": {
+            "users": 5,
+            "tasks": 5,
+            "notes": 5
+        },
+        "version": "19.01",
+        "timestamp": 1547611004
     }
 }
 ```
