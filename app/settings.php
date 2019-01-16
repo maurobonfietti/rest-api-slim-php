@@ -4,7 +4,7 @@ return [
     'settings' => [
         'displayErrorDetails' => getenv('DISPLAY_ERROR_DETAILS'), // set to false in production
         'logger' => [
-            'enabled' => getenv('LOGGER_ENABLED'),
+            'enabled' => filter_var(getenv('LOGGER_ENABLED'), FILTER_VALIDATE_BOOLEAN),
             'name' => 'slim-app',
             'path' => __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::INFO,
