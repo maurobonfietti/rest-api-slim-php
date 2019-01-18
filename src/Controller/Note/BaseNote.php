@@ -11,6 +11,8 @@ use Slim\Container;
  */
 abstract class BaseNote extends BaseController
 {
+    const KEY = 'rest-api-slim-php:note:';
+
     /**
      * @var NoteService
      */
@@ -53,7 +55,7 @@ abstract class BaseNote extends BaseController
     protected function getFromCache($id)
     {
         $redis = $this->getRedisClient();
-        $key = 'api-rest-slimphp:note:'.$id;
+        $key = $this::KEY.$id;
         $value = $redis->get($key);
 
         return json_decode($value);
@@ -66,7 +68,7 @@ abstract class BaseNote extends BaseController
     protected function saveInCache($id, $result)
     {
         $redis = $this->getRedisClient();
-        $key = 'api-rest-slimphp:note:'.$id;
+        $key = $this::KEY.$id;
         $redis->set($key, json_encode($result));
     }
 
@@ -76,7 +78,7 @@ abstract class BaseNote extends BaseController
     protected function deleteFromCache($id)
     {
         $redis = $this->getRedisClient();
-        $key = 'api-rest-slimphp:note:'.$id;
+        $key = $this::KEY.$id;
         $redis->del($key);
     }
 }
