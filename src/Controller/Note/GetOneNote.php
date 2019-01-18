@@ -21,7 +21,7 @@ class GetOneNote extends BaseNote
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        if (filter_var(getenv('USE_REDIS_CACHE'), FILTER_VALIDATE_BOOLEAN) === true) {
+        if ($this->useRedis() === true) {
             $result = $this->getFromCache($this->args['id']);
             if (is_null($result)) {
                 $result = $this->getNoteService()->getNote($this->args['id']);

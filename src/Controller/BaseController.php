@@ -114,6 +114,14 @@ abstract class BaseController
     }
 
     /**
+     * @return boolean
+     */
+    protected function useRedis()
+    {
+        return $this->container->get('settings')['useRedisCache'];
+    }
+
+    /**
      * @param int $id
      * @return mixed
      */

@@ -22,7 +22,7 @@ class DeleteUser extends BaseUser
     {
         $this->setParams($request, $response, $args);
         $result = $this->getUserService()->deleteUser($this->args['id']);
-        if (filter_var(getenv('USE_REDIS_CACHE'), FILTER_VALIDATE_BOOLEAN) === true) {
+        if ($this->useRedis() === true) {
             $this->deleteFromCache($this->args['id']);
         }
 

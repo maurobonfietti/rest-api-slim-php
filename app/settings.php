@@ -15,5 +15,6 @@ return [
             'username' => getenv('DB_USERNAME'),
             'password' => getenv('DB_PASSWORD'),
         ],
+        'useRedisCache' => filter_var(getenv('USE_REDIS_CACHE'), FILTER_VALIDATE_BOOLEAN),
     ],
 ];
