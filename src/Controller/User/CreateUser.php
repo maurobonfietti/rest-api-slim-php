@@ -23,7 +23,9 @@ class CreateUser extends BaseUser
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $result = $this->getUserService()->createUser($input);
-//        $this->saveInCache($result->id, $result);
+        if (getenv('USE_REDIS_CACHE') == true) {
+            $this->saveInCache($result->id, $result);
+        }
 
         return $this->jsonResponse('success', $result, 201);
     }
