@@ -22,7 +22,9 @@ class DeleteUser extends BaseUser
     {
         $this->setParams($request, $response, $args);
         $result = $this->getUserService()->deleteUser($this->args['id']);
-//        $this->deleteFromCache($this->args['id']);
+        if (getenv('USE_REDIS_CACHE') == true) {
+            $this->deleteFromCache($this->args['id']);
+        }
 
         return $this->jsonResponse('success', $result, 200);
     }
