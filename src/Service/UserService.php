@@ -32,9 +32,7 @@ class UserService extends BaseService
      */
     protected function checkUser($userId)
     {
-        $user = $this->userRepository->checkUser($userId);
-
-        return $user;
+        return $this->userRepository->checkUser($userId);
     }
 
     /**
@@ -44,9 +42,7 @@ class UserService extends BaseService
      */
     public function getUsers()
     {
-        $users = $this->userRepository->getUsers();
-
-        return $users;
+        return $this->userRepository->getUsers();
     }
 
     /**
@@ -57,9 +53,7 @@ class UserService extends BaseService
      */
     public function getUser($userId)
     {
-        $user = $this->checkUser($userId);
-
-        return $user;
+        return $this->checkUser($userId);
     }
 
     /**
@@ -70,9 +64,7 @@ class UserService extends BaseService
      */
     public function searchUsers($usersName)
     {
-        $users = $this->userRepository->searchUsers($usersName);
-
-        return $users;
+        return $this->userRepository->searchUsers($usersName);
     }
 
     /**
@@ -84,9 +76,8 @@ class UserService extends BaseService
     public function createUser($input)
     {
         $data = vs::validateInputOnCreateUser($input);
-        $user = $this->userRepository->createUser($data);
 
-        return $user;
+        return $this->userRepository->createUser($data);
     }
 
     /**
@@ -105,9 +96,8 @@ class UserService extends BaseService
         $data = [];
         $data['name'] = vs::validateNameOnUpdateUser($input, $checkUser);
         $data['email'] = vs::validateEmailOnUpdateUser($input, $checkUser);
-        $user = $this->userRepository->updateUser($data, $userId);
 
-        return $user;
+        return $this->userRepository->updateUser($data, $userId);
     }
 
     /**
@@ -119,8 +109,7 @@ class UserService extends BaseService
     public function deleteUser($userId)
     {
         $this->checkUser($userId);
-        $response = $this->userRepository->deleteUser($userId);
 
-        return $response;
+        return $this->userRepository->deleteUser($userId);
     }
 }

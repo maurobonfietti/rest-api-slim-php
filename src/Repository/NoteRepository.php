@@ -86,9 +86,8 @@ class NoteRepository extends BaseRepository
         $statement->bindParam('name', $data['name']);
         $statement->bindParam('description', $data['description']);
         $statement->execute();
-        $note = $this->checkNote($this->database->lastInsertId());
 
-        return $note;
+        return $this->checkNote($this->database->lastInsertId());
     }
 
     /**
@@ -105,9 +104,8 @@ class NoteRepository extends BaseRepository
         $statement->bindParam('name', $data['name']);
         $statement->bindParam('description', $data['description']);
         $statement->execute();
-        $note = $this->checkNote($noteId);
 
-        return $note;
+        return $this->checkNote($noteId);
     }
 
     /**

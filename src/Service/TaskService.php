@@ -40,9 +40,7 @@ class TaskService extends BaseService
      */
     protected function checkTask($taskId)
     {
-        $task = $this->getTaskRepository()->checkTask($taskId);
-
-        return $task;
+        return $this->getTaskRepository()->checkTask($taskId);
     }
 
     /**
@@ -52,9 +50,7 @@ class TaskService extends BaseService
      */
     public function getTasks()
     {
-        $tasks = $this->getTaskRepository()->getTasks();
-
-        return $tasks;
+        return $this->getTaskRepository()->getTasks();
     }
 
     /**
@@ -65,9 +61,7 @@ class TaskService extends BaseService
      */
     public function getTask($taskId)
     {
-        $task = $this->checkTask($taskId);
-
-        return $task;
+        return $this->checkTask($taskId);
     }
 
     /**
@@ -78,9 +72,7 @@ class TaskService extends BaseService
      */
     public function searchTasks($tasksName)
     {
-        $tasks = $this->getTaskRepository()->searchTasks($tasksName);
-
-        return $tasks;
+        return $this->getTaskRepository()->searchTasks($tasksName);
     }
 
     /**
@@ -92,9 +84,8 @@ class TaskService extends BaseService
     public function createTask($input)
     {
         $data = vs::validateInputOnCreateTask($input);
-        $task = $this->getTaskRepository()->createTask($data);
 
-        return $task;
+        return $this->getTaskRepository()->createTask($data);
     }
 
     /**
@@ -113,9 +104,8 @@ class TaskService extends BaseService
         $data = [];
         $data['name'] = vs::validateNameOnUpdateTask($input, $checkTask);
         $data['status'] = vs::validateStatusOnUpdateTask($input, $checkTask);
-        $task = $this->getTaskRepository()->updateTask($data, $taskId);
 
-        return $task;
+        return $this->getTaskRepository()->updateTask($data, $taskId);
     }
 
     /**
@@ -127,8 +117,7 @@ class TaskService extends BaseService
     public function deleteTask($taskId)
     {
         $this->checkTask($taskId);
-        $response = $this->getTaskRepository()->deleteTask($taskId);
 
-        return $response;
+        return $this->getTaskRepository()->deleteTask($taskId);
     }
 }

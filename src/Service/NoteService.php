@@ -32,9 +32,7 @@ class NoteService extends BaseService
      */
     protected function checkNote($noteId)
     {
-        $note = $this->noteRepository->checkNote($noteId);
-
-        return $note;
+        return $this->noteRepository->checkNote($noteId);
     }
 
     /**
@@ -44,9 +42,7 @@ class NoteService extends BaseService
      */
     public function getNotes()
     {
-        $notes = $this->noteRepository->getNotes();
-
-        return $notes;
+        return $this->noteRepository->getNotes();
     }
 
     /**
@@ -57,9 +53,7 @@ class NoteService extends BaseService
      */
     public function getNote($noteId)
     {
-        $note = $this->checkNote($noteId);
-
-        return $note;
+        return $this->checkNote($noteId);
     }
 
     /**
@@ -70,9 +64,7 @@ class NoteService extends BaseService
      */
     public function searchNotes($notesName)
     {
-        $notes = $this->noteRepository->searchNotes($notesName);
-
-        return $notes;
+        return $this->noteRepository->searchNotes($notesName);
     }
 
     /**
@@ -84,9 +76,8 @@ class NoteService extends BaseService
     public function createNote($input)
     {
         $data = vs::validateInputOnCreateNote($input);
-        $note = $this->noteRepository->createNote($data);
 
-        return $note;
+        return $this->noteRepository->createNote($data);
     }
 
     /**
@@ -105,9 +96,8 @@ class NoteService extends BaseService
         $data = [];
         $data['name'] = vs::validateNameOnUpdateNote($input, $checkNote);
         $data['description'] = vs::validateDescriptionOnUpdateNote($input, $checkNote);
-        $note = $this->noteRepository->updateNote($data, $noteId);
 
-        return $note;
+        return $this->noteRepository->updateNote($data, $noteId);
     }
 
     /**
@@ -119,8 +109,7 @@ class NoteService extends BaseService
     public function deleteNote($noteId)
     {
         $this->checkNote($noteId);
-        $response = $this->noteRepository->deleteNote($noteId);
 
-        return $response;
+        return $this->noteRepository->deleteNote($noteId);
     }
 }

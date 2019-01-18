@@ -48,9 +48,8 @@ class TaskRepository extends BaseRepository
     {
         $statement = $this->getDb()->prepare(TaskQuery::GET_TASKS_QUERY);
         $statement->execute();
-        $tasks = $statement->fetchAll();
 
-        return $tasks;
+        return $statement->fetchAll();
     }
 
     /**
@@ -87,9 +86,8 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('name', $data['name']);
         $statement->bindParam('status', $data['status']);
         $statement->execute();
-        $task = $this->checkTask($this->database->lastInsertId());
 
-        return $task;
+        return $this->checkTask($this->database->lastInsertId());
     }
 
     /**
@@ -106,9 +104,8 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('name', $data['name']);
         $statement->bindParam('status', $data['status']);
         $statement->execute();
-        $task = $this->checkTask($taskId);
 
-        return $task;
+        return $this->checkTask($taskId);
     }
 
     /**

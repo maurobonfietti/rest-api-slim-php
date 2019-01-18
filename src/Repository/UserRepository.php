@@ -86,9 +86,8 @@ class UserRepository extends BaseRepository
         $statement->bindParam('name', $data['name']);
         $statement->bindParam('email', $data['email']);
         $statement->execute();
-        $user = $this->checkUser($this->database->lastInsertId());
 
-        return $user;
+        return $this->checkUser($this->database->lastInsertId());
     }
 
     /**
@@ -105,9 +104,8 @@ class UserRepository extends BaseRepository
         $statement->bindParam('name', $data['name']);
         $statement->bindParam('email', $data['email']);
         $statement->execute();
-        $user = $this->checkUser($userId);
 
-        return $user;
+        return $this->checkUser($userId);
     }
 
     /**
