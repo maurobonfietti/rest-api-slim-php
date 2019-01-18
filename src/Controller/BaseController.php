@@ -67,7 +67,7 @@ abstract class BaseController
     /**
      * Log each request.
      *
-     * @return bool|void
+     * @return false|null
      */
     protected function logRequest()
     {
@@ -86,7 +86,7 @@ abstract class BaseController
      * Log each response.
      *
      * @param array $response
-     * @return bool|void
+     * @return false|null
      */
     protected function logResponse($response)
     {
@@ -120,7 +120,7 @@ abstract class BaseController
     protected function getFromCache($id)
     {
         $redis = $this->getRedisClient();
-        $key = $this::KEY.$id;
+        $key = $this::KEY . $id;
         $value = $redis->get($key);
 
         return json_decode($value);
@@ -133,7 +133,7 @@ abstract class BaseController
     protected function saveInCache($id, $result)
     {
         $redis = $this->getRedisClient();
-        $key = $this::KEY.$id;
+        $key = $this::KEY . $id;
         $redis->set($key, json_encode($result));
     }
 
@@ -143,7 +143,7 @@ abstract class BaseController
     protected function deleteFromCache($id)
     {
         $redis = $this->getRedisClient();
-        $key = $this::KEY.$id;
+        $key = $this::KEY . $id;
         $redis->del($key);
     }
 }
