@@ -96,4 +96,54 @@ abstract class BaseController
         $this->logger->info('* RESPONSE: ' . json_encode($response));
         $this->logger->info('************');
     }
+
+    /**
+     * @return array
+     */
+    protected function getInput()
+    {
+        return $this->request->getParsedBody();
+    }
+
+    /**
+     * @return Redis
+     */
+    protected function getRedisClient()
+    {
+        return $this->container->get('redis');
+    }
+
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    protected function getFromCache($id)
+    {
+        $redis = $this->getRedisClient();
+        $key = $this::KEY.$id;
+        $value = $redis->get($key);
+
+        return json_decode($value);
+    }
+
+    /**
+     * @param int $id
+     * @param mixed $result
+     */
+    protected function saveInCache($id, $result)
+    {
+        $redis = $this->getRedisClient();
+        $key = $this::KEY.$id;
+        $redis->set($key, json_encode($result));
+    }
+
+    /**
+     * @param int $id
+     */
+    protected function deleteFromCache($id)
+    {
+        $redis = $this->getRedisClient();
+        $key = $this::KEY.$id;
+        $redis->del($key);
+    }
 }

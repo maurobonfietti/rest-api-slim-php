@@ -32,12 +32,4 @@ abstract class BaseTask extends BaseController
     {
         return $this->taskService;
     }
-
-    /**
-     * @return array
-     */
-    protected function getInput()
-    {
-        return $this->request->getParsedBody();
-    }
 }
