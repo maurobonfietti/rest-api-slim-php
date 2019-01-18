@@ -18,16 +18,20 @@ abstract class NoteValidation extends BaseValidation
      */
     public static function validateInputOnCreateNote($input)
     {
-        if (!isset($input['name'])) {
+        $data = json_decode(json_encode($input), false);
+        if (!isset($data->name)) {
             throw new NoteException(NoteException::NOTE_NAME_REQUIRED, 400);
         }
-        $name = self::validateNoteName($input['name']);
+        $name = self::validateNoteName($data->name);
         $description = null;
-        if (isset($input['description'])) {
-            $description = $input['description'];
+        if (isset($data->description)) {
+            $description = $data->description;
         }
+        $note = new \stdClass();
+        $note->name = $name;
+        $note->description = $description;
 
-        return ['name' => $name, 'description' => $description];
+        return $note;
     }
 
     /**

@@ -93,9 +93,9 @@ class NoteService extends BaseService
         if (!isset($input['name'])) {
             throw new NoteException(NoteException::NOTE_INFO_REQUIRED, 400);
         }
-        $data = [];
-        $data['name'] = vs::validateNameOnUpdateNote($input, $checkNote);
-        $data['description'] = vs::validateDescriptionOnUpdateNote($input, $checkNote);
+        $data = new \stdClass();
+        $data->name = vs::validateNameOnUpdateNote($input, $checkNote);
+        $data->description = vs::validateDescriptionOnUpdateNote($input, $checkNote);
 
         return $this->noteRepository->updateNote($data, $noteId);
     }

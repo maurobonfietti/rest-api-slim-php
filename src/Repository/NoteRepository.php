@@ -29,7 +29,7 @@ class NoteRepository extends BaseRepository
     public function checkNote($noteId)
     {
         $statement = $this->database->prepare(NoteQuery::GET_NOTE_QUERY);
-        $statement->bindParam('id', $noteId);
+        $statement->bindParam(':id', $noteId);
         $statement->execute();
         $note = $statement->fetchObject();
         if (empty($note)) {
@@ -83,8 +83,8 @@ class NoteRepository extends BaseRepository
     public function createNote($data)
     {
         $statement = $this->database->prepare(NoteQuery::CREATE_NOTE_QUERY);
-        $statement->bindParam('name', $data['name']);
-        $statement->bindParam('description', $data['description']);
+        $statement->bindParam(':name', $data->name);
+        $statement->bindParam(':description', $data->description);
         $statement->execute();
 
         return $this->checkNote($this->database->lastInsertId());
@@ -100,9 +100,9 @@ class NoteRepository extends BaseRepository
     public function updateNote($data, $noteId)
     {
         $statement = $this->database->prepare(NoteQuery::UPDATE_NOTE_QUERY);
-        $statement->bindParam('id', $noteId);
-        $statement->bindParam('name', $data['name']);
-        $statement->bindParam('description', $data['description']);
+        $statement->bindParam(':id', $noteId);
+        $statement->bindParam(':name', $data->name);
+        $statement->bindParam(':description', $data->description);
         $statement->execute();
 
         return $this->checkNote($noteId);
@@ -117,7 +117,7 @@ class NoteRepository extends BaseRepository
     public function deleteNote($noteId)
     {
         $statement = $this->database->prepare(NoteQuery::DELETE_NOTE_QUERY);
-        $statement->bindParam('id', $noteId);
+        $statement->bindParam(':id', $noteId);
         $statement->execute();
 
         return NoteMessage::NOTE_DELETED;
