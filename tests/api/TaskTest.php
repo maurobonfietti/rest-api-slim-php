@@ -16,9 +16,11 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains('success', $result);
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('cine', $result);
+        $this->assertContains('status', $result);
+        $this->assertContains('updated', $result);
         $this->assertNotContains('error', $result);
     }
 
@@ -32,9 +34,11 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains('success', $result);
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('cine', $result);
+        $this->assertContains('status', $result);
+        $this->assertContains('updated', $result);
         $this->assertNotContains('error', $result);
     }
 
@@ -48,8 +52,9 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
+        $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
+        $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
 
@@ -63,9 +68,11 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains('success', $result);
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('cine', $result);
+        $this->assertContains('status', $result);
+        $this->assertContains('updated', $result);
         $this->assertNotContains('error', $result);
     }
 
@@ -79,8 +86,9 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
+        $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
+        $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
 
@@ -98,9 +106,11 @@ class TaskTest extends BaseTestCase
         self::$id = json_decode($result)->message->id;
 
         $this->assertEquals(201, $response->getStatusCode());
+        $this->assertContains('success', $result);
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Task', $result);
+        $this->assertContains('status', $result);
+        $this->assertContains('updated', $result);
         $this->assertNotContains('error', $result);
     }
 
@@ -114,8 +124,9 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
+        $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
 
@@ -131,8 +142,8 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
+        $this->assertNotContains('success', $result);
+        $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
 
@@ -148,8 +159,8 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
+        $this->assertNotContains('success', $result);
+        $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
 
@@ -166,10 +177,11 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains('success', $result);
         $this->assertContains('id', $result);
         $this->assertContains('name', $result);
-        $this->assertContains('Task', $result);
         $this->assertContains('status', $result);
+        $this->assertContains('updated', $result);
         $this->assertNotContains('error', $result);
     }
 
@@ -183,8 +195,9 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
+        $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
 
@@ -200,9 +213,9 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
+        $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
-        $this->assertNotContains('Task', $result);
+        $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
 
@@ -231,6 +244,8 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertNotContains('success', $result);
+        $this->assertNotContains('id', $result);
+        $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
 }
