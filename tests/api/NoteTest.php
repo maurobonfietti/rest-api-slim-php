@@ -57,7 +57,6 @@ class NoteTest extends BaseTestCase
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
         $this->assertNotContains('description', $result);
         $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
@@ -75,7 +74,6 @@ class NoteTest extends BaseTestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertContains('success', $result);
         $this->assertContains('id', $result);
-        $this->assertContains('name', $result);
         $this->assertContains('description', $result);
         $this->assertContains('updated', $result);
         $this->assertNotContains('error', $result);
@@ -93,7 +91,6 @@ class NoteTest extends BaseTestCase
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
         $this->assertNotContains('description', $result);
         $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
@@ -134,7 +131,6 @@ class NoteTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
         $this->assertNotContains('description', $result);
         $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
@@ -154,8 +150,6 @@ class NoteTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('success', $result);
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
         $this->assertNotContains('description', $result);
         $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
