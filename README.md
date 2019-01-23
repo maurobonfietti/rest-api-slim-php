@@ -101,11 +101,12 @@ Live demo hosted on Heroku: http://bit.ly/2DdwKkd.
 
 ## DOCUMENTATION:
 
-### HELP AND DOCS:
-
-For more information on how to use the REST API, see the following document: [User's Manual](DOC.md).
-
-
 ### IMPORT WITH POSTMAN:
 
-All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb). [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
+All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
+
+### HELP AND DOCS:
+
+For more information on how to use the REST API, see the following document: [User's Manual](DOC.md). Doc also available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
