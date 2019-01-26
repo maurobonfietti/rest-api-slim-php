@@ -2,7 +2,8 @@
 
 Example of REST API with [Slim PHP micro framework](http://www.slimframework.com).
 
-This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities such as: Users, Tasks and Notes :-)
+This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities such as:
+- Users, Tasks and Notes :-)
 
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
@@ -56,6 +57,19 @@ DB_PASSWORD = ''
 ```
 
 
+### 5- Configure optional environment variables.
+
+For example:
+
+```
+DISPLAY_ERROR_DETAILS=true
+LOGGER_ENABLED=true
+APP_DOMAIN='https://www.yourdomain.com'
+USE_REDIS_CACHE=false
+REDIS_URL=''
+```
+
+
 ## LOCAL SERVER:
 
 You can start the PHP internal web server by running:
@@ -83,7 +97,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## TESTS:
 
-Access the project route and run the tests with `phpunit`.
+Access the root of the project and run the tests with `phpunit`.
 
 ```bash
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -96,11 +110,6 @@ OK (44 tests, 255 assertions)
 ```
 
 
-## GIVE IT A TRY:
-
-[Live demo](http://bit.ly/2DdwKkd) hosted on Heroku.
-
-
 ## DOCUMENTATION:
 
 ### IMPORT WITH POSTMAN:
@@ -109,8 +118,14 @@ All the information of the API, prepared to download and use as postman collecti
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
 
+
 ### HELP AND DOCS:
 
 For more information on how to use the REST API, see the following document: [User's Manual](DOC.md).
 
 Documentation also available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
+
+
+## GIVE IT A TRY:
+
+[Live demo](http://bit.ly/2DdwKkd) hosted on Heroku.

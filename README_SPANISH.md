@@ -2,7 +2,8 @@
 
 Ejemplo de API REST con micro framework [Slim PHP](http://www.slimframework.com).
 
-Esta simple API RESTful hecha en Slim version 3, permite operaciones CRUD para administrar entidades como por ejemplo: Usuarios, Tareas y Notas :-)
+Esta simple API RESTful hecha en Slim version 3, permite operaciones CRUD para administrar entidades como por ejemplo:
+- Usuarios, Tareas y Notas :-)
 
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
@@ -56,6 +57,19 @@ DB_PASSWORD = ''
 ```
 
 
+### 5- Configurar variables de entorno opcionales.
+
+Por ejemplo:
+
+```
+DISPLAY_ERROR_DETAILS=true
+LOGGER_ENABLED=true
+APP_DOMAIN='https://www.yourdomain.com'
+USE_REDIS_CACHE=false
+REDIS_URL=''
+```
+
+
 ## SERVIDOR LOCAL:
 
 Se puede iniciar el servidor web interno de PHP ejecutando:
@@ -83,7 +97,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## TESTS:
 
-Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`.
+Acceder a la raíz del proyecto y ejecutar los tests con `phpunit`.
 
 ```bash
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
@@ -96,11 +110,6 @@ OK (44 tests, 255 assertions)
 ```
 
 
-## VER ONLINE:
-
-[Demo online](http://bit.ly/2DdwKkd) hosteado usando Heroku.
-
-
 ## DOCUMENTACIÓN:
 
 ### IMPORTAR EN POSTMAN:
@@ -109,8 +118,14 @@ Toda la información de la API, preparada para descargar y utilizar como colecci
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
 
+
 ### AYUDA Y MANUAL DE USO:
 
 Para más información sobre el modo de uso de la API REST, ver el siguiente documento: [Manual de Uso](DOC.md).
 
 Documentación también disponible en [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
+
+
+## VER ONLINE:
+
+[Demo online](http://bit.ly/2DdwKkd) hosteado usando Heroku.
