@@ -1,6 +1,8 @@
 # API REST EN SLIM PHP
 
-Ejemplo de API REST con micro framework Slim PHP.
+Ejemplo de API REST con micro framework [Slim PHP](http://www.slimframework.com).
+
+Esta simple API RESTful hecha en Slim version 3, permite operaciones CRUD para administrar entidades como por ejemplo: Usuarios, Tareas y Notas :-)
 
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
@@ -86,17 +88,17 @@ Acceder a la ruta del proyecto y ejecutar los tests con `phpunit`.
 ```bash
 PHPUnit 6.5.8 by Sebastian Bergmann and contributors.
 
-................................                                  44 / 44 (100%)
+............................................                      44 / 44 (100%)
 
-Time: 312 ms, Memory: 8.00MB
+Time: 735 ms, Memory: 10.00MB
 
-OK (44 tests, 195 assertions)
+OK (44 tests, 255 assertions)
 ```
 
 
 ## VER ONLINE:
 
-Demo online hosteado usando Heroku: http://bit.ly/2DdwKkd
+[Demo online](http://bit.ly/2DdwKkd) hosteado usando Heroku.
 
 
 ## DOCUMENTACIÓN:
