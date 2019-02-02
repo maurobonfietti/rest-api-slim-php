@@ -4,18 +4,12 @@ namespace App\Controller;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Monolog\Logger;
 
 /**
  * Base Controller.
  */
 abstract class BaseController
 {
-    /**
-     * @var Logger $logger
-     */
-    protected $logger;
-
     /**
      * @var Request $request
      */
@@ -41,7 +35,6 @@ abstract class BaseController
         $this->request = $request;
         $this->response = $response;
         $this->args = $args;
-        $this->logRequest();
     }
 
     /**
@@ -59,42 +52,8 @@ abstract class BaseController
             'status' => $status,
             'message' => $message,
         ];
-        $this->logResponse($result);
 
         return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
-    }
-
-    /**
-     * Log each request.
-     *
-     * @return false|null
-     */
-    protected function logRequest()
-    {
-        if (!$this->logger) {
-            return false;
-        }
-        $routeInfo = $this->request->getAttribute('routeInfo');
-        $route = $this->request->getAttribute('route');
-        $this->logger->info('************');
-        $this->logger->info('* REQUEST: ' . $route->getCallable()[1]);
-        $this->logger->info('* ' . $route->getMethods()[0] . ' ' . $routeInfo['request'][1]);
-        $this->logger->info('* BODY: ' . json_encode($this->request->getParsedBody()));
-    }
-
-    /**
-     * Log each response.
-     *
-     * @param array $response
-     * @return false|null
-     */
-    protected function logResponse($response)
-    {
-        if (!$this->logger) {
-            return false;
-        }
-        $this->logger->info('* RESPONSE: ' . json_encode($response));
-        $this->logger->info('************');
     }
 
     /**

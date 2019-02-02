@@ -14,7 +14,6 @@
     "require": {
         "php": ">=5.5.0",
         "slim/slim": "^3.1",
-        "monolog/monolog": "^1.17",
         "respect/validation": "^1.1",
         "palanik/corsslim": "dev-slim3",
         "vlucas/phpdotenv": "^2.4",
