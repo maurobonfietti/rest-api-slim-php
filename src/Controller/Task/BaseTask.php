@@ -21,7 +21,7 @@ abstract class BaseTask extends BaseController
      */
     public function __construct(Container $container)
     {
-        $this->logger = $container->get('logger');
+//        $this->logger = $container->get('logger');
         $this->taskService = $container->get('task_service');
     }
 

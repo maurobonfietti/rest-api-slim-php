@@ -1,6 +1,6 @@
 <?php
 
-use Monolog\Logger;
+//use Monolog\Logger;
 use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
@@ -27,17 +27,17 @@ $container['db'] = function(ContainerInterface $c) {
  * @param ContainerInterface $c
  * @return bool|Logger
  */
-$container['logger'] = function(ContainerInterface $c) {
-    $settings = $c->get('settings')['logger'];
-    if ($settings['enabled'] === false) {
-        return false;
-    }
-    $logger = new Monolog\Logger($settings['name']);
-    $logger->pushProcessor(new Monolog\Processor\UidProcessor());
-    $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
-
-    return $logger;
-};
+//$container['logger'] = function(ContainerInterface $c) {
+//    $settings = $c->get('settings')['logger'];
+//    if ($settings['enabled'] === false) {
+//        return false;
+//    }
+//    $logger = new Monolog\Logger($settings['name']);
+//    $logger->pushProcessor(new Monolog\Processor\UidProcessor());
+//    $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
+//
+//    return $logger;
+//};
 
 $container['redis'] = function() {
     return new \Predis\Client(getenv('REDIS_URL'));

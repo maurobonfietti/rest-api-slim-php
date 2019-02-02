@@ -24,7 +24,7 @@ abstract class BaseUser extends BaseController
     public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->logger = $container->get('logger');
+//        $this->logger = $container->get('logger');
     }
 
     /**
