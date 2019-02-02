@@ -28,5 +28,5 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml --whitelist src
+  - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml --whitelist src
   - if [ $(phpenv version-name) = "7.1" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
