@@ -8,6 +8,7 @@ php:
 
 services:
   - mysql
+  - redis-server
 
 env:
   global:
