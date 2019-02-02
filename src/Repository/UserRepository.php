@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Exception\UserException;
-use App\Repository\Query\UserQuery;
 
 /**
  * Users Repository.
@@ -27,7 +26,8 @@ class UserRepository extends BaseRepository
      */
     public function checkAndGetUser($userId)
     {
-        $statement = $this->database->prepare(UserQuery::GET_USER_QUERY);
+        $query = 'SELECT * FROM users WHERE id=:id';
+        $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();
         $user = $statement->fetchObject();
@@ -45,7 +45,8 @@ class UserRepository extends BaseRepository
      */
     public function getUsers()
     {
-        $statement = $this->database->prepare(UserQuery::GET_USERS_QUERY);
+        $query = 'SELECT * FROM users ORDER BY id';
+        $statement = $this->database->prepare($query);
         $statement->execute();
 
         return $statement->fetchAll();
@@ -60,9 +61,10 @@ class UserRepository extends BaseRepository
      */
     public function searchUsers($usersName)
     {
-        $statement = $this->database->prepare(UserQuery::SEARCH_USERS_QUERY);
-        $query = '%' . $usersName . '%';
-        $statement->bindParam('name', $query);
+        $query = 'SELECT * FROM users WHERE UPPER(name) LIKE :name ORDER BY id';
+        $name = '%' . $usersName . '%';
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('name', $name);
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
@@ -80,7 +82,8 @@ class UserRepository extends BaseRepository
      */
     public function createUser($user)
     {
-        $statement = $this->database->prepare(UserQuery::CREATE_USER_QUERY);
+        $query = 'INSERT INTO users (name, email) VALUES (:name, :email)';
+        $statement = $this->database->prepare($query);
         $statement->bindParam('name', $user->name);
         $statement->bindParam('email', $user->email);
         $statement->execute();
@@ -96,7 +99,8 @@ class UserRepository extends BaseRepository
      */
     public function updateUser($user)
     {
-        $statement = $this->database->prepare(UserQuery::UPDATE_USER_QUERY);
+        $query = 'UPDATE users SET name=:name, email=:email WHERE id=:id';
+        $statement = $this->database->prepare($query);
         $statement->bindParam('id', $user->id);
         $statement->bindParam('name', $user->name);
         $statement->bindParam('email', $user->email);
@@ -113,7 +117,8 @@ class UserRepository extends BaseRepository
      */
     public function deleteUser($userId)
     {
-        $statement = $this->database->prepare(UserQuery::DELETE_USER_QUERY);
+        $query = 'DELETE FROM users WHERE id=:id';
+        $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();
 

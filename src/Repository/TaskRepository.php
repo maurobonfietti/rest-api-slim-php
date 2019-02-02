@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Exception\TaskException;
-use App\Repository\Query\TaskQuery;
 
 /**
  * Tasks Repository.
@@ -27,7 +26,8 @@ class TaskRepository extends BaseRepository
      */
     public function checkAndGetTask($taskId)
     {
-        $statement = $this->getDb()->prepare(TaskQuery::GET_TASK_QUERY);
+        $query = 'SELECT * FROM tasks WHERE id=:id';
+        $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->execute();
         $task = $statement->fetchObject();
@@ -45,7 +45,8 @@ class TaskRepository extends BaseRepository
      */
     public function getTasks()
     {
-        $statement = $this->getDb()->prepare(TaskQuery::GET_TASKS_QUERY);
+        $query = 'SELECT * FROM tasks ORDER BY id';
+        $statement = $this->getDb()->prepare($query);
         $statement->execute();
 
         return $statement->fetchAll();
@@ -60,9 +61,10 @@ class TaskRepository extends BaseRepository
      */
     public function searchTasks($tasksName)
     {
-        $statement = $this->getDb()->prepare(TaskQuery::SEARCH_TASKS_QUERY);
-        $query = '%' . $tasksName . '%';
-        $statement->bindParam('name', $query);
+        $query = 'SELECT * FROM tasks WHERE UPPER(name) LIKE :name ORDER BY id';
+        $name = '%' . $tasksName . '%';
+        $statement = $this->getDb()->prepare($query);
+        $statement->bindParam('name', $name);
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
@@ -80,7 +82,8 @@ class TaskRepository extends BaseRepository
      */
     public function createTask($task)
     {
-        $statement = $this->getDb()->prepare(TaskQuery::CREATE_TASK_QUERY);
+        $query = 'INSERT INTO tasks (name, status) VALUES (:name, :status)';
+        $statement = $this->getDb()->prepare($query);
         $statement->bindParam('name', $task->name);
         $statement->bindParam('status', $task->status);
         $statement->execute();
@@ -96,7 +99,8 @@ class TaskRepository extends BaseRepository
      */
     public function updateTask($task)
     {
-        $statement = $this->getDb()->prepare(TaskQuery::UPDATE_TASK_QUERY);
+        $query = 'UPDATE tasks SET name=:name, status=:status WHERE id=:id';
+        $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $task->id);
         $statement->bindParam('name', $task->name);
         $statement->bindParam('status', $task->status);
@@ -113,7 +117,8 @@ class TaskRepository extends BaseRepository
      */
     public function deleteTask($taskId)
     {
-        $statement = $this->getDb()->prepare(TaskQuery::DELETE_TASK_QUERY);
+        $query = 'DELETE FROM tasks WHERE id=:id';
+        $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->execute();
 
