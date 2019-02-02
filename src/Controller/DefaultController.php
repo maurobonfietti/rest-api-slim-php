@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Message\DefaultMessage;
 use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -12,6 +11,8 @@ use Slim\Http\Response;
  */
 class DefaultController extends BaseController
 {
+    const API_VERSION = '19.02';
+
     /**
      * @param Container $container
      */
@@ -41,7 +42,7 @@ class DefaultController extends BaseController
         ];
         $message = [
             'endpoints' => $endpoints,
-            'version' => DefaultMessage::API_VERSION,
+            'version' => self::API_VERSION,
             'timestamp' => time(),
         ];
 
@@ -69,7 +70,7 @@ class DefaultController extends BaseController
         ];
         $status = [
             'db' => $db,
-            'version' => DefaultMessage::API_VERSION,
+            'version' => self::API_VERSION,
             'timestamp' => time(),
         ];
 
