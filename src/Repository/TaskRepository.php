@@ -93,19 +93,18 @@ class TaskRepository extends BaseRepository
     /**
      * Update a task.
      *
-     * @param array $data
-     * @param int $taskId
+     * @param object $task
      * @return object
      */
-    public function updateTask($data, $taskId)
+    public function updateTask($task)
     {
         $statement = $this->getDb()->prepare(TaskQuery::UPDATE_TASK_QUERY);
-        $statement->bindParam('id', $taskId);
-        $statement->bindParam('name', $data['name']);
-        $statement->bindParam('status', $data['status']);
+        $statement->bindParam('id', $task->id);
+        $statement->bindParam('name', $task->name);
+        $statement->bindParam('status', $task->status);
         $statement->execute();
 
-        return $this->checkTask($taskId);
+        return $this->checkTask($task->id);
     }
 
     /**

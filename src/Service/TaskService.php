@@ -4,7 +4,6 @@ namespace App\Service;
 
 use App\Exception\TaskException;
 use App\Repository\TaskRepository;
-use App\Validation\TaskValidation as vs;
 
 /**
  * Tasks Service.
@@ -83,7 +82,15 @@ class TaskService extends BaseService
      */
     public function createTask($input)
     {
-        $data = vs::validateInputOnCreateTask($input);
+        if (empty($input['name'])) {
+            throw new TaskException(TaskException::TASK_NAME_REQUIRED, 400);
+        }
+        $task = self::validateTaskName($input['name']);
+        $status = 0;
+        if (isset($input['status'])) {
+            $status = self::validateStatus($input['status']);
+        }
+        $data = ['name' => $task, 'status' => $status];
 
         return $this->getTaskRepository()->createTask($data);
     }
@@ -97,15 +104,18 @@ class TaskService extends BaseService
      */
     public function updateTask($input, $taskId)
     {
-        $checkTask = $this->checkTask($taskId);
+        $task = $this->checkTask($taskId);
         if (!isset($input['name']) && !isset($input['status'])) {
             throw new TaskException(TaskException::TASK_INFO_REQUIRED, 400);
         }
-        $data = [];
-        $data['name'] = vs::validateNameOnUpdateTask($input, $checkTask);
-        $data['status'] = vs::validateStatusOnUpdateTask($input, $checkTask);
+        if (isset($input['name'])) {
+            $task->name = self::validateTaskName($input['name']);
+        }
+        if (isset($input['status'])) {
+            $task->status = self::validateStatus($input['status']);
+        }
 
-        return $this->getTaskRepository()->updateTask($data, $taskId);
+        return $this->getTaskRepository()->updateTask($task);
     }
 
     /**

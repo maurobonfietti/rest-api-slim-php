@@ -4,7 +4,6 @@ namespace App\Service;
 
 use App\Exception\NoteException;
 use App\Repository\NoteRepository;
-use App\Validation\NoteValidation as vs;
 
 /**
  * Notes Service.
@@ -72,12 +71,22 @@ class NoteService extends BaseService
      *
      * @param array $input
      * @return object
+     * @throws NoteException
      */
     public function createNote($input)
     {
-        $data = vs::validateInputOnCreateNote($input);
+        $note = new \stdClass();
+        $data = json_decode(json_encode($input), false);
+        if (!isset($data->name)) {
+            throw new NoteException(NoteException::NOTE_NAME_REQUIRED, 400);
+        }
+        $note->name = self::validateNoteName($data->name);
+        $note->description = null;
+        if (isset($data->description)) {
+            $note->description = $data->description;
+        }
 
-        return $this->noteRepository->createNote($data);
+        return $this->noteRepository->createNote($note);
     }
 
     /**
@@ -89,15 +98,18 @@ class NoteService extends BaseService
      */
     public function updateNote($input, $noteId)
     {
-        $checkNote = $this->checkNote($noteId);
+        $note = $this->checkNote($noteId);
         if (!isset($input['name'])) {
             throw new NoteException(NoteException::NOTE_INFO_REQUIRED, 400);
         }
-        $data = new \stdClass();
-        $data->name = vs::validateNameOnUpdateNote($input, $checkNote);
-        $data->description = vs::validateDescriptionOnUpdateNote($input, $checkNote);
+        if (isset($input['name'])) {
+            $note->name = self::validateNoteName($input['name']);
+        }
+        if (isset($input['description'])) {
+            $note->description = $input['description'];
+        }
 
-        return $this->noteRepository->updateNote($data, $noteId);
+        return $this->noteRepository->updateNote($note);
     }
 
     /**

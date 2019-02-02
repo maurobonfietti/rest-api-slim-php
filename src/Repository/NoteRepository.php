@@ -76,9 +76,8 @@ class NoteRepository extends BaseRepository
     /**
      * Create a note.
      *
-     * @param array $data
+     * @param object $data
      * @return object
-     * @throws \Exception
      */
     public function createNote($data)
     {
@@ -93,19 +92,18 @@ class NoteRepository extends BaseRepository
     /**
      * Update a note.
      *
-     * @param array $data
-     * @param int $noteId
+     * @param object $note
      * @return object
      */
-    public function updateNote($data, $noteId)
+    public function updateNote($note)
     {
         $statement = $this->database->prepare(NoteQuery::UPDATE_NOTE_QUERY);
-        $statement->bindParam(':id', $noteId);
-        $statement->bindParam(':name', $data->name);
-        $statement->bindParam(':description', $data->description);
+        $statement->bindParam(':id', $note->id);
+        $statement->bindParam(':name', $note->name);
+        $statement->bindParam(':description', $note->description);
         $statement->execute();
 
-        return $this->checkNote($noteId);
+        return $this->checkNote($note->id);
     }
 
     /**

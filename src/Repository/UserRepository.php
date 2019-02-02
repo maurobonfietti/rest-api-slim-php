@@ -93,19 +93,18 @@ class UserRepository extends BaseRepository
     /**
      * Update a user.
      *
-     * @param array $data
-     * @param int $userId
+     * @param object $user
      * @return object
      */
-    public function updateUser($data, $userId)
+    public function updateUser($user)
     {
         $statement = $this->database->prepare(UserQuery::UPDATE_USER_QUERY);
-        $statement->bindParam('id', $userId);
-        $statement->bindParam('name', $data['name']);
-        $statement->bindParam('email', $data['email']);
+        $statement->bindParam('id', $user->id);
+        $statement->bindParam('name', $user->name);
+        $statement->bindParam('email', $user->email);
         $statement->execute();
 
-        return $this->checkUser($userId);
+        return $this->checkUser($user->id);
     }
 
     /**
