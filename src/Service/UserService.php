@@ -4,7 +4,6 @@ namespace App\Service;
 
 use App\Exception\UserException;
 use App\Repository\UserRepository;
-use App\Validation\UserValidation as vs;
 
 /**
  * Users Service.
@@ -75,7 +74,15 @@ class UserService extends BaseService
      */
     public function createUser($input)
     {
-        $data = vs::validateInputOnCreateUser($input);
+        if (!isset($input['name'])) {
+            throw new UserException(UserException::USER_NAME_REQUIRED, 400);
+        }
+        $name = self::validateName($input['name']);
+        $email = null;
+        if (isset($input['email'])) {
+            $email = self::validateEmail($input['email']);
+        }
+        $data = ['name' => $name, 'email' => $email];
 
         return $this->userRepository->createUser($data);
     }
@@ -89,15 +96,18 @@ class UserService extends BaseService
      */
     public function updateUser($input, $userId)
     {
-        $checkUser = $this->checkUser($userId);
+        $user = $this->checkUser($userId);
         if (!isset($input['name']) && !isset($input['email'])) {
             throw new UserException(UserException::USER_INFO_REQUIRED, 400);
         }
-        $data = [];
-        $data['name'] = vs::validateNameOnUpdateUser($input, $checkUser);
-        $data['email'] = vs::validateEmailOnUpdateUser($input, $checkUser);
+        if (isset($input['name'])) {
+            $user->name = self::validateName($input['name']);
+        }
+        if (isset($input['email'])) {
+            $user->email = self::validateEmail($input['email']);
+        }
 
-        return $this->userRepository->updateUser($data, $userId);
+        return $this->userRepository->updateUser($user);
     }
 
     /**
