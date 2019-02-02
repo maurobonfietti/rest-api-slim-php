@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Message\NoteMessage;
 use App\Exception\NoteException;
 use App\Repository\Query\NoteQuery;
 
@@ -33,7 +32,7 @@ class NoteRepository extends BaseRepository
         $statement->execute();
         $note = $statement->fetchObject();
         if (empty($note)) {
-            throw new NoteException(NoteException::NOTE_NOT_FOUND, 404);
+            throw new NoteException('Note not found.', 404);
         }
 
         return $note;
@@ -67,7 +66,7 @@ class NoteRepository extends BaseRepository
         $statement->execute();
         $notes = $statement->fetchAll();
         if (!$notes) {
-            throw new NoteException(NoteException::NOTE_NAME_NOT_FOUND, 404);
+            throw new NoteException('Note name not found.', 404);
         }
 
         return $notes;
@@ -118,6 +117,6 @@ class NoteRepository extends BaseRepository
         $statement->bindParam(':id', $noteId);
         $statement->execute();
 
-        return NoteMessage::NOTE_DELETED;
+        return 'The note was deleted.';
     }
 }

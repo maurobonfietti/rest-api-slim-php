@@ -78,7 +78,7 @@ class UserService extends BaseService
         $user = new \stdClass();
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name)) {
-            throw new UserException(UserException::USER_NAME_REQUIRED, 400);
+            throw new UserException('The field "name" is required.', 400);
         }
         $user->name = self::validateName($data->name);
         $user->email = null;
@@ -102,7 +102,7 @@ class UserService extends BaseService
         $user = $this->checkAndGetUser($userId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->email)) {
-            throw new UserException(UserException::USER_INFO_REQUIRED, 400);
+            throw new UserException('Enter the data to update the user.', 400);
         }
         if (isset($data->name)) {
             $user->name = self::validateName($data->name);

@@ -86,7 +86,7 @@ class TaskService extends BaseService
         $task = new \stdClass();
         $data = json_decode(json_encode($input), false);
         if (empty($data->name)) {
-            throw new TaskException(TaskException::TASK_NAME_REQUIRED, 400);
+            throw new TaskException('The field "name" is required.', 400);
         }
         $task->name = self::validateTaskName($data->name);
         $task->status = 0;
@@ -110,7 +110,7 @@ class TaskService extends BaseService
         $task = $this->checkAndGetTask($taskId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->status)) {
-            throw new TaskException(TaskException::TASK_INFO_REQUIRED, 400);
+            throw new TaskException('Enter the data to update the task.', 400);
         }
         if (isset($data->name)) {
             $task->name = self::validateTaskName($data->name);
