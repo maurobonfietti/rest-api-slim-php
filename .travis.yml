@@ -16,6 +16,8 @@ env:
     - DB_DATABASE=rest_api_slim_php
     - DB_USERNAME=root
     - DB_PASSWORD=
+    - USE_REDIS_CACHE=true
+    - REDIS_URL=localhost
 
 before_install:
   - mysql -e 'CREATE DATABASE rest_api_slim_php;'
