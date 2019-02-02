@@ -87,7 +87,7 @@ abstract class BaseService
     protected static function validateNoteName($name)
     {
         if (!v::alnum()->length(2, 50)->validate($name)) {
-            throw new NoteException(NoteException::NOTE_NAME_INVALID, 400);
+            throw new NoteException('Invalid name.', 400);
         }
 
         return $name;

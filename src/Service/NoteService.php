@@ -78,7 +78,7 @@ class NoteService extends BaseService
         $note = new \stdClass();
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name)) {
-            throw new NoteException(NoteException::NOTE_NAME_REQUIRED, 400);
+            throw new NoteException('The field "name" is required.', 400);
         }
         $note->name = self::validateNoteName($data->name);
         $note->description = null;
@@ -102,7 +102,7 @@ class NoteService extends BaseService
         $note = $this->checkAndGetNote($noteId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name)) {
-            throw new NoteException(NoteException::NOTE_INFO_REQUIRED, 400);
+            throw new NoteException('Enter the data to update the note.', 400);
         }
         if (isset($data->name)) {
             $note->name = self::validateNoteName($data->name);
