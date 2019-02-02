@@ -26,7 +26,7 @@ class TaskRepository extends BaseRepository
      * @return object $task
      * @throws \Exception
      */
-    public function checkTask($taskId)
+    public function checkAndGetTask($taskId)
     {
         $statement = $this->getDb()->prepare(TaskQuery::GET_TASK_QUERY);
         $statement->bindParam('id', $taskId);
@@ -86,7 +86,7 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('status', $task->status);
         $statement->execute();
 
-        return $this->checkTask($this->database->lastInsertId());
+        return $this->checkAndGetTask($this->database->lastInsertId());
     }
 
     /**
@@ -103,7 +103,7 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('status', $task->status);
         $statement->execute();
 
-        return $this->checkTask($task->id);
+        return $this->checkAndGetTask($task->id);
     }
 
     /**

@@ -26,7 +26,7 @@ class UserRepository extends BaseRepository
      * @return object $user
      * @throws \Exception
      */
-    public function checkUser($userId)
+    public function checkAndGetUser($userId)
     {
         $statement = $this->database->prepare(UserQuery::GET_USER_QUERY);
         $statement->bindParam('id', $userId);
@@ -86,7 +86,7 @@ class UserRepository extends BaseRepository
         $statement->bindParam('email', $user->email);
         $statement->execute();
 
-        return $this->checkUser($this->database->lastInsertId());
+        return $this->checkAndGetUser($this->database->lastInsertId());
     }
 
     /**
@@ -103,7 +103,7 @@ class UserRepository extends BaseRepository
         $statement->bindParam('email', $user->email);
         $statement->execute();
 
-        return $this->checkUser($user->id);
+        return $this->checkAndGetUser($user->id);
     }
 
     /**

@@ -26,7 +26,7 @@ class NoteRepository extends BaseRepository
      * @return object $note
      * @throws \Exception
      */
-    public function checkNote($noteId)
+    public function checkAndGetNote($noteId)
     {
         $statement = $this->database->prepare(NoteQuery::GET_NOTE_QUERY);
         $statement->bindParam(':id', $noteId);
@@ -86,7 +86,7 @@ class NoteRepository extends BaseRepository
         $statement->bindParam(':description', $data->description);
         $statement->execute();
 
-        return $this->checkNote($this->database->lastInsertId());
+        return $this->checkAndGetNote($this->database->lastInsertId());
     }
 
     /**
@@ -103,7 +103,7 @@ class NoteRepository extends BaseRepository
         $statement->bindParam(':description', $note->description);
         $statement->execute();
 
-        return $this->checkNote($note->id);
+        return $this->checkAndGetNote($note->id);
     }
 
     /**

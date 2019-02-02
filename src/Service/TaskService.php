@@ -37,9 +37,9 @@ class TaskService extends BaseService
      * @param int $taskId
      * @return object
      */
-    protected function checkTask($taskId)
+    protected function checkAndGetTask($taskId)
     {
-        return $this->getTaskRepository()->checkTask($taskId);
+        return $this->getTaskRepository()->checkAndGetTask($taskId);
     }
 
     /**
@@ -60,7 +60,7 @@ class TaskService extends BaseService
      */
     public function getTask($taskId)
     {
-        return $this->checkTask($taskId);
+        return $this->checkAndGetTask($taskId);
     }
 
     /**
@@ -107,15 +107,16 @@ class TaskService extends BaseService
      */
     public function updateTask($input, $taskId)
     {
-        $task = $this->checkTask($taskId);
-        if (!isset($input['name']) && !isset($input['status'])) {
+        $task = $this->checkAndGetTask($taskId);
+        $data = json_decode(json_encode($input), false);
+        if (!isset($data->name) && !isset($data->status)) {
             throw new TaskException(TaskException::TASK_INFO_REQUIRED, 400);
         }
-        if (isset($input['name'])) {
-            $task->name = self::validateTaskName($input['name']);
+        if (isset($data->name)) {
+            $task->name = self::validateTaskName($data->name);
         }
-        if (isset($input['status'])) {
-            $task->status = self::validateStatus($input['status']);
+        if (isset($data->status)) {
+            $task->status = self::validateStatus($data->status);
         }
 
         return $this->getTaskRepository()->updateTask($task);
@@ -129,7 +130,7 @@ class TaskService extends BaseService
      */
     public function deleteTask($taskId)
     {
-        $this->checkTask($taskId);
+        $this->checkAndGetTask($taskId);
 
         return $this->getTaskRepository()->deleteTask($taskId);
     }

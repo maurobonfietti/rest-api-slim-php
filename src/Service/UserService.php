@@ -29,9 +29,9 @@ class UserService extends BaseService
      * @param int $userId
      * @return object
      */
-    protected function checkUser($userId)
+    protected function checkAndGetUser($userId)
     {
-        return $this->userRepository->checkUser($userId);
+        return $this->userRepository->checkAndGetUser($userId);
     }
 
     /**
@@ -52,7 +52,7 @@ class UserService extends BaseService
      */
     public function getUser($userId)
     {
-        return $this->checkUser($userId);
+        return $this->checkAndGetUser($userId);
     }
 
     /**
@@ -99,15 +99,16 @@ class UserService extends BaseService
      */
     public function updateUser($input, $userId)
     {
-        $user = $this->checkUser($userId);
-        if (!isset($input['name']) && !isset($input['email'])) {
+        $user = $this->checkAndGetUser($userId);
+        $data = json_decode(json_encode($input), false);
+        if (!isset($data->name) && !isset($data->email)) {
             throw new UserException(UserException::USER_INFO_REQUIRED, 400);
         }
-        if (isset($input['name'])) {
-            $user->name = self::validateName($input['name']);
+        if (isset($data->name)) {
+            $user->name = self::validateName($data->name);
         }
-        if (isset($input['email'])) {
-            $user->email = self::validateEmail($input['email']);
+        if (isset($data->email)) {
+            $user->email = self::validateEmail($data->email);
         }
 
         return $this->userRepository->updateUser($user);
@@ -121,7 +122,7 @@ class UserService extends BaseService
      */
     public function deleteUser($userId)
     {
-        $this->checkUser($userId);
+        $this->checkAndGetUser($userId);
 
         return $this->userRepository->deleteUser($userId);
     }

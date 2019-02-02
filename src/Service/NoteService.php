@@ -29,9 +29,9 @@ class NoteService extends BaseService
      * @param int $noteId
      * @return object
      */
-    protected function checkNote($noteId)
+    protected function checkAndGetNote($noteId)
     {
-        return $this->noteRepository->checkNote($noteId);
+        return $this->noteRepository->checkAndGetNote($noteId);
     }
 
     /**
@@ -52,7 +52,7 @@ class NoteService extends BaseService
      */
     public function getNote($noteId)
     {
-        return $this->checkNote($noteId);
+        return $this->checkAndGetNote($noteId);
     }
 
     /**
@@ -99,15 +99,16 @@ class NoteService extends BaseService
      */
     public function updateNote($input, $noteId)
     {
-        $note = $this->checkNote($noteId);
-        if (!isset($input['name'])) {
+        $note = $this->checkAndGetNote($noteId);
+        $data = json_decode(json_encode($input), false);
+        if (!isset($data->name)) {
             throw new NoteException(NoteException::NOTE_INFO_REQUIRED, 400);
         }
-        if (isset($input['name'])) {
-            $note->name = self::validateNoteName($input['name']);
+        if (isset($data->name)) {
+            $note->name = self::validateNoteName($data->name);
         }
-        if (isset($input['description'])) {
-            $note->description = $input['description'];
+        if (isset($data->description)) {
+            $note->description = $data->description;
         }
 
         return $this->noteRepository->updateNote($note);
@@ -121,7 +122,7 @@ class NoteService extends BaseService
      */
     public function deleteNote($noteId)
     {
-        $this->checkNote($noteId);
+        $this->checkAndGetNote($noteId);
 
         return $this->noteRepository->deleteNote($noteId);
     }
