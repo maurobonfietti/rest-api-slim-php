@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Message\UserMessage;
 use App\Exception\UserException;
 use App\Repository\Query\UserQuery;
 

@@ -2,7 +2,6 @@
 
 namespace App\Repository;
 
-use App\Message\TaskMessage;
 use App\Exception\TaskException;
 use App\Repository\Query\TaskQuery;
 
