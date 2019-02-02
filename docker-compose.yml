@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: api-rest-slimphp
+    image: rest-api-slim-php
     ports:
       - 8080:80
     volumes:
@@ -13,7 +13,7 @@ services:
       - mysql
     environment:
       DB_HOSTNAME: mysql
-      DB_DATABASE: api_rest_slimphp
+      DB_DATABASE: rest_api_slim_php
       DB_USERNAME: app
       DB_PASSWORD: password
   mysql:
@@ -21,7 +21,7 @@ services:
     ports:
       - 33060:3306
     environment:
-      MYSQL_DATABASE: api_rest_slimphp
+      MYSQL_DATABASE: rest_api_slim_php
       MYSQL_USER: app
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
