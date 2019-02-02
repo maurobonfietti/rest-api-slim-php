@@ -22,7 +22,7 @@ abstract class BaseService
     protected static function validateName($name)
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
-            throw new UserException(UserException::USER_NAME_INVALID, 400);
+            throw new UserException('Invalid name.', 400);
         }
 
         return $name;
@@ -39,7 +39,7 @@ abstract class BaseService
     {
         $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
         if (!v::email()->validate($email)) {
-            throw new UserException(UserException::USER_EMAIL_INVALID, 400);
+            throw new UserException('Invalid email', 400);
         }
 
         return $email;
@@ -55,7 +55,7 @@ abstract class BaseService
     protected static function validateTaskName($name)
     {
         if (!v::length(2, 100)->validate($name)) {
-            throw new TaskException(TaskException::TASK_NAME_INVALID, 400);
+            throw new TaskException('Invalid name.', 400);
         }
 
         return $name;
@@ -71,7 +71,7 @@ abstract class BaseService
     protected static function validateStatus($status)
     {
         if (!v::numeric()->between(0, 1)->validate($status)) {
-            throw new TaskException(TaskException::TASK_STATUS_INVALID, 400);
+            throw new TaskException('Invalid status', 400);
         }
 
         return $status;

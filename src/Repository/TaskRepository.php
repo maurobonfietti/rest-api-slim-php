@@ -33,7 +33,7 @@ class TaskRepository extends BaseRepository
         $statement->execute();
         $task = $statement->fetchObject();
         if (empty($task)) {
-            throw new TaskException(TaskException::TASK_NOT_FOUND, 404);
+            throw new TaskException('Task not found.', 404);
         }
 
         return $task;
@@ -67,7 +67,7 @@ class TaskRepository extends BaseRepository
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
-            throw new TaskException(TaskException::TASK_NAME_NOT_FOUND, 404);
+            throw new TaskException('Task name not found.', 404);
         }
 
         return $tasks;
@@ -118,6 +118,6 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('id', $taskId);
         $statement->execute();
 
-        return TaskMessage::TASK_DELETED;
+        return 'The task was deleted.';
     }
 }

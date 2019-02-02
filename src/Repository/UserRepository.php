@@ -33,7 +33,7 @@ class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject();
         if (empty($user)) {
-            throw new UserException(UserException::USER_NOT_FOUND, 404);
+            throw new UserException('User not found.', 404);
         }
 
         return $user;
@@ -67,7 +67,7 @@ class UserRepository extends BaseRepository
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
-            throw new UserException(UserException::USER_NAME_NOT_FOUND, 404);
+            throw new UserException('User name not found.', 404);
         }
 
         return $users;
@@ -118,6 +118,6 @@ class UserRepository extends BaseRepository
         $statement->bindParam('id', $userId);
         $statement->execute();
 
-        return UserMessage::USER_DELETED;
+        return 'The user was deleted.';
     }
 }
