@@ -13,7 +13,7 @@ $container = $app->getContainer();
 /**
  * @return ApiError
  */
-$container["errorHandler"] = function() {
+$container['errorHandler'] = function() {
     return new ApiError;
 };
 

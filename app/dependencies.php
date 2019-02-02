@@ -5,7 +5,7 @@ use Psr\Container\ContainerInterface;
 $container = $app->getContainer();
 
 /**
- * PDO database library
+ * PDO database library: Creates a PDO instance representing a connection to a database.
  *
  * @param ContainerInterface $c
  * @return PDO
@@ -20,6 +20,11 @@ $container['db'] = function(ContainerInterface $c) {
     return $pdo;
 };
 
+/**
+ * Predis Client: Client class used for connecting and executing commands on Redis.
+ *
+ * @return Client
+ */
 $container['redis'] = function() {
     return new \Predis\Client(getenv('REDIS_URL'));
 };
