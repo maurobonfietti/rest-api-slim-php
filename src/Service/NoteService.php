@@ -95,6 +95,7 @@ class NoteService extends BaseService
      * @param array $input
      * @param int $noteId
      * @return object
+     * @throws NoteException
      */
     public function updateNote($input, $noteId)
     {

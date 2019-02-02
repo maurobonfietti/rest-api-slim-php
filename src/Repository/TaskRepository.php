@@ -76,15 +76,14 @@ class TaskRepository extends BaseRepository
     /**
      * Create a task.
      *
-     * @param array $data
+     * @param object $task
      * @return object
-     * @throws \Exception
      */
-    public function createTask($data)
+    public function createTask($task)
     {
         $statement = $this->getDb()->prepare(TaskQuery::CREATE_TASK_QUERY);
-        $statement->bindParam('name', $data['name']);
-        $statement->bindParam('status', $data['status']);
+        $statement->bindParam('name', $task->name);
+        $statement->bindParam('status', $task->status);
         $statement->execute();
 
         return $this->checkTask($this->database->lastInsertId());

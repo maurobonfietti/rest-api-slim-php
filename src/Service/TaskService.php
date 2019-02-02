@@ -79,20 +79,22 @@ class TaskService extends BaseService
      *
      * @param array $input
      * @return object
+     * @throws TaskException
      */
     public function createTask($input)
     {
-        if (empty($input['name'])) {
+        $task = new \stdClass();
+        $data = json_decode(json_encode($input), false);
+        if (empty($data->name)) {
             throw new TaskException(TaskException::TASK_NAME_REQUIRED, 400);
         }
-        $task = self::validateTaskName($input['name']);
-        $status = 0;
-        if (isset($input['status'])) {
-            $status = self::validateStatus($input['status']);
+        $task->name = self::validateTaskName($data->name);
+        $task->status = 0;
+        if (isset($data->status)) {
+            $task->status = self::validateStatus($data->status);
         }
-        $data = ['name' => $task, 'status' => $status];
 
-        return $this->getTaskRepository()->createTask($data);
+        return $this->getTaskRepository()->createTask($task);
     }
 
     /**
@@ -101,6 +103,7 @@ class TaskService extends BaseService
      * @param array $input
      * @param int $taskId
      * @return object
+     * @throws TaskException
      */
     public function updateTask($input, $taskId)
     {

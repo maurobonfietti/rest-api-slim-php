@@ -76,15 +76,14 @@ class UserRepository extends BaseRepository
     /**
      * Create a user.
      *
-     * @param array $data
+     * @param object $user
      * @return object
-     * @throws \Exception
      */
-    public function createUser($data)
+    public function createUser($user)
     {
         $statement = $this->database->prepare(UserQuery::CREATE_USER_QUERY);
-        $statement->bindParam('name', $data['name']);
-        $statement->bindParam('email', $data['email']);
+        $statement->bindParam('name', $user->name);
+        $statement->bindParam('email', $user->email);
         $statement->execute();
 
         return $this->checkUser($this->database->lastInsertId());

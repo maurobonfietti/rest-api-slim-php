@@ -71,20 +71,22 @@ class UserService extends BaseService
      *
      * @param array $input
      * @return object
+     * @throws UserException
      */
     public function createUser($input)
     {
-        if (!isset($input['name'])) {
+        $user = new \stdClass();
+        $data = json_decode(json_encode($input), false);
+        if (!isset($data->name)) {
             throw new UserException(UserException::USER_NAME_REQUIRED, 400);
         }
-        $name = self::validateName($input['name']);
-        $email = null;
-        if (isset($input['email'])) {
-            $email = self::validateEmail($input['email']);
+        $user->name = self::validateName($data->name);
+        $user->email = null;
+        if (isset($data->email)) {
+            $user->email = self::validateEmail($data->email);
         }
-        $data = ['name' => $name, 'email' => $email];
 
-        return $this->userRepository->createUser($data);
+        return $this->userRepository->createUser($user);
     }
 
     /**
@@ -93,6 +95,7 @@ class UserService extends BaseService
      * @param array $input
      * @param int $userId
      * @return object
+     * @throws UserException
      */
     public function updateUser($input, $userId)
     {
