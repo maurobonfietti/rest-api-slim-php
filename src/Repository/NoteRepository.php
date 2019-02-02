@@ -57,7 +57,7 @@ class NoteRepository extends BaseRepository
      *
      * @param string $notesName
      * @return array
-     * @throws \Exception
+     * @throws NoteException
      */
     public function searchNotes($notesName)
     {

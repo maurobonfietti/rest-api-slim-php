@@ -21,8 +21,8 @@ class TaskRepository extends BaseRepository
      * Check if the task exists.
      *
      * @param int|string $taskId
-     * @return object $task
-     * @throws \Exception
+     * @return object
+     * @throws TaskException
      */
     public function checkAndGetTask($taskId)
     {
@@ -57,7 +57,7 @@ class TaskRepository extends BaseRepository
      *
      * @param string $tasksName
      * @return array
-     * @throws \Exception
+     * @throws TaskException
      */
     public function searchTasks($tasksName)
     {

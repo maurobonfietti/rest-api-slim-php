@@ -21,8 +21,8 @@ class UserRepository extends BaseRepository
      * Check if the user exists.
      *
      * @param int|string $userId
-     * @return object $user
-     * @throws \Exception
+     * @return object
+     * @throws UserException
      */
     public function checkAndGetUser($userId)
     {
@@ -57,7 +57,7 @@ class UserRepository extends BaseRepository
      *
      * @param string $usersName
      * @return array
-     * @throws \Exception
+     * @throws UserException
      */
     public function searchUsers($usersName)
     {
