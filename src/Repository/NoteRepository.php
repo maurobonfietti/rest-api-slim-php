@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Exception\NoteException;
-use App\Repository\Query\NoteQuery;
 
 /**
  * Notes Repository.
@@ -22,12 +21,13 @@ class NoteRepository extends BaseRepository
      * Check if the note exists.
      *
      * @param int|string $noteId
-     * @return object $note
-     * @throws \Exception
+     * @return object
+     * @throws NoteException
      */
     public function checkAndGetNote($noteId)
     {
-        $statement = $this->database->prepare(NoteQuery::GET_NOTE_QUERY);
+        $query = 'SELECT * FROM notes WHERE id = :id';
+        $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
         $note = $statement->fetchObject();
@@ -45,7 +45,8 @@ class NoteRepository extends BaseRepository
      */
     public function getNotes()
     {
-        $statement = $this->database->prepare(NoteQuery::GET_NOTES_QUERY);
+        $query = 'SELECT * FROM notes ORDER BY id';
+        $statement = $this->database->prepare($query);
         $statement->execute();
 
         return $statement->fetchAll();
@@ -56,13 +57,14 @@ class NoteRepository extends BaseRepository
      *
      * @param string $notesName
      * @return array
-     * @throws \Exception
+     * @throws NoteException
      */
     public function searchNotes($notesName)
     {
-        $statement = $this->database->prepare(NoteQuery::SEARCH_NOTES_QUERY);
-        $query = '%' . $notesName . '%';
-        $statement->bindParam('name', $query);
+        $query = 'SELECT * FROM notes WHERE UPPER(name) LIKE :name ORDER BY id';
+        $name = '%' . $notesName . '%';
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('name', $name);
         $statement->execute();
         $notes = $statement->fetchAll();
         if (!$notes) {
@@ -80,7 +82,8 @@ class NoteRepository extends BaseRepository
      */
     public function createNote($data)
     {
-        $statement = $this->database->prepare(NoteQuery::CREATE_NOTE_QUERY);
+        $query = 'INSERT INTO notes (name, description) VALUES (:name, :description)';
+        $statement = $this->database->prepare($query);
         $statement->bindParam(':name', $data->name);
         $statement->bindParam(':description', $data->description);
         $statement->execute();
@@ -96,7 +99,8 @@ class NoteRepository extends BaseRepository
      */
     public function updateNote($note)
     {
-        $statement = $this->database->prepare(NoteQuery::UPDATE_NOTE_QUERY);
+        $query = 'UPDATE notes SET name = :name, description = :description WHERE id = :id';
+        $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $note->id);
         $statement->bindParam(':name', $note->name);
         $statement->bindParam(':description', $note->description);
@@ -113,7 +117,8 @@ class NoteRepository extends BaseRepository
      */
     public function deleteNote($noteId)
     {
-        $statement = $this->database->prepare(NoteQuery::DELETE_NOTE_QUERY);
+        $query = 'DELETE FROM notes WHERE id = :id';
+        $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
 
