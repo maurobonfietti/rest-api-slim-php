@@ -55,20 +55,22 @@ class NoteRepository extends BaseRepository
     /**
      * Search notes by name.
      *
-     * @param string $notesName
+     * @param string $strNotes
      * @return array
      * @throws NoteException
      */
-    public function searchNotes($notesName)
+    public function searchNotes($strNotes)
     {
-        $query = 'SELECT * FROM notes WHERE UPPER(name) LIKE :name ORDER BY id';
-        $name = '%' . $notesName . '%';
+        $query = 'SELECT * FROM notes WHERE UPPER(name) LIKE :name OR UPPER(description) LIKE :description ORDER BY id';
+        $name = '%' . $strNotes . '%';
+        $description = '%' . $strNotes . '%';
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $name);
+        $statement->bindParam('description', $description);
         $statement->execute();
         $notes = $statement->fetchAll();
         if (!$notes) {
-            throw new NoteException('Note name not found.', 404);
+            throw new NoteException('No notes with that name or description were found.', 404);
         }
 
         return $notes;
@@ -113,7 +115,6 @@ class NoteRepository extends BaseRepository
      * Delete a note.
      *
      * @param int $noteId
-     * @return string
      */
     public function deleteNote($noteId)
     {
@@ -121,7 +122,5 @@ class NoteRepository extends BaseRepository
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
-
-        return 'The note was deleted.';
     }
 }

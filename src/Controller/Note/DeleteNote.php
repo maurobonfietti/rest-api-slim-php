@@ -21,11 +21,11 @@ class DeleteNote extends BaseNote
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $result = $this->getNoteService()->deleteNote($this->args['id']);
+        $this->getNoteService()->deleteNote($this->args['id']);
         if ($this->useRedis() === true) {
             $this->deleteFromCache($this->args['id']);
         }
 
-        return $this->jsonResponse('success', $result, 204);
+        return $this->jsonResponse('success', null, 204);
     }
 }
