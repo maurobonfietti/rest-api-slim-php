@@ -100,16 +100,16 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ### LIST OF REQUIRE DEPENDENCIES:
 
-- slim/slim: Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs
-- respect/validation: The most awesome validation engine ever created for PHP
-- palanik/corsslim: Cross-origin resource sharing (CORS) middleware for PHP Slim
-- vlucas/phpdotenv: Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically
-- predis/predis: Flexible and feature-complete Redis client for PHP and HHVM
+- [slim/slim](https://github.com/slimphp/Slim): Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs
+- [respect/validation](https://github.com/Respect/Validation): The most awesome validation engine ever created for PHP
+- [palanik/corsslim](https://github.com/palanik/CorsSlim): Cross-origin resource sharing (CORS) middleware for PHP Slim
+- [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv): Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically
+- [predis/predis](https://github.com/nrk/predis): Flexible and feature-complete Redis client for PHP and HHVM
 
 ### LIST OF REQUIRE DEV DEPENDENCIES:
 
-- phpunit/phpunit: The PHP Unit Testing framework
-- phpstan/phpstan: PHPStan - PHP Static Analysis Tool
+- [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): The PHP Unit Testing framework
+- [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan - PHP Static Analysis Tool
 
 
 ## TESTS:

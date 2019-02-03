@@ -100,16 +100,16 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ### LISTA DE DEPENDENCIAS REQUERIDAS:
 
-- slim/slim: Slim es un micro framework PHP que ayuda a escribir rápidamente aplicaciones web y API simples pero potentes
-- respect/validation: El motor de validación más impresionante jamás creado para PHP
-- palanik/corsslim: Middleware de intercambio de recursos de origen cruzado (CORS) para PHP Slim
-- vlucas/phpdotenv: Carga las variables de entorno de `.env` a `getenv()`, `$_ENV` y `$_SERVER` automágicamente
-- predis/predis: Cliente Redis flexible y completo para PHP y HHVM
+- [slim/slim](https://github.com/slimphp/Slim): Micro framework PHP que ayuda a escribir rápidamente aplicaciones y APIs simples pero potentes
+- [respect/validation](https://github.com/Respect/Validation): El motor de validación más impresionante jamás creado para PHP
+- [palanik/corsslim](https://github.com/palanik/CorsSlim): Middleware de intercambio de recursos de origen cruzado (CORS) para PHP Slim
+- [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv): Carga las variables de entorno de `.env` a `getenv()`, `$_ENV` y `$_SERVER` automágicamente
+- [predis/predis](https://github.com/nrk/predis): Cliente Redis flexible y completo para PHP y HHVM
 
 ### LISTA DE DEPENDENCIAS DEV REQUERIDAS:
 
-- phpunit/phpunit: Framework para hacer Unit Testing en PHP
-- phpstan/phpstan: PHPStan, herramienta de análisis estático para PHP
+- [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): Framework para hacer Unit Testing en PHP
+- [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan, herramienta de análisis estático para PHP
 
 
 ## TESTS:
