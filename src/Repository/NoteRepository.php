@@ -68,7 +68,7 @@ class NoteRepository extends BaseRepository
         $statement->execute();
         $notes = $statement->fetchAll();
         if (!$notes) {
-            throw new NoteException('Note name not found.', 404);
+            throw new NoteException('No notes with that name were found.', 404);
         }
 
         return $notes;
@@ -113,7 +113,6 @@ class NoteRepository extends BaseRepository
      * Delete a note.
      *
      * @param int $noteId
-     * @return string
      */
     public function deleteNote($noteId)
     {
@@ -121,7 +120,5 @@ class NoteRepository extends BaseRepository
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
-
-        return 'The note was deleted.';
     }
 }

@@ -130,7 +130,6 @@ class NoteTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertNotContains('success', $result);
-        $this->assertNotContains('id', $result);
         $this->assertNotContains('description', $result);
         $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
@@ -227,7 +226,6 @@ class NoteTest extends BaseTestCase
 
         $this->assertEquals(204, $response->getStatusCode());
         $this->assertContains('success', $result);
-        $this->assertContains('The note was deleted.', $result);
         $this->assertNotContains('error', $result);
     }
 
