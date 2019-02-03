@@ -96,6 +96,22 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
 
+## DEPENDENCIAS:
+
+### LISTA DE DEPENDENCIAS REQUERIDAS:
+
+- slim/slim: Slim es un micro framework PHP que ayuda a escribir rápidamente aplicaciones web y API simples pero potentes
+- respect/validation: El motor de validación más impresionante jamás creado para PHP
+- palanik/corsslim: Middleware de intercambio de recursos de origen cruzado (CORS) para PHP Slim
+- vlucas/phpdotenv: Carga las variables de entorno de `.env` a `getenv()`, `$_ENV` y `$_SERVER` automágicamente
+- predis/predis: Cliente Redis flexible y completo para PHP y HHVM
+
+### LISTA DE DEPENDENCIAS DEV REQUERIDAS:
+
+- phpunit/phpunit: Framework para hacer Unit Testing en PHP
+- phpstan/phpstan: PHPStan, herramienta de análisis estático para PHP
+
+
 ## TESTS:
 
 Acceder a la raíz del proyecto y ejecutar los tests con `phpunit`.
