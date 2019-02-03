@@ -26,6 +26,6 @@ class DeleteNote extends BaseNote
             $this->deleteFromCache($this->args['id']);
         }
 
-        return $this->jsonResponse('success', $result, 200);
+        return $this->jsonResponse('success', $result, 204);
     }
 }

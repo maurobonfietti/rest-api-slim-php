@@ -24,6 +24,6 @@ class DeleteTask extends BaseTask
         $taskId = $this->args['id'];
         $result = $this->getTaskService()->deleteTask($taskId);
 
-        return $this->jsonResponse('success', $result, 200);
+        return $this->jsonResponse('success', $result, 204);
     }
 }

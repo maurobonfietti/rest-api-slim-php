@@ -255,7 +255,7 @@ class UserTest extends BaseTestCase
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(204, $response->getStatusCode());
         $this->assertContains('success', $result);
         $this->assertNotContains('error', $result);
     }

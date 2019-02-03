@@ -222,8 +222,10 @@ class NoteTest extends BaseTestCase
         $response = $this->runApp('DELETE', '/api/v1/notes/' . self::$id);
 
         $result = (string) $response->getBody();
+        
+//        var_dump($result); exit;
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals(204, $response->getStatusCode());
         $this->assertContains('success', $result);
         $this->assertContains('The note was deleted.', $result);
         $this->assertNotContains('error', $result);

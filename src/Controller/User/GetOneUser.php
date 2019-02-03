@@ -23,7 +23,7 @@ class GetOneUser extends BaseUser
         $this->setParams($request, $response, $args);
         if ($this->useRedis() === true) {
             $result = $this->getFromCache($this->args['id']);
-            if (is_null($result)) {
+            if ($result === null) {
                 $result = $this->getUserService()->getUser($this->args['id']);
                 $this->saveInCache($this->args['id'], $result);
             }
