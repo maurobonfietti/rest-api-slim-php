@@ -118,7 +118,6 @@ class NoteService extends BaseService
      * Delete a note.
      *
      * @param int $noteId
-     * @return string
      */
     public function deleteNote($noteId)
     {
