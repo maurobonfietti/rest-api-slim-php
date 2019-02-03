@@ -55,16 +55,18 @@ class NoteRepository extends BaseRepository
     /**
      * Search notes by name.
      *
-     * @param string $notesName
+     * @param string $strNotes
      * @return array
      * @throws NoteException
      */
-    public function searchNotes($notesName)
+    public function searchNotes($strNotes)
     {
-        $query = 'SELECT * FROM notes WHERE UPPER(name) LIKE :name ORDER BY id';
-        $name = '%' . $notesName . '%';
+        $query = 'SELECT * FROM notes WHERE UPPER(name) LIKE :name OR UPPER(description) LIKE :description ORDER BY id';
+        $name = '%' . $strNotes . '%';
+        $description = '%' . $strNotes . '%';
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $name);
+        $statement->bindParam('description', $description);
         $statement->execute();
         $notes = $statement->fetchAll();
         if (!$notes) {
