@@ -70,7 +70,7 @@ class NoteRepository extends BaseRepository
         $statement->execute();
         $notes = $statement->fetchAll();
         if (!$notes) {
-            throw new NoteException('No notes with that name were found.', 404);
+            throw new NoteException('No notes with that name or description were found.', 404);
         }
 
         return $notes;
