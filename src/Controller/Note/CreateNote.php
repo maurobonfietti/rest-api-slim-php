@@ -22,11 +22,11 @@ class CreateNote extends BaseNote
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $result = $this->getNoteService()->createNote($input);
+        $note = $this->getNoteService()->createNote($input);
         if ($this->useRedis() === true) {
-            $this->saveInCache($result->id, $result);
+            $this->saveInCache($note->id, $note);
         }
 
-        return $this->jsonResponse('success', $result, 201);
+        return $this->jsonResponse('success', $note, 201);
     }
 }

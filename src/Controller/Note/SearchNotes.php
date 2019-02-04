@@ -21,8 +21,8 @@ class SearchNotes extends BaseNote
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $result = $this->getNoteService()->searchNotes($this->args['query']);
+        $notes = $this->getNoteService()->searchNotes($this->args['query']);
 
-        return $this->jsonResponse('success', $result, 200);
+        return $this->jsonResponse('success', $notes, 200);
     }
 }

@@ -21,8 +21,8 @@ class SearchUsers extends BaseUser
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $result = $this->getUserService()->searchUsers($this->args['query']);
+        $users = $this->getUserService()->searchUsers($this->args['query']);
 
-        return $this->jsonResponse('success', $result, 200);
+        return $this->jsonResponse('success', $users, 200);
     }
 }

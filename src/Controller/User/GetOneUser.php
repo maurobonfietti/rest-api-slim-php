@@ -22,15 +22,26 @@ class GetOneUser extends BaseUser
     {
         $this->setParams($request, $response, $args);
         if ($this->useRedis() === true) {
-            $result = $this->getFromCache($this->args['id']);
-            if ($result === null) {
-                $result = $this->getUserService()->getUser($this->args['id']);
-                $this->saveInCache($this->args['id'], $result);
-            }
+            $user = $this->getUserFromCache($this->args['id']);
         } else {
-            $result = $this->getUserService()->getUser($this->args['id']);
+            $user = $this->getUserService()->getUser($this->args['id']);
         }
 
-        return $this->jsonResponse('success', $result, 200);
+        return $this->jsonResponse('success', $user, 200);
+    }
+
+    /**
+     * @param int $userId
+     * @return object
+     */
+    private function getUserFromCache($userId)
+    {
+        $user = $this->getFromCache($userId);
+        if ($user === null) {
+            $user = $this->getUserService()->getUser($userId);
+            $this->saveInCache($userId, $user);
+        }
+
+        return $user;
     }
 }
