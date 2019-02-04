@@ -21,11 +21,11 @@ class DeleteUser extends BaseUser
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $result = $this->getUserService()->deleteUser($this->args['id']);
+        $user = $this->getUserService()->deleteUser($this->args['id']);
         if ($this->useRedis() === true) {
             $this->deleteFromCache($this->args['id']);
         }
 
-        return $this->jsonResponse('success', $result, 204);
+        return $this->jsonResponse('success', $user, 204);
     }
 }

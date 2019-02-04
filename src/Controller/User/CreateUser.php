@@ -22,11 +22,11 @@ class CreateUser extends BaseUser
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $result = $this->getUserService()->createUser($input);
+        $user = $this->getUserService()->createUser($input);
         if ($this->useRedis() === true) {
-            $this->saveInCache($result->id, $result);
+            $this->saveInCache($user->id, $user);
         }
 
-        return $this->jsonResponse('success', $result, 201);
+        return $this->jsonResponse('success', $user, 201);
     }
 }

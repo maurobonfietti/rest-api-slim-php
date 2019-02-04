@@ -22,15 +22,26 @@ class GetOneNote extends BaseNote
     {
         $this->setParams($request, $response, $args);
         if ($this->useRedis() === true) {
-            $result = $this->getFromCache($this->args['id']);
-            if ($result === null) {
-                $result = $this->getNoteService()->getNote($this->args['id']);
-                $this->saveInCache($this->args['id'], $result);
-            }
+            $note = $this->getNoteFromCache($this->args['id']);
         } else {
-            $result = $this->getNoteService()->getNote($this->args['id']);
+            $note = $this->getNoteService()->getNote($this->args['id']);
         }
 
-        return $this->jsonResponse('success', $result, 200);
+        return $this->jsonResponse('success', $note, 200);
+    }
+
+    /**
+     * @param int $noteId
+     * @return object
+     */
+    private function getNoteFromCache($noteId)
+    {
+        $note = $this->getFromCache($noteId);
+        if ($note === null) {
+            $note = $this->getNoteService()->getNote($noteId);
+            $this->saveInCache($noteId, $note);
+        }
+
+        return $note;
     }
 }

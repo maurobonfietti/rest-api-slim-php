@@ -22,8 +22,8 @@ class CreateTask extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $result = $this->getTaskService()->createTask($input);
+        $task = $this->getTaskService()->createTask($input);
 
-        return $this->jsonResponse('success', $result, 201);
+        return $this->jsonResponse('success', $task, 201);
     }
 }

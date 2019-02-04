@@ -21,8 +21,8 @@ class GetAllNotes extends BaseNote
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $result = $this->getNoteService()->getNotes();
+        $notes = $this->getNoteService()->getNotes();
 
-        return $this->jsonResponse('success', $result, 200);
+        return $this->jsonResponse('success', $notes, 200);
     }
 }

@@ -22,11 +22,11 @@ class UpdateNote extends BaseNote
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $result = $this->getNoteService()->updateNote($input, $this->args['id']);
+        $note = $this->getNoteService()->updateNote($input, $this->args['id']);
         if ($this->useRedis() === true) {
-            $this->saveInCache($this->args['id'], $result);
+            $this->saveInCache($this->args['id'], $note);
         }
 
-        return $this->jsonResponse('success', $result, 200);
+        return $this->jsonResponse('success', $note, 200);
     }
 }

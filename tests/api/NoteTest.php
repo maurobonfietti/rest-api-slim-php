@@ -91,7 +91,6 @@ class NoteTest extends BaseTestCase
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertNotContains('success', $result);
         $this->assertNotContains('id', $result);
-        $this->assertNotContains('description', $result);
         $this->assertNotContains('updated', $result);
         $this->assertContains('error', $result);
     }
