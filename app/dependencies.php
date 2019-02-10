@@ -23,7 +23,7 @@ $container['db'] = function(ContainerInterface $c) {
 /**
  * Predis Client: Client class used for connecting and executing commands on Redis.
  *
- * @return Client
+ * @return \Predis\Client
  */
 $container['redis'] = function() {
     return new \Predis\Client(getenv('REDIS_URL'));

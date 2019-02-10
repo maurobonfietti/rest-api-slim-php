@@ -11,6 +11,11 @@ use Slim\Http\Response;
 abstract class BaseController
 {
     /**
+     * @var \Psr\Container\ContainerInterface
+     */
+    protected $container;
+
+    /**
      * @var Request $request
      */
     protected $request;
@@ -65,7 +70,7 @@ abstract class BaseController
     }
 
     /**
-     * @return Redis
+     * @return \Predis\Client
      */
     protected function getRedisClient()
     {
