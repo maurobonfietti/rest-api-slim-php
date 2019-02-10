@@ -80,7 +80,7 @@ class UserService extends BaseService
         if (!isset($data->name)) {
             throw new UserException('The field "name" is required.', 400);
         }
-        $user->name = self::validateName($data->name);
+        $user->name = self::validateUserName($data->name);
         $user->email = null;
         if (isset($data->email)) {
             $user->email = self::validateEmail($data->email);
@@ -105,7 +105,7 @@ class UserService extends BaseService
             throw new UserException('Enter the data to update the user.', 400);
         }
         if (isset($data->name)) {
-            $user->name = self::validateName($data->name);
+            $user->name = self::validateUserName($data->name);
         }
         if (isset($data->email)) {
             $user->email = self::validateEmail($data->email);

@@ -114,7 +114,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## TESTS:
 
-Access the root of the project and run the tests with `phpunit`.
+Access the root of the project and run all tests PHPUnit with `composer test`.
 
 ```bash
 PHPUnit 6.5.14 by Sebastian Bergmann and contributors.

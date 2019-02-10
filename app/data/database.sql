@@ -5,7 +5,7 @@
 DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `updated` timestamp DEFAULT NOW() ON UPDATE NOW() ,
   PRIMARY KEY (`id`)
@@ -15,10 +15,11 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 -- Records of tasks
 -- ----------------------------
 INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (1, 'Go to cinema', 1);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (2, 'Buying shoes', 1);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (2, 'Buy shoes', 1);
 INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (3, 'Go to shopping', 1);
 INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (4, 'Buy milk', 1);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (5, 'Do homework...', 0);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (5, 'Do math homework...', 0);
+
 
 -- ----------------------------
 -- Table structure for users
@@ -26,7 +27,7 @@ INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (5, 'Do homework...', 0);
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_unicode_ci,
   `updated` timestamp DEFAULT NOW() ON UPDATE NOW() ,
   PRIMARY KEY (`id`)
@@ -36,10 +37,11 @@ CREATE TABLE `users` (
 -- Records of users
 -- ----------------------------
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('1', 'Juan', 'juanmartin@mail.com');
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('2', 'James', null);
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('3', 'Lionel', null);
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('4', 'Carlos', null);
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('2', 'James', 'jbond@yahoo.net');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('3', 'Lionel', 'mess10@gmail.gol');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('4', 'Carlos', 'bianch@hotmail.com');
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('5', 'Diego', 'diego1010@gmail.com');
+
 
 -- ----------------------------
 -- Table structure for notes
@@ -58,6 +60,6 @@ CREATE TABLE `notes` (
 -- ----------------------------
 INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('1', 'Note 1', 'My first online note');
 INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('2', 'Note 2', null);
-INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('3', 'Note 3', null);
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('3', 'Note 3', 'This is a very large note, or maybe not...');
 INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('4', 'Note 4', null);
-INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('5', 'Note 5', 'Freedom Random Note');
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('5', 'Note 5', 'Random Note');

@@ -91,7 +91,7 @@ class TaskService extends BaseService
         $task->name = self::validateTaskName($data->name);
         $task->status = 0;
         if (isset($data->status)) {
-            $task->status = self::validateStatus($data->status);
+            $task->status = self::validateTaskStatus($data->status);
         }
 
         return $this->getTaskRepository()->createTask($task);
@@ -116,7 +116,7 @@ class TaskService extends BaseService
             $task->name = self::validateTaskName($data->name);
         }
         if (isset($data->status)) {
-            $task->status = self::validateStatus($data->status);
+            $task->status = self::validateTaskStatus($data->status);
         }
 
         return $this->getTaskRepository()->updateTask($task);

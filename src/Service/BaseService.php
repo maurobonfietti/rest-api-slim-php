@@ -17,9 +17,9 @@ abstract class BaseService
      *
      * @param string $name
      * @return string
-     * @throws \Exception
+     * @throws UserException
      */
-    protected static function validateName($name)
+    protected static function validateUserName($name)
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
             throw new UserException('Invalid name.', 400);
@@ -33,7 +33,7 @@ abstract class BaseService
      *
      * @param string $emailValue
      * @return string
-     * @throws \Exception
+     * @throws UserException
      */
     protected static function validateEmail($emailValue)
     {
@@ -50,7 +50,7 @@ abstract class BaseService
      *
      * @param string $name
      * @return string
-     * @throws \Exception
+     * @throws TaskException
      */
     protected static function validateTaskName($name)
     {
@@ -66,9 +66,9 @@ abstract class BaseService
      *
      * @param int $status
      * @return int
-     * @throws \Exception
+     * @throws TaskException
      */
-    protected static function validateStatus($status)
+    protected static function validateTaskStatus($status)
     {
         if (!v::numeric()->between(0, 1)->validate($status)) {
             throw new TaskException('Invalid status', 400);
@@ -82,7 +82,7 @@ abstract class BaseService
      *
      * @param string $name
      * @return string
-     * @throws \Exception
+     * @throws NoteException
      */
     protected static function validateNoteName($name)
     {
