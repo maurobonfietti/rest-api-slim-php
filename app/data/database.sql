@@ -16,9 +16,9 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 -- Records of tasks
 -- ----------------------------
 INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (1, 'Go to cinema', 1);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (2, 'Buy shoes', 1);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (3, 'Go to shopping', 1);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (4, 'Buy milk', 1);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (2, 'Buy shoes', 0);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (3, 'Go to shopping', 0);
+INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (4, 'Pay the credit card ;-)', 1);
 INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (5, 'Do math homework...', 0);
 
 
@@ -41,7 +41,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('1', 'Juan', 'juanmartin@mail.com');
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('2', 'James', 'jbond@yahoo.net');
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('3', 'Lionel', 'mess10@gmail.gol');
-INSERT INTO `users` (`id`, `name`, `email`) VALUES ('4', 'Carlos', 'bianch@hotmail.com');
+INSERT INTO `users` (`id`, `name`, `email`) VALUES ('4', 'Carlos', 'bianchini@hotmail.com.ar');
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('5', 'Diego', 'diego1010@gmail.com');
 
 
@@ -61,8 +61,8 @@ CREATE TABLE `notes` (
 -- ----------------------------
 -- Records of notes
 -- ----------------------------
-INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('1', 'Note 1', 'My first online note');
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('1', 'My Note 1', 'My first online note');
 INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('2', 'Note 2', null);
-INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('3', 'Note 3', 'This is a very large note, or maybe not...');
-INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('4', 'Note 4', null);
-INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('5', 'Note 5', 'Random Note');
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('3', 'Long Note 3', 'This is a very large note, or maybe not...');
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('4', 'Note Number 4', null);
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('5', 'Note 5', 'A Random Note');
