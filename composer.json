@@ -2,7 +2,7 @@
     "name": "rest-api-slim-php",
     "description": "Example of REST API with Slim PHP Framework.",
     "keywords": ["php", "slim-micro-framework", "rest-api", "mysql", "slim3", "slim", "rest", "api"],
-    "homepage": "https://github.com/maurobonfietti/api-rest-slimphp",
+    "homepage": "https://github.com/maurobonfietti/rest-api-slim-php",
     "license": "MIT",
     "authors": [
         {
