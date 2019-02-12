@@ -23,7 +23,7 @@ class NoteTest extends BaseTestCase
         $this->assertContains('description', $result);
         $this->assertContains('updated', $result);
 //        $this->assertRegExp('{"code":200,"status":"success"}', $value);
-        $this->assertRegExp('{"id":"[0-9]+","name":"[A-Za-z0-9_. ]+","description":"[A-Za-z0-9_. ]+","updated"}', $value);
+        $this->assertRegExp('{"id":"[0-9]+","name":"[A-Za-z0-9_. ]+","description":"[A-Za-z0-9_. ]+"}', $value);
         $this->assertNotContains('error', $result);
     }
 
