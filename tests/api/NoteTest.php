@@ -17,14 +17,14 @@ class NoteTest extends BaseTestCase
         $value = json_encode(json_decode($result));
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('success', $result);
-        $this->assertContains('id', $result);
-        $this->assertContains('name', $result);
-        $this->assertContains('description', $result);
-        $this->assertContains('updated', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('description', $result);
+        $this->assertStringContainsString('updated', $result);
 //        $this->assertRegExp('{"code":200,"status":"success"}', $value);
         $this->assertRegExp('{"id":"[0-9]+","name":"[A-Za-z0-9_. ]+","description":"[A-Za-z0-9_. ]+"}', $value);
-        $this->assertNotContains('error', $result);
+        $this->assertStringNotContainsString('error', $result);
     }
 
     /**
@@ -37,12 +37,12 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('success', $result);
-        $this->assertContains('id', $result);
-        $this->assertContains('name', $result);
-        $this->assertContains('description', $result);
-        $this->assertContains('updated', $result);
-        $this->assertNotContains('error', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('description', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
     }
 
     /**
@@ -55,11 +55,11 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
-        $this->assertNotContains('success', $result);
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('description', $result);
-        $this->assertNotContains('updated', $result);
-        $this->assertContains('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('description', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
     }
 
     /**
@@ -72,11 +72,11 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('success', $result);
-        $this->assertContains('id', $result);
-        $this->assertContains('description', $result);
-        $this->assertContains('updated', $result);
-        $this->assertNotContains('error', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('description', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
     }
 
     /**
@@ -89,10 +89,10 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
-        $this->assertNotContains('success', $result);
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('updated', $result);
-        $this->assertContains('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
     }
 
     /**
@@ -110,12 +110,12 @@ class NoteTest extends BaseTestCase
         self::$id = json_decode($result)->message->id;
 
         $this->assertEquals(201, $response->getStatusCode());
-        $this->assertContains('success', $result);
-        $this->assertContains('id', $result);
-        $this->assertContains('name', $result);
-        $this->assertContains('description', $result);
-        $this->assertContains('updated', $result);
-        $this->assertNotContains('error', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('description', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
     }
 
     /**
@@ -128,10 +128,10 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
-        $this->assertNotContains('success', $result);
-        $this->assertNotContains('description', $result);
-        $this->assertNotContains('updated', $result);
-        $this->assertContains('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('description', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
     }
 
     /**
@@ -147,10 +147,10 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
-        $this->assertNotContains('success', $result);
-        $this->assertNotContains('description', $result);
-        $this->assertNotContains('updated', $result);
-        $this->assertContains('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('description', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
     }
 
     /**
@@ -166,12 +166,12 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertContains('success', $result);
-        $this->assertContains('id', $result);
-        $this->assertContains('name', $result);
-        $this->assertContains('description', $result);
-        $this->assertContains('updated', $result);
-        $this->assertNotContains('error', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('description', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
     }
 
     /**
@@ -184,12 +184,12 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
-        $this->assertNotContains('success', $result);
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
-        $this->assertNotContains('description', $result);
-        $this->assertNotContains('updated', $result);
-        $this->assertContains('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('name', $result);
+        $this->assertStringNotContainsString('description', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
     }
 
     /**
@@ -204,12 +204,12 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
-        $this->assertNotContains('success', $result);
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
-        $this->assertNotContains('description', $result);
-        $this->assertNotContains('updated', $result);
-        $this->assertContains('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('name', $result);
+        $this->assertStringNotContainsString('description', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
     }
 
     /**
@@ -224,8 +224,8 @@ class NoteTest extends BaseTestCase
 //        var_dump($result); exit;
 
         $this->assertEquals(204, $response->getStatusCode());
-        $this->assertContains('success', $result);
-        $this->assertNotContains('error', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringNotContainsString('error', $result);
     }
 
     /**
@@ -238,11 +238,11 @@ class NoteTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
-        $this->assertNotContains('success', $result);
-        $this->assertNotContains('id', $result);
-        $this->assertNotContains('name', $result);
-        $this->assertNotContains('description', $result);
-        $this->assertNotContains('updated', $result);
-        $this->assertContains('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('name', $result);
+        $this->assertStringNotContainsString('description', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
     }
 }
