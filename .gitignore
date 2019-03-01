@@ -8,3 +8,4 @@
 /cache/
 /.env
 /.scannerwork/
+/.phpunit.result.cache
