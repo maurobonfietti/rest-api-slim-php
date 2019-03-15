@@ -15,12 +15,18 @@ services:
   php-fpm:
     build: ./docker/php7.2
     container_name: rest-api-slim-php-php-container
+    links:
+      - mysql
     environment:
       - COMPAT=${PHP_SERVER:-7.2}
       - PHP_FPM_ENABLE=1
       - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
       - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
+      - DB_HOSTNAME=mysql
+      - DB_DATABASE=rest_api_slim_php
+      - DB_USERNAME=app
+      - DB_PASSWORD=password
 
     volumes:
      - ./:/var/www/html
@@ -34,6 +40,19 @@ services:
       - testingnetwork
     volumes:
       - redis-data:/data
+
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - 33060:3306
+    environment:
+      MYSQL_DATABASE: rest_api_slim_php
+      MYSQL_USER: app
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+    - testingnetwork
 
 networks:
   testingnetwork:
