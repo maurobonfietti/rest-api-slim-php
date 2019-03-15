@@ -1,21 +1,47 @@
 version: '3'
+
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: rest-api-slim-php
+  nginx:
+    image: nginx:latest
+    container_name: rest-api-slim-php-nginx-container
     ports:
-      - 8080:80
+    - "8053:80"
     volumes:
-      - .:/var/www/html
+    - ./:/var/www/html
+    - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    networks:
+    - testingnetwork
+
+  php-fpm:
+    build: ./docker/php7.2
+    container_name: rest-api-slim-php-php-container
     links:
       - mysql
     environment:
-      DB_HOSTNAME: mysql
-      DB_DATABASE: rest_api_slim_php
-      DB_USERNAME: app
-      DB_PASSWORD: password
+      - COMPAT=${PHP_SERVER:-7.2}
+      - PHP_FPM_ENABLE=1
+      - PHP_FPM_SERVER_ADDR=php
+      - PHP_FPM_SERVER_PORT=9000
+      - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
+      - DB_HOSTNAME=mysql
+      - DB_DATABASE=rest_api_slim_php
+      - DB_USERNAME=app
+      - DB_PASSWORD=password
+
+    volumes:
+     - ./:/var/www/html
+    networks:
+      - testingnetwork
+
+  redis:
+    image: redis:4.0.5-alpine
+    hostname: redis
+    networks:
+      - testingnetwork
+    volumes:
+      - redis-data:/data
+
+
   mysql:
     image: mysql:5.7
     ports:
@@ -25,3 +51,13 @@ services:
       MYSQL_USER: app
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
+    networks:
+    - testingnetwork
+
+networks:
+  testingnetwork:
+    external:
+      name: testingnetwork
+
+volumes:
+  redis-data:
