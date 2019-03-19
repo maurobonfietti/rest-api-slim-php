@@ -11,14 +11,13 @@ This simple RESTful API made in Slim version 3, allows CRUD operations to manage
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=maurobonfietti_rest-api-slim-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=maurobonfietti_rest-api-slim-php)
 
-[README IN SPANISH](README_SPANISH.md)
+You can also read this [README IN SPANISH](README_SPANISH.md).
 
 ## INSTALLATION:
 
 ### 1- Download the project:
 
 ```bash
-$ cd path-to-your-projects
 $ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
 $ cd rest-api-slim-php
 $ cp .env.example .env
@@ -64,7 +63,6 @@ For example:
 
 ```
 DISPLAY_ERROR_DETAILS=true
-LOGGER_ENABLED=true
 APP_DOMAIN='https://www.yourdomain.com'
 USE_REDIS_CACHE=false
 REDIS_URL=''
@@ -100,16 +98,16 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ### LIST OF REQUIRE DEPENDENCIES:
 
-- [slim/slim](https://github.com/slimphp/Slim): Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs
-- [respect/validation](https://github.com/Respect/Validation): The most awesome validation engine ever created for PHP
-- [palanik/corsslim](https://github.com/palanik/CorsSlim): Cross-origin resource sharing (CORS) middleware for PHP Slim
-- [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv): Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically
-- [predis/predis](https://github.com/nrk/predis): Flexible and feature-complete Redis client for PHP and HHVM
+- [slim/slim](https://github.com/slimphp/Slim): Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs.
+- [respect/validation](https://github.com/Respect/Validation): The most awesome validation engine ever created for PHP.
+- [palanik/corsslim](https://github.com/palanik/CorsSlim): Cross-origin resource sharing (CORS) middleware for PHP Slim.
+- [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv): Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.
+- [predis/predis](https://github.com/nrk/predis): Flexible and feature-complete Redis client for PHP and HHVM.
 
 ### LIST OF DEVELOPMENT DEPENDENCIES:
 
-- [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): The PHP Unit Testing framework
-- [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan - PHP Static Analysis Tool
+- [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): The PHP Unit Testing framework.
+- [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan - PHP Static Analysis Tool.
 
 
 ## TESTS:
