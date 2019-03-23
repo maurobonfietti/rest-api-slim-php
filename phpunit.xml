@@ -1,4 +1,4 @@
-<phpunit bootstrap="vendor/autoload.php">
+<phpunit colors="true" bootstrap="vendor/autoload.php">
     <testsuites>
         <testsuite name="rest-api-slim-php">
             <directory>tests</directory>

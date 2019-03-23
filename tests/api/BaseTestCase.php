@@ -9,6 +9,8 @@ use Slim\Http\Environment;
 
 class BaseTestCase extends \PHPUnit\Framework\TestCase
 {
+    public static $jwt;
+
     /**
      * Process the application given a request method and URI
      *
@@ -29,6 +31,7 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
 
         // Set up a request object based on the environment
         $request = Request::createFromEnvironment($environment);
+        $request = $request->withHeader('Authorization', self::$jwt);
 
         // Add request data, if it exists
         if (isset($requestData)) {

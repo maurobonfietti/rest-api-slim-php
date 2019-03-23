@@ -76,4 +76,24 @@ class DefaultController extends BaseController
 
         return $this->jsonResponse('success', $status, 200);
     }
+
+    /**
+     * Login a user.
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param array $args
+     * @return Response
+     */
+    public function login($request, $response, $args)
+    {
+        $this->setParams($request, $response, $args);
+        $userService = $this->container->get('user_service');
+        $jwt = $userService->login($this->getInput());
+        $message = [
+            'Authorization' => 'Bearer ' . $jwt,
+        ];
+
+        return $this->jsonResponse('success', $message, 200);
+    }
 }
