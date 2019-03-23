@@ -65,6 +65,11 @@ class UserService extends BaseService
     {
         return $this->userRepository->searchUsers($usersName);
     }
+    public function login($email, $password)
+    {
+        $password = hash("sha512", $password);
+        return $this->userRepository->login($email, $password);
+    }
 
     /**
      * Create a user.
@@ -85,6 +90,7 @@ class UserService extends BaseService
         if (isset($data->email)) {
             $user->email = self::validateEmail($data->email);
         }
+        $user->password = hash("sha512", $data->password);
 
         return $this->userRepository->createUser($user);
     }

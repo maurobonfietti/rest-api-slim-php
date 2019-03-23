@@ -2,6 +2,7 @@
 
 $app->get('/', 'App\Controller\DefaultController:getHelp');
 $app->get('/status', 'App\Controller\DefaultController:getStatus');
+$app->get('/login', 'App\Controller\DefaultController:getLogin');
 
 $app->group('/api/v1', function () use ($app) {
     $app->group('/tasks', function () use ($app) {

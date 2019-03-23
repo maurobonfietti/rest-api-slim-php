@@ -73,6 +73,20 @@ class UserRepository extends BaseRepository
 
         return $users;
     }
+    public function login($email, $password)
+    {
+        $query = 'SELECT * FROM users WHERE email = :email AND password = :password ORDER BY id';
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('email', $email);
+        $statement->bindParam('password', $password);
+        $statement->execute();
+        $users = $statement->fetchAll();
+        if (!$users) {
+            throw new UserException('login failed...', 400);
+        }
+
+        return $users;
+    }
 
     /**
      * Create a user.
@@ -82,10 +96,11 @@ class UserRepository extends BaseRepository
      */
     public function createUser($user)
     {
-        $query = 'INSERT INTO users (name, email) VALUES (:name, :email)';
+        $query = 'INSERT INTO users (name, email, password) VALUES (:name, :email, :password)';
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $user->name);
         $statement->bindParam('email', $user->email);
+        $statement->bindParam('password', $user->password);
         $statement->execute();
 
         return $this->checkAndGetUser($this->database->lastInsertId());
