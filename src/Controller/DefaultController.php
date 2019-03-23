@@ -6,8 +6,6 @@ use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-use \Firebase\JWT\JWT;
-
 /**
  * Default Controller.
  */
@@ -80,46 +78,24 @@ class DefaultController extends BaseController
     }
 
     /**
-     * Get Login.
+     * Login user.
      *
      * @param Request $request
      * @param Response $response
      * @param array $args
      * @return Response
      */
-    public function getLogin($request, $response, $args)
+    public function login($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $data = json_decode(json_encode($input), false);
         $userService = $this->container->get('user_service');
-        $asd = $userService->login($data->email, $data->password);
-        var_dump($asd); exit;
-        $db = [
-            'users' => count($userService->getUsers()),
-        ];
-        $status = [
-            'db' => $db,
-            'version' => self::API_VERSION,
-            'timestamp' => time(),
+        $jwt = $userService->login($data->email, $data->password);
+        $message = [
+            'Authorization' => 'Bearer ' . $jwt,
         ];
 
-        $key = "example_key";
-        $token = array(
-            "iss" => "http://example.org",
-            "aud" => "http://example.com",
-            "iat" => 1356999524,
-            "nbf" => 1357000000,
-        );
-        $jwt = JWT::encode($token, $key);
-//        print_r($jwt); exit;
-//        $decoded = JWT::decode($jwt, $key, array('HS256'));
-//        print_r($decoded); exit;
-//        $decoded_array = (array) $decoded;
-//        print_r($decoded_array); exit;
-        $hashed = hash("sha512", '123');
-        var_dump($hashed); exit;
-
-        return $this->jsonResponse('success', $status, 200);
+        return $this->jsonResponse('success', $message, 200);
     }
 }

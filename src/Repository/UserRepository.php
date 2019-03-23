@@ -73,6 +73,7 @@ class UserRepository extends BaseRepository
 
         return $users;
     }
+
     public function login($email, $password)
     {
         $query = 'SELECT * FROM users WHERE email = :email AND password = :password ORDER BY id';
@@ -80,12 +81,12 @@ class UserRepository extends BaseRepository
         $statement->bindParam('email', $email);
         $statement->bindParam('password', $password);
         $statement->execute();
-        $users = $statement->fetchAll();
-        if (!$users) {
-            throw new UserException('login failed...', 400);
+        $user = $statement->fetchObject();
+        if (empty($user)) {
+            throw new UserException('Login failed: Email or password incorrect.', 400);
         }
 
-        return $users;
+        return $user;
     }
 
     /**

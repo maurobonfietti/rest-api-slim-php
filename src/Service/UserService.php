@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Exception\UserException;
 use App\Repository\UserRepository;
+use \Firebase\JWT\JWT;
 
 /**
  * Users Service.
@@ -65,10 +66,25 @@ class UserService extends BaseService
     {
         return $this->userRepository->searchUsers($usersName);
     }
+
     public function login($email, $password)
     {
-        $password = hash("sha512", $password);
-        return $this->userRepository->login($email, $password);
+        $hashPassword = hash('sha512', $password);
+        $user = $this->userRepository->login($email, $hashPassword);
+        $key = 'no_secret_example_key';
+        $token = array(
+            'sub' => $user->id,
+            'email' => $user->email,
+            'name' => $user->name,
+            'iat' => time(),
+            'exp' => time() + (7 * 24 * 60 * 60),
+        );
+        $jwt = JWT::encode($token, $key);
+//        print_r($jwt); exit;
+//        $decoded = JWT::decode($jwt, $key, array('HS256'));
+//        print_r($decoded); exit;
+
+        return $jwt;
     }
 
     /**
