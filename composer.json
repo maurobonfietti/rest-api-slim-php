@@ -17,7 +17,6 @@
         "palanik/corsslim": "dev-slim3",
         "vlucas/phpdotenv": "^2.4",
         "predis/predis": "^1.1",
-        "lcobucci/jwt": "^3.2",
         "firebase/php-jwt": "^5.0"
     },
     "require-dev": {

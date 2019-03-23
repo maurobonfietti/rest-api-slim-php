@@ -86,7 +86,7 @@ class UserService extends BaseService
         if (isset($data->email)) {
             $user->email = self::validateEmail($data->email);
         }
-        $user->password = hash("sha512", $data->password);
+        $user->password = hash('sha512', $data->password);
 
         return $this->userRepository->createUser($user);
     }
