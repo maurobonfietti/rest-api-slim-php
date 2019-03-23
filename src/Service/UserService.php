@@ -67,26 +67,6 @@ class UserService extends BaseService
         return $this->userRepository->searchUsers($usersName);
     }
 
-    public function login($email, $password)
-    {
-        $hashPassword = hash('sha512', $password);
-        $user = $this->userRepository->login($email, $hashPassword);
-        $key = 'no_secret_example_key';
-        $token = array(
-            'sub' => $user->id,
-            'email' => $user->email,
-            'name' => $user->name,
-            'iat' => time(),
-            'exp' => time() + (7 * 24 * 60 * 60),
-        );
-        $jwt = JWT::encode($token, $key);
-//        print_r($jwt); exit;
-//        $decoded = JWT::decode($jwt, $key, array('HS256'));
-//        print_r($decoded); exit;
-
-        return $jwt;
-    }
-
     /**
      * Create a user.
      *
@@ -147,5 +127,27 @@ class UserService extends BaseService
         $this->checkAndGetUser($userId);
 
         return $this->userRepository->deleteUser($userId);
+    }
+
+    /**
+     * Login a user.
+     *
+     * @param array $input
+     * @return string
+     */
+    public function login($input)
+    {
+        $data = json_decode(json_encode($input), false);
+        $password = hash('sha512', $data->password);
+        $user = $this->userRepository->login($data->email, $password);
+        $token = array(
+            'sub' => $user->id,
+            'email' => $user->email,
+            'name' => $user->name,
+            'iat' => time(),
+            'exp' => time() + (7 * 24 * 60 * 60),
+        );
+
+        return JWT::encode($token, 'no_secret_example_key');
     }
 }

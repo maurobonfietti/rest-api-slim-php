@@ -74,6 +74,14 @@ class UserRepository extends BaseRepository
         return $users;
     }
 
+    /**
+     * Login a user.
+     *
+     * @param string $email
+     * @param string $password
+     * @return object
+     * @throws UserException
+     */
     public function login($email, $password)
     {
         $query = 'SELECT * FROM users WHERE email = :email AND password = :password ORDER BY id';

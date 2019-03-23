@@ -78,7 +78,7 @@ class DefaultController extends BaseController
     }
 
     /**
-     * Login user.
+     * Login a user.
      *
      * @param Request $request
      * @param Response $response
@@ -88,10 +88,8 @@ class DefaultController extends BaseController
     public function login($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $input = $this->getInput();
-        $data = json_decode(json_encode($input), false);
         $userService = $this->container->get('user_service');
-        $jwt = $userService->login($data->email, $data->password);
+        $jwt = $userService->login($this->getInput());
         $message = [
             'Authorization' => 'Bearer ' . $jwt,
         ];
