@@ -44,6 +44,7 @@ INSERT INTO `users` (`id`, `name`, `email`) VALUES ('2', 'James', 'jbond@yahoo.n
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('3', 'Lionel', 'mess10@gmail.gol');
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('4', 'Carlos', 'bianchini@hotmail.com.ar');
 INSERT INTO `users` (`id`, `name`, `email`) VALUES ('5', 'Diego', 'diego1010@gmail.com');
+INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES ('6', 'Test User', 'test@user.com', 'd5f4da62059760b35de35f8fbd8efb43eee26ac741ef8c6e51782a13ac7d50e927b653160c591616a9dc8a452c877a6b80c00aecba14504756a65f88439fcd1e');
 
 
 -- ----------------------------

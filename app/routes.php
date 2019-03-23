@@ -12,14 +12,14 @@ $app->group('/api/v1', function () use ($app) {
         $app->post('', 'App\Controller\Task\CreateTask');
         $app->put('/[{id}]', 'App\Controller\Task\UpdateTask');
         $app->delete('/[{id}]', 'App\Controller\Task\DeleteTask');
-    });
+    })->add(new App\Middlewares\AuthMiddleware($app));
     $app->group('/users', function () use ($app) {
-        $app->get('', 'App\Controller\User\GetAllUsers');
+        $app->get('', 'App\Controller\User\GetAllUsers')->add(new App\Middlewares\AuthMiddleware($app));
         $app->get('/[{id}]', 'App\Controller\User\GetOneUser')->add(new App\Middlewares\AuthMiddleware($app));
-        $app->get('/search/[{query}]', 'App\Controller\User\SearchUsers');
+        $app->get('/search/[{query}]', 'App\Controller\User\SearchUsers')->add(new App\Middlewares\AuthMiddleware($app));
         $app->post('', 'App\Controller\User\CreateUser');
-        $app->put('/[{id}]', 'App\Controller\User\UpdateUser');
-        $app->delete('/[{id}]', 'App\Controller\User\DeleteUser');
+        $app->put('/[{id}]', 'App\Controller\User\UpdateUser')->add(new App\Middlewares\AuthMiddleware($app));
+        $app->delete('/[{id}]', 'App\Controller\User\DeleteUser')->add(new App\Middlewares\AuthMiddleware($app));
     });
     $app->group('/notes', function () use ($app) {
         $app->get('', 'App\Controller\Note\GetAllNotes');

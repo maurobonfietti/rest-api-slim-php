@@ -46,22 +46,21 @@ class DefaultTest extends BaseTestCase
     {
         $response = $this->runApp(
             'GET', '/login',
-            ['email' => 'm@b.com.ar', 'password' => '123']
+            ['email' => 'test@user.com', 'password' => 'AnyPass1000']
         );
 
         $result = (string) $response->getBody();
 
         self::$jwt = json_decode($result)->message->Authorization;
-//        var_dump(self::$jwt); exit;
 
         $this->assertEquals(200, $response->getStatusCode());
-        $this->assertStringContainsString('status', (string) $response->getBody());
-        $this->assertStringContainsString('success', (string) $response->getBody());
-        $this->assertStringContainsString('message', (string) $response->getBody());
-        $this->assertStringContainsString('Authorization', (string) $response->getBody());
-        $this->assertStringContainsString('Bearer', (string) $response->getBody());
-        $this->assertStringContainsString('ey', (string) $response->getBody());
-        $this->assertStringNotContainsString('ERROR', (string) $response->getBody());
-        $this->assertStringNotContainsString('Failed', (string) $response->getBody());
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('message', $result);
+        $this->assertStringContainsString('Authorization', $result);
+        $this->assertStringContainsString('Bearer', $result);
+        $this->assertStringContainsString('ey', $result);
+        $this->assertStringNotContainsString('ERROR', $result);
+        $this->assertStringNotContainsString('Failed', $result);
     }
 }
