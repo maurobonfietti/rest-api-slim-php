@@ -104,6 +104,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 - [palanik/corsslim](https://github.com/palanik/CorsSlim): Middleware de intercambio de recursos de origen cruzado (CORS) para PHP Slim.
 - [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv): Carga las variables de entorno de `.env` a `getenv()`, `$_ENV` y `$_SERVER` automágicamente.
 - [predis/predis](https://github.com/nrk/predis): Cliente Redis flexible y completo para PHP y HHVM.
+- [firebase/php-jwt](https://github.com/firebase/php-jwt): Una biblioteca simple para codificar y decodificar JSON Web Tokens (JWT) en PHP.
 
 ### LISTA DE DEPENDENCIAS PARA DESARROLLO:
 
@@ -116,13 +117,13 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 Acceder a la raíz del proyecto y ejecutar los tests PHPUnit con `composer test`.
 
 ```bash
-PHPUnit 8.0.4 by Sebastian Bergmann and contributors.
+PHPUnit 8.0.5 by Sebastian Bergmann and contributors.
 
-............................................                      44 / 44 (100%)
+.............................................                     45 / 45 (100%)
 
-Time: 1.08 seconds, Memory: 10.00 MB
+Time: 1.07 seconds, Memory: 10.00 MB
 
-OK (44 tests, 259 assertions)
+OK (45 tests, 268 assertions)
 ```
 
 
