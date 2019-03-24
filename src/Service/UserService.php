@@ -90,6 +90,7 @@ class UserService extends BaseService
         $user->name = self::validateUserName($data->name);
         $user->email = self::validateEmail($data->email);
         $user->password = hash('sha512', $data->password);
+        $this->userRepository->checkUserByEmail($user->email);
 
         return $this->userRepository->createUser($user);
     }

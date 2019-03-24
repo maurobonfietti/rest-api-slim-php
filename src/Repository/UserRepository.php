@@ -39,6 +39,24 @@ class UserRepository extends BaseRepository
     }
 
     /**
+     * Check if an email already exists.
+     *
+     * @param string $email
+     * @throws UserException
+     */
+    public function checkUserByEmail($email)
+    {
+        $query = 'SELECT * FROM users WHERE email = :email';
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('email', $email);
+        $statement->execute();
+        $user = $statement->fetchObject();
+        if (empty(!$user)) {
+            throw new UserException('Email already exists.', 400);
+        }
+    }
+
+    /**
      * Get all users.
      *
      * @return array
