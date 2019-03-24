@@ -21,7 +21,7 @@ class GetOneUser extends BaseUser
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $input = $this->getInput();
+//        $input = $this->getInput();
 //        if ($this->args['id'] != $input['decoded']->sub) {
 //            throw new \Exception('User permission failed.', 400);
 //        }

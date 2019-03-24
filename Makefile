@@ -11,13 +11,13 @@ down:
 	docker-compose down
 
 nginx:
-	docker exec -it platform-api-nginx-container bash
+	docker exec -it rest-api-slim-php-nginx-container bash
 
 php: 
-	docker exec -it platform-api-php-container bash
+	docker exec -it rest-api-slim-php-php-container bash
 
 phplog: 
-	docker logs platform-api-php-container
+	docker logs rest-api-slim-php-php-container
 
 nginxlog:
-	docker logs platform-api-nginx-container
+	docker logs rest-api-slim-php-nginx-container
