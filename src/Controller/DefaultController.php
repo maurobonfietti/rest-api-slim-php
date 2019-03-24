@@ -11,7 +11,7 @@ use Slim\Http\Response;
  */
 class DefaultController extends BaseController
 {
-    const API_VERSION = '19.02';
+    const API_VERSION = '19.03';
 
     /**
      * @param Container $container
