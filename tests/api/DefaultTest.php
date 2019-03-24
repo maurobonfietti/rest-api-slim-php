@@ -44,10 +44,7 @@ class DefaultTest extends BaseTestCase
      */
     public function testLogin()
     {
-        $response = $this->runApp(
-            'GET', '/login',
-            ['email' => 'test@user.com', 'password' => 'AnyPass1000']
-        );
+        $response = $this->runApp('POST', '/login', ['email' => 'test@user.com', 'password' => 'AnyPass1000']);
 
         $result = (string) $response->getBody();
 
