@@ -81,11 +81,14 @@ class UserService extends BaseService
         if (!isset($data->name)) {
             throw new UserException('The field "name" is required.', 400);
         }
-        $user->name = self::validateUserName($data->name);
-        $user->email = null;
-        if (isset($data->email)) {
-            $user->email = self::validateEmail($data->email);
+        if (!isset($data->email)) {
+            throw new UserException('The field "email" is required.', 400);
         }
+        if (!isset($data->password)) {
+            throw new UserException('The field "password" is required.', 400);
+        }
+        $user->name = self::validateUserName($data->name);
+        $user->email = self::validateEmail($data->email);
         $user->password = hash('sha512', $data->password);
 
         return $this->userRepository->createUser($user);
