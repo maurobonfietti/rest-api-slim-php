@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
+  `userId` int(11) NOT NULL,
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   `updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -15,11 +16,11 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 -- ----------------------------
 -- Records of tasks
 -- ----------------------------
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (1, 'Go to cinema', 1);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (2, 'Buy shoes', 0);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (3, 'Go to shopping', 0);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (4, 'Pay the credit card ;-)', 1);
-INSERT INTO `tasks` (`id`, `name`, `status`) VALUES (5, 'Do math homework...', 0);
+INSERT INTO `tasks` (`id`, `name`, `status`, `userId`) VALUES (1, 'Go to cinema', 1, 6);
+INSERT INTO `tasks` (`id`, `name`, `status`, `userId`) VALUES (2, 'Buy shoes', 0,6);
+INSERT INTO `tasks` (`id`, `name`, `status`, `userId`) VALUES (3, 'Go to shopping', 0, 6);
+INSERT INTO `tasks` (`id`, `name`, `status`, `userId`) VALUES (4, 'Pay the credit card ;-)', 1, 6);
+INSERT INTO `tasks` (`id`, `name`, `status`, `userId`) VALUES (5, 'Do math homework...', 0, 6);
 
 
 -- ----------------------------

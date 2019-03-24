@@ -82,10 +82,11 @@ class TaskRepository extends BaseRepository
      */
     public function createTask($task)
     {
-        $query = 'INSERT INTO tasks (name, status) VALUES (:name, :status)';
+        $query = 'INSERT INTO tasks (name, status, userId) VALUES (:name, :status, :userId)';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('name', $task->name);
         $statement->bindParam('status', $task->status);
+        $statement->bindParam('userId', $task->userId);
         $statement->execute();
 
         return $this->checkAndGetTask($this->database->lastInsertId());

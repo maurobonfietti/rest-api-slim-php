@@ -93,6 +93,7 @@ class TaskService extends BaseService
         if (isset($data->status)) {
             $task->status = self::validateTaskStatus($data->status);
         }
+        $task->userId = $data->decoded->sub;
 
         return $this->getTaskRepository()->createTask($task);
     }
