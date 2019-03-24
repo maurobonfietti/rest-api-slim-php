@@ -2,14 +2,14 @@
 
 $app->get('/', 'App\Controller\DefaultController:getHelp');
 $app->get('/status', 'App\Controller\DefaultController:getStatus');
-$app->get('/login', 'App\Controller\DefaultController:login');
+$app->post('/login', 'App\Controller\DefaultController:login');
 
 $app->group('/api/v1', function () use ($app) {
     $app->group('/tasks', function () use ($app) {
         $app->get('', 'App\Controller\Task\GetAllTasks');
         $app->get('/[{id}]', 'App\Controller\Task\GetOneTask');
         $app->get('/search/[{query}]', 'App\Controller\Task\SearchTasks');
-        $app->post('', 'App\Controller\Task\CreateTask');
+        $app->post('', 'App\Controller\Task\CreateTask')->add(new App\Middlewares\AuthMiddleware($app));
         $app->put('/[{id}]', 'App\Controller\Task\UpdateTask');
         $app->delete('/[{id}]', 'App\Controller\Task\DeleteTask');
     });
