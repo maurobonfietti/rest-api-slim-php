@@ -2,7 +2,7 @@
 
 Ejemplo de API REST con micro framework [Slim PHP](http://www.slimframework.com).
 
-![alt text](slim-logo.png "Slim PHP micro framework")
+![alt text](extras/slim-logo.png "Slim PHP micro framework")
 
 Esta simple API RESTful hecha en Slim version 3, permite operaciones CRUD para administrar entidades como por ejemplo: Usuarios, Tareas y Notas :-)
 
@@ -16,7 +16,7 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 ## INSTALACIÓN:
 
-### 1- Descargar el proyecto:
+### 1- Clonar el proyecto e instalar dependencias:
 
 ```bash
 $ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
@@ -26,7 +26,7 @@ $ composer install
 ```
 
 
-### 2- Crear nueva base de datos MySQL. Por ejemplo: "rest_api_slim_php".
+### 2- Crear una nueva base de datos MySQL. Por ejemplo: "rest_api_slim_php".
 
 Desde la línea de comandos ejecutar:
 
@@ -119,11 +119,11 @@ Acceder a la raíz del proyecto y ejecutar los tests PHPUnit con `composer test`
 ```bash
 PHPUnit 8.0.5 by Sebastian Bergmann and contributors.
 
-.............................................                     45 / 45 (100%)
+..............................................                    46 / 46 (100%)
 
-Time: 1.07 seconds, Memory: 10.00 MB
+Time: 1.14 seconds, Memory: 10.00 MB
 
-OK (45 tests, 268 assertions)
+OK (46 tests, 274 assertions)
 ```
 
 
