@@ -134,16 +134,16 @@ class UserService extends BaseService
     }
 
     /**
-     * User Login.
+     * Login.
      *
      * @param array $input
      * @return string
      */
-    public function login($input)
+    public function loginUser($input)
     {
         $data = json_decode(json_encode($input), false);
         $password = hash('sha512', $data->password);
-        $user = $this->userRepository->login($data->email, $password);
+        $user = $this->userRepository->loginUser($data->email, $password);
         $token = array(
             'sub' => $user->id,
             'email' => $user->email,

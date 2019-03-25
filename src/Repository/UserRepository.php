@@ -93,14 +93,14 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * User Login.
+     * Login.
      *
      * @param string $email
      * @param string $password
      * @return object
      * @throws UserException
      */
-    public function login($email, $password)
+    public function loginUser($email, $password)
     {
         $query = 'SELECT * FROM users WHERE email = :email AND password = :password ORDER BY id';
         $statement = $this->database->prepare($query);

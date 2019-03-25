@@ -11,7 +11,7 @@ use Slim\Http\Response;
 class LoginUser extends BaseUser
 {
     /**
-     * Login user.
+     * Login.
      *
      * @param Request $request
      * @param Response $response
@@ -21,7 +21,7 @@ class LoginUser extends BaseUser
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $jwt = $this->getUserService()->login($this->getInput());
+        $jwt = $this->getUserService()->loginUser($this->getInput());
         $message = [
             'Authorization' => 'Bearer ' . $jwt,
         ];
