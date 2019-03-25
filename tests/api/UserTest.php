@@ -275,4 +275,41 @@ class UserTest extends BaseTestCase
         $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
+
+    /**
+     * Test that user login endpoint it is working fine.
+     */
+    public function testLoginUser()
+    {
+        $response = $this->runApp('POST', '/login', ['email' => 'test@user.com', 'password' => 'AnyPass1000']);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('message', $result);
+        $this->assertStringContainsString('Authorization', $result);
+        $this->assertStringContainsString('Bearer', $result);
+        $this->assertStringContainsString('ey', $result);
+        $this->assertStringNotContainsString('ERROR', $result);
+        $this->assertStringNotContainsString('Failed', $result);
+    }
+
+    /**
+     * Test login endpoint with invalid credentials.
+     */
+    public function testLoginUserFailed()
+    {
+        $response = $this->runApp('POST', '/login', ['email' => 'a@b.com', 'password' => 'p']);
+
+        $result = (string) $response->getBody();
+
+        $this->assertStringContainsString('Login failed', $result);
+        $this->assertStringContainsString('UserException', $result);
+        $this->assertStringContainsString('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('Authorization', $result);
+        $this->assertStringNotContainsString('Bearer', $result);
+    }
 }

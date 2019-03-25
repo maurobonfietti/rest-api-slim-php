@@ -38,43 +38,4 @@ class DefaultTest extends BaseTestCase
         $this->assertStringNotContainsString('ERROR', (string) $response->getBody());
         $this->assertStringNotContainsString('Failed', (string) $response->getBody());
     }
-
-    /**
-     * Test that login endpoint it is working fine.
-     */
-    public function testLogin()
-    {
-        $response = $this->runApp('POST', '/login', ['email' => 'test@user.com', 'password' => 'AnyPass1000']);
-
-        $result = (string) $response->getBody();
-
-        self::$jwt = json_decode($result)->message->Authorization;
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('success', $result);
-        $this->assertStringContainsString('message', $result);
-        $this->assertStringContainsString('Authorization', $result);
-        $this->assertStringContainsString('Bearer', $result);
-        $this->assertStringContainsString('ey', $result);
-        $this->assertStringNotContainsString('ERROR', $result);
-        $this->assertStringNotContainsString('Failed', $result);
-    }
-
-    /**
-     * Test login endpoint with invalid credentials.
-     */
-    public function testLoginFailed()
-    {
-        $response = $this->runApp('POST', '/login', ['email' => 'a@b.com', 'password' => 'p']);
-
-        $result = (string) $response->getBody();
-
-        $this->assertStringContainsString('Login failed', $result);
-        $this->assertStringContainsString('UserException', $result);
-        $this->assertStringContainsString('error', $result);
-        $this->assertStringNotContainsString('success', $result);
-        $this->assertStringNotContainsString('Authorization', $result);
-        $this->assertStringNotContainsString('Bearer', $result);
-    }
 }

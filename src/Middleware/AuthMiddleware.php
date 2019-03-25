@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Middlewares;
+namespace App\Middleware;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
