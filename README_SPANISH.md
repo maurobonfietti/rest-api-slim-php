@@ -119,11 +119,11 @@ Acceder a la raíz del proyecto y ejecutar los tests PHPUnit con `composer test`
 ```bash
 PHPUnit 8.0.5 by Sebastian Bergmann and contributors.
 
-..............................................                    46 / 46 (100%)
+...............................................                   47 / 47 (100%)
 
 Time: 1.14 seconds, Memory: 10.00 MB
 
-OK (46 tests, 274 assertions)
+OK (47 tests, 277 assertions)
 ```
 
 
@@ -138,7 +138,7 @@ Toda la información de la API, preparada para descargar y utilizar como colecci
 
 ### AYUDA Y MANUAL DE USO:
 
-Para más información sobre el modo de uso de la API REST, ver el siguiente documento: [Manual de Uso](DOC.md).
+Para más información sobre el modo de uso de la API REST, ver el siguiente documento: [Manual de Uso](extras/DOC.md).
 
 Documentación también disponible en [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
 
