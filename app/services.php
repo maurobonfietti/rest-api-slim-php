@@ -6,7 +6,7 @@ use App\Service\NoteService;
 use App\Repository\UserRepository;
 use App\Repository\TaskRepository;
 use App\Repository\NoteRepository;
-use App\Handlers\ApiError;
+use App\Handler\ApiError;
 
 $container = $app->getContainer();
 
