@@ -60,21 +60,4 @@ class DefaultTest extends BaseTestCase
         $this->assertStringNotContainsString('ERROR', $result);
         $this->assertStringNotContainsString('Failed', $result);
     }
-
-    /**
-     * Test login endpoint with invalid credentials.
-     */
-    public function testLoginFailed()
-    {
-        $response = $this->runApp('POST', '/login', ['email' => 'a@b.com', 'password' => 'p']);
-
-        $result = (string) $response->getBody();
-
-        $this->assertStringContainsString('Login failed', $result);
-        $this->assertStringContainsString('UserException', $result);
-        $this->assertStringContainsString('error', $result);
-        $this->assertStringNotContainsString('success', $result);
-        $this->assertStringNotContainsString('Authorization', $result);
-        $this->assertStringNotContainsString('Bearer', $result);
-    }
 }

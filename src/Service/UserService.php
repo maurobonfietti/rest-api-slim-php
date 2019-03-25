@@ -134,7 +134,7 @@ class UserService extends BaseService
     }
 
     /**
-     * Login a user.
+     * User Login.
      *
      * @param array $input
      * @return string

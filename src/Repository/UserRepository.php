@@ -93,7 +93,7 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * Login a user.
+     * User Login.
      *
      * @param string $email
      * @param string $password
