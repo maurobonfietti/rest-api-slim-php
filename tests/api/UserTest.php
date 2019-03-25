@@ -285,8 +285,6 @@ class UserTest extends BaseTestCase
 
         $result = (string) $response->getBody();
 
-        self::$jwt = json_decode($result)->message->Authorization;
-
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertStringContainsString('status', $result);
         $this->assertStringContainsString('success', $result);

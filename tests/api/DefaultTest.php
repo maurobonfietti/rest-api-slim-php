@@ -38,26 +38,4 @@ class DefaultTest extends BaseTestCase
         $this->assertStringNotContainsString('ERROR', (string) $response->getBody());
         $this->assertStringNotContainsString('Failed', (string) $response->getBody());
     }
-
-    /**
-     * Test that login endpoint it is working fine.
-     */
-    public function testLogin()
-    {
-        $response = $this->runApp('POST', '/login', ['email' => 'test@user.com', 'password' => 'AnyPass1000']);
-
-        $result = (string) $response->getBody();
-
-        self::$jwt = json_decode($result)->message->Authorization;
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('success', $result);
-        $this->assertStringContainsString('message', $result);
-        $this->assertStringContainsString('Authorization', $result);
-        $this->assertStringContainsString('Bearer', $result);
-        $this->assertStringContainsString('ey', $result);
-        $this->assertStringNotContainsString('ERROR', $result);
-        $this->assertStringNotContainsString('Failed', $result);
-    }
 }
