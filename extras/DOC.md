@@ -18,31 +18,65 @@ Response:
             "id": "1",
             "name": "Juan",
             "email": "juanmartin@mail.com",
-            "updated": "2019-02-02 16:28:40"
+            "password": null,
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "2",
             "name": "James",
-            "email": null,
-            "updated": "2019-02-02 16:28:40"
+            "email": "jbond@yahoo.net",
+            "password": null,
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "3",
             "name": "Lionel",
-            "email": null,
-            "updated": "2019-02-02 16:28:40"
+            "email": "mess10@gmail.gol",
+            "password": null,
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "4",
             "name": "Carlos",
-            "email": null,
-            "updated": "2019-02-02 16:28:40"
+            "email": "bianchini@hotmail.com.ar",
+            "password": null,
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "5",
             "name": "Diego",
             "email": "diego1010@gmail.com",
-            "updated": "2019-02-02 16:28:40"
+            "password": null,
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
+        },
+        {
+            "id": "6",
+            "name": "One User",
+            "email": "one@user.com",
+            "password": null,
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
+        },
+        {
+            "id": "7",
+            "name": "Diegol",
+            "email": "diego@gol.com.ar",
+            "password": null,
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
+        },
+        {
+            "id": "8",
+            "name": "Test User",
+            "email": "test@user.com",
+            "password": "d5f4da62059760b35de35f8fbd8efb43eee26ac741ef8c6e51782a13ac7d50e927b653160c591616a9dc8a452c877a6b80c00aecba14504756a65f88439fcd1e",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         }
     ]
 }
@@ -59,14 +93,10 @@ $ curl http://localhost:8080/api/v1/users/1
 Response:
 ```
 {
-    "code": 200,
-    "status": "success",
-    "message": {
-        "id": "1",
-        "name": "Juan",
-        "email": "juanmartin@mail.com",
-        "updated": "2019-01-18 19:34:05"
-    }
+    "message": "JWT Token required.",
+    "class": "NoteException",
+    "status": "error",
+    "code": 400
 }
 ```
 
@@ -87,8 +117,10 @@ Response:
         {
             "id": "3",
             "name": "Lionel",
-            "email": null,
-            "updated": "2019-02-02 16:28:40"
+            "email": "mess10@gmail.gol",
+            "password": null,
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         }
     ]
 }
@@ -99,7 +131,7 @@ Response:
 
 Request:
 ```
-$ curl -X POST http://localhost:8080/api/v1/users --data name=Michael
+$ curl -X POST http://localhost:8080/api/v1/users --data name=Michael --data email=michael@gmail.com --data password=OnePass100
 ```
 
 Response:
@@ -108,10 +140,12 @@ Response:
     "code": 201,
     "status": "success",
     "message": {
-        "id": "6",
+        "id": "9",
         "name": "Michael",
-        "email": null,
-        "updated": "2019-02-02 16:28:40"
+        "email": "michael@gmail.com",
+        "password": "f85dc90aba571604387206fd2cb7302d31c065a61d5c57b5256299d6ddbea13fad80d2607a11c4ec55f22072d197d2c718b28d34307e9881b388c3b216f74cc6",
+        "created_at": "2019-03-27 23:06:21",
+        "updated_at": "2019-03-27 23:06:21"
     }
 }
 ```
@@ -132,8 +166,10 @@ Response:
     "message": {
         "id": "6",
         "name": "John",
-        "email": null,
-        "updated": "2019-02-02 16:28:40"
+        "email": "one@user.com",
+        "password": null,
+        "created_at": "2019-03-27 23:06:21",
+        "updated_at": "2019-03-27 23:06:21"
     }
 }
 ```
@@ -148,11 +184,7 @@ $ curl -X DELETE http://localhost:8080/api/v1/users/6
 
 Response:
 ```
-{
-    "code": 200,
-    "status": "success",
-    "message": "The user was deleted."
-}
+
 ```
 
 
@@ -173,31 +205,41 @@ Response:
             "id": "1",
             "name": "Go to cinema",
             "status": "1",
-            "updated": "2019-02-02 16:28:39"
+            "userId": "6",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "2",
-            "name": "Buying shoes",
-            "status": "1",
-            "updated": "2019-02-02 16:28:39"
+            "name": "Buy shoes",
+            "status": "0",
+            "userId": "6",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "3",
             "name": "Go to shopping",
-            "status": "1",
-            "updated": "2019-02-02 16:28:39"
+            "status": "0",
+            "userId": "6",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "4",
-            "name": "Buy milk",
+            "name": "Pay the credit card ;-)",
             "status": "1",
-            "updated": "2019-02-02 16:28:40"
+            "userId": "6",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "5",
-            "name": "Do homework...",
+            "name": "Do math homework...",
             "status": "0",
-            "updated": "2019-02-02 16:28:40"
+            "userId": "6",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         }
     ]
 }
@@ -219,8 +261,10 @@ Response:
     "message": {
         "id": "3",
         "name": "Go to shopping",
-        "status": "1",
-        "updated": "2019-02-02 16:28:39"
+        "status": "0",
+        "userId": "6",
+        "created_at": "2019-03-27 23:06:21",
+        "updated_at": "2019-03-27 23:06:21"
     }
 }
 ```
@@ -243,7 +287,9 @@ Response:
             "id": "1",
             "name": "Go to cinema",
             "status": "1",
-            "updated": "2019-02-02 16:28:39"
+            "userId": "6",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         }
     ]
 }
@@ -260,14 +306,10 @@ $ curl -X POST http://localhost:8080/api/v1/tasks --data name=Cine
 Response:
 ```
 {
-    "code": 201,
-    "status": "success",
-    "message": {
-        "id": "6",
-        "name": "Cine",
-        "status": "0",
-        "updated": "2019-02-02 16:28:40"
-    }
+    "message": "JWT Token required.",
+    "class": "NoteException",
+    "status": "error",
+    "code": 400
 }
 ```
 
@@ -282,14 +324,10 @@ $ curl -X PUT http://localhost:8080/api/v1/tasks/6 --data name=Task
 Response:
 ```
 {
-    "code": 200,
-    "status": "success",
-    "message": {
-        "id": "6",
-        "name": "Task",
-        "status": "0",
-        "updated": "2019-02-02 16:28:40"
-    }
+    "message": "Task not found.",
+    "class": "TaskException",
+    "status": "error",
+    "code": 404
 }
 ```
 
@@ -304,9 +342,10 @@ $ curl -X DELETE http://localhost:8080/api/v1/tasks/6
 Response:
 ```
 {
-    "code": 200,
-    "status": "success",
-    "message": "The task was deleted."
+    "message": "Task not found.",
+    "class": "TaskException",
+    "status": "error",
+    "code": 404
 }
 ```
 
@@ -326,33 +365,38 @@ Response:
     "message": [
         {
             "id": "1",
-            "name": "Note 1",
+            "name": "My Note 1",
             "description": "My first online note",
-            "updated": "2019-02-02 16:28:40"
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "2",
             "name": "Note 2",
             "description": null,
-            "updated": "2019-02-02 16:28:40"
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "3",
-            "name": "Note 3",
-            "description": null,
-            "updated": "2019-02-02 16:28:40"
+            "name": "Long Note 3",
+            "description": "This is a very large note, or maybe not...",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "4",
-            "name": "Note 4",
+            "name": "Note Number 4",
             "description": null,
-            "updated": "2019-02-02 16:28:40"
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "5",
             "name": "Note 5",
-            "description": "Freedom Random Note",
-            "updated": "2019-02-02 16:28:40"
+            "description": "A Random Note",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         }
     ]
 }
@@ -373,9 +417,10 @@ Response:
     "status": "success",
     "message": {
         "id": "3",
-        "name": "Note 3",
-        "description": null,
-        "updated": "2019-02-02 11:45:49"
+        "name": "Long Note 3",
+        "description": "This is a very large note, or maybe not...",
+        "created_at": "2019-03-27 23:06:21",
+        "updated_at": "2019-03-27 23:06:21"
     }
 }
 ```
@@ -396,33 +441,38 @@ Response:
     "message": [
         {
             "id": "1",
-            "name": "Note 1",
+            "name": "My Note 1",
             "description": "My first online note",
-            "updated": "2019-02-02 16:28:40"
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "2",
             "name": "Note 2",
             "description": null,
-            "updated": "2019-02-02 16:28:40"
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "3",
-            "name": "Note 3",
-            "description": null,
-            "updated": "2019-02-02 16:28:40"
+            "name": "Long Note 3",
+            "description": "This is a very large note, or maybe not...",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "4",
-            "name": "Note 4",
+            "name": "Note Number 4",
             "description": null,
-            "updated": "2019-02-02 16:28:40"
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         },
         {
             "id": "5",
             "name": "Note 5",
-            "description": "Freedom Random Note",
-            "updated": "2019-02-02 16:28:40"
+            "description": "A Random Note",
+            "created_at": "2019-03-27 23:06:21",
+            "updated_at": "2019-03-27 23:06:21"
         }
     ]
 }
@@ -445,7 +495,8 @@ Response:
         "id": "6",
         "name": "MyNote",
         "description": null,
-        "updated": "2019-02-02 16:28:40"
+        "created_at": "2019-03-27 23:06:22",
+        "updated_at": "2019-03-27 23:06:22"
     }
 }
 ```
@@ -467,7 +518,8 @@ Response:
         "id": "6",
         "name": "Notes",
         "description": null,
-        "updated": "2019-02-02 16:28:40"
+        "created_at": "2019-03-27 23:06:22",
+        "updated_at": "2019-03-27 23:06:22"
     }
 }
 ```
@@ -482,11 +534,7 @@ $ curl -X DELETE http://localhost:8080/api/v1/notes/6
 
 Response:
 ```
-{
-    "code": 200,
-    "status": "success",
-    "message": "The note was deleted."
-}
+
 ```
 
 
@@ -510,8 +558,8 @@ Response:
             "status": "http:\/\/localhost:8080\/status",
             "this help": "http:\/\/localhost:8080"
         },
-        "version": "19.02",
-        "timestamp": 1549135720
+        "version": "19.03",
+        "timestamp": 1553738782
     }
 }
 ```
@@ -531,12 +579,12 @@ Response:
     "status": "success",
     "message": {
         "db": {
-            "users": 5,
+            "users": 8,
             "tasks": 5,
             "notes": 5
         },
-        "version": "19.02",
-        "timestamp": 1549135720
+        "version": "19.03",
+        "timestamp": 1553738782
     }
 }
 ```

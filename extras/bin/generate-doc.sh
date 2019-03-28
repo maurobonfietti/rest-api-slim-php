@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source bin/endpoints.sh
+source extras/bin/endpoints.sh
 
 echo -e "# USE:\n\n"
 
