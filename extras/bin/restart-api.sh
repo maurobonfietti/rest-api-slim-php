@@ -9,8 +9,5 @@ mysql -u$DB_USERNAME -p$DB_PASSWORD -h$DB_HOSTNAME -e 'DROP DATABASE IF EXISTS $
 echo -e "Creating testing data..."
 mysql -u$DB_USERNAME -p$DB_PASSWORD -h$DB_HOSTNAME $DB_DATABASE < app/data/database.sql 2> /dev/null
 
-echo -e "Generating example documentation..."
-./extras/bin/generate-doc.sh > extras/DOC.md 2> /dev/null
-
 echo -e "Running unit tests..."
 ./vendor/bin/phpunit

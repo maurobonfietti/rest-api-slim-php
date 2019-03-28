@@ -137,9 +137,7 @@ All the information of the API, prepared to download and use as postman collecti
 
 ### HELP AND DOCS:
 
-For more information on how to use the REST API, see the following document: [User's Manual](extras/DOC.md).
-
-Documentation also available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
+For more information on how to use the REST API, see the following documentation available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
 
 
 ## GIVE IT A TRY:

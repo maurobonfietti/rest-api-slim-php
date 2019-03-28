@@ -138,9 +138,7 @@ Toda la información de la API, preparada para descargar y utilizar como colecci
 
 ### AYUDA Y MANUAL DE USO:
 
-Para más información sobre el modo de uso de la API REST, ver el siguiente documento: [Manual de Uso](extras/DOC.md).
-
-Documentación también disponible en [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
+Para más información sobre el modo de uso de la API REST, ver la siguiente documentación disponible en [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
 
 
 ## VER ONLINE:
