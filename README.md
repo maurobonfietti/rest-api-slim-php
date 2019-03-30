@@ -2,7 +2,7 @@
 
 Example of REST API with [Slim PHP micro framework](http://www.slimframework.com).
 
-![alt text](extras/slim-logo.png "Slim PHP micro framework")
+![alt text](extras/img/slim-logo.png "Slim PHP micro framework")
 
 This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
 
