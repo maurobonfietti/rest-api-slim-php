@@ -2,40 +2,21 @@
 
 namespace Tests\api;
 
-class DefaultTest extends BaseTestCase
+use Slim\App;
+use Slim\Container;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Http\Environment;
+
+class DefaultTest2
 {
-    /**
-     * Test that default endpoint show a help.
-     */
-    public function testApiHelp()
+    public function testHelp()
     {
-        $response = $this->runApp('GET', '/');
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertStringContainsString('status', (string) $response->getBody());
-        $this->assertStringContainsString('success', (string) $response->getBody());
-        $this->assertStringContainsString('version', (string) $response->getBody());
-        $this->assertStringContainsString('time', (string) $response->getBody());
-        $this->assertStringContainsString('endpoints', (string) $response->getBody());
-        $this->assertStringContainsString('help', (string) $response->getBody());
-        $this->assertStringNotContainsString('ERROR', (string) $response->getBody());
-        $this->assertStringNotContainsString('Failed', (string) $response->getBody());
-    }
-
-    /**
-     * Test that status endpoint, show the API status.
-     */
-    public function testStatus()
-    {
-        $response = $this->runApp('GET', '/status');
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertStringContainsString('status', (string) $response->getBody());
-        $this->assertStringContainsString('success', (string) $response->getBody());
-        $this->assertStringContainsString('version', (string) $response->getBody());
-        $this->assertStringContainsString('time', (string) $response->getBody());
-        $this->assertStringContainsString('db', (string) $response->getBody());
-        $this->assertStringNotContainsString('ERROR', (string) $response->getBody());
-        $this->assertStringNotContainsString('Failed', (string) $response->getBody());
+        $app = new App([]);
+        $request = Request::createFromEnvironment(Environment::mock([]));
+        $response = $app->process($request, new Response());
+        $defaultController = new \App\Controller\DefaultController(new Container());
+        $result = $defaultController->getHelp($request, $response, []);
+        $this->assertEquals(200, $result->getStatusCode());
     }
 }
