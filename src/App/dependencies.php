@@ -10,7 +10,7 @@ $container = $app->getContainer();
  * @param ContainerInterface $c
  * @return PDO
  */
-$container['db'] = function(ContainerInterface $c) {
+$container['db'] = function (ContainerInterface $c) {
     $db = $c->get('settings')['db'];
     $database = sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']);
     $pdo = new PDO($database, $db['username'], $db['password']);
@@ -25,6 +25,6 @@ $container['db'] = function(ContainerInterface $c) {
  *
  * @return \Predis\Client
  */
-$container['redis'] = function() {
+$container['redis'] = function () {
     return new \Predis\Client(getenv('REDIS_URL'));
 };

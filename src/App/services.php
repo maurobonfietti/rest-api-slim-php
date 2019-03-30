@@ -13,7 +13,7 @@ $container = $app->getContainer();
 /**
  * @return ApiError
  */
-$container['errorHandler'] = function() {
+$container['errorHandler'] = function () {
     return new ApiError;
 };
 
@@ -21,7 +21,7 @@ $container['errorHandler'] = function() {
  * @param ContainerInterface $container
  * @return UserService
  */
-$container['user_service'] = function($container) {
+$container['user_service'] = function ($container) {
     return new UserService($container->get('user_repository'));
 };
 
@@ -29,7 +29,7 @@ $container['user_service'] = function($container) {
  * @param ContainerInterface $container
  * @return UserRepository
  */
-$container['user_repository'] = function($container) {
+$container['user_repository'] = function ($container) {
     return new UserRepository($container->get('db'));
 };
 
@@ -37,7 +37,7 @@ $container['user_repository'] = function($container) {
  * @param ContainerInterface $container
  * @return TaskService
  */
-$container['task_service'] = function($container) {
+$container['task_service'] = function ($container) {
     return new TaskService($container->get('task_repository'));
 };
 
@@ -45,7 +45,7 @@ $container['task_service'] = function($container) {
  * @param ContainerInterface $container
  * @return TaskRepository
  */
-$container['task_repository'] = function($container) {
+$container['task_repository'] = function ($container) {
     return new TaskRepository($container->get('db'));
 };
 
@@ -53,7 +53,7 @@ $container['task_repository'] = function($container) {
  * @param ContainerInterface $container
  * @return NoteService
  */
-$container['note_service'] = function($container) {
+$container['note_service'] = function ($container) {
     return new NoteService($container->get('note_repository'));
 };
 
@@ -61,6 +61,6 @@ $container['note_service'] = function($container) {
  * @param ContainerInterface $container
  * @return NoteRepository
  */
-$container['note_repository'] = function($container) {
+$container['note_repository'] = function ($container) {
     return new NoteRepository($container->get('db'));
 };
