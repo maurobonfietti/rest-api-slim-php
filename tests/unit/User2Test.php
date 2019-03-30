@@ -1,0 +1,315 @@
+<?php
+
+namespace Tests\api;
+
+class UserTest extends BaseTestCase
+{
+    private static $id;
+
+    /**
+     * Test Get All Users.
+     */
+    public function testGetUsers()
+    {
+        $response = $this->runApp('GET', '/api/v1/users');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('email', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Get One User.
+     */
+    public function testGetUser()
+    {
+        $response = $this->runApp('GET', '/api/v1/users/1');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('email', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Get User Not Found.
+     */
+    public function testGetUserNotFound()
+    {
+        $response = $this->runApp('GET', '/api/v1/users/123456789');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('name', $result);
+        $this->assertStringNotContainsString('email', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Search Users.
+     */
+    public function testSearchUsers()
+    {
+        $response = $this->runApp('GET', '/api/v1/users/search/j');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('email', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Search User Not Found.
+     */
+    public function testSearchUserNotFound()
+    {
+        $response = $this->runApp('GET', '/api/v1/users/search/123456789');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('email', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Create User.
+     */
+    public function testCreateUser()
+    {
+        $response = $this->runApp(
+            'POST', '/api/v1/users',
+            ['name' => 'Esteban', 'email' => 'estu@gmail.com', 'password' => 'AnyPass1000']
+        );
+
+        $result = (string) $response->getBody();
+
+        self::$id = json_decode($result)->message->id;
+
+        $this->assertEquals(201, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('email', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Create User Without Name.
+     */
+    public function testCreateUserWithoutName()
+    {
+        $response = $this->runApp('POST', '/api/v1/users');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('email', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Create User With Invalid Name.
+     */
+    public function testCreateUserWithInvalidName()
+    {
+        $response = $this->runApp(
+            'POST', '/api/v1/users',
+            ['name' => 'z', 'email' => 'email@example.com']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('email', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Create User With Invalid Email.
+     */
+    public function testCreateUserWithInvalidEmail()
+    {
+        $response = $this->runApp(
+            'POST', '/api/v1/users',
+            ['name' => 'Esteban', 'email' => 'email.incorrecto']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Update User.
+     */
+    public function testUpdateUser()
+    {
+        $response = $this->runApp(
+            'PUT', '/api/v1/users/' . self::$id,
+            ['name' => 'Victor', 'email' => 'victor@hotmail.com']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('email', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Update User Without Send Data.
+     */
+    public function testUpdateUserWithOutSendData()
+    {
+        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('email', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Update User Not Found.
+     */
+    public function testUpdateUserNotFound()
+    {
+        $response = $this->runApp(
+            'PUT', '/api/v1/users/123456789', ['name' => 'Victor']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('name', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Update User With Invalid Data.
+     */
+    public function testUpdateUserWithInvalidData()
+    {
+        $response = $this->runApp(
+            'PUT', '/api/v1/users/' . self::$id,
+            ['name' => 'z', 'email' => 'email-incorrecto...']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('email', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Delete User.
+     */
+    public function testDeleteUser()
+    {
+        $response = $this->runApp('DELETE', '/api/v1/users/' . self::$id);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(204, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Delete User Not Found.
+     */
+    public function testDeleteUserNotFound()
+    {
+        $response = $this->runApp('DELETE', '/api/v1/users/123456789');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test that user login endpoint it is working fine.
+     */
+    public function testLoginUser()
+    {
+        $response = $this->runApp('POST', '/login', ['email' => 'test@user.com', 'password' => 'AnyPass1000']);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('message', $result);
+        $this->assertStringContainsString('Authorization', $result);
+        $this->assertStringContainsString('Bearer', $result);
+        $this->assertStringContainsString('ey', $result);
+        $this->assertStringNotContainsString('ERROR', $result);
+        $this->assertStringNotContainsString('Failed', $result);
+    }
+
+    /**
+     * Test login endpoint with invalid credentials.
+     */
+    public function testLoginUserFailed()
+    {
+        $response = $this->runApp('POST', '/login', ['email' => 'a@b.com', 'password' => 'p']);
+
+        $result = (string) $response->getBody();
+
+        $this->assertStringContainsString('Login failed', $result);
+        $this->assertStringContainsString('UserException', $result);
+        $this->assertStringContainsString('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('Authorization', $result);
+        $this->assertStringNotContainsString('Bearer', $result);
+    }
+}
