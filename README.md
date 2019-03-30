@@ -36,12 +36,12 @@ $ mysql -e 'CREATE DATABASE rest_api_slim_php;'
 
 ### 3- Create the structure and load test data into the database.
 
-The database can be updated manually using the following file: [database.sql](app/data/database.sql).
+The database can be updated manually using the following file: [database.sql](database/database.sql).
 
 It can also be run from the command line:
 
 ```bash
-$ mysql rest_api_slim_php < app/data/database.sql
+$ mysql rest_api_slim_php < database/database.sql
 ```
 
 

@@ -10,7 +10,7 @@ build:
     project_setup:
         before:
             - mysql -e "CREATE DATABASE rest_api_slim_php"
-            - mysql rest_api_slim_php < app/data/database.sql
+            - mysql rest_api_slim_php < database/database.sql
         override:
             - php-scrutinizer-run
             -
