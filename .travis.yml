@@ -17,6 +17,7 @@ env:
     - DB_PASSWORD=
     - USE_REDIS_CACHE=true
     - REDIS_URL=localhost
+    - SECRET_KEY=YourSuperSecret-KeY
 
 before_install:
   - mysql -e 'CREATE DATABASE rest_api_slim_php;'
