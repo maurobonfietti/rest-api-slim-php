@@ -152,6 +152,6 @@ class UserService extends BaseService
             'exp' => time() + (7 * 24 * 60 * 60),
         );
 
-        return JWT::encode($token, 'no_secret_example_key');
+        return JWT::encode($token, getenv('SECRET_KEY'));
     }
 }

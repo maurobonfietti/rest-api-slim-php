@@ -46,7 +46,7 @@ class AuthMiddleware
         $auth = false;
 
         try {
-            $decoded = JWT::decode($token, 'no_secret_example_key', ['HS256']);
+            $decoded = JWT::decode($token, getenv('SECRET_KEY'), ['HS256']);
         } catch (\UnexpectedValueException $e) {
             $auth = false;
         } catch (\DomainException $e) {
