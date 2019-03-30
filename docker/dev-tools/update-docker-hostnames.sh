@@ -27,7 +27,7 @@ declare -a IPS=(
 )
 
 declare -a HOSTNAMES=(
-"rest-api-slim-php.docker.agentbot.net"
+"rest-api-slim-php.docker.local"
 )
 
 removehosts() {
