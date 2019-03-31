@@ -248,4 +248,23 @@ class TaskTest extends BaseTestCase
         $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
+
+    /**
+     * Test Create Task With Forbidden JWT.
+     */
+    public function testCreateTaskWithInvalidJWT()
+    {
+        $auth = self::$jwt;
+        self::$jwt = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4Ii';
+        $response = $this->runApp(
+            'POST', '/api/v1/tasks', ['name' => 'my task', 'status' => 0]
+        );
+        self::$jwt = $auth;
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(403, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringContainsString('error', $result);
+    }
 }
