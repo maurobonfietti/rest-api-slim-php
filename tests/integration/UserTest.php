@@ -180,7 +180,7 @@ class UserTest extends BaseTestCase
     {
         $response = $this->runApp(
             'POST', '/api/v1/users',
-            ['name' => 'Esteban', 'email' => 'email.incorrecto']
+            ['name' => 'Esteban', 'email' => 'email.incorrecto', 'password' => 'AnyPass1000']
         );
 
         $result = (string) $response->getBody();
