@@ -136,6 +136,26 @@ class UserTest extends BaseTestCase
     }
 
     /**
+     * Test Create User Without Email.
+     */
+    public function testCreateUserWithoutEmail()
+    {
+        $response = $this->runApp(
+            'POST', '/api/v1/users',
+            ['name' => 'z']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringNotContainsString('email', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
      * Test Create User With Invalid Name.
      */
     public function testCreateUserWithInvalidName()
@@ -162,6 +182,24 @@ class UserTest extends BaseTestCase
         $response = $this->runApp(
             'POST', '/api/v1/users',
             ['name' => 'Esteban', 'email' => 'email.incorrecto']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('updated', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Create User With An Email That Already Exists.
+     */
+    public function testCreateUserWithEmailAlreadyExists()
+    {
+        $response = $this->runApp(
+            'POST', '/api/v1/users',
+            ['name' => 'Esteban', 'email' => 'estu@gmail.com', 'password' => 'AnyPass1000']
         );
 
         $result = (string) $response->getBody();
