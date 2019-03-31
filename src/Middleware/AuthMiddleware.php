@@ -2,10 +2,10 @@
 
 namespace App\Middleware;
 
+use App\Exception\AuthException;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use App\Exception\NoteException;
 use \Firebase\JWT\JWT;
 
 class AuthMiddleware
@@ -32,7 +32,7 @@ class AuthMiddleware
         $jwtHeader = $request->getHeaderLine('Authorization');
         $jwt = explode('Bearer ', $jwtHeader)[1];
         if (empty($jwt) === true) {
-            throw new \App\Exception\AuthException('JWT Token required.', 400);
+            throw new AuthException('JWT Token required.', 400);
         }
         $decoded = $this->checkToken($jwt);
         $object = $request->getParsedBody();
@@ -58,7 +58,7 @@ class AuthMiddleware
         }
 
         if ($auth === false) {
-            throw new \App\Exception\AuthException('error: Forbidden, not authorized.', 403);
+            throw new AuthException('error: Forbidden, not authorized.', 403);
         }
 
         return $decoded;
