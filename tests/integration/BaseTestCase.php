@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\api;
+namespace Tests\integration;
 
 use Slim\App;
 use Slim\Http\Request;

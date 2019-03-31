@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\api;
+namespace Tests\integration;
 
 class DefaultTest extends BaseTestCase
 {
