@@ -28,6 +28,19 @@ class UserServiceTest extends BaseTestCase
         $this->assertStringContainsString('Eze', $user->name);
     }
 
+    public function testCreateUserWithoutName()
+    {
+        $this->expectException(\App\Exception\UserException::class);
+        $database = sprintf('mysql:host=%s;dbname=%s', getenv('DB_HOSTNAME'), getenv('DB_DATABASE'));
+        $pdo = new \PDO($database, getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
+        $userRepository = new \App\Repository\UserRepository($pdo);
+        $userService = new \App\Service\UserService($userRepository);
+        $input = ['email' => 'eze@gmail.com', 'password' => 'AnyPass1000'];
+        $user = $userService->createUser($input);
+        self::$id = $user->id;
+        $this->assertStringContainsString('Eze', $user->name);
+    }
+
     public function testDeleteUser()
     {
         $database = sprintf('mysql:host=%s;dbname=%s', getenv('DB_HOSTNAME'), getenv('DB_DATABASE'));
