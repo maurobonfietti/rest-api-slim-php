@@ -32,7 +32,7 @@ class AuthMiddleware
         $jwtHeader = $request->getHeaderLine('Authorization');
         $jwt = explode('Bearer ', $jwtHeader)[1];
         if (empty($jwt) === true) {
-            throw new NoteException('JWT Token required.', 400);
+            throw new \App\Exception\AuthException('JWT Token required.', 400);
         }
         $decoded = $this->checkToken($jwt);
         $object = $request->getParsedBody();
@@ -58,7 +58,7 @@ class AuthMiddleware
         }
 
         if ($auth === false) {
-            throw new \Exception('error: Forbidden, not authorized.', 403);
+            throw new \App\Exception\AuthException('error: Forbidden, not authorized.', 403);
         }
 
         return $decoded;
