@@ -103,7 +103,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 - [respect/validation](https://github.com/Respect/Validation): The most awesome validation engine ever created for PHP.
 - [palanik/corsslim](https://github.com/palanik/CorsSlim): Cross-origin resource sharing (CORS) middleware for PHP Slim.
 - [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv): Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.
-- [predis/predis](https://github.com/nrk/predis): Flexible and feature-complete Redis client for PHP and HHVM.
+- [predis/predis](https://github.com/phpredis/phpredis): A PHP extension for Redis.
 - [firebase/php-jwt](https://github.com/firebase/php-jwt): A simple library to encode and decode JSON Web Tokens (JWT) in PHP.
 
 ### LIST OF DEVELOPMENT DEPENDENCIES:
@@ -119,11 +119,11 @@ Access the root of the project and run all tests PHPUnit with `composer test`.
 ```bash
 PHPUnit 8.0.5 by Sebastian Bergmann and contributors.
 
-.....................................................             53 / 53 (100%)
+........................................................          56 / 56 (100%)
 
-Time: 1.43 seconds, Memory: 10.00 MB
+Time: 1.36 seconds, Memory: 12.00 MB
 
-OK (53 tests, 295 assertions)
+OK (56 tests, 302 assertions)
 ```
 
 
