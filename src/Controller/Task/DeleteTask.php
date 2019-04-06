@@ -23,7 +23,7 @@ class DeleteTask extends BaseTask
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $taskId = $this->args['id'];
-        $task = $this->getTaskService()->deleteTask($taskId, $input);
+        $task = $this->getTaskService()->deleteTask($taskId, $input['decoded']->sub);
 
         return $this->jsonResponse('success', $task, 204);
     }
