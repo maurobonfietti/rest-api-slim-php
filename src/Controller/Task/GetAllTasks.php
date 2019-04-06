@@ -21,7 +21,8 @@ class GetAllTasks extends BaseTask
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $tasks = $this->getTaskService()->getTasks();
+        $input = $this->getInput();
+        $tasks = $this->getTaskService()->getTasks($input);
 
         return $this->jsonResponse('success', $tasks, 200);
     }

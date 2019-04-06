@@ -21,8 +21,9 @@ class DeleteTask extends BaseTask
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
+        $input = $this->getInput();
         $taskId = $this->args['id'];
-        $task = $this->getTaskService()->deleteTask($taskId);
+        $task = $this->getTaskService()->deleteTask($taskId, $input);
 
         return $this->jsonResponse('success', $task, 204);
     }
