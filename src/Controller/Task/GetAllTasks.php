@@ -22,7 +22,8 @@ class GetAllTasks extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $tasks = $this->getTaskService()->getTasks($input['decoded']->sub);
+        $userId = $input['decoded']->sub;
+        $tasks = $this->getTaskService()->getTasks($userId);
 
         return $this->jsonResponse('success', $tasks, 200);
     }
