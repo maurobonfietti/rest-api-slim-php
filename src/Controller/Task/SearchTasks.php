@@ -22,7 +22,8 @@ class SearchTasks extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $tasks = $this->getTaskService()->searchTasks($this->args['query'], $input);
+        $userId = $input['decoded']->sub;
+        $tasks = $this->getTaskService()->searchTasks($this->args['query'], $userId);
 
         return $this->jsonResponse('success', $tasks, 200);
     }

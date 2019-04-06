@@ -22,7 +22,8 @@ class GetOneTask extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $task = $this->getTaskService()->getTask($this->args['id'], $input);
+        $userId = $input['decoded']->sub;
+        $task = $this->getTaskService()->getTask($this->args['id'], $userId);
 
         return $this->jsonResponse('success', $task, 200);
     }

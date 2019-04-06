@@ -21,15 +21,16 @@ class TaskRepository extends BaseRepository
      * Check if the task exists.
      *
      * @param int|string $taskId
+     * @param int $userId
      * @return object
      * @throws TaskException
      */
-    public function checkAndGetTask($taskId, $input)
+    public function checkAndGetTask($taskId, $userId)
     {
         $query = 'SELECT * FROM tasks WHERE id = :id AND userId = :userId';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $taskId);
-        $statement->bindParam('userId', $input['decoded']->sub);
+        $statement->bindParam('userId', $userId);
         $statement->execute();
         $task = $statement->fetchObject();
         if (empty($task)) {
@@ -40,15 +41,16 @@ class TaskRepository extends BaseRepository
     }
 
     /**
-     * Get all tasks.
+     * Get all tasks of an user.
      *
+     * @param int $userId
      * @return array
      */
-    public function getTasks($input)
+    public function getTasks($userId)
     {
         $query = 'SELECT * FROM tasks WHERE userId = :userId ORDER BY id';
         $statement = $this->getDb()->prepare($query);
-        $statement->bindParam('userId', $input['decoded']->sub);
+        $statement->bindParam('userId', $userId);
         $statement->execute();
 
         return $statement->fetchAll();
@@ -58,16 +60,17 @@ class TaskRepository extends BaseRepository
      * Search tasks by name.
      *
      * @param string $tasksName
+     * @param int $userId
      * @return array
      * @throws TaskException
      */
-    public function searchTasks($tasksName, $input)
+    public function searchTasks($tasksName, $userId)
     {
         $query = 'SELECT * FROM tasks WHERE UPPER(name) LIKE :name AND userId = :userId ORDER BY id';
         $name = '%' . $tasksName . '%';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('name', $name);
-        $statement->bindParam('userId', $input['decoded']->sub);
+        $statement->bindParam('userId', $userId);
         $statement->execute();
         $tasks = $statement->fetchAll();
         if (!$tasks) {
@@ -83,7 +86,7 @@ class TaskRepository extends BaseRepository
      * @param object $task
      * @return object
      */
-    public function createTask($task, $input)
+    public function createTask($task)
     {
         $query = 'INSERT INTO tasks (name, status, userId) VALUES (:name, :status, :userId)';
         $statement = $this->getDb()->prepare($query);
@@ -92,7 +95,7 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $task->userId);
         $statement->execute();
 
-        return $this->checkAndGetTask($this->database->lastInsertId(), $input);
+        return $this->checkAndGetTask($this->database->lastInsertId(), $task->userId);
     }
 
     /**
@@ -101,31 +104,32 @@ class TaskRepository extends BaseRepository
      * @param object $task
      * @return object
      */
-    public function updateTask($task, $input)
+    public function updateTask($task)
     {
         $query = 'UPDATE tasks SET name=:name, status=:status WHERE id=:id AND userId = :userId';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $task->id);
         $statement->bindParam('name', $task->name);
         $statement->bindParam('status', $task->status);
-        $statement->bindParam('userId', $input['decoded']->sub);
+        $statement->bindParam('userId', $task->userId);
         $statement->execute();
 
-        return $this->checkAndGetTask($task->id, $input);
+        return $this->checkAndGetTask($task->id, $task->userId);
     }
 
     /**
      * Delete a task.
      *
      * @param int $taskId
+     * @param int $userId
      * @return string
      */
-    public function deleteTask($taskId, $input)
+    public function deleteTask($taskId, $userId)
     {
         $query = 'DELETE FROM tasks WHERE id = :id AND userId = :userId';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $taskId);
-        $statement->bindParam('userId', $input['decoded']->sub);
+        $statement->bindParam('userId', $userId);
         $statement->execute();
 
         return 'The task was deleted.';

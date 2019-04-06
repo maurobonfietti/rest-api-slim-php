@@ -35,43 +35,46 @@ class TaskService extends BaseService
      * Check if the task exists.
      *
      * @param int $taskId
+     * @param int $userId
      * @return object
      */
-    protected function checkAndGetTask($taskId, $input)
+    protected function checkAndGetTask($taskId, $userId)
     {
-        return $this->getTaskRepository()->checkAndGetTask($taskId, $input);
+        return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 
     /**
-     * Get all tasks.
-     *
+     * Get all tasks of an user.
+     * @param int $userId
      * @return array
      */
-    public function getTasks($input)
+    public function getTasks($userId)
     {
-        return $this->getTaskRepository()->getTasks($input);
+        return $this->getTaskRepository()->getTasks($userId);
     }
 
     /**
      * Get one task by id.
      *
      * @param int $taskId
+     * @param int $userId
      * @return object
      */
-    public function getTask($taskId, $input)
+    public function getTask($taskId, $userId)
     {
-        return $this->checkAndGetTask($taskId, $input);
+        return $this->checkAndGetTask($taskId, $userId);
     }
 
     /**
      * Search tasks by name.
      *
      * @param string $tasksName
+     * @param int $userId
      * @return array
      */
-    public function searchTasks($tasksName, $input)
+    public function searchTasks($tasksName, $userId)
     {
-        return $this->getTaskRepository()->searchTasks($tasksName, $input);
+        return $this->getTaskRepository()->searchTasks($tasksName, $userId);
     }
 
     /**
@@ -95,7 +98,7 @@ class TaskService extends BaseService
         }
         $task->userId = $data->decoded->sub;
 
-        return $this->getTaskRepository()->createTask($task, $input);
+        return $this->getTaskRepository()->createTask($task);
     }
 
     /**
@@ -108,7 +111,7 @@ class TaskService extends BaseService
      */
     public function updateTask($input, $taskId)
     {
-        $task = $this->checkAndGetTask($taskId, $input);
+        $task = $this->checkAndGetTask($taskId, $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->status)) {
             throw new TaskException('Enter the data to update the task.', 400);
@@ -119,20 +122,22 @@ class TaskService extends BaseService
         if (isset($data->status)) {
             $task->status = self::validateTaskStatus($data->status);
         }
+        $task->userId = $data->decoded->sub;
 
-        return $this->getTaskRepository()->updateTask($task, $input);
+        return $this->getTaskRepository()->updateTask($task);
     }
 
     /**
      * Delete a task.
      *
      * @param int $taskId
+     * @param int $userId
      * @return string
      */
-    public function deleteTask($taskId, $input)
+    public function deleteTask($taskId, $userId)
     {
-        $this->checkAndGetTask($taskId, $input);
+        $this->checkAndGetTask($taskId, $userId);
 
-        return $this->getTaskRepository()->deleteTask($taskId, $input);
+        return $this->getTaskRepository()->deleteTask($taskId, $userId);
     }
 }
