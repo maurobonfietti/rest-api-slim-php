@@ -111,7 +111,7 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $input['decoded']->sub);
         $statement->execute();
 
-        return $this->checkAndGetTask($task->id);
+        return $this->checkAndGetTask($task->id, $input);
     }
 
     /**

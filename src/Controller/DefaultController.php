@@ -65,7 +65,7 @@ class DefaultController extends BaseController
         $noteService = $this->container->get('note_service');
         $db = [
             'users' => count($userService->getUsers()),
-            'tasks' => count($taskService->getTasks()),
+            'tasks' => count($taskService->getTasks($this->getInput())),
             'notes' => count($noteService->getNotes()),
         ];
         $status = [
