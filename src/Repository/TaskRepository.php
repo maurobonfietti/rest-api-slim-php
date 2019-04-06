@@ -21,6 +21,7 @@ class TaskRepository extends BaseRepository
      * Check if the task exists.
      *
      * @param int|string $taskId
+     * @param int $userId
      * @return object
      * @throws TaskException
      */
@@ -40,8 +41,9 @@ class TaskRepository extends BaseRepository
     }
 
     /**
-     * Get all tasks.
+     * Get all tasks of an user.
      *
+     * @param int $userId
      * @return array
      */
     public function getTasks($userId)
@@ -58,6 +60,7 @@ class TaskRepository extends BaseRepository
      * Search tasks by name.
      *
      * @param string $tasksName
+     * @param int $userId
      * @return array
      * @throws TaskException
      */
@@ -118,6 +121,7 @@ class TaskRepository extends BaseRepository
      * Delete a task.
      *
      * @param int $taskId
+     * @param int $userId
      * @return string
      */
     public function deleteTask($taskId, $userId)

@@ -35,6 +35,7 @@ class TaskService extends BaseService
      * Check if the task exists.
      *
      * @param int $taskId
+     * @param int $userId
      * @return object
      */
     protected function checkAndGetTask($taskId, $userId)
@@ -43,8 +44,8 @@ class TaskService extends BaseService
     }
 
     /**
-     * Get all tasks.
-     *
+     * Get all tasks of an user.
+     * @param int $userId
      * @return array
      */
     public function getTasks($userId)
@@ -56,6 +57,7 @@ class TaskService extends BaseService
      * Get one task by id.
      *
      * @param int $taskId
+     * @param int $userId
      * @return object
      */
     public function getTask($taskId, $userId)
@@ -67,6 +69,7 @@ class TaskService extends BaseService
      * Search tasks by name.
      *
      * @param string $tasksName
+     * @param int $userId
      * @return array
      */
     public function searchTasks($tasksName, $userId)
@@ -128,6 +131,7 @@ class TaskService extends BaseService
      * Delete a task.
      *
      * @param int $taskId
+     * @param int $userId
      * @return string
      */
     public function deleteTask($taskId, $userId)
