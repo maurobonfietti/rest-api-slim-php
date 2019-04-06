@@ -1,7 +1,7 @@
 <?php
 
 $app->get('/', 'App\Controller\DefaultController:getHelp');
-$app->get('/status', 'App\Controller\DefaultController:getStatus');
+$app->get('/status', 'App\Controller\DefaultController:getStatus')->add(new App\Middleware\AuthMiddleware($app));
 $app->post('/login', 'App\Controller\User\LoginUser');
 
 $app->group('/api/v1', function () use ($app) {
