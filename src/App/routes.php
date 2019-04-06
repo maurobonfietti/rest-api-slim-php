@@ -6,7 +6,7 @@ $app->post('/login', 'App\Controller\User\LoginUser');
 
 $app->group('/api/v1', function () use ($app) {
     $app->group('/tasks', function () use ($app) {
-        $app->get('', 'App\Controller\Task\GetAllTasks');
+        $app->get('', 'App\Controller\Task\GetAllTasks')->add(new App\Middleware\AuthMiddleware($app));
         $app->get('/[{id}]', 'App\Controller\Task\GetOneTask');
         $app->get('/search/[{query}]', 'App\Controller\Task\SearchTasks');
         $app->post('', 'App\Controller\Task\CreateTask')->add(new App\Middleware\AuthMiddleware($app));

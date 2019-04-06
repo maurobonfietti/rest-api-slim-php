@@ -47,9 +47,9 @@ class TaskService extends BaseService
      *
      * @return array
      */
-    public function getTasks()
+    public function getTasks($input)
     {
-        return $this->getTaskRepository()->getTasks();
+        return $this->getTaskRepository()->getTasks($input);
     }
 
     /**

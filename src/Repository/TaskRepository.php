@@ -43,10 +43,11 @@ class TaskRepository extends BaseRepository
      *
      * @return array
      */
-    public function getTasks()
+    public function getTasks($input)
     {
-        $query = 'SELECT * FROM tasks ORDER BY id';
+        $query = 'SELECT * FROM tasks WHERE userId = :userId ORDER BY id';
         $statement = $this->getDb()->prepare($query);
+        $statement->bindParam('userId', $input['decoded']->sub);
         $statement->execute();
 
         return $statement->fetchAll();
