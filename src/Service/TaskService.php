@@ -37,9 +37,9 @@ class TaskService extends BaseService
      * @param int $taskId
      * @return object
      */
-    protected function checkAndGetTask($taskId)
+    protected function checkAndGetTask($taskId, $input)
     {
-        return $this->getTaskRepository()->checkAndGetTask($taskId);
+        return $this->getTaskRepository()->checkAndGetTask($taskId, $input);
     }
 
     /**
@@ -58,9 +58,9 @@ class TaskService extends BaseService
      * @param int $taskId
      * @return object
      */
-    public function getTask($taskId)
+    public function getTask($taskId, $input)
     {
-        return $this->checkAndGetTask($taskId);
+        return $this->checkAndGetTask($taskId, $input);
     }
 
     /**
@@ -69,9 +69,9 @@ class TaskService extends BaseService
      * @param string $tasksName
      * @return array
      */
-    public function searchTasks($tasksName)
+    public function searchTasks($tasksName, $input)
     {
-        return $this->getTaskRepository()->searchTasks($tasksName);
+        return $this->getTaskRepository()->searchTasks($tasksName, $input);
     }
 
     /**
@@ -95,7 +95,7 @@ class TaskService extends BaseService
         }
         $task->userId = $data->decoded->sub;
 
-        return $this->getTaskRepository()->createTask($task);
+        return $this->getTaskRepository()->createTask($task, $input);
     }
 
     /**
@@ -120,7 +120,7 @@ class TaskService extends BaseService
             $task->status = self::validateTaskStatus($data->status);
         }
 
-        return $this->getTaskRepository()->updateTask($task);
+        return $this->getTaskRepository()->updateTask($task, $input);
     }
 
     /**
@@ -129,10 +129,10 @@ class TaskService extends BaseService
      * @param int $taskId
      * @return string
      */
-    public function deleteTask($taskId)
+    public function deleteTask($taskId, $input)
     {
-        $this->checkAndGetTask($taskId);
+        $this->checkAndGetTask($taskId, $input);
 
-        return $this->getTaskRepository()->deleteTask($taskId);
+        return $this->getTaskRepository()->deleteTask($taskId, $input);
     }
 }

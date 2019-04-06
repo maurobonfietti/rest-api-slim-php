@@ -21,7 +21,8 @@ class SearchTasks extends BaseTask
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $tasks = $this->getTaskService()->searchTasks($this->args['query']);
+        $input = $this->getInput();
+        $tasks = $this->getTaskService()->searchTasks($this->args['query'], $input);
 
         return $this->jsonResponse('success', $tasks, 200);
     }

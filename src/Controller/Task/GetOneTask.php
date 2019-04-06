@@ -21,7 +21,8 @@ class GetOneTask extends BaseTask
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $task = $this->getTaskService()->getTask($this->args['id']);
+        $input = $this->getInput();
+        $task = $this->getTaskService()->getTask($this->args['id'], $input);
 
         return $this->jsonResponse('success', $task, 200);
     }
