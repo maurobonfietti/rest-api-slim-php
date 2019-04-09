@@ -327,6 +327,12 @@ class UserTest extends BaseTestCase
      */
     public function testDeleteUser()
     {
+        $response = $this->runApp('POST', '/login', ['email' => 'estu@gmail.com', 'password' => 'AnyPass1000']);
+
+        $result = (string) $response->getBody();
+        self::$jwt = json_decode($result)->message->Authorization;
+
+//        $response = $this->runApp('DELETE', '/api/v1/users/' . 5);
         $response = $this->runApp('DELETE', '/api/v1/users/' . self::$id);
 
         $result = (string) $response->getBody();
@@ -337,20 +343,36 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Delete User Not Found.
+     * Test Delete User Permissions Failed.
      */
-    public function testDeleteUserNotFound()
+    public function testDeleteUserPermissionsFailed()
     {
         $response = $this->runApp('DELETE', '/api/v1/users/123456789');
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
+
+//    /**
+//     * Test Delete User Not Found.
+//     */
+//    public function testDeleteUserNotFound()
+//    {
+//        $response = $this->runApp('DELETE', '/api/v1/users/123456789');
+//
+//        $result = (string) $response->getBody();
+//
+//        $this->assertEquals(404, $response->getStatusCode());
+//        $this->assertStringNotContainsString('success', $result);
+//        $this->assertStringNotContainsString('id', $result);
+//        $this->assertStringNotContainsString('updated', $result);
+//        $this->assertStringContainsString('error', $result);
+//    }
 
     /**
      * Test that user login endpoint it is working fine.

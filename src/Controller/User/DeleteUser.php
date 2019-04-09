@@ -21,6 +21,10 @@ class DeleteUser extends BaseUser
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
+        $input = $this->getInput();
+        if ($this->args['id'] != $input['decoded']->sub) {
+            throw new \Exception('User permission failed.', 400);
+        }
         $user = $this->getUserService()->deleteUser($this->args['id']);
         if ($this->useRedis() === true) {
             $this->deleteFromCache($this->args['id']);
