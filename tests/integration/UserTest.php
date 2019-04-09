@@ -43,7 +43,7 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Get User Not Found.
+     * Test Get User Permissions Failed.
      */
     public function testGetUserPermissionsFailed()
     {
@@ -233,9 +233,13 @@ class UserTest extends BaseTestCase
     public function testUpdateUser()
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/users/' . self::$id,
-            ['name' => 'Victor', 'email' => 'victor@hotmail.com']
+            'PUT', '/api/v1/users/' . 8,
+            ['name' => 'Victor', 'emailz' => 'victor@hotmail.com']
         );
+//        $response = $this->runApp(
+//            'PUT', '/api/v1/users/' . self::$id,
+//            ['name' => 'Victor', 'email' => 'victor@hotmail.com']
+//        );
 
         $result = (string) $response->getBody();
 
@@ -266,21 +270,38 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Update User Not Found.
+     * Test Update User Permissions Failed.
      */
-    public function testUpdateUserNotFound()
+    public function testUpdateUserPermissionsFailed()
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/users/123456789', ['name' => 'Victor']
+            'PUT', '/api/v1/users/1', ['name' => 'Victor']
         );
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('name', $result);
         $this->assertStringContainsString('error', $result);
     }
+
+//    /**
+//     * Test Update User Not Found.
+//     */
+//    public function testUpdateUserNotFound()
+//    {
+//        $response = $this->runApp(
+//            'PUT', '/api/v1/users/123456789', ['name' => 'Victor']
+//        );
+//
+//        $result = (string) $response->getBody();
+//
+//        $this->assertEquals(404, $response->getStatusCode());
+//        $this->assertStringNotContainsString('id', $result);
+//        $this->assertStringNotContainsString('name', $result);
+//        $this->assertStringContainsString('error', $result);
+//    }
 
     /**
      * Test Update User With Invalid Data.
