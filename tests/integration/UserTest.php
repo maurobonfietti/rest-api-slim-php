@@ -29,7 +29,7 @@ class UserTest extends BaseTestCase
      */
     public function testGetUser()
     {
-        $response = $this->runApp('GET', '/api/v1/users/1');
+        $response = $this->runApp('GET', '/api/v1/users/8');
 
         $result = (string) $response->getBody();
 
@@ -140,10 +140,7 @@ class UserTest extends BaseTestCase
      */
     public function testCreateUserWithoutEmail()
     {
-        $response = $this->runApp(
-            'POST', '/api/v1/users',
-            ['name' => 'z']
-        );
+        $response = $this->runApp('POST', '/api/v1/users', ['name' => 'z']);
 
         $result = (string) $response->getBody();
 
@@ -214,10 +211,11 @@ class UserTest extends BaseTestCase
      */
     public function testUpdateUser()
     {
-        $response = $this->runApp(
-            'PUT', '/api/v1/users/' . self::$id,
-            ['name' => 'Victor', 'email' => 'victor@hotmail.com']
-        );
+        $response0 = $this->runApp('POST', '/login', ['email' => 'estu@gmail.com', 'password' => 'AnyPass1000']);
+        $result0 = (string) $response0->getBody();
+        self::$jwt = json_decode($result0)->message->Authorization;
+
+        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id, ['name' => 'Stu']);
 
         $result = (string) $response->getBody();
 
@@ -248,17 +246,17 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Update User Not Found.
+     * Test Update User Permissions Failed.
      */
-    public function testUpdateUserNotFound()
+    public function testUpdateUserPermissionsFailed()
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/users/123456789', ['name' => 'Victor']
+            'PUT', '/api/v1/users/1', ['name' => 'Victor']
         );
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('name', $result);
         $this->assertStringContainsString('error', $result);
@@ -298,15 +296,15 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Delete User Not Found.
+     * Test Delete User Permissions Failed.
      */
-    public function testDeleteUserNotFound()
+    public function testDeleteUserPermissionsFailed()
     {
         $response = $this->runApp('DELETE', '/api/v1/users/123456789');
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('updated', $result);

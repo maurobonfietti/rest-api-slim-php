@@ -22,6 +22,7 @@ class UpdateUser extends BaseUser
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
+        $this->checkUserPermissions();
         $user = $this->getUserService()->updateUser($input, $this->args['id']);
         if ($this->useRedis() === true) {
             $this->saveInCache($this->args['id'], $user);
