@@ -3,6 +3,7 @@
 namespace App\Controller\User;
 
 use App\Controller\BaseController;
+use App\Exception\UserException;
 use App\Service\UserService;
 use Slim\Container;
 
@@ -35,13 +36,13 @@ abstract class BaseUser extends BaseController
     }
 
     /**
-     * @throws \Exception
+     * @throws UserException
      */
     protected function checkUserPermissions()
     {
         $input = $this->getInput();
         if ($this->args['id'] != $input['decoded']->sub) {
-            throw new \Exception('User permission failed.', 400);
+            throw new UserException('User permission failed.', 400);
         }
     }
 }
