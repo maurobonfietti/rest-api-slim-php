@@ -21,7 +21,6 @@ class GetOneUser extends BaseUser
     public function __invoke($request, $response, $args)
     {
         $this->setParams($request, $response, $args);
-        $this->checkUserPermissions();
         if ($this->useRedis() === true) {
             $user = $this->getUserFromCache($this->args['id']);
         } else {

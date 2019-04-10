@@ -43,15 +43,15 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Get User Permissions Failed.
+     * Test Get User Not Found.
      */
-    public function testGetUserPermissionsFailed()
+    public function testGetUserNotFound()
     {
-        $response = $this->runApp('GET', '/api/v1/users/1');
+        $response = $this->runApp('GET', '/api/v1/users/123456789');
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals(404, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('name', $result);
@@ -59,24 +59,6 @@ class UserTest extends BaseTestCase
         $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
-
-//    /**
-//     * Test Get User Not Found.
-//     */
-//    public function testGetUserNotFound()
-//    {
-//        $response = $this->runApp('GET', '/api/v1/users/123456789');
-//
-//        $result = (string) $response->getBody();
-//
-//        $this->assertEquals(404, $response->getStatusCode());
-//        $this->assertStringNotContainsString('success', $result);
-//        $this->assertStringNotContainsString('id', $result);
-//        $this->assertStringNotContainsString('name', $result);
-//        $this->assertStringNotContainsString('email', $result);
-//        $this->assertStringNotContainsString('updated', $result);
-//        $this->assertStringContainsString('error', $result);
-//    }
 
     /**
      * Test Search Users.
