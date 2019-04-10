@@ -47,22 +47,22 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
         }
 
         // Use the application settings
-        $settings = require __DIR__ . '/../../src/App/settings.php';
+        $settings = require __DIR__ . '/../../src/App/Settings.php';
 
         // Instantiate the application
         $app = new App($settings);
 
         // Set up dependencies
-        require __DIR__ . '/../../src/App/dependencies.php';
+        require __DIR__ . '/../../src/App/Dependencies.php';
 
         // Register middleware
-        require __DIR__ . '/../../src/App/middleware.php';
+        require __DIR__ . '/../../src/App/Middleware.php';
 
         // Register services
-        require __DIR__ . '/../../src/App/services.php';
+        require __DIR__ . '/../../src/App/Services.php';
 
         // Register routes
-        require __DIR__ . '/../../src/App/routes.php';
+        require __DIR__ . '/../../src/App/Routes.php';
 
         // Process the application
         $response = $app->process($request, new Response());

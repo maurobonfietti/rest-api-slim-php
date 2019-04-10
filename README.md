@@ -83,9 +83,7 @@ $ composer start
 
 If everything went well :sunglasses:, you can access the project locally by entering:
 [Help](http://localhost:8080), 
-[Status](http://localhost:8080/status), 
-[Users](http://localhost:8080/api/v1/users), 
-[Tasks](http://localhost:8080/api/v1/tasks) and
+[Status](http://localhost:8080/status) and
 [Notes](http://localhost:8080/api/v1/notes).
 
 The `composer start` command would be the equivalent to execute:
