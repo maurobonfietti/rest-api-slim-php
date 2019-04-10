@@ -140,10 +140,7 @@ class UserTest extends BaseTestCase
      */
     public function testCreateUserWithoutEmail()
     {
-        $response = $this->runApp(
-            'POST', '/api/v1/users',
-            ['name' => 'z']
-        );
+        $response = $this->runApp('POST', '/api/v1/users', ['name' => 'z']);
 
         $result = (string) $response->getBody();
 
@@ -214,14 +211,11 @@ class UserTest extends BaseTestCase
      */
     public function testUpdateUser()
     {
-        $response = $this->runApp(
-            'PUT', '/api/v1/users/' . 8,
-            ['name' => 'Victor', 'emailz' => 'victor@hotmail.com']
-        );
-//        $response = $this->runApp(
-//            'PUT', '/api/v1/users/' . self::$id,
-//            ['name' => 'Victor', 'email' => 'victor@hotmail.com']
-//        );
+        $response0 = $this->runApp('POST', '/login', ['email' => 'estu@gmail.com', 'password' => 'AnyPass1000']);
+        $result0 = (string) $response0->getBody();
+        self::$jwt = json_decode($result0)->message->Authorization;
+
+        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id, ['name' => 'Stu']);
 
         $result = (string) $response->getBody();
 
@@ -268,23 +262,6 @@ class UserTest extends BaseTestCase
         $this->assertStringContainsString('error', $result);
     }
 
-//    /**
-//     * Test Update User Not Found.
-//     */
-//    public function testUpdateUserNotFound()
-//    {
-//        $response = $this->runApp(
-//            'PUT', '/api/v1/users/123456789', ['name' => 'Victor']
-//        );
-//
-//        $result = (string) $response->getBody();
-//
-//        $this->assertEquals(404, $response->getStatusCode());
-//        $this->assertStringNotContainsString('id', $result);
-//        $this->assertStringNotContainsString('name', $result);
-//        $this->assertStringContainsString('error', $result);
-//    }
-
     /**
      * Test Update User With Invalid Data.
      */
@@ -309,12 +286,6 @@ class UserTest extends BaseTestCase
      */
     public function testDeleteUser()
     {
-        $response = $this->runApp('POST', '/login', ['email' => 'estu@gmail.com', 'password' => 'AnyPass1000']);
-
-        $result = (string) $response->getBody();
-        self::$jwt = json_decode($result)->message->Authorization;
-
-//        $response = $this->runApp('DELETE', '/api/v1/users/' . 5);
         $response = $this->runApp('DELETE', '/api/v1/users/' . self::$id);
 
         $result = (string) $response->getBody();
@@ -339,22 +310,6 @@ class UserTest extends BaseTestCase
         $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
-
-//    /**
-//     * Test Delete User Not Found.
-//     */
-//    public function testDeleteUserNotFound()
-//    {
-//        $response = $this->runApp('DELETE', '/api/v1/users/123456789');
-//
-//        $result = (string) $response->getBody();
-//
-//        $this->assertEquals(404, $response->getStatusCode());
-//        $this->assertStringNotContainsString('success', $result);
-//        $this->assertStringNotContainsString('id', $result);
-//        $this->assertStringNotContainsString('updated', $result);
-//        $this->assertStringContainsString('error', $result);
-//    }
 
     /**
      * Test that user login endpoint it is working fine.
