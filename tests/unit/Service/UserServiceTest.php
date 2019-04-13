@@ -31,9 +31,10 @@ class UserServiceTest extends BaseTestCase
         $this->assertStringContainsString('Eze', $user->name);
     }
 
-    public function testCreateUserWithoutName()
+    public function testCreateUserWithoutNameExpectError()
     {
         $this->expectException(\App\Exception\UserException::class);
+
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $userService = new \App\Service\UserService($userRepository);
         $input = ['email' => 'eze@gmail.com', 'password' => 'AnyPass1000'];
