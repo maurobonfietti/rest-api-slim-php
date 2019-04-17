@@ -3,7 +3,6 @@
 namespace App\Middleware;
 
 use App\Exception\AuthException;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -11,16 +10,6 @@ use \Firebase\JWT\JWT;
 
 class AuthMiddleware
 {
-    /**
-     * @var ContainerInterface
-     */
-    protected $container;
-
-    public function __construct($container)
-    {
-        $this->container = $container;
-    }
-
     /**
      * @param Request $request
      * @param Response $response
