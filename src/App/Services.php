@@ -7,60 +7,34 @@ use App\Repository\UserRepository;
 use App\Repository\TaskRepository;
 use App\Repository\NoteRepository;
 use App\Handler\ApiError;
+use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
 
-/**
- * @return ApiError
- */
-$container['errorHandler'] = function () {
+$container['errorHandler'] = function (): ApiError {
     return new ApiError;
 };
 
-/**
- * @param ContainerInterface $container
- * @return UserService
- */
-$container['user_service'] = function ($container) {
+$container['user_service'] = function (ContainerInterface $container): UserService {
     return new UserService($container->get('user_repository'));
 };
 
-/**
- * @param ContainerInterface $container
- * @return UserRepository
- */
-$container['user_repository'] = function ($container) {
+$container['user_repository'] = function (ContainerInterface $container): UserRepository {
     return new UserRepository($container->get('db'));
 };
 
-/**
- * @param ContainerInterface $container
- * @return TaskService
- */
-$container['task_service'] = function ($container) {
+$container['task_service'] = function (ContainerInterface $container): TaskService {
     return new TaskService($container->get('task_repository'));
 };
 
-/**
- * @param ContainerInterface $container
- * @return TaskRepository
- */
-$container['task_repository'] = function ($container) {
+$container['task_repository'] = function (ContainerInterface $container): TaskRepository {
     return new TaskRepository($container->get('db'));
 };
 
-/**
- * @param ContainerInterface $container
- * @return NoteService
- */
-$container['note_service'] = function ($container) {
+$container['note_service'] = function (ContainerInterface $container): NoteService {
     return new NoteService($container->get('note_repository'));
 };
 
-/**
- * @param ContainerInterface $container
- * @return NoteRepository
- */
-$container['note_repository'] = function ($container) {
+$container['note_repository'] = function (ContainerInterface $container): NoteRepository {
     return new NoteRepository($container->get('db'));
 };
