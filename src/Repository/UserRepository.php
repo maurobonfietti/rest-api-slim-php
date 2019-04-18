@@ -26,7 +26,7 @@ class UserRepository extends BaseRepository
      */
     public function checkAndGetUser($userId)
     {
-        $query = 'SELECT * FROM users WHERE id=:id';
+        $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();
@@ -46,7 +46,7 @@ class UserRepository extends BaseRepository
      */
     public function checkUserByEmail($email)
     {
-        $query = 'SELECT * FROM users WHERE email = :email';
+        $query = 'SELECT * FROM `users` WHERE `email` = :email';
         $statement = $this->database->prepare($query);
         $statement->bindParam('email', $email);
         $statement->execute();
@@ -63,7 +63,7 @@ class UserRepository extends BaseRepository
      */
     public function getUsers()
     {
-        $query = 'SELECT * FROM users ORDER BY id';
+        $query = 'SELECT `id`, `name`, `email` FROM `users` ORDER BY `id`';
         $statement = $this->database->prepare($query);
         $statement->execute();
 
@@ -79,7 +79,7 @@ class UserRepository extends BaseRepository
      */
     public function searchUsers($usersName)
     {
-        $query = 'SELECT * FROM users WHERE UPPER(name) LIKE :name ORDER BY id';
+        $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE UPPER(name) LIKE :name ORDER BY `id`';
         $name = '%' . $usersName . '%';
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $name);
@@ -102,7 +102,7 @@ class UserRepository extends BaseRepository
      */
     public function loginUser($email, $password)
     {
-        $query = 'SELECT * FROM users WHERE email = :email AND password = :password ORDER BY id';
+        $query = 'SELECT * FROM `users` WHERE `email` = :email AND `password` = :password ORDER BY `id`';
         $statement = $this->database->prepare($query);
         $statement->bindParam('email', $email);
         $statement->bindParam('password', $password);
@@ -123,7 +123,7 @@ class UserRepository extends BaseRepository
      */
     public function createUser($user)
     {
-        $query = 'INSERT INTO users (name, email, password) VALUES (:name, :email, :password)';
+        $query = 'INSERT INTO `users` (`name`, `email`, `password`) VALUES (:name, :email, :password)';
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $user->name);
         $statement->bindParam('email', $user->email);
@@ -141,7 +141,7 @@ class UserRepository extends BaseRepository
      */
     public function updateUser($user)
     {
-        $query = 'UPDATE users SET name=:name, email=:email WHERE id=:id';
+        $query = 'UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $user->id);
         $statement->bindParam('name', $user->name);
@@ -159,7 +159,7 @@ class UserRepository extends BaseRepository
      */
     public function deleteUser($userId)
     {
-        $query = 'DELETE FROM users WHERE id=:id';
+        $query = 'DELETE FROM `users` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();

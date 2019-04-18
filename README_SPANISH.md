@@ -142,6 +142,4 @@ Para más información sobre el modo de uso de la API REST, ver la siguiente doc
 
 ## VER ONLINE:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](http://bit.ly/2DdwKkd)
-
 Ver [demo online](http://bit.ly/2DdwKkd) hosteado en Heroku.

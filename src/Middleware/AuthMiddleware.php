@@ -3,29 +3,19 @@
 namespace App\Middleware;
 
 use App\Exception\AuthException;
-use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
+use Slim\Http\Request;
+use Slim\Http\Response;
 use \Firebase\JWT\JWT;
 
 class AuthMiddleware
 {
     /**
-     * @var ContainerInterface
-     */
-    protected $container;
-
-    public function __construct($container)
-    {
-        $this->container = $container;
-    }
-
-    /**
-     * @param ServerRequestInterface $request
-     * @param ResponseInterface $response PSR7 response
-     * @param callable $next Next middleware
-     * @throws TokenRequiredException
+     * @param Request $request
+     * @param Response $response
+     * @param callable $next
      * @return ResponseInterface
+     * @throws AuthException
      */
     public function __invoke($request, $response, $next)
     {
@@ -41,6 +31,11 @@ class AuthMiddleware
         return $next($request->withParsedBody($object), $response);
     }
 
+    /**
+     * @param string $token
+     * @return object
+     * @throws AuthException
+     */
     public function checkToken($token)
     {
         $auth = false;

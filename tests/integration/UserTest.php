@@ -20,7 +20,6 @@ class UserTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('email', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -38,7 +37,6 @@ class UserTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('email', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -56,7 +54,6 @@ class UserTest extends BaseTestCase
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('name', $result);
         $this->assertStringNotContainsString('email', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -74,7 +71,6 @@ class UserTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('email', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -114,7 +110,6 @@ class UserTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('email', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -224,7 +219,6 @@ class UserTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('email', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
