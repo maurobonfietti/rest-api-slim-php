@@ -5,7 +5,6 @@ namespace App\Controller;
 use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use \Predis\Client;
 
 abstract class BaseController
 {

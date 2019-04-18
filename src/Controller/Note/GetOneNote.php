@@ -5,20 +5,9 @@ namespace App\Controller\Note;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-/**
- * Get One Note Controller.
- */
 class GetOneNote extends BaseNote
 {
-    /**
-     * Get one note by id.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
-     */
-    public function __invoke($request, $response, $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $this->setParams($request, $response, $args);
         if ($this->useRedis() === true) {
@@ -32,9 +21,9 @@ class GetOneNote extends BaseNote
 
     /**
      * @param int $noteId
-     * @return object
+     * @return mixed
      */
-    private function getNoteFromCache($noteId)
+    private function getNoteFromCache(int $noteId)
     {
         $note = $this->getFromCache($noteId);
         if ($note === null) {

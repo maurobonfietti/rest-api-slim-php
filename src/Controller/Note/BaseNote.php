@@ -6,9 +6,6 @@ use App\Controller\BaseController;
 use App\Service\NoteService;
 use Slim\Container;
 
-/**
- * Base Note Controller.
- */
 abstract class BaseNote extends BaseController
 {
     const KEY = 'rest-api-slim-php:note:';
@@ -18,18 +15,12 @@ abstract class BaseNote extends BaseController
      */
     protected $noteService;
 
-    /**
-     * @param Container $container
-     */
     public function __construct(Container $container)
     {
         $this->container = $container;
     }
 
-    /**
-     * @return NoteService
-     */
-    protected function getNoteService()
+    protected function getNoteService(): NoteService
     {
         return $this->container->get('note_service');
     }
