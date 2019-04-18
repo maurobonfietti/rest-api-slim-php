@@ -141,6 +141,4 @@ For more information on how to use the REST API, see the following documentation
 
 ## GIVE IT A TRY:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](http://bit.ly/2DdwKkd)
-
 Check it out to this [live demo](http://bit.ly/2DdwKkd) hosted on Heroku.
