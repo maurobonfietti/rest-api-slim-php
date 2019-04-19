@@ -5,20 +5,9 @@ namespace App\Controller\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-/**
- * Get One User Controller.
- */
 class GetOneUser extends BaseUser
 {
-    /**
-     * Get one user by id.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
-     */
-    public function __invoke($request, $response, $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $this->setParams($request, $response, $args);
         if ($this->useRedis() === true) {
@@ -32,9 +21,9 @@ class GetOneUser extends BaseUser
 
     /**
      * @param int $userId
-     * @return object
+     * @return mixed
      */
-    private function getUserFromCache($userId)
+    private function getUserFromCache(int $userId)
     {
         $user = $this->getFromCache($userId);
         if ($user === null) {
