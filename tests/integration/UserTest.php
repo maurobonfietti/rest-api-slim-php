@@ -210,7 +210,7 @@ class UserTest extends BaseTestCase
         $result0 = (string) $response0->getBody();
         self::$jwt = json_decode($result0)->message->Authorization;
 
-        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id, ['name' => 'Stu']);
+        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id, ['name' => 'Stu', 'email' => 'estu@gmail.com']);
 
         $result = (string) $response->getBody();
 
