@@ -4,28 +4,14 @@ namespace App\Repository;
 
 use App\Exception\TaskException;
 
-/**
- * Tasks Repository.
- */
 class TaskRepository extends BaseRepository
 {
-    /**
-     * @param \PDO $database
-     */
     public function __construct(\PDO $database)
     {
         $this->database = $database;
     }
 
-    /**
-     * Check if the task exists.
-     *
-     * @param int|string $taskId
-     * @param int $userId
-     * @return object
-     * @throws TaskException
-     */
-    public function checkAndGetTask($taskId, $userId)
+    public function checkAndGetTask(int $taskId, int $userId)
     {
         $query = 'SELECT * FROM tasks WHERE id = :id AND userId = :userId';
         $statement = $this->getDb()->prepare($query);
@@ -40,13 +26,7 @@ class TaskRepository extends BaseRepository
         return $task;
     }
 
-    /**
-     * Get all tasks of an user.
-     *
-     * @param int $userId
-     * @return array
-     */
-    public function getTasks($userId)
+    public function getTasks(int $userId): array
     {
         $query = 'SELECT * FROM tasks WHERE userId = :userId ORDER BY id';
         $statement = $this->getDb()->prepare($query);
@@ -56,15 +36,7 @@ class TaskRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    /**
-     * Search tasks by name.
-     *
-     * @param string $tasksName
-     * @param int $userId
-     * @return array
-     * @throws TaskException
-     */
-    public function searchTasks($tasksName, $userId)
+    public function searchTasks(string $tasksName, int $userId): array
     {
         $query = 'SELECT * FROM tasks WHERE UPPER(name) LIKE :name AND userId = :userId ORDER BY id';
         $name = '%' . $tasksName . '%';
@@ -80,12 +52,6 @@ class TaskRepository extends BaseRepository
         return $tasks;
     }
 
-    /**
-     * Create a task.
-     *
-     * @param object $task
-     * @return object
-     */
     public function createTask($task)
     {
         $query = 'INSERT INTO tasks (name, status, userId) VALUES (:name, :status, :userId)';
@@ -98,12 +64,6 @@ class TaskRepository extends BaseRepository
         return $this->checkAndGetTask($this->database->lastInsertId(), $task->userId);
     }
 
-    /**
-     * Update a task.
-     *
-     * @param object $task
-     * @return object
-     */
     public function updateTask($task)
     {
         $query = 'UPDATE tasks SET name=:name, status=:status WHERE id=:id AND userId = :userId';
@@ -117,14 +77,7 @@ class TaskRepository extends BaseRepository
         return $this->checkAndGetTask($task->id, $task->userId);
     }
 
-    /**
-     * Delete a task.
-     *
-     * @param int $taskId
-     * @param int $userId
-     * @return string
-     */
-    public function deleteTask($taskId, $userId)
+    public function deleteTask(int $taskId, int $userId): string
     {
         $query = 'DELETE FROM tasks WHERE id = :id AND userId = :userId';
         $statement = $this->getDb()->prepare($query);
