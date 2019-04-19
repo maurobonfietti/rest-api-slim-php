@@ -6,9 +6,6 @@ use App\Exception\UserException;
 use App\Repository\UserRepository;
 use \Firebase\JWT\JWT;
 
-/**
- * Users Service.
- */
 class UserService extends BaseService
 {
     /**
@@ -16,64 +13,31 @@ class UserService extends BaseService
      */
     protected $userRepository;
 
-    /**
-     * @param UserRepository $userRepository
-     */
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }
 
-    /**
-     * Check if the user exists.
-     *
-     * @param int $userId
-     * @return object
-     */
-    protected function checkAndGetUser($userId)
+    protected function checkAndGetUser(int $userId)
     {
         return $this->userRepository->checkAndGetUser($userId);
     }
 
-    /**
-     * Get all users.
-     *
-     * @return array
-     */
-    public function getUsers()
+    public function getUsers(): array
     {
         return $this->userRepository->getUsers();
     }
 
-    /**
-     * Get one user by id.
-     *
-     * @param int $userId
-     * @return object
-     */
-    public function getUser($userId)
+    public function getUser(int $userId)
     {
         return $this->checkAndGetUser($userId);
     }
 
-    /**
-     * Search users by name.
-     *
-     * @param string $usersName
-     * @return array
-     */
-    public function searchUsers($usersName)
+    public function searchUsers(string $usersName): array
     {
         return $this->userRepository->searchUsers($usersName);
     }
 
-    /**
-     * Create a user.
-     *
-     * @param array $input
-     * @return object
-     * @throws UserException
-     */
     public function createUser($input)
     {
         $user = new \stdClass();
@@ -95,15 +59,7 @@ class UserService extends BaseService
         return $this->userRepository->createUser($user);
     }
 
-    /**
-     * Update a user.
-     *
-     * @param array $input
-     * @param int $userId
-     * @return object
-     * @throws UserException
-     */
-    public function updateUser($input, $userId)
+    public function updateUser(array $input, int $userId)
     {
         $user = $this->checkAndGetUser($userId);
         $data = json_decode(json_encode($input), false);
@@ -120,26 +76,14 @@ class UserService extends BaseService
         return $this->userRepository->updateUser($user);
     }
 
-    /**
-     * Delete a user.
-     *
-     * @param int $userId
-     * @return string
-     */
-    public function deleteUser($userId)
+    public function deleteUser(int $userId): string
     {
         $this->checkAndGetUser($userId);
 
         return $this->userRepository->deleteUser($userId);
     }
 
-    /**
-     * Login.
-     *
-     * @param array $input
-     * @return string
-     */
-    public function loginUser($input)
+    public function loginUser(array $input): string
     {
         $data = json_decode(json_encode($input), false);
         $password = hash('sha512', $data->password);

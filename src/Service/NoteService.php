@@ -5,9 +5,6 @@ namespace App\Service;
 use App\Exception\NoteException;
 use App\Repository\NoteRepository;
 
-/**
- * Notes Service.
- */
 class NoteService extends BaseService
 {
     /**
@@ -15,64 +12,31 @@ class NoteService extends BaseService
      */
     protected $noteRepository;
 
-    /**
-     * @param NoteRepository $noteRepository
-     */
     public function __construct(NoteRepository $noteRepository)
     {
         $this->noteRepository = $noteRepository;
     }
 
-    /**
-     * Check if the note exists.
-     *
-     * @param int $noteId
-     * @return object
-     */
-    protected function checkAndGetNote($noteId)
+    protected function checkAndGetNote(int $noteId)
     {
         return $this->noteRepository->checkAndGetNote($noteId);
     }
 
-    /**
-     * Get all notes.
-     *
-     * @return array
-     */
-    public function getNotes()
+    public function getNotes(): array
     {
         return $this->noteRepository->getNotes();
     }
 
-    /**
-     * Get one note by id.
-     *
-     * @param int $noteId
-     * @return object
-     */
-    public function getNote($noteId)
+    public function getNote(int $noteId)
     {
         return $this->checkAndGetNote($noteId);
     }
 
-    /**
-     * Search notes by name.
-     *
-     * @param string $notesName
-     * @return array
-     */
-    public function searchNotes($notesName)
+    public function searchNotes(string $notesName): array
     {
         return $this->noteRepository->searchNotes($notesName);
     }
 
-    /**
-     * Create a note.
-     *
-     * @param array $input
-     * @return object
-     * @throws NoteException
-     */
     public function createNote($input)
     {
         $note = new \stdClass();
@@ -89,15 +53,7 @@ class NoteService extends BaseService
         return $this->noteRepository->createNote($note);
     }
 
-    /**
-     * Update a note.
-     *
-     * @param array $input
-     * @param int $noteId
-     * @return object
-     * @throws NoteException
-     */
-    public function updateNote($input, $noteId)
+    public function updateNote($input, int $noteId)
     {
         $note = $this->checkAndGetNote($noteId);
         $data = json_decode(json_encode($input), false);
@@ -114,12 +70,7 @@ class NoteService extends BaseService
         return $this->noteRepository->updateNote($note);
     }
 
-    /**
-     * Delete a note.
-     *
-     * @param int $noteId
-     */
-    public function deleteNote($noteId)
+    public function deleteNote(int $noteId)
     {
         $this->checkAndGetNote($noteId);
         $this->noteRepository->deleteNote($noteId);
