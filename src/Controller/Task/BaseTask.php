@@ -6,9 +6,6 @@ use App\Controller\BaseController;
 use App\Service\TaskService;
 use Slim\Container;
 
-/**
- * Base Task Controller.
- */
 abstract class BaseTask extends BaseController
 {
     /**
@@ -16,18 +13,12 @@ abstract class BaseTask extends BaseController
      */
     protected $taskService;
 
-    /**
-     * @param Container $container
-     */
     public function __construct(Container $container)
     {
         $this->taskService = $container->get('task_service');
     }
 
-    /**
-     * @return TaskService
-     */
-    protected function getTaskService()
+    protected function getTaskService(): TaskService
     {
         return $this->taskService;
     }

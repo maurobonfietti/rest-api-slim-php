@@ -5,20 +5,9 @@ namespace App\Controller\Task;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-/**
- * Create Task Controller.
- */
 class CreateTask extends BaseTask
 {
-    /**
-     * Create a task.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
-     */
-    public function __invoke($request, $response, $args)
+    public function __invoke(Request $request, Response $response, array $args): Response
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
