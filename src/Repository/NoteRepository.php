@@ -4,27 +4,14 @@ namespace App\Repository;
 
 use App\Exception\NoteException;
 
-/**
- * Notes Repository.
- */
 class NoteRepository extends BaseRepository
 {
-    /**
-     * @param \PDO $database
-     */
     public function __construct(\PDO $database)
     {
         $this->database = $database;
     }
 
-    /**
-     * Check if the note exists.
-     *
-     * @param int|string $noteId
-     * @return object
-     * @throws NoteException
-     */
-    public function checkAndGetNote($noteId)
+    public function checkAndGetNote(int $noteId)
     {
         $query = 'SELECT * FROM notes WHERE id = :id';
         $statement = $this->database->prepare($query);
@@ -38,12 +25,7 @@ class NoteRepository extends BaseRepository
         return $note;
     }
 
-    /**
-     * Get all notes.
-     *
-     * @return array
-     */
-    public function getNotes()
+    public function getNotes(): array
     {
         $query = 'SELECT * FROM notes ORDER BY id';
         $statement = $this->database->prepare($query);
@@ -52,14 +34,7 @@ class NoteRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    /**
-     * Search notes by name.
-     *
-     * @param string $strNotes
-     * @return array
-     * @throws NoteException
-     */
-    public function searchNotes($strNotes)
+    public function searchNotes(string $strNotes): array
     {
         $query = 'SELECT * FROM notes WHERE UPPER(name) LIKE :name OR UPPER(description) LIKE :description ORDER BY id';
         $name = '%' . $strNotes . '%';
@@ -76,12 +51,6 @@ class NoteRepository extends BaseRepository
         return $notes;
     }
 
-    /**
-     * Create a note.
-     *
-     * @param object $data
-     * @return object
-     */
     public function createNote($data)
     {
         $query = 'INSERT INTO notes (name, description) VALUES (:name, :description)';
@@ -93,12 +62,6 @@ class NoteRepository extends BaseRepository
         return $this->checkAndGetNote($this->database->lastInsertId());
     }
 
-    /**
-     * Update a note.
-     *
-     * @param object $note
-     * @return object
-     */
     public function updateNote($note)
     {
         $query = 'UPDATE notes SET name = :name, description = :description WHERE id = :id';
@@ -111,12 +74,7 @@ class NoteRepository extends BaseRepository
         return $this->checkAndGetNote($note->id);
     }
 
-    /**
-     * Delete a note.
-     *
-     * @param int $noteId
-     */
-    public function deleteNote($noteId)
+    public function deleteNote(int $noteId)
     {
         $query = 'DELETE FROM notes WHERE id = :id';
         $statement = $this->database->prepare($query);

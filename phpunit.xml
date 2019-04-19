@@ -8,6 +8,7 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
             <exclude>
+                <directory suffix="App.php">src/App</directory>
                 <directory suffix=".php">tests</directory>
                 <directory suffix=".php">vendor</directory>
             </exclude>

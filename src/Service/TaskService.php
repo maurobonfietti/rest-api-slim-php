@@ -5,9 +5,6 @@ namespace App\Service;
 use App\Exception\TaskException;
 use App\Repository\TaskRepository;
 
-/**
- * Tasks Service.
- */
 class TaskService extends BaseService
 {
     /**
@@ -15,76 +12,37 @@ class TaskService extends BaseService
      */
     protected $taskRepository;
 
-    /**
-     * @param TaskRepository $taskRepository
-     */
     public function __construct(TaskRepository $taskRepository)
     {
         $this->taskRepository = $taskRepository;
     }
 
-    /**
-     * @return TaskRepository
-     */
-    protected function getTaskRepository()
+    protected function getTaskRepository(): TaskRepository
     {
         return $this->taskRepository;
     }
 
-    /**
-     * Check if the task exists.
-     *
-     * @param int $taskId
-     * @param int $userId
-     * @return object
-     */
-    protected function checkAndGetTask($taskId, $userId)
+    protected function checkAndGetTask(int $taskId, int $userId)
     {
         return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 
-    /**
-     * Get all tasks of an user.
-     * @param int $userId
-     * @return array
-     */
-    public function getTasks($userId)
+    public function getTasks(int $userId): array
     {
         return $this->getTaskRepository()->getTasks($userId);
     }
 
-    /**
-     * Get one task by id.
-     *
-     * @param int $taskId
-     * @param int $userId
-     * @return object
-     */
-    public function getTask($taskId, $userId)
+    public function getTask(int $taskId, int $userId)
     {
         return $this->checkAndGetTask($taskId, $userId);
     }
 
-    /**
-     * Search tasks by name.
-     *
-     * @param string $tasksName
-     * @param int $userId
-     * @return array
-     */
-    public function searchTasks($tasksName, $userId)
+    public function searchTasks(string $tasksName, int $userId): array
     {
         return $this->getTaskRepository()->searchTasks($tasksName, $userId);
     }
 
-    /**
-     * Create a task.
-     *
-     * @param array $input
-     * @return object
-     * @throws TaskException
-     */
-    public function createTask($input)
+    public function createTask(array $input)
     {
         $task = new \stdClass();
         $data = json_decode(json_encode($input), false);
@@ -101,15 +59,7 @@ class TaskService extends BaseService
         return $this->getTaskRepository()->createTask($task);
     }
 
-    /**
-     * Update a task.
-     *
-     * @param array $input
-     * @param int $taskId
-     * @return object
-     * @throws TaskException
-     */
-    public function updateTask($input, $taskId)
+    public function updateTask(array $input, int $taskId)
     {
         $task = $this->checkAndGetTask($taskId, $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
@@ -127,14 +77,7 @@ class TaskService extends BaseService
         return $this->getTaskRepository()->updateTask($task);
     }
 
-    /**
-     * Delete a task.
-     *
-     * @param int $taskId
-     * @param int $userId
-     * @return string
-     */
-    public function deleteTask($taskId, $userId)
+    public function deleteTask(int $taskId, int $userId): string
     {
         $this->checkAndGetTask($taskId, $userId);
 

@@ -13,11 +13,11 @@ class AuthMiddleware
     /**
      * @param Request $request
      * @param Response $response
-     * @param callable $next
+     * @param Callable $next
      * @return ResponseInterface
      * @throws AuthException
      */
-    public function __invoke($request, $response, $next)
+    public function __invoke(Request $request, Response $response, $next): ResponseInterface
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
         $jwt = explode('Bearer ', $jwtHeader)[1];
@@ -33,10 +33,10 @@ class AuthMiddleware
 
     /**
      * @param string $token
-     * @return object
+     * @return mixed
      * @throws AuthException
      */
-    public function checkToken($token)
+    public function checkToken(string $token)
     {
         $auth = false;
 

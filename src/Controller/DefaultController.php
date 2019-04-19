@@ -6,30 +6,16 @@ use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-/**
- * Default Controller.
- */
 class DefaultController extends BaseController
 {
     const API_VERSION = '19.04';
 
-    /**
-     * @param Container $container
-     */
     public function __construct(Container $container)
     {
         $this->container = $container;
     }
 
-    /**
-     * Get Help.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
-     */
-    public function getHelp($request, $response, $args)
+    public function getHelp(Request $request, Response $response, array $args): Response
     {
         $this->setParams($request, $response, $args);
         $url = getenv('APP_DOMAIN');
@@ -49,15 +35,7 @@ class DefaultController extends BaseController
         return $this->jsonResponse('success', $message, 200);
     }
 
-    /**
-     * Get API Status.
-     *
-     * @param Request $request
-     * @param Response $response
-     * @param array $args
-     * @return Response
-     */
-    public function getStatus($request, $response, $args)
+    public function getStatus(Request $request, Response $response, array $args): Response
     {
         $this->setParams($request, $response, $args);
         $userService = $this->container->get('user_service');
