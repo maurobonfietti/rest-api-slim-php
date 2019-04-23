@@ -127,6 +127,50 @@ OK (55 tests, 290 assertions)
 
 ## DOCUMENTATION:
 
+### ENDPOINTS:
+
+```
+// Get Help.
+GET /
+
+// Get Status.
+GET /status
+
+// Login User.
+GET /login
+
+// Create User.
+POST /api/v1/users
+
+// Update User.
+PUT /api/v1/users/{id}
+
+// Delete User.
+DELETE /api/v1/users/{id}
+
+// Get All Tasks.
+GET /api/v1/tasks
+
+// Get One Task.
+GET /api/v1/tasks/{id}
+
+// Search Tasks.
+GET /api/v1/tasks/search/{string}
+
+// Create Task.
+POST /api/v1/tasks
+
+// Update Task.
+PUT /api/v1/tasks/{id}
+
+// Delete Task.
+DELETE /api/v1/tasks/{id}
+
+```
+
+You can see the full list of [endpoints](extras/docs/endpoints.md).
+
+
 ### IMPORT WITH POSTMAN:
 
 All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
