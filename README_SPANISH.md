@@ -126,7 +126,7 @@ OK (55 tests, 290 assertions)
 ```
 
 
-## DOCUMENTATION:
+## DOCUMENTACIÓN:
 
 ### ENDPOINTS:
 
