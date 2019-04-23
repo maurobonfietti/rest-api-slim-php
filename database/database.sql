@@ -66,7 +66,7 @@ CREATE TABLE `notes` (
 -- Records of notes
 -- ----------------------------
 INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('1', 'My Note 1', 'My first online note');
-INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('2', 'Note 2', null);
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('2', 'Chinese Proverb', 'Those who say it can not be done, should not interrupt those doing it.');
 INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('3', 'Long Note 3', 'This is a very large note, or maybe not...');
-INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('4', 'Note Number 4', null);
+INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('4', 'Napoleon Hill', 'Whatever the mind of man can conceive and believe, it can achieve.');
 INSERT INTO `notes` (`id`, `name`, `description`) VALUES ('5', 'Note 5', 'A Random Note');
