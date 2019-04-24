@@ -79,6 +79,7 @@ class UserService extends BaseService
     public function deleteUser(int $userId): string
     {
         $this->checkAndGetUser($userId);
+        $this->userRepository->deleteUserTasks($userId);
 
         return $this->userRepository->deleteUser($userId);
     }
