@@ -109,4 +109,12 @@ class UserRepository extends BaseRepository
 
         return 'The user was deleted.';
     }
+
+    public function deleteUserTasks(int $userId)
+    {
+        $query = 'DELETE FROM `tasks` WHERE `userId` = :userId';
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('userId', $userId);
+        $statement->execute();
+    }
 }
