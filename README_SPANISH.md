@@ -130,65 +130,29 @@ OK (55 tests, 290 assertions)
 
 ### ENDPOINTS:
 
-- Get Help:
-```
-GET /
-```
+- Get Help: `GET /`
 
-- Get Status:
-```
-GET /status
-```
+- Get Status: `GET /status`
 
-- Login User:
-```
-POST /login
-```
+- Login User: `POST /login`
 
-- Create User:
-```
-POST /api/v1/users
-```
+- Create User: `POST /api/v1/users`
 
-- Update User:
-```
-PUT /api/v1/users/{id}
-```
+- Update User: `PUT /api/v1/users/{id}`
 
-- Delete User:
-```
-DELETE /api/v1/users/{id}
-```
+- Delete User: `DELETE /api/v1/users/{id}`
 
-- Get All Tasks:
-```
-GET /api/v1/tasks
-```
+- Get All Tasks: `GET /api/v1/tasks`
 
-- Get One Task:
-```
-GET /api/v1/tasks/{id}
-```
+- Get One Task: `GET /api/v1/tasks/{id}`
 
-- Search Tasks:
-```
-GET /api/v1/tasks/search/{string}
-```
+- Search Tasks: `GET /api/v1/tasks/search/{string}`
 
-- Create Task:
-```
-POST /api/v1/tasks
-```
+- Create Task: `POST /api/v1/tasks`
 
-- Update Task:
-```
-PUT /api/v1/tasks/{id}
-```
+- Update Task: `PUT /api/v1/tasks/{id}`
 
-- Delete Task:
-```
-DELETE /api/v1/tasks/{id}
-```
+- Delete Task: `DELETE /api/v1/tasks/{id}`
 
 Ver la lista completa de [endpoints](extras/docs/endpoints.md).
 
