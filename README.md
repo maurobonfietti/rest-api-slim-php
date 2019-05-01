@@ -129,9 +129,9 @@ OK (55 tests, 290 assertions)
 
 ### ENDPOINTS:
 
-- Get Help: `GET /`
+- Help: `GET /`
 
-- Get Status: `GET /status`
+- Status: `GET /status`
 
 - Login User: `POST /login`
 
@@ -153,7 +153,7 @@ OK (55 tests, 290 assertions)
 
 - Delete Task: `DELETE /api/v1/tasks/{id}`
 
-You can see the full list of [endpoints](extras/docs/endpoints.md).
+You can see the API documentation with the full list of [endpoints](extras/docs/endpoints.md).
 
 
 ### IMPORT WITH POSTMAN:
@@ -165,9 +165,7 @@ All the information of the API, prepared to download and use as postman collecti
 
 ### HELP AND DOCS:
 
-For more information on how to use the REST API, see the following document: [User's Manual](extras/docs/endpoints.md).
-
-Documentation also available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
+For more information on how to use the REST API, see the following documentation available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
 
 
 ## GIVE IT A TRY:
