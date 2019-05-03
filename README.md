@@ -129,6 +129,8 @@ OK (55 tests, 290 assertions)
 
 ### ENDPOINTS:
 
+[You can see the API documentation with the full list of endpoints](extras/docs/endpoints.md).
+
 - Help: `GET /`
 
 - Status: `GET /status`
@@ -152,8 +154,6 @@ OK (55 tests, 290 assertions)
 - Update Task: `PUT /api/v1/tasks/{id}`
 
 - Delete Task: `DELETE /api/v1/tasks/{id}`
-
-You can see the API documentation with the full list of [endpoints](extras/docs/endpoints.md).
 
 
 ### IMPORT WITH POSTMAN:
