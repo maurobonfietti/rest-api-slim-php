@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Task;
 
@@ -11,8 +11,9 @@ class GetOneTask extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $userId = $input['decoded']->sub;
-        $task = $this->getTaskService()->getTask($this->args['id'], $userId);
+        $taskId = (int) $this->args['id'];
+        $userId = (int) $input['decoded']->sub;
+        $task = $this->getTaskService()->getTask($taskId, $userId);
 
         return $this->jsonResponse('success', $task, 200);
     }

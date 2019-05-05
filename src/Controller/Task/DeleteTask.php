@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Task;
 
@@ -11,8 +11,8 @@ class DeleteTask extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $taskId = $this->args['id'];
-        $userId = $input['decoded']->sub;
+        $taskId = (int) $this->args['id'];
+        $userId = (int) $input['decoded']->sub;
         $task = $this->getTaskService()->deleteTask($taskId, $userId);
 
         return $this->jsonResponse('success', $task, 204);

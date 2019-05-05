@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Task;
 
@@ -11,7 +11,7 @@ class SearchTasks extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $userId = $input['decoded']->sub;
+        $userId = (int) $input['decoded']->sub;
         $tasks = $this->getTaskService()->searchTasks($this->args['query'], $userId);
 
         return $this->jsonResponse('success', $tasks, 200);
