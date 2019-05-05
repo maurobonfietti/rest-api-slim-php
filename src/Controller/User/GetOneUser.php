@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\User;
 
@@ -11,9 +11,9 @@ class GetOneUser extends BaseUser
     {
         $this->setParams($request, $response, $args);
         if ($this->useRedis() === true) {
-            $user = $this->getUserFromCache($this->args['id']);
+            $user = $this->getUserFromCache((int) $this->args['id']);
         } else {
-            $user = $this->getUserService()->getUser($this->args['id']);
+            $user = $this->getUserService()->getUser((int) $this->args['id']);
         }
 
         return $this->jsonResponse('success', $user, 200);
