@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -85,7 +85,7 @@ class UserRepository extends BaseRepository
         $statement->bindParam('password', $user->password);
         $statement->execute();
 
-        return $this->checkAndGetUser($this->database->lastInsertId());
+        return $this->checkAndGetUser((int) $this->database->lastInsertId());
     }
 
     public function updateUser($user)
@@ -97,7 +97,7 @@ class UserRepository extends BaseRepository
         $statement->bindParam('email', $user->email);
         $statement->execute();
 
-        return $this->checkAndGetUser($user->id);
+        return $this->checkAndGetUser((int) $user->id);
     }
 
     public function deleteUser(int $userId): string

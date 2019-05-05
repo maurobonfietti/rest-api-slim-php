@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -61,7 +61,7 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $task->userId);
         $statement->execute();
 
-        return $this->checkAndGetTask($this->database->lastInsertId(), $task->userId);
+        return $this->checkAndGetTask((int) $this->database->lastInsertId(), (int) $task->userId);
     }
 
     public function updateTask($task)
@@ -74,7 +74,7 @@ class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $task->userId);
         $statement->execute();
 
-        return $this->checkAndGetTask($task->id, $task->userId);
+        return $this->checkAndGetTask((int) $task->id, (int) $task->userId);
     }
 
     public function deleteTask(int $taskId, int $userId): string
