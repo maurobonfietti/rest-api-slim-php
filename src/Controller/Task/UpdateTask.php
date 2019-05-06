@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Task;
 
@@ -11,7 +11,7 @@ class UpdateTask extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $task = $this->getTaskService()->updateTask($input, $this->args['id']);
+        $task = $this->getTaskService()->updateTask($input, (int) $this->args['id']);
 
         return $this->jsonResponse('success', $task, 200);
     }

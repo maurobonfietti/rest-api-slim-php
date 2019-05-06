@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Note;
 
@@ -13,7 +13,7 @@ class CreateNote extends BaseNote
         $input = $this->getInput();
         $note = $this->getNoteService()->createNote($input);
         if ($this->useRedis() === true) {
-            $this->saveInCache($note->id, $note);
+            $this->saveInCache((int) $note->id, $note);
         }
 
         return $this->jsonResponse('success', $note, 201);

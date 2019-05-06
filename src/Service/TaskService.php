@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Service;
 
@@ -61,7 +61,7 @@ class TaskService extends BaseService
 
     public function updateTask(array $input, int $taskId)
     {
-        $task = $this->checkAndGetTask($taskId, $input['decoded']->sub);
+        $task = $this->checkAndGetTask($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->status)) {
             throw new TaskException('Enter the data to update the task.', 400);

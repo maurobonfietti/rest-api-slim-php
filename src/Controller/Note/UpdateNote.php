@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Note;
 
@@ -11,9 +11,9 @@ class UpdateNote extends BaseNote
     {
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
-        $note = $this->getNoteService()->updateNote($input, $this->args['id']);
+        $note = $this->getNoteService()->updateNote($input, (int) $this->args['id']);
         if ($this->useRedis() === true) {
-            $this->saveInCache($this->args['id'], $note);
+            $this->saveInCache((int) $this->args['id'], $note);
         }
 
         return $this->jsonResponse('success', $note, 200);

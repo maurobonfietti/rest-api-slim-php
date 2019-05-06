@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\Note;
 
@@ -11,9 +11,9 @@ class GetOneNote extends BaseNote
     {
         $this->setParams($request, $response, $args);
         if ($this->useRedis() === true) {
-            $note = $this->getNoteFromCache($this->args['id']);
+            $note = $this->getNoteFromCache((int) $this->args['id']);
         } else {
-            $note = $this->getNoteService()->getNote($this->args['id']);
+            $note = $this->getNoteService()->getNote((int) $this->args['id']);
         }
 
         return $this->jsonResponse('success', $note, 200);

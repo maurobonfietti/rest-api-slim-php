@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Repository;
 
@@ -59,7 +59,7 @@ class NoteRepository extends BaseRepository
         $statement->bindParam(':description', $data->description);
         $statement->execute();
 
-        return $this->checkAndGetNote($this->database->lastInsertId());
+        return $this->checkAndGetNote((int) $this->database->lastInsertId());
     }
 
     public function updateNote($note)
@@ -71,7 +71,7 @@ class NoteRepository extends BaseRepository
         $statement->bindParam(':description', $note->description);
         $statement->execute();
 
-        return $this->checkAndGetNote($note->id);
+        return $this->checkAndGetNote((int) $note->id);
     }
 
     public function deleteNote(int $noteId)

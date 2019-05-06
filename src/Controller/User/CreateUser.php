@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller\User;
 
@@ -13,7 +13,7 @@ class CreateUser extends BaseUser
         $input = $this->getInput();
         $user = $this->getUserService()->createUser($input);
         if ($this->useRedis() === true) {
-            $this->saveInCache($user->id, $user);
+            $this->saveInCache((int) $user->id, $user);
         }
 
         return $this->jsonResponse('success', $user, 201);

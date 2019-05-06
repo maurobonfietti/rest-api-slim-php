@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tests\integration;
 
@@ -48,7 +48,7 @@ class UserServiceTest extends BaseTestCase
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $userService = new \App\Service\UserService($userRepository);
         $userId = self::$id;
-        $user = $userService->deleteUser($userId);
+        $user = $userService->deleteUser((int) $userId);
         $this->assertStringContainsString('The user was deleted.', $user);
     }
 }
