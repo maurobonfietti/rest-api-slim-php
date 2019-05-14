@@ -115,11 +115,11 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 Access the root of the project and run all tests PHPUnit with `composer test`.
 
 ```bash
-PHPUnit 8.0.5 by Sebastian Bergmann and contributors.
+PHPUnit 8.1.4 by Sebastian Bergmann and contributors.
 
 .......................................................           55 / 55 (100%)
 
-Time: 2.02 seconds, Memory: 12.00 MB
+Time: 171 ms, Memory: 12.00 MB
 
 OK (55 tests, 290 assertions)
 ```

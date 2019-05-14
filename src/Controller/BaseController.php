@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -79,6 +79,9 @@ abstract class BaseController
         $redis = $this->getRedisClient();
         $key = $this::KEY . $id;
         $value = $redis->get($key);
+        if ($value === null) {
+            return null;
+        }
 
         return json_decode($value);
     }
