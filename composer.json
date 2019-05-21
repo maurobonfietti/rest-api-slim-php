@@ -1,5 +1,5 @@
 {
-    "name": "rest-api-slim-php",
+    "name": "maurobonfietti/rest-api-slim-php",
     "description": "Example of REST API with Slim PHP Framework.",
     "keywords": ["php", "slim-micro-framework", "rest-api", "mysql", "slim3", "slim", "rest", "api"],
     "homepage": "https://github.com/maurobonfietti/rest-api-slim-php",
