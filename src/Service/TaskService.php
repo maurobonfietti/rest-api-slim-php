@@ -50,6 +50,10 @@ class TaskService extends BaseService
             throw new TaskException('The field "name" is required.', 400);
         }
         $task->name = self::validateTaskName($data->name);
+        $task->description = null;
+        if (isset($data->description)) {
+            $task->description = $data->description;
+        }
         $task->status = 0;
         if (isset($data->status)) {
             $task->status = self::validateTaskStatus($data->status);
@@ -68,6 +72,9 @@ class TaskService extends BaseService
         }
         if (isset($data->name)) {
             $task->name = self::validateTaskName($data->name);
+        }
+        if (isset($data->description)) {
+            $task->description = $data->description;
         }
         if (isset($data->status)) {
             $task->status = self::validateTaskStatus($data->status);
