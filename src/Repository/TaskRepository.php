@@ -54,9 +54,13 @@ class TaskRepository extends BaseRepository
 
     public function createTask($task)
     {
-        $query = 'INSERT INTO tasks (name, status, userId) VALUES (:name, :status, :userId)';
+        $query = '
+            INSERT INTO tasks (name, description, status, userId)
+            VALUES (:name, :description, :status, :userId)
+        ';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('name', $task->name);
+        $statement->bindParam('description', $task->description);
         $statement->bindParam('status', $task->status);
         $statement->bindParam('userId', $task->userId);
         $statement->execute();
@@ -66,10 +70,15 @@ class TaskRepository extends BaseRepository
 
     public function updateTask($task)
     {
-        $query = 'UPDATE tasks SET name=:name, status=:status WHERE id=:id AND userId = :userId';
+        $query = '
+            UPDATE tasks
+            SET name=:name, description=:description, status=:status
+            WHERE id=:id AND userId = :userId
+        ';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $task->id);
         $statement->bindParam('name', $task->name);
+        $statement->bindParam('description', $task->description);
         $statement->bindParam('status', $task->status);
         $statement->bindParam('userId', $task->userId);
         $statement->execute();
