@@ -16,6 +16,8 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 ## INSTALACIÓN:
 
+![Instalar](extras/img/how-to-install.gif)
+
 ### 1- Clonar el proyecto e instalar dependencias:
 
 ```bash

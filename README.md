@@ -15,6 +15,8 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 
 ## INSTALLATION:
 
+![How to install](extras/img/how-to-install.gif)
+
 ### 1- Clone project and install dependencies:
 
 ```bash
