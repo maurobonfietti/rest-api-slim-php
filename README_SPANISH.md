@@ -16,8 +16,6 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 ## INSTALACIÓN:
 
-![Instalar](extras/img/how-to-install.gif)
-
 ### 1- Clonar el proyecto e instalar dependencias:
 
 ```bash
@@ -73,6 +71,9 @@ SECRET_KEY='YourSuperSecret-KeY'
 ```
 
 
+![Instalar](extras/img/how-to-install.gif)
+
+
 ## SERVIDOR LOCAL:
 
 Se puede iniciar el servidor web interno de PHP ejecutando:
@@ -118,7 +119,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 Acceder a la raíz del proyecto y ejecutar los tests PHPUnit con `composer test`.
 
 ```bash
-PHPUnit 8.1.4 by Sebastian Bergmann and contributors.
+PHPUnit 8.1.5 by Sebastian Bergmann and contributors.
 
 .......................................................           55 / 55 (100%)
 
