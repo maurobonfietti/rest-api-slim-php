@@ -13,7 +13,7 @@ This simple RESTful API made in Slim version 3, allows CRUD operations to manage
 
 You can also read this [README IN SPANISH](README_SPANISH.md).
 
-More info about this project in my post [How to create a Rest API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/)
+More info about this project in my post: [How to create a REST API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
 
 ## INSTALLATION:
@@ -73,9 +73,6 @@ USE_REDIS_CACHE=false
 REDIS_URL=''
 SECRET_KEY='YourSuperSecret-KeY'
 ```
-
-
-![How to install](extras/img/how-to-install.gif)
 
 
 ## LOCAL SERVER:
