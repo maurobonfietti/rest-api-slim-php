@@ -11,12 +11,12 @@ Esta simple API RESTful hecha en Slim version 3, permite operaciones CRUD para a
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=maurobonfietti_rest-api-slim-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=maurobonfietti_rest-api-slim-php)
 
-
 También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
-## INSTALACIÓN:
+Más información sobre este proyecto en mi publicación [Cómo crear una API Rest con Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/)
 
-[How to install](https://www.loom.com/share/7a6c923fbfdd46368bd6c018c58c1e6c)
+
+## INSTALACIÓN:
 
 [![How to install](extras/img/how-to-install.png)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
 

@@ -13,9 +13,10 @@ This simple RESTful API made in Slim version 3, allows CRUD operations to manage
 
 You can also read this [README IN SPANISH](README_SPANISH.md).
 
-## INSTALLATION:
+More info about this project in my post [How to create a Rest API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/)
 
-[How to install](https://www.loom.com/share/7a6c923fbfdd46368bd6c018c58c1e6c)
+
+## INSTALLATION:
 
 [![How to install](extras/img/how-to-install.png)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
 
