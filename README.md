@@ -15,7 +15,7 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 
 ## INSTALLATION:
 
-<div style="position: relative; padding-bottom: 62.5%; height: 0;"><iframe src="https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+[![How to install](extras/img/how-to-install.png)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
 
 ### 1- Clone project and install dependencies:
 
