@@ -16,8 +16,7 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 ## INSTALACIÓN:
 
-<a href="https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c" target="_blank"><img src="extras/img/how-to-install.png" 
-alt="How to install" width="240" height="180" border="10" /></a>
+[How to install](https://www.loom.com/share/7a6c923fbfdd46368bd6c018c58c1e6c)
 
 [![How to install](extras/img/how-to-install.png)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
 
