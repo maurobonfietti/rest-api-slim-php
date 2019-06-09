@@ -18,7 +18,7 @@ Más información sobre este proyecto en mi publicación: [Cómo crear una API R
 
 ## INSTALACIÓN:
 
-[![How to install](extras/img/how-to-install.png)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
+[![How to install](extras/img/how-to-install-2.gif)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
 
 ### 1- Clonar el proyecto e instalar dependencias:
 

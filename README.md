@@ -18,7 +18,7 @@ More info about this project in my post: [How to create a REST API using Slim PH
 
 ## INSTALLATION:
 
-[![How to install](extras/img/how-to-install.png)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
+[![How to install](extras/img/how-to-install-2.gif)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
 
 ### 1- Clone project and install dependencies:
 
