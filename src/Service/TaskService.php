@@ -27,6 +27,11 @@ class TaskService extends BaseService
         return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 
+    public function getAllTasks(): array
+    {
+        return $this->getTaskRepository()->getAllTasks();
+    }
+
     public function getTasks(int $userId): array
     {
         return $this->getTaskRepository()->getTasks($userId);
