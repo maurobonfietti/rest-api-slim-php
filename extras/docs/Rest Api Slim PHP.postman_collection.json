@@ -32,10 +32,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}",
 							"host": [
@@ -44,7 +40,56 @@
 						},
 						"description": "Get help about this api."
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Help",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain-api-rest-slimphp}}",
+									"host": [
+										"{{domain-api-rest-slimphp}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 May 2019 19:23:31 +0000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Length",
+									"value": "488"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": {\n        \"endpoints\": {\n            \"tasks\": \"https://www.yourdomain.com/api/v1/tasks\",\n            \"users\": \"https://www.yourdomain.com/api/v1/users\",\n            \"notes\": \"https://www.yourdomain.com/api/v1/notes\",\n            \"status\": \"https://www.yourdomain.com/status\",\n            \"this help\": \"https://www.yourdomain.com\"\n        },\n        \"version\": \"0.22.0\",\n        \"timestamp\": 1558553011\n    }\n}"
+						}
+					]
 				},
 				{
 					"name": "Get Status",
@@ -69,10 +114,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/status",
 							"host": [
@@ -84,7 +125,59 @@
 						},
 						"description": "Get status of this api."
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Get Status",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{domain-api-rest-slimphp}}/status",
+									"host": [
+										"{{domain-api-rest-slimphp}}"
+									],
+									"path": [
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Jun 2019 03:28:22 +0000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Length",
+									"value": "228"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": {\n        \"db\": {\n            \"users\": 9,\n            \"tasks\": 10,\n            \"notes\": 5\n        },\n        \"version\": \"0.22.2\",\n        \"timestamp\": 1560137302\n    }\n}"
+						}
+					]
 				}
 			],
 			"description": "Get information about API."
@@ -137,314 +230,130 @@
 						},
 						"description": "Login and get a JWT Token Authorization Bearer to use this api."
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Login Failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"myuser@mail.com\",\n    \"password\": \"IDontKnow\"\n}"
+								},
+								"url": {
+									"raw": "{{domain-api-rest-slimphp}}/login",
+									"host": [
+										"{{domain-api-rest-slimphp}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 May 2019 19:25:28 +0000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.4"
+								},
+								{
+									"key": "Content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Login failed: Email or password incorrect.\",\n    \"class\": \"UserException\",\n    \"status\": \"error\",\n    \"code\": 400\n}"
+						},
+						{
+							"name": "Login OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"m@b.com.ar\",\n    \"password\": \"123\"\n}"
+								},
+								"url": {
+									"raw": "{{domain-api-rest-slimphp}}/login",
+									"host": [
+										"{{domain-api-rest-slimphp}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost:8080"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 22 May 2019 19:24:12 +0000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.3.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Length",
+									"value": "291"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": {\n        \"Authorization\": \"Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsImVtYWlsIjoibUBiLmNvbS5hciIsIm5hbWUiOiJNTkIiLCJpYXQiOjE1NTg1NTMwNTIsImV4cCI6MTU1OTE1Nzg1Mn0.OQyICWlGW0oSUB-ANrYL2OJTdC2v0OQQO3RQQ3W_KLo\"\n    }\n}"
+						}
+					]
 				}
 			]
-		},
-		{
-			"name": "Tasks",
-			"item": [
-				{
-					"name": "Get All Tasks",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "3cca85a2-6941-4e92-b726-6aa996a1a0b9",
-								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
-									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
-									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
-									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tasks"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get One Task",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "2e02d461-a4e3-43ff-a701-8950ee0c7b3e",
-								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
-									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
-									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
-									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/2",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tasks",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Search Tasks",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "dc79d2ad-4b80-4ba7-b190-66dc5a92e3bd",
-								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
-									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
-									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
-									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/search/now",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tasks",
-								"search",
-								"now"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Create Task",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "3cd61a9a-bf8a-47fa-8f0e-722de6a17bae",
-								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"tests[\"Status code is 201\"] = responseCode.code === 201;",
-									"tests[\"Status code name has string\"] = responseCode.name.has(\"Created\");",
-									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
-									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
-									"tests[\"Body matches help\"] = responseBody.has(\"name\");",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"name\": \"Go To Sleep now!!\",\n  \"status\": 1\n}"
-						},
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tasks"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Task",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b82f1583-87e9-4553-a569-5cbe4f15c6e0",
-								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
-									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
-									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
-									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							},
-							{
-								"key": "Authorization",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Testing",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/2",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tasks",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Task",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "b2777e85-76cb-4480-a86f-6b660eafb0bc",
-								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"body": {},
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/5",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tasks",
-								"5"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"description": "Manage Tasks."
 		},
 		{
 			"name": "Users",
@@ -479,10 +388,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/users",
 							"host": [
@@ -527,10 +432,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/8",
 							"host": [
@@ -554,7 +455,7 @@
 							"script": {
 								"id": "de759f84-9479-4420-994d-77d4d47581f2",
 								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
@@ -576,10 +477,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/search/d",
 							"host": [
@@ -604,7 +501,7 @@
 							"script": {
 								"id": "64d18093-0d32-4e6e-9d47-fcf14c53e5a4",
 								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
 									"tests[\"Status code is 201\"] = responseCode.code === 201;",
 									"tests[\"Status code name has string\"] = responseCode.name.has(\"Created\");",
@@ -639,7 +536,8 @@
 								"v1",
 								"users"
 							]
-						}
+						},
+						"description": "Register a new user."
 					},
 					"response": []
 				},
@@ -651,7 +549,7 @@
 							"script": {
 								"id": "7766da2d-190b-49e5-8fc6-615095b7cf3e",
 								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
@@ -692,7 +590,8 @@
 								"users",
 								"4"
 							]
-						}
+						},
+						"description": "Update a user."
 					},
 					"response": []
 				},
@@ -704,7 +603,7 @@
 							"script": {
 								"id": "e476d6d7-27e8-415e-86f4-295ccabcbede",
 								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									""
 								],
 								"type": "text/javascript"
@@ -720,7 +619,10 @@
 								"type": "text"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/112",
 							"host": [
@@ -732,12 +634,320 @@
 								"users",
 								"112"
 							]
-						}
+						},
+						"description": "Delete a user."
 					},
 					"response": []
 				}
 			],
 			"description": "Manage Users."
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "Get All Tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3cca85a2-6941-4e92-b726-6aa996a1a0b9",
+								"exec": [
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
+									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
+									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
+									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks",
+							"host": [
+								"{{domain-api-rest-slimphp}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						},
+						"description": "Get all tasks of a user."
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e02d461-a4e3-43ff-a701-8950ee0c7b3e",
+								"exec": [
+									"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
+									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
+									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
+									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/7",
+							"host": [
+								"{{domain-api-rest-slimphp}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"7"
+							]
+						},
+						"description": "Get one task of a user."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Tasks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dc79d2ad-4b80-4ba7-b190-66dc5a92e3bd",
+								"exec": [
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
+									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
+									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
+									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/search/sleep",
+							"host": [
+								"{{domain-api-rest-slimphp}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"search",
+								"sleep"
+							]
+						},
+						"description": "Search tasks of a user."
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3cd61a9a-bf8a-47fa-8f0e-722de6a17bae",
+								"exec": [
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									"tests[\"Status code is 201\"] = responseCode.code === 201;",
+									"tests[\"Status code name has string\"] = responseCode.name.has(\"Created\");",
+									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
+									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
+									"tests[\"Body matches help\"] = responseBody.has(\"name\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{jwt}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Go To Sleep now!!\",\n  \"description\": \"It's too late, go to sleep man haha...\",\n  \"status\": 1\n}\n"
+						},
+						"url": {
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks",
+							"host": [
+								"{{domain-api-rest-slimphp}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks"
+							]
+						},
+						"description": "Create a task."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b82f1583-87e9-4553-a569-5cbe4f15c6e0",
+								"exec": [
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
+									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
+									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
+									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
+									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "{{jwt}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Testing",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "my desc...",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/10",
+							"host": [
+								"{{domain-api-rest-slimphp}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"10"
+							]
+						},
+						"description": "Update a task of a user."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b2777e85-76cb-4480-a86f-6b660eafb0bc",
+								"exec": [
+									"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/5",
+							"host": [
+								"{{domain-api-rest-slimphp}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"tasks",
+								"5"
+							]
+						},
+						"description": "Delete a task of a user."
+					},
+					"response": []
+				}
+			],
+			"description": "Manage Tasks."
 		},
 		{
 			"name": "Notes",
@@ -750,7 +960,7 @@
 							"script": {
 								"id": "3c909b9a-3b09-40e4-ac19-2cb0e8996922",
 								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
@@ -766,10 +976,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes",
 							"host": [
@@ -792,7 +998,7 @@
 							"script": {
 								"id": "0f840dae-5fad-41c6-b00b-e4783239d31f",
 								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
@@ -808,10 +1014,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/3",
 							"host": [
@@ -835,7 +1037,7 @@
 							"script": {
 								"id": "f825830a-b3ad-474a-9f5f-b619a8db6b6c",
 								"exec": [
-									"tests[\"Response time is less than 200ms\"] = responseTime < 250;",
+									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
@@ -851,10 +1053,6 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/search/my",
 							"host": [
@@ -984,7 +1182,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/12",
 							"host": [

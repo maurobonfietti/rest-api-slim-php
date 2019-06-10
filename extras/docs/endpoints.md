@@ -52,6 +52,7 @@ This simple RESTful API made in Slim version 3, allows CRUD operations to manage
 Get information about API.
 
 
+
 ### 1. Get Help
 
 
@@ -62,9 +63,37 @@ Get help about this api.
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}
 ```
+
+
+
+***Responses:***
+
+
+Status: Get Help | Code: 200
+
+
+
+```js
+{
+    "code": 200,
+    "status": "success",
+    "message": {
+        "endpoints": {
+            "tasks": "https://www.yourdomain.com/api/v1/tasks",
+            "users": "https://www.yourdomain.com/api/v1/users",
+            "notes": "https://www.yourdomain.com/api/v1/notes",
+            "status": "https://www.yourdomain.com/status",
+            "this help": "https://www.yourdomain.com"
+        },
+        "version": "0.22.0",
+        "timestamp": 1558553011
+    }
+}
+```
+
 
 
 ### 2. Get Status
@@ -77,12 +106,39 @@ Get status of this api.
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}/status
 ```
 
 
+
+***Responses:***
+
+
+Status: Get Status | Code: 200
+
+
+
+```js
+{
+    "code": 200,
+    "status": "success",
+    "message": {
+        "db": {
+            "users": 9,
+            "tasks": 10,
+            "notes": 5
+        },
+        "version": "0.22.2",
+        "timestamp": 1560137302
+    }
+}
+```
+
+
+
 ## Login
+
 
 
 ### 1. Login
@@ -107,6 +163,7 @@ URL: {{domain-api-rest-slimphp}}/login
 | Content-Type | application/json |  |
 
 
+
 ***Body:***
 
 ```js        
@@ -117,47 +174,90 @@ URL: {{domain-api-rest-slimphp}}/login
 ```
 
 
+
+***Responses:***
+
+
+Status: Login Failed | Code: 400
+
+
+
+```js
+{
+    "message": "Login failed: Email or password incorrect.",
+    "class": "UserException",
+    "status": "error",
+    "code": 400
+}
+```
+
+
+
+Status: Login OK | Code: 200
+
+
+
+```js
+{
+    "code": 200,
+    "status": "success",
+    "message": {
+        "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsImVtYWlsIjoibUBiLmNvbS5hciIsIm5hbWUiOiJNTkIiLCJpYXQiOjE1NTg1NTMwNTIsImV4cCI6MTU1OTE1Nzg1Mn0.OQyICWlGW0oSUB-ANrYL2OJTdC2v0OQQO3RQQ3W_KLo"
+    }
+}
+```
+
+
+
 ## Notes
 Manage Notes.
+
 
 
 ### 1. Get All Notes
 
 
+
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}/api/v1/notes
 ```
+
 
 
 ### 2. Get One Note
 
 
+
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}/api/v1/notes/3
 ```
+
 
 
 ### 3. Search Notes
 
 
+
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}/api/v1/notes/search/my
 ```
 
 
+
 ### 4. Create Note
+
 
 
 ***Endpoint:***
@@ -176,6 +276,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 | Content-Type | application/json |  |
 
 
+
 ***Body:***
 
 ```js        
@@ -186,7 +287,9 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 ```
 
 
+
 ### 5. Update Note
+
 
 
 ***Endpoint:***
@@ -205,6 +308,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
 | Content-Type | application/json |  |
 
 
+
 ***Body:***
 
 ```js        
@@ -215,30 +319,37 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
 ```
 
 
+
 ### 6. Delete Note
+
 
 
 ***Endpoint:***
 
 ```bash
 Method: DELETE
-Type: 
+Type: FORMDATA
 URL: {{domain-api-rest-slimphp}}/api/v1/notes/12
 ```
+
 
 
 ## Tasks
 Manage Tasks.
 
 
+
 ### 1. Get All Tasks
+
+
+Get all tasks of a user.
 
 
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 ```
 
@@ -250,15 +361,19 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 | Authorization | {{jwt}} |  |
 
 
+
 ### 2. Get One Task
+
+
+Get one task of a user.
 
 
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/2
+Type: 
+URL: {{domain-api-rest-slimphp}}/api/v1/tasks/7
 ```
 
 
@@ -267,17 +382,21 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/2
 | Key | Value | Description |
 | --- | ------|-------------|
 | Authorization | {{jwt}} |  |
+
 
 
 ### 3. Search Tasks
 
 
+Search tasks of a user.
+
+
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/search/now
+Type: 
+URL: {{domain-api-rest-slimphp}}/api/v1/tasks/search/sleep
 ```
 
 
@@ -288,7 +407,11 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/search/now
 | Authorization | {{jwt}} |  |
 
 
+
 ### 4. Create Task
+
+
+Create a task.
 
 
 ***Endpoint:***
@@ -308,17 +431,24 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 | Authorization | {{jwt}} |  |
 
 
+
 ***Body:***
 
 ```js        
 {
   "name": "Go To Sleep now!!",
+  "description": "It's too late, go to sleep man haha...",
   "status": 1
 }
+
 ```
 
 
+
 ### 5. Update Task
+
+
+Update a task of a user.
 
 
 ***Endpoint:***
@@ -326,7 +456,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 ```bash
 Method: PUT
 Type: URLENCODED
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/2
+URL: {{domain-api-rest-slimphp}}/api/v1/tasks/10
 ```
 
 
@@ -338,22 +468,28 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/2
 | Authorization | {{jwt}} |  |
 
 
+
 ***Body:***
 
 
 | Key | Value | Description |
 | --- | ------|-------------|
 | name | Testing |  |
+| description | my desc... |  |
+
 
 
 ### 6. Delete Task
+
+
+Delete a task of a user.
 
 
 ***Endpoint:***
 
 ```bash
 Method: DELETE
-Type: 
+Type: FORMDATA
 URL: {{domain-api-rest-slimphp}}/api/v1/tasks/5
 ```
 
@@ -365,18 +501,21 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/5
 | Authorization | {{jwt}} |  |
 
 
+
 ## Users
 Manage Users.
 
 
+
 ### 1. Get All Users
+
 
 
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}/api/v1/users
 ```
 
@@ -388,14 +527,16 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users
 | Authorization | {{jwt}} |  |
 
 
+
 ### 2. Get One User
+
 
 
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}/api/v1/users/8
 ```
 
@@ -407,14 +548,16 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/8
 | Authorization | {{jwt}} |  |
 
 
+
 ### 3. Search Users
+
 
 
 ***Endpoint:***
 
 ```bash
 Method: GET
-Type: RAW
+Type: 
 URL: {{domain-api-rest-slimphp}}/api/v1/users/search/d
 ```
 
@@ -426,7 +569,11 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/search/d
 | Authorization | {{jwt}} |  |
 
 
+
 ### 4. Create User
+
+
+Register a new user.
 
 
 ***Endpoint:***
@@ -443,6 +590,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users
 | Key | Value | Description |
 | --- | ------|-------------|
 | Content-Type | application/json |  |
+
 
 
 ***Body:***
@@ -456,7 +604,11 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users
 ```
 
 
+
 ### 5. Update User
+
+
+Update a user.
 
 
 ***Endpoint:***
@@ -476,6 +628,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/4
 | Authorization | {{jwt}} |  |
 
 
+
 ***Body:***
 
 ```js        
@@ -486,14 +639,18 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/4
 ```
 
 
+
 ### 6. Delete User
+
+
+Delete a user.
 
 
 ***Endpoint:***
 
 ```bash
 Method: DELETE
-Type: 
+Type: FORMDATA
 URL: {{domain-api-rest-slimphp}}/api/v1/users/112
 ```
 
@@ -505,6 +662,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/112
 | Authorization | {{jwt}} |  |
 
 
+
 ---
 [Back to top](#rest-api-slim-php)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2019-04-19 15:35:17 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2019-06-10 13:35:57 by [docgen](https://github.com/thedevsaddam/docgen)
