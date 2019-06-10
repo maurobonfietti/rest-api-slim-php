@@ -8,7 +8,7 @@ use Slim\Http\Response;
 
 class DefaultController extends BaseController
 {
-    const API_VERSION = '0.22.1';
+    const API_VERSION = '0.22.2';
 
     public function __construct(Container $container)
     {
@@ -40,8 +40,10 @@ class DefaultController extends BaseController
         $this->setParams($request, $response, $args);
         $userService = $this->container->get('user_service');
         $noteService = $this->container->get('note_service');
+        $taskService = $this->container->get('task_service');
         $db = [
             'users' => count($userService->getUsers()),
+            'tasks' => count($taskService->getAllTasks()),
             'notes' => count($noteService->getNotes()),
         ];
         $status = [
