@@ -25,7 +25,9 @@ More info about this project in my post: [How to create a REST API using Slim PH
 - Composer.
 - Git.
 
-### In your terminal execute:
+### Run commands:
+
+In your terminal execute this commands:
 
 ```bash
 $ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
@@ -36,12 +38,10 @@ $ composer restart
 $ composer start
 ```
 
-### Video:
-
 [![How to install](extras/img/how-to-install-2.gif)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
 
 
-## INSTALLATION STEP BY STEP:
+## STEP BY STEP:
 
 ### 1- Clone project and install dependencies:
 
@@ -157,8 +157,6 @@ OK (55 tests, 290 assertions)
 
 ### ENDPOINTS:
 
-[You can see the API documentation with the full list of endpoints](extras/docs/endpoints.md).
-
 - Help: `GET /`
 
 - Status: `GET /status`
@@ -182,6 +180,8 @@ OK (55 tests, 290 assertions)
 - Update Task: `PUT /api/v1/tasks/{id}`
 
 - Delete Task: `DELETE /api/v1/tasks/{id}`
+
+Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
 
 
 ### IMPORT WITH POSTMAN:

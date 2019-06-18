@@ -25,7 +25,9 @@ Más información sobre este proyecto en mi publicación: [Cómo crear una API R
 - Git.
 
 
-### En una terminal ejecutar:
+### Ejecutar comandos:
+
+En su terminal favorita ejecute estos comandos:
 
 ```bash
 $ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
@@ -35,8 +37,6 @@ $ composer install
 $ composer restart
 $ composer start
 ```
-
-### Video:
 
 [![How to install](extras/img/how-to-install-2.gif)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
 
@@ -157,8 +157,6 @@ OK (55 tests, 290 assertions)
 
 ### ENDPOINTS:
 
-[Ver documentación de la API con la lista completa de endpoints](extras/docs/endpoints.md).
-
 - Help: `GET /`
 
 - Status: `GET /status`
@@ -182,6 +180,8 @@ OK (55 tests, 290 assertions)
 - Update Task: `PUT /api/v1/tasks/{id}`
 
 - Delete Task: `DELETE /api/v1/tasks/{id}`
+
+Ver documentación de la API con la [lista completa de endpoints](extras/docs/endpoints.md).
 
 
 ### IMPORTAR EN POSTMAN:
