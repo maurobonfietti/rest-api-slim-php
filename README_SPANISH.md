@@ -38,7 +38,7 @@ $ composer restart
 $ composer start
 ```
 
-[![How to install](extras/img/how-to-install-2.gif)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
+[![How to install](extras/img/how-to-install-2.gif)](https://youtu.be/xQfTcKbD7NI)
 
 
 ## INSTALACIÓN PASO A PASO:
