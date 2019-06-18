@@ -63,7 +63,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Wed, 22 May 2019 19:23:31 +0000"
+									"value": "Tue, 18 Jun 2019 22:39:02 +0000"
 								},
 								{
 									"key": "Connection",
@@ -83,11 +83,11 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "488"
+									"value": "463"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": {\n        \"endpoints\": {\n            \"tasks\": \"https://www.yourdomain.com/api/v1/tasks\",\n            \"users\": \"https://www.yourdomain.com/api/v1/users\",\n            \"notes\": \"https://www.yourdomain.com/api/v1/notes\",\n            \"status\": \"https://www.yourdomain.com/status\",\n            \"this help\": \"https://www.yourdomain.com\"\n        },\n        \"version\": \"0.22.0\",\n        \"timestamp\": 1558553011\n    }\n}"
+							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": {\n        \"endpoints\": {\n            \"tasks\": \"http://localhost:8080/api/v1/tasks\",\n            \"users\": \"http://localhost:8080/api/v1/users\",\n            \"notes\": \"http://localhost:8080/api/v1/notes\",\n            \"status\": \"http://localhost:8080/status\",\n            \"this help\": \"http://localhost:8080\"\n        },\n        \"version\": \"0.22.2\",\n        \"timestamp\": 1560897542\n    }\n}"
 						}
 					]
 				},
@@ -151,7 +151,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 10 Jun 2019 03:28:22 +0000"
+									"value": "Tue, 18 Jun 2019 22:39:39 +0000"
 								},
 								{
 									"key": "Connection",
@@ -175,7 +175,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": {\n        \"db\": {\n            \"users\": 9,\n            \"tasks\": 10,\n            \"notes\": 5\n        },\n        \"version\": \"0.22.2\",\n        \"timestamp\": 1560137302\n    }\n}"
+							"body": "{\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": {\n        \"db\": {\n            \"users\": 9,\n            \"tasks\": 10,\n            \"notes\": 5\n        },\n        \"version\": \"0.22.2\",\n        \"timestamp\": 1560897579\n    }\n}"
 						}
 					]
 				}
@@ -217,7 +217,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"m@b.com.ar\",\n    \"password\": \"123\"\n}"
+							"raw": "{\n    \"email\": \"super.email@host.com\",\n    \"password\": \"OnePass1\"\n}"
 						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/login",
@@ -524,7 +524,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"MNB\",\n  \"email\": \"m@b.com.ar\",\n  \"password\": \"123\"\n}"
+							"raw": "{\n  \"name\": \"John User\",\n  \"email\": \"super.email@host.com\",\n  \"password\": \"OnePass1\"\n}"
 						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/users",
@@ -577,7 +577,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": 123,\n  \"email\": \"cr7@asd.com.ar\"\n}"
+							"raw": "{\n  \"name\": \"Jhon R\",\n  \"email\": \"ram@hotmail.com\"\n}"
 						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/4",
@@ -604,6 +604,7 @@
 								"id": "e476d6d7-27e8-415e-86f4-295ccabcbede",
 								"exec": [
 									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
+									"tests[\"Status code is 204\"] = responseCode.code === 204;",
 									""
 								],
 								"type": "text/javascript"
@@ -819,7 +820,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Go To Sleep now!!\",\n  \"description\": \"It's too late, go to sleep man haha...\",\n  \"status\": 1\n}\n"
+							"raw": "{\n  \"name\": \"Go To Sleep\",\n  \"description\": \"It's too late, go to sleep man ;-)\",\n  \"status\": 0\n}\n"
 						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks",
@@ -862,8 +863,9 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/x-www-form-urlencoded"
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							},
 							{
 								"key": "Authorization",
@@ -872,22 +874,11 @@
 							}
 						],
 						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Testing",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "my desc...",
-									"type": "text"
-								}
-							]
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Go To Sleep NOW!!\",\n  \"description\": \"It's too late, go to sleep man haha...\",\n  \"status\": 1\n}\n"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/10",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/29",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -895,7 +886,7 @@
 								"api",
 								"v1",
 								"tasks",
-								"10"
+								"29"
 							]
 						},
 						"description": "Update a task of a user."
@@ -911,6 +902,7 @@
 								"id": "b2777e85-76cb-4480-a86f-6b660eafb0bc",
 								"exec": [
 									"tests[\"Response time is less than 200ms\"] = responseTime < 200;",
+									"tests[\"Status code is 204\"] = responseCode.code === 204;",
 									""
 								],
 								"type": "text/javascript"
@@ -931,7 +923,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/5",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/29",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -939,7 +931,7 @@
 								"api",
 								"v1",
 								"tasks",
-								"5"
+								"29"
 							]
 						},
 						"description": "Delete a task of a user."
@@ -1100,7 +1092,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"CR7 Notes\",\n  \"description\": \"Magic Goal.\"\n}"
+							"raw": "{\n  \"name\": \"New Soccer Note\",\n  \"description\": \"Magic Goal...\"\n}"
 						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes",
@@ -1173,6 +1165,7 @@
 								"id": "ddd7e5e1-3adc-41b9-9f7a-e19d61c5572e",
 								"exec": [
 									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
+									"tests[\"Status code is 204\"] = responseCode.code === 204;",
 									""
 								],
 								"type": "text/javascript"
@@ -1187,7 +1180,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/12",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/27",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -1195,7 +1188,7 @@
 								"api",
 								"v1",
 								"notes",
-								"12"
+								"27"
 							]
 						}
 					},

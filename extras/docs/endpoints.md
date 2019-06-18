@@ -82,14 +82,14 @@ Status: Get Help | Code: 200
     "status": "success",
     "message": {
         "endpoints": {
-            "tasks": "https://www.yourdomain.com/api/v1/tasks",
-            "users": "https://www.yourdomain.com/api/v1/users",
-            "notes": "https://www.yourdomain.com/api/v1/notes",
-            "status": "https://www.yourdomain.com/status",
-            "this help": "https://www.yourdomain.com"
+            "tasks": "http://localhost:8080/api/v1/tasks",
+            "users": "http://localhost:8080/api/v1/users",
+            "notes": "http://localhost:8080/api/v1/notes",
+            "status": "http://localhost:8080/status",
+            "this help": "http://localhost:8080"
         },
-        "version": "0.22.0",
-        "timestamp": 1558553011
+        "version": "0.22.2",
+        "timestamp": 1560897542
     }
 }
 ```
@@ -130,7 +130,7 @@ Status: Get Status | Code: 200
             "notes": 5
         },
         "version": "0.22.2",
-        "timestamp": 1560137302
+        "timestamp": 1560897579
     }
 }
 ```
@@ -168,8 +168,8 @@ URL: {{domain-api-rest-slimphp}}/login
 
 ```js        
 {
-    "email": "m@b.com.ar",
-    "password": "123"
+    "email": "super.email@host.com",
+    "password": "OnePass1"
 }
 ```
 
@@ -281,8 +281,8 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 
 ```js        
 {
-  "name": "CR7 Notes",
-  "description": "Magic Goal."
+  "name": "New Soccer Note",
+  "description": "Magic Goal..."
 }
 ```
 
@@ -329,7 +329,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
 ```bash
 Method: DELETE
 Type: FORMDATA
-URL: {{domain-api-rest-slimphp}}/api/v1/notes/12
+URL: {{domain-api-rest-slimphp}}/api/v1/notes/27
 ```
 
 
@@ -436,9 +436,9 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 
 ```js        
 {
-  "name": "Go To Sleep now!!",
-  "description": "It's too late, go to sleep man haha...",
-  "status": 1
+  "name": "Go To Sleep",
+  "description": "It's too late, go to sleep man ;-)",
+  "status": 0
 }
 
 ```
@@ -455,8 +455,8 @@ Update a task of a user.
 
 ```bash
 Method: PUT
-Type: URLENCODED
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/10
+Type: RAW
+URL: {{domain-api-rest-slimphp}}/api/v1/tasks/29
 ```
 
 
@@ -464,18 +464,21 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/10
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| Content-Type | application/x-www-form-urlencoded |  |
+| Content-Type | application/json |  |
 | Authorization | {{jwt}} |  |
 
 
 
 ***Body:***
 
+```js        
+{
+  "name": "Go To Sleep NOW!!",
+  "description": "It's too late, go to sleep man haha...",
+  "status": 1
+}
 
-| Key | Value | Description |
-| --- | ------|-------------|
-| name | Testing |  |
-| description | my desc... |  |
+```
 
 
 
@@ -490,7 +493,7 @@ Delete a task of a user.
 ```bash
 Method: DELETE
 Type: FORMDATA
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/5
+URL: {{domain-api-rest-slimphp}}/api/v1/tasks/29
 ```
 
 
@@ -597,9 +600,9 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users
 
 ```js        
 {
-  "name": "MNB",
-  "email": "m@b.com.ar",
-  "password": "123"
+  "name": "John User",
+  "email": "super.email@host.com",
+  "password": "OnePass1"
 }
 ```
 
@@ -633,8 +636,8 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/4
 
 ```js        
 {
-  "name": 123,
-  "email": "cr7@asd.com.ar"
+  "name": "Jhon R",
+  "email": "ram@hotmail.com"
 }
 ```
 
@@ -665,4 +668,4 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/112
 
 ---
 [Back to top](#rest-api-slim-php)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2019-06-10 13:35:57 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2019-06-18 19:55:31 by [docgen](https://github.com/thedevsaddam/docgen)
