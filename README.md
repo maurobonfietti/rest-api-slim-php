@@ -16,9 +16,32 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 More info about this project in my post: [How to create a REST API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
 
-## INSTALLATION:
+## QUICK INSTALL:
+
+### Pre Requisite:
+
+- PHP 7.x
+- MySQL 5.x || MariaDB 10.x 
+- Composer.
+- Git.
+
+### In your terminal execute:
+
+```bash
+$ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
+$ cd rest-api-slim-php
+$ cp .env.example .env
+$ composer install
+$ composer restart
+$ composer start
+```
+
+### Video:
 
 [![How to install](extras/img/how-to-install-2.gif)](https://www.loom.com/embed/7a6c923fbfdd46368bd6c018c58c1e6c)
+
+
+## INSTALLATION STEP BY STEP:
 
 ### 1- Clone project and install dependencies:
 
