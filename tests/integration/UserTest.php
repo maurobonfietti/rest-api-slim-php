@@ -344,9 +344,9 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test login endpoint without email field.
+     * Test login endpoint without send required field email.
      */
-    public function testLoginUserFailedEmailRequired()
+    public function testLoginWithoutEmailField()
     {
         $response = $this->runApp('POST', '/login', ['password' => 'p']);
 
@@ -361,9 +361,9 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test login endpoint without email field.
+     * Test login endpoint without send required field password.
      */
-    public function testLoginUserFailedPasswordRequired()
+    public function testLoginWithoutPasswordField()
     {
         $response = $this->runApp('POST', '/login', ['email' => 'a@b.com']);
 
