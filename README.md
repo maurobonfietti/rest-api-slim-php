@@ -20,21 +20,20 @@ More info about this project in my post: [How to create a REST API using Slim PH
 
 ### Pre Requisite:
 
-- PHP 7.x
-- MySQL 5.x || MariaDB 10.x 
-- Composer.
 - Git.
+- Composer.
+- PHP.
+- MySQL/MariaDB.
 
 ### Run commands:
 
 In your terminal execute this commands:
 
 ```bash
-$ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
-$ cd rest-api-slim-php
+$ git clone https://github.com/maurobonfietti/rest-api-slim-php.git && cd rest-api-slim-php
 $ cp .env.example .env
 $ composer install
-$ composer restart
+$ composer database
 $ composer start
 ```
 
@@ -143,13 +142,13 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 Access the root of the project and run all tests PHPUnit with `composer test`.
 
 ```bash
-PHPUnit 8.1.5 by Sebastian Bergmann and contributors.
+PHPUnit 8.2.3 by Sebastian Bergmann and contributors.
 
 .......................................................           55 / 55 (100%)
 
-Time: 171 ms, Memory: 12.00 MB
+Time: 184 ms, Memory: 12.00 MB
 
-OK (55 tests, 290 assertions)
+OK (55 tests, 291 assertions)
 ```
 
 
