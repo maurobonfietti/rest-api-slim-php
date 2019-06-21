@@ -87,6 +87,12 @@ class UserService extends BaseService
     public function loginUser(array $input): string
     {
         $data = json_decode(json_encode($input), false);
+        if (!isset($data->email)) {
+            throw new UserException('The field "email" is required.', 400);
+        }
+        if (!isset($data->password)) {
+            throw new UserException('The field "password" is required.', 400);
+        }
         $password = hash('sha512', $data->password);
         $user = $this->userRepository->loginUser($data->email, $password);
         $token = array(

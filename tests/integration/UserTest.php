@@ -334,7 +334,42 @@ class UserTest extends BaseTestCase
 
         $result = (string) $response->getBody();
 
+        $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringContainsString('Login failed', $result);
+        $this->assertStringContainsString('UserException', $result);
+        $this->assertStringContainsString('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('Authorization', $result);
+        $this->assertStringNotContainsString('Bearer', $result);
+    }
+
+    /**
+     * Test login endpoint without send required field email.
+     */
+    public function testLoginWithoutEmailField()
+    {
+        $response = $this->runApp('POST', '/login', ['password' => 'p']);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringContainsString('UserException', $result);
+        $this->assertStringContainsString('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('Authorization', $result);
+        $this->assertStringNotContainsString('Bearer', $result);
+    }
+
+    /**
+     * Test login endpoint without send required field password.
+     */
+    public function testLoginWithoutPasswordField()
+    {
+        $response = $this->runApp('POST', '/login', ['email' => 'a@b.com']);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringContainsString('UserException', $result);
         $this->assertStringContainsString('error', $result);
         $this->assertStringNotContainsString('success', $result);
