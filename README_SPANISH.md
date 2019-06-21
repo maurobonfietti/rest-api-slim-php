@@ -19,10 +19,10 @@ Más información sobre este proyecto en mi publicación: [Cómo crear una API R
 
 ### Pre Requisitos:
 
-- PHP 7.x
-- MySQL 5.x || MariaDB 10.x 
-- Composer.
 - Git.
+- Composer.
+- PHP.
+- MySQL/MariaDB.
 
 
 ### Ejecutar comandos:
@@ -30,11 +30,10 @@ Más información sobre este proyecto en mi publicación: [Cómo crear una API R
 En su terminal favorita ejecute estos comandos:
 
 ```bash
-$ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
-$ cd rest-api-slim-php
+$ git clone https://github.com/maurobonfietti/rest-api-slim-php.git && cd rest-api-slim-php
 $ cp .env.example .env
 $ composer install
-$ composer restart
+$ composer database
 $ composer start
 ```
 

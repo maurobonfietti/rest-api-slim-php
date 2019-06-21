@@ -20,21 +20,20 @@ More info about this project in my post: [How to create a REST API using Slim PH
 
 ### Pre Requisite:
 
-- PHP 7.x
-- MySQL 5.x || MariaDB 10.x 
-- Composer.
 - Git.
+- Composer.
+- PHP.
+- MySQL/MariaDB.
 
 ### Run commands:
 
 In your terminal execute this commands:
 
 ```bash
-$ git clone https://github.com/maurobonfietti/rest-api-slim-php.git
-$ cd rest-api-slim-php
+$ git clone https://github.com/maurobonfietti/rest-api-slim-php.git && cd rest-api-slim-php
 $ cp .env.example .env
 $ composer install
-$ composer restart
+$ composer database
 $ composer start
 ```
 
