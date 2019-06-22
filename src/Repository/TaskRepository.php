@@ -47,19 +47,7 @@ class TaskRepository extends BaseRepository
 
     public function searchTasks($tasksName, int $userId, $status): array
     {
-        $statusQuery = '';
-        if ($status === 0 || $status === 1) {
-            $statusQuery = 'AND status = :status';
-        }
-        $query = "
-            SELECT *
-            FROM tasks
-            WHERE 1=1
-            AND UPPER(name) LIKE :name
-            AND userId = :userId
-            $statusQuery
-            ORDER BY id
-        ";
+        $query = $this->getSearchTasksQuery($status);
         $name = '%' . $tasksName . '%';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('name', $name);
@@ -68,9 +56,23 @@ class TaskRepository extends BaseRepository
             $statement->bindParam('status', $status);
         }
         $statement->execute();
-        $tasks = $statement->fetchAll();
 
-        return $tasks;
+        return $statement->fetchAll();
+    }
+
+    private function getSearchTasksQuery($status)
+    {
+        $statusQuery = '';
+        if ($status === 0 || $status === 1) {
+            $statusQuery = 'AND status = :status';
+        }
+        $query = "
+            SELECT * FROM tasks
+            WHERE name LIKE :name AND userId = :userId $statusQuery
+            ORDER BY id
+        ";
+
+        return $query;
     }
 
     public function createTask($task)
