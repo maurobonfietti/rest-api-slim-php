@@ -48,7 +48,7 @@ class TaskRepository extends BaseRepository
     public function searchTasks($tasksName, int $userId, $status): array
     {
         $statusQuery = '';
-        if ($status == 0 || $status == 1) {
+        if ($status === 0 || $status === 1) {
             $statusQuery = 'AND status = :status';
         }
         $query = "
@@ -64,14 +64,11 @@ class TaskRepository extends BaseRepository
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('name', $name);
         $statement->bindParam('userId', $userId);
-        if ($status == 0 || $status == 1) {
+        if ($status === 0 || $status === 1) {
             $statement->bindParam('status', $status);
         }
         $statement->execute();
         $tasks = $statement->fetchAll();
-//        if (!$tasks) {
-//            throw new TaskException('Task name not found.', 404);
-//        }
 
         return $tasks;
     }

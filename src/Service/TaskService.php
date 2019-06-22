@@ -44,6 +44,10 @@ class TaskService extends BaseService
 
     public function searchTasks($tasksName, int $userId, $status): array
     {
+        if ($status !== null) {
+            $status = (int) $status;
+        }
+
         return $this->getTaskRepository()->searchTasks($tasksName, $userId, $status);
     }
 
