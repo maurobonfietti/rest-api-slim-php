@@ -144,11 +144,11 @@ Acceder a la raíz del proyecto y ejecutar los tests PHPUnit con `composer test`
 ```bash
 PHPUnit 8.2.3 by Sebastian Bergmann and contributors.
 
-.........................................................                                                                                                              57 / 57 (100%)
+...........................................................                                                                                                            59 / 59 (100%)
 
-Time: 235 ms, Memory: 12.00 MB
+Time: 243 ms, Memory: 14.00 MB
 
-OK (57 tests, 304 assertions)
+OK (59 tests, 320 assertions)
 ```
 
 

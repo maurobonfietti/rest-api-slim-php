@@ -59,9 +59,27 @@ class TaskTest extends BaseTestCase
     }
 
     /**
-     * Test Search Tasks.
+     * Test Search All Tasks.
      */
-    public function testSearchTasks()
+    public function testSearchAllTasks()
+    {
+        $response = $this->runApp('GET', '/api/v1/tasks/search/');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Search Tasks By Name.
+     */
+    public function testSearchTasksByName()
     {
         $response = $this->runApp('GET', '/api/v1/tasks/search/cine');
 
@@ -77,19 +95,39 @@ class TaskTest extends BaseTestCase
     }
 
     /**
-     * Test Search Task Not Found.
+     * Test Search Tasks with Status Done.
      */
-    public function testSearchTaskNotFound()
+    public function testSearchTasksWithStatusDone()
     {
-        $response = $this->runApp('GET', '/api/v1/tasks/search/bug123456789');
+        $response = $this->runApp('GET', '/api/v1/tasks/search/?status=1');
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(404, $response->getStatusCode());
-        $this->assertStringNotContainsString('success', $result);
-        $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
-        $this->assertStringContainsString('error', $result);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Search Tasks with status = 0.
+     */
+    public function testSearchTasksWithStatusToDo()
+    {
+        $response = $this->runApp('GET', '/api/v1/tasks/search/?status=0');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringContainsString('updated', $result);
+        $this->assertStringNotContainsString('error', $result);
     }
 
     /**
