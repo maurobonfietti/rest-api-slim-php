@@ -42,9 +42,9 @@ class TaskService extends BaseService
         return $this->checkAndGetTask($taskId, $userId);
     }
 
-    public function searchTasks(string $tasksName, int $userId): array
+    public function searchTasks($tasksName, int $userId, $status): array
     {
-        return $this->getTaskRepository()->searchTasks($tasksName, $userId);
+        return $this->getTaskRepository()->searchTasks($tasksName, $userId, $status);
     }
 
     public function createTask(array $input)

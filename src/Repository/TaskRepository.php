@@ -45,18 +45,33 @@ class TaskRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function searchTasks(string $tasksName, int $userId): array
+    public function searchTasks($tasksName, int $userId, $status): array
     {
-        $query = 'SELECT * FROM tasks WHERE UPPER(name) LIKE :name AND userId = :userId ORDER BY id';
+        $statusQuery = '';
+        if ($status == 0 || $status == 1) {
+            $statusQuery = 'AND status = :status';
+        }
+        $query = "
+            SELECT *
+            FROM tasks
+            WHERE 1=1
+            AND UPPER(name) LIKE :name
+            AND userId = :userId
+            $statusQuery
+            ORDER BY id
+        ";
         $name = '%' . $tasksName . '%';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('name', $name);
         $statement->bindParam('userId', $userId);
+        if ($status == 0 || $status == 1) {
+            $statement->bindParam('status', $status);
+        }
         $statement->execute();
         $tasks = $statement->fetchAll();
-        if (!$tasks) {
-            throw new TaskException('Task name not found.', 404);
-        }
+//        if (!$tasks) {
+//            throw new TaskException('Task name not found.', 404);
+//        }
 
         return $tasks;
     }
