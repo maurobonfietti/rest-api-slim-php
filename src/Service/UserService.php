@@ -84,7 +84,7 @@ class UserService extends BaseService
         return $this->userRepository->deleteUser($userId);
     }
 
-    public function loginUser(array $input): string
+    public function loginUser(?array $input): string
     {
         $data = json_decode(json_encode($input), false);
         if (!isset($data->email)) {
