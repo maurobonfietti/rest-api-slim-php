@@ -15,6 +15,9 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 Más información sobre este proyecto en mi publicación: [Cómo crear una API REST con Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
+Implementé esta API en [este projecto](https://github.com/maurobonfietti/rest-api-slim-php-web-app). Es una aplicación web de lista de tareas, desarrollada en Angular.
+
+
 ## INSTALACIÓN RÁPIDA:
 
 ### Pre Requisitos:
