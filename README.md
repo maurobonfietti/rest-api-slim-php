@@ -15,7 +15,7 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 
 More info about this project in my post: [How to create a REST API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
-I implemented this API in [this project](https://github.com/maurobonfietti/rest-api-slim-php-web-app). It's a todo list web app, developed in Angular.
+I implemented this API in [this project](https://github.com/maurobonfietti/rest-api-slim-php-web-app). It's a todo list web app developed in Angular.
 
 
 ## QUICK INSTALL:
