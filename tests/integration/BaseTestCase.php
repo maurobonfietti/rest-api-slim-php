@@ -61,6 +61,9 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
         // Register services
         require __DIR__ . '/../../src/App/Services.php';
 
+        // Register repositories
+        require __DIR__ . '/../../src/App/Repositories.php';
+
         // Register routes
         require __DIR__ . '/../../src/App/Routes.php';
 
