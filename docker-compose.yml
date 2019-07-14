@@ -55,6 +55,7 @@ services:
       - testingnetwork
     volumes:
       - my-data:/var/lib/mysql
+      - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
 
 networks:
   testingnetwork:

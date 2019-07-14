@@ -4,6 +4,10 @@ MAKEPATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 PWD := $(dir $(MAKEPATH))
 CONTAINERS := $(shell docker ps -a -q -f "name=rest-api-slim-php*")
 
+db:
+	docker-compose exec mysql mysql -e 'DROP DATABASE IF EXISTS rest_api_slim_php ; CREATE DATABASE rest_api_slim_php;'
+	docker-compose exec mysql sh -c "mysql rest_api_slim_php < docker-entrypoint-initdb.d/database.sql"
+
 up:
 	docker-compose up -d --build
 
