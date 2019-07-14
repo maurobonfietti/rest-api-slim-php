@@ -25,8 +25,8 @@ services:
       - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
       - DB_HOSTNAME=mysql
       - DB_DATABASE=rest_api_slim_php
-      - DB_USERNAME=app
-      - DB_PASSWORD=password
+      - DB_USERNAME=root
+      - DB_PASSWORD=
 
     volumes:
      - ./:/var/www/html
@@ -46,12 +46,15 @@ services:
     ports:
       - 33060:3306
     environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
       MYSQL_DATABASE: rest_api_slim_php
-      MYSQL_USER: app
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+      MYSQL_ROOT_PASSWORD: 
     networks:
-    - testingnetwork
+      - testingnetwork
+    volumes:
+      - my-data:/var/lib/mysql
 
 networks:
   testingnetwork:
@@ -59,4 +62,5 @@ networks:
       name: testingnetwork
 
 volumes:
-  redis-data:
+  redis-data:  
+  my-data:
