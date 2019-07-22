@@ -125,27 +125,27 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## USANDO DOCKER:
 
-Puedes probar este proyecto usando docker y docker-compose.
+Puedes probar este proyecto usando **docker** y **docker-compose**.
 
 
-### VERSION DOCKER:
+### VERSION REQUERIDA DOCKER:
 
 Engine: 18.03+
 Compose: 1.21+
 
 
-*Work In Progress...*
+***Work In Progress...***
 
-Ejecutar:
+Execute for example:
 
 ```bash
-# To create the database and import test data
+# To create the database and import test data from scratch.
 $ make db
 
-# To start the API
+# Start the API (this is my alias for: docker-compose up -d --build).
 $ make up
 
-# Checkout the API
+# Checkout the API.
 $ curl http://localhost:8053
 ```
 

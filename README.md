@@ -124,27 +124,27 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 
 ## USING DOCKER:
 
-You can use this project using docker and docker-compose.
+You can use this project using **docker** and **docker-compose**.
 
 
-### DOCKER VERSION:
+### MINIMAL DOCKER VERSION:
 
 Engine: 18.03+
 Compose: 1.21+
 
 
-*Work In Progress...*
+***Work In Progress...***
 
-Execute:
+Execute for example:
 
 ```bash
-# To create the database and import test data
+# To create the database and import test data from scratch.
 $ make db
 
-# To start the API
+# Start the API (this is my alias for: docker-compose up -d --build).
 $ make up
 
-# Checkout the API
+# Checkout the API.
 $ curl http://localhost:8053
 ```
 
