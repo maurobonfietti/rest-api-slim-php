@@ -122,6 +122,33 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
 
 
+## USING DOCKER:
+
+You can use this project using docker and docker-compose.
+
+
+### DOCKER VERSION:
+
+Engine: 18.03+
+Compose: 1.21+
+
+
+*Work In Progress...*
+
+Execute:
+
+```bash
+# To create the database and import test data
+$ make db
+
+# To start the API
+$ make up
+
+# Checkout the API
+$ curl http://localhost:8053
+```
+
+
 ## DEPENDENCIES:
 
 ### LIST OF REQUIRE DEPENDENCIES:
