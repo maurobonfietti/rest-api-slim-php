@@ -130,8 +130,8 @@ Puedes probar este proyecto usando **docker** y **docker-compose**.
 
 ### VERSION REQUERIDA DOCKER:
 
-Engine: 18.03+
-Compose: 1.21+
+* Engine: 18.03+
+* Compose: 1.21+
 
 
 ***Work In Progress...***
@@ -147,6 +147,9 @@ $ make up
 
 # Checkout the API.
 $ curl http://localhost:8053
+
+# Stop and remove containers (or docker-compose down).
+$ make down
 ```
 
 
