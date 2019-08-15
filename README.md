@@ -227,6 +227,11 @@ All the information of the API, prepared to download and use as postman collecti
 For more information on how to use the REST API, see the following documentation available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
 
 
+### OPEN API SPEC:
+
+Also, you can view the OpenAPI Specification, using [Swagger UI](https://rest-api-slim-php.herokuapp.com/docs/index.html).
+
+
 ## GIVE IT A TRY:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
