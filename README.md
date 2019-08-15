@@ -42,7 +42,37 @@ $ composer start
 [![How to install](extras/img/how-to-install-2.gif)](https://youtu.be/xQfTcKbD7NI)
 
 
-## STEP BY STEP:
+## USING DOCKER:
+
+You can use this project using **docker** and **docker-compose**.
+
+
+### MINIMAL DOCKER VERSION:
+
+* Engine: 18.03+
+* Compose: 1.21+
+
+
+**Commands:**
+
+```bash
+# To create the database and import test data from scratch.
+$ make db
+
+# Start the API (this is my alias for: docker-compose up -d --build).
+$ make up
+
+# Checkout the API.
+$ curl http://localhost:8053
+
+# Stop and remove containers (it's like: docker-compose down).
+$ make down
+```
+
+
+## TROUBLESHOOTING:
+
+If you get stuck, you can try this guide step by step.
 
 ### 1- Clone project and install dependencies:
 
@@ -119,36 +149,6 @@ The `composer start` command would be the equivalent to execute:
 
 ```bash
 $ php -S 0.0.0.0:8080 -t public public/index.php
-```
-
-
-## USING DOCKER:
-
-You can use this project using **docker** and **docker-compose**.
-
-
-### MINIMAL DOCKER VERSION:
-
-* Engine: 18.03+
-* Compose: 1.21+
-
-
-***Work In Progress...***
-
-Execute for example:
-
-```bash
-# To create the database and import test data from scratch.
-$ make db
-
-# Start the API (this is my alias for: docker-compose up -d --build).
-$ make up
-
-# Checkout the API.
-$ curl http://localhost:8053
-
-# Stop and remove containers (or docker-compose down).
-$ make down
 ```
 
 
