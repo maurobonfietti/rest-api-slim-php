@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-use App\Handler\ApiError;
 use Psr\Container\ContainerInterface;
+use App\Handler\ApiError;
+use App\Service\RedisService;
 
 $container = $app->getContainer();
 
@@ -16,10 +17,14 @@ $container['db'] = function (ContainerInterface $c): PDO {
     return $pdo;
 };
 
-//$container['redis'] = function (): \Predis\Client {
-//    return new \Predis\Client(getenv('REDIS_URL'));
-//};
-
 $container['errorHandler'] = function (): ApiError {
     return new ApiError;
+};
+
+$container['redis'] = function (): \Predis\Client {
+    return new \Predis\Client(getenv('REDIS_URL'));
+};
+
+$container['redis_service'] = function (): RedisService {
+    return new RedisService(new \Predis\Client(getenv('REDIS_URL')));
 };

@@ -32,8 +32,15 @@ class NoteService extends BaseService
 
     public function getNote(int $noteId)
     {
-        $this->redisService->setex('noteId', $noteId);
-        return $this->checkAndGetNote($noteId);
+        $key = "note:$noteId";
+        if ($this->redisService->exists($key)) {
+            $note = $this->redisService->get($key);
+        } else {
+            $note = $this->checkAndGetNote($noteId);
+            $this->redisService->setex($key, $note);
+        }
+
+        return $note;
     }
 
     public function searchNotes(string $notesName): array

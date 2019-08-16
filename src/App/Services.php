@@ -4,7 +4,6 @@ use Psr\Container\ContainerInterface;
 use App\Service\UserService;
 use App\Service\TaskService;
 use App\Service\NoteService;
-use App\Service\RedisService;
 
 $container = $app->getContainer();
 
@@ -21,12 +20,4 @@ $container['note_service'] = function (ContainerInterface $container): NoteServi
         $container->get('note_repository'),
         $container->get('redis_service')
     );
-};
-
-$container['redis_service'] = function ($container) {
-    return new RedisService($container->get('redis'));
-};
-
-$container['redis'] = function (): \Predis\Client {
-    return new \Predis\Client(getenv('REDIS_URL'));
 };
