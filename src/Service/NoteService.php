@@ -20,7 +20,7 @@ class NoteService extends BaseService
         $this->redisService = $redisService;
     }
 
-    protected function checkAndGetNote(int $noteId)
+    public function checkAndGetNote(int $noteId)
     {
         return $this->noteRepository->checkAndGetNote($noteId);
     }
@@ -61,7 +61,12 @@ class NoteService extends BaseService
             $note->description = $data->description;
         }
 
-        return $this->noteRepository->createNote($note);
+        $note2 = $this->noteRepository->createNote($note);
+        $key = "note:" . $note2->id;
+        $this->redisService->setex($key, $note2);
+        
+        return $note2;
+//        return $this->noteRepository->createNote($note);
     }
 
     public function updateNote($input, int $noteId)
@@ -78,12 +83,20 @@ class NoteService extends BaseService
             $note->description = $data->description;
         }
 
-        return $this->noteRepository->updateNote($note);
+        $note2 = $this->noteRepository->updateNote($note);
+        $key = "note:" . $note2->id;
+        $this->redisService->setex($key, $note2);
+
+        return $note2;
+//        return $this->noteRepository->updateNote($note);
     }
 
     public function deleteNote(int $noteId)
     {
         $this->checkAndGetNote($noteId);
         $this->noteRepository->deleteNote($noteId);
+
+        $key = "note:" . $noteId;
+        $this->redisService->del($key);
     }
 }

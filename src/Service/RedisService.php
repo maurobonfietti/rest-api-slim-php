@@ -32,21 +32,21 @@ class RedisService
         return json_decode($this->cache->get($key), true);
     }
 
-    public function setex($key, $value, $ttl = 3600)
-    {
-        $key = $this->generateKey($key);
-        $this->cache->setex($key, $ttl, json_encode($value));
-    }
-
     public function set($key, $value)
     {
         $key = $this->generateKey($key);
         $this->cache->set($key, json_encode($value));
     }
 
-    public function delete($key)
+    public function del($key)
     {
         $key = $this->generateKey($key);
-        $this->cache->delete($key);
+        $this->cache->del($key);
+    }
+
+    public function setex($key, $value, $ttl = 3600)
+    {
+        $key = $this->generateKey($key);
+        $this->cache->setex($key, $ttl, json_encode($value));
     }
 }
