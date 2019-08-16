@@ -12,9 +12,6 @@ class CreateNote extends BaseNote
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $note = $this->getNoteService()->createNote($input);
-//        if ($this->useRedis() === true) {
-//            $this->saveInCache((int) $note->id, $note);
-//        }
 
         return $this->jsonResponse('success', $note, 201);
     }

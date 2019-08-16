@@ -11,9 +11,6 @@ class DeleteNote extends BaseNote
     {
         $this->setParams($request, $response, $args);
         $this->getNoteService()->deleteNote((int) $this->args['id']);
-//        if ($this->useRedis() === true) {
-//            $this->deleteFromCache((int) $this->args['id']);
-//        }
 
         return $this->jsonResponse('success', null, 204);
     }

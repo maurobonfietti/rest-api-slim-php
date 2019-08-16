@@ -8,7 +8,7 @@ use Slim\Container;
 
 abstract class BaseNote extends BaseController
 {
-    const KEY = 'rest-api-slim-php:note:';
+//    const KEY = 'rest-api-slim-php:note:';
 
     /**
      * @var NoteService
