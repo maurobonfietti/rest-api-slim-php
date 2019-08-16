@@ -8,7 +8,7 @@ use App\Service\NoteService;
 $container = $app->getContainer();
 
 $container['user_service'] = function (ContainerInterface $container): UserService {
-    return new UserService($container->get('user_repository'));
+    return new UserService($container->get('user_repository'), $container->get('redis_service'));
 };
 
 $container['task_service'] = function (ContainerInterface $container): TaskService {

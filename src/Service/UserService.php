@@ -13,9 +13,12 @@ class UserService extends BaseService
      */
     protected $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    protected $redisService;
+
+    public function __construct(UserRepository $userRepository, RedisService $redisService)
     {
         $this->userRepository = $userRepository;
+        $this->redisService = $redisService;
     }
 
     protected function checkAndGetUser(int $userId)
@@ -30,7 +33,16 @@ class UserService extends BaseService
 
     public function getUser(int $userId)
     {
-        return $this->checkAndGetUser($userId);
+        $key = "user:$userId";
+        if ($this->useRedis() === true && $this->redisService->exists($key)) {
+            $user = $this->redisService->get($key);
+        } else {
+            $user = $this->checkAndGetUser($userId);
+            $this->redisService->setex($key, $user);
+        }
+
+        return $user;
+//        return $this->checkAndGetUser($userId);
     }
 
     public function searchUsers(string $usersName): array

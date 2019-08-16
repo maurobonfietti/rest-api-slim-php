@@ -30,11 +30,6 @@ class NoteService extends BaseService
         return $this->noteRepository->getNotes();
     }
 
-    public function useRedis(): bool
-    {
-        return filter_var(getenv('USE_REDIS_CACHE'), FILTER_VALIDATE_BOOLEAN);
-    }
-
     public function getNote(int $noteId)
     {
         $key = "note:$noteId";
