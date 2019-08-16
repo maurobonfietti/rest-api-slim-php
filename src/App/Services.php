@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
+use Psr\Container\ContainerInterface;
 use App\Service\UserService;
 use App\Service\TaskService;
 use App\Service\NoteService;
-use Psr\Container\ContainerInterface;
+use App\Service\RedisService;
 
 $container = $app->getContainer();
 
@@ -16,5 +17,16 @@ $container['task_service'] = function (ContainerInterface $container): TaskServi
 };
 
 $container['note_service'] = function (ContainerInterface $container): NoteService {
-    return new NoteService($container->get('note_repository'));
+    return new NoteService(
+        $container->get('note_repository'),
+        $container->get('redis_service')
+    );
+};
+
+$container['redis_service'] = function ($container) {
+    return new RedisService($container->get('redis'));
+};
+
+$container['redis'] = function (): \Predis\Client {
+    return new \Predis\Client(getenv('REDIS_URL'));
 };

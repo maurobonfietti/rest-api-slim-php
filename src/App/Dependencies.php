@@ -16,9 +16,9 @@ $container['db'] = function (ContainerInterface $c): PDO {
     return $pdo;
 };
 
-$container['redis'] = function (): \Predis\Client {
-    return new \Predis\Client(getenv('REDIS_URL'));
-};
+//$container['redis'] = function (): \Predis\Client {
+//    return new \Predis\Client(getenv('REDIS_URL'));
+//};
 
 $container['errorHandler'] = function (): ApiError {
     return new ApiError;

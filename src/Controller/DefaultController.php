@@ -8,7 +8,7 @@ use Slim\Http\Response;
 
 class DefaultController extends BaseController
 {
-    const API_VERSION = '0.25.0';
+    const API_VERSION = '0.26.0';
 
     public function __construct(Container $container)
     {

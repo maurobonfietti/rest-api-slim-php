@@ -12,9 +12,12 @@ class NoteService extends BaseService
      */
     protected $noteRepository;
 
-    public function __construct(NoteRepository $noteRepository)
+    protected $redisService;
+
+    public function __construct(NoteRepository $noteRepository, RedisService $redisService)
     {
         $this->noteRepository = $noteRepository;
+        $this->redisService = $redisService;
     }
 
     protected function checkAndGetNote(int $noteId)
@@ -29,6 +32,7 @@ class NoteService extends BaseService
 
     public function getNote(int $noteId)
     {
+        $this->redisService->setex('noteId', $noteId);
         return $this->checkAndGetNote($noteId);
     }
 
