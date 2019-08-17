@@ -9,8 +9,6 @@ use Slim\Container;
 
 abstract class BaseUser extends BaseController
 {
-    const KEY = 'rest-api-slim-php:user:';
-
     /**
      * @var UserService
      */
