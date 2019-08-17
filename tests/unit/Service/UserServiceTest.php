@@ -29,7 +29,6 @@ class UserServiceTest extends BaseTestCase
         $userService = new \App\Service\UserService($userRepository, $redisService);
         $input = ['name' => 'Eze', 'email' => 'eze@gmail.com', 'password' => 'AnyPass1000'];
         $user = $userService->createUser($input);
-//        var_dump($user); exit;
         self::$id = $user->id;
         $this->assertStringContainsString('Eze', $user->name);
     }

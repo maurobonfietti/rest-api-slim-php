@@ -11,27 +11,7 @@ class GetOneUser extends BaseUser
     {
         $this->setParams($request, $response, $args);
         $user = $this->getUserService()->getUser((int) $this->args['id']);
-//        if ($this->useRedis() === true) {
-//            $user = $this->getUserFromCache((int) $this->args['id']);
-//        } else {
-//            $user = $this->getUserService()->getUser((int) $this->args['id']);
-//        }
 
         return $this->jsonResponse('success', $user, 200);
     }
-
-    /**
-     * @param int $userId
-     * @return mixed
-     */
-//    private function getUserFromCache(int $userId)
-//    {
-//        $user = $this->getFromCache($userId);
-//        if ($user === null) {
-//            $user = $this->getUserService()->getUser($userId);
-//            $this->saveInCache($userId, $user);
-//        }
-//
-//        return $user;
-//    }
 }

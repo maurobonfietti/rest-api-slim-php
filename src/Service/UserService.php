@@ -35,14 +35,14 @@ class UserService extends BaseService
     {
         $key = "user:$userId";
         if ($this->useRedis() === true && $this->redisService->exists($key)) {
-            $user = $this->redisService->get($key);
+            $data = $this->redisService->get($key);
+            $user = json_decode(json_encode($data), false);
         } else {
             $user = $this->checkAndGetUser($userId);
             $this->redisService->setex($key, $user);
         }
 
         return $user;
-//        return $this->checkAndGetUser($userId);
     }
 
     public function searchUsers(string $usersName): array
