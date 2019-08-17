@@ -12,9 +12,6 @@ class DeleteUser extends BaseUser
         $this->setParams($request, $response, $args);
         $this->checkUserPermissions();
         $user = $this->getUserService()->deleteUser((int) $this->args['id']);
-        if ($this->useRedis() === true) {
-            $this->deleteFromCache((int) $this->args['id']);
-        }
 
         return $this->jsonResponse('success', $user, 204);
     }
