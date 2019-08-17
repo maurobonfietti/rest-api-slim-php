@@ -79,8 +79,13 @@ class TaskService extends BaseService
             $task->status = self::validateTaskStatus($data->status);
         }
         $task->userId = $data->decoded->sub;
+        $tasks = $this->getTaskRepository()->createTask($task);
+        if ($this->useRedis() === true) {
+            $key = "task:" . $tasks->id . ":user:" . $task->userId;
+            $this->redisService->setex($key, $tasks);
+        }
 
-        return $this->getTaskRepository()->createTask($task);
+        return $tasks;
     }
 
     public function updateTask(array $input, int $taskId)
@@ -100,14 +105,24 @@ class TaskService extends BaseService
             $task->status = self::validateTaskStatus($data->status);
         }
         $task->userId = $data->decoded->sub;
+        $tasks = $this->getTaskRepository()->updateTask($task);
+        if ($this->useRedis() === true) {
+            $key = "task:" . $tasks->id . ":user:" . $task->userId;
+            $this->redisService->setex($key, $tasks);
+        }
 
-        return $this->getTaskRepository()->updateTask($task);
+        return $tasks;
     }
 
     public function deleteTask(int $taskId, int $userId): string
     {
         $this->checkAndGetTask($taskId, $userId);
+        $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
+        if ($this->useRedis() === true) {
+            $key = "task:" . $taskId . ":user:" . $userId;
+            $this->redisService->del($key);
+        }
 
-        return $this->getTaskRepository()->deleteTask($taskId, $userId);
+        return $data;
     }
 }
