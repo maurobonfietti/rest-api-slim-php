@@ -12,12 +12,9 @@ $container['user_service'] = function (ContainerInterface $container): UserServi
 };
 
 $container['task_service'] = function (ContainerInterface $container): TaskService {
-    return new TaskService($container->get('task_repository'));
+    return new TaskService($container->get('task_repository'), $container->get('redis_service'));
 };
 
 $container['note_service'] = function (ContainerInterface $container): NoteService {
-    return new NoteService(
-        $container->get('note_repository'),
-        $container->get('redis_service')
-    );
+    return new NoteService($container->get('note_repository'), $container->get('redis_service'));
 };

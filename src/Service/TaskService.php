@@ -12,9 +12,12 @@ class TaskService extends BaseService
      */
     protected $taskRepository;
 
-    public function __construct(TaskRepository $taskRepository)
+    protected $redisService;
+
+    public function __construct(TaskRepository $taskRepository, RedisService $redisService)
     {
         $this->taskRepository = $taskRepository;
+        $this->redisService = $redisService;
     }
 
     protected function getTaskRepository(): TaskRepository
@@ -39,7 +42,15 @@ class TaskService extends BaseService
 
     public function getTask(int $taskId, int $userId)
     {
-        return $this->checkAndGetTask($taskId, $userId);
+        $key = "task:$taskId:user:$userId";
+        if ($this->useRedis() === true && $this->redisService->exists($key)) {
+            $task = $this->redisService->get($key);
+        } else {
+            $task = $this->checkAndGetTask($taskId, $userId);
+            $this->redisService->setex($key, $task);
+        }
+
+        return $task;
     }
 
     public function searchTasks($tasksName, int $userId, $status): array
