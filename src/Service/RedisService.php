@@ -6,47 +6,47 @@ class RedisService
 {
     const PROJECT_NAME = 'rest-api-slim-php';
 
-    protected $cache;
+    protected $redis;
 
-    public function __construct($cache)
+    public function __construct($redis)
     {
-        $this->cache = $cache;
+        $this->redis = $redis;
     }
 
     private function generateKey($value)
     {
-        return self::PROJECT_NAME.':'.$value;
+        return self::PROJECT_NAME . ':' . $value;
     }
 
     public function exists($key)
     {
         $key = $this->generateKey($key);
 
-        return $this->cache->exists($key);
+        return $this->redis->exists($key);
     }
 
     public function get($key)
     {
         $key = $this->generateKey($key);
 
-        return json_decode($this->cache->get($key), true);
+        return json_decode($this->redis->get($key), true);
     }
 
     public function set($key, $value)
     {
         $key = $this->generateKey($key);
-        $this->cache->set($key, json_encode($value));
+        $this->redis->set($key, json_encode($value));
     }
 
     public function del($key)
     {
         $key = $this->generateKey($key);
-        $this->cache->del($key);
+        $this->redis->del($key);
     }
 
     public function setex($key, $value, $ttl = 3600)
     {
         $key = $this->generateKey($key);
-        $this->cache->setex($key, $ttl, json_encode($value));
+        $this->redis->setex($key, $ttl, json_encode($value));
     }
 }
