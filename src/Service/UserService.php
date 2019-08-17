@@ -13,9 +13,12 @@ class UserService extends BaseService
      */
     protected $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    protected $redisService;
+
+    public function __construct(UserRepository $userRepository, RedisService $redisService)
     {
         $this->userRepository = $userRepository;
+        $this->redisService = $redisService;
     }
 
     protected function checkAndGetUser(int $userId)
@@ -30,7 +33,16 @@ class UserService extends BaseService
 
     public function getUser(int $userId)
     {
-        return $this->checkAndGetUser($userId);
+        $key = "user:$userId";
+        if ($this->useRedis() === true && $this->redisService->exists($key)) {
+            $data = $this->redisService->get($key);
+            $user = json_decode(json_encode($data), false);
+        } else {
+            $user = $this->checkAndGetUser($userId);
+            $this->redisService->setex($key, $user);
+        }
+
+        return $user;
     }
 
     public function searchUsers(string $usersName): array
@@ -55,8 +67,13 @@ class UserService extends BaseService
         $user->email = self::validateEmail($data->email);
         $user->password = hash('sha512', $data->password);
         $this->userRepository->checkUserByEmail($user->email);
+        $users = $this->userRepository->createUser($user);
+        if ($this->useRedis() === true) {
+            $key = "user:" . $users->id;
+            $this->redisService->setex($key, $users);
+        }
 
-        return $this->userRepository->createUser($user);
+        return $users;
     }
 
     public function updateUser(array $input, int $userId)
@@ -72,16 +89,26 @@ class UserService extends BaseService
         if (isset($data->email)) {
             $user->email = self::validateEmail($data->email);
         }
+        $users = $this->userRepository->updateUser($user);
+        if ($this->useRedis() === true) {
+            $key = "user:" . $users->id;
+            $this->redisService->setex($key, $users);
+        }
 
-        return $this->userRepository->updateUser($user);
+        return $users;
     }
 
     public function deleteUser(int $userId): string
     {
         $this->checkAndGetUser($userId);
         $this->userRepository->deleteUserTasks($userId);
+        $data = $this->userRepository->deleteUser($userId);
+        if ($this->useRedis() === true) {
+            $key = "user:" . $userId;
+            $this->redisService->del($key);
+        }
 
-        return $this->userRepository->deleteUser($userId);
+        return $data;
     }
 
     public function loginUser(?array $input): string

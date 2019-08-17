@@ -12,9 +12,12 @@ class TaskService extends BaseService
      */
     protected $taskRepository;
 
-    public function __construct(TaskRepository $taskRepository)
+    protected $redisService;
+
+    public function __construct(TaskRepository $taskRepository, RedisService $redisService)
     {
         $this->taskRepository = $taskRepository;
+        $this->redisService = $redisService;
     }
 
     protected function getTaskRepository(): TaskRepository
@@ -39,7 +42,15 @@ class TaskService extends BaseService
 
     public function getTask(int $taskId, int $userId)
     {
-        return $this->checkAndGetTask($taskId, $userId);
+        $key = "task:$taskId:user:$userId";
+        if ($this->useRedis() === true && $this->redisService->exists($key)) {
+            $task = $this->redisService->get($key);
+        } else {
+            $task = $this->checkAndGetTask($taskId, $userId);
+            $this->redisService->setex($key, $task);
+        }
+
+        return $task;
     }
 
     public function searchTasks($tasksName, int $userId, $status): array
@@ -68,8 +79,13 @@ class TaskService extends BaseService
             $task->status = self::validateTaskStatus($data->status);
         }
         $task->userId = $data->decoded->sub;
+        $tasks = $this->getTaskRepository()->createTask($task);
+        if ($this->useRedis() === true) {
+            $key = "task:" . $tasks->id . ":user:" . $task->userId;
+            $this->redisService->setex($key, $tasks);
+        }
 
-        return $this->getTaskRepository()->createTask($task);
+        return $tasks;
     }
 
     public function updateTask(array $input, int $taskId)
@@ -89,14 +105,24 @@ class TaskService extends BaseService
             $task->status = self::validateTaskStatus($data->status);
         }
         $task->userId = $data->decoded->sub;
+        $tasks = $this->getTaskRepository()->updateTask($task);
+        if ($this->useRedis() === true) {
+            $key = "task:" . $tasks->id . ":user:" . $task->userId;
+            $this->redisService->setex($key, $tasks);
+        }
 
-        return $this->getTaskRepository()->updateTask($task);
+        return $tasks;
     }
 
     public function deleteTask(int $taskId, int $userId): string
     {
         $this->checkAndGetTask($taskId, $userId);
+        $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
+        if ($this->useRedis() === true) {
+            $key = "task:" . $taskId . ":user:" . $userId;
+            $this->redisService->del($key);
+        }
 
-        return $this->getTaskRepository()->deleteTask($taskId, $userId);
+        return $data;
     }
 }

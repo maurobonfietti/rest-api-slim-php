@@ -69,41 +69,4 @@ abstract class BaseController
     {
         return $this->container->get('settings')['useRedisCache'];
     }
-
-    /**
-     * @param int $id
-     * @return mixed
-     */
-    protected function getFromCache(int $id)
-    {
-        $redis = $this->getRedisClient();
-        $key = $this::KEY . $id;
-        $value = $redis->get($key);
-        if ($value === null) {
-            return null;
-        }
-
-        return json_decode($value);
-    }
-
-    /**
-     * @param int $id
-     * @param mixed $result
-     */
-    protected function saveInCache(int $id, $result)
-    {
-        $redis = $this->getRedisClient();
-        $key = $this::KEY . $id;
-        $redis->set($key, json_encode($result));
-    }
-
-    /**
-     * @param int $id
-     */
-    protected function deleteFromCache(int $id)
-    {
-        $redis = $this->getRedisClient();
-        $key = $this::KEY . $id;
-        $redis->del($key);
-    }
 }

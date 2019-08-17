@@ -12,12 +12,15 @@ class NoteService extends BaseService
      */
     protected $noteRepository;
 
-    public function __construct(NoteRepository $noteRepository)
+    protected $redisService;
+
+    public function __construct(NoteRepository $noteRepository, RedisService $redisService)
     {
         $this->noteRepository = $noteRepository;
+        $this->redisService = $redisService;
     }
 
-    protected function checkAndGetNote(int $noteId)
+    public function checkAndGetNote(int $noteId)
     {
         return $this->noteRepository->checkAndGetNote($noteId);
     }
@@ -29,7 +32,15 @@ class NoteService extends BaseService
 
     public function getNote(int $noteId)
     {
-        return $this->checkAndGetNote($noteId);
+        $key = "note:$noteId";
+        if ($this->useRedis() === true && $this->redisService->exists($key)) {
+            $note = $this->redisService->get($key);
+        } else {
+            $note = $this->checkAndGetNote($noteId);
+            $this->redisService->setex($key, $note);
+        }
+
+        return $note;
     }
 
     public function searchNotes(string $notesName): array
@@ -49,8 +60,13 @@ class NoteService extends BaseService
         if (isset($data->description)) {
             $note->description = $data->description;
         }
+        $notes = $this->noteRepository->createNote($note);
+        if ($this->useRedis() === true) {
+            $key = "note:" . $notes->id;
+            $this->redisService->setex($key, $notes);
+        }
 
-        return $this->noteRepository->createNote($note);
+        return $notes;
     }
 
     public function updateNote($input, int $noteId)
@@ -66,13 +82,22 @@ class NoteService extends BaseService
         if (isset($data->description)) {
             $note->description = $data->description;
         }
+        $notes = $this->noteRepository->updateNote($note);
+        if ($this->useRedis() === true) {
+            $key = "note:" . $notes->id;
+            $this->redisService->setex($key, $notes);
+        }
 
-        return $this->noteRepository->updateNote($note);
+        return $notes;
     }
 
     public function deleteNote(int $noteId)
     {
         $this->checkAndGetNote($noteId);
         $this->noteRepository->deleteNote($noteId);
+        if ($this->useRedis() === true) {
+            $key = "note:" . $noteId;
+            $this->redisService->del($key);
+        }
     }
 }

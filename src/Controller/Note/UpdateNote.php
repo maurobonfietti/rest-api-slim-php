@@ -12,9 +12,6 @@ class UpdateNote extends BaseNote
         $this->setParams($request, $response, $args);
         $input = $this->getInput();
         $note = $this->getNoteService()->updateNote($input, (int) $this->args['id']);
-        if ($this->useRedis() === true) {
-            $this->saveInCache((int) $this->args['id'], $note);
-        }
 
         return $this->jsonResponse('success', $note, 200);
     }
