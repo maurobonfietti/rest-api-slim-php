@@ -8,9 +8,6 @@ use \Firebase\JWT\JWT;
 
 class UserService extends BaseService
 {
-    /**
-     * @var UserRepository
-     */
     protected $userRepository;
 
     protected $redisService;

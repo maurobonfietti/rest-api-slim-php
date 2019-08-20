@@ -7,9 +7,6 @@ use App\Repository\NoteRepository;
 
 class NoteService extends BaseService
 {
-    /**
-     * @var NoteRepository
-     */
     protected $noteRepository;
 
     protected $redisService;

@@ -7,9 +7,6 @@ use App\Repository\TaskRepository;
 
 class TaskService extends BaseService
 {
-    /**
-     * @var TaskRepository
-     */
     protected $taskRepository;
 
     protected $redisService;

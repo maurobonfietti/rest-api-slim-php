@@ -19,9 +19,6 @@ abstract class BaseUser extends BaseController
         return $this->container->get('user_service');
     }
 
-    /**
-     * @throws UserException
-     */
     protected function checkUserPermissions()
     {
         $input = $this->getInput();
