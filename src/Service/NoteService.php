@@ -61,10 +61,8 @@ class NoteService extends BaseService
             $note->description = $data->description;
         }
         $notes = $this->noteRepository->createNote($note);
-//        if ($this->useRedis() === true) {
-            $key = $this->redisService->generateKey("note:" . $notes->id);
-            $this->redisService->setex($key, $notes);
-//        }
+        $key = $this->redisService->generateKey("note:" . $notes->id);
+        $this->redisService->setex($key, $notes);
 
         return $notes;
     }
@@ -83,10 +81,8 @@ class NoteService extends BaseService
             $note->description = $data->description;
         }
         $notes = $this->noteRepository->updateNote($note);
-//        if ($this->useRedis() === true) {
-            $key = $this->redisService->generateKey("note:" . $notes->id);
-            $this->redisService->setex($key, $notes);
-//        }
+        $key = $this->redisService->generateKey("note:" . $notes->id);
+        $this->redisService->setex($key, $notes);
 
         return $notes;
     }
@@ -95,9 +91,7 @@ class NoteService extends BaseService
     {
         $this->checkAndGetNote($noteId);
         $this->noteRepository->deleteNote($noteId);
-//        if ($this->useRedis() === true) {
-            $key = $this->redisService->generateKey("note:" . $noteId);
-            $this->redisService->del($key);
-//        }
+        $key = $this->redisService->generateKey("note:" . $noteId);
+        $this->redisService->del($key);
     }
 }

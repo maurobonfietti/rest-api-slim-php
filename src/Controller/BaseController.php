@@ -59,14 +59,4 @@ abstract class BaseController
     {
         return $this->request->getParsedBody();
     }
-
-    protected function getRedisClient(): \Predis\Client
-    {
-        return $this->container->get('redis');
-    }
-
-    protected function useRedis(): bool
-    {
-        return $this->container->get('settings')['useRedisCache'];
-    }
 }

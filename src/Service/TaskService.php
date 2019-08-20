@@ -80,10 +80,8 @@ class TaskService extends BaseService
         }
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->createTask($task);
-//        if ($this->useRedis() === true) {
-            $key = $this->redisService->generateKey("task:" . $tasks->id . ":user:" . $task->userId);
-            $this->redisService->setex($key, $tasks);
-//        }
+        $key = $this->redisService->generateKey("task:" . $tasks->id . ":user:" . $task->userId);
+        $this->redisService->setex($key, $tasks);
 
         return $tasks;
     }
@@ -106,10 +104,8 @@ class TaskService extends BaseService
         }
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->updateTask($task);
-//        if ($this->useRedis() === true) {
-            $key = $this->redisService->generateKey("task:" . $tasks->id . ":user:" . $task->userId);
-            $this->redisService->setex($key, $tasks);
-//        }
+        $key = $this->redisService->generateKey("task:" . $tasks->id . ":user:" . $task->userId);
+        $this->redisService->setex($key, $tasks);
 
         return $tasks;
     }
@@ -118,10 +114,8 @@ class TaskService extends BaseService
     {
         $this->checkAndGetTask($taskId, $userId);
         $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
-//        if ($this->useRedis() === true) {
-            $key = $this->redisService->generateKey("task:" . $taskId . ":user:" . $userId);
-            $this->redisService->del($key);
-//        }
+        $key = $this->redisService->generateKey("task:" . $taskId . ":user:" . $userId);
+        $this->redisService->del($key);
 
         return $data;
     }
