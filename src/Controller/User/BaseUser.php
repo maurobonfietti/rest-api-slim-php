@@ -9,11 +9,6 @@ use Slim\Container;
 
 abstract class BaseUser extends BaseController
 {
-    /**
-     * @var UserService
-     */
-    protected $userService;
-
     public function __construct(Container $container)
     {
         $this->container = $container;
