@@ -124,7 +124,6 @@ Por ejemplo:
 ```
 DISPLAY_ERROR_DETAILS=true
 APP_DOMAIN='https://www.yourdomain.com'
-USE_REDIS_CACHE=false
 REDIS_URL=''
 SECRET_KEY='YourSuperSecret-KeY'
 ```
