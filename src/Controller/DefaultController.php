@@ -8,7 +8,7 @@ use Slim\Http\Response;
 
 class DefaultController extends BaseController
 {
-    const API_VERSION = '0.26.0';
+    const API_VERSION = '0.27.0';
 
     public function __construct(Container $container)
     {
@@ -23,6 +23,7 @@ class DefaultController extends BaseController
             'tasks' => $url . '/api/v1/tasks',
             'users' => $url . '/api/v1/users',
             'notes' => $url . '/api/v1/notes',
+            'docs' => $url . '/docs/index.html',
             'status' => $url . '/status',
             'this help' => $url . '',
         ];
