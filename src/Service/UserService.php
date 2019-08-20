@@ -33,7 +33,6 @@ class UserService extends BaseService
 
     public function getUser(int $userId)
     {
-//        $key = "user:$userId";
         $key = $this->redisService->generateKey("user:$userId");
         if ($this->useRedis() === true && $this->redisService->exists($key)) {
             $data = $this->redisService->get($key);
@@ -70,7 +69,6 @@ class UserService extends BaseService
         $this->userRepository->checkUserByEmail($user->email);
         $users = $this->userRepository->createUser($user);
         if ($this->useRedis() === true) {
-//            $key = "user:" . $users->id;
             $key = $this->redisService->generateKey("user:" . $users->id);
             $this->redisService->setex($key, $users);
         }
@@ -93,7 +91,6 @@ class UserService extends BaseService
         }
         $users = $this->userRepository->updateUser($user);
         if ($this->useRedis() === true) {
-//            $key = "user:" . $users->id;
             $key = $this->redisService->generateKey("user:" . $users->id);
             $this->redisService->setex($key, $users);
         }
@@ -107,7 +104,6 @@ class UserService extends BaseService
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
         if ($this->useRedis() === true) {
-//            $key = "user:" . $userId;
             $key = $this->redisService->generateKey("user:" . $userId);
             $this->redisService->del($key);
         }

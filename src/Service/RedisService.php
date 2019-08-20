@@ -20,33 +20,26 @@ class RedisService
 
     public function exists($key)
     {
-//        $key = $this->generateKey($k);
-
         return $this->redis->exists($key);
     }
 
     public function get($key)
     {
-//        $key = $this->generateKey($key);
-
         return json_decode($this->redis->get($key), true);
     }
 
     public function set($key, $value)
     {
-//        $key = $this->generateKey($key);
         $this->redis->set($key, json_encode($value));
     }
 
     public function setex($key, $value, $ttl = 3600)
     {
-//        $key = $this->generateKey($key);
         $this->redis->setex($key, $ttl, json_encode($value));
     }
 
     public function del($key)
     {
-//        $key = $this->generateKey($key);
         $this->redis->del($key);
     }
 }
