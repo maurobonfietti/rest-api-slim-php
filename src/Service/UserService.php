@@ -34,7 +34,7 @@ class UserService extends BaseService
     public function getUser(int $userId)
     {
         $key = $this->redisService->generateKey("user:$userId");
-        if ($this->useRedis() === true && $this->redisService->exists($key)) {
+        if ($this->redisService->exists($key)) {
             $data = $this->redisService->get($key);
             $user = json_decode(json_encode($data), false);
         } else {
@@ -68,10 +68,10 @@ class UserService extends BaseService
         $user->password = hash('sha512', $data->password);
         $this->userRepository->checkUserByEmail($user->email);
         $users = $this->userRepository->createUser($user);
-        if ($this->useRedis() === true) {
+//        if ($this->useRedis() === true) {
             $key = $this->redisService->generateKey("user:" . $users->id);
             $this->redisService->setex($key, $users);
-        }
+//        }
 
         return $users;
     }
@@ -90,10 +90,10 @@ class UserService extends BaseService
             $user->email = self::validateEmail($data->email);
         }
         $users = $this->userRepository->updateUser($user);
-        if ($this->useRedis() === true) {
+//        if ($this->useRedis() === true) {
             $key = $this->redisService->generateKey("user:" . $users->id);
             $this->redisService->setex($key, $users);
-        }
+//        }
 
         return $users;
     }
@@ -103,10 +103,10 @@ class UserService extends BaseService
         $this->checkAndGetUser($userId);
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
-        if ($this->useRedis() === true) {
+//        if ($this->useRedis() === true) {
             $key = $this->redisService->generateKey("user:" . $userId);
             $this->redisService->del($key);
-        }
+//        }
 
         return $data;
     }

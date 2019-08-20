@@ -33,7 +33,7 @@ class NoteService extends BaseService
     public function getNote(int $noteId)
     {
         $key = $this->redisService->generateKey("note:$noteId");
-        if ($this->useRedis() === true && $this->redisService->exists($key)) {
+        if ($this->redisService->exists($key)) {
             $note = $this->redisService->get($key);
         } else {
             $note = $this->checkAndGetNote($noteId);
@@ -61,10 +61,10 @@ class NoteService extends BaseService
             $note->description = $data->description;
         }
         $notes = $this->noteRepository->createNote($note);
-        if ($this->useRedis() === true) {
+//        if ($this->useRedis() === true) {
             $key = $this->redisService->generateKey("note:" . $notes->id);
             $this->redisService->setex($key, $notes);
-        }
+//        }
 
         return $notes;
     }
@@ -83,10 +83,10 @@ class NoteService extends BaseService
             $note->description = $data->description;
         }
         $notes = $this->noteRepository->updateNote($note);
-        if ($this->useRedis() === true) {
+//        if ($this->useRedis() === true) {
             $key = $this->redisService->generateKey("note:" . $notes->id);
             $this->redisService->setex($key, $notes);
-        }
+//        }
 
         return $notes;
     }
@@ -95,9 +95,9 @@ class NoteService extends BaseService
     {
         $this->checkAndGetNote($noteId);
         $this->noteRepository->deleteNote($noteId);
-        if ($this->useRedis() === true) {
+//        if ($this->useRedis() === true) {
             $key = $this->redisService->generateKey("note:" . $noteId);
             $this->redisService->del($key);
-        }
+//        }
     }
 }
