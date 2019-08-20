@@ -8,18 +8,13 @@ use Slim\Container;
 
 abstract class BaseTask extends BaseController
 {
-    /**
-     * @var TaskService
-     */
-    protected $taskService;
-
     public function __construct(Container $container)
     {
-        $this->taskService = $container->get('task_service');
+        $this->container = $container;
     }
 
     protected function getTaskService(): TaskService
     {
-        return $this->taskService;
+        return $this->container->get('task_service');
     }
 }

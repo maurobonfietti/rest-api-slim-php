@@ -9,11 +9,6 @@ use Slim\Container;
 
 abstract class BaseUser extends BaseController
 {
-    /**
-     * @var UserService
-     */
-    protected $userService;
-
     public function __construct(Container $container)
     {
         $this->container = $container;
@@ -24,9 +19,6 @@ abstract class BaseUser extends BaseController
         return $this->container->get('user_service');
     }
 
-    /**
-     * @throws UserException
-     */
     protected function checkUserPermissions()
     {
         $input = $this->getInput();

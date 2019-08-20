@@ -14,7 +14,6 @@ env:
     - DB_DATABASE=rest_api_slim_php
     - DB_USERNAME=root
     - DB_PASSWORD=
-    - USE_REDIS_CACHE=true
     - REDIS_URL=localhost
     - SECRET_KEY=YourSuperSecret-KeY
 

@@ -8,11 +8,6 @@ use Slim\Container;
 
 abstract class BaseNote extends BaseController
 {
-    /**
-     * @var NoteService
-     */
-    protected $noteService;
-
     public function __construct(Container $container)
     {
         $this->container = $container;

@@ -10,13 +10,6 @@ use \Firebase\JWT\JWT;
 
 class AuthMiddleware
 {
-    /**
-     * @param Request $request
-     * @param Response $response
-     * @param Callable $next
-     * @return ResponseInterface
-     * @throws AuthException
-     */
     public function __invoke(Request $request, Response $response, $next): ResponseInterface
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
