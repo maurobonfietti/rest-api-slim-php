@@ -11,19 +11,11 @@ Esta simple API RESTful hecha en Slim version 3, permite operaciones CRUD para a
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=maurobonfietti_rest-api-slim-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=maurobonfietti_rest-api-slim-php)
 
-## INFO:
-
-Principales tecnologías utilizadas:
-```
-PHP, Slim PHP, PHPUnit, MySQL, Redis, JSON Web Tokens, Docker & Docker Compose.
-```
-
-Además, utilizo otras herramientas adicionales como:
-```
- Travis CI, Swagger, Code Climate, Scrutinize, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.
-```
-
 También puedes leerlo en inglés [README IN ENGLISH](README.md).
+
+Principales tecnologías utilizadas: `PHP, Slim PHP, PHPUnit, MySQL, Redis, JSON Web Tokens, Docker & Docker Compose.`
+
+Además, utilizo otras herramientas adicionales como: `Travis CI, Swagger, Code Climate, Scrutinize, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.`
 
 Más información sobre este proyecto en mi publicación: [Cómo crear una API REST con Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
