@@ -6,6 +6,10 @@ Example of REST API with [Slim PHP micro framework](http://www.slimframework.com
 
 This simple RESTful API made in Slim version 3, allows CRUD operations to manage resources like: Users, Tasks and Notes.
 
+Main technologies used: PHP, Slim PHP, PHPUnit, MySQL, Redis, JSON Web Tokens, Docker & Docker Compose.
+
+Also, I use other aditional tools like: Travis CI, Swagger, Code Climate, Scrutinize, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.
+
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
@@ -173,11 +177,11 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 Access the root of the project and run all tests PHPUnit with `composer test`.
 
 ```bash
-PHPUnit 8.2.3 by Sebastian Bergmann and contributors.
+PHPUnit 8.3.4 by Sebastian Bergmann and contributors.
 
 ...........................................................                                                                                                            59 / 59 (100%)
 
-Time: 243 ms, Memory: 14.00 MB
+Time: 321 ms, Memory: 14.00 MB
 
 OK (59 tests, 320 assertions)
 ```
