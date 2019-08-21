@@ -6,14 +6,22 @@ Example of REST API with [Slim PHP micro framework](http://www.slimframework.com
 
 This simple RESTful API made in Slim version 3, allows CRUD operations to manage resources like: Users, Tasks and Notes.
 
-Main technologies used: PHP, Slim PHP, PHPUnit, MySQL, Redis, JSON Web Tokens, Docker & Docker Compose.
-
-Also, I use other aditional tools like: Travis CI, Swagger, Code Climate, Scrutinize, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.
-
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=maurobonfietti_rest-api-slim-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=maurobonfietti_rest-api-slim-php)
+
+## INFO:
+
+Main technologies used:
+```
+PHP, Slim PHP, PHPUnit, MySQL, Redis, JSON Web Tokens, Docker & Docker Compose.
+```
+
+Also, I use other aditional tools like:
+```
+ Travis CI, Swagger, Code Climate, Scrutinize, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.
+```
 
 You can also read this [README IN SPANISH](README_SPANISH.md).
 
