@@ -21,10 +21,6 @@ $container['errorHandler'] = function (): ApiError {
     return new ApiError;
 };
 
-$container['redis'] = function (): \Predis\Client {
-    return new \Predis\Client(getenv('REDIS_URL'));
-};
-
 $container['redis_service'] = function (): RedisService {
     return new RedisService(new \Predis\Client(getenv('REDIS_URL')));
 };
