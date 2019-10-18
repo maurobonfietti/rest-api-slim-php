@@ -178,6 +178,7 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 Acceder a la raíz del proyecto y ejecutar los tests PHPUnit con `composer test`.
 
 ```bash
+$ composer test
 > phpunit
 PHPUnit 8.4.1 by Sebastian Bergmann and contributors.
 
@@ -193,9 +194,14 @@ OK (59 tests, 320 assertions)
 
 ### ENDPOINTS:
 
+#### INFO:
+
 - Help: `GET /`
 
 - Status: `GET /status`
+
+
+#### USERS:
 
 - Login User: `POST /login`
 
@@ -205,11 +211,12 @@ OK (59 tests, 320 assertions)
 
 - Delete User: `DELETE /api/v1/users/{id}`
 
+
+#### TASKS:
+
 - Get All Tasks: `GET /api/v1/tasks`
 
 - Get One Task: `GET /api/v1/tasks/{id}`
-
-- Search Tasks: `GET /api/v1/tasks/search/{string}`
 
 - Create Task: `POST /api/v1/tasks`
 
@@ -217,11 +224,12 @@ OK (59 tests, 320 assertions)
 
 - Delete Task: `DELETE /api/v1/tasks/{id}`
 
+
+#### NOTES:
+
 - Get All Notes: `GET /api/v1/notes`
 
 - Get One Note: `GET /api/v1/notes/{id}`
-
-- Search Notes: `GET /api/v1/notes/search/{string}`
 
 - Create Note: `POST /api/v1/notes`
 
