@@ -4,7 +4,7 @@ Example of REST API with [Slim PHP micro framework](http://www.slimframework.com
 
 ![alt text](extras/img/slim-logo.png "Slim PHP micro framework")
 
-This simple RESTful API made in Slim version 3, allows CRUD operations to manage resources like: Users, Tasks and Notes.
+This simple RESTful API, allows CRUD operations to manage resources like: Users, Tasks and Notes.
 
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
@@ -13,9 +13,9 @@ This simple RESTful API made in Slim version 3, allows CRUD operations to manage
 
 You can also read this [README IN SPANISH](README_SPANISH.md).
 
-Main technologies used: `PHP, Slim PHP, PHPUnit, MySQL, Redis, JSON Web Tokens, Docker & Docker Compose.`
+Main technologies used: `PHP, Slim 3, MySQL, Redis, PHPUnit and JSON Web Tokens.`
 
-Also, I use other aditional tools like: `Travis CI, Swagger, Code Climate, Scrutinize, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.`
+Also, I use other aditional tools like: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinize, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.`
 
 More info about this project in my post: [How to create a REST API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
@@ -30,6 +30,7 @@ I implemented this API in [this project](https://github.com/maurobonfietti/rest-
 - Composer.
 - PHP.
 - MySQL/MariaDB.
+
 
 ### Run commands:
 
@@ -60,11 +61,11 @@ You can use this project using **docker** and **docker-compose**.
 **Commands:**
 
 ```bash
-# To create the database and import test data from scratch.
-$ make db
-
 # Start the API (this is my alias for: docker-compose up -d --build).
 $ make up
+
+# To create the database and import test data from scratch.
+$ make db
 
 # Checkout the API.
 $ curl http://localhost:8053
@@ -113,10 +114,10 @@ $ mysql rest_api_slim_php < database/database.sql
 Edit and complete configuration file: `.env`. For example:
 
 ```
-DB_HOSTNAME = '127.0.0.1'
-DB_DATABASE = 'rest_api_slim_php'
-DB_USERNAME = 'root'
-DB_PASSWORD = ''
+DB_HOSTNAME='127.0.0.1'
+DB_DATABASE='rest_api_slim_php'
+DB_USERNAME='root'
+DB_PASSWORD=''
 ```
 
 
@@ -177,11 +178,12 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 Access the root of the project and run all tests PHPUnit with `composer test`.
 
 ```bash
-PHPUnit 8.3.4 by Sebastian Bergmann and contributors.
+> phpunit
+PHPUnit 8.4.1 by Sebastian Bergmann and contributors.
 
-...........................................................                                                                                                            59 / 59 (100%)
+...........................................................       59 / 59 (100%)
 
-Time: 321 ms, Memory: 14.00 MB
+Time: 429 ms, Memory: 16.00 MB
 
 OK (59 tests, 320 assertions)
 ```
@@ -214,6 +216,18 @@ OK (59 tests, 320 assertions)
 - Update Task: `PUT /api/v1/tasks/{id}`
 
 - Delete Task: `DELETE /api/v1/tasks/{id}`
+
+- Get All Notes: `GET /api/v1/notes`
+
+- Get One Note: `GET /api/v1/notes/{id}`
+
+- Search Notes: `GET /api/v1/notes/search/{string}`
+
+- Create Note: `POST /api/v1/notes`
+
+- Update Note: `PUT /api/v1/notes/{id}`
+
+- Delete Note: `DELETE /api/v1/notes/{id}`
 
 Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
 
