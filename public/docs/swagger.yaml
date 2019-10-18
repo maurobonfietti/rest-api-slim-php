@@ -5,18 +5,18 @@ info:
     Example of REST API with [Slim PHP micro framework](http://www.slimframework.com).
 
 
-    This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
+    This simple RESTful API made in PHP and Slim 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
   contact: {}
   version: '1.0'
 servers:
+- url: https://rest-api-slim-php.herokuapp.com
+  description: Production server using Heroku.
+
 - url: http://localhost:8080
   description: My localhost server using PHP built-in web server.
 
 - url: http://localhost:8053
   description: My localhost server using docker and docker compose.
-
-- url: https://rest-api-slim-php.herokuapp.com
-  description: Production server using Heroku.
 
 paths:
   /:
