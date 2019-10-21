@@ -174,9 +174,9 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 - [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan - PHP Static Analysis Tool.
 
 
-## TESTS:
+## TESTING:
 
-Access the root of the project and run all tests PHPUnit with `composer test`.
+Run all PHPUnit tests with `composer test`.
 
 ```bash
 $ composer test
@@ -265,7 +265,7 @@ Also, you can view the OpenAPI Specification, using [Swagger UI](https://rest-ap
 Check it out to this [live demo](http://bit.ly/2DdwKkd) hosted on Heroku.
 
 
-## License
+## LICENSE
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 

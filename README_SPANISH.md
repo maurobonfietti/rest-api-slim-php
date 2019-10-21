@@ -174,9 +174,9 @@ $ php -S 0.0.0.0:8080 -t public public/index.php
 - [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan, herramienta de análisis estático para PHP.
 
 
-## TESTS:
+## TESTING:
 
-Acceder a la raíz del proyecto y ejecutar los tests PHPUnit con `composer test`.
+Ejecutar los tests PHPUnit con `composer test`.
 
 ```bash
 $ composer test
@@ -265,9 +265,9 @@ Además se puede ver la especificación OpenAPI, utilizando [Swagger UI](https:/
 Ver [demo online](http://bit.ly/2DdwKkd) hosteado en Heroku.
 
 
-## Licencia
+## LICENCIA
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+Licencia MIT. Consultar [Archivo de licencia](LICENSE.md) para obtener más información.
 
 
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
