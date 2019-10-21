@@ -10,6 +10,7 @@ Esta simple API RESTful, permite operaciones CRUD para administrar recursos como
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=maurobonfietti_rest-api-slim-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=maurobonfietti_rest-api-slim-php)
+[![Software License][ico-license]](LICENSE.md)
 
 También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
@@ -262,3 +263,11 @@ Además se puede ver la especificación OpenAPI, utilizando [Swagger UI](https:/
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 Ver [demo online](http://bit.ly/2DdwKkd) hosteado en Heroku.
+
+
+## Licencia
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
