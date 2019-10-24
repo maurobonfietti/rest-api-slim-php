@@ -1,7 +1,7 @@
 
-## TROUBLESHOOTING:
+# REST API IN SLIM PHP
 
-If you get stuck, you can try this guide step by step.
+## TROUBLESHOOTING:
 
 ### 1- Clone project and install dependencies:
 
@@ -65,16 +65,18 @@ You can start the PHP internal web server by running:
 $ composer start
 ```
 
-
 ### NOTE:
-
-If everything went well :sunglasses:, you can access the project locally by entering:
-[Help](http://localhost:8080), 
-[Status](http://localhost:8080/status) and
-[Notes](http://localhost:8080/api/v1/notes).
 
 The `composer start` command would be the equivalent to execute:
 
 ```bash
 $ php -S 0.0.0.0:8080 -t public public/index.php
 ```
+
+
+## CHECK IT OUT:
+
+If everything went well :sunglasses:, you can access the project locally by entering:
+[Help](http://localhost:8080), 
+[Status](http://localhost:8080/status) and
+[Notes](http://localhost:8080/api/v1/notes).
