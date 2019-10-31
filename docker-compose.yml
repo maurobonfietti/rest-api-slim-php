@@ -5,7 +5,7 @@ services:
     image: nginx:latest
     container_name: rest-api-slim-php-nginx-container
     ports:
-    - "8053:80"
+    - "8081:80"
     volumes:
     - ./:/var/www/html
     - ./docker/nginx/conf.d:/etc/nginx/conf.d
@@ -17,8 +17,8 @@ services:
     container_name: rest-api-slim-php-php-container
     links:
       - mysql
+      - redis
     environment:
-      - COMPAT=${PHP_SERVER:-7.3}
       - PHP_FPM_ENABLE=1
       - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
@@ -35,6 +35,8 @@ services:
 
   redis:
     image: redis:4.0.5-alpine
+    ports:
+      - 63790:6379
     hostname: redis
     networks:
       - testingnetwork
