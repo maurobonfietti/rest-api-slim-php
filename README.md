@@ -16,7 +16,7 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 
 Main technologies used: `PHP, Slim 3, MySQL, Redis, PHPUnit and JSON Web Tokens.`
 
-Also, I use other aditional tools like: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinize, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.`
+Also, I use other aditional tools like: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.`
 
 More info about this project in my post: [How to create a REST API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
@@ -69,7 +69,7 @@ $ make up
 $ make db
 
 # Checkout the API.
-$ curl http://localhost:8053
+$ curl http://localhost:8081
 
 # Stop and remove containers (it's like: docker-compose down).
 $ make down
