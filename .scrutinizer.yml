@@ -6,7 +6,7 @@ build:
             DB_USERNAME: 'root'
             DB_PASSWORD: ''
         php:
-            version: 7.1
+            version: 7.3
     project_setup:
         before:
             - mysql -e "CREATE DATABASE rest_api_slim_php"
