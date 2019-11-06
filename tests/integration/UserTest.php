@@ -87,7 +87,6 @@ class UserTest extends BaseTestCase
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('email', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -126,7 +125,6 @@ class UserTest extends BaseTestCase
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('email', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -142,7 +140,6 @@ class UserTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -161,7 +158,6 @@ class UserTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('email', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -179,7 +175,6 @@ class UserTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -197,7 +192,6 @@ class UserTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -235,7 +229,6 @@ class UserTest extends BaseTestCase
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('email', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -271,7 +264,6 @@ class UserTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('email', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -301,7 +293,6 @@ class UserTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 

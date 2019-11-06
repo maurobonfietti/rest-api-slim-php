@@ -20,7 +20,6 @@ class TaskTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -38,7 +37,6 @@ class TaskTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -54,7 +52,6 @@ class TaskTest extends BaseTestCase
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -72,7 +69,6 @@ class TaskTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -90,7 +86,6 @@ class TaskTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -108,7 +103,6 @@ class TaskTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -126,7 +120,6 @@ class TaskTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -148,7 +141,6 @@ class TaskTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -164,7 +156,6 @@ class TaskTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -181,7 +172,6 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -198,7 +188,6 @@ class TaskTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -257,7 +246,6 @@ class TaskTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('status', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -273,7 +261,6 @@ class TaskTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -291,7 +278,6 @@ class TaskTest extends BaseTestCase
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -321,7 +307,6 @@ class TaskTest extends BaseTestCase
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 }

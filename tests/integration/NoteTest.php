@@ -21,7 +21,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('description', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertRegExp('{"code":200,"status":"success"}', $value);
         $this->assertRegExp('{"name":"[A-Za-z0-9_. ]+","description":"[A-Za-z0-9_. ]+"}', $value);
         $this->assertStringNotContainsString('error', $result);
@@ -41,7 +40,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('description', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -58,7 +56,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('description', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -75,7 +72,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('description', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -91,7 +87,6 @@ class NoteTest extends BaseTestCase
         $this->assertEquals(404, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -114,7 +109,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('description', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -130,7 +124,6 @@ class NoteTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('description', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -149,7 +142,6 @@ class NoteTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('description', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -170,7 +162,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('description', $result);
-        $this->assertStringContainsString('updated', $result);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -188,7 +179,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('name', $result);
         $this->assertStringNotContainsString('description', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -208,7 +198,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('name', $result);
         $this->assertStringNotContainsString('description', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 
@@ -242,7 +231,6 @@ class NoteTest extends BaseTestCase
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringNotContainsString('name', $result);
         $this->assertStringNotContainsString('description', $result);
-        $this->assertStringNotContainsString('updated', $result);
         $this->assertStringContainsString('error', $result);
     }
 }
