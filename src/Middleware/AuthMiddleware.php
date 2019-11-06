@@ -13,11 +13,14 @@ class AuthMiddleware
     public function __invoke(Request $request, Response $response, $next): ResponseInterface
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
-        $jwt = explode('Bearer ', $jwtHeader)[1];
-        if (empty($jwt) === true) {
+        if (empty($jwtHeader) === true) {
             throw new AuthException('JWT Token required.', 400);
         }
-        $decoded = $this->checkToken($jwt);
+        $jwt = explode('Bearer ', $jwtHeader);
+        if (!isset($jwt[1])) {
+            throw new AuthException('JWT Token invalid.', 400);
+        }
+        $decoded = $this->checkToken($jwt[1]);
         $object = $request->getParsedBody();
         $object['decoded'] = $decoded;
 
@@ -31,24 +34,16 @@ class AuthMiddleware
      */
     public function checkToken(string $token)
     {
-        $auth = false;
-
         try {
             $decoded = JWT::decode($token, getenv('SECRET_KEY'), ['HS256']);
+            if (is_object($decoded) && isset($decoded->sub)) {
+                return $decoded;
+            }
+            throw new AuthException('error: Forbidden, not authorized.', 403);
         } catch (\UnexpectedValueException $e) {
-            $auth = false;
+            throw new AuthException('error: Forbidden, not authorized.', 403);
         } catch (\DomainException $e) {
-            $auth = false;
-        }
-
-        if (isset($decoded) && is_object($decoded) && isset($decoded->sub)) {
-            $auth = true;
-        }
-
-        if ($auth === false) {
             throw new AuthException('error: Forbidden, not authorized.', 403);
         }
-
-        return $decoded;
     }
 }
