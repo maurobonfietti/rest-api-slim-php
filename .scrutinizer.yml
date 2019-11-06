@@ -1,10 +1,15 @@
 build:
+    nodes:
+        my-node:
+            services:
+                redis: 4
     environment:
         variables:
             DB_HOSTNAME: '127.0.0.1'
             DB_DATABASE: 'rest_api_slim_php'
             DB_USERNAME: 'root'
             DB_PASSWORD: ''
+            REDIS_URL: 'localhost'
         php:
             version: 7.3
     project_setup:
