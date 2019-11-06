@@ -192,31 +192,12 @@ class TaskTest extends BaseTestCase
     }
 
     /**
-     * Test Create Task With Forbidden JWT.
-     */
-    public function testCreateTaskWithInvalidJWT()
-    {
-        $auth = self::$jwt;
-        self::$jwt = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI4Ii';
-        $response = $this->runApp(
-            'POST', '/api/v1/tasks', ['name' => 'my task', 'status' => 0]
-        );
-        self::$jwt = $auth;
-
-        $result = (string) $response->getBody();
-
-        $this->assertEquals(403, $response->getStatusCode());
-        $this->assertStringNotContainsString('success', $result);
-        $this->assertStringContainsString('error', $result);
-    }
-
-    /**
-     * Test Create Task Without Bearer JWT Auth.
+     * Test Create Task Without Authorization Bearer JWT.
      */
     public function testCreateTaskWithoutBearerJWT()
     {
         $auth = self::$jwt;
-        self::$jwt = 'Bearer ';
+        self::$jwt = '';
         $response = $this->runApp(
             'POST', '/api/v1/tasks', ['name' => 'my task', 'status' => 0]
         );
@@ -225,6 +206,44 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Create Task With Invalid JWT.
+     */
+    public function testCreateTaskWithInvalidJWT()
+    {
+        $auth = self::$jwt;
+        self::$jwt = 'invalidToken';
+        $response = $this->runApp(
+            'POST', '/api/v1/tasks', ['name' => 'my task', 'status' => 0]
+        );
+        self::$jwt = $auth;
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Create Task With Forbidden JWT.
+     */
+    public function testCreateTaskWithForbiddenJWT()
+    {
+        $auth = self::$jwt;
+        self::$jwt = 'Bearer eyJ0eXAiOiJK1NiJ9.eyJzdWIiOiI4Ii';
+        $response = $this->runApp(
+            'POST', '/api/v1/tasks', ['name' => 'my task', 'status' => 0]
+        );
+        self::$jwt = $auth;
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(403, $response->getStatusCode());
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringContainsString('error', $result);
     }
