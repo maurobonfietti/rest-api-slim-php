@@ -51,12 +51,4 @@ abstract class BaseController
 
         return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
     }
-
-    /**
-     * @return array
-     */
-    protected function getInput()
-    {
-        return $this->request->getParsedBody();
-    }
 }

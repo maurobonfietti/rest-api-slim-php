@@ -10,7 +10,9 @@ class DeleteUser extends BaseUser
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $this->setParams($request, $response, $args);
-        $this->checkUserPermissions();
+        $input = $request->getParsedBody();
+        $userIdLogged = $input['decoded']->sub;
+        $this->checkUserPermissions($userIdLogged);
         $user = $this->getUserService()->deleteUser((int) $this->args['id']);
 
         return $this->jsonResponse('success', $user, 204);

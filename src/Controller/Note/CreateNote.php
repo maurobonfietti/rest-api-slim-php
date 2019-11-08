@@ -10,7 +10,7 @@ class CreateNote extends BaseNote
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $this->setParams($request, $response, $args);
-        $input = $this->getInput();
+        $input = $request->getParsedBody();
         $note = $this->getNoteService()->createNote($input);
 
         return $this->jsonResponse('success', $note, 201);
