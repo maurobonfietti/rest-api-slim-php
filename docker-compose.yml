@@ -5,12 +5,12 @@ services:
     image: nginx:latest
     container_name: rest-api-slim-php-nginx-container
     ports:
-    - "8081:80"
+      - "8081:80"
     volumes:
-    - ./:/var/www/html
-    - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - ./:/var/www/html
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
     networks:
-    - testingnetwork
+      - testingnetwork
 
   php-fpm:
     build: ./docker/php7
@@ -29,7 +29,7 @@ services:
       - DB_PASSWORD=
 
     volumes:
-     - ./:/var/www/html
+      - ./:/var/www/html
     networks:
       - testingnetwork
 

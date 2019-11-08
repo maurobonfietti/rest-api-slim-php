@@ -10,7 +10,7 @@ class UpdateNote extends BaseNote
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $this->setParams($request, $response, $args);
-        $input = $this->getInput();
+        $input = $request->getParsedBody();
         $note = $this->getNoteService()->updateNote($input, (int) $this->args['id']);
 
         return $this->jsonResponse('success', $note, 200);
