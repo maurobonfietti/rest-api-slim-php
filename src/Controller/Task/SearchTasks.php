@@ -9,7 +9,6 @@ class SearchTasks extends BaseTask
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $input = $request->getParsedBody();
         $userId = (int) $input['decoded']->sub;
         $query = '';

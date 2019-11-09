@@ -9,7 +9,6 @@ class UpdateTask extends BaseTask
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $input = $request->getParsedBody();
         $task = $this->getTaskService()->updateTask($input, (int) $args['id']);
 

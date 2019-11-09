@@ -9,7 +9,6 @@ class DeleteNote extends BaseNote
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $this->getNoteService()->deleteNote((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', null, 204);

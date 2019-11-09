@@ -9,7 +9,6 @@ class CreateTask extends BaseTask
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $input = $request->getParsedBody();
         $task = $this->getTaskService()->createTask($input);
 

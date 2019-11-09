@@ -9,7 +9,6 @@ class GetOneUser extends BaseUser
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $user = $this->getUserService()->getUser((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', $user, 200);

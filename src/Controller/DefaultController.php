@@ -17,7 +17,6 @@ class DefaultController extends BaseController
 
     public function getHelp(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $url = getenv('APP_DOMAIN');
         $endpoints = [
             'tasks' => $url . '/api/v1/tasks',
@@ -38,7 +37,6 @@ class DefaultController extends BaseController
 
     public function getStatus(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $userService = $this->container->get('user_service');
         $noteService = $this->container->get('note_service');
         $taskService = $this->container->get('task_service');
