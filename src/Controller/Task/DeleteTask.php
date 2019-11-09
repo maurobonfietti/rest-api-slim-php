@@ -9,12 +9,11 @@ class DeleteTask extends BaseTask
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $input = $request->getParsedBody();
-        $taskId = (int) $this->args['id'];
+        $taskId = (int) $args['id'];
         $userId = (int) $input['decoded']->sub;
         $task = $this->getTaskService()->deleteTask($taskId, $userId);
 
-        return $this->jsonResponse('success', $task, 204);
+        return $this->jsonResponse($response, 'success', $task, 204);
     }
 }

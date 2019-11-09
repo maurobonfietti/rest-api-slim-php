@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Slim\Container;
-use Slim\Http\Request;
 use Slim\Http\Response;
 
 abstract class BaseController
@@ -13,35 +12,7 @@ abstract class BaseController
      */
     protected $container;
 
-    /**
-     * @var Request $request
-     */
-    protected $request;
-
-    /**
-     * @var Response $response
-     */
-    protected $response;
-
-    /**
-     * @var array
-     */
-    protected $args;
-
-    protected function setParams(Request $request, Response $response, array $args)
-    {
-        $this->request = $request;
-        $this->response = $response;
-        $this->args = $args;
-    }
-
-    /**
-     * @param string $status
-     * @param mixed $message
-     * @param int $code
-     * @return Response
-     */
-    protected function jsonResponse(string $status, $message, int $code):  Response
+    protected function jsonResponse(Response $response, string $status, $message, int $code):  Response
     {
         $result = [
             'code' => $code,
@@ -49,6 +20,6 @@ abstract class BaseController
             'message' => $message,
         ];
 
-        return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
+        return $response->withJson($result, $code, JSON_PRETTY_PRINT);
     }
 }

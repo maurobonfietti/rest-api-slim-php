@@ -9,16 +9,15 @@ class SearchTasks extends BaseTask
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $input = $request->getParsedBody();
         $userId = (int) $input['decoded']->sub;
         $query = '';
-        if (isset($this->args['query'])) {
-            $query = $this->args['query'];
+        if (isset($args['query'])) {
+            $query = $args['query'];
         }
         $status = $request->getParam('status', null);
         $tasks = $this->getTaskService()->searchTasks($query, $userId, $status);
 
-        return $this->jsonResponse('success', $tasks, 200);
+        return $this->jsonResponse($response, 'success', $tasks, 200);
     }
 }

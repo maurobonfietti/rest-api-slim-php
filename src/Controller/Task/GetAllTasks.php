@@ -9,11 +9,10 @@ class GetAllTasks extends BaseTask
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $input = $request->getParsedBody();
         $userId = (int) $input['decoded']->sub;
         $tasks = $this->getTaskService()->getTasks($userId);
 
-        return $this->jsonResponse('success', $tasks, 200);
+        return $this->jsonResponse($response, 'success', $tasks, 200);
     }
 }

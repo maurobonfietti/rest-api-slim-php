@@ -9,13 +9,12 @@ class LoginUser extends BaseUser
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->setParams($request, $response, $args);
         $input = $request->getParsedBody();
         $jwt = $this->getUserService()->loginUser($input);
         $message = [
             'Authorization' => 'Bearer ' . $jwt,
         ];
 
-        return $this->jsonResponse('success', $message, 200);
+        return $this->jsonResponse($response, 'success', $message, 200);
     }
 }
