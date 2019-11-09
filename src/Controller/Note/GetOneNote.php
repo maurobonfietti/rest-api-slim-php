@@ -12,6 +12,6 @@ class GetOneNote extends BaseNote
         $this->setParams($request, $response, $args);
         $note = $this->getNoteService()->getNote((int) $args['id']);
 
-        return $this->jsonResponse('success', $note, 200);
+        return $this->jsonResponse($response, 'success', $note, 200);
     }
 }

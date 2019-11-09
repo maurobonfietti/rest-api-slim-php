@@ -13,6 +13,6 @@ class CreateNote extends BaseNote
         $input = $request->getParsedBody();
         $note = $this->getNoteService()->createNote($input);
 
-        return $this->jsonResponse('success', $note, 201);
+        return $this->jsonResponse($response, 'success', $note, 201);
     }
 }

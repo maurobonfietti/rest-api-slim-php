@@ -13,6 +13,6 @@ class UpdateTask extends BaseTask
         $input = $request->getParsedBody();
         $task = $this->getTaskService()->updateTask($input, (int) $args['id']);
 
-        return $this->jsonResponse('success', $task, 200);
+        return $this->jsonResponse($response, 'success', $task, 200);
     }
 }

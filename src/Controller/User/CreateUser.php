@@ -13,6 +13,6 @@ class CreateUser extends BaseUser
         $input = $request->getParsedBody();
         $user = $this->getUserService()->createUser($input);
 
-        return $this->jsonResponse('success', $user, 201);
+        return $this->jsonResponse($response, 'success', $user, 201);
     }
 }

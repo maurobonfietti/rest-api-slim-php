@@ -12,6 +12,6 @@ class GetAllUsers extends BaseUser
         $this->setParams($request, $response, $args);
         $users = $this->getUserService()->getUsers();
 
-        return $this->jsonResponse('success', $users, 200);
+        return $this->jsonResponse($response, 'success', $users, 200);
     }
 }

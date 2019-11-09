@@ -15,6 +15,6 @@ class DeleteUser extends BaseUser
         $this->checkUserPermissions($args['id'], $userIdLogged);
         $user = $this->getUserService()->deleteUser((int) $args['id']);
 
-        return $this->jsonResponse('success', $user, 204);
+        return $this->jsonResponse($response, 'success', $user, 204);
     }
 }

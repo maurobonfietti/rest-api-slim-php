@@ -19,6 +19,6 @@ class SearchTasks extends BaseTask
         $status = $request->getParam('status', null);
         $tasks = $this->getTaskService()->searchTasks($query, $userId, $status);
 
-        return $this->jsonResponse('success', $tasks, 200);
+        return $this->jsonResponse($response, 'success', $tasks, 200);
     }
 }

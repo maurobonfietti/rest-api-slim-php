@@ -15,6 +15,6 @@ class UpdateUser extends BaseUser
         $this->checkUserPermissions($args['id'], $userIdLogged);
         $user = $this->getUserService()->updateUser($input, (int) $args['id']);
 
-        return $this->jsonResponse('success', $user, 200);
+        return $this->jsonResponse($response, 'success', $user, 200);
     }
 }

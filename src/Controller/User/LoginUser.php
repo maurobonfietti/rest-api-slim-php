@@ -16,6 +16,6 @@ class LoginUser extends BaseUser
             'Authorization' => 'Bearer ' . $jwt,
         ];
 
-        return $this->jsonResponse('success', $message, 200);
+        return $this->jsonResponse($response, 'success', $message, 200);
     }
 }

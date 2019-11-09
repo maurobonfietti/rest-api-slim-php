@@ -12,6 +12,6 @@ class DeleteNote extends BaseNote
         $this->setParams($request, $response, $args);
         $this->getNoteService()->deleteNote((int) $args['id']);
 
-        return $this->jsonResponse('success', null, 204);
+        return $this->jsonResponse($response, 'success', null, 204);
     }
 }

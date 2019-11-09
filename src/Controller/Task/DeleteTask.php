@@ -15,6 +15,6 @@ class DeleteTask extends BaseTask
         $userId = (int) $input['decoded']->sub;
         $task = $this->getTaskService()->deleteTask($taskId, $userId);
 
-        return $this->jsonResponse('success', $task, 204);
+        return $this->jsonResponse($response, 'success', $task, 204);
     }
 }

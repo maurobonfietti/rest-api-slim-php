@@ -14,6 +14,6 @@ class GetAllTasks extends BaseTask
         $userId = (int) $input['decoded']->sub;
         $tasks = $this->getTaskService()->getTasks($userId);
 
-        return $this->jsonResponse('success', $tasks, 200);
+        return $this->jsonResponse($response, 'success', $tasks, 200);
     }
 }

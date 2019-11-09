@@ -12,6 +12,6 @@ class SearchNotes extends BaseNote
         $this->setParams($request, $response, $args);
         $notes = $this->getNoteService()->searchNotes($args['query']);
 
-        return $this->jsonResponse('success', $notes, 200);
+        return $this->jsonResponse($response, 'success', $notes, 200);
     }
 }

@@ -12,6 +12,6 @@ class GetAllNotes extends BaseNote
         $this->setParams($request, $response, $args);
         $notes = $this->getNoteService()->getNotes();
 
-        return $this->jsonResponse('success', $notes, 200);
+        return $this->jsonResponse($response, 'success', $notes, 200);
     }
 }

@@ -13,6 +13,6 @@ class UpdateNote extends BaseNote
         $input = $request->getParsedBody();
         $note = $this->getNoteService()->updateNote($input, (int) $args['id']);
 
-        return $this->jsonResponse('success', $note, 200);
+        return $this->jsonResponse($response, 'success', $note, 200);
     }
 }

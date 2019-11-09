@@ -15,6 +15,6 @@ class GetOneTask extends BaseTask
         $userId = (int) $input['decoded']->sub;
         $task = $this->getTaskService()->getTask($taskId, $userId);
 
-        return $this->jsonResponse('success', $task, 200);
+        return $this->jsonResponse($response, 'success', $task, 200);
     }
 }

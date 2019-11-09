@@ -35,13 +35,7 @@ abstract class BaseController
         $this->args = $args;
     }
 
-    /**
-     * @param string $status
-     * @param mixed $message
-     * @param int $code
-     * @return Response
-     */
-    protected function jsonResponse(string $status, $message, int $code):  Response
+    protected function jsonResponse(Response $response, string $status, $message, int $code):  Response
     {
         $result = [
             'code' => $code,
@@ -49,6 +43,6 @@ abstract class BaseController
             'message' => $message,
         ];
 
-        return $this->response->withJson($result, $code, JSON_PRETTY_PRINT);
+        return $response->withJson($result, $code, JSON_PRETTY_PRINT);
     }
 }
