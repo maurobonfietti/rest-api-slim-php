@@ -33,7 +33,20 @@ I implemented this API in [this project](https://github.com/maurobonfietti/rest-
 - MySQL/MariaDB.
 
 
-### Run commands:
+### With Composer:
+
+You can create a new project running the following commands:
+
+```bash
+$ composer create-project maurobonfietti/rest-api-slim-php [my-api-name]
+$ cd [my-api-name]
+$ cp .env.example .env
+$ composer database
+$ composer start
+```
+
+
+### With Git:
 
 In your terminal execute this commands:
 
@@ -48,12 +61,12 @@ $ composer start
 [![How to install](extras/img/how-to-install-2.gif)](https://youtu.be/xQfTcKbD7NI)
 
 
-## USING DOCKER:
+### With Docker:
 
 You can use this project using **docker** and **docker-compose**.
 
 
-### MINIMAL DOCKER VERSION:
+### Minimal Docker Version:
 
 * Engine: 18.03+
 * Compose: 1.21+

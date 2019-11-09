@@ -33,7 +33,19 @@ Implementé esta API en [este proyecto](https://github.com/maurobonfietti/rest-a
 - MySQL/MariaDB.
 
 
-### Ejecutar comandos:
+### Usando Composer:
+
+Puede crear un nuevo proyecto ejecutando los siguientes comandos:
+
+```bash
+$ composer create-project maurobonfietti/rest-api-slim-php [my-api-name]
+$ cd [my-api-name]
+$ cp .env.example .env
+$ composer database
+$ composer start
+```
+
+### Usando Git:
 
 En su terminal favorita ejecute estos comandos:
 
@@ -48,12 +60,12 @@ $ composer start
 [![How to install](extras/img/how-to-install-2.gif)](https://youtu.be/xQfTcKbD7NI)
 
 
-## USANDO DOCKER:
+### Usando Docker:
 
 Puedes probar este proyecto usando **docker** y **docker-compose**.
 
 
-### VERSION REQUERIDA DOCKER:
+### Version Requerida Docker:
 
 * Engine: 18.03+
 * Compose: 1.21+
