@@ -11,7 +11,7 @@ class DeleteTask extends BaseTask
     {
         $this->setParams($request, $response, $args);
         $input = $request->getParsedBody();
-        $taskId = (int) $this->args['id'];
+        $taskId = (int) $args['id'];
         $userId = (int) $input['decoded']->sub;
         $task = $this->getTaskService()->deleteTask($taskId, $userId);
 

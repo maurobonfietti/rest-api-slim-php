@@ -13,8 +13,8 @@ class SearchTasks extends BaseTask
         $input = $request->getParsedBody();
         $userId = (int) $input['decoded']->sub;
         $query = '';
-        if (isset($this->args['query'])) {
-            $query = $this->args['query'];
+        if (isset($args['query'])) {
+            $query = $args['query'];
         }
         $status = $request->getParam('status', null);
         $tasks = $this->getTaskService()->searchTasks($query, $userId, $status);
