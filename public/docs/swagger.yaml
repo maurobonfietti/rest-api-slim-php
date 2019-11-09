@@ -2,10 +2,9 @@ openapi: 3.0.0
 info:
   title: Rest Api Slim PHP
   description: >
-    Example of REST API with [Slim PHP micro framework](http://www.slimframework.com).
+    Example of REST API with [Slim PHP micro framework](https://github.com/maurobonfietti/rest-api-slim-php).
 
-
-    This simple RESTful API made in PHP and Slim 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
+    This simple RESTful API, allows CRUD operations to manage resources like: Users, Tasks and Notes.
   contact: {}
   version: '1.0'
 servers:
@@ -15,7 +14,7 @@ servers:
 - url: http://localhost:8080
   description: My localhost server using PHP built-in web server.
 
-- url: http://localhost:8053
+- url: http://localhost:8081
   description: My localhost server using docker and docker compose.
 
 paths:
@@ -955,6 +954,7 @@ tags:
 - name: Info
   description: Get information about API.
 - name: Login
+  description: Login Users.
 - name: Users
   description: Manage Users.
 - name: Tasks
