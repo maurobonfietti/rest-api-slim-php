@@ -1,6 +1,6 @@
 # REST API IN SLIM PHP
 
-Example of REST API with [Slim PHP micro framework](http://www.slimframework.com).
+Example of REST API with [Slim PHP micro framework](https://www.slimframework.com).
 
 ![alt text](extras/img/slim-logo.png "Slim PHP micro framework")
 
