@@ -8,6 +8,8 @@ use \Firebase\JWT\JWT;
 
 class UserService extends BaseService
 {
+    const REDIS_KEY = 'user:%s';
+
     protected $userRepository;
 
     protected $redisService;
@@ -65,7 +67,8 @@ class UserService extends BaseService
         $user->password = hash('sha512', $data->password);
         $this->userRepository->checkUserByEmail($user->email);
         $users = $this->userRepository->createUser($user);
-        $key = $this->redisService->generateKey("user:" . $users->id);
+        $redisKey = sprintf(self::REDIS_KEY, $users->id);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $users);
 
         return $users;
@@ -85,7 +88,8 @@ class UserService extends BaseService
             $user->email = self::validateEmail($data->email);
         }
         $users = $this->userRepository->updateUser($user);
-        $key = $this->redisService->generateKey("user:" . $users->id);
+        $redisKey = sprintf(self::REDIS_KEY, $users->id);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $users);
 
         return $users;
@@ -96,7 +100,8 @@ class UserService extends BaseService
         $this->checkAndGetUser($userId);
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
-        $key = $this->redisService->generateKey("user:" . $userId);
+        $redisKey = sprintf(self::REDIS_KEY, $userId);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->del($key);
 
         return $data;

@@ -129,7 +129,7 @@ class TaskTest extends BaseTestCase
     public function testCreateTask()
     {
         $response = $this->runApp(
-            'POST', '/api/v1/tasks', ['name' => 'New Task']
+            'POST', '/api/v1/tasks', ['name' => 'New Task', 'description' => 'My Desc.']
         );
 
         $result = (string) $response->getBody();
@@ -137,6 +137,23 @@ class TaskTest extends BaseTestCase
         self::$id = json_decode($result)->message->id;
 
         $this->assertEquals(201, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Get Task Created.
+     */
+    public function testGetTaskCreated()
+    {
+        $response = $this->runApp('GET', '/api/v1/tasks/' . self::$id);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -255,7 +272,7 @@ class TaskTest extends BaseTestCase
     {
         $response = $this->runApp(
             'PUT', '/api/v1/tasks/' . self::$id,
-            ['name' => 'Update Task', 'status' => 1]
+            ['name' => 'Update Task', 'description' => 'Update Desc', 'status' => 1]
         );
 
         $result = (string) $response->getBody();

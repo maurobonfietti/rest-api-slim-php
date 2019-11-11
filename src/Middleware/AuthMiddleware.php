@@ -10,6 +10,8 @@ use \Firebase\JWT\JWT;
 
 class AuthMiddleware
 {
+    const FORBIDDEN_MESSAGE_EXCEPTION = 'error: Forbidden, not authorized.';
+
     public function __invoke(Request $request, Response $response, $next): ResponseInterface
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
@@ -39,11 +41,11 @@ class AuthMiddleware
             if (is_object($decoded) && isset($decoded->sub)) {
                 return $decoded;
             }
-            throw new AuthException('error: Forbidden, not authorized.', 403);
+            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
         } catch (\UnexpectedValueException $e) {
-            throw new AuthException('error: Forbidden, not authorized.', 403);
+            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
         } catch (\DomainException $e) {
-            throw new AuthException('error: Forbidden, not authorized.', 403);
+            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
         }
     }
 }

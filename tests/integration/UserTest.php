@@ -113,6 +113,23 @@ class UserTest extends BaseTestCase
     }
 
     /**
+     * Test Get User Created.
+     */
+    public function testGetUserCreated()
+    {
+        $response = $this->runApp('GET', '/api/v1/users/' . self::$id);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('email', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
      * Test Create User Without Name.
      */
     public function testCreateUserWithoutName()

@@ -7,6 +7,8 @@ use App\Repository\TaskRepository;
 
 class TaskService extends BaseService
 {
+    const REDIS_KEY = 'task:%s:user:%s';
+
     protected $taskRepository;
 
     protected $redisService;
@@ -77,7 +79,8 @@ class TaskService extends BaseService
         }
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->createTask($task);
-        $key = $this->redisService->generateKey("task:" . $tasks->id . ":user:" . $task->userId);
+        $redisKey = sprintf(self::REDIS_KEY, $tasks->id, $task->userId);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $tasks);
 
         return $tasks;
@@ -101,7 +104,8 @@ class TaskService extends BaseService
         }
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->updateTask($task);
-        $key = $this->redisService->generateKey("task:" . $tasks->id . ":user:" . $task->userId);
+        $redisKey = sprintf(self::REDIS_KEY, $tasks->id, $task->userId);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $tasks);
 
         return $tasks;
@@ -111,7 +115,8 @@ class TaskService extends BaseService
     {
         $this->checkAndGetTask($taskId, $userId);
         $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
-        $key = $this->redisService->generateKey("task:" . $taskId . ":user:" . $userId);
+        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->del($key);
 
         return $data;

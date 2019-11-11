@@ -120,11 +120,11 @@ $ composer test
 > phpunit
 PHPUnit 8.4.1 by Sebastian Bergmann and contributors.
 
-............................................................      60 / 60 (100%)
+...............................................................   63 / 63 (100%)
 
-Time: 624 ms, Memory: 16.00 MB
+Time: 436 ms, Memory: 16.00 MB
 
-OK (60 tests, 287 assertions)
+OK (63 tests, 305 assertions)
 ```
 
 
