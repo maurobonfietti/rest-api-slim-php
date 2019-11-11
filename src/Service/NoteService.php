@@ -7,6 +7,8 @@ use App\Repository\NoteRepository;
 
 class NoteService extends BaseService
 {
+    const REDIS_KEY = 'note:%s';
+
     protected $noteRepository;
 
     protected $redisService;
@@ -58,7 +60,8 @@ class NoteService extends BaseService
             $note->description = $data->description;
         }
         $notes = $this->noteRepository->createNote($note);
-        $key = $this->redisService->generateKey("note:" . $notes->id);
+        $redisKey = sprintf(self::REDIS_KEY, $notes->id);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $notes);
 
         return $notes;
@@ -78,7 +81,8 @@ class NoteService extends BaseService
             $note->description = $data->description;
         }
         $notes = $this->noteRepository->updateNote($note);
-        $key = $this->redisService->generateKey("note:" . $notes->id);
+        $redisKey = sprintf(self::REDIS_KEY, $notes->id);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $notes);
 
         return $notes;
@@ -88,7 +92,8 @@ class NoteService extends BaseService
     {
         $this->checkAndGetNote($noteId);
         $this->noteRepository->deleteNote($noteId);
-        $key = $this->redisService->generateKey("note:" . $noteId);
+        $redisKey = sprintf(self::REDIS_KEY, $noteId);
+        $key = $this->redisService->generateKey($redisKey);
         $this->redisService->del($key);
     }
 }

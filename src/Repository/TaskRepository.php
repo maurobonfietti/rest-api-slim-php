@@ -66,13 +66,12 @@ class TaskRepository extends BaseRepository
         if ($status === 0 || $status === 1) {
             $statusQuery = 'AND status = :status';
         }
-        $query = "
+
+        return "
             SELECT * FROM tasks
             WHERE name LIKE :name AND userId = :userId $statusQuery
             ORDER BY id
         ";
-
-        return $query;
     }
 
     public function createTask($task)
