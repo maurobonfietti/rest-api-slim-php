@@ -113,6 +113,23 @@ class NoteTest extends BaseTestCase
     }
 
     /**
+     * Test Get Note Created.
+     */
+    public function testGetNoteCreated()
+    {
+        $response = $this->runApp('GET', '/api/v1/notes/' . self::$id);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('description', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
      * Test Create Note Without Name.
      */
     public function testCreateNoteWithoutName()
@@ -209,8 +226,6 @@ class NoteTest extends BaseTestCase
         $response = $this->runApp('DELETE', '/api/v1/notes/' . self::$id);
 
         $result = (string) $response->getBody();
-        
-//        var_dump($result); exit;
 
         $this->assertEquals(204, $response->getStatusCode());
         $this->assertStringContainsString('success', $result);
