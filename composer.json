@@ -1,7 +1,16 @@
 {
     "name": "maurobonfietti/rest-api-slim-php",
     "description": "Example of REST API with Slim PHP Framework.",
-    "keywords": ["php", "slim-micro-framework", "rest-api", "mysql", "slim3", "slim", "rest", "api"],
+    "keywords": [
+        "php",
+        "slim-micro-framework",
+        "rest-api",
+        "mysql",
+        "slim3",
+        "slim",
+        "rest",
+        "api"
+    ],
     "homepage": "https://github.com/maurobonfietti/rest-api-slim-php",
     "license": "MIT",
     "authors": [
@@ -11,9 +20,6 @@
             "homepage": "https://github.com/maurobonfietti"
         }
     ],
-    "config": {
-        "sort-packages": true
-    },
     "require": {
         "firebase/php-jwt": "^5.0",
         "palanik/corsslim": "dev-slim3",
@@ -23,8 +29,11 @@
         "vlucas/phpdotenv": "^2.4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "phpstan/phpstan": "^0.10.1"
+        "phpstan/phpstan": "^0.10.1",
+        "phpunit/phpunit": "^8.0"
+    },
+    "config": {
+        "sort-packages": true
     },
     "autoload": {
         "psr-4": {
@@ -33,9 +42,9 @@
         }
     },
     "scripts": {
-        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
-        "test": "phpunit",
         "database": "extras/bin/restart-api.sh",
-        "restart": "extras/bin/restart-api.sh"
+        "restart": "extras/bin/restart-api.sh",
+        "start": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "test": "phpunit"
     }
 }
