@@ -9,7 +9,10 @@ final class ApiError extends \Slim\Handlers\Error
 {
     public function __invoke(Request $request, Response $response, \Exception $exception)
     {
-        $statusCode = is_int($exception->getCode()) ? $exception->getCode() : 500;
+        $statusCode = 500;
+        if (is_int($exception->getCode()) && $exception->getCode() < 500) {
+            $statusCode = $exception->getCode();
+        }
         $className = new \ReflectionClass(get_class($exception));
         $data = [
             'message' => $exception->getMessage(),
