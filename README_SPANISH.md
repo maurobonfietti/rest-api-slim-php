@@ -194,11 +194,16 @@ Para más información sobre el modo de uso de la API REST, ver la siguiente doc
 Además se puede ver la especificación OpenAPI, utilizando [Swagger UI](https://rest-api-slim-php.herokuapp.com/docs/index.html).
 
 
-## VER ONLINE:
+## DESPIEGLE:
+
+Puedes deployar esta API con Heroku Free.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Ver [demo online](http://bit.ly/2DdwKkd) hosteado en Heroku.
+
+## VER ONLINE:
+
+Probar [DEMO](http://bit.ly/2DdwKkd).
 
 
 ## LICENCIA

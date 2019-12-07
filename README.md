@@ -195,11 +195,16 @@ For more information on how to use the REST API, see the following documentation
 Also, you can view the OpenAPI Specification, using [Swagger UI](https://rest-api-slim-php.herokuapp.com/docs/index.html).
 
 
-## GIVE IT A TRY:
+## DEPLOY:
+
+You can deploy this API with Heroku Free.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-Check it out to this [live demo](http://bit.ly/2DdwKkd) hosted on Heroku.
+
+## GIVE IT A TRY:
+
+Check it out to this [LIVE DEMO](http://bit.ly/2DdwKkd).
 
 
 ## LICENSE
