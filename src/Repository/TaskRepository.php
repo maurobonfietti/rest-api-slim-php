@@ -13,7 +13,7 @@ class TaskRepository extends BaseRepository
 
     public function checkAndGetTask(int $taskId, int $userId)
     {
-        $query = 'SELECT * FROM tasks WHERE id = :id AND userId = :userId';
+        $query = 'SELECT * FROM `tasks` WHERE `id` = :id AND `userId` = :userId';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->bindParam('userId', $userId);
@@ -28,7 +28,7 @@ class TaskRepository extends BaseRepository
 
     public function getAllTasks(): array
     {
-        $query = 'SELECT * FROM tasks ORDER BY id';
+        $query = 'SELECT * FROM `tasks` ORDER BY `id`';
         $statement = $this->getDb()->prepare($query);
         $statement->execute();
 
@@ -37,7 +37,7 @@ class TaskRepository extends BaseRepository
 
     public function getTasks(int $userId): array
     {
-        $query = 'SELECT * FROM tasks WHERE userId = :userId ORDER BY id';
+        $query = 'SELECT * FROM `tasks` WHERE `userId` = :userId ORDER BY `id`';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('userId', $userId);
         $statement->execute();
@@ -64,20 +64,20 @@ class TaskRepository extends BaseRepository
     {
         $statusQuery = '';
         if ($status === 0 || $status === 1) {
-            $statusQuery = 'AND status = :status';
+            $statusQuery = 'AND `status` = :status';
         }
 
         return "
-            SELECT * FROM tasks
-            WHERE name LIKE :name AND userId = :userId $statusQuery
-            ORDER BY id
+            SELECT * FROM `tasks`
+            WHERE `name` LIKE :name AND `userId` = :userId $statusQuery
+            ORDER BY `id`
         ";
     }
 
     public function createTask($task)
     {
         $query = '
-            INSERT INTO tasks (name, description, status, userId)
+            INSERT INTO `tasks` (`name`, `description`, `status`, `userId`)
             VALUES (:name, :description, :status, :userId)
         ';
         $statement = $this->getDb()->prepare($query);
@@ -93,9 +93,9 @@ class TaskRepository extends BaseRepository
     public function updateTask($task)
     {
         $query = '
-            UPDATE tasks
-            SET name=:name, description=:description, status=:status
-            WHERE id=:id AND userId = :userId
+            UPDATE `tasks`
+            SET `name` = :name, `description` = :description, `status` = :status
+            WHERE `id` = :id AND `userId` = :userId
         ';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $task->id);
@@ -110,7 +110,7 @@ class TaskRepository extends BaseRepository
 
     public function deleteTask(int $taskId, int $userId): string
     {
-        $query = 'DELETE FROM tasks WHERE id = :id AND userId = :userId';
+        $query = 'DELETE FROM `tasks` WHERE `id` = :id AND `userId` = :userId';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->bindParam('userId', $userId);

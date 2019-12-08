@@ -13,7 +13,7 @@ class NoteRepository extends BaseRepository
 
     public function checkAndGetNote(int $noteId)
     {
-        $query = 'SELECT * FROM notes WHERE id = :id';
+        $query = 'SELECT * FROM `notes` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
@@ -27,7 +27,7 @@ class NoteRepository extends BaseRepository
 
     public function getNotes(): array
     {
-        $query = 'SELECT * FROM notes ORDER BY id';
+        $query = 'SELECT * FROM `notes` ORDER BY `id`';
         $statement = $this->database->prepare($query);
         $statement->execute();
 
@@ -36,7 +36,7 @@ class NoteRepository extends BaseRepository
 
     public function searchNotes(string $strNotes): array
     {
-        $query = 'SELECT * FROM notes WHERE UPPER(name) LIKE :name OR UPPER(description) LIKE :description ORDER BY id';
+        $query = 'SELECT * FROM `notes` WHERE `name` LIKE :name OR `description` LIKE :description ORDER BY `id`';
         $name = '%' . $strNotes . '%';
         $description = '%' . $strNotes . '%';
         $statement = $this->database->prepare($query);
@@ -53,7 +53,7 @@ class NoteRepository extends BaseRepository
 
     public function createNote($data)
     {
-        $query = 'INSERT INTO notes (name, description) VALUES (:name, :description)';
+        $query = 'INSERT INTO `notes` (`name`, `description`) VALUES (:name, :description)';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':name', $data->name);
         $statement->bindParam(':description', $data->description);
@@ -64,7 +64,7 @@ class NoteRepository extends BaseRepository
 
     public function updateNote($note)
     {
-        $query = 'UPDATE notes SET name = :name, description = :description WHERE id = :id';
+        $query = 'UPDATE `notes` SET `name` = :name, `description` = :description WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $note->id);
         $statement->bindParam(':name', $note->name);
@@ -76,7 +76,7 @@ class NoteRepository extends BaseRepository
 
     public function deleteNote(int $noteId)
     {
-        $query = 'DELETE FROM notes WHERE id = :id';
+        $query = 'DELETE FROM `notes` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
