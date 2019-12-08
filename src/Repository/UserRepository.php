@@ -48,7 +48,7 @@ class UserRepository extends BaseRepository
 
     public function searchUsers(string $usersName): array
     {
-        $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE UPPER(name) LIKE :name ORDER BY `id`';
+        $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `name` LIKE :name ORDER BY `id`';
         $name = '%' . $usersName . '%';
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $name);
