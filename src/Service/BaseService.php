@@ -9,6 +9,13 @@ use Respect\Validation\Validator as v;
 
 abstract class BaseService
 {
+    const REDIS_KEY = 'note:%s';
+
+    public function checkAndGetNote(int $noteId)
+    {
+        return $this->noteRepository->checkAndGetNote($noteId);
+    }
+
     protected static function validateUserName(string $name): string
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {

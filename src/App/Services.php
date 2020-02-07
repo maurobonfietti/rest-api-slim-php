@@ -3,7 +3,7 @@
 use Psr\Container\ContainerInterface;
 use App\Service\UserService;
 use App\Service\TaskService;
-use App\Service\NoteService;
+//use App\Service\NoteService;
 
 use App\Service\Note\CreateNoteService;
 use App\Service\Note\DeleteNoteService;
@@ -22,9 +22,9 @@ $container['task_service'] = function (ContainerInterface $container): TaskServi
     return new TaskService($container->get('task_repository'), $container->get('redis_service'));
 };
 
-$container['note_service'] = function (ContainerInterface $container): NoteService {
-    return new NoteService($container->get('note_repository'), $container->get('redis_service'));
-};
+//$container['note_service'] = function (ContainerInterface $container): NoteService {
+//    return new NoteService($container->get('note_repository'), $container->get('redis_service'));
+//};
 
 $container['create_note_service'] = function (ContainerInterface $container): CreateNoteService {
     return new CreateNoteService($container->get('note_repository'), $container->get('redis_service'));

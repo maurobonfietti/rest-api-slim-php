@@ -4,7 +4,7 @@ namespace App\Controller\Note;
 
 use Slim\Container;
 use App\Controller\BaseController;
-use App\Service\NoteService;
+//use App\Service\NoteService;
 use App\Service\Note\CreateNoteService;
 use App\Service\Note\DeleteNoteService;
 use App\Service\Note\GetAllNoteService;
@@ -19,10 +19,10 @@ abstract class BaseNote extends BaseController
         $this->container = $container;
     }
 
-    protected function getNoteService(): NoteService
-    {
-        return $this->container->get('note_service');
-    }
+//    protected function getNoteService(): NoteService
+//    {
+//        return $this->container->get('note_service');
+//    }
 
     protected function createNoteService(): CreateNoteService
     {

@@ -14,7 +14,7 @@ class CreateNoteService extends NoteService
         $note = new \stdClass();
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name)) {
-            throw new NoteException('Invalid data: name is required......!!', 400);
+            throw new NoteException('Invalid data: name is required.', 400);
         }
         $note->name = self::validateNoteName($data->name);
         $note->description = null;
