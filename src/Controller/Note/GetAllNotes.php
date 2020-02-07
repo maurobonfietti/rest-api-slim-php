@@ -9,7 +9,8 @@ class GetAllNotes extends BaseNote
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $notes = $this->getNoteService()->getNotes();
+//        $notes = $this->getNoteService()->getNotes();
+        $notes = $this->getAllNoteService()->getNotes();
 
         return $this->jsonResponse($response, 'success', $notes, 200);
     }

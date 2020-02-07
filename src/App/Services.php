@@ -5,6 +5,13 @@ use App\Service\UserService;
 use App\Service\TaskService;
 use App\Service\NoteService;
 
+use App\Service\Note\CreateNoteService;
+use App\Service\Note\DeleteNoteService;
+use App\Service\Note\GetAllNoteService;
+use App\Service\Note\GetOneNoteService;
+use App\Service\Note\SearchNoteService;
+use App\Service\Note\UpdateNoteService;
+
 $container = $app->getContainer();
 
 $container['user_service'] = function (ContainerInterface $container): UserService {
@@ -17,4 +24,28 @@ $container['task_service'] = function (ContainerInterface $container): TaskServi
 
 $container['note_service'] = function (ContainerInterface $container): NoteService {
     return new NoteService($container->get('note_repository'), $container->get('redis_service'));
+};
+
+$container['create_note_service'] = function (ContainerInterface $container): CreateNoteService {
+    return new CreateNoteService($container->get('note_repository'), $container->get('redis_service'));
+};
+
+$container['delete_note_service'] = function (ContainerInterface $container): DeleteNoteService {
+    return new DeleteNoteService($container->get('note_repository'), $container->get('redis_service'));
+};
+
+$container['get_all_note_service'] = function (ContainerInterface $container): GetAllNoteService {
+    return new GetAllNoteService($container->get('note_repository'), $container->get('redis_service'));
+};
+
+$container['get_one_note_service'] = function (ContainerInterface $container): GetOneNoteService {
+    return new GetOneNoteService($container->get('note_repository'), $container->get('redis_service'));
+};
+
+$container['search_note_service'] = function (ContainerInterface $container): SearchNoteService {
+    return new SearchNoteService($container->get('note_repository'), $container->get('redis_service'));
+};
+
+$container['update_note_service'] = function (ContainerInterface $container): UpdateNoteService {
+    return new UpdateNoteService($container->get('note_repository'), $container->get('redis_service'));
 };
