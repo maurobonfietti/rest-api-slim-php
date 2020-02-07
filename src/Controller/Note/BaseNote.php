@@ -2,15 +2,14 @@
 
 namespace App\Controller\Note;
 
-use Slim\Container;
 use App\Controller\BaseController;
-//use App\Service\NoteService;
 use App\Service\Note\CreateNoteService;
 use App\Service\Note\DeleteNoteService;
 use App\Service\Note\GetAllNoteService;
 use App\Service\Note\GetOneNoteService;
 use App\Service\Note\SearchNoteService;
 use App\Service\Note\UpdateNoteService;
+use Slim\Container;
 
 abstract class BaseNote extends BaseController
 {
@@ -18,11 +17,6 @@ abstract class BaseNote extends BaseController
     {
         $this->container = $container;
     }
-
-//    protected function getNoteService(): NoteService
-//    {
-//        return $this->container->get('note_service');
-//    }
 
     protected function createNoteService(): CreateNoteService
     {

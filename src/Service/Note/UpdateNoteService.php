@@ -14,7 +14,7 @@ class UpdateNoteService extends NoteService
         $note = $this->checkAndGetNote($noteId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->description)) {
-            throw new NoteException('Enter the data to update the note...', 400);
+            throw new NoteException('Enter the data to update the note.', 400);
         }
         if (isset($data->name)) {
             $note->name = self::validateNoteName($data->name);
