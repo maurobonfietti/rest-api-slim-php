@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Service\Note;
 
 use App\Exception\NoteException;
-use App\Service\NoteService;
 
-class UpdateNoteService extends NoteService
+class UpdateNoteService extends BaseNoteService
 {
     public function updateNote($input, int $noteId)
     {

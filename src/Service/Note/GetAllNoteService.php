@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Service\NoteService;
-
-class GetAllNoteService extends NoteService
+class GetAllNoteService extends BaseNoteService
 {
     public function getNotes(): array
     {

@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Service\Note;
 
 use App\Exception\NoteException;
-use App\Service\NoteService;
 
-class CreateNoteService extends NoteService
+class CreateNoteService extends BaseNoteService
 {
     public function createNote($input)
     {

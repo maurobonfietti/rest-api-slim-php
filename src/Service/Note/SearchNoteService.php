@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Service\NoteService;
-
-class SearchNoteService extends NoteService
+class SearchNoteService extends BaseNoteService
 {
     public function searchNotes(string $notesName): array
     {
