@@ -11,7 +11,7 @@ use App\Service\Note\SearchNoteService;
 use App\Service\Note\UpdateNoteService;
 use Slim\Container;
 
-abstract class BaseNote extends BaseController
+abstract class Base extends BaseController
 {
     public function __construct(Container $container)
     {

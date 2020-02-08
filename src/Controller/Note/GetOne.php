@@ -5,12 +5,12 @@ namespace App\Controller\Note;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class SearchNotes extends BaseNote
+class GetOne extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $notes = $this->searchNoteService()->searchNotes($args['query']);
+        $note = $this->getOneNoteService()->getNote((int) $args['id']);
 
-        return $this->jsonResponse($response, 'success', $notes, 200);
+        return $this->jsonResponse($response, 'success', $note, 200);
     }
 }

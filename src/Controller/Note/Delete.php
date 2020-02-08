@@ -5,13 +5,12 @@ namespace App\Controller\Note;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class CreateNote extends BaseNote
+class Delete extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $input = $request->getParsedBody();
-        $note = $this->createNoteService()->createNote($input);
+        $this->deleteNoteService()->deleteNote((int) $args['id']);
 
-        return $this->jsonResponse($response, 'success', $note, 201);
+        return $this->jsonResponse($response, 'success', null, 204);
     }
 }
