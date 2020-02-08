@@ -6,7 +6,7 @@ use App\Service\BaseService;
 use App\Service\RedisService;
 use App\Repository\NoteRepository;
 
-class BaseNoteService extends BaseService
+abstract class BaseNoteService extends BaseService
 {
     const REDIS_KEY = 'note:%s';
 
