@@ -118,11 +118,11 @@ Run all PHPUnit tests with `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 8.4.1 by Sebastian Bergmann and contributors.
+PHPUnit 8.5.2 by Sebastian Bergmann and contributors.
 
-...............................................................   63 / 63 (100%)
+...............................................................                                                                                                        63 / 63 (100%)
 
-Time: 436 ms, Memory: 16.00 MB
+Time: 226 ms, Memory: 14.00 MB
 
 OK (63 tests, 305 assertions)
 ```
