@@ -9,7 +9,7 @@ class Delete extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->deleteNoteService()->deleteNote((int) $args['id']);
+        $this->deleteNoteService()->delete((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', null, 204);
     }

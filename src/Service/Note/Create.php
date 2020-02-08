@@ -6,22 +6,21 @@ namespace App\Service\Note;
 
 use App\Exception\NoteException;
 
-class UpdateNoteService extends BaseNoteService
+class Create extends BaseNoteService
 {
-    public function updateNote($input, int $noteId)
+    public function create($input)
     {
-        $note = $this->checkAndGetNote($noteId);
+        $note = new \stdClass();
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name) && !isset($data->description)) {
-            throw new NoteException('Enter the data to update the note.', 400);
+        if (!isset($data->name)) {
+            throw new NoteException('Invalid data: name is required.', 400);
         }
-        if (isset($data->name)) {
-            $note->name = self::validateNoteName($data->name);
-        }
+        $note->name = self::validateNoteName($data->name);
+        $note->description = null;
         if (isset($data->description)) {
             $note->description = $data->description;
         }
-        $notes = $this->noteRepository->updateNote($note);
+        $notes = $this->noteRepository->createNote($note);
         $redisKey = sprintf(self::REDIS_KEY, $notes->id);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $notes);

@@ -9,7 +9,7 @@ class GetAll extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $notes = $this->getAllNoteService()->getNotes();
+        $notes = $this->getAllNoteService()->getAll();
 
         return $this->jsonResponse($response, 'success', $notes, 200);
     }

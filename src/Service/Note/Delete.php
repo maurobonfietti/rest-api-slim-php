@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-class DeleteNoteService extends BaseNoteService
+class Delete extends BaseNoteService
 {
-    public function deleteNote(int $noteId)
+    public function delete(int $noteId)
     {
         $this->checkAndGetNote($noteId);
         $this->noteRepository->deleteNote($noteId);

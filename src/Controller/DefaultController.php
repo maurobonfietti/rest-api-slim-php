@@ -43,7 +43,7 @@ class DefaultController extends BaseController
         $db = [
             'users' => count($userService->getUsers()),
             'tasks' => count($taskService->getAllTasks()),
-            'notes' => count($noteService->getNotes()),
+            'notes' => count($noteService->getAll()),
         ];
         $status = [
             'db' => $db,

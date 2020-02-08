@@ -9,7 +9,7 @@ class GetOne extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $note = $this->getOneNoteService()->getNote((int) $args['id']);
+        $note = $this->getOneNoteService()->getOne((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', $note, 200);
     }
