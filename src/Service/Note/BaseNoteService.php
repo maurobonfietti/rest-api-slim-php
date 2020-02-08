@@ -10,8 +10,14 @@ class BaseNoteService extends BaseService
 {
     const REDIS_KEY = 'note:%s';
 
+    /**
+     * @var NoteRepository 
+     */
     protected $noteRepository;
 
+    /**
+     * @var RedisService 
+     */
     protected $redisService;
 
     public function __construct(NoteRepository $noteRepository, RedisService $redisService)
