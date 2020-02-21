@@ -1,4 +1,4 @@
-.PHONY: up down nginx php phplog nginxlog db coverage
+.PHONY: up down nginx php phplog nginxlog db coverage vendor
 
 MAKEPATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 PWD := $(dir $(MAKEPATH))
@@ -10,6 +10,9 @@ db:
 
 coverage:
 	docker-compose exec php-fpm sh -c "./vendor/bin/phpunit --coverage-text --coverage-html coverage"
+
+vendor:
+	docker-compose exec php-fpm sh -c "composer install"
 
 up:
 	docker-compose up -d --build
