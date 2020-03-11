@@ -30,8 +30,14 @@ class UserService extends BaseService
         return $this->userRepository->getUsers();
     }
 
-    public function getUser(int $userId)
+    public function useRedisCache()
     {
+        return filter_var(getenv('USE_REDIS'), FILTER_VALIDATE_BOOLEAN);
+    }
+
+    public function getUserFromCache(int $userId)
+    {
+//        $redisKey = sprintf(self::REDIS_KEY, $userId);
         $key = $this->redisService->generateKey("user:$userId");
         if ($this->redisService->exists($key)) {
             $data = $this->redisService->get($key);
@@ -39,6 +45,17 @@ class UserService extends BaseService
         } else {
             $user = $this->checkAndGetUser($userId);
             $this->redisService->setex($key, $user);
+        }
+
+        return $user;
+    }
+
+    public function getUser(int $userId)
+    {
+        if ($this->useRedisCache() === true) {
+            $user = $this->getUserFromCache($userId);
+        } else {
+            $user = $this->checkAndGetUser($userId);
         }
 
         return $user;
@@ -67,9 +84,11 @@ class UserService extends BaseService
         $user->password = hash('sha512', $data->password);
         $this->userRepository->checkUserByEmail($user->email);
         $users = $this->userRepository->createUser($user);
-        $redisKey = sprintf(self::REDIS_KEY, $users->id);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->setex($key, $users);
+        if ($this->useRedisCache() === true) {
+            $redisKey = sprintf(self::REDIS_KEY, $users->id);
+            $key = $this->redisService->generateKey($redisKey);
+            $this->redisService->setex($key, $users);
+        }
 
         return $users;
     }
@@ -88,9 +107,11 @@ class UserService extends BaseService
             $user->email = self::validateEmail($data->email);
         }
         $users = $this->userRepository->updateUser($user);
-        $redisKey = sprintf(self::REDIS_KEY, $users->id);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->setex($key, $users);
+        if ($this->useRedisCache() === true) {
+            $redisKey = sprintf(self::REDIS_KEY, $users->id);
+            $key = $this->redisService->generateKey($redisKey);
+            $this->redisService->setex($key, $users);   
+        }
 
         return $users;
     }
@@ -100,9 +121,11 @@ class UserService extends BaseService
         $this->checkAndGetUser($userId);
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
-        $redisKey = sprintf(self::REDIS_KEY, $userId);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->del($key);
+        if ($this->useRedisCache() === true) {
+            $redisKey = sprintf(self::REDIS_KEY, $userId);
+            $key = $this->redisService->generateKey($redisKey);
+            $this->redisService->del($key);    
+        }
 
         return $data;
     }
