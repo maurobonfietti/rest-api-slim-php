@@ -31,6 +31,7 @@ I implemented this API in [this project](https://github.com/maurobonfietti/rest-
 - Composer.
 - PHP.
 - MySQL/MariaDB.
+- Redis (Optional).
 
 
 ### With Composer:

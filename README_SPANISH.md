@@ -31,6 +31,7 @@ Implementé esta API en [este proyecto](https://github.com/maurobonfietti/rest-a
 - Composer.
 - PHP.
 - MySQL/MariaDB.
+- Redis (Opcional).
 
 
 ### Usando Composer:
