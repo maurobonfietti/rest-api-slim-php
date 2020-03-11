@@ -32,7 +32,7 @@ class UserService extends BaseService
 
     public function getUser(int $userId)
     {
-        if (self::useRedisCache() === true) {
+        if (self::isRedisEnabled() === true) {
             $user = $this->getUserFromCache($userId);
         } else {
             $user = $this->checkAndGetUser($userId);
@@ -79,7 +79,7 @@ class UserService extends BaseService
         $user->password = hash('sha512', $data->password);
         $this->userRepository->checkUserByEmail($user->email);
         $users = $this->userRepository->createUser($user);
-        if (self::useRedisCache() === true) {
+        if (self::isRedisEnabled() === true) {
             $redisKey = sprintf(self::REDIS_KEY, $users->id);
             $key = $this->redisService->generateKey($redisKey);
             $this->redisService->setex($key, $users);
@@ -102,7 +102,7 @@ class UserService extends BaseService
             $user->email = self::validateEmail($data->email);
         }
         $users = $this->userRepository->updateUser($user);
-        if (self::useRedisCache() === true) {
+        if (self::isRedisEnabled() === true) {
             $redisKey = sprintf(self::REDIS_KEY, $users->id);
             $key = $this->redisService->generateKey($redisKey);
             $this->redisService->setex($key, $users);   
@@ -116,7 +116,7 @@ class UserService extends BaseService
         $this->checkAndGetUser($userId);
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
-        if (self::useRedisCache() === true) {
+        if (self::isRedisEnabled() === true) {
             $redisKey = sprintf(self::REDIS_KEY, $userId);
             $key = $this->redisService->generateKey($redisKey);
             $this->redisService->del($key);    

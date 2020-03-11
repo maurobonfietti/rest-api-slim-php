@@ -8,7 +8,7 @@ class GetOne extends BaseNoteService
 {
     public function getOne(int $noteId)
     {
-        if (self::useRedisCache() === true) {
+        if (self::isRedisEnabled() === true) {
             $note = $this->getOneFromCache($noteId);
         } else {
             $note = $this->checkAndGetNote($noteId);

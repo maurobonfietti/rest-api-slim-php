@@ -9,9 +9,9 @@ use Respect\Validation\Validator as v;
 
 abstract class BaseService
 {
-    protected static function useRedisCache()
+    protected static function isRedisEnabled(): bool
     {
-        return filter_var(getenv('USE_REDIS'), FILTER_VALIDATE_BOOLEAN);
+        return filter_var(getenv('REDIS_ENABLED'), FILTER_VALIDATE_BOOLEAN);
     }
 
     protected static function validateUserName(string $name): string
