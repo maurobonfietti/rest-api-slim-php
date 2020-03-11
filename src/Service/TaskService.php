@@ -42,7 +42,7 @@ class TaskService extends BaseService
     public function getTask(int $taskId, int $userId)
     {
         if (self::isRedisEnabled() === true) {
-            $task = $this->getTaskFromCache($userId);
+            $task = $this->getTaskFromCache($taskId, $userId);
         } else {
             $task = $this->checkAndGetTask($taskId, $userId);
         }
