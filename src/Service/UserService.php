@@ -30,11 +30,6 @@ class UserService extends BaseService
         return $this->userRepository->getUsers();
     }
 
-    public function useRedisCache()
-    {
-        return filter_var(getenv('USE_REDIS'), FILTER_VALIDATE_BOOLEAN);
-    }
-
     public function getUserFromCache(int $userId)
     {
 //        $redisKey = sprintf(self::REDIS_KEY, $userId);
