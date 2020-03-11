@@ -41,7 +41,7 @@ class TaskService extends BaseService
 
     public function getTask(int $taskId, int $userId)
     {
-        if ($this->useRedisCache() === true) {
+        if (self::useRedisCache() === true) {
             $task = $this->getTaskFromCache($userId);
         } else {
             $task = $this->checkAndGetTask($taskId, $userId);
@@ -90,7 +90,7 @@ class TaskService extends BaseService
         }
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->createTask($task);
-        if ($this->useRedisCache() === true) {
+        if (self::useRedisCache() === true) {
             $redisKey = sprintf(self::REDIS_KEY, $tasks->id, $task->userId);
             $key = $this->redisService->generateKey($redisKey);
             $this->redisService->setex($key, $tasks);
@@ -117,7 +117,7 @@ class TaskService extends BaseService
         }
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->updateTask($task);
-        if ($this->useRedisCache() === true) {
+        if (self::useRedisCache() === true) {
             $redisKey = sprintf(self::REDIS_KEY, $tasks->id, $task->userId);
             $key = $this->redisService->generateKey($redisKey);
             $this->redisService->setex($key, $tasks);
@@ -130,7 +130,7 @@ class TaskService extends BaseService
     {
         $this->checkAndGetTask($taskId, $userId);
         $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
-        if ($this->useRedisCache() === true) {
+        if (self::useRedisCache() === true) {
             $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
             $key = $this->redisService->generateKey($redisKey);
             $this->redisService->del($key);

@@ -22,7 +22,7 @@ class Update extends BaseNoteService
             $note->description = $data->description;
         }
         $notes = $this->noteRepository->updateNote($note);
-        if ($this->useRedisCache() === true) {
+        if (self::useRedisCache() === true) {
             $redisKey = sprintf(self::REDIS_KEY, $notes->id);
             $key = $this->redisService->generateKey($redisKey);
             $this->redisService->setex($key, $notes);

@@ -9,7 +9,7 @@ use Respect\Validation\Validator as v;
 
 abstract class BaseService
 {
-    public function useRedisCache()
+    protected static function useRedisCache()
     {
         return filter_var(getenv('USE_REDIS'), FILTER_VALIDATE_BOOLEAN);
     }
