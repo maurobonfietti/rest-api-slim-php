@@ -21,9 +21,11 @@ class Create extends BaseNoteService
             $note->description = $data->description;
         }
         $notes = $this->noteRepository->createNote($note);
-        $redisKey = sprintf(self::REDIS_KEY, $notes->id);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->setex($key, $notes);
+        if ($this->useRedisCache() === true) {
+            $redisKey = sprintf(self::REDIS_KEY, $notes->id);
+            $key = $this->redisService->generateKey($redisKey);
+            $this->redisService->setex($key, $notes);
+        }
 
         return $notes;
     }
