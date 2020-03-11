@@ -32,6 +32,18 @@ class UserService extends BaseService
 
     public function getUser(int $userId)
     {
+        if (self::isRedisEnabled() === true) {
+            $user = $this->getUserFromCache($userId);
+        } else {
+            $user = $this->checkAndGetUser($userId);
+        }
+
+        return $user;
+    }
+
+    public function getUserFromCache(int $userId)
+    {
+//        $redisKey = sprintf(self::REDIS_KEY, $userId);
         $key = $this->redisService->generateKey("user:$userId");
         if ($this->redisService->exists($key)) {
             $data = $this->redisService->get($key);
@@ -67,9 +79,11 @@ class UserService extends BaseService
         $user->password = hash('sha512', $data->password);
         $this->userRepository->checkUserByEmail($user->email);
         $users = $this->userRepository->createUser($user);
-        $redisKey = sprintf(self::REDIS_KEY, $users->id);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->setex($key, $users);
+        if (self::isRedisEnabled() === true) {
+            $redisKey = sprintf(self::REDIS_KEY, $users->id);
+            $key = $this->redisService->generateKey($redisKey);
+            $this->redisService->setex($key, $users);
+        }
 
         return $users;
     }
@@ -88,9 +102,11 @@ class UserService extends BaseService
             $user->email = self::validateEmail($data->email);
         }
         $users = $this->userRepository->updateUser($user);
-        $redisKey = sprintf(self::REDIS_KEY, $users->id);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->setex($key, $users);
+        if (self::isRedisEnabled() === true) {
+            $redisKey = sprintf(self::REDIS_KEY, $users->id);
+            $key = $this->redisService->generateKey($redisKey);
+            $this->redisService->setex($key, $users);   
+        }
 
         return $users;
     }
@@ -100,9 +116,11 @@ class UserService extends BaseService
         $this->checkAndGetUser($userId);
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
-        $redisKey = sprintf(self::REDIS_KEY, $userId);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->del($key);
+        if (self::isRedisEnabled() === true) {
+            $redisKey = sprintf(self::REDIS_KEY, $userId);
+            $key = $this->redisService->generateKey($redisKey);
+            $this->redisService->del($key);    
+        }
 
         return $data;
     }

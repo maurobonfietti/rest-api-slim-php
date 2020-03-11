@@ -9,6 +9,11 @@ use Respect\Validation\Validator as v;
 
 abstract class BaseService
 {
+    protected static function isRedisEnabled(): bool
+    {
+        return filter_var(getenv('REDIS_ENABLED'), FILTER_VALIDATE_BOOLEAN);
+    }
+
     protected static function validateUserName(string $name): string
     {
         if (!v::alnum()->length(2, 100)->validate($name)) {
