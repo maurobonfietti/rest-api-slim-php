@@ -6,7 +6,7 @@ use App\Controller\BaseController;
 use App\Service\TaskService;
 use Slim\Container;
 
-abstract class BaseTask extends BaseController
+abstract class Base extends BaseController
 {
     public function __construct(Container $container)
     {
