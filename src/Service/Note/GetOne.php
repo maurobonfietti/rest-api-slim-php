@@ -19,7 +19,8 @@ class GetOne extends BaseNoteService
 
     public function getOneFromCache(int $noteId)
     {
-        $key = $this->redisService->generateKey("note:$noteId");
+        $redisKey = sprintf(self::REDIS_KEY, $noteId);
+        $key = $this->redisService->generateKey($redisKey);
         if ($this->redisService->exists($key)) {
             $note = $this->redisService->get($key);
         } else {

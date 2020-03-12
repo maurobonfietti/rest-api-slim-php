@@ -52,7 +52,8 @@ class TaskService extends BaseService
 
     public function getTaskFromCache(int $taskId, int $userId)
     {
-        $key = $this->redisService->generateKey("task:$taskId:user:$userId");
+        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
+        $key = $this->redisService->generateKey($redisKey);
         if ($this->redisService->exists($key)) {
             $task = $this->redisService->get($key);
         } else {

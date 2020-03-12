@@ -43,8 +43,8 @@ class UserService extends BaseService
 
     public function getUserFromCache(int $userId)
     {
-//        $redisKey = sprintf(self::REDIS_KEY, $userId);
-        $key = $this->redisService->generateKey("user:$userId");
+        $redisKey = sprintf(self::REDIS_KEY, $userId);
+        $key = $this->redisService->generateKey($redisKey);
         if ($this->redisService->exists($key)) {
             $data = $this->redisService->get($key);
             $user = json_decode(json_encode($data), false);
