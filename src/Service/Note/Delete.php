@@ -8,12 +8,10 @@ class Delete extends BaseNoteService
 {
     public function delete(int $noteId)
     {
-        $this->checkAndGetNote($noteId);
+        $this->getOneFromDb($noteId);
         $this->noteRepository->deleteNote($noteId);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $noteId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->del($key);
+            $this->deleteFromCache($noteId);
         }
     }
 }

@@ -1,17 +1,17 @@
 <?php declare(strict_types=1);
 
-namespace App\Controller\User;
+namespace App\Controller\Task;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class CreateUser extends BaseUser
+class Create extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
         $input = $request->getParsedBody();
-        $user = $this->getUserService()->createUser($input);
+        $task = $this->getTaskService()->createTask($input);
 
-        return $this->jsonResponse($response, 'success', $user, 201);
+        return $this->jsonResponse($response, 'success', $task, 201);
     }
 }

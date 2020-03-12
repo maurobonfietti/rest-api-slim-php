@@ -24,7 +24,7 @@ class TaskService extends BaseService
         return $this->taskRepository;
     }
 
-    protected function checkAndGetTask(int $taskId, int $userId)
+    protected function getTaskFromDb(int $taskId, int $userId)
     {
         return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
@@ -44,7 +44,7 @@ class TaskService extends BaseService
         if (self::isRedisEnabled() === true) {
             $task = $this->getTaskFromCache($taskId, $userId);
         } else {
-            $task = $this->checkAndGetTask($taskId, $userId);
+            $task = $this->getTaskFromDb($taskId, $userId);
         }
 
         return $task;
@@ -52,11 +52,12 @@ class TaskService extends BaseService
 
     public function getTaskFromCache(int $taskId, int $userId)
     {
-        $key = $this->redisService->generateKey("task:$taskId:user:$userId");
+        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
+        $key = $this->redisService->generateKey($redisKey);
         if ($this->redisService->exists($key)) {
             $task = $this->redisService->get($key);
         } else {
-            $task = $this->checkAndGetTask($taskId, $userId);
+            $task = $this->getTaskFromDb($taskId, $userId);
             $this->redisService->setex($key, $task);
         }
 
@@ -70,6 +71,20 @@ class TaskService extends BaseService
         }
 
         return $this->getTaskRepository()->searchTasks($tasksName, $userId, $status);
+    }
+
+    public function saveInCache($taskId, $userId, $tasks)
+    {
+        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
+        $key = $this->redisService->generateKey($redisKey);
+        $this->redisService->setex($key, $tasks);
+    }
+
+    public function deleteFromCache($taskId, $userId)
+    {
+        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
+        $key = $this->redisService->generateKey($redisKey);
+        $this->redisService->del($key);
     }
 
     public function createTask(array $input)
@@ -91,9 +106,7 @@ class TaskService extends BaseService
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->createTask($task);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $tasks->id, $task->userId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $tasks);
+            $this->saveInCache($tasks->id, $task->userId, $tasks);
         }
 
         return $tasks;
@@ -101,7 +114,7 @@ class TaskService extends BaseService
 
     public function updateTask(array $input, int $taskId)
     {
-        $task = $this->checkAndGetTask($taskId, (int) $input['decoded']->sub);
+        $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->status)) {
             throw new TaskException('Enter the data to update the task.', 400);
@@ -118,9 +131,7 @@ class TaskService extends BaseService
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->updateTask($task);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $tasks->id, $task->userId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $tasks);
+            $this->saveInCache($tasks->id, $task->userId, $tasks);
         }
 
         return $tasks;
@@ -128,12 +139,10 @@ class TaskService extends BaseService
 
     public function deleteTask(int $taskId, int $userId): string
     {
-        $this->checkAndGetTask($taskId, $userId);
+        $this->getTaskFromDb($taskId, $userId);
         $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->del($key);
+            $this->deleteFromCache($taskId, $userId);
         }
 
         return $data;

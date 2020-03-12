@@ -20,7 +20,7 @@ class UserService extends BaseService
         $this->redisService = $redisService;
     }
 
-    protected function checkAndGetUser(int $userId)
+    protected function getUserFromDb(int $userId)
     {
         return $this->userRepository->checkAndGetUser($userId);
     }
@@ -35,7 +35,7 @@ class UserService extends BaseService
         if (self::isRedisEnabled() === true) {
             $user = $this->getUserFromCache($userId);
         } else {
-            $user = $this->checkAndGetUser($userId);
+            $user = $this->getUserFromDb($userId);
         }
 
         return $user;
@@ -43,13 +43,13 @@ class UserService extends BaseService
 
     public function getUserFromCache(int $userId)
     {
-//        $redisKey = sprintf(self::REDIS_KEY, $userId);
-        $key = $this->redisService->generateKey("user:$userId");
+        $redisKey = sprintf(self::REDIS_KEY, $userId);
+        $key = $this->redisService->generateKey($redisKey);
         if ($this->redisService->exists($key)) {
             $data = $this->redisService->get($key);
             $user = json_decode(json_encode($data), false);
         } else {
-            $user = $this->checkAndGetUser($userId);
+            $user = $this->getUserFromDb($userId);
             $this->redisService->setex($key, $user);
         }
 
@@ -59,6 +59,20 @@ class UserService extends BaseService
     public function searchUsers(string $usersName): array
     {
         return $this->userRepository->searchUsers($usersName);
+    }
+
+    public function saveInCache($id, $user)
+    {
+        $redisKey = sprintf(self::REDIS_KEY, $id);
+        $key = $this->redisService->generateKey($redisKey);
+        $this->redisService->setex($key, $user);
+    }
+
+    public function deleteFromCache($userId)
+    {
+        $redisKey = sprintf(self::REDIS_KEY, $userId);
+        $key = $this->redisService->generateKey($redisKey);
+        $this->redisService->del($key);
     }
 
     public function createUser($input)
@@ -80,9 +94,7 @@ class UserService extends BaseService
         $this->userRepository->checkUserByEmail($user->email);
         $users = $this->userRepository->createUser($user);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $users->id);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $users);
+            $this->saveInCache($users->id, $users);
         }
 
         return $users;
@@ -90,7 +102,7 @@ class UserService extends BaseService
 
     public function updateUser(array $input, int $userId)
     {
-        $user = $this->checkAndGetUser($userId);
+        $user = $this->getUserFromDb($userId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->email)) {
             throw new UserException('Enter the data to update the user.', 400);
@@ -103,9 +115,7 @@ class UserService extends BaseService
         }
         $users = $this->userRepository->updateUser($user);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $users->id);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $users);   
+            $this->saveInCache($users->id, $users);
         }
 
         return $users;
@@ -113,13 +123,11 @@ class UserService extends BaseService
 
     public function deleteUser(int $userId): string
     {
-        $this->checkAndGetUser($userId);
+        $this->getUserFromDb($userId);
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $userId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->del($key);    
+            $this->deleteFromCache($userId);
         }
 
         return $data;
