@@ -28,7 +28,7 @@ abstract class BaseNoteService extends BaseService
         $this->redisService = $redisService;
     }
 
-    public function checkAndGetNote(int $noteId)
+    public function getOneFromDb(int $noteId)
     {
         return $this->noteRepository->checkAndGetNote($noteId);
     }

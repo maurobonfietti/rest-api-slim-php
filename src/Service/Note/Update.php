@@ -10,7 +10,7 @@ class Update extends BaseNoteService
 {
     public function update($input, int $noteId)
     {
-        $note = $this->checkAndGetNote($noteId);
+        $note = $this->getOneFromDb($noteId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->description)) {
             throw new NoteException('Enter the data to update the note.', 400);

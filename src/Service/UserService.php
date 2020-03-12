@@ -20,7 +20,7 @@ class UserService extends BaseService
         $this->redisService = $redisService;
     }
 
-    protected function checkAndGetUser(int $userId)
+    protected function getUserFromDb(int $userId)
     {
         return $this->userRepository->checkAndGetUser($userId);
     }
@@ -35,7 +35,7 @@ class UserService extends BaseService
         if (self::isRedisEnabled() === true) {
             $user = $this->getUserFromCache($userId);
         } else {
-            $user = $this->checkAndGetUser($userId);
+            $user = $this->getUserFromDb($userId);
         }
 
         return $user;
@@ -49,7 +49,7 @@ class UserService extends BaseService
             $data = $this->redisService->get($key);
             $user = json_decode(json_encode($data), false);
         } else {
-            $user = $this->checkAndGetUser($userId);
+            $user = $this->getUserFromDb($userId);
             $this->redisService->setex($key, $user);
         }
 
@@ -102,7 +102,7 @@ class UserService extends BaseService
 
     public function updateUser(array $input, int $userId)
     {
-        $user = $this->checkAndGetUser($userId);
+        $user = $this->getUserFromDb($userId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->email)) {
             throw new UserException('Enter the data to update the user.', 400);
@@ -123,7 +123,7 @@ class UserService extends BaseService
 
     public function deleteUser(int $userId): string
     {
-        $this->checkAndGetUser($userId);
+        $this->getUserFromDb($userId);
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
         if (self::isRedisEnabled() === true) {

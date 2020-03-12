@@ -24,7 +24,7 @@ class TaskService extends BaseService
         return $this->taskRepository;
     }
 
-    protected function checkAndGetTask(int $taskId, int $userId)
+    protected function getTaskFromDb(int $taskId, int $userId)
     {
         return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
@@ -44,7 +44,7 @@ class TaskService extends BaseService
         if (self::isRedisEnabled() === true) {
             $task = $this->getTaskFromCache($taskId, $userId);
         } else {
-            $task = $this->checkAndGetTask($taskId, $userId);
+            $task = $this->getTaskFromDb($taskId, $userId);
         }
 
         return $task;
@@ -57,7 +57,7 @@ class TaskService extends BaseService
         if ($this->redisService->exists($key)) {
             $task = $this->redisService->get($key);
         } else {
-            $task = $this->checkAndGetTask($taskId, $userId);
+            $task = $this->getTaskFromDb($taskId, $userId);
             $this->redisService->setex($key, $task);
         }
 
@@ -114,7 +114,7 @@ class TaskService extends BaseService
 
     public function updateTask(array $input, int $taskId)
     {
-        $task = $this->checkAndGetTask($taskId, (int) $input['decoded']->sub);
+        $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->status)) {
             throw new TaskException('Enter the data to update the task.', 400);
@@ -139,7 +139,7 @@ class TaskService extends BaseService
 
     public function deleteTask(int $taskId, int $userId): string
     {
-        $this->checkAndGetTask($taskId, $userId);
+        $this->getTaskFromDb($taskId, $userId);
         $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
         if (self::isRedisEnabled() === true) {
             $this->deleteFromCache($taskId, $userId);
