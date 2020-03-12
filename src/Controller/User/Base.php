@@ -7,7 +7,7 @@ use App\Exception\UserException;
 use App\Service\UserService;
 use Slim\Container;
 
-abstract class BaseUser extends BaseController
+abstract class Base extends BaseController
 {
     public function __construct(Container $container)
     {

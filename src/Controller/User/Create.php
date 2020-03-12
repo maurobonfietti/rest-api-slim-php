@@ -5,7 +5,7 @@ namespace App\Controller\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class CreateUser extends BaseUser
+class Create extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
