@@ -61,6 +61,20 @@ class UserService extends BaseService
         return $this->userRepository->searchUsers($usersName);
     }
 
+    public function saveInCache($id, $user)
+    {
+        $redisKey = sprintf(self::REDIS_KEY, $id);
+        $key = $this->redisService->generateKey($redisKey);
+        $this->redisService->setex($key, $user);
+    }
+
+    public function deleteFromCache($userId)
+    {
+        $redisKey = sprintf(self::REDIS_KEY, $userId);
+        $key = $this->redisService->generateKey($redisKey);
+        $this->redisService->del($key);
+    }
+
     public function createUser($input)
     {
         $user = new \stdClass();
@@ -80,9 +94,7 @@ class UserService extends BaseService
         $this->userRepository->checkUserByEmail($user->email);
         $users = $this->userRepository->createUser($user);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $users->id);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $users);
+            $this->saveInCache($users->id, $users);
         }
 
         return $users;
@@ -103,9 +115,7 @@ class UserService extends BaseService
         }
         $users = $this->userRepository->updateUser($user);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $users->id);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $users);   
+            $this->saveInCache($users->id, $users);
         }
 
         return $users;
@@ -117,9 +127,7 @@ class UserService extends BaseService
         $this->userRepository->deleteUserTasks($userId);
         $data = $this->userRepository->deleteUser($userId);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $userId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->del($key);    
+            $this->deleteFromCache($userId);
         }
 
         return $data;

@@ -73,6 +73,20 @@ class TaskService extends BaseService
         return $this->getTaskRepository()->searchTasks($tasksName, $userId, $status);
     }
 
+    public function saveInCache($taskId, $userId, $tasks)
+    {
+        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
+        $key = $this->redisService->generateKey($redisKey);
+        $this->redisService->setex($key, $tasks);
+    }
+
+    public function deleteFromCache($taskId, $userId)
+    {
+        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
+        $key = $this->redisService->generateKey($redisKey);
+        $this->redisService->del($key);
+    }
+
     public function createTask(array $input)
     {
         $task = new \stdClass();
@@ -92,9 +106,7 @@ class TaskService extends BaseService
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->createTask($task);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $tasks->id, $task->userId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $tasks);
+            $this->saveInCache($tasks->id, $task->userId, $tasks);
         }
 
         return $tasks;
@@ -119,9 +131,7 @@ class TaskService extends BaseService
         $task->userId = $data->decoded->sub;
         $tasks = $this->getTaskRepository()->updateTask($task);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $tasks->id, $task->userId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $tasks);
+            $this->saveInCache($tasks->id, $task->userId, $tasks);
         }
 
         return $tasks;
@@ -132,9 +142,7 @@ class TaskService extends BaseService
         $this->checkAndGetTask($taskId, $userId);
         $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->del($key);
+            $this->deleteFromCache($taskId, $userId);
         }
 
         return $data;
