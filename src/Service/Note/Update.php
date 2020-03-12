@@ -23,9 +23,7 @@ class Update extends BaseNoteService
         }
         $notes = $this->noteRepository->updateNote($note);
         if (self::isRedisEnabled() === true) {
-            $redisKey = sprintf(self::REDIS_KEY, $notes->id);
-            $key = $this->redisService->generateKey($redisKey);
-            $this->redisService->setex($key, $notes);
+            $this->saveInCache($notes->id, $notes);
         }
 
         return $notes;
