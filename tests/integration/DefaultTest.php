@@ -32,9 +32,12 @@ class DefaultTest extends BaseTestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertStringContainsString('status', (string) $response->getBody());
         $this->assertStringContainsString('success', (string) $response->getBody());
+        $this->assertStringContainsString('message', (string) $response->getBody());
+        $this->assertStringContainsString('stats', (string) $response->getBody());
+        $this->assertStringContainsString('MySQL', (string) $response->getBody());
+        $this->assertStringContainsString('Redis', (string) $response->getBody());
         $this->assertStringContainsString('version', (string) $response->getBody());
         $this->assertStringContainsString('time', (string) $response->getBody());
-        $this->assertStringContainsString('db', (string) $response->getBody());
         $this->assertStringNotContainsString('ERROR', (string) $response->getBody());
         $this->assertStringNotContainsString('Failed', (string) $response->getBody());
     }
