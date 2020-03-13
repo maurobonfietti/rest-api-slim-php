@@ -12,7 +12,7 @@ class Update extends Base
         $input = $request->getParsedBody();
         $userIdLogged = $input['decoded']->sub;
         $this->checkUserPermissions($args['id'], $userIdLogged);
-        $user = $this->getUserService()->updateUser($input, (int) $args['id']);
+        $user = $this->getUserService()->update($input, (int) $args['id']);
 
         return $this->jsonResponse($response, 'success', $user, 200);
     }
