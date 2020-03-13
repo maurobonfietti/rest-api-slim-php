@@ -22,15 +22,15 @@ class UserService extends BaseService
 
     protected function getUserFromDb(int $userId)
     {
-        return $this->userRepository->checkAndGetUser($userId);
+        return $this->userRepository->getUser($userId);
     }
 
-    public function getUsers(): array
+    public function getAll(): array
     {
-        return $this->userRepository->getUsers();
+        return $this->userRepository->getAll();
     }
 
-    public function getUser(int $userId)
+    public function getOne(int $userId)
     {
         if (self::isRedisEnabled() === true) {
             $user = $this->getUserFromCache($userId);
@@ -56,9 +56,9 @@ class UserService extends BaseService
         return $user;
     }
 
-    public function searchUsers(string $usersName): array
+    public function search(string $usersName): array
     {
-        return $this->userRepository->searchUsers($usersName);
+        return $this->userRepository->search($usersName);
     }
 
     public function saveInCache($id, $user)
@@ -75,7 +75,7 @@ class UserService extends BaseService
         $this->redisService->del($key);
     }
 
-    public function createUser($input)
+    public function create($input)
     {
         $user = new \stdClass();
         $data = json_decode(json_encode($input), false);
@@ -92,7 +92,7 @@ class UserService extends BaseService
         $user->email = self::validateEmail($data->email);
         $user->password = hash('sha512', $data->password);
         $this->userRepository->checkUserByEmail($user->email);
-        $users = $this->userRepository->createUser($user);
+        $users = $this->userRepository->create($user);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($users->id, $users);
         }
@@ -100,7 +100,7 @@ class UserService extends BaseService
         return $users;
     }
 
-    public function updateUser(array $input, int $userId)
+    public function update(array $input, int $userId)
     {
         $user = $this->getUserFromDb($userId);
         $data = json_decode(json_encode($input), false);
@@ -113,7 +113,7 @@ class UserService extends BaseService
         if (isset($data->email)) {
             $user->email = self::validateEmail($data->email);
         }
-        $users = $this->userRepository->updateUser($user);
+        $users = $this->userRepository->update($user);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($users->id, $users);
         }
@@ -121,11 +121,11 @@ class UserService extends BaseService
         return $users;
     }
 
-    public function deleteUser(int $userId): string
+    public function delete(int $userId): string
     {
         $this->getUserFromDb($userId);
         $this->userRepository->deleteUserTasks($userId);
-        $data = $this->userRepository->deleteUser($userId);
+        $data = $this->userRepository->delete($userId);
         if (self::isRedisEnabled() === true) {
             $this->deleteFromCache($userId);
         }
@@ -133,7 +133,7 @@ class UserService extends BaseService
         return $data;
     }
 
-    public function loginUser(?array $input): string
+    public function login(?array $input): string
     {
         $data = json_decode(json_encode($input), false);
         if (!isset($data->email)) {

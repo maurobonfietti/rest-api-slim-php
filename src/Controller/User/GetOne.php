@@ -9,7 +9,7 @@ class GetOne extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $user = $this->getUserService()->getUser((int) $args['id']);
+        $user = $this->getUserService()->getOne((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', $user, 200);
     }

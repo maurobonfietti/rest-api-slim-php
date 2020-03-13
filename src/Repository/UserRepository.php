@@ -11,7 +11,7 @@ class UserRepository extends BaseRepository
         $this->database = $database;
     }
 
-    public function checkAndGetUser(int $userId)
+    public function getUser(int $userId)
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
@@ -37,7 +37,7 @@ class UserRepository extends BaseRepository
         }
     }
 
-    public function getUsers(): array
+    public function getAll(): array
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` ORDER BY `id`';
         $statement = $this->database->prepare($query);
@@ -46,7 +46,7 @@ class UserRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function searchUsers(string $usersName): array
+    public function search(string $usersName): array
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `name` LIKE :name ORDER BY `id`';
         $name = '%' . $usersName . '%';
@@ -76,7 +76,7 @@ class UserRepository extends BaseRepository
         return $user;
     }
 
-    public function createUser($user)
+    public function create($user)
     {
         $query = 'INSERT INTO `users` (`name`, `email`, `password`) VALUES (:name, :email, :password)';
         $statement = $this->database->prepare($query);
@@ -85,10 +85,10 @@ class UserRepository extends BaseRepository
         $statement->bindParam('password', $user->password);
         $statement->execute();
 
-        return $this->checkAndGetUser((int) $this->database->lastInsertId());
+        return $this->getUser((int) $this->database->lastInsertId());
     }
 
-    public function updateUser($user)
+    public function update($user)
     {
         $query = 'UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id';
         $statement = $this->database->prepare($query);
@@ -97,10 +97,10 @@ class UserRepository extends BaseRepository
         $statement->bindParam('email', $user->email);
         $statement->execute();
 
-        return $this->checkAndGetUser((int) $user->id);
+        return $this->getUser((int) $user->id);
     }
 
-    public function deleteUser(int $userId): string
+    public function delete(int $userId): string
     {
         $query = 'DELETE FROM `users` WHERE `id` = :id';
         $statement = $this->database->prepare($query);

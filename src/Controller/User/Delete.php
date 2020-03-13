@@ -12,7 +12,7 @@ class Delete extends Base
         $input = $request->getParsedBody();
         $userIdLogged = $input['decoded']->sub;
         $this->checkUserPermissions($args['id'], $userIdLogged);
-        $user = $this->getUserService()->deleteUser((int) $args['id']);
+        $user = $this->getUserService()->delete((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', $user, 204);
     }

@@ -12,7 +12,7 @@ class GetOne extends Base
         $input = $request->getParsedBody();
         $taskId = (int) $args['id'];
         $userId = (int) $input['decoded']->sub;
-        $task = $this->getTaskService()->getTask($taskId, $userId);
+        $task = $this->getTaskService()->getOne($taskId, $userId);
 
         return $this->jsonResponse($response, 'success', $task, 200);
     }

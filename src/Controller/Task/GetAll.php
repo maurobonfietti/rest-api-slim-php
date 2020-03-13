@@ -11,7 +11,7 @@ class GetAll extends Base
     {
         $input = $request->getParsedBody();
         $userId = (int) $input['decoded']->sub;
-        $tasks = $this->getTaskService()->getTasks($userId);
+        $tasks = $this->getTaskService()->getAll($userId);
 
         return $this->jsonResponse($response, 'success', $tasks, 200);
     }
