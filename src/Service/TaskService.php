@@ -34,12 +34,12 @@ class TaskService extends BaseService
         return $this->getTaskRepository()->getAllTasks();
     }
 
-    public function getTasks(int $userId): array
+    public function getAll(int $userId): array
     {
-        return $this->getTaskRepository()->getTasks($userId);
+        return $this->getTaskRepository()->getAll($userId);
     }
 
-    public function getTask(int $taskId, int $userId)
+    public function getOne(int $taskId, int $userId)
     {
         if (self::isRedisEnabled() === true) {
             $task = $this->getTaskFromCache($taskId, $userId);
@@ -64,13 +64,13 @@ class TaskService extends BaseService
         return $task;
     }
 
-    public function searchTasks($tasksName, int $userId, $status): array
+    public function search($tasksName, int $userId, $status): array
     {
         if ($status !== null) {
             $status = (int) $status;
         }
 
-        return $this->getTaskRepository()->searchTasks($tasksName, $userId, $status);
+        return $this->getTaskRepository()->search($tasksName, $userId, $status);
     }
 
     public function saveInCache($taskId, $userId, $tasks)
@@ -87,7 +87,7 @@ class TaskService extends BaseService
         $this->redisService->del($key);
     }
 
-    public function createTask(array $input)
+    public function create(array $input)
     {
         $task = new \stdClass();
         $data = json_decode(json_encode($input), false);
@@ -104,7 +104,7 @@ class TaskService extends BaseService
             $task->status = self::validateTaskStatus($data->status);
         }
         $task->userId = $data->decoded->sub;
-        $tasks = $this->getTaskRepository()->createTask($task);
+        $tasks = $this->getTaskRepository()->create($task);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($tasks->id, $task->userId, $tasks);
         }
@@ -112,7 +112,7 @@ class TaskService extends BaseService
         return $tasks;
     }
 
-    public function updateTask(array $input, int $taskId)
+    public function update(array $input, int $taskId)
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
@@ -129,7 +129,7 @@ class TaskService extends BaseService
             $task->status = self::validateTaskStatus($data->status);
         }
         $task->userId = $data->decoded->sub;
-        $tasks = $this->getTaskRepository()->updateTask($task);
+        $tasks = $this->getTaskRepository()->update($task);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($tasks->id, $task->userId, $tasks);
         }
@@ -137,10 +137,10 @@ class TaskService extends BaseService
         return $tasks;
     }
 
-    public function deleteTask(int $taskId, int $userId): string
+    public function delete(int $taskId, int $userId): string
     {
         $this->getTaskFromDb($taskId, $userId);
-        $data = $this->getTaskRepository()->deleteTask($taskId, $userId);
+        $data = $this->getTaskRepository()->delete($taskId, $userId);
         if (self::isRedisEnabled() === true) {
             $this->deleteFromCache($taskId, $userId);
         }

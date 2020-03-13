@@ -12,7 +12,7 @@ class Delete extends Base
         $input = $request->getParsedBody();
         $taskId = (int) $args['id'];
         $userId = (int) $input['decoded']->sub;
-        $task = $this->getTaskService()->deleteTask($taskId, $userId);
+        $task = $this->getTaskService()->delete($taskId, $userId);
 
         return $this->jsonResponse($response, 'success', $task, 204);
     }
