@@ -22,4 +22,9 @@ abstract class BaseController
 
         return $response->withJson($result, $code, JSON_PRETTY_PRINT);
     }
+
+    protected static function isRedisEnabled(): bool
+    {
+        return filter_var(getenv('REDIS_ENABLED'), FILTER_VALIDATE_BOOLEAN);
+    }
 }
