@@ -8,7 +8,7 @@ use Slim\Http\Response;
 
 class DefaultController extends BaseController
 {
-    const API_VERSION = '0.39.0';
+    const API_VERSION = '0.40.0';
 
     public function __construct(Container $container)
     {
@@ -37,20 +37,41 @@ class DefaultController extends BaseController
 
     public function getStatus(Request $request, Response $response, array $args): Response
     {
-        $userService = $this->container->get('user_service');
-        $taskService = $this->container->get('task_service');
-        $noteService = $this->container->get('get_all_note_service');
-        $db = [
-            'users' => count($userService->getUsers()),
-            'tasks' => count($taskService->getAllTasks()),
-            'notes' => count($noteService->getAll()),
-        ];
         $status = [
-            'db' => $db,
+            'stats' => $this->getDbStats(),
+            'MySQL' => 'OK',
+            'Redis' => $this->checkRedisConnection(),
             'version' => self::API_VERSION,
             'timestamp' => time(),
         ];
 
         return $this->jsonResponse($response, 'success', $status, 200);
+    }
+
+    private function getDbStats(): array
+    {
+        $userService = $this->container->get('user_service');
+        $taskService = $this->container->get('task_service');
+        $noteService = $this->container->get('get_all_note_service');
+
+        return [
+            'users' => count($userService->getAll()),
+            'tasks' => count($taskService->getAllTasks()),
+            'notes' => count($noteService->getAll()),
+        ];
+    }
+
+    private function checkRedisConnection(): string
+    {
+        $redis = 'Disabled';
+        if (self::isRedisEnabled() === true) {
+            $redisService = $this->container->get('redis_service');
+            $redisKey = 'test:status';
+            $key = $redisService->generateKey($redisKey);
+            $redisService->set($key, []);
+            $redis = 'OK';
+        }
+
+        return $redis;
     }
 }
