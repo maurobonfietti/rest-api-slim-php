@@ -94,6 +94,11 @@ $ make down
 Si tuviste alguna duda o problema, puedes consultar [esta guía paso a paso](TROUBLESHOOTING.md).
 
 
+## TUTORIAL:
+
+[![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
+
+
 ## DEPENDENCIAS:
 
 ### LISTA DE DEPENDENCIAS REQUERIDAS:

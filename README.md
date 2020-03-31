@@ -95,6 +95,11 @@ $ make down
 If you get stuck, you can try [this guide step by step](TROUBLESHOOTING.md).
 
 
+## TUTORIAL:
+
+[![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
+
+
 ## DEPENDENCIES:
 
 ### LIST OF REQUIRE DEPENDENCIES:
