@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 $app->get('/', 'App\Controller\DefaultController:getHelp');
 $app->get('/status', 'App\Controller\DefaultController:getStatus');
