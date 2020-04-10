@@ -98,6 +98,8 @@ Si tuviste alguna duda o problema, puedes consultar [esta guía paso a paso](TRO
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
 
+[![Tutorial](https://cdn.loom.com/sessions/thumbnails/e71baff66b9f45d0b2f57dfe014abdc7-with-play.gif)](https://youtu.be/qX_TVjxEZSc)
+
 
 ## DEPENDENCIAS:
 
@@ -123,13 +125,13 @@ Ejecutar los tests PHPUnit con `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 8.5.2 by Sebastian Bergmann and contributors.
+PHPUnit 8.5.3 by Sebastian Bergmann and contributors.
 
-...............................................................                                                                                                        63 / 63 (100%)
+...............................................................   63 / 63 (100%)
 
-Time: 226 ms, Memory: 14.00 MB
+Time: 248 ms, Memory: 14.00 MB
 
-OK (63 tests, 305 assertions)
+OK (63 tests, 308 assertions)
 ```
 
 
