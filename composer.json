@@ -45,6 +45,7 @@
         "coverage": "phpunit --coverage-html=coverage --coverage-text",
         "database": "extras/bin/restart-api.sh",
         "restart": "extras/bin/restart-api.sh",
+        "migration": "php extras/bin/migration.php",
         "start": "php -S 0.0.0.0:8080 -t public public/index.php",
         "test": "phpunit"
     }
