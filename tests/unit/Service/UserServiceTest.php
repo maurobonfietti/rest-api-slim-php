@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\unit;
+namespace Tests\unit\Service;
 
 use Tests\integration\BaseTestCase;
 
