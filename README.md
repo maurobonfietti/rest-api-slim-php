@@ -6,11 +6,12 @@ Example of REST API with [Slim PHP micro framework](https://www.slimframework.co
 
 This simple RESTful API, allows CRUD operations to manage resources like: Users, Tasks and Notes.
 
+[![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=maurobonfietti_rest-api-slim-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=maurobonfietti_rest-api-slim-php)
-[![Software License][ico-license]](LICENSE.md)
+[![Packagist Version](https://img.shields.io/packagist/v/maurobonfietti/rest-api-slim-php)](https://packagist.org/packages/maurobonfietti/rest-api-slim-php)
 
 You can also read this [README IN SPANISH](README_SPANISH.md).
 
@@ -134,11 +135,11 @@ Run all PHPUnit tests with `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 8.5.3 by Sebastian Bergmann and contributors.
+PHPUnit 9.1.1 by Sebastian Bergmann and contributors.
 
 ...............................................................   63 / 63 (100%)
 
-Time: 214 ms, Memory: 14.00 MB
+Time: 221 ms, Memory: 16.00 MB
 
 OK (63 tests, 367 assertions)
 ```
@@ -235,4 +236,4 @@ Check it out to this [LIVE DEMO](http://bit.ly/2DdwKkd).
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat

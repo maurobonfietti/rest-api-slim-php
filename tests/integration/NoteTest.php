@@ -24,8 +24,8 @@ class NoteTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('description', $result);
-        $this->assertRegExp('{"code":200,"status":"success"}', $value);
-        $this->assertRegExp('{"name":"[A-Za-z0-9_. ]+","description":"[A-Za-z0-9_. ]+"}', $value);
+        $this->assertMatchesRegularExpression('{"code":200,"status":"success"}', $value);
+        $this->assertMatchesRegularExpression('{"name":"[A-Za-z0-9_. ]+","description":"[A-Za-z0-9_. ]+"}', $value);
         $this->assertStringNotContainsString('error', $result);
     }
 
