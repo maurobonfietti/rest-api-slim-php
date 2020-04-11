@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Tests\integration;
+namespace Tests\unit;
+
+use Tests\integration\BaseTestCase;
 
 class UserServiceTest extends BaseTestCase
 {
