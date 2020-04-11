@@ -18,6 +18,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -35,6 +36,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -52,6 +54,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringContainsString('error', $result);
@@ -67,6 +70,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -84,6 +88,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -101,6 +106,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -118,6 +124,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -139,6 +146,7 @@ class TaskTest extends BaseTestCase
         self::$id = json_decode($result)->message->id;
 
         $this->assertEquals(201, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -156,6 +164,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -173,6 +182,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringContainsString('error', $result);
@@ -190,6 +200,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringContainsString('error', $result);
     }
@@ -206,6 +217,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringContainsString('error', $result);
     }
@@ -225,6 +237,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringContainsString('error', $result);
     }
@@ -244,6 +257,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringContainsString('error', $result);
     }
@@ -263,6 +277,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(403, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringContainsString('error', $result);
     }
@@ -280,6 +295,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
@@ -297,6 +313,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringContainsString('error', $result);
@@ -314,6 +331,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringContainsString('error', $result);
@@ -329,6 +347,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(204, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
         $this->assertStringNotContainsString('error', $result);
     }
@@ -343,6 +362,7 @@ class TaskTest extends BaseTestCase
         $result = (string) $response->getBody();
 
         $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('id', $result);
         $this->assertStringContainsString('error', $result);
