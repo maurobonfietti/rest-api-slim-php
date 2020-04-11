@@ -8,7 +8,7 @@ use App\Exception\AuthException;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use \Firebase\JWT\JWT;
+use Firebase\JWT\JWT;
 
 class AuthMiddleware
 {

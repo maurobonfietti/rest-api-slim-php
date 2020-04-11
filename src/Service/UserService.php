@@ -6,7 +6,7 @@ namespace App\Service;
 
 use App\Exception\UserException;
 use App\Repository\UserRepository;
-use \Firebase\JWT\JWT;
+use Firebase\JWT\JWT;
 
 class UserService extends BaseService
 {
@@ -146,13 +146,13 @@ class UserService extends BaseService
         }
         $password = hash('sha512', $data->password);
         $user = $this->userRepository->loginUser($data->email, $password);
-        $token = array(
+        $token = [
             'sub' => $user->id,
             'email' => $user->email,
             'name' => $user->name,
             'iat' => time(),
             'exp' => time() + (7 * 24 * 60 * 60),
-        );
+        ];
 
         return JWT::encode($token, getenv('SECRET_KEY'));
     }

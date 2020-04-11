@@ -18,6 +18,7 @@ class AuthLoginTest extends BaseTestCase
         self::$jwt = json_decode($result)->message->Authorization;
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('Authorization', $result);
         $this->assertStringContainsString('Bearer', $result);
     }

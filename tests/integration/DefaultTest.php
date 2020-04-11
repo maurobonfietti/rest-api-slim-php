@@ -14,6 +14,7 @@ class DefaultTest extends BaseTestCase
         $response = $this->runApp('GET', '/');
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('status', (string) $response->getBody());
         $this->assertStringContainsString('success', (string) $response->getBody());
         $this->assertStringContainsString('version', (string) $response->getBody());
@@ -32,6 +33,7 @@ class DefaultTest extends BaseTestCase
         $response = $this->runApp('GET', '/status');
 
         $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('status', (string) $response->getBody());
         $this->assertStringContainsString('success', (string) $response->getBody());
         $this->assertStringContainsString('message', (string) $response->getBody());
