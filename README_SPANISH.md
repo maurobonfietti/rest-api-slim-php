@@ -94,9 +94,17 @@ $ make down
 Si tuviste alguna duda o problema, puedes consultar [esta guía paso a paso](TROUBLESHOOTING.md).
 
 
-## TUTORIAL:
+## VIDEOS:
+
+### #1
+
+Ejemplo de cómo utilizar esta API y JWT para autenticación:
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
+
+### #2
+
+Cómo usar Redis en esta API con Slim y PHP:
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/e71baff66b9f45d0b2f57dfe014abdc7-with-play.gif)](https://youtu.be/qX_TVjxEZSc)
 
@@ -129,9 +137,9 @@ PHPUnit 8.5.3 by Sebastian Bergmann and contributors.
 
 ...............................................................   63 / 63 (100%)
 
-Time: 248 ms, Memory: 14.00 MB
+Time: 214 ms, Memory: 14.00 MB
 
-OK (63 tests, 308 assertions)
+OK (63 tests, 367 assertions)
 ```
 
 
