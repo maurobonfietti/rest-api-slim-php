@@ -13,12 +13,12 @@ abstract class BaseNoteService extends BaseService
     const REDIS_KEY = 'note:%s';
 
     /**
-     * @var NoteRepository 
+     * @var NoteRepository
      */
     protected $noteRepository;
 
     /**
-     * @var RedisService 
+     * @var RedisService
      */
     protected $redisService;
 

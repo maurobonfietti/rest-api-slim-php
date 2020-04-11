@@ -20,7 +20,7 @@ $container['db'] = function (ContainerInterface $c): PDO {
 };
 
 $container['errorHandler'] = function (): ApiError {
-    return new ApiError;
+    return new ApiError();
 };
 
 $container['redis_service'] = function (): RedisService {
