@@ -1,7 +1,7 @@
 
 # Rest Api Slim PHP
 
-Example of REST API with [Slim PHP micro framework](http://www.slimframework.com).
+[Example of REST API](https://github.com/maurobonfietti/rest-api-slim-php) with Slim PHP micro framework.
 
 This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
 
@@ -251,7 +251,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/3
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/notes/search/my
+URL: {{domain-api-rest-slimphp}}/api/v1/notes/search/note
 ```
 
 
@@ -313,8 +313,8 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
 
 ```js        
 {
-  "name": "My Note Number 4",
-  "description": "Free Note"
+  "name": "My Note Number 433333",
+  "description": "Free Note?!?!?!"
 }
 ```
 
@@ -329,7 +329,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
 ```bash
 Method: DELETE
 Type: FORMDATA
-URL: {{domain-api-rest-slimphp}}/api/v1/notes/27
+URL: {{domain-api-rest-slimphp}}/api/v1/notes/38
 ```
 
 
@@ -396,7 +396,7 @@ Search tasks of a user.
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/search/sleep
+URL: {{domain-api-rest-slimphp}}/api/v1/tasks/search/
 ```
 
 
@@ -405,6 +405,14 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/search/sleep
 | Key | Value | Description |
 | --- | ------|-------------|
 | Authorization | {{jwt}} |  |
+
+
+
+***Query params:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| statuss | 0 |  |
 
 
 
@@ -668,4 +676,4 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/112
 
 ---
 [Back to top](#rest-api-slim-php)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2019-06-18 19:55:31 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-04-17 15:40:38 by [docgen](https://github.com/thedevsaddam/docgen)
