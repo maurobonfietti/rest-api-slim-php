@@ -95,17 +95,17 @@ $ make down
 Si tuviste alguna duda o problema, puedes consultar [esta guía paso a paso](TROUBLESHOOTING.md).
 
 
-## VIDEOS:
+## TUTORIAL:
 
-### #1
+### VIDEO #1
 
-Ejemplo de cómo utilizar esta API y JWT para autenticación:
+Ejemplo de cómo utilizar esta API con JWT para autenticación:
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
 
-### #2
+### VIDEO #2
 
-Cómo usar Redis en esta API con Slim y PHP:
+Cómo usar Redis en esta API con Slim PHP:
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/e71baff66b9f45d0b2f57dfe014abdc7-with-play.gif)](https://youtu.be/qX_TVjxEZSc)
 
@@ -194,16 +194,16 @@ OK (63 tests, 367 assertions)
 Ver documentación de la API con la [lista completa de endpoints](extras/docs/endpoints.md).
 
 
+### AYUDA Y MANUAL DE USO:
+
+Para más información sobre el modo de uso de la API REST, ver la siguiente documentación disponible en [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
+
+
 ### IMPORTAR EN POSTMAN:
 
 Toda la información de la API, preparada para descargar y utilizar como colección de postman: [Importar Colección](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
-
-
-### AYUDA Y MANUAL DE USO:
-
-Para más información sobre el modo de uso de la API REST, ver la siguiente documentación disponible en [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
 
 
 ### OPEN API:
@@ -223,7 +223,7 @@ Puedes deployar esta API con Heroku Free.
 Probar [DEMO](http://bit.ly/2DdwKkd).
 
 
-## COMPRAME UN CAFÉ :-)
+## ¿TE FUE DE UTILIDAD EL PROYECTO?
 
 <a href='https://ko-fi.com/maurobonfietti' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
