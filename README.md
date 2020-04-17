@@ -96,15 +96,15 @@ $ make down
 If you get stuck, you can try [this guide step by step](TROUBLESHOOTING.md).
 
 
-## VIDEOS:
+## TUTORIAL:
 
-### #1
+### VIDEO #1
 
 Example of how to use this API with JWT for Authentication (spanish):
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
 
-### #2
+### VIDEO #2
 
 How to use Redis in this API with Slim and PHP (spanish):
 
@@ -195,16 +195,16 @@ OK (63 tests, 367 assertions)
 Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
 
 
+### HELP AND DOCS:
+
+For more information on how to use the REST API, see the following documentation available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
+
+
 ### IMPORT WITH POSTMAN:
 
 All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
-
-
-### HELP AND DOCS:
-
-For more information on how to use the REST API, see the following documentation available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
 
 
 ### OPEN API SPEC:
@@ -224,7 +224,7 @@ You can deploy this API with Heroku Free.
 Check it out to this [LIVE DEMO](http://bit.ly/2DdwKkd).
 
 
-## BUY ME A COFFEE :-)
+## WOULD YOU LIKE TO SUPPORT THE PROJECT?
 
 <a href='https://ko-fi.com/maurobonfietti' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />

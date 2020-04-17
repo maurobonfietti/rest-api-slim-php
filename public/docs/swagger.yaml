@@ -2,9 +2,9 @@ openapi: 3.0.0
 info:
   title: Rest Api Slim PHP
   description: >
-    Example of REST API with [Slim PHP micro framework](https://github.com/maurobonfietti/rest-api-slim-php).
+    [Example of REST API](https://github.com/maurobonfietti/rest-api-slim-php) with Slim PHP micro framework.
 
-    This simple RESTful API, allows CRUD operations to manage resources like: Users, Tasks and Notes.
+    This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
   contact: {}
   version: '1.0'
 servers:
@@ -230,7 +230,6 @@ paths:
       tags:
       - Users
       summary: Get All Users
-      description: 'TODO: Add Description'
       operationId: GetAllUsers
       parameters:
       - name: Authorization
@@ -238,7 +237,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -276,7 +274,6 @@ paths:
       tags:
       - Users
       summary: Get One User
-      description: 'TODO: Add Description'
       operationId: GetOneUser
       parameters:
       - name: Authorization
@@ -284,7 +281,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -299,7 +295,6 @@ paths:
       tags:
       - Users
       summary: Search Users
-      description: 'TODO: Add Description'
       operationId: SearchUsers
       parameters:
       - name: Authorization
@@ -307,7 +302,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -330,7 +324,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -363,7 +356,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -386,7 +378,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -408,7 +399,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -442,7 +432,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -475,7 +464,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -498,7 +486,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -531,7 +518,6 @@ paths:
         description: ''
         required: true
         style: simple
-        explode: false
         schema:
           type: string
           example: '{{jwt}}'
@@ -546,7 +532,6 @@ paths:
       tags:
       - Notes
       summary: Get All Notes
-      description: 'TODO: Add Description'
       operationId: GetAllNotes
       parameters: []
       responses:
@@ -558,7 +543,6 @@ paths:
       tags:
       - Notes
       summary: Create Note
-      description: 'TODO: Add Description'
       operationId: CreateNote
       parameters: []
       requestBody:
@@ -581,7 +565,6 @@ paths:
       tags:
       - Notes
       summary: Get One Note
-      description: 'TODO: Add Description'
       operationId: GetOneNote
       parameters: []
       responses:
@@ -589,12 +572,11 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /api/v1/notes/search/my:
+  /api/v1/notes/search/note:
     get:
       tags:
       - Notes
       summary: Search Notes
-      description: 'TODO: Add Description'
       operationId: SearchNotes
       parameters: []
       responses:
@@ -607,7 +589,6 @@ paths:
       tags:
       - Notes
       summary: Update Note
-      description: 'TODO: Add Description'
       operationId: UpdateNote
       parameters: []
       requestBody:
@@ -617,20 +598,19 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateNoteRequest'
             example:
-              name: My Note Number 4
-              description: Free Note
+              name: My Note Number 433333
+              description: Free Note?!?!?!
         required: true
       responses:
         200:
           description: ''
           headers: {}
       deprecated: false
-  /api/v1/notes/27:
+  /api/v1/notes/38:
     delete:
       tags:
       - Notes
       summary: Delete Note
-      description: 'TODO: Add Description'
       operationId: DeleteNote
       parameters: []
       responses:
@@ -948,13 +928,12 @@ components:
         description:
           type: string
       example:
-        name: My Note Number 4
-        description: Free Note
+        name: My Note Number 433333
+        description: Free Note?!?!?!
 tags:
 - name: Info
   description: Get information about API.
 - name: Login
-  description: Login Users.
 - name: Users
   description: Manage Users.
 - name: Tasks

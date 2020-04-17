@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "78eb728a-890c-6cc5-1036-fcd8f46a2243",
 		"name": "Rest Api Slim PHP",
-		"description": "Example of REST API with [Slim PHP micro framework](http://www.slimframework.com).\n\nThis simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)\n",
+		"description": "[Example of REST API](https://github.com/maurobonfietti/rest-api-slim-php) with Slim PHP micro framework.\n\nThis simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)\n",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -180,7 +180,8 @@
 					]
 				}
 			],
-			"description": "Get information about API."
+			"description": "Get information about API.",
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Login",
@@ -353,7 +354,8 @@
 						}
 					]
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Users",
@@ -641,7 +643,8 @@
 					"response": []
 				}
 			],
-			"description": "Manage Users."
+			"description": "Manage Users.",
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Tasks",
@@ -768,7 +771,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/search/sleep",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/search/?statuss=0",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -777,7 +780,13 @@
 								"v1",
 								"tasks",
 								"search",
-								"sleep"
+								""
+							],
+							"query": [
+								{
+									"key": "statuss",
+									"value": "0"
+								}
 							]
 						},
 						"description": "Search tasks of a user."
@@ -939,7 +948,8 @@
 					"response": []
 				}
 			],
-			"description": "Manage Tasks."
+			"description": "Manage Tasks.",
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Notes",
@@ -1046,7 +1056,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/search/my",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/search/note",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -1055,7 +1065,7 @@
 								"v1",
 								"notes",
 								"search",
-								"my"
+								"note"
 							]
 						}
 					},
@@ -1139,7 +1149,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"My Note Number 4\",\n  \"description\": \"Free Note\"\n}"
+							"raw": "{\n  \"name\": \"My Note Number 433333\",\n  \"description\": \"Free Note?!?!?!\"\n}"
 						},
 						"url": {
 							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/4",
@@ -1180,7 +1190,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/27",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/38",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -1188,7 +1198,7 @@
 								"api",
 								"v1",
 								"notes",
-								"27"
+								"38"
 							]
 						}
 					},
@@ -1217,7 +1227,8 @@
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
@@ -1241,5 +1252,6 @@
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
