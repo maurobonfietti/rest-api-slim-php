@@ -1,0 +1,942 @@
+openapi: 3.0.0
+info:
+  title: Rest Api Slim PHP
+  description: >
+    [Example of REST API](https://github.com/maurobonfietti/rest-api-slim-php) with Slim PHP micro framework.
+
+    This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
+  contact: {}
+  version: '1.0'
+servers:
+- url: https://rest-api-slim-php.herokuapp.com
+  description: Production server using Heroku.
+
+- url: http://localhost:8080
+  description: My localhost server using PHP built-in web server.
+
+- url: http://localhost:8081
+  description: My localhost server using docker and docker compose.
+
+paths:
+  /:
+    get:
+      tags:
+      - Info
+      summary: Get Help
+      description: Get help about this api.
+      operationId: GetHelp
+      parameters: []
+      responses:
+        200:
+          description: ''
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost:8080
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 18 Jun 2019 22:39:02 +0000
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/7.3.4
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 463
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetHelp'
+              example:
+                code: 200
+                status: success
+                message:
+                  endpoints:
+                    tasks: http://localhost:8080/api/v1/tasks
+                    users: http://localhost:8080/api/v1/users
+                    notes: http://localhost:8080/api/v1/notes
+                    status: http://localhost:8080/status
+                    this help: http://localhost:8080
+                  version: 0.22.2
+                  timestamp: 1560897542
+      deprecated: false
+  /status:
+    get:
+      tags:
+      - Info
+      summary: Get Status
+      description: Get status of this api.
+      operationId: GetStatus
+      parameters: []
+      responses:
+        200:
+          description: ''
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost:8080
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Tue, 18 Jun 2019 22:39:39 +0000
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/7.3.4
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 228
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetStatus'
+              example:
+                code: 200
+                status: success
+                message:
+                  db:
+                    users: 9
+                    tasks: 10
+                    notes: 5
+                  version: 0.22.2
+                  timestamp: 1560897579
+      deprecated: false
+  /login:
+    post:
+      tags:
+      - Login
+      summary: Login
+      description: Login and get a JWT Token Authorization Bearer to use this api.
+      operationId: Login
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+            example:
+              email: super.email@host.com
+              password: OnePass1
+        required: true
+      responses:
+        200:
+          description: ''
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost:8080
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 22 May 2019 19:24:12 +0000
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/7.3.4
+            Access-Control-Allow-Origin:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '*'
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: 291
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginOK'
+              example:
+                code: 200
+                status: success
+                message:
+                  Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsImVtYWlsIjoibUBiLmNvbS5hciIsIm5hbWUiOiJNTkIiLCJpYXQiOjE1NTg1NTMwNTIsImV4cCI6MTU1OTE1Nzg1Mn0.OQyICWlGW0oSUB-ANrYL2OJTdC2v0OQQO3RQQ3W_KLo
+        400:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginFailed'
+              example:
+                message: 'Login failed: Email or password incorrect.'
+                class: UserException
+                status: error
+                code: 400
+      deprecated: false
+  /api/v1/users:
+    get:
+      tags:
+      - Users
+      summary: Get All Users
+      operationId: GetAllUsers
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+      - Users
+      summary: Create User
+      description: Register a new user.
+      operationId: CreateUser
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+            example:
+              name: John User
+              email: super.email@host.com
+              password: OnePass1
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /api/v1/users/8:
+    get:
+      tags:
+      - Users
+      summary: Get One User
+      operationId: GetOneUser
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/users/search/d:
+    get:
+      tags:
+      - Users
+      summary: Search Users
+      operationId: SearchUsers
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/users/4:
+    put:
+      tags:
+      - Users
+      summary: Update User
+      description: Update a user.
+      operationId: UpdateUser
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+            example:
+              name: Jhon R
+              email: ram@hotmail.com
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/users/112:
+    delete:
+      tags:
+      - Users
+      summary: Delete User
+      description: Delete a user.
+      operationId: DeleteUser
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/tasks:
+    get:
+      tags:
+      - Tasks
+      summary: Get All Tasks
+      description: Get all tasks of a user.
+      operationId: GetAllTasks
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    post:
+      tags:
+      - Tasks
+      summary: Create Task
+      description: Create a task.
+      operationId: CreateTask
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTaskRequest'
+            example:
+              name: Go To Sleep
+              description: It's too late, go to sleep man ;-)
+              status: 0
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/tasks/7:
+    get:
+      tags:
+      - Tasks
+      summary: Get One Task
+      description: Get one task of a user.
+      operationId: GetOneTask
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/tasks/search:
+    get:
+      tags:
+      - Tasks
+      summary: Search Tasks
+      description: Search tasks of a user.
+      operationId: SearchTasks
+      parameters:
+      - name: statuss
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 0
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/tasks/29:
+    put:
+      tags:
+      - Tasks
+      summary: Update Task
+      description: Update a task of a user.
+      operationId: UpdateTask
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTaskRequest'
+            example:
+              name: Go To Sleep NOW!!
+              description: It's too late, go to sleep man haha...
+              status: 1
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+    delete:
+      tags:
+      - Tasks
+      summary: Delete Task
+      description: Delete a task of a user.
+      operationId: DeleteTask
+      parameters:
+      - name: Authorization
+        in: header
+        description: ''
+        required: true
+        style: simple
+        schema:
+          type: string
+          example: '{{jwt}}'
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+  /api/v1/notes:
+    get:
+      tags:
+      - Notes
+      summary: Get All Notes
+      operationId: GetAllNotes
+      parameters: []
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+    post:
+      tags:
+      - Notes
+      summary: Create Note
+      operationId: CreateNote
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNoteRequest'
+            example:
+              name: New Soccer Note
+              description: Magic Goal...
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /api/v1/notes/3:
+    get:
+      tags:
+      - Notes
+      summary: Get One Note
+      operationId: GetOneNote
+      parameters: []
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /api/v1/notes/search/note:
+    get:
+      tags:
+      - Notes
+      summary: Search Notes
+      operationId: SearchNotes
+      parameters: []
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /api/v1/notes/4:
+    put:
+      tags:
+      - Notes
+      summary: Update Note
+      operationId: UpdateNote
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNoteRequest'
+            example:
+              name: My Note Number 433333
+              description: Free Note?!?!?!
+        required: true
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+  /api/v1/notes/38:
+    delete:
+      tags:
+      - Notes
+      summary: Delete Note
+      operationId: DeleteNote
+      parameters: []
+      responses:
+        200:
+          description: ''
+          headers: {}
+      deprecated: false
+components:
+  schemas:
+    GetHelp:
+      title: GetHelp
+      required:
+      - code
+      - status
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        status:
+          type: string
+        message:
+          $ref: '#/components/schemas/Message'
+      example:
+        code: 200
+        status: success
+        message:
+          endpoints:
+            tasks: http://localhost:8080/api/v1/tasks
+            users: http://localhost:8080/api/v1/users
+            notes: http://localhost:8080/api/v1/notes
+            status: http://localhost:8080/status
+            this help: http://localhost:8080
+          version: 0.22.2
+          timestamp: 1560897542
+    Message:
+      title: Message
+      required:
+      - endpoints
+      - version
+      - timestamp
+      type: object
+      properties:
+        endpoints:
+          $ref: '#/components/schemas/Endpoints'
+        version:
+          type: string
+        timestamp:
+          type: integer
+          format: int32
+      example:
+        endpoints:
+          tasks: http://localhost:8080/api/v1/tasks
+          users: http://localhost:8080/api/v1/users
+          notes: http://localhost:8080/api/v1/notes
+          status: http://localhost:8080/status
+          this help: http://localhost:8080
+        version: 0.22.2
+        timestamp: 1560897542
+    Endpoints:
+      title: Endpoints
+      required:
+      - tasks
+      - users
+      - notes
+      - status
+      - this help
+      type: object
+      properties:
+        tasks:
+          type: string
+        users:
+          type: string
+        notes:
+          type: string
+        status:
+          type: string
+        this help:
+          type: string
+      example:
+        tasks: http://localhost:8080/api/v1/tasks
+        users: http://localhost:8080/api/v1/users
+        notes: http://localhost:8080/api/v1/notes
+        status: http://localhost:8080/status
+        this help: http://localhost:8080
+    GetStatus:
+      title: GetStatus
+      required:
+      - code
+      - status
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        status:
+          type: string
+        message:
+          $ref: '#/components/schemas/Message1'
+      example:
+        code: 200
+        status: success
+        message:
+          db:
+            users: 9
+            tasks: 10
+            notes: 5
+          version: 0.22.2
+          timestamp: 1560897579
+    Message1:
+      title: Message1
+      required:
+      - db
+      - version
+      - timestamp
+      type: object
+      properties:
+        db:
+          $ref: '#/components/schemas/Db'
+        version:
+          type: string
+        timestamp:
+          type: integer
+          format: int32
+      example:
+        db:
+          users: 9
+          tasks: 10
+          notes: 5
+        version: 0.22.2
+        timestamp: 1560897579
+    Db:
+      title: Db
+      required:
+      - users
+      - tasks
+      - notes
+      type: object
+      properties:
+        users:
+          type: integer
+          format: int32
+        tasks:
+          type: integer
+          format: int32
+        notes:
+          type: integer
+          format: int32
+      example:
+        users: 9
+        tasks: 10
+        notes: 5
+    LoginRequest:
+      title: LoginRequest
+      required:
+      - email
+      - password
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        email: super.email@host.com
+        password: OnePass1
+    LoginFailed:
+      title: LoginFailed
+      required:
+      - message
+      - class
+      - status
+      - code
+      type: object
+      properties:
+        message:
+          type: string
+        class:
+          type: string
+        status:
+          type: string
+        code:
+          type: integer
+          format: int32
+      example:
+        message: 'Login failed: Email or password incorrect.'
+        class: UserException
+        status: error
+        code: 400
+    LoginOK:
+      title: LoginOK
+      required:
+      - code
+      - status
+      - message
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        status:
+          type: string
+        message:
+          $ref: '#/components/schemas/Message2'
+      example:
+        code: 200
+        status: success
+        message:
+          Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsImVtYWlsIjoibUBiLmNvbS5hciIsIm5hbWUiOiJNTkIiLCJpYXQiOjE1NTg1NTMwNTIsImV4cCI6MTU1OTE1Nzg1Mn0.OQyICWlGW0oSUB-ANrYL2OJTdC2v0OQQO3RQQ3W_KLo
+    Message2:
+      title: Message2
+      required:
+      - Authorization
+      type: object
+      properties:
+        Authorization:
+          type: string
+      example:
+        Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsImVtYWlsIjoibUBiLmNvbS5hciIsIm5hbWUiOiJNTkIiLCJpYXQiOjE1NTg1NTMwNTIsImV4cCI6MTU1OTE1Nzg1Mn0.OQyICWlGW0oSUB-ANrYL2OJTdC2v0OQQO3RQQ3W_KLo
+    CreateUserRequest:
+      title: CreateUserRequest
+      required:
+      - name
+      - email
+      - password
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+      example:
+        name: John User
+        email: super.email@host.com
+        password: OnePass1
+    UpdateUserRequest:
+      title: UpdateUserRequest
+      required:
+      - name
+      - email
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+      example:
+        name: Jhon R
+        email: ram@hotmail.com
+    CreateTaskRequest:
+      title: CreateTaskRequest
+      required:
+      - name
+      - description
+      - status
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: integer
+          format: int32
+      example:
+        name: Go To Sleep
+        description: It's too late, go to sleep man ;-)
+        status: 0
+    UpdateTaskRequest:
+      title: UpdateTaskRequest
+      required:
+      - name
+      - description
+      - status
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: integer
+          format: int32
+      example:
+        name: Go To Sleep NOW!!
+        description: It's too late, go to sleep man haha...
+        status: 1
+    CreateNoteRequest:
+      title: CreateNoteRequest
+      required:
+      - name
+      - description
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      example:
+        name: New Soccer Note
+        description: Magic Goal...
+    UpdateNoteRequest:
+      title: UpdateNoteRequest
+      required:
+      - name
+      - description
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      example:
+        name: My Note Number 433333
+        description: Free Note?!?!?!
+tags:
+- name: Info
+  description: Get information about API.
+- name: Login
+- name: Users
+  description: Manage Users.
+- name: Tasks
+  description: Manage Tasks.
+- name: Notes
+  description: Manage Notes.
