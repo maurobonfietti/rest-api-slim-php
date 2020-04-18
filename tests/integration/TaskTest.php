@@ -6,12 +6,15 @@ namespace Tests\integration;
 
 class TaskTest extends BaseTestCase
 {
+    /**
+     * @var int
+     */
     private static $id;
 
     /**
      * Test Get All Tasks.
      */
-    public function testGetTasks()
+    public function testGetTasks(): void
     {
         $response = $this->runApp('GET', '/api/v1/tasks');
 
@@ -29,7 +32,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Get One Task.
      */
-    public function testGetTask()
+    public function testGetTask(): void
     {
         $response = $this->runApp('GET', '/api/v1/tasks/1');
 
@@ -47,7 +50,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Get Task Not Found.
      */
-    public function testGetTaskNotFound()
+    public function testGetTaskNotFound(): void
     {
         $response = $this->runApp('GET', '/api/v1/tasks/123456789');
 
@@ -63,7 +66,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Search All Tasks.
      */
-    public function testSearchAllTasks()
+    public function testSearchAllTasks(): void
     {
         $response = $this->runApp('GET', '/api/v1/tasks/search/');
 
@@ -81,7 +84,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Search Tasks By Name.
      */
-    public function testSearchTasksByName()
+    public function testSearchTasksByName(): void
     {
         $response = $this->runApp('GET', '/api/v1/tasks/search/cine');
 
@@ -99,7 +102,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Search Tasks with Status Done.
      */
-    public function testSearchTasksWithStatusDone()
+    public function testSearchTasksWithStatusDone(): void
     {
         $response = $this->runApp('GET', '/api/v1/tasks/search/?status=1');
 
@@ -117,7 +120,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Search Tasks with status = 0.
      */
-    public function testSearchTasksWithStatusToDo()
+    public function testSearchTasksWithStatusToDo(): void
     {
         $response = $this->runApp('GET', '/api/v1/tasks/search/?status=0');
 
@@ -135,7 +138,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Create Task.
      */
-    public function testCreateTask()
+    public function testCreateTask(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/tasks', ['name' => 'New Task', 'description' => 'My Desc.']
@@ -157,7 +160,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Get Task Created.
      */
-    public function testGetTaskCreated()
+    public function testGetTaskCreated(): void
     {
         $response = $this->runApp('GET', '/api/v1/tasks/' . self::$id);
 
@@ -175,7 +178,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Create Task Without Name.
      */
-    public function testCreateTaskWithOutTaskName()
+    public function testCreateTaskWithOutTaskName(): void
     {
         $response = $this->runApp('POST', '/api/v1/tasks');
 
@@ -191,7 +194,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Create Task With Invalid TaskName.
      */
-    public function testCreateTaskWithInvalidTaskName()
+    public function testCreateTaskWithInvalidTaskName(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/tasks', ['name' => 'z', 'status' => 1]
@@ -208,7 +211,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Create Task With Invalid Status.
      */
-    public function testCreateTaskWithInvalidStatus()
+    public function testCreateTaskWithInvalidStatus(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/tasks', ['name' => 'ToDo', 'status' => 123]
@@ -225,7 +228,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Create Task Without Authorization Bearer JWT.
      */
-    public function testCreateTaskWithoutBearerJWT()
+    public function testCreateTaskWithoutBearerJWT(): void
     {
         $auth = self::$jwt;
         self::$jwt = '';
@@ -245,7 +248,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Create Task With Invalid JWT.
      */
-    public function testCreateTaskWithInvalidJWT()
+    public function testCreateTaskWithInvalidJWT(): void
     {
         $auth = self::$jwt;
         self::$jwt = 'invalidToken';
@@ -265,7 +268,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Create Task With Forbidden JWT.
      */
-    public function testCreateTaskWithForbiddenJWT()
+    public function testCreateTaskWithForbiddenJWT(): void
     {
         $auth = self::$jwt;
         self::$jwt = 'Bearer eyJ0eXAiOiJK1NiJ9.eyJzdWIiOiI4Ii';
@@ -285,7 +288,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Update Task.
      */
-    public function testUpdateTask()
+    public function testUpdateTask(): void
     {
         $response = $this->runApp(
             'PUT', '/api/v1/tasks/' . self::$id,
@@ -306,7 +309,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Update Task Without Send Data.
      */
-    public function testUpdateTaskWithOutSendData()
+    public function testUpdateTaskWithOutSendData(): void
     {
         $response = $this->runApp('PUT', '/api/v1/tasks/' . self::$id);
 
@@ -322,7 +325,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Update Task Not Found.
      */
-    public function testUpdateTaskNotFound()
+    public function testUpdateTaskNotFound(): void
     {
         $response = $this->runApp(
             'PUT', '/api/v1/tasks/123456789', ['name' => 'Task']
@@ -340,7 +343,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Delete Task.
      */
-    public function testDeleteTask()
+    public function testDeleteTask(): void
     {
         $response = $this->runApp('DELETE', '/api/v1/tasks/' . self::$id);
 
@@ -355,7 +358,7 @@ class TaskTest extends BaseTestCase
     /**
      * Test Delete Task Not Found.
      */
-    public function testDeleteTaskNotFound()
+    public function testDeleteTaskNotFound(): void
     {
         $response = $this->runApp('DELETE', '/api/v1/tasks/123456789');
 

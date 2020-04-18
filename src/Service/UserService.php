@@ -12,8 +12,14 @@ class UserService extends BaseService
 {
     const REDIS_KEY = 'user:%s';
 
+    /**
+     * @var UserRepository
+     */
     protected $userRepository;
 
+    /**
+     * @var RedisService
+     */
     protected $redisService;
 
     public function __construct(UserRepository $userRepository, RedisService $redisService)

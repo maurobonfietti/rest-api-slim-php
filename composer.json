@@ -46,6 +46,7 @@
         "database": "extras/bin/restart-api.sh",
         "restart": "extras/bin/restart-api.sh",
         "restart-db": "php extras/bin/restart-db.php",
+        "phpstan": "./vendor/bin/phpstan analyse src tests --level=6",
         "start": "php -S 0.0.0.0:8080 -t public public/index.php",
         "test": "phpunit"
     }

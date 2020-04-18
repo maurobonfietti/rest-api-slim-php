@@ -11,8 +11,14 @@ class TaskService extends BaseService
 {
     const REDIS_KEY = 'task:%s:user:%s';
 
+    /**
+     * @var TaskRepository
+     */
     protected $taskRepository;
 
+    /**
+     * @var RedisService
+     */
     protected $redisService;
 
     public function __construct(TaskRepository $taskRepository, RedisService $redisService)

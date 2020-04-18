@@ -9,7 +9,7 @@ class AuthLoginTest extends BaseTestCase
     /**
      * Test user login endpoint and get a JWT Bearer Authorization.
      */
-    public function testLogin()
+    public function testLogin(): void
     {
         $response = $this->runApp('POST', '/login', ['email' => 'test@user.com', 'password' => 'AnyPass1000']);
 
