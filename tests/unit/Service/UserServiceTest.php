@@ -8,16 +8,19 @@ use Tests\integration\BaseTestCase;
 
 class UserServiceTest extends BaseTestCase
 {
+    /**
+     * @var int
+     */
     private static $id;
 
-    private function getDatabase()
+    private function getDatabase(): \PDO
     {
         $database = sprintf('mysql:host=%s;dbname=%s', getenv('DB_HOSTNAME'), getenv('DB_DATABASE'));
 
         return new \PDO($database, getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
     }
 
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $redisService = new \App\Service\RedisService(new \Predis\Client());
@@ -26,7 +29,7 @@ class UserServiceTest extends BaseTestCase
         $this->assertStringContainsString('Juan', $user->name);
     }
 
-    public function testCreateUser()
+    public function testCreateUser(): void
     {
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $redisService = new \App\Service\RedisService(new \Predis\Client());
@@ -37,7 +40,7 @@ class UserServiceTest extends BaseTestCase
         $this->assertStringContainsString('Eze', $user->name);
     }
 
-    public function testCreateUserWithoutNameExpectError()
+    public function testCreateUserWithoutNameExpectError(): void
     {
         $this->expectException(\App\Exception\UserException::class);
 
@@ -50,7 +53,7 @@ class UserServiceTest extends BaseTestCase
         $this->assertStringContainsString('Eze', $user->name);
     }
 
-    public function testDeleteUser()
+    public function testDeleteUser(): void
     {
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $redisService = new \App\Service\RedisService(new \Predis\Client());

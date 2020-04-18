@@ -6,12 +6,15 @@ namespace Tests\integration;
 
 class UserTest extends BaseTestCase
 {
+    /**
+     * @var int
+     */
     private static $id;
 
     /**
      * Test Get All Users.
      */
-    public function testGetUsers()
+    public function testGetUsers(): void
     {
         $response = $this->runApp('GET', '/api/v1/users');
 
@@ -29,7 +32,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Get One User.
      */
-    public function testGetUser()
+    public function testGetUser(): void
     {
         $response = $this->runApp('GET', '/api/v1/users/8');
 
@@ -47,7 +50,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Get User Not Found.
      */
-    public function testGetUserNotFound()
+    public function testGetUserNotFound(): void
     {
         $response = $this->runApp('GET', '/api/v1/users/123456789');
 
@@ -65,7 +68,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Search Users.
      */
-    public function testSearchUsers()
+    public function testSearchUsers(): void
     {
         $response = $this->runApp('GET', '/api/v1/users/search/j');
 
@@ -83,7 +86,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Search User Not Found.
      */
-    public function testSearchUserNotFound()
+    public function testSearchUserNotFound(): void
     {
         $response = $this->runApp('GET', '/api/v1/users/search/123456789');
 
@@ -100,7 +103,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Create User.
      */
-    public function testCreateUser()
+    public function testCreateUser(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/users',
@@ -123,7 +126,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Get User Created.
      */
-    public function testGetUserCreated()
+    public function testGetUserCreated(): void
     {
         $response = $this->runApp('GET', '/api/v1/users/' . self::$id);
 
@@ -141,7 +144,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Create User Without Name.
      */
-    public function testCreateUserWithoutName()
+    public function testCreateUserWithoutName(): void
     {
         $response = $this->runApp('POST', '/api/v1/users');
 
@@ -158,7 +161,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Create User Without Email.
      */
-    public function testCreateUserWithoutEmail()
+    public function testCreateUserWithoutEmail(): void
     {
         $response = $this->runApp('POST', '/api/v1/users', ['name' => 'z']);
 
@@ -174,7 +177,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Create User With Invalid Name.
      */
-    public function testCreateUserWithInvalidName()
+    public function testCreateUserWithInvalidName(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/users',
@@ -193,7 +196,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Create User With Invalid Email.
      */
-    public function testCreateUserWithInvalidEmail()
+    public function testCreateUserWithInvalidEmail(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/users',
@@ -211,7 +214,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Create User With An Email That Already Exists.
      */
-    public function testCreateUserWithEmailAlreadyExists()
+    public function testCreateUserWithEmailAlreadyExists(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/users',
@@ -229,7 +232,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Update User.
      */
-    public function testUpdateUser()
+    public function testUpdateUser(): void
     {
         $response0 = $this->runApp('POST', '/login', ['email' => 'estu@gmail.com', 'password' => 'AnyPass1000']);
         $result0 = (string) $response0->getBody();
@@ -251,7 +254,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Update User Without Send Data.
      */
-    public function testUpdateUserWithOutSendData()
+    public function testUpdateUserWithOutSendData(): void
     {
         $response = $this->runApp('PUT', '/api/v1/users/' . self::$id);
 
@@ -268,7 +271,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Update User Permissions Failed.
      */
-    public function testUpdateUserPermissionsFailed()
+    public function testUpdateUserPermissionsFailed(): void
     {
         $response = $this->runApp(
             'PUT', '/api/v1/users/1', ['name' => 'Victor']
@@ -286,7 +289,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Update User With Invalid Data.
      */
-    public function testUpdateUserWithInvalidData()
+    public function testUpdateUserWithInvalidData(): void
     {
         $response = $this->runApp(
             'PUT', '/api/v1/users/' . self::$id,
@@ -305,7 +308,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Delete User.
      */
-    public function testDeleteUser()
+    public function testDeleteUser(): void
     {
         $response = $this->runApp('DELETE', '/api/v1/users/' . self::$id);
 
@@ -320,7 +323,7 @@ class UserTest extends BaseTestCase
     /**
      * Test Delete User Permissions Failed.
      */
-    public function testDeleteUserPermissionsFailed()
+    public function testDeleteUserPermissionsFailed(): void
     {
         $response = $this->runApp('DELETE', '/api/v1/users/123456789');
 
@@ -336,7 +339,7 @@ class UserTest extends BaseTestCase
     /**
      * Test that user login endpoint it is working fine.
      */
-    public function testLoginUser()
+    public function testLoginUser(): void
     {
         $response = $this->runApp('POST', '/login', ['email' => 'test@user.com', 'password' => 'AnyPass1000']);
 
@@ -357,7 +360,7 @@ class UserTest extends BaseTestCase
     /**
      * Test login endpoint with invalid credentials.
      */
-    public function testLoginUserFailed()
+    public function testLoginUserFailed(): void
     {
         $response = $this->runApp('POST', '/login', ['email' => 'a@b.com', 'password' => 'p']);
 
@@ -376,7 +379,7 @@ class UserTest extends BaseTestCase
     /**
      * Test login endpoint without send required field email.
      */
-    public function testLoginWithoutEmailField()
+    public function testLoginWithoutEmailField(): void
     {
         $response = $this->runApp('POST', '/login', ['password' => 'p']);
 
@@ -394,7 +397,7 @@ class UserTest extends BaseTestCase
     /**
      * Test login endpoint without send required field password.
      */
-    public function testLoginWithoutPasswordField()
+    public function testLoginWithoutPasswordField(): void
     {
         $response = $this->runApp('POST', '/login', ['email' => 'a@b.com']);
 

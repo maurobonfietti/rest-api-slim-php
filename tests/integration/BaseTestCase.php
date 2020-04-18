@@ -11,6 +11,9 @@ use Slim\Http\Environment;
 
 class BaseTestCase extends \PHPUnit\Framework\TestCase
 {
+    /**
+     * @var string
+     */
     public static $jwt;
 
     /**

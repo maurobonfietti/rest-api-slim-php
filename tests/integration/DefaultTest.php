@@ -9,7 +9,7 @@ class DefaultTest extends BaseTestCase
     /**
      * Test that default endpoint show a help.
      */
-    public function testApiHelp()
+    public function testApiHelp(): void
     {
         $response = $this->runApp('GET', '/');
 
@@ -28,7 +28,7 @@ class DefaultTest extends BaseTestCase
     /**
      * Test that status endpoint, show the API status.
      */
-    public function testStatus()
+    public function testStatus(): void
     {
         $response = $this->runApp('GET', '/status');
 

@@ -6,12 +6,15 @@ namespace Tests\integration;
 
 class NoteTest extends BaseTestCase
 {
+    /**
+     * @var int
+     */
     private static $id;
 
     /**
      * Test Get All Notes.
      */
-    public function testGetNotes()
+    public function testGetNotes(): void
     {
         $response = $this->runApp('GET', '/api/v1/notes');
 
@@ -32,7 +35,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Get One Note.
      */
-    public function testGetNote()
+    public function testGetNote(): void
     {
         $response = $this->runApp('GET', '/api/v1/notes/1');
 
@@ -50,7 +53,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Get Note Not Found.
      */
-    public function testGetNoteNotFound()
+    public function testGetNoteNotFound(): void
     {
         $response = $this->runApp('GET', '/api/v1/notes/123456789');
 
@@ -67,7 +70,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Search Notes.
      */
-    public function testSearchNotes()
+    public function testSearchNotes(): void
     {
         $response = $this->runApp('GET', '/api/v1/notes/search/n');
 
@@ -84,7 +87,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Search Note Not Found.
      */
-    public function testSearchNoteNotFound()
+    public function testSearchNoteNotFound(): void
     {
         $response = $this->runApp('GET', '/api/v1/notes/search/123456789');
 
@@ -100,7 +103,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Create Note.
      */
-    public function testCreateNote()
+    public function testCreateNote(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/notes',
@@ -123,7 +126,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Get Note Created.
      */
-    public function testGetNoteCreated()
+    public function testGetNoteCreated(): void
     {
         $response = $this->runApp('GET', '/api/v1/notes/' . self::$id);
 
@@ -141,7 +144,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Create Note Without Name.
      */
-    public function testCreateNoteWithoutName()
+    public function testCreateNoteWithoutName(): void
     {
         $response = $this->runApp('POST', '/api/v1/notes');
 
@@ -157,7 +160,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Create Note With Invalid Name.
      */
-    public function testCreateNoteWithInvalidName()
+    public function testCreateNoteWithInvalidName(): void
     {
         $response = $this->runApp(
             'POST', '/api/v1/notes',
@@ -176,7 +179,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Update Note.
      */
-    public function testUpdateNote()
+    public function testUpdateNote(): void
     {
         $response = $this->runApp(
             'PUT', '/api/v1/notes/' . self::$id,
@@ -197,7 +200,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Update Note Without Send Data.
      */
-    public function testUpdateNoteWithOutSendData()
+    public function testUpdateNoteWithOutSendData(): void
     {
         $response = $this->runApp('PUT', '/api/v1/notes/' . self::$id);
 
@@ -215,7 +218,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Update Note Not Found.
      */
-    public function testUpdateNoteNotFound()
+    public function testUpdateNoteNotFound(): void
     {
         $response = $this->runApp(
             'PUT', '/api/v1/notes/123456789', ['name' => 'Note']
@@ -235,7 +238,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Delete Note.
      */
-    public function testDeleteNote()
+    public function testDeleteNote(): void
     {
         $response = $this->runApp('DELETE', '/api/v1/notes/' . self::$id);
 
@@ -250,7 +253,7 @@ class NoteTest extends BaseTestCase
     /**
      * Test Delete Note Not Found.
      */
-    public function testDeleteNoteNotFound()
+    public function testDeleteNoteNotFound(): void
     {
         $response = $this->runApp('DELETE', '/api/v1/notes/123456789');
 
