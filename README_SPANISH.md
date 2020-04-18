@@ -118,7 +118,7 @@ Cómo usar Redis en esta API con Slim PHP:
 - [respect/validation](https://github.com/Respect/Validation): El motor de validación más impresionante jamás creado para PHP.
 - [palanik/corsslim](https://github.com/palanik/CorsSlim): Middleware de intercambio de recursos de origen cruzado (CORS) para PHP Slim.
 - [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv): Carga las variables de entorno de `.env` a `getenv()`, `$_ENV` y `$_SERVER` automágicamente.
-- [predis/predis](https://github.com/phpredis/phpredis): Extensión de PHP para Redis.
+- [predis/predis](https://github.com/nrk/predis/): Cliente Redis flexible y con funciones completas para PHP y HHVM.
 - [firebase/php-jwt](https://github.com/firebase/php-jwt): Una biblioteca simple para codificar y decodificar JSON Web Tokens (JWT) en PHP.
 
 ### LISTA DE DEPENDENCIAS PARA DESARROLLO:
