@@ -10,7 +10,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Firebase\JWT\JWT;
 
-class AuthMiddleware
+final class AuthMiddleware
 {
     const FORBIDDEN_MESSAGE_EXCEPTION = 'error: Forbidden, not authorized.';
 

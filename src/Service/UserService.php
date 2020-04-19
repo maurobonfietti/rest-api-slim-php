@@ -8,7 +8,7 @@ use App\Exception\UserException;
 use App\Repository\UserRepository;
 use Firebase\JWT\JWT;
 
-class UserService extends BaseService
+final class UserService extends BaseService
 {
     const REDIS_KEY = 'user:%s';
 

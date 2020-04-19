@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
-class AuthException extends BaseException
+final class AuthException extends BaseException
 {
 }

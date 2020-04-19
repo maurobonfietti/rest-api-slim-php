@@ -7,7 +7,7 @@ namespace App\Controller\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class Delete extends Base
+final class Delete extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {

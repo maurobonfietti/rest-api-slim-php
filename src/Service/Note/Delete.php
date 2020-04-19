@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-class Delete extends BaseNoteService
+final class Delete extends BaseNoteService
 {
     public function delete(int $noteId): void
     {

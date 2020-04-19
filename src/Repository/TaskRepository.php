@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Exception\TaskException;
 
-class TaskRepository extends BaseRepository
+final class TaskRepository extends BaseRepository
 {
     public function __construct(\PDO $database)
     {

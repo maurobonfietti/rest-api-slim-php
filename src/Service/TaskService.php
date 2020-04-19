@@ -7,7 +7,7 @@ namespace App\Service;
 use App\Exception\TaskException;
 use App\Repository\TaskRepository;
 
-class TaskService extends BaseService
+final class TaskService extends BaseService
 {
     const REDIS_KEY = 'task:%s:user:%s';
 

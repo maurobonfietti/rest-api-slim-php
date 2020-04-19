@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Exception\UserException;
 
-class UserRepository extends BaseRepository
+final class UserRepository extends BaseRepository
 {
     public function __construct(\PDO $database)
     {

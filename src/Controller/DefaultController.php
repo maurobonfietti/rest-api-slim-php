@@ -8,7 +8,7 @@ use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class DefaultController extends BaseController
+final class DefaultController extends BaseController
 {
     const API_VERSION = '0.49.0';
 

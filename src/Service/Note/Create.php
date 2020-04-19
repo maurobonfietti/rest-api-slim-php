@@ -6,7 +6,7 @@ namespace App\Service\Note;
 
 use App\Exception\NoteException;
 
-class Create extends BaseNoteService
+final class Create extends BaseNoteService
 {
     public function create($input)
     {

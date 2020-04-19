@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Exception\NoteException;
 
-class NoteRepository extends BaseRepository
+final class NoteRepository extends BaseRepository
 {
     public function __construct(\PDO $database)
     {
