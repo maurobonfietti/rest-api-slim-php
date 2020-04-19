@@ -14,14 +14,14 @@ $app->group('/api/v1', function () use ($app) {
         $app->post('', \App\Controller\Task\Create::class);
         $app->put('/[{id}]', \App\Controller\Task\Update::class);
         $app->delete('/[{id}]', \App\Controller\Task\Delete::class);
-    })->add(new App\Middleware\AuthMiddleware());
+    })->add(new App\Middleware\Auth());
     $app->group('/users', function () use ($app) {
-        $app->get('', \App\Controller\User\GetAll::class)->add(new App\Middleware\AuthMiddleware());
-        $app->get('/[{id}]', \App\Controller\User\GetOne::class)->add(new App\Middleware\AuthMiddleware());
-        $app->get('/search/[{query}]', \App\Controller\User\Search::class)->add(new App\Middleware\AuthMiddleware());
+        $app->get('', \App\Controller\User\GetAll::class)->add(new App\Middleware\Auth());
+        $app->get('/[{id}]', \App\Controller\User\GetOne::class)->add(new App\Middleware\Auth());
+        $app->get('/search/[{query}]', \App\Controller\User\Search::class)->add(new App\Middleware\Auth());
         $app->post('', \App\Controller\User\Create::class);
-        $app->put('/[{id}]', \App\Controller\User\Update::class)->add(new App\Middleware\AuthMiddleware());
-        $app->delete('/[{id}]', \App\Controller\User\Delete::class)->add(new App\Middleware\AuthMiddleware());
+        $app->put('/[{id}]', \App\Controller\User\Update::class)->add(new App\Middleware\Auth());
+        $app->delete('/[{id}]', \App\Controller\User\Delete::class)->add(new App\Middleware\Auth());
     });
     $app->group('/notes', function () use ($app) {
         $app->get('', \App\Controller\Note\GetAll::class);

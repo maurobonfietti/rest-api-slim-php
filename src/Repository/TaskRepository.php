@@ -62,20 +62,6 @@ final class TaskRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    private function getSearchTasksQuery($status)
-    {
-        $statusQuery = '';
-        if ($status === 0 || $status === 1) {
-            $statusQuery = 'AND `status` = :status';
-        }
-
-        return "
-            SELECT * FROM `tasks`
-            WHERE `name` LIKE :name AND `userId` = :userId ${statusQuery}
-            ORDER BY `id`
-        ";
-    }
-
     public function create($task)
     {
         $query = '
@@ -119,5 +105,19 @@ final class TaskRepository extends BaseRepository
         $statement->execute();
 
         return 'The task was deleted.';
+    }
+
+    private function getSearchTasksQuery($status)
+    {
+        $statusQuery = '';
+        if ($status === 0 || $status === 1) {
+            $statusQuery = 'AND `status` = :status';
+        }
+
+        return "
+            SELECT * FROM `tasks`
+            WHERE `name` LIKE :name AND `userId` = :userId ${statusQuery}
+            ORDER BY `id`
+        ";
     }
 }

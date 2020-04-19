@@ -28,11 +28,6 @@ final class UserService extends BaseService
         $this->redisService = $redisService;
     }
 
-    protected function getUserFromDb(int $userId)
-    {
-        return $this->userRepository->getUser($userId);
-    }
-
     public function getAll(): array
     {
         return $this->userRepository->getAll();
@@ -161,5 +156,10 @@ final class UserService extends BaseService
         ];
 
         return JWT::encode($token, getenv('SECRET_KEY'));
+    }
+
+    protected function getUserFromDb(int $userId)
+    {
+        return $this->userRepository->getUser($userId);
     }
 }

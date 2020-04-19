@@ -40,12 +40,12 @@ abstract class Base extends BaseController
         return $this->container->get('get_one_note_service');
     }
 
-    protected function SearchNoteService(): Search
+    protected function searchNoteService(): Search
     {
         return $this->container->get('search_note_service');
     }
 
-    protected function UpdateNoteService(): Update
+    protected function updateNoteService(): Update
     {
         return $this->container->get('update_note_service');
     }

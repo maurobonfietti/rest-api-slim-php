@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
+use App\Repository\NoteRepository;
 use App\Service\BaseService;
 use App\Service\RedisService;
-use App\Repository\NoteRepository;
 
 abstract class BaseNoteService extends BaseService
 {

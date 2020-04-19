@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Psr\Container\ContainerInterface;
 use App\Handler\ApiError;
 use App\Service\RedisService;
+use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
 

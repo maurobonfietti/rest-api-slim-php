@@ -27,16 +27,6 @@ final class TaskService extends BaseService
         $this->redisService = $redisService;
     }
 
-    protected function getTaskRepository(): TaskRepository
-    {
-        return $this->taskRepository;
-    }
-
-    protected function getTaskFromDb(int $taskId, int $userId)
-    {
-        return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
-    }
-
     public function getAllTasks(): array
     {
         return $this->getTaskRepository()->getAllTasks();
@@ -154,5 +144,15 @@ final class TaskService extends BaseService
         }
 
         return $data;
+    }
+
+    protected function getTaskRepository(): TaskRepository
+    {
+        return $this->taskRepository;
+    }
+
+    protected function getTaskFromDb(int $taskId, int $userId)
+    {
+        return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 }

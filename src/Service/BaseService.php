@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Exception\NoteException;
 use App\Exception\TaskException;
 use App\Exception\UserException;
-use App\Exception\NoteException;
 use Respect\Validation\Validator as v;
 
 abstract class BaseService
