@@ -6,7 +6,7 @@ namespace App\Service\Note;
 
 use App\Exception\NoteException;
 
-class Update extends BaseNoteService
+final class Update extends BaseNoteService
 {
     public function update($input, int $noteId)
     {

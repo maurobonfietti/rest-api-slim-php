@@ -12,24 +12,24 @@ try {
     $password = $settings['db']['password'];
     $database = $settings['db']['database'];
 
-    $pdo = new PDO("mysql:host=$hostname", $username, $password);
+    $pdo = new PDO("mysql:host=${hostname}", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "DROP DATABASE IF EXISTS $database";
+    $sql = "DROP DATABASE IF EXISTS ${database}";
     $pdo->exec($sql);
-    echo "[OK] Database droped successfully" . PHP_EOL;
+    echo '[OK] Database droped successfully' . PHP_EOL;
 
-    $sql = "CREATE DATABASE $database";
+    $sql = "CREATE DATABASE ${database}";
     $pdo->exec($sql);
-    echo "[OK] Database created successfully" . PHP_EOL;
+    echo '[OK] Database created successfully' . PHP_EOL;
 
-    $sql = "USE $database";
+    $sql = "USE ${database}";
     $pdo->exec($sql);
-    echo "[OK] Database selected successfully" . PHP_EOL;
+    echo '[OK] Database selected successfully' . PHP_EOL;
 
     $sql = file_get_contents(__DIR__ . '/../../database/database.sql');
     $pdo->exec($sql);
-    echo "[OK] Records inserted successfully" . PHP_EOL;
+    echo '[OK] Records inserted successfully' . PHP_EOL;
 } catch (PDOException $e) {
-    echo "[ERROR] " . $e->getMessage() . PHP_EOL;
+    echo '[ERROR] ' . $e->getMessage() . PHP_EOL;
 }

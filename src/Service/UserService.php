@@ -8,7 +8,7 @@ use App\Exception\UserException;
 use App\Repository\UserRepository;
 use Firebase\JWT\JWT;
 
-class UserService extends BaseService
+final class UserService extends BaseService
 {
     const REDIS_KEY = 'user:%s';
 
@@ -26,11 +26,6 @@ class UserService extends BaseService
     {
         $this->userRepository = $userRepository;
         $this->redisService = $redisService;
-    }
-
-    protected function getUserFromDb(int $userId)
-    {
-        return $this->userRepository->getUser($userId);
     }
 
     public function getAll(): array
@@ -69,14 +64,14 @@ class UserService extends BaseService
         return $this->userRepository->search($usersName);
     }
 
-    public function saveInCache($id, $user)
+    public function saveInCache($id, $user): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $id);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $user);
     }
 
-    public function deleteFromCache($userId)
+    public function deleteFromCache($userId): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $userId);
         $key = $this->redisService->generateKey($redisKey);
@@ -161,5 +156,10 @@ class UserService extends BaseService
         ];
 
         return JWT::encode($token, getenv('SECRET_KEY'));
+    }
+
+    protected function getUserFromDb(int $userId)
+    {
+        return $this->userRepository->getUser($userId);
     }
 }

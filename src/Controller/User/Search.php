@@ -7,7 +7,7 @@ namespace App\Controller\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class Search extends Base
+final class Search extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {

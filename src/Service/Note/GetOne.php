@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-class GetOne extends BaseNoteService
+final class GetOne extends BaseNoteService
 {
     public function getOne(int $noteId)
     {

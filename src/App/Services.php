@@ -2,16 +2,15 @@
 
 declare(strict_types=1);
 
-use Psr\Container\ContainerInterface;
-use App\Service\UserService;
-use App\Service\TaskService;
-
 use App\Service\Note\Create;
 use App\Service\Note\Delete;
 use App\Service\Note\GetAll;
 use App\Service\Note\GetOne;
 use App\Service\Note\Search;
 use App\Service\Note\Update;
+use App\Service\TaskService;
+use App\Service\UserService;
+use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
 

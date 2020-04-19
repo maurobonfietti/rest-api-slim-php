@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Middleware;
 
 use App\Exception\AuthException;
+use Firebase\JWT\JWT;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Firebase\JWT\JWT;
 
-class AuthMiddleware
+final class Auth
 {
     const FORBIDDEN_MESSAGE_EXCEPTION = 'error: Forbidden, not authorized.';
 
@@ -31,11 +31,6 @@ class AuthMiddleware
         return $next($request->withParsedBody($object), $response);
     }
 
-    /**
-     * @param string $token
-     * @return mixed
-     * @throws AuthException
-     */
     public function checkToken(string $token)
     {
         try {

@@ -7,7 +7,7 @@ namespace App\Service;
 use App\Exception\TaskException;
 use App\Repository\TaskRepository;
 
-class TaskService extends BaseService
+final class TaskService extends BaseService
 {
     const REDIS_KEY = 'task:%s:user:%s';
 
@@ -25,16 +25,6 @@ class TaskService extends BaseService
     {
         $this->taskRepository = $taskRepository;
         $this->redisService = $redisService;
-    }
-
-    protected function getTaskRepository(): TaskRepository
-    {
-        return $this->taskRepository;
-    }
-
-    protected function getTaskFromDb(int $taskId, int $userId)
-    {
-        return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 
     public function getAllTasks(): array
@@ -81,14 +71,14 @@ class TaskService extends BaseService
         return $this->getTaskRepository()->search($tasksName, $userId, $status);
     }
 
-    public function saveInCache($taskId, $userId, $tasks)
+    public function saveInCache($taskId, $userId, $tasks): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $tasks);
     }
 
-    public function deleteFromCache($taskId, $userId)
+    public function deleteFromCache($taskId, $userId): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);
@@ -154,5 +144,15 @@ class TaskService extends BaseService
         }
 
         return $data;
+    }
+
+    protected function getTaskRepository(): TaskRepository
+    {
+        return $this->taskRepository;
+    }
+
+    protected function getTaskFromDb(int $taskId, int $userId)
+    {
+        return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 }

@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Exception\NoteException;
 
-class NoteRepository extends BaseRepository
+final class NoteRepository extends BaseRepository
 {
     public function __construct(\PDO $database)
     {
@@ -76,7 +76,7 @@ class NoteRepository extends BaseRepository
         return $this->checkAndGetNote((int) $note->id);
     }
 
-    public function deleteNote(int $noteId)
+    public function deleteNote(int $noteId): void
     {
         $query = 'DELETE FROM `notes` WHERE `id` = :id';
         $statement = $this->database->prepare($query);

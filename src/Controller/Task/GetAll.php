@@ -7,9 +7,9 @@ namespace App\Controller\Task;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class GetAll extends Base
+final class GetAll extends Base
 {
-    public function __invoke(Request $request, Response $response, array $args): Response
+    public function __invoke(Request $request, Response $response): Response
     {
         $input = $request->getParsedBody();
         $userId = (int) $input['decoded']->sub;

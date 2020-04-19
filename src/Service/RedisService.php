@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-class RedisService
+final class RedisService
 {
     const PROJECT_NAME = 'rest-api-slim-php';
 
     /**
      * @var \Predis\Client
      */
-    protected $redis;
+    private $redis;
 
     public function __construct($redis)
     {
@@ -33,17 +33,17 @@ class RedisService
         return json_decode($this->redis->get($key), true);
     }
 
-    public function set($key, $value)
+    public function set($key, $value): void
     {
         $this->redis->set($key, json_encode($value));
     }
 
-    public function setex($key, $value, $ttl = 3600)
+    public function setex($key, $value, $ttl = 3600): void
     {
         $this->redis->setex($key, $ttl, json_encode($value));
     }
 
-    public function del($key)
+    public function del($key): void
     {
         $this->redis->del($key);
     }

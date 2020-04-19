@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Repository\UserRepository;
-use App\Repository\TaskRepository;
 use App\Repository\NoteRepository;
+use App\Repository\TaskRepository;
+use App\Repository\UserRepository;
 use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
