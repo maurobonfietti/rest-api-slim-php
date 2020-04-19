@@ -9,7 +9,7 @@ use Slim\Http\Response;
 
 class GetAll extends Base
 {
-    public function __invoke(Request $request, Response $response, array $args): Response
+    public function __invoke(Request $request, Response $response): Response
     {
         $notes = $this->getAllNoteService()->getAll();
 

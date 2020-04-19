@@ -17,7 +17,7 @@ class DefaultController extends BaseController
         $this->container = $container;
     }
 
-    public function getHelp(Request $request, Response $response, array $args): Response
+    public function getHelp(Request $request, Response $response): Response
     {
         $url = getenv('APP_DOMAIN');
         $endpoints = [
@@ -37,7 +37,7 @@ class DefaultController extends BaseController
         return $this->jsonResponse($response, 'success', $message, 200);
     }
 
-    public function getStatus(Request $request, Response $response, array $args): Response
+    public function getStatus(Request $request, Response $response): Response
     {
         $status = [
             'stats' => $this->getDbStats(),

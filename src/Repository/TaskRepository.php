@@ -71,7 +71,7 @@ class TaskRepository extends BaseRepository
 
         return "
             SELECT * FROM `tasks`
-            WHERE `name` LIKE :name AND `userId` = :userId $statusQuery
+            WHERE `name` LIKE :name AND `userId` = :userId ${statusQuery}
             ORDER BY `id`
         ";
     }

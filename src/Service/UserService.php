@@ -69,14 +69,14 @@ class UserService extends BaseService
         return $this->userRepository->search($usersName);
     }
 
-    public function saveInCache($id, $user)
+    public function saveInCache($id, $user): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $id);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $user);
     }
 
-    public function deleteFromCache($userId)
+    public function deleteFromCache($userId): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $userId);
         $key = $this->redisService->generateKey($redisKey);

@@ -6,7 +6,7 @@ namespace App\Service\Note;
 
 class Delete extends BaseNoteService
 {
-    public function delete(int $noteId)
+    public function delete(int $noteId): void
     {
         $this->getOneFromDb($noteId);
         $this->noteRepository->deleteNote($noteId);

@@ -31,11 +31,6 @@ class AuthMiddleware
         return $next($request->withParsedBody($object), $response);
     }
 
-    /**
-     * @param string $token
-     * @return mixed
-     * @throws AuthException
-     */
     public function checkToken(string $token)
     {
         try {

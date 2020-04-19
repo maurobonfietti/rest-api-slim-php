@@ -81,14 +81,14 @@ class TaskService extends BaseService
         return $this->getTaskRepository()->search($tasksName, $userId, $status);
     }
 
-    public function saveInCache($taskId, $userId, $tasks)
+    public function saveInCache($taskId, $userId, $tasks): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $tasks);
     }
 
-    public function deleteFromCache($taskId, $userId)
+    public function deleteFromCache($taskId, $userId): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);

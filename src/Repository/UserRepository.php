@@ -27,7 +27,7 @@ class UserRepository extends BaseRepository
         return $user;
     }
 
-    public function checkUserByEmail(string $email)
+    public function checkUserByEmail(string $email): void
     {
         $query = 'SELECT * FROM `users` WHERE `email` = :email';
         $statement = $this->database->prepare($query);
@@ -112,7 +112,7 @@ class UserRepository extends BaseRepository
         return 'The user was deleted.';
     }
 
-    public function deleteUserTasks(int $userId)
+    public function deleteUserTasks(int $userId): void
     {
         $query = 'DELETE FROM `tasks` WHERE `userId` = :userId';
         $statement = $this->database->prepare($query);

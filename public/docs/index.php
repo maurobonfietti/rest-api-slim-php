@@ -1,1 +1,5 @@
-<?php header( 'Location: index.html' ) ;
+<?php
+
+declare(strict_types=1);
+
+header('Location: index.html');
