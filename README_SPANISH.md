@@ -42,8 +42,8 @@ Puede crear un nuevo proyecto ejecutando los siguientes comandos:
 ```bash
 $ composer create-project maurobonfietti/rest-api-slim-php [my-api-name]
 $ cd [my-api-name]
-$ cp .env.example .env
-$ composer database
+$ composer restart-db
+$ composer test
 $ composer start
 ```
 
@@ -55,7 +55,8 @@ En su terminal favorita ejecute estos comandos:
 $ git clone https://github.com/maurobonfietti/rest-api-slim-php.git && cd rest-api-slim-php
 $ cp .env.example .env
 $ composer install
-$ composer database
+$ composer restart-db
+$ composer test
 $ composer start
 ```
 
