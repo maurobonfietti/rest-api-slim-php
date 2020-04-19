@@ -126,6 +126,7 @@ Cómo usar Redis en esta API con Slim PHP:
 
 - [phpunit/phpunit](https://github.com/sebastianbergmann/phpunit): Framework para hacer Unit Testing en PHP.
 - [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan, herramienta de análisis estático para PHP.
+- [nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights): Comprobaciones instantáneas de calidad PHP desde su consola.
 
 
 ## TESTING:
