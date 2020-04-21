@@ -33,12 +33,12 @@ final class RedisService
         return json_decode($this->redis->get($key), true);
     }
 
-    public function set(string $key, string $value): void
+    public function set($key, $value): void
     {
         $this->redis->set($key, json_encode($value));
     }
 
-    public function setex(string $key, string $value, int $ttl = 3600): void
+    public function setex($key, $value, int $ttl = 3600): void
     {
         $this->redis->setex($key, $ttl, json_encode($value));
     }
