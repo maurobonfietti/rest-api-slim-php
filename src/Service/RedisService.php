@@ -6,7 +6,7 @@ namespace App\Service;
 
 final class RedisService
 {
-    const PROJECT_NAME = 'rest-api-slim-php';
+    public const PROJECT_NAME = 'rest-api-slim-php';
 
     /**
      * @var \Predis\Client

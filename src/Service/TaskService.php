@@ -9,7 +9,7 @@ use App\Repository\TaskRepository;
 
 final class TaskService extends BaseService
 {
-    const REDIS_KEY = 'task:%s:user:%s';
+    private const REDIS_KEY = 'task:%s:user:%s';
 
     /**
      * @var TaskRepository

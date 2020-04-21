@@ -10,7 +10,7 @@ use Firebase\JWT\JWT;
 
 final class UserService extends BaseService
 {
-    const REDIS_KEY = 'user:%s';
+    private const REDIS_KEY = 'user:%s';
 
     /**
      * @var UserRepository
