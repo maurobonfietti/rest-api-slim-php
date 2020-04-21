@@ -13,7 +13,7 @@ final class UserRepository extends BaseRepository
         $this->database = $database;
     }
 
-    public function getUser(int $userId)
+    public function getUser(int $userId): object
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
@@ -63,7 +63,7 @@ final class UserRepository extends BaseRepository
         return $users;
     }
 
-    public function loginUser(string $email, string $password)
+    public function loginUser(string $email, string $password): object
     {
         $query = 'SELECT * FROM `users` WHERE `email` = :email AND `password` = :password ORDER BY `id`';
         $statement = $this->database->prepare($query);
@@ -78,7 +78,7 @@ final class UserRepository extends BaseRepository
         return $user;
     }
 
-    public function create($user)
+    public function create($user): object
     {
         $query = 'INSERT INTO `users` (`name`, `email`, `password`) VALUES (:name, :email, :password)';
         $statement = $this->database->prepare($query);
@@ -90,7 +90,7 @@ final class UserRepository extends BaseRepository
         return $this->getUser((int) $this->database->lastInsertId());
     }
 
-    public function update($user)
+    public function update($user): object
     {
         $query = 'UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id';
         $statement = $this->database->prepare($query);

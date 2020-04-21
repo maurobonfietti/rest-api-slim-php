@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 
 final class ApiError extends \Slim\Handlers\Error
 {
-    public function __invoke(Request $request, Response $response, \Exception $exception)
+    public function __invoke(Request $request, Response $response, \Exception $exception): Response
     {
         $statusCode = 500;
         if (is_int($exception->getCode()) && $exception->getCode() >= 400 && $exception->getCode() <= 599) {
