@@ -14,34 +14,34 @@ use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
 
-$container['user_service'] = function (ContainerInterface $container): UserService {
+$container['user_service'] = static function (ContainerInterface $container): UserService {
     return new UserService($container->get('user_repository'), $container->get('redis_service'));
 };
 
-$container['task_service'] = function (ContainerInterface $container): TaskService {
+$container['task_service'] = static function (ContainerInterface $container): TaskService {
     return new TaskService($container->get('task_repository'), $container->get('redis_service'));
 };
 
-$container['create_note_service'] = function (ContainerInterface $container): Create {
+$container['create_note_service'] = static function (ContainerInterface $container): Create {
     return new Create($container->get('note_repository'), $container->get('redis_service'));
 };
 
-$container['delete_note_service'] = function (ContainerInterface $container): Delete {
+$container['delete_note_service'] = static function (ContainerInterface $container): Delete {
     return new Delete($container->get('note_repository'), $container->get('redis_service'));
 };
 
-$container['get_all_note_service'] = function (ContainerInterface $container): GetAll {
+$container['get_all_note_service'] = static function (ContainerInterface $container): GetAll {
     return new GetAll($container->get('note_repository'), $container->get('redis_service'));
 };
 
-$container['get_one_note_service'] = function (ContainerInterface $container): GetOne {
+$container['get_one_note_service'] = static function (ContainerInterface $container): GetOne {
     return new GetOne($container->get('note_repository'), $container->get('redis_service'));
 };
 
-$container['search_note_service'] = function (ContainerInterface $container): Search {
+$container['search_note_service'] = static function (ContainerInterface $container): Search {
     return new Search($container->get('note_repository'), $container->get('redis_service'));
 };
 
-$container['update_note_service'] = function (ContainerInterface $container): Update {
+$container['update_note_service'] = static function (ContainerInterface $container): Update {
     return new Update($container->get('note_repository'), $container->get('redis_service'));
 };

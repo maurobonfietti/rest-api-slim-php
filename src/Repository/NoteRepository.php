@@ -13,7 +13,7 @@ final class NoteRepository extends BaseRepository
         $this->database = $database;
     }
 
-    public function checkAndGetNote(int $noteId)
+    public function checkAndGetNote(int $noteId): object
     {
         $query = 'SELECT * FROM `notes` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
@@ -64,7 +64,7 @@ final class NoteRepository extends BaseRepository
         return $this->checkAndGetNote((int) $this->database->lastInsertId());
     }
 
-    public function updateNote($note)
+    public function updateNote($note): object
     {
         $query = 'UPDATE `notes` SET `name` = :name, `description` = :description WHERE `id` = :id';
         $statement = $this->database->prepare($query);

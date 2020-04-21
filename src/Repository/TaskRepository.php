@@ -13,7 +13,7 @@ final class TaskRepository extends BaseRepository
         $this->database = $database;
     }
 
-    public function checkAndGetTask(int $taskId, int $userId)
+    public function checkAndGetTask(int $taskId, int $userId): object
     {
         $query = 'SELECT * FROM `tasks` WHERE `id` = :id AND `userId` = :userId';
         $statement = $this->getDb()->prepare($query);
@@ -62,7 +62,7 @@ final class TaskRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function create($task)
+    public function create($task): object
     {
         $query = '
             INSERT INTO `tasks` (`name`, `description`, `status`, `userId`)
@@ -78,7 +78,7 @@ final class TaskRepository extends BaseRepository
         return $this->checkAndGetTask((int) $this->database->lastInsertId(), (int) $task->userId);
     }
 
-    public function update($task)
+    public function update($task): object
     {
         $query = '
             UPDATE `tasks`

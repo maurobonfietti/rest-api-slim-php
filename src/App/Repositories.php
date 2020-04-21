@@ -9,14 +9,14 @@ use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
 
-$container['user_repository'] = function (ContainerInterface $container): UserRepository {
+$container['user_repository'] = static function (ContainerInterface $container): UserRepository {
     return new UserRepository($container->get('db'));
 };
 
-$container['task_repository'] = function (ContainerInterface $container): TaskRepository {
+$container['task_repository'] = static function (ContainerInterface $container): TaskRepository {
     return new TaskRepository($container->get('db'));
 };
 
-$container['note_repository'] = function (ContainerInterface $container): NoteRepository {
+$container['note_repository'] = static function (ContainerInterface $container): NoteRepository {
     return new NoteRepository($container->get('db'));
 };

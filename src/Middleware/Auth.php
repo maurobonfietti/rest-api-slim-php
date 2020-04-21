@@ -12,7 +12,7 @@ use Slim\Http\Response;
 
 final class Auth
 {
-    const FORBIDDEN_MESSAGE_EXCEPTION = 'error: Forbidden, not authorized.';
+    private const FORBIDDEN_MESSAGE_EXCEPTION = 'error: Forbidden, not authorized.';
 
     public function __invoke(Request $request, Response $response, $next): ResponseInterface
     {

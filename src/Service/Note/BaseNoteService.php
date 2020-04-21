@@ -10,7 +10,7 @@ use App\Service\RedisService;
 
 abstract class BaseNoteService extends BaseService
 {
-    const REDIS_KEY = 'note:%s';
+    public const REDIS_KEY = 'note:%s';
 
     /**
      * @var NoteRepository

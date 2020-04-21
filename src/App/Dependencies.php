@@ -8,7 +8,7 @@ use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
 
-$container['db'] = function (ContainerInterface $c): PDO {
+$container['db'] = static function (ContainerInterface $c): PDO {
     $db = $c->get('settings')['db'];
     $database = sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']);
     $pdo = new PDO($database, $db['username'], $db['password']);
@@ -19,10 +19,10 @@ $container['db'] = function (ContainerInterface $c): PDO {
     return $pdo;
 };
 
-$container['errorHandler'] = function (): ApiError {
+$container['errorHandler'] = static function (): ApiError {
     return new ApiError();
 };
 
-$container['redis_service'] = function (): RedisService {
+$container['redis_service'] = static function (): RedisService {
     return new RedisService(new \Predis\Client(getenv('REDIS_URL')));
 };
