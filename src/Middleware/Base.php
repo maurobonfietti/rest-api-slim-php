@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
-use App\Exception\AuthException;
 use Firebase\JWT\JWT;
 
 abstract class Base
@@ -18,11 +17,11 @@ abstract class Base
             if (is_object($decoded) && isset($decoded->sub)) {
                 return $decoded;
             }
-            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
+            throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
         } catch (\UnexpectedValueException $e) {
-            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
+            throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
         } catch (\DomainException $e) {
-            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
+            throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
         }
     }
 }

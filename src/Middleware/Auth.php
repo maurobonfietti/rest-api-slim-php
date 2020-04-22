@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
-use App\Exception\AuthException;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -15,11 +14,11 @@ final class Auth extends Base
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
         if (!$jwtHeader) {
-            throw new AuthException('JWT Token required.', 400);
+            throw new \App\Exception\Auth('JWT Token required.', 400);
         }
         $jwt = explode('Bearer ', $jwtHeader);
         if (!isset($jwt[1])) {
-            throw new AuthException('JWT Token invalid.', 400);
+            throw new \App\Exception\Auth('JWT Token invalid.', 400);
         }
         $decoded = $this->checkToken($jwt[1]);
         $object = $request->getParsedBody();
