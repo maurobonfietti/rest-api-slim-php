@@ -17,7 +17,7 @@ final class Auth
     public function __invoke(Request $request, Response $response, $next): ResponseInterface
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
-        if (empty($jwtHeader) === true) {
+        if (!$jwtHeader) {
             throw new AuthException('JWT Token required.', 400);
         }
         $jwt = explode('Bearer ', $jwtHeader);

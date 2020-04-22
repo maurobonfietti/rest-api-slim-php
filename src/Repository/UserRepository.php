@@ -20,7 +20,7 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('id', $userId);
         $statement->execute();
         $user = $statement->fetchObject();
-        if (empty($user)) {
+        if (!$user) {
             throw new UserException('User not found.', 404);
         }
 
@@ -34,7 +34,7 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('email', $email);
         $statement->execute();
         $user = $statement->fetchObject();
-        if (empty(!$user)) {
+        if ($user) {
             throw new UserException('Email already exists.', 400);
         }
     }
@@ -71,7 +71,7 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('password', $password);
         $statement->execute();
         $user = $statement->fetchObject();
-        if (empty($user)) {
+        if (!$user) {
             throw new UserException('Login failed: Email or password incorrect.', 400);
         }
 

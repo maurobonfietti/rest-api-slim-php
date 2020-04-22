@@ -20,7 +20,7 @@ final class NoteRepository extends BaseRepository
         $statement->bindParam(':id', $noteId);
         $statement->execute();
         $note = $statement->fetchObject();
-        if (empty($note)) {
+        if (!$note) {
             throw new NoteException('Note not found.', 404);
         }
 
