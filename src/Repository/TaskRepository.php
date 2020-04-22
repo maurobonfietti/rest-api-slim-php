@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\TaskException;
+use App\Exception\Task;
 
 final class TaskRepository extends BaseRepository
 {
@@ -21,8 +21,8 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $userId);
         $statement->execute();
         $task = $statement->fetchObject();
-        if (empty($task)) {
-            throw new TaskException('Task not found.', 404);
+        if (!$task) {
+            throw new Task('Task not found.', 404);
         }
 
         return $task;

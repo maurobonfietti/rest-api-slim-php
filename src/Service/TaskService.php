@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Exception\TaskException;
+use App\Exception\Task;
 use App\Repository\TaskRepository;
 
 final class TaskService extends BaseService
@@ -90,7 +90,7 @@ final class TaskService extends BaseService
         $task = new \stdClass();
         $data = json_decode(json_encode($input), false);
         if (empty($data->name)) {
-            throw new TaskException('The field "name" is required.', 400);
+            throw new Task('The field "name" is required.', 400);
         }
         $task->name = self::validateTaskName($data->name);
         $task->description = null;
@@ -115,7 +115,7 @@ final class TaskService extends BaseService
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->status)) {
-            throw new TaskException('Enter the data to update the task.', 400);
+            throw new Task('Enter the data to update the task.', 400);
         }
         if (isset($data->name)) {
             $task->name = self::validateTaskName($data->name);

@@ -369,7 +369,7 @@ class UserTest extends BaseTestCase
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('Login failed', $result);
-        $this->assertStringContainsString('UserException', $result);
+        $this->assertStringContainsString('Exception', $result);
         $this->assertStringContainsString('error', $result);
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('Authorization', $result);
@@ -387,7 +387,7 @@ class UserTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
-        $this->assertStringContainsString('UserException', $result);
+        $this->assertStringContainsString('Exception', $result);
         $this->assertStringContainsString('error', $result);
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('Authorization', $result);
@@ -405,7 +405,7 @@ class UserTest extends BaseTestCase
 
         $this->assertEquals(400, $response->getStatusCode());
         $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
-        $this->assertStringContainsString('UserException', $result);
+        $this->assertStringContainsString('Exception', $result);
         $this->assertStringContainsString('error', $result);
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringNotContainsString('Authorization', $result);

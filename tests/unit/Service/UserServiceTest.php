@@ -42,7 +42,7 @@ class UserServiceTest extends BaseTestCase
 
     public function testCreateUserWithoutNameExpectError(): void
     {
-        $this->expectException(\App\Exception\UserException::class);
+        $this->expectException(\App\Exception\User::class);
 
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $redisService = new \App\Service\RedisService(new \Predis\Client());

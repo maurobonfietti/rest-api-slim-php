@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Exception\NoteException;
+use App\Exception\Note;
 
 final class Update extends BaseNoteService
 {
@@ -13,7 +13,7 @@ final class Update extends BaseNoteService
         $note = $this->getOneFromDb($noteId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->description)) {
-            throw new NoteException('Enter the data to update the note.', 400);
+            throw new Note('Enter the data to update the note.', 400);
         }
         if (isset($data->name)) {
             $note->name = self::validateNoteName($data->name);

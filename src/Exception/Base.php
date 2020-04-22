@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
-final class TaskException extends BaseException
+abstract class Base extends \Exception
 {
 }
