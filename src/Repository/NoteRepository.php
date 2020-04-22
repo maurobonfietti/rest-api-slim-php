@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\NoteException;
+use App\Exception\Note;
 
 final class NoteRepository extends BaseRepository
 {
@@ -21,7 +21,7 @@ final class NoteRepository extends BaseRepository
         $statement->execute();
         $note = $statement->fetchObject();
         if (!$note) {
-            throw new NoteException('Note not found.', 404);
+            throw new Note('Note not found.', 404);
         }
 
         return $note;
@@ -47,7 +47,7 @@ final class NoteRepository extends BaseRepository
         $statement->execute();
         $notes = $statement->fetchAll();
         if (!$notes) {
-            throw new NoteException('No notes with that name or description were found.', 404);
+            throw new Note('No notes with that name or description were found.', 404);
         }
 
         return $notes;

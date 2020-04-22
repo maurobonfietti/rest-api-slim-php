@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\UserException;
+use App\Exception\User;
 
 final class UserRepository extends BaseRepository
 {
@@ -21,7 +21,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject();
         if (!$user) {
-            throw new UserException('User not found.', 404);
+            throw new User('User not found.', 404);
         }
 
         return $user;
@@ -35,7 +35,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject();
         if ($user) {
-            throw new UserException('Email already exists.', 400);
+            throw new User('Email already exists.', 400);
         }
     }
 
@@ -57,7 +57,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $users = $statement->fetchAll();
         if (!$users) {
-            throw new UserException('User name not found.', 404);
+            throw new User('User name not found.', 404);
         }
 
         return $users;
@@ -72,7 +72,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject();
         if (!$user) {
-            throw new UserException('Login failed: Email or password incorrect.', 400);
+            throw new User('Login failed: Email or password incorrect.', 400);
         }
 
         return $user;

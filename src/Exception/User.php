@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
-final class UserException extends BaseException
+final class User extends BaseException
 {
 }

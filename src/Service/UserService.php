@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Exception\UserException;
+use App\Exception\User;
 use App\Repository\UserRepository;
 use Firebase\JWT\JWT;
 
@@ -83,13 +83,13 @@ final class UserService extends BaseService
         $user = new \stdClass();
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name)) {
-            throw new UserException('The field "name" is required.', 400);
+            throw new User('The field "name" is required.', 400);
         }
         if (!isset($data->email)) {
-            throw new UserException('The field "email" is required.', 400);
+            throw new User('The field "email" is required.', 400);
         }
         if (!isset($data->password)) {
-            throw new UserException('The field "password" is required.', 400);
+            throw new User('The field "password" is required.', 400);
         }
         $user->name = self::validateUserName($data->name);
         $user->email = self::validateEmail($data->email);
@@ -108,7 +108,7 @@ final class UserService extends BaseService
         $user = $this->getUserFromDb($userId);
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name) && !isset($data->email)) {
-            throw new UserException('Enter the data to update the user.', 400);
+            throw new User('Enter the data to update the user.', 400);
         }
         if (isset($data->name)) {
             $user->name = self::validateUserName($data->name);
@@ -140,10 +140,10 @@ final class UserService extends BaseService
     {
         $data = json_decode(json_encode($input), false);
         if (!isset($data->email)) {
-            throw new UserException('The field "email" is required.', 400);
+            throw new User('The field "email" is required.', 400);
         }
         if (!isset($data->password)) {
-            throw new UserException('The field "password" is required.', 400);
+            throw new User('The field "password" is required.', 400);
         }
         $password = hash('sha512', $data->password);
         $user = $this->userRepository->loginUser($data->email, $password);

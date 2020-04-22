@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Exception\NoteException;
+use App\Exception\Note;
 
 final class Create extends BaseNoteService
 {
@@ -13,7 +13,7 @@ final class Create extends BaseNoteService
         $note = new \stdClass();
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name)) {
-            throw new NoteException('Invalid data: name is required.', 400);
+            throw new Note('Invalid data: name is required.', 400);
         }
         $note->name = self::validateNoteName($data->name);
         $note->description = null;

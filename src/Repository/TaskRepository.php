@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\TaskException;
+use App\Exception\Task;
 
 final class TaskRepository extends BaseRepository
 {
@@ -22,7 +22,7 @@ final class TaskRepository extends BaseRepository
         $statement->execute();
         $task = $statement->fetchObject();
         if (!$task) {
-            throw new TaskException('Task not found.', 404);
+            throw new Task('Task not found.', 404);
         }
 
         return $task;
