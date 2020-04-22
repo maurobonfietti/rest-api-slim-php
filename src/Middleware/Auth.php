@@ -5,15 +5,12 @@ declare(strict_types=1);
 namespace App\Middleware;
 
 use App\Exception\AuthException;
-use Firebase\JWT\JWT;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-final class Auth
+final class Auth extends Base
 {
-    private const FORBIDDEN_MESSAGE_EXCEPTION = 'error: Forbidden, not authorized.';
-
     public function __invoke(Request $request, Response $response, $next): ResponseInterface
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
@@ -29,20 +26,5 @@ final class Auth
         $object['decoded'] = $decoded;
 
         return $next($request->withParsedBody($object), $response);
-    }
-
-    public function checkToken(string $token)
-    {
-        try {
-            $decoded = JWT::decode($token, getenv('SECRET_KEY'), ['HS256']);
-            if (is_object($decoded) && isset($decoded->sub)) {
-                return $decoded;
-            }
-            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
-        } catch (\UnexpectedValueException $e) {
-            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
-        } catch (\DomainException $e) {
-            throw new AuthException(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
-        }
     }
 }
