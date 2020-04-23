@@ -11,6 +11,7 @@ use App\Service\Note\GetAll;
 use App\Service\Note\GetOne;
 use App\Service\Note\Search;
 use App\Service\Note\Update;
+use App\Service\Note\NoteService;
 use Slim\Container;
 
 abstract class Base extends BaseController
@@ -18,6 +19,11 @@ abstract class Base extends BaseController
     public function __construct(Container $container)
     {
         $this->container = $container;
+    }
+
+    protected function getNoteService(): NoteService
+    {
+        return $this->container->get('note_service');
     }
 
     protected function createNoteService(): Create

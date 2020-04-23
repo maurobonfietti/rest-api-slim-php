@@ -30,4 +30,9 @@ final class GetOne extends BaseNoteService
 
         return $note;
     }
+//
+//    public function getOneFromDb(int $noteId)
+//    {
+//        return $this->noteRepository->checkAndGetNote($noteId);
+//    }
 }

@@ -10,6 +10,7 @@ use App\Service\Note\Search;
 use App\Service\Note\Update;
 use App\Service\TaskService;
 use App\Service\UserService;
+use App\Service\Note\NoteService;
 use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
@@ -21,6 +22,11 @@ $container['user_service'] = static function (ContainerInterface $container): Us
 $container['task_service'] = static function (ContainerInterface $container): TaskService {
     return new TaskService($container->get('task_repository'), $container->get('redis_service'));
 };
+
+$container['note_service'] = static function (ContainerInterface $container): NoteService {
+    return new NoteService($container->get('note_repository'), $container->get('redis_service'));
+};
+
 
 $container['create_note_service'] = static function (ContainerInterface $container): Create {
     return new Create($container->get('note_repository'), $container->get('redis_service'));
