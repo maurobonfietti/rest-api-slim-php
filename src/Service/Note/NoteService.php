@@ -6,7 +6,7 @@ namespace App\Service\Note;
 
 use App\Exception\Note;
 
-final class NoteService extends BaseNoteService
+final class NoteService extends Base
 {
     public function getAll(): array
     {

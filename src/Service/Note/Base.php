@@ -10,7 +10,7 @@ use App\Service\BaseService;
 use App\Service\RedisService;
 use Respect\Validation\Validator as v;
 
-abstract class BaseNoteService extends BaseService
+abstract class Base extends BaseService
 {
     public const REDIS_KEY = 'note:%s';
 
