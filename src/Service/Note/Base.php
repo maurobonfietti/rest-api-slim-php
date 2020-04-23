@@ -12,7 +12,7 @@ use Respect\Validation\Validator as v;
 
 abstract class Base extends BaseService
 {
-    public const REDIS_KEY = 'note:%s';
+    private const REDIS_KEY = 'note:%s';
 
     /**
      * @var NoteRepository
@@ -39,7 +39,7 @@ abstract class Base extends BaseService
         return $name;
     }
 
-    public function getOneFromCache(int $noteId)
+    protected function getOneFromCache(int $noteId)
     {
         $redisKey = sprintf(self::REDIS_KEY, $noteId);
         $key = $this->redisService->generateKey($redisKey);
@@ -53,19 +53,19 @@ abstract class Base extends BaseService
         return $note;
     }
 
-    public function getOneFromDb(int $noteId)
+    protected function getOneFromDb(int $noteId)
     {
         return $this->noteRepository->checkAndGetNote($noteId);
     }
 
-    public function saveInCache($id, $note): void
+    protected function saveInCache($id, $note): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $id);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $note);
     }
 
-    public function deleteFromCache($noteId): void
+    protected function deleteFromCache($noteId): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $noteId);
         $key = $this->redisService->generateKey($redisKey);
