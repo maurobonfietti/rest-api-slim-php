@@ -69,7 +69,7 @@ $ composer start
 You can use this project using **docker** and **docker-compose**.
 
 
-### Minimal Docker Version:
+**Minimal Docker Version:**
 
 * Engine: 18.03+
 * Compose: 1.21+

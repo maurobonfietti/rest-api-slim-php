@@ -68,7 +68,7 @@ $ composer start
 Puedes probar este proyecto usando **docker** y **docker-compose**.
 
 
-### Version Requerida Docker:
+**Version Requerida Docker:**
 
 * Engine: 18.03+
 * Compose: 1.21+
