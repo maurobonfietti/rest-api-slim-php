@@ -12,7 +12,7 @@ final class Create extends Base
     public function __invoke(Request $request, Response $response): Response
     {
         $input = $request->getParsedBody();
-        $note = $this->createNoteService()->create($input);
+        $note = $this->getNoteService()->create($input);
 
         return $this->jsonResponse($response, 'success', $note, 201);
     }

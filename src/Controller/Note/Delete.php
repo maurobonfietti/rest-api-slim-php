@@ -11,7 +11,7 @@ final class Delete extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $this->deleteNoteService()->delete((int) $args['id']);
+        $this->getNoteService()->delete((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', null, 204);
     }

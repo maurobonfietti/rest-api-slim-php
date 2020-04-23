@@ -10,7 +10,7 @@ use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '0.51.0';
+    public const API_VERSION = '0.52.0';
 
     public function __construct(Container $container)
     {
@@ -54,7 +54,7 @@ final class DefaultController extends BaseController
     {
         $userService = $this->container->get('user_service');
         $taskService = $this->container->get('task_service');
-        $noteService = $this->container->get('get_all_note_service');
+        $noteService = $this->container->get('note_service');
 
         return [
             'users' => count($userService->getAll()),
