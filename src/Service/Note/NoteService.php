@@ -24,20 +24,6 @@ final class NoteService extends BaseNoteService
         return $note;
     }
 
-    public function getOneFromCache(int $noteId)
-    {
-        $redisKey = sprintf(self::REDIS_KEY, $noteId);
-        $key = $this->redisService->generateKey($redisKey);
-        if ($this->redisService->exists($key)) {
-            $note = $this->redisService->get($key);
-        } else {
-            $note = $this->getOneFromDb($noteId);
-            $this->redisService->setex($key, $note);
-        }
-
-        return $note;
-    }
-
     public function search(string $notesName): array
     {
         return $this->noteRepository->searchNotes($notesName);

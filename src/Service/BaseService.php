@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use App\Exception\Note;
 use App\Exception\Task;
 use App\Exception\User;
 use Respect\Validation\Validator as v;
@@ -51,14 +50,5 @@ abstract class BaseService
         }
 
         return $status;
-    }
-
-    protected static function validateNoteName(string $name): string
-    {
-        if (!v::length(2, 50)->validate($name)) {
-            throw new Note('The name of the note is invalid.', 400);
-        }
-
-        return $name;
     }
 }
