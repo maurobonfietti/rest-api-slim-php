@@ -2,10 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\User;
 
 use App\Exception\User;
 use App\Repository\UserRepository;
+use App\Service\BaseService;
+use App\Service\RedisService;
 use Firebase\JWT\JWT;
 
 final class UserService extends BaseService
