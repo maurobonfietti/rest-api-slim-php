@@ -10,7 +10,7 @@ use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '0.53.0';
+    public const API_VERSION = '0.54.0';
 
     public function __construct(Container $container)
     {
