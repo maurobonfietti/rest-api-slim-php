@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use App\Service\Note\NoteService;
-use App\Service\TaskService;
+use App\Service\Task\TaskService;
 use App\Service\User\UserService;
 use Psr\Container\ContainerInterface;
 

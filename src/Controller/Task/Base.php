@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Task;
 
 use App\Controller\BaseController;
-use App\Service\TaskService;
+use App\Service\Task\TaskService;
 use Slim\Container;
 
 abstract class Base extends BaseController
