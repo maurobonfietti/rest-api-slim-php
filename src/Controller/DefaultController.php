@@ -10,7 +10,7 @@ use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '0.52.0';
+    public const API_VERSION = '0.53.0';
 
     public function __construct(Container $container)
     {
@@ -48,6 +48,27 @@ final class DefaultController extends BaseController
         ];
 
         return $this->jsonResponse($response, 'success', $status, 200);
+    }
+
+    public static function postCreateProjectCommand(): void
+    {
+        $str = <<<EOF
+
+Successfully created project!
+
+Get started with the following commands:
+
+$ cd [my-api-name]
+$ composer restart-db
+$ composer test
+$ composer start
+
+Thanks for installing this project!
+
+Now go build a cool RESTful API.
+
+EOF;
+        echo $str;
     }
 
     private function getDbStats(): array

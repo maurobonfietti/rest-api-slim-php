@@ -24,7 +24,7 @@ class UserServiceTest extends BaseTestCase
     {
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $redisService = new \App\Service\RedisService(new \Predis\Client());
-        $userService = new \App\Service\UserService($userRepository, $redisService);
+        $userService = new \App\Service\User\UserService($userRepository, $redisService);
         $user = $userService->getOne(1);
         $this->assertStringContainsString('Juan', $user->name);
     }
@@ -33,7 +33,7 @@ class UserServiceTest extends BaseTestCase
     {
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $redisService = new \App\Service\RedisService(new \Predis\Client());
-        $userService = new \App\Service\UserService($userRepository, $redisService);
+        $userService = new \App\Service\User\UserService($userRepository, $redisService);
         $input = ['name' => 'Eze', 'email' => 'eze@gmail.com', 'password' => 'AnyPass1000'];
         $user = $userService->create($input);
         self::$id = $user->id;
@@ -46,7 +46,7 @@ class UserServiceTest extends BaseTestCase
 
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $redisService = new \App\Service\RedisService(new \Predis\Client());
-        $userService = new \App\Service\UserService($userRepository, $redisService);
+        $userService = new \App\Service\User\UserService($userRepository, $redisService);
         $input = ['email' => 'eze@gmail.com', 'password' => 'AnyPass1000'];
         $user = $userService->create($input);
         self::$id = $user->id;
@@ -57,7 +57,7 @@ class UserServiceTest extends BaseTestCase
     {
         $userRepository = new \App\Repository\UserRepository($this->getDatabase());
         $redisService = new \App\Service\RedisService(new \Predis\Client());
-        $userService = new \App\Service\UserService($userRepository, $redisService);
+        $userService = new \App\Service\User\UserService($userRepository, $redisService);
         $userId = self::$id;
         $user = $userService->delete((int) $userId);
         $this->assertStringContainsString('The user was deleted.', $user);

@@ -2,31 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Service;
+namespace App\Service\Task;
 
 use App\Exception\Task;
-use App\Repository\TaskRepository;
 
-final class TaskService extends BaseService
+final class TaskService extends Base
 {
-    private const REDIS_KEY = 'task:%s:user:%s';
-
-    /**
-     * @var TaskRepository
-     */
-    protected $taskRepository;
-
-    /**
-     * @var RedisService
-     */
-    protected $redisService;
-
-    public function __construct(TaskRepository $taskRepository, RedisService $redisService)
-    {
-        $this->taskRepository = $taskRepository;
-        $this->redisService = $redisService;
-    }
-
     public function getAllTasks(): array
     {
         return $this->getTaskRepository()->getAllTasks();
@@ -48,20 +29,6 @@ final class TaskService extends BaseService
         return $task;
     }
 
-    public function getTaskFromCache(int $taskId, int $userId)
-    {
-        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
-        $key = $this->redisService->generateKey($redisKey);
-        if ($this->redisService->exists($key)) {
-            $task = $this->redisService->get($key);
-        } else {
-            $task = $this->getTaskFromDb($taskId, $userId);
-            $this->redisService->setex($key, $task);
-        }
-
-        return $task;
-    }
-
     public function search($tasksName, int $userId, $status): array
     {
         if ($status !== null) {
@@ -69,20 +36,6 @@ final class TaskService extends BaseService
         }
 
         return $this->getTaskRepository()->search($tasksName, $userId, $status);
-    }
-
-    public function saveInCache($taskId, $userId, $tasks): void
-    {
-        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->setex($key, $tasks);
-    }
-
-    public function deleteFromCache($taskId, $userId): void
-    {
-        $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
-        $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->del($key);
     }
 
     public function create(array $input)
@@ -144,15 +97,5 @@ final class TaskService extends BaseService
         }
 
         return $data;
-    }
-
-    protected function getTaskRepository(): TaskRepository
-    {
-        return $this->taskRepository;
-    }
-
-    protected function getTaskFromDb(int $taskId, int $userId)
-    {
-        return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 }
