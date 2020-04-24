@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace App\Service\Task;
 
 use App\Exception\Task;
-use App\Repository\TaskRepository;
-use App\Service\BaseService;
-use App\Service\RedisService;
 
 final class TaskService extends Base
 {

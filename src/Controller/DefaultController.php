@@ -50,6 +50,27 @@ final class DefaultController extends BaseController
         return $this->jsonResponse($response, 'success', $status, 200);
     }
 
+    public static function postCreateProjectCommand(): void
+    {
+        $str = <<<EOF
+
+Successfully created project!
+
+Get started with the following commands:
+
+$ cd [my-api-name]
+$ composer restart-db
+$ composer test
+$ composer start
+
+Thanks for installing this project!
+
+Now go build a cool RESTful API.
+
+EOF;
+        echo $str;
+    }
+
     private function getDbStats(): array
     {
         $userService = $this->container->get('user_service');
@@ -75,26 +96,5 @@ final class DefaultController extends BaseController
         }
 
         return $redis;
-    }
-
-    public static function postCreateProjectCommand()
-    {
-        $str = <<<EOF
-
-Successfully created project!
-
-Get started with the following commands:
-
-$ cd [my-api-name]
-$ composer restart-db
-$ composer test
-$ composer start
-
-Thanks for installing this project!
-
-Now go build a cool RESTful API.
-
-EOF;
-        echo $str;
     }
 }
