@@ -49,9 +49,9 @@
             "\\App\\Controller\\DefaultController::postCreateProjectCommand"
         ],
         "coverage": "phpunit --coverage-html=coverage --coverage-text",
-        "database": "extras/bin/restart-api.sh",
+        "database": "php extras/bin/restart-db.php",
         "phpstan": "./vendor/bin/phpstan analyse src tests --level=6",
-        "restart": "extras/bin/restart-api.sh",
+        "restart": "php extras/bin/restart-db.php",
         "restart-db": "php extras/bin/restart-db.php",
         "start": "php -S 0.0.0.0:8080 -t public public/index.php",
         "test": "phpunit"
