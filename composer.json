@@ -45,7 +45,8 @@
     "scripts": {
         "post-create-project-cmd": [
             "# Copy default environment variables:",
-            "php -r \"copy('.env.example', '.env');\""
+            "php -r \"copy('.env.example', '.env');\"",
+            "\\App\\Controller\\DefaultController::postCreateProjectCommand"
         ],
         "coverage": "phpunit --coverage-html=coverage --coverage-text",
         "database": "extras/bin/restart-api.sh",

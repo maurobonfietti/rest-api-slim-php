@@ -76,4 +76,25 @@ final class DefaultController extends BaseController
 
         return $redis;
     }
+
+    public static function postCreateProjectCommand()
+    {
+        $str = <<<EOF
+
+Successfully created project!
+
+Get started with the following commands:
+
+$ cd [my-api-name]
+$ composer restart-db
+$ composer test
+$ composer start
+
+Thanks for installing this project!
+
+Now go build a cool RESTful API.
+
+EOF;
+        echo $str;
+    }
 }
