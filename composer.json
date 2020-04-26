@@ -44,7 +44,6 @@
     },
     "scripts": {
         "post-create-project-cmd": [
-            "# Copy default environment variables:",
             "php -r \"copy('.env.example', '.env');\"",
             "\\App\\Controller\\DefaultController::postCreateProjectCommand"
         ],
