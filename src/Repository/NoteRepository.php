@@ -20,7 +20,7 @@ final class NoteRepository extends BaseRepository
         $statement->bindParam(':id', $noteId);
         $statement->execute();
         $note = $statement->fetchObject();
-        if (!$note) {
+        if (! $note) {
             throw new Note('Note not found.', 404);
         }
 
@@ -46,7 +46,7 @@ final class NoteRepository extends BaseRepository
         $statement->bindParam('description', $description);
         $statement->execute();
         $notes = $statement->fetchAll();
-        if (!$notes) {
+        if (! $notes) {
             throw new Note('No notes with that name or description were found.', 404);
         }
 

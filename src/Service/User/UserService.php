@@ -33,13 +33,13 @@ final class UserService extends Base
     public function create($input)
     {
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name)) {
+        if (! isset($data->name)) {
             throw new User('The field "name" is required.', 400);
         }
-        if (!isset($data->email)) {
+        if (! isset($data->email)) {
             throw new User('The field "email" is required.', 400);
         }
-        if (!isset($data->password)) {
+        if (! isset($data->password)) {
             throw new User('The field "password" is required.', 400);
         }
         $data->name = self::validateUserName($data->name);
@@ -58,7 +58,7 @@ final class UserService extends Base
     {
         $user = $this->getUserFromDb($userId);
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name) && !isset($data->email)) {
+        if (! isset($data->name) && ! isset($data->email)) {
             throw new User('Enter the data to update the user.', 400);
         }
         if (isset($data->name)) {
@@ -90,10 +90,10 @@ final class UserService extends Base
     public function login(?array $input): string
     {
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->email)) {
+        if (! isset($data->email)) {
             throw new User('The field "email" is required.', 400);
         }
-        if (!isset($data->password)) {
+        if (! isset($data->password)) {
             throw new User('The field "password" is required.', 400);
         }
         $password = hash('sha512', $data->password);

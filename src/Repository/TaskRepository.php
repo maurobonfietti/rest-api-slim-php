@@ -21,7 +21,7 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $userId);
         $statement->execute();
         $task = $statement->fetchObject();
-        if (!$task) {
+        if (! $task) {
             throw new Task('Task not found.', 404);
         }
 

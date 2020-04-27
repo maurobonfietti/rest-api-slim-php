@@ -41,7 +41,7 @@ final class TaskService extends Base
     public function create(array $input)
     {
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name)) {
+        if (! isset($data->name)) {
             throw new Task('The field "name" is required.', 400);
         }
         self::validateTaskName($data->name);
@@ -64,7 +64,7 @@ final class TaskService extends Base
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name) && !isset($data->status)) {
+        if (! isset($data->name) && ! isset($data->status)) {
             throw new Task('Enter the data to update the task.', 400);
         }
         if (isset($data->name)) {

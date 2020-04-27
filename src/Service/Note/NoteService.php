@@ -32,7 +32,7 @@ final class NoteService extends Base
     public function create($input)
     {
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name)) {
+        if (! isset($data->name)) {
             throw new Note('Invalid data: name is required.', 400);
         }
         self::validateNoteName($data->name);
@@ -49,7 +49,7 @@ final class NoteService extends Base
     {
         $note = $this->getOneFromDb($noteId);
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name) && !isset($data->description)) {
+        if (! isset($data->name) && ! isset($data->description)) {
             throw new Note('Enter the data to update the note.', 400);
         }
         if (isset($data->name)) {
