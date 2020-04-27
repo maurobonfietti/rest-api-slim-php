@@ -78,7 +78,7 @@ final class UserRepository extends BaseRepository
         return $user;
     }
 
-    public function create($user): object
+    public function create(object $user): object
     {
         $query = 'INSERT INTO `users` (`name`, `email`, `password`) VALUES (:name, :email, :password)';
         $statement = $this->database->prepare($query);
@@ -90,7 +90,7 @@ final class UserRepository extends BaseRepository
         return $this->getUser((int) $this->database->lastInsertId());
     }
 
-    public function update($user): object
+    public function update(object $user): object
     {
         $query = 'UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id';
         $statement = $this->database->prepare($query);
