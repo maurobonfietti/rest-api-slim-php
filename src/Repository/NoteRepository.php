@@ -53,7 +53,7 @@ final class NoteRepository extends BaseRepository
         return $notes;
     }
 
-    public function createNote($data)
+    public function createNote(object $data)
     {
         $query = 'INSERT INTO `notes` (`name`, `description`) VALUES (:name, :description)';
         $statement = $this->database->prepare($query);
@@ -64,7 +64,7 @@ final class NoteRepository extends BaseRepository
         return $this->checkAndGetNote((int) $this->database->lastInsertId());
     }
 
-    public function updateNote($note): object
+    public function updateNote(object $note): object
     {
         $query = 'UPDATE `notes` SET `name` = :name, `description` = :description WHERE `id` = :id';
         $statement = $this->database->prepare($query);

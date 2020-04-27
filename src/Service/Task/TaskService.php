@@ -29,7 +29,7 @@ final class TaskService extends Base
         return $task;
     }
 
-    public function search($tasksName, int $userId, $status): array
+    public function search(string $tasksName, int $userId, $status): array
     {
         if ($status !== null) {
             $status = (int) $status;
@@ -41,7 +41,7 @@ final class TaskService extends Base
     public function create(array $input)
     {
         $data = json_decode(json_encode($input), false);
-        if (empty($data->name)) {
+        if (!isset($data->name)) {
             throw new Task('The field "name" is required.', 400);
         }
         self::validateTaskName($data->name);
