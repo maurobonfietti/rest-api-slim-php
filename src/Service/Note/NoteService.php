@@ -31,22 +31,18 @@ final class NoteService extends Base
 
     public function create($input)
     {
-        $note = new \stdClass();
         $data = json_decode(json_encode($input), false);
         if (!isset($data->name)) {
             throw new Note('Invalid data: name is required.', 400);
         }
-        $note->name = self::validateNoteName($data->name);
-        $note->description = null;
-        if (isset($data->description)) {
-            $note->description = $data->description;
-        }
-        $notes = $this->noteRepository->createNote($note);
+        self::validateNoteName($data->name);
+        $data->description = $data->description ?? null;
+        $note = $this->noteRepository->createNote($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($notes->id, $notes);
+            $this->saveInCache($note->id, $note);
         }
 
-        return $notes;
+        return $note;
     }
 
     public function update($input, int $noteId)
