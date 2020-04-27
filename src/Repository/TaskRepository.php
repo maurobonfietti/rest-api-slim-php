@@ -21,7 +21,7 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $userId);
         $statement->execute();
         $task = $statement->fetchObject();
-        if (!$task) {
+        if (! $task) {
             throw new Task('Task not found.', 404);
         }
 
@@ -47,7 +47,7 @@ final class TaskRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function search($tasksName, int $userId, $status): array
+    public function search(string $tasksName, int $userId, $status): array
     {
         $query = $this->getSearchTasksQuery($status);
         $name = '%' . $tasksName . '%';
@@ -62,7 +62,7 @@ final class TaskRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function create($task): object
+    public function create(object $task): object
     {
         $query = '
             INSERT INTO `tasks` (`name`, `description`, `status`, `userId`)
@@ -78,7 +78,7 @@ final class TaskRepository extends BaseRepository
         return $this->checkAndGetTask((int) $this->database->lastInsertId(), (int) $task->userId);
     }
 
-    public function update($task): object
+    public function update(object $task): object
     {
         $query = '
             UPDATE `tasks`

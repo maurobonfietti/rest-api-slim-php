@@ -20,7 +20,7 @@ final class NoteRepository extends BaseRepository
         $statement->bindParam(':id', $noteId);
         $statement->execute();
         $note = $statement->fetchObject();
-        if (!$note) {
+        if (! $note) {
             throw new Note('Note not found.', 404);
         }
 
@@ -46,14 +46,14 @@ final class NoteRepository extends BaseRepository
         $statement->bindParam('description', $description);
         $statement->execute();
         $notes = $statement->fetchAll();
-        if (!$notes) {
+        if (! $notes) {
             throw new Note('No notes with that name or description were found.', 404);
         }
 
         return $notes;
     }
 
-    public function createNote($data)
+    public function createNote(object $data)
     {
         $query = 'INSERT INTO `notes` (`name`, `description`) VALUES (:name, :description)';
         $statement = $this->database->prepare($query);
@@ -64,7 +64,7 @@ final class NoteRepository extends BaseRepository
         return $this->checkAndGetNote((int) $this->database->lastInsertId());
     }
 
-    public function updateNote($note): object
+    public function updateNote(object $note): object
     {
         $query = 'UPDATE `notes` SET `name` = :name, `description` = :description WHERE `id` = :id';
         $statement = $this->database->prepare($query);

@@ -13,11 +13,11 @@ final class Auth extends Base
     public function __invoke(Request $request, Response $response, $next): ResponseInterface
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
-        if (!$jwtHeader) {
+        if (! $jwtHeader) {
             throw new \App\Exception\Auth('JWT Token required.', 400);
         }
         $jwt = explode('Bearer ', $jwtHeader);
-        if (!isset($jwt[1])) {
+        if (! isset($jwt[1])) {
             throw new \App\Exception\Auth('JWT Token invalid.', 400);
         }
         $decoded = $this->checkToken($jwt[1]);

@@ -10,7 +10,7 @@ use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '0.54.0';
+    public const API_VERSION = '0.55.0';
 
     public function __construct(Container $container)
     {
@@ -70,7 +70,10 @@ final class DefaultController extends BaseController
                      | |         | |    
                      |_|         |_|    
 
-[Version: ${version}]
+*************************************************************
+Project: https://github.com/maurobonfietti/rest-api-slim-php
+Version: ${version}
+*************************************************************
 
 Successfully created project!
 

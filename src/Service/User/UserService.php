@@ -32,34 +32,33 @@ final class UserService extends Base
 
     public function create($input)
     {
-        $user = new \stdClass();
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name)) {
+        if (! isset($data->name)) {
             throw new User('The field "name" is required.', 400);
         }
-        if (!isset($data->email)) {
+        if (! isset($data->email)) {
             throw new User('The field "email" is required.', 400);
         }
-        if (!isset($data->password)) {
+        if (! isset($data->password)) {
             throw new User('The field "password" is required.', 400);
         }
-        $user->name = self::validateUserName($data->name);
-        $user->email = self::validateEmail($data->email);
-        $user->password = hash('sha512', $data->password);
-        $this->userRepository->checkUserByEmail($user->email);
-        $users = $this->userRepository->create($user);
+        $data->name = self::validateUserName($data->name);
+        $data->email = self::validateEmail($data->email);
+        $data->password = hash('sha512', $data->password);
+        $this->userRepository->checkUserByEmail($data->email);
+        $user = $this->userRepository->create($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($users->id, $users);
+            $this->saveInCache($user->id, $user);
         }
 
-        return $users;
+        return $user;
     }
 
     public function update(array $input, int $userId)
     {
         $user = $this->getUserFromDb($userId);
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name) && !isset($data->email)) {
+        if (! isset($data->name) && ! isset($data->email)) {
             throw new User('Enter the data to update the user.', 400);
         }
         if (isset($data->name)) {
@@ -91,10 +90,10 @@ final class UserService extends Base
     public function login(?array $input): string
     {
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->email)) {
+        if (! isset($data->email)) {
             throw new User('The field "email" is required.', 400);
         }
-        if (!isset($data->password)) {
+        if (! isset($data->password)) {
             throw new User('The field "password" is required.', 400);
         }
         $password = hash('sha512', $data->password);

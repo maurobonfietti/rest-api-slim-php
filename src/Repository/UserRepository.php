@@ -20,7 +20,7 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('id', $userId);
         $statement->execute();
         $user = $statement->fetchObject();
-        if (!$user) {
+        if (! $user) {
             throw new User('User not found.', 404);
         }
 
@@ -56,7 +56,7 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('name', $name);
         $statement->execute();
         $users = $statement->fetchAll();
-        if (!$users) {
+        if (! $users) {
             throw new User('User name not found.', 404);
         }
 
@@ -71,14 +71,14 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('password', $password);
         $statement->execute();
         $user = $statement->fetchObject();
-        if (!$user) {
+        if (! $user) {
             throw new User('Login failed: Email or password incorrect.', 400);
         }
 
         return $user;
     }
 
-    public function create($user): object
+    public function create(object $user): object
     {
         $query = 'INSERT INTO `users` (`name`, `email`, `password`) VALUES (:name, :email, :password)';
         $statement = $this->database->prepare($query);
@@ -90,7 +90,7 @@ final class UserRepository extends BaseRepository
         return $this->getUser((int) $this->database->lastInsertId());
     }
 
-    public function update($user): object
+    public function update(object $user): object
     {
         $query = 'UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id';
         $statement = $this->database->prepare($query);

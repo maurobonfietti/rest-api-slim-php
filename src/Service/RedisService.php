@@ -8,10 +8,7 @@ final class RedisService
 {
     public const PROJECT_NAME = 'rest-api-slim-php';
 
-    /**
-     * @var \Predis\Client
-     */
-    private $redis;
+    private \Predis\Client $redis;
 
     public function __construct(\Predis\Client $redis)
     {
@@ -33,12 +30,12 @@ final class RedisService
         return json_decode($this->redis->get($key), true);
     }
 
-    public function set($key, $value): void
+    public function set(string $key, $value): void
     {
         $this->redis->set($key, json_encode($value));
     }
 
-    public function setex($key, $value, int $ttl = 3600): void
+    public function setex(string $key, $value, int $ttl = 3600): void
     {
         $this->redis->setex($key, $ttl, json_encode($value));
     }

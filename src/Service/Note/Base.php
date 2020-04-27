@@ -14,15 +14,9 @@ abstract class Base extends BaseService
 {
     private const REDIS_KEY = 'note:%s';
 
-    /**
-     * @var NoteRepository
-     */
-    protected $noteRepository;
+    protected NoteRepository $noteRepository;
 
-    /**
-     * @var RedisService
-     */
-    protected $redisService;
+    protected RedisService $redisService;
 
     public function __construct(NoteRepository $noteRepository, RedisService $redisService)
     {
@@ -32,7 +26,7 @@ abstract class Base extends BaseService
 
     protected static function validateNoteName(string $name): string
     {
-        if (!v::length(2, 50)->validate($name)) {
+        if (! v::length(2, 50)->validate($name)) {
             throw new Note('The name of the note is invalid.', 400);
         }
 

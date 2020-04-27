@@ -29,7 +29,7 @@ final class TaskService extends Base
         return $task;
     }
 
-    public function search($tasksName, int $userId, $status): array
+    public function search(string $tasksName, int $userId, $status): array
     {
         if ($status !== null) {
             $status = (int) $status;
@@ -40,34 +40,31 @@ final class TaskService extends Base
 
     public function create(array $input)
     {
-        $task = new \stdClass();
         $data = json_decode(json_encode($input), false);
-        if (empty($data->name)) {
+        if (! isset($data->name)) {
             throw new Task('The field "name" is required.', 400);
         }
-        $task->name = self::validateTaskName($data->name);
-        $task->description = null;
-        if (isset($data->description)) {
-            $task->description = $data->description;
-        }
-        $task->status = 0;
+        self::validateTaskName($data->name);
+        $data->description = $data->description ?? null;
+        $status = 0;
         if (isset($data->status)) {
-            $task->status = self::validateTaskStatus($data->status);
+            $status = self::validateTaskStatus($data->status);
         }
-        $task->userId = $data->decoded->sub;
-        $tasks = $this->getTaskRepository()->create($task);
+        $data->status = $status;
+        $data->userId = $data->decoded->sub;
+        $task = $this->getTaskRepository()->create($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($tasks->id, $task->userId, $tasks);
+            $this->saveInCache($task->id, $task->userId, $task);
         }
 
-        return $tasks;
+        return $task;
     }
 
     public function update(array $input, int $taskId)
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
-        if (!isset($data->name) && !isset($data->status)) {
+        if (! isset($data->name) && ! isset($data->status)) {
             throw new Task('Enter the data to update the task.', 400);
         }
         if (isset($data->name)) {
