@@ -24,13 +24,13 @@ Más información sobre este proyecto en mi publicación: [Cómo crear una API R
 Implementé esta API en [este proyecto](https://github.com/maurobonfietti/rest-api-slim-php-web-app). Es una aplicación web tipo lista de tareas, desarrollada en Angular.
 
 
-## INSTALACIÓN RÁPIDA:
+## :gear: INSTALACIÓN RÁPIDA:
 
 ### Pre Requisitos:
 
 - Git.
-- Composer.
 - PHP.
+- Composer.
 - MySQL/MariaDB.
 - Redis (Opcional).
 
@@ -91,27 +91,27 @@ $ make down
 ```
 
 
-## INSTALACIÓN PASO A PASO:
+## :wrench: INSTALACIÓN PASO A PASO:
 
 Si tuviste alguna duda o problema, puedes consultar [esta guía paso a paso](TROUBLESHOOTING.md).
 
 
-## TUTORIAL:
+## :cinema: TUTORIAL:
 
-### VIDEO #1
+### :video_camera: VIDEO #1
 
 Ejemplo de cómo utilizar esta API con JWT para autenticación:
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
 
-### VIDEO #2
+### :movie_camera: VIDEO #2
 
 Cómo usar Redis en esta API con Slim PHP:
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/e71baff66b9f45d0b2f57dfe014abdc7-with-play.gif)](https://youtu.be/qX_TVjxEZSc)
 
 
-## DEPENDENCIAS:
+## :inbox_tray: DEPENDENCIAS:
 
 ### LISTA DE DEPENDENCIAS REQUERIDAS:
 
@@ -129,7 +129,7 @@ Cómo usar Redis en esta API con Slim PHP:
 - [nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights): Comprobaciones instantáneas de calidad PHP desde su consola.
 
 
-## TESTING:
+## :traffic_light: TESTING:
 
 Ejecutar los tests PHPUnit con `composer test`.
 
@@ -146,7 +146,7 @@ OK (63 tests, 367 assertions)
 ```
 
 
-## DOCUMENTACIÓN:
+## :books: DOCUMENTACIÓN:
 
 ### ENDPOINTS:
 
@@ -213,26 +213,28 @@ Toda la información de la API, preparada para descargar y utilizar como colecci
 Además se puede ver la especificación OpenAPI, utilizando [Swagger UI](https://rest-api-slim-php.herokuapp.com/docs/index.html).
 
 
-## DESPIEGLE:
+## :rocket: DESPIEGLE:
 
-Puedes deployar esta API con Heroku Free.
+Puedes hacer deploy de esta API usando Heroku Free.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
-## VER ONLINE:
+## :video_game: VER ONLINE:
 
 Probar [DEMO](http://bit.ly/2DdwKkd).
 
 
-## ¿TE FUE DE UTILIDAD EL PROYECTO?
+## :heart: ¿TE GUSTA EL PROYECTO?
+
+¿Te gustaría dar soporte a este proyecto?
 
 <a href='https://ko-fi.com/maurobonfietti' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 </a>
 
 
-## LICENCIA
+## :page_facing_up: LICENCIA
 
 Licencia MIT. Consultar [Archivo de licencia](LICENSE.md) para obtener más información.
 

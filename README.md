@@ -24,13 +24,13 @@ More info about this project in my post: [How to create a REST API using Slim PH
 I implemented this API in [this project](https://github.com/maurobonfietti/rest-api-slim-php-web-app). It's a todo list web app developed in Angular.
 
 
-## QUICK INSTALL:
+## :gear: QUICK INSTALL:
 
 ### Pre Requisite:
 
 - Git.
-- Composer.
 - PHP.
+- Composer.
 - MySQL/MariaDB.
 - Redis (Optional).
 
@@ -92,27 +92,27 @@ $ make down
 ```
 
 
-## TROUBLESHOOTING:
+## :wrench: TROUBLESHOOTING:
 
 If you get stuck, you can try [this guide step by step](TROUBLESHOOTING.md).
 
 
-## TUTORIAL:
+## :cinema: TUTORIAL:
 
-### VIDEO #1
+### :video_camera: VIDEO #1
 
-Example of how to use this API with JWT for Authentication (spanish):
+Example of how to use this API with JWT for Authentication (Spanish :es:):
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
 
-### VIDEO #2
+### :movie_camera: VIDEO #2
 
-How to use Redis in this API with Slim and PHP (spanish):
+How to use Redis in this API with Slim and PHP (Spanish :es:):
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/e71baff66b9f45d0b2f57dfe014abdc7-with-play.gif)](https://youtu.be/qX_TVjxEZSc)
 
 
-## DEPENDENCIES:
+## :inbox_tray: DEPENDENCIES:
 
 ### LIST OF REQUIRE DEPENDENCIES:
 
@@ -130,7 +130,7 @@ How to use Redis in this API with Slim and PHP (spanish):
 - [nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights): Instant PHP quality checks from your console.
 
 
-## TESTING:
+## :traffic_light: TESTING:
 
 Run all PHPUnit tests with `composer test`.
 
@@ -147,7 +147,7 @@ OK (63 tests, 367 assertions)
 ```
 
 
-## DOCUMENTATION:
+## :books: DOCUMENTATION:
 
 ### ENDPOINTS:
 
@@ -214,26 +214,28 @@ All the information of the API, prepared to download and use as postman collecti
 Also, you can view the OpenAPI Specification, using [Swagger UI](https://rest-api-slim-php.herokuapp.com/docs/index.html).
 
 
-## DEPLOY:
+## :rocket: DEPLOY:
 
 You can deploy this API with Heroku Free.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
-## GIVE IT A TRY:
+## :video_game: GIVE IT A TRY:
 
 Check it out to this [LIVE DEMO](http://bit.ly/2DdwKkd).
 
 
-## WOULD YOU LIKE TO SUPPORT THE PROJECT?
+## :heart: DO YOU LIKE THE PROJECT?
+
+Would you like to support this project?
 
 <a href='https://ko-fi.com/maurobonfietti' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 </a>
 
 
-## LICENSE
+## :page_facing_up: LICENSE
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
