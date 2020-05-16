@@ -46,7 +46,7 @@
     "scripts": {
         "post-create-project-cmd": [
             "php -r \"copy('.env.example', '.env');\"",
-            "\\App\\Controller\\DefaultController::postCreateProjectCommand"
+            "php extras/bin/post-create-project-command.php"
         ],
         "coverage": "phpunit --coverage-html=coverage --coverage-text",
         "database": "php extras/bin/restart-db.php",
