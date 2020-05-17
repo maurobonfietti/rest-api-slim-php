@@ -111,6 +111,12 @@ How to use Redis in this API with Slim and PHP (Spanish :es:):
 
 [![Tutorial](https://cdn.loom.com/sessions/thumbnails/e71baff66b9f45d0b2f57dfe014abdc7-with-play.gif)](https://youtu.be/qX_TVjxEZSc)
 
+### :video_camera: VIDEO #3
+
+How to deploy an API with Slim PHP using Heroku (Spanish :es:):
+
+[![Tutorial](https://i.ytimg.com/vi/-F09LCgNuGg/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLC88TlQG3etp7bKjzm18W1pS1IMHQ)](https://youtu.be/-F09LCgNuGg)
+
 
 ## :inbox_tray: DEPENDENCIES:
 
