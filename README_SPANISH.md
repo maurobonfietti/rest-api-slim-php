@@ -96,25 +96,21 @@ $ make down
 Si tuviste alguna duda o problema, puedes consultar [esta guía paso a paso](TROUBLESHOOTING.md).
 
 
-## :cinema: TUTORIAL:
+## :cinema: TUTORIALS:
+
+Mini serie de videos acerca de Slim PHP.
 
 ### :video_camera: VIDEO #1
 
-Ejemplo de cómo utilizar esta API con JWT para autenticación:
-
-[![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
+[Ejemplo de cómo utilizar esta API con JWT para autenticación.](https://youtu.be/TPnoPLBgZTg)
 
 ### :movie_camera: VIDEO #2
 
-Cómo usar Redis en esta API con Slim PHP:
-
-[![Tutorial](https://cdn.loom.com/sessions/thumbnails/e71baff66b9f45d0b2f57dfe014abdc7-with-play.gif)](https://youtu.be/qX_TVjxEZSc)
+[Cómo usar Redis en esta API con Slim PHP.](https://youtu.be/qX_TVjxEZSc)
 
 ### :video_camera: VIDEO #3
 
-Cómo hacer el despliegue de una API con Slim PHP usando Heroku:
-
-[![Tutorial](https://i.ytimg.com/vi/-F09LCgNuGg/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLC88TlQG3etp7bKjzm18W1pS1IMHQ)](https://youtu.be/-F09LCgNuGg)
+[Cómo hacer el despliegue de una API con Slim PHP usando Heroku.](https://youtu.be/-F09LCgNuGg)
 
 
 ## :inbox_tray: DEPENDENCIAS:

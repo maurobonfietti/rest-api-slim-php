@@ -97,44 +97,21 @@ $ make down
 If you get stuck, you can try [this guide step by step](TROUBLESHOOTING.md).
 
 
-## :cinema: TUTORIAL:
-
-### :video_camera: VIDEO #1
-
-Example of how to use this API with JWT for Authentication (Spanish :es:):
-
-[![Tutorial](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/TPnoPLBgZTg)
-
-### :movie_camera: VIDEO #2
-
-How to use Redis in this API with Slim and PHP (Spanish :es:):
-
-[![Tutorial](https://cdn.loom.com/sessions/thumbnails/e71baff66b9f45d0b2f57dfe014abdc7-with-play.gif)](https://youtu.be/qX_TVjxEZSc)
-
-### :video_camera: VIDEO #3
-
-How to deploy an API with Slim PHP using Heroku (Spanish :es:):
-
-[![Tutorial](https://i.ytimg.com/vi/-F09LCgNuGg/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLC88TlQG3etp7bKjzm18W1pS1IMHQ)](https://youtu.be/-F09LCgNuGg)
-
-
 ## :cinema: TUTORIALS:
 
-Mini serie of videos about Slim PHP in this repo.
-
-[Audios in Spanish :es:]
+Mini-series of videos about Slim PHP (audio in Spanish :es:).
 
 ### :video_camera: VIDEO #1
 
-[How to use this API with JWT for Authentication](https://youtu.be/TPnoPLBgZTg)
+[How to use JWT for Authentication.](https://youtu.be/TPnoPLBgZTg)
 
 ### :movie_camera: VIDEO #2
 
-[Using Redis in this API](https://youtu.be/qX_TVjxEZSc)
+[Using Redis Cache.](https://youtu.be/qX_TVjxEZSc)
 
 ### :video_camera: VIDEO #3
 
-[Deploy Slim PHP using Heroku](https://youtu.be/-F09LCgNuGg)
+[Deploy Slim PHP on Heroku.](https://youtu.be/-F09LCgNuGg)
 
 
 ## :inbox_tray: DEPENDENCIES:
