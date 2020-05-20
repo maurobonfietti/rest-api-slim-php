@@ -118,6 +118,25 @@ How to deploy an API with Slim PHP using Heroku (Spanish :es:):
 [![Tutorial](https://i.ytimg.com/vi/-F09LCgNuGg/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLC88TlQG3etp7bKjzm18W1pS1IMHQ)](https://youtu.be/-F09LCgNuGg)
 
 
+## :cinema: TUTORIALS:
+
+Mini serie of videos about Slim PHP in this repo.
+
+[Audios in Spanish :es:]
+
+### :video_camera: VIDEO #1
+
+[How to use this API with JWT for Authentication](https://youtu.be/TPnoPLBgZTg)
+
+### :movie_camera: VIDEO #2
+
+[Using Redis in this API](https://youtu.be/qX_TVjxEZSc)
+
+### :video_camera: VIDEO #3
+
+[Deploy Slim PHP using Heroku](https://youtu.be/-F09LCgNuGg)
+
+
 ## :inbox_tray: DEPENDENCIES:
 
 ### LIST OF REQUIRE DEPENDENCIES:
