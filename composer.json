@@ -20,6 +20,8 @@
             "homepage": "https://github.com/maurobonfietti"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "firebase/php-jwt": "^5.0",
         "palanik/corsslim": "dev-slim3",
@@ -30,6 +32,7 @@
     },
     "require-dev": {
         "nunomaduro/phpinsights": "^1.14",
+        "pestphp/pest": "^0.1.5",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^9.0"
     },
