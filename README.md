@@ -231,7 +231,7 @@ Check it out to this [LIVE DEMO](http://bit.ly/2DdwKkd).
 
 ## :heart: DO YOU LIKE THE PROJECT?
 
-You can support this project inviting me a coffee :coffee: :yum: or you can add a new star to this repo :star: :sunglasses:
+You can support this project inviting me a coffee :coffee: :yum: or giving a **star** to this repo :star: :sunglasses:
 
 <a href='https://ko-fi.com/maurobonfietti' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />

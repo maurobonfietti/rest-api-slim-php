@@ -230,7 +230,7 @@ Probar [DEMO](http://bit.ly/2DdwKkd).
 
 ## :heart: ¿TE GUSTA EL PROYECTO?
 
-Puedes apoyar este proyecto invitándome un café :coffee: :yum: o puedes agregar una nueva estrella a este repo :star: :sunglasses:
+Puedes apoyar este proyecto invitándome un café :coffee: :yum: o dando una estrella a este repo :star: :sunglasses:
 
 <a href='https://ko-fi.com/maurobonfietti' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
