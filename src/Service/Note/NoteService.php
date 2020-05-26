@@ -36,7 +36,7 @@ final class NoteService extends Base
             throw new Note('Invalid data: name is required.', 400);
         }
         self::validateNoteName($data->name);
-        $data->description = $data->description ?? null;
+        $data->description ??= null;
         $note = $this->noteRepository->createNote($data);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($note->id, $note);
