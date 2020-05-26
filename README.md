@@ -99,7 +99,7 @@ If you get stuck, you can try [this guide step by step](TROUBLESHOOTING.md).
 
 ## :cinema: TUTORIALS:
 
-Mini-series of videos about Slim PHP (audio in Spanish :es:).
+Mini-series of videos about Slim PHP (Spanish :es:).
 
 ### :video_camera: VIDEO #1
 
@@ -141,11 +141,11 @@ Run all PHPUnit tests with `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 9.1.1 by Sebastian Bergmann and contributors.
+PHPUnit 9.1.5 by Sebastian Bergmann and contributors.
 
 ...............................................................   63 / 63 (100%)
 
-Time: 221 ms, Memory: 16.00 MB
+Time: 00:00.256, Memory: 18.00 MB
 
 OK (63 tests, 367 assertions)
 ```
@@ -232,7 +232,7 @@ Check it out to this [LIVE DEMO](http://bit.ly/2DdwKkd).
 
 ## :heart: DO YOU LIKE THE PROJECT?
 
-You can support this project inviting me a coffee :coffee: :yum: or giving a **star** to this repo :star: :sunglasses:
+You can support this project inviting me a coffee :coffee: :yum: or giving a **star** to this repo :star: :sunglasses:.
 
 <a href='https://ko-fi.com/maurobonfietti' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
