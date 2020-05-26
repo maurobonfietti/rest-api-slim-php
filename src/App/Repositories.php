@@ -9,8 +9,8 @@ use Psr\Container\ContainerInterface;
 
 $container = $app->getContainer();
 
-$container['user_repository'] = static fn(ContainerInterface $container): UserRepository => new UserRepository($container->get('db'));
+$container['user_repository'] = static fn (ContainerInterface $container): UserRepository => new UserRepository($container->get('db'));
 
-$container['task_repository'] = static fn(ContainerInterface $container): TaskRepository => new TaskRepository($container->get('db'));
+$container['task_repository'] = static fn (ContainerInterface $container): TaskRepository => new TaskRepository($container->get('db'));
 
-$container['note_repository'] = static fn(ContainerInterface $container): NoteRepository => new NoteRepository($container->get('db'));
+$container['note_repository'] = static fn (ContainerInterface $container): NoteRepository => new NoteRepository($container->get('db'));
