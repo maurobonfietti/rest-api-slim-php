@@ -45,7 +45,7 @@ final class TaskService extends Base
             throw new Task('The field "name" is required.', 400);
         }
         self::validateTaskName($data->name);
-        $data->description = $data->description ?? null;
+        $data->description ??= null;
         $status = 0;
         if (isset($data->status)) {
             $status = self::validateTaskStatus($data->status);
