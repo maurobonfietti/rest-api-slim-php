@@ -130,6 +130,7 @@ Mini serie de videos acerca de Slim PHP.
 - [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan, herramienta de análisis estático para PHP.
 - [pestphp/pest](https://github.com/pestphp/pest): Pest es un elegante PHP Testing Framework con un enfoque en la simplicidad.
 - [nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights): Comprobaciones instantáneas de calidad PHP desde su consola.
+- [rector/rector](https://github.com/rectorphp/rector): Actualizaciones instantáneas y refactorización instantánea de cualquier código PHP 5.3+.
 
 
 ## :traffic_light: TESTING:
