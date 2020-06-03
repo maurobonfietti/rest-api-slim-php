@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 final class PostCreateProjectCommand
 {
-    public static function showMessage(): void
+    public static function showIntro(): void
     {
-        $str = <<<EOF
+        echo <<<EOF
                 _                 _     
                | |               (_)    
   _ __ ___  ___| |_    __ _ _ __  _     
@@ -23,6 +23,13 @@ final class PostCreateProjectCommand
                      | |         | |    
                      |_|         |_|    
 
+EOF;
+    }
+
+    public static function showMessage(): void
+    {
+        echo <<<EOF
+
 *************************************************************
 Project: https://github.com/maurobonfietti/rest-api-slim-php
 *************************************************************
@@ -36,15 +43,15 @@ $ composer restart-db
 $ composer test
 $ composer start
 
-(P.S. set your MySQL connection in .env file)
+(P.S. set your MySQL connection in your .env file)
 
 Thanks for installing this project!
 
 Now go build a cool RESTful API ;-)
 
 EOF;
-        echo $str;
     }
 }
 
+PostCreateProjectCommand::showIntro();
 PostCreateProjectCommand::showMessage();
