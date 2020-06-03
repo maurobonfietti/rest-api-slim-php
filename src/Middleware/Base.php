@@ -18,9 +18,9 @@ abstract class Base
                 return $decoded;
             }
             throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
-        } catch (\UnexpectedValueException $e) {
+        } catch (\UnexpectedValueException $exception) {
             throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
-        } catch (\DomainException $e) {
+        } catch (\DomainException $exception) {
             throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
         }
     }
