@@ -15,21 +15,18 @@ try {
     $pdo = new PDO("mysql:host=${hostname}", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql = "DROP DATABASE IF EXISTS ${database}";
-    $pdo->exec($sql);
+    $pdo->exec("DROP DATABASE IF EXISTS ${database}");
     echo '[OK] Database droped successfully' . PHP_EOL;
 
-    $sql = "CREATE DATABASE ${database}";
-    $pdo->exec($sql);
+    $pdo->exec("CREATE DATABASE ${database}");
     echo '[OK] Database created successfully' . PHP_EOL;
 
-    $sql = "USE ${database}";
-    $pdo->exec($sql);
+    $pdo->exec("USE ${database}");
     echo '[OK] Database selected successfully' . PHP_EOL;
 
     $sql = file_get_contents(__DIR__ . '/../../database/database.sql');
     $pdo->exec($sql);
     echo '[OK] Records inserted successfully' . PHP_EOL;
-} catch (PDOException $e) {
-    echo '[ERROR] ' . $e->getMessage() . PHP_EOL;
+} catch (PDOException $exception) {
+    echo '[ERROR] ' . $exception->getMessage() . PHP_EOL;
 }
