@@ -15,9 +15,9 @@ Esta simple API RESTful, permite operaciones CRUD para administrar recursos como
 
 También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
-Principales tecnologías utilizadas: `PHP, Slim 3, MySQL, Redis, PHPUnit and JSON Web Tokens.`
+Principales tecnologías utilizadas: `PHP 7, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
 
-Además, utilizo otras herramientas adicionales como: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, Heroku, CORS, environment variables, composer and git.`
+Además, utilizo otras herramientas adicionales como: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku, CORS, Composer and Git.`
 
 Más información sobre este proyecto en mi publicación: [Cómo crear una API REST con Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
@@ -140,11 +140,11 @@ Ejecutar los tests PHPUnit con `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 9.1.5 by Sebastian Bergmann and contributors.
+PHPUnit 9.2.2 by Sebastian Bergmann and contributors.
 
 ...............................................................   63 / 63 (100%)
 
-Time: 00:00.256, Memory: 18.00 MB
+Time: 00:00.293, Memory: 18.00 MB
 
 OK (63 tests, 367 assertions)
 ```
