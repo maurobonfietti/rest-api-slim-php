@@ -9,6 +9,8 @@ build:
             DB_DATABASE: 'rest_api_slim_php'
             DB_USERNAME: 'root'
             DB_PASSWORD: ''
+            SECRET_KEY: 'YourSuperSecret-KeY'
+            REDIS_ENABLED: true
             REDIS_URL: 'localhost'
         php:
             version: 7.4
