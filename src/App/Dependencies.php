@@ -10,11 +10,8 @@ $container = $app->getContainer();
 
 $container['db'] = static function (ContainerInterface $c): PDO {
     $db = $c->get('settings')['db'];
-    $pdo = new PDO(
-        sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']),
-        $db['username'],
-        $db['password']
-    );
+    $dsn = sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']);
+    $pdo = new PDO($dsn, $db['username'], $db['password']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
