@@ -52,14 +52,14 @@ abstract class Base extends BaseService
         return $this->noteRepository->checkAndGetNote($noteId);
     }
 
-    protected function saveInCache($id, $note): void
+    protected function saveInCache(int $id, object $note): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $id);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $note);
     }
 
-    protected function deleteFromCache($noteId): void
+    protected function deleteFromCache(int $noteId): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $noteId);
         $key = $this->redisService->generateKey($redisKey);
