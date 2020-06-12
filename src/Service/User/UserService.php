@@ -14,7 +14,7 @@ final class UserService extends Base
         return $this->userRepository->getAll();
     }
 
-    public function getOne(int $userId)
+    public function getOne(int $userId): object
     {
         if (self::isRedisEnabled() === true) {
             $user = $this->getUserFromCache($userId);
@@ -30,7 +30,7 @@ final class UserService extends Base
         return $this->userRepository->search($usersName);
     }
 
-    public function create($input)
+    public function create(?array $input): object
     {
         $data = json_decode(json_encode($input), false);
         if (! isset($data->name)) {
@@ -54,7 +54,7 @@ final class UserService extends Base
         return $user;
     }
 
-    public function update(array $input, int $userId)
+    public function update(array $input, int $userId): object
     {
         $user = $this->getUserFromDb($userId);
         $data = json_decode(json_encode($input), false);
