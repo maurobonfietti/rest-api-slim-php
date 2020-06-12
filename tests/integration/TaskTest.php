@@ -341,6 +341,24 @@ class TaskTest extends BaseTestCase
     }
 
     /**
+     * Test Update Task of Another User.
+     */
+    public function testUpdateTaskOfAnotherUser(): void
+    {
+        $response = $this->runApp(
+            'PUT', '/api/v1/tasks/6', ['name' => 'Task']
+        );
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
      * Test Delete Task.
      */
     public function testDeleteTask(): void
