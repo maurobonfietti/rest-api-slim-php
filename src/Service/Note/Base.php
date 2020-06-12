@@ -47,7 +47,7 @@ abstract class Base extends BaseService
         return $note;
     }
 
-    protected function getOneFromDb(int $noteId)
+    protected function getOneFromDb(int $noteId): object
     {
         return $this->noteRepository->checkAndGetNote($noteId);
     }
