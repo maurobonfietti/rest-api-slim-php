@@ -40,8 +40,8 @@ final class RedisService
         $this->redis->setex($key, $ttl, json_encode($value));
     }
 
-    public function del(string $key): void
+    public function del(array $keys): void
     {
-        $this->redis->del($key);
+        $this->redis->del($keys);
     }
 }

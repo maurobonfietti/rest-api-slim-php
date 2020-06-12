@@ -77,6 +77,6 @@ abstract class Base extends BaseService
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->del($key);
+        $this->redisService->del([$key]);
     }
 }
