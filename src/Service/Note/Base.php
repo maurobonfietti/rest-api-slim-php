@@ -33,7 +33,7 @@ abstract class Base extends BaseService
         return $name;
     }
 
-    protected function getOneFromCache(int $noteId)
+    protected function getOneFromCache(int $noteId): object
     {
         $redisKey = sprintf(self::REDIS_KEY, $noteId);
         $key = $this->redisService->generateKey($redisKey);

@@ -13,7 +13,7 @@ final class NoteService extends Base
         return $this->noteRepository->getNotes();
     }
 
-    public function getOne(int $noteId)
+    public function getOne(int $noteId): object
     {
         if (self::isRedisEnabled() === true) {
             $note = $this->getOneFromCache($noteId);
