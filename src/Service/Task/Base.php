@@ -47,7 +47,7 @@ abstract class Base extends BaseService
         return $status;
     }
 
-    protected function getTaskFromCache(int $taskId, int $userId)
+    protected function getTaskFromCache(int $taskId, int $userId): object
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);
@@ -61,19 +61,19 @@ abstract class Base extends BaseService
         return $task;
     }
 
-    protected function getTaskFromDb(int $taskId, int $userId)
+    protected function getTaskFromDb(int $taskId, int $userId): object
     {
         return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 
-    protected function saveInCache($taskId, $userId, $tasks): void
+    protected function saveInCache(int $taskId, $userId, object $tasks): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $tasks);
     }
 
-    protected function deleteFromCache($taskId, $userId): void
+    protected function deleteFromCache(int $taskId, int $userId): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);

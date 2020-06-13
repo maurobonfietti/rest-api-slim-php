@@ -43,7 +43,7 @@ abstract class Base extends BaseService
         return $email;
     }
 
-    protected function getUserFromCache(int $userId)
+    protected function getUserFromCache(int $userId): object
     {
         $redisKey = sprintf(self::REDIS_KEY, $userId);
         $key = $this->redisService->generateKey($redisKey);
@@ -58,19 +58,19 @@ abstract class Base extends BaseService
         return $user;
     }
 
-    protected function getUserFromDb(int $userId)
+    protected function getUserFromDb(int $userId): object
     {
         return $this->userRepository->getUser($userId);
     }
 
-    protected function saveInCache($id, $user): void
+    protected function saveInCache($id, object $user): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $id);
         $key = $this->redisService->generateKey($redisKey);
         $this->redisService->setex($key, $user);
     }
 
-    protected function deleteFromCache($userId): void
+    protected function deleteFromCache(int $userId): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $userId);
         $key = $this->redisService->generateKey($redisKey);

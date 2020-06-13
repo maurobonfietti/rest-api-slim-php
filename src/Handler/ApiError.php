@@ -14,13 +14,7 @@ final class ApiError extends \Slim\Handlers\Error
         Response $response,
         \Exception $exception
     ): Response {
-        $statusCode = 500;
-        if (is_int($exception->getCode()) &&
-            $exception->getCode() >= 400 &&
-            $exception->getCode() <= 599
-        ) {
-            $statusCode = $exception->getCode();
-        }
+        $statusCode = $this->getStatusCode($exception);
         $className = new \ReflectionClass(get_class($exception));
         $data = [
             'message' => $exception->getMessage(),
@@ -34,5 +28,18 @@ final class ApiError extends \Slim\Handlers\Error
         return $response
             ->withStatus($statusCode)
             ->withHeader('Content-type', 'application/problem+json');
+    }
+
+    private function getStatusCode(\Exception $exception)
+    {
+        $statusCode = 500;
+        if (is_int($exception->getCode()) &&
+            $exception->getCode() >= 400 &&
+            $exception->getCode() <= 599
+        ) {
+            $statusCode = $exception->getCode();
+        }
+
+        return $statusCode;
     }
 }

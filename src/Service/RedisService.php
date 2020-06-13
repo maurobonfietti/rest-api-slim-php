@@ -20,7 +20,7 @@ final class RedisService
         return self::PROJECT_NAME . ':' . $value;
     }
 
-    public function exists(string $key)
+    public function exists(string $key): int
     {
         return $this->redis->exists($key);
     }

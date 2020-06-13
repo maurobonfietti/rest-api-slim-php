@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\Middleware;
 
+use App\Exception\Auth;
 use Firebase\JWT\JWT;
 
 abstract class Base
 {
-    private const FORBIDDEN_MESSAGE_EXCEPTION = 'Forbidden: you are not authorized.';
+    private const FORBIDDEN_MESSAGE = 'Forbidden: you are not authorized.';
 
     protected function checkToken(string $token): object
     {
@@ -17,11 +18,11 @@ abstract class Base
             if (is_object($decoded) && isset($decoded->sub)) {
                 return $decoded;
             }
-            throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
+            throw new Auth(self::FORBIDDEN_MESSAGE, 403);
         } catch (\UnexpectedValueException $exception) {
-            throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
+            throw new Auth(self::FORBIDDEN_MESSAGE, 403);
         } catch (\DomainException $exception) {
-            throw new \App\Exception\Auth(self::FORBIDDEN_MESSAGE_EXCEPTION, 403);
+            throw new Auth(self::FORBIDDEN_MESSAGE, 403);
         }
     }
 }

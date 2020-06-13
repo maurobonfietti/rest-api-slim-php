@@ -18,7 +18,7 @@ final class TaskService extends Base
         return $this->getTaskRepository()->getAll($userId);
     }
 
-    public function getOne(int $taskId, int $userId)
+    public function getOne(int $taskId, int $userId): object
     {
         if (self::isRedisEnabled() === true) {
             $task = $this->getTaskFromCache($taskId, $userId);
@@ -38,7 +38,12 @@ final class TaskService extends Base
         return $this->getTaskRepository()->search($tasksName, $userId, $status);
     }
 
-    public function create(array $input)
+    /**
+     * @param array{name: string, description: string, status: int} $input
+     * @return object
+     * @throws Task
+     */
+    public function create(array $input): object
     {
         $data = json_decode(json_encode($input), false);
         if (! isset($data->name)) {
@@ -60,7 +65,7 @@ final class TaskService extends Base
         return $task;
     }
 
-    public function update(array $input, int $taskId)
+    public function update(array $input, int $taskId): object
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
