@@ -15,7 +15,7 @@ final class RedisService
         $this->redis = $redis;
     }
 
-    public function generateKey(string $value)
+    public function generateKey(string $value): string
     {
         return self::PROJECT_NAME . ':' . $value;
     }
@@ -25,23 +25,23 @@ final class RedisService
         return $this->redis->exists($key);
     }
 
-    public function get(string $key)
+    public function get(string $key): object
     {
-        return json_decode($this->redis->get($key), true);
+        return json_decode($this->redis->get($key));
     }
 
-    public function set(string $key, $value): void
+    public function set(string $key, object $value): void
     {
         $this->redis->set($key, json_encode($value));
     }
 
-    public function setex(string $key, $value, int $ttl = 3600): void
+    public function setex(string $key, object $value, int $ttl = 3600): void
     {
         $this->redis->setex($key, $ttl, json_encode($value));
     }
 
-    public function del(string $key): void
+    public function del(array $keys): void
     {
-        $this->redis->del($key);
+        $this->redis->del($keys);
     }
 }

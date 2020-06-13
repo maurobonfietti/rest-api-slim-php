@@ -10,7 +10,7 @@ use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '1.2.0';
+    public const API_VERSION = '1.3.0';
 
     public function __construct(Container $container)
     {
@@ -68,9 +68,8 @@ final class DefaultController extends BaseController
         $redis = 'Disabled';
         if (self::isRedisEnabled() === true) {
             $redisService = $this->container->get('redis_service');
-            $redisKey = 'test:status';
-            $key = $redisService->generateKey($redisKey);
-            $redisService->set($key, []);
+            $key = $redisService->generateKey('test:status');
+            $redisService->set($key, new \stdClass());
             $redis = 'OK';
         }
 

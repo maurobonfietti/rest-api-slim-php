@@ -353,7 +353,7 @@ class UserTest extends BaseTestCase
         $this->assertStringContainsString('Authorization', $result);
         $this->assertStringContainsString('Bearer', $result);
         $this->assertStringContainsString('ey', $result);
-        $this->assertStringNotContainsString('ERROR', $result);
+        $this->assertStringNotContainsString('error', $result);
         $this->assertStringNotContainsString('Failed', $result);
     }
 

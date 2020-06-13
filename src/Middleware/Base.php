@@ -8,9 +8,9 @@ use Firebase\JWT\JWT;
 
 abstract class Base
 {
-    private const FORBIDDEN_MESSAGE_EXCEPTION = 'error: Forbidden, not authorized.';
+    private const FORBIDDEN_MESSAGE_EXCEPTION = 'Forbidden: you are not authorized.';
 
-    protected function checkToken(string $token)
+    protected function checkToken(string $token): object
     {
         try {
             $decoded = JWT::decode($token, getenv('SECRET_KEY'), ['HS256']);

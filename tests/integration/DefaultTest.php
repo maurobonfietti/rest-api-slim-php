@@ -21,7 +21,7 @@ class DefaultTest extends BaseTestCase
         $this->assertStringContainsString('time', (string) $response->getBody());
         $this->assertStringContainsString('endpoints', (string) $response->getBody());
         $this->assertStringContainsString('help', (string) $response->getBody());
-        $this->assertStringNotContainsString('ERROR', (string) $response->getBody());
+        $this->assertStringNotContainsString('error', (string) $response->getBody());
         $this->assertStringNotContainsString('Failed', (string) $response->getBody());
     }
 
@@ -42,7 +42,7 @@ class DefaultTest extends BaseTestCase
         $this->assertStringContainsString('Redis', (string) $response->getBody());
         $this->assertStringContainsString('version', (string) $response->getBody());
         $this->assertStringContainsString('time', (string) $response->getBody());
-        $this->assertStringNotContainsString('ERROR', (string) $response->getBody());
+        $this->assertStringNotContainsString('error', (string) $response->getBody());
         $this->assertStringNotContainsString('Failed', (string) $response->getBody());
     }
 }

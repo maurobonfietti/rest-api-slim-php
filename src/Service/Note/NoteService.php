@@ -13,7 +13,7 @@ final class NoteService extends Base
         return $this->noteRepository->getNotes();
     }
 
-    public function getOne(int $noteId)
+    public function getOne(int $noteId): object
     {
         if (self::isRedisEnabled() === true) {
             $note = $this->getOneFromCache($noteId);
@@ -29,7 +29,7 @@ final class NoteService extends Base
         return $this->noteRepository->searchNotes($notesName);
     }
 
-    public function create($input)
+    public function create(?array $input): object
     {
         $data = json_decode(json_encode($input), false);
         if (! isset($data->name)) {
@@ -45,7 +45,7 @@ final class NoteService extends Base
         return $note;
     }
 
-    public function update($input, int $noteId)
+    public function update(?array $input, int $noteId): object
     {
         $note = $this->getOneFromDb($noteId);
         $data = json_decode(json_encode($input), false);

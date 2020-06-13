@@ -53,7 +53,7 @@ final class NoteRepository extends BaseRepository
         return $notes;
     }
 
-    public function createNote(object $data)
+    public function createNote(object $data): object
     {
         $query = 'INSERT INTO `notes` (`name`, `description`) VALUES (:name, :description)';
         $statement = $this->database->prepare($query);

@@ -60,7 +60,7 @@ $ composer test
 $ composer start
 ```
 
-[![How to install](extras/img/how-to-install-2.gif)](https://youtu.be/xQfTcKbD7NI)
+[![How to install](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/xQfTcKbD7NI)
 
 
 ### Usando Docker:
@@ -142,11 +142,11 @@ $ composer test
 > phpunit
 PHPUnit 9.2.2 by Sebastian Bergmann and contributors.
 
-...............................................................   63 / 63 (100%)
+................................................................  64 / 64 (100%)
 
-Time: 00:00.293, Memory: 18.00 MB
+Time: 00:00.245, Memory: 18.00 MB
 
-OK (63 tests, 367 assertions)
+OK (64 tests, 372 assertions)
 ```
 
 

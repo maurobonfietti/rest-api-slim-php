@@ -7,10 +7,11 @@ namespace App\Middleware;
 use Psr\Http\Message\ResponseInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use Slim\Route;
 
 final class Auth extends Base
 {
-    public function __invoke(Request $request, Response $response, $next): ResponseInterface
+    public function __invoke(Request $request, Response $response, Route $next): ResponseInterface
     {
         $jwtHeader = $request->getHeaderLine('Authorization');
         if (! $jwtHeader) {
