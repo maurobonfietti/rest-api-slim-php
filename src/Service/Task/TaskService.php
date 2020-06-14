@@ -62,21 +62,7 @@ final class TaskService extends Base
 
     public function update(array $input, int $taskId): object
     {
-        $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
-        $data = json_decode(json_encode($input), false);
-        if (! isset($data->name) && ! isset($data->status)) {
-            throw new Task('Enter the data to update the task.', 400);
-        }
-        if (isset($data->name)) {
-            $task->name = self::validateTaskName($data->name);
-        }
-        if (isset($data->description)) {
-            $task->description = $data->description;
-        }
-        if (isset($data->status)) {
-            $task->status = self::validateTaskStatus($data->status);
-        }
-        $task->userId = (int) $data->decoded->sub;
+        $task = $this->validateTask($input, $taskId);
         $tasks = $this->getTaskRepository()->update($task);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($tasks->id, (int) $task->userId, $tasks);
@@ -94,5 +80,26 @@ final class TaskService extends Base
         }
 
         return $data;
+    }
+
+    private function validateTask(array $input, int $taskId): object
+    {
+        $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
+        $data = json_decode(json_encode($input), false);
+        if (! isset($data->name) && ! isset($data->status)) {
+            throw new Task('Enter the data to update the task.', 400);
+        }
+        if (isset($data->name)) {
+            $task->name = self::validateTaskName($data->name);
+        }
+        if (isset($data->description)) {
+            $task->description = $data->description;
+        }
+        if (isset($data->status)) {
+            $task->status = self::validateTaskStatus($data->status);
+        }
+        $task->userId = (int) $data->decoded->sub;
+
+        return $task;
     }
 }
