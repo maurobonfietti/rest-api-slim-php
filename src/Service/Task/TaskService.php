@@ -56,7 +56,7 @@ final class TaskService extends Base
             $status = self::validateTaskStatus($data->status);
         }
         $data->status = $status;
-        $data->userId = $data->decoded->sub;
+        $data->userId = (int) $data->decoded->sub;
         $task = $this->getTaskRepository()->create($data);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($task->id, $task->userId, $task);
@@ -81,10 +81,10 @@ final class TaskService extends Base
         if (isset($data->status)) {
             $task->status = self::validateTaskStatus($data->status);
         }
-        $task->userId = $data->decoded->sub;
+        $task->userId = (int) $data->decoded->sub;
         $tasks = $this->getTaskRepository()->update($task);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($tasks->id, $task->userId, $tasks);
+            $this->saveInCache($tasks->id, (int) $task->userId, $tasks);
         }
 
         return $tasks;
