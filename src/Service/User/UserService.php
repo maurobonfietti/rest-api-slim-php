@@ -30,7 +30,7 @@ final class UserService extends Base
         return $this->userRepository->search($usersName);
     }
 
-    public function create(?array $input): object
+    public function create(array $input): object
     {
         $data = json_decode(json_encode($input), false);
         if (! isset($data->name)) {

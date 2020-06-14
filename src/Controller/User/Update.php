@@ -11,7 +11,7 @@ final class Update extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
         $userIdLogged = $input['decoded']->sub;
         $this->checkUserPermissions((int) $args['id'], (int) $userIdLogged);
         $user = $this->getUserService()->update($input, (int) $args['id']);
