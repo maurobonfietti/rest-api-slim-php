@@ -38,11 +38,6 @@ final class TaskService extends Base
         return $this->getTaskRepository()->search($tasksName, $userId, $status);
     }
 
-    /**
-     * @param array{name: string, description: string, status: int} $input
-     * @return object
-     * @throws Task
-     */
     public function create(array $input): object
     {
         $data = json_decode(json_encode($input), false);
@@ -56,7 +51,7 @@ final class TaskService extends Base
             $status = self::validateTaskStatus($data->status);
         }
         $data->status = $status;
-        $data->userId = $data->decoded->sub;
+        $data->userId = (int) $data->decoded->sub;
         $task = $this->getTaskRepository()->create($data);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($task->id, $task->userId, $task);
@@ -66,6 +61,28 @@ final class TaskService extends Base
     }
 
     public function update(array $input, int $taskId): object
+    {
+        $data = $this->validateTask($input, $taskId);
+        $task = $this->getTaskRepository()->update($data);
+        if (self::isRedisEnabled() === true) {
+            $this->saveInCache($task->id, (int) $data->userId, $task);
+        }
+
+        return $task;
+    }
+
+    public function delete(int $taskId, int $userId): string
+    {
+        $this->getTaskFromDb($taskId, $userId);
+        $data = $this->getTaskRepository()->delete($taskId, $userId);
+        if (self::isRedisEnabled() === true) {
+            $this->deleteFromCache($taskId, $userId);
+        }
+
+        return $data;
+    }
+
+    private function validateTask(array $input, int $taskId): object
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode(json_encode($input), false);
@@ -81,23 +98,8 @@ final class TaskService extends Base
         if (isset($data->status)) {
             $task->status = self::validateTaskStatus($data->status);
         }
-        $task->userId = $data->decoded->sub;
-        $tasks = $this->getTaskRepository()->update($task);
-        if (self::isRedisEnabled() === true) {
-            $this->saveInCache($tasks->id, $task->userId, $tasks);
-        }
+        $task->userId = (int) $data->decoded->sub;
 
-        return $tasks;
-    }
-
-    public function delete(int $taskId, int $userId): string
-    {
-        $this->getTaskFromDb($taskId, $userId);
-        $data = $this->getTaskRepository()->delete($taskId, $userId);
-        if (self::isRedisEnabled() === true) {
-            $this->deleteFromCache($taskId, $userId);
-        }
-
-        return $data;
+        return $task;
     }
 }

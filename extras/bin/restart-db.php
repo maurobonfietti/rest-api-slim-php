@@ -5,12 +5,10 @@ declare(strict_types=1);
 require __DIR__ . '/../../src/App/App.php';
 
 try {
-    $settings = $app->getContainer()->get('settings');
-
-    $hostname = $settings['db']['hostname'];
-    $username = $settings['db']['username'];
-    $password = $settings['db']['password'];
-    $database = $settings['db']['database'];
+    $hostname = getenv('DB_HOSTNAME');
+    $username = getenv('DB_USERNAME');
+    $password = getenv('DB_PASSWORD');
+    $database = getenv('DB_DATABASE');
 
     $pdo = new PDO("mysql:host=${hostname}", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -63,7 +63,7 @@ abstract class Base extends BaseService
         return $this->userRepository->getUser($userId);
     }
 
-    protected function saveInCache($id, object $user): void
+    protected function saveInCache(int $id, object $user): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $id);
         $key = $this->redisService->generateKey($redisKey);

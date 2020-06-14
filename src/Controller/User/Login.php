@@ -11,7 +11,7 @@ final class Login extends Base
 {
     public function __invoke(Request $request, Response $response): Response
     {
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
         $jwt = $this->getUserService()->login($input);
         $message = [
             'Authorization' => 'Bearer ' . $jwt,

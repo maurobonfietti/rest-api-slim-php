@@ -47,7 +47,7 @@ final class TaskRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function search(string $tasksName, int $userId, $status): array
+    public function search(string $tasksName, int $userId, ?int $status): array
     {
         $query = $this->getSearchTasksQuery($status);
         $name = '%' . $tasksName . '%';
@@ -107,7 +107,7 @@ final class TaskRepository extends BaseRepository
         return 'The task was deleted.';
     }
 
-    private function getSearchTasksQuery($status)
+    private function getSearchTasksQuery(?int $status): string
     {
         $statusQuery = '';
         if ($status === 0 || $status === 1) {

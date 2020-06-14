@@ -30,7 +30,7 @@ final class ApiError extends \Slim\Handlers\Error
             ->withHeader('Content-type', 'application/problem+json');
     }
 
-    private function getStatusCode(\Exception $exception)
+    private function getStatusCode(\Exception $exception): int
     {
         $statusCode = 500;
         if (is_int($exception->getCode()) &&

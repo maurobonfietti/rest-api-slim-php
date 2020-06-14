@@ -8,15 +8,13 @@ use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\Environment;
+use Psr\Http\Message\ResponseInterface;
 
 class BaseTestCase extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @var string
-     */
-    public static $jwt;
+    public static string $jwt = '';
 
-    public function runApp($requestMethod, $requestUri, $requestData = null)
+    public function runApp(string $requestMethod, string $requestUri, array $requestData = null): ResponseInterface
     {
         $environment = Environment::mock(
             [
@@ -43,14 +41,13 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
 
         $app = new App($settings);
 
+        $container = $app->getContainer();
+
         require __DIR__ . '/../../src/App/Dependencies.php';
-        require __DIR__ . '/../../src/App/Middleware.php';
         require __DIR__ . '/../../src/App/Services.php';
         require __DIR__ . '/../../src/App/Repositories.php';
         require __DIR__ . '/../../src/App/Routes.php';
 
-        $response = $app->process($request, new Response());
-
-        return $response;
+        return $app->process($request, new Response());
     }
 }
