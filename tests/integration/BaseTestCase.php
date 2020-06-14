@@ -43,6 +43,8 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
 
         $app = new App($settings);
 
+        $container = $app->getContainer();
+
         require __DIR__ . '/../../src/App/Dependencies.php';
         require __DIR__ . '/../../src/App/Services.php';
         require __DIR__ . '/../../src/App/Repositories.php';

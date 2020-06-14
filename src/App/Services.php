@@ -7,8 +7,6 @@ use App\Service\Task\TaskService;
 use App\Service\User\UserService;
 use Psr\Container\ContainerInterface;
 
-$container = $app->getContainer();
-
 $container['user_service'] = static function (ContainerInterface $container): UserService {
     return new UserService(
         $container->get('user_repository'),

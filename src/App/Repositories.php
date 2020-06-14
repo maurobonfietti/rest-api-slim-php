@@ -7,8 +7,6 @@ use App\Repository\TaskRepository;
 use App\Repository\UserRepository;
 use Psr\Container\ContainerInterface;
 
-$container = $app->getContainer();
-
 $container['user_repository'] = static function (ContainerInterface $container): UserRepository {
     return new UserRepository($container->get('db'));
 };
