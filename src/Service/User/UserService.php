@@ -87,7 +87,7 @@ final class UserService extends Base
         return $data;
     }
 
-    public function login(?array $input): string
+    public function login(array $input): string
     {
         $data = json_decode(json_encode($input), false);
         if (! isset($data->email)) {
