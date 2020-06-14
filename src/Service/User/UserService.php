@@ -32,20 +32,7 @@ final class UserService extends Base
 
     public function create(array $input): object
     {
-        $data = json_decode(json_encode($input), false);
-        if (! isset($data->name)) {
-            throw new User('The field "name" is required.', 400);
-        }
-        if (! isset($data->email)) {
-            throw new User('The field "email" is required.', 400);
-        }
-        if (! isset($data->password)) {
-            throw new User('The field "password" is required.', 400);
-        }
-        $data->name = self::validateUserName($data->name);
-        $data->email = self::validateEmail($data->email);
-        $data->password = hash('sha512', $data->password);
-        $this->userRepository->checkUserByEmail($data->email);
+        $data = $this->validateUserData($input);
         $user = $this->userRepository->create($data);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache((int) $user->id, $user);
@@ -107,5 +94,25 @@ final class UserService extends Base
         ];
 
         return JWT::encode($token, getenv('SECRET_KEY'));
+    }
+
+    private function validateUserData(array $input): object
+    {
+        $user = json_decode(json_encode($input), false);
+        if (! isset($user->name)) {
+            throw new User('The field "name" is required.', 400);
+        }
+        if (! isset($user->email)) {
+            throw new User('The field "email" is required.', 400);
+        }
+        if (! isset($user->password)) {
+            throw new User('The field "password" is required.', 400);
+        }
+        $user->name = self::validateUserName($user->name);
+        $user->email = self::validateEmail($user->email);
+        $user->password = hash('sha512', $user->password);
+        $this->userRepository->checkUserByEmail($user->email);
+
+        return $user;
     }
 }
