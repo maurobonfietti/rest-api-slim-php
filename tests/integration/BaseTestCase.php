@@ -44,7 +44,6 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
         $app = new App($settings);
 
         require __DIR__ . '/../../src/App/Dependencies.php';
-        require __DIR__ . '/../../src/App/Middleware.php';
         require __DIR__ . '/../../src/App/Services.php';
         require __DIR__ . '/../../src/App/Repositories.php';
         require __DIR__ . '/../../src/App/Routes.php';
