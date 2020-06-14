@@ -48,7 +48,7 @@ final class UserService extends Base
         $this->userRepository->checkUserByEmail($data->email);
         $user = $this->userRepository->create($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($user->id, $user);
+            $this->saveInCache((int) $user->id, $user);
         }
 
         return $user;
@@ -69,7 +69,7 @@ final class UserService extends Base
         }
         $users = $this->userRepository->update($user);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($users->id, $users);
+            $this->saveInCache((int) $users->id, $users);
         }
 
         return $users;
