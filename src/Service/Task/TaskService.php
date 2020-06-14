@@ -38,11 +38,6 @@ final class TaskService extends Base
         return $this->getTaskRepository()->search($tasksName, $userId, $status);
     }
 
-    /**
-     * @param array{name: string, description: string, status: int} $input
-     * @return object
-     * @throws Task
-     */
     public function create(array $input): object
     {
         $data = json_decode(json_encode($input), false);
