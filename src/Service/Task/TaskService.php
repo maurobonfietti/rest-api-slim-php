@@ -62,13 +62,13 @@ final class TaskService extends Base
 
     public function update(array $input, int $taskId): object
     {
-        $task = $this->validateTask($input, $taskId);
-        $tasks = $this->getTaskRepository()->update($task);
+        $data = $this->validateTask($input, $taskId);
+        $task = $this->getTaskRepository()->update($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($tasks->id, (int) $task->userId, $tasks);
+            $this->saveInCache($task->id, (int) $data->userId, $task);
         }
 
-        return $tasks;
+        return $task;
     }
 
     public function delete(int $taskId, int $userId): string
