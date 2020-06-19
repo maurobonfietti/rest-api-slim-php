@@ -29,8 +29,8 @@ Implementé esta API en [este proyecto](https://github.com/maurobonfietti/rest-a
 ### Pre Requisitos:
 
 - Git.
-- PHP.
 - Composer.
+- PHP 7.3 / 7.4
 - MySQL/MariaDB.
 - Redis (Opcional).
 

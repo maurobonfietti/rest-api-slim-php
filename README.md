@@ -29,8 +29,8 @@ I implemented this API in [this project](https://github.com/maurobonfietti/rest-
 ### Pre Requisite:
 
 - Git.
-- PHP.
 - Composer.
+- PHP 7.3 / 7.4
 - MySQL/MariaDB.
 - Redis (Optional).
 
