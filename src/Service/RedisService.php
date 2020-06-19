@@ -8,7 +8,7 @@ final class RedisService
 {
     public const PROJECT_NAME = 'rest-api-slim-php';
 
-    private \Predis\Client $redis;
+    private $redis;
 
     public function __construct(\Predis\Client $redis)
     {

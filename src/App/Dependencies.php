@@ -15,7 +15,9 @@ $container['db'] = static function (): PDO {
     return $pdo;
 };
 
-$container['errorHandler'] = static fn (): ApiError => new ApiError();
+$container['errorHandler'] = static function (): ApiError {
+    return new ApiError();
+};
 
 $container['redis_service'] = static function (): RedisService {
     return new RedisService(new \Predis\Client(getenv('REDIS_URL')));
