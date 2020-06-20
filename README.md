@@ -99,7 +99,7 @@ If you get stuck, you can try [this guide step by step](TROUBLESHOOTING.md).
 
 ## :cinema: TUTORIALS:
 
-Mini-series of videos about Slim PHP (Spanish :es:).
+Mini-series of videos about Slim PHP (Spanish :es: :argentina:).
 
 ### :video_camera: VIDEO #1
 
@@ -114,7 +114,7 @@ Mini-series of videos about Slim PHP (Spanish :es:).
 [Deploy Slim PHP on Heroku.](https://youtu.be/-F09LCgNuGg)
 
 
-## :inbox_tray: DEPENDENCIES:
+## :package: DEPENDENCIES:
 
 ### LIST OF REQUIRE DEPENDENCIES:
 

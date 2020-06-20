@@ -113,7 +113,7 @@ Mini serie de videos acerca de Slim PHP.
 [Cómo hacer el despliegue de una API con Slim PHP usando Heroku.](https://youtu.be/-F09LCgNuGg)
 
 
-## :inbox_tray: DEPENDENCIAS:
+## :package: DEPENDENCIAS:
 
 ### LISTA DE DEPENDENCIAS REQUERIDAS:
 
