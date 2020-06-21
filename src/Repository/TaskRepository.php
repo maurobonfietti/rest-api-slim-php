@@ -65,8 +65,10 @@ final class TaskRepository extends BaseRepository
     public function create(object $task): object
     {
         $query = '
-            INSERT INTO `tasks` (`name`, `description`, `status`, `userId`)
-            VALUES (:name, :description, :status, :userId)
+            INSERT INTO `tasks`
+                (`name`, `description`, `status`, `userId`)
+            VALUES
+                (:name, :description, :status, :userId)
         ';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('name', $task->name);
@@ -75,7 +77,9 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $task->userId);
         $statement->execute();
 
-        return $this->checkAndGetTask((int) $this->database->lastInsertId(), (int) $task->userId);
+        $taskId = (int) $this->database->lastInsertId();
+
+        return $this->checkAndGetTask($taskId, (int) $task->userId);
     }
 
     public function update(object $task): object

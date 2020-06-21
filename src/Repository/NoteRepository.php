@@ -38,7 +38,12 @@ final class NoteRepository extends BaseRepository
 
     public function searchNotes(string $strNotes): array
     {
-        $query = 'SELECT * FROM `notes` WHERE `name` LIKE :name OR `description` LIKE :description ORDER BY `id`';
+        $query = '
+            SELECT *
+            FROM `notes`
+            WHERE `name` LIKE :name OR `description` LIKE :description
+            ORDER BY `id`
+        ';
         $name = '%' . $strNotes . '%';
         $description = '%' . $strNotes . '%';
         $statement = $this->database->prepare($query);
@@ -47,7 +52,8 @@ final class NoteRepository extends BaseRepository
         $statement->execute();
         $notes = $statement->fetchAll();
         if (! $notes) {
-            throw new Note('No notes with that name or description were found.', 404);
+            $message = 'No notes were found with that name or description.';
+            throw new Note($message, 404);
         }
 
         return $notes;

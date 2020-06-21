@@ -50,7 +50,12 @@ final class UserRepository extends BaseRepository
 
     public function search(string $usersName): array
     {
-        $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `name` LIKE :name ORDER BY `id`';
+        $query = '
+            SELECT `id`, `name`, `email`
+            FROM `users`
+            WHERE `name` LIKE :name
+            ORDER BY `id`
+        ';
         $name = '%' . $usersName . '%';
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $name);
@@ -65,7 +70,12 @@ final class UserRepository extends BaseRepository
 
     public function loginUser(string $email, string $password): object
     {
-        $query = 'SELECT * FROM `users` WHERE `email` = :email AND `password` = :password ORDER BY `id`';
+        $query = '
+            SELECT *
+            FROM `users`
+            WHERE `email` = :email AND `password` = :password
+            ORDER BY `id`
+        ';
         $statement = $this->database->prepare($query);
         $statement->bindParam('email', $email);
         $statement->bindParam('password', $password);
@@ -80,7 +90,12 @@ final class UserRepository extends BaseRepository
 
     public function create(object $user): object
     {
-        $query = 'INSERT INTO `users` (`name`, `email`, `password`) VALUES (:name, :email, :password)';
+        $query = '
+            INSERT INTO `users`
+                (`name`, `email`, `password`)
+            VALUES
+                (:name, :email, :password)
+        ';
         $statement = $this->database->prepare($query);
         $statement->bindParam('name', $user->name);
         $statement->bindParam('email', $user->email);

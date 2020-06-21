@@ -18,8 +18,10 @@ abstract class Base extends BaseService
 
     protected $redisService;
 
-    public function __construct(UserRepository $userRepository, RedisService $redisService)
-    {
+    public function __construct(
+        UserRepository $userRepository,
+        RedisService $redisService
+    ) {
         $this->userRepository = $userRepository;
         $this->redisService = $redisService;
     }
