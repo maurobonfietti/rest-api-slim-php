@@ -6,7 +6,11 @@ use App\Handler\ApiError;
 use App\Service\RedisService;
 
 $container['db'] = static function (): PDO {
-    $dsn = sprintf('mysql:host=%s;dbname=%s', getenv('DB_HOSTNAME'), getenv('DB_DATABASE'));
+    $dsn = sprintf(
+        'mysql:host=%s;dbname=%s',
+        getenv('DB_HOSTNAME'),
+        getenv('DB_DATABASE')
+    );
     $pdo = new PDO($dsn, getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

@@ -30,7 +30,7 @@ Implementé esta API en [este proyecto](https://github.com/maurobonfietti/rest-a
 
 - Git.
 - Composer.
-- PHP 7.3 / 7.4
+- PHP 7.3 / 7.4.
 - MySQL/MariaDB.
 - Redis (Opcional).
 
@@ -113,7 +113,7 @@ Mini serie de videos acerca de Slim PHP.
 [Cómo hacer el despliegue de una API con Slim PHP usando Heroku.](https://youtu.be/-F09LCgNuGg)
 
 
-## :inbox_tray: DEPENDENCIAS:
+## :package: DEPENDENCIAS:
 
 ### LISTA DE DEPENDENCIAS REQUERIDAS:
 
@@ -140,11 +140,11 @@ Ejecutar los tests PHPUnit con `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 9.2.2 by Sebastian Bergmann and contributors.
+PHPUnit 9.2.3 by Sebastian Bergmann and contributors.
 
 ................................................................  64 / 64 (100%)
 
-Time: 00:00.245, Memory: 18.00 MB
+Time: 00:00.196, Memory: 18.00 MB
 
 OK (64 tests, 372 assertions)
 ```
