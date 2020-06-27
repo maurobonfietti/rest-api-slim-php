@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Slim\Container;
 use Slim\Http\Response;
 
 abstract class BaseController
 {
     protected $container;
+
+    public function __construct(Container $container)
+    {
+        $this->container = $container;
+    }
 
     protected function jsonResponse(
         Response $response,
