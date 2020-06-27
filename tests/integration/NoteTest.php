@@ -164,7 +164,7 @@ class NoteTest extends BaseTestCase
     {
         $response = $this->runApp(
             'POST', '/api/v1/notes',
-            ['name' => 'z']
+            ['name' => '']
         );
 
         $result = (string) $response->getBody();

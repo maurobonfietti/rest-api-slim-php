@@ -197,7 +197,7 @@ class TaskTest extends BaseTestCase
     public function testCreateTaskWithInvalidTaskName(): void
     {
         $response = $this->runApp(
-            'POST', '/api/v1/tasks', ['name' => 'z', 'status' => 1]
+            'POST', '/api/v1/tasks', ['name' => '', 'status' => 1]
         );
 
         $result = (string) $response->getBody();
