@@ -14,8 +14,12 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
 {
     public static $jwt = '';
 
-    public function runApp(string $requestMethod, string $requestUri, array $requestData = null): ResponseInterface
-    {
+    public function runApp(
+        string $requestMethod,
+        string $requestUri,
+        array $requestData = null
+    ): ResponseInterface {
+
         $environment = Environment::mock(
             [
                 'REQUEST_METHOD' => $requestMethod,

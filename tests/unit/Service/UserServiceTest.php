@@ -8,9 +8,6 @@ use Tests\integration\BaseTestCase;
 
 class UserServiceTest extends BaseTestCase
 {
-    /**
-     * @var int
-     */
     private static $id;
 
     private function getDatabase(): \PDO
