@@ -26,13 +26,14 @@ Implementé esta API en [este proyecto](https://github.com/maurobonfietti/rest-a
 
 ## :gear: INSTALACIÓN RÁPIDA:
 
-### Pre Requisitos:
+### Requerimientos:
 
 - Git.
 - Composer.
-- PHP 7.3 / 7.4.
+- PHP 7.3+.
 - MySQL/MariaDB.
 - Redis (Opcional).
+- O simplemente Docker.
 
 
 ### Usando Composer:
