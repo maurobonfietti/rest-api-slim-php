@@ -28,7 +28,7 @@ abstract class Base extends BaseService
 
     protected static function validateNoteName(string $name): string
     {
-        if (! v::length(2, 50)->validate($name)) {
+        if (! v::length(1, 50)->validate($name)) {
             throw new Note('The name of the note is invalid.', 400);
         }
 
