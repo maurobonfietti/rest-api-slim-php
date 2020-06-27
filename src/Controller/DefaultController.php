@@ -4,18 +4,12 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Slim\Container;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '1.7.0';
-
-    public function __construct(Container $container)
-    {
-        $this->container = $container;
-    }
+    public const API_VERSION = '1.8.0';
 
     public function getHelp(Request $request, Response $response): Response
     {

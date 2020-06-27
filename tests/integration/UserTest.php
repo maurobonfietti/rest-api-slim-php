@@ -293,7 +293,7 @@ class UserTest extends BaseTestCase
     {
         $response = $this->runApp(
             'PUT', '/api/v1/users/' . self::$id,
-            ['name' => 'z', 'email' => 'email-incorrecto...']
+            ['name' => '', 'email' => 'email-incorrecto...']
         );
 
         $result = (string) $response->getBody();

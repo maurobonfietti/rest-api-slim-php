@@ -33,7 +33,7 @@ abstract class Base extends BaseService
 
     protected static function validateTaskName(string $name): string
     {
-        if (! v::length(2, 100)->validate($name)) {
+        if (! v::length(1, 100)->validate($name)) {
             throw new Task('Invalid name.', 400);
         }
 

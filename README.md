@@ -26,13 +26,14 @@ I implemented this API in [this project](https://github.com/maurobonfietti/rest-
 
 ## :gear: QUICK INSTALL:
 
-### Pre Requisite:
+### Requirements:
 
 - Git.
 - Composer.
-- PHP 7.3 / 7.4.
+- PHP 7.3+.
 - MySQL/MariaDB.
 - Redis (Optional).
+- or Docker.
 
 
 ### With Composer:

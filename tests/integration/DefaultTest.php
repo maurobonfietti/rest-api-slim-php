@@ -13,16 +13,18 @@ class DefaultTest extends BaseTestCase
     {
         $response = $this->runApp('GET', '/');
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
-        $this->assertStringContainsString('status', (string) $response->getBody());
-        $this->assertStringContainsString('success', (string) $response->getBody());
-        $this->assertStringContainsString('version', (string) $response->getBody());
-        $this->assertStringContainsString('time', (string) $response->getBody());
-        $this->assertStringContainsString('endpoints', (string) $response->getBody());
-        $this->assertStringContainsString('help', (string) $response->getBody());
-        $this->assertStringNotContainsString('error', (string) $response->getBody());
-        $this->assertStringNotContainsString('Failed', (string) $response->getBody());
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('version', $result);
+        $this->assertStringContainsString('time', $result);
+        $this->assertStringContainsString('endpoints', $result);
+        $this->assertStringContainsString('help', $result);
+        $this->assertStringNotContainsString('error', $result);
+        $this->assertStringNotContainsString('Failed', $result);
     }
 
     /**
@@ -32,17 +34,19 @@ class DefaultTest extends BaseTestCase
     {
         $response = $this->runApp('GET', '/status');
 
+        $result = (string) $response->getBody();
+
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
-        $this->assertStringContainsString('status', (string) $response->getBody());
-        $this->assertStringContainsString('success', (string) $response->getBody());
-        $this->assertStringContainsString('message', (string) $response->getBody());
-        $this->assertStringContainsString('stats', (string) $response->getBody());
-        $this->assertStringContainsString('MySQL', (string) $response->getBody());
-        $this->assertStringContainsString('Redis', (string) $response->getBody());
-        $this->assertStringContainsString('version', (string) $response->getBody());
-        $this->assertStringContainsString('time', (string) $response->getBody());
-        $this->assertStringNotContainsString('error', (string) $response->getBody());
-        $this->assertStringNotContainsString('Failed', (string) $response->getBody());
+        $this->assertStringContainsString('status', $result);
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('message', $result);
+        $this->assertStringContainsString('stats', $result);
+        $this->assertStringContainsString('MySQL', $result);
+        $this->assertStringContainsString('Redis', $result);
+        $this->assertStringContainsString('version', $result);
+        $this->assertStringContainsString('time', $result);
+        $this->assertStringNotContainsString('error', $result);
+        $this->assertStringNotContainsString('Failed', $result);
     }
 }
