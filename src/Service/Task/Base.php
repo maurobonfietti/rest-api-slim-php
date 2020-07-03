@@ -68,11 +68,11 @@ abstract class Base extends BaseService
         return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
 
-    protected function saveInCache(int $taskId, int $userId, object $tasks): void
+    protected function saveInCache(int $taskId, int $userId, object $task): void
     {
         $redisKey = sprintf(self::REDIS_KEY, $taskId, $userId);
         $key = $this->redisService->generateKey($redisKey);
-        $this->redisService->setex($key, $tasks);
+        $this->redisService->setex($key, $task);
     }
 
     protected function deleteFromCache(int $taskId, int $userId): void

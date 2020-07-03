@@ -8,11 +8,6 @@ use App\Exception\Note;
 
 final class NoteRepository extends BaseRepository
 {
-    public function __construct(\PDO $database)
-    {
-        $this->database = $database;
-    }
-
     public function checkAndGetNote(int $noteId): object
     {
         $query = 'SELECT * FROM `notes` WHERE `id` = :id';
@@ -61,7 +56,12 @@ final class NoteRepository extends BaseRepository
 
     public function createNote(object $data): object
     {
-        $query = 'INSERT INTO `notes` (`name`, `description`) VALUES (:name, :description)';
+        $query = '
+            INSERT INTO `notes`
+                (`name`, `description`)
+            VALUES
+                (:name, :description)
+        ';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':name', $data->name);
         $statement->bindParam(':description', $data->description);
@@ -72,7 +72,11 @@ final class NoteRepository extends BaseRepository
 
     public function updateNote(object $note): object
     {
-        $query = 'UPDATE `notes` SET `name` = :name, `description` = :description WHERE `id` = :id';
+        $query = '
+            UPDATE `notes`
+            SET `name` = :name, `description` = :description
+            WHERE `id` = :id
+        ';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $note->id);
         $statement->bindParam(':name', $note->name);

@@ -11,8 +11,11 @@ use Slim\Route;
 
 final class Auth extends Base
 {
-    public function __invoke(Request $request, Response $response, Route $next): ResponseInterface
-    {
+    public function __invoke(
+        Request $request,
+        Response $response,
+        Route $next
+    ): ResponseInterface {
         $jwtHeader = $request->getHeaderLine('Authorization');
         if (! $jwtHeader) {
             throw new \App\Exception\Auth('JWT Token required.', 400);

@@ -62,16 +62,14 @@ final class UserService extends Base
         return $users;
     }
 
-    public function delete(int $userId): string
+    public function delete(int $userId): void
     {
         $this->getUserFromDb($userId);
         $this->userRepository->deleteUserTasks($userId);
-        $data = $this->userRepository->delete($userId);
+        $this->userRepository->delete($userId);
         if (self::isRedisEnabled() === true) {
             $this->deleteFromCache($userId);
         }
-
-        return $data;
     }
 
     public function login(array $input): string

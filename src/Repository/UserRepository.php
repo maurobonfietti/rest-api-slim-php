@@ -8,11 +8,6 @@ use App\Exception\User;
 
 final class UserRepository extends BaseRepository
 {
-    public function __construct(\PDO $database)
-    {
-        $this->database = $database;
-    }
-
     public function getUser(int $userId): object
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `id` = :id';
@@ -107,7 +102,9 @@ final class UserRepository extends BaseRepository
 
     public function update(object $user): object
     {
-        $query = 'UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id';
+        $query = '
+            UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id
+        ';
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $user->id);
         $statement->bindParam('name', $user->name);
@@ -117,14 +114,12 @@ final class UserRepository extends BaseRepository
         return $this->getUser((int) $user->id);
     }
 
-    public function delete(int $userId): string
+    public function delete(int $userId): void
     {
         $query = 'DELETE FROM `users` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();
-
-        return 'The user was deleted.';
     }
 
     public function deleteUserTasks(int $userId): void
