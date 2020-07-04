@@ -25,6 +25,15 @@ $container['task_service'] = static function (
     );
 };
 
+$container['get_note_service'] = static function (
+    ContainerInterface $container
+): Note\Get {
+    return new Note\Get(
+        $container->get('note_repository'),
+        $container->get('redis_service')
+    );
+};
+
 $container['create_note_service'] = static function (
     ContainerInterface $container
 ): Note\Create {
@@ -47,15 +56,6 @@ $container['delete_note_service'] = static function (
     ContainerInterface $container
 ): Note\Delete {
     return new Note\Delete(
-        $container->get('note_repository'),
-        $container->get('redis_service')
-    );
-};
-
-$container['get_note_service'] = static function (
-    ContainerInterface $container
-): Note\Get {
-    return new Note\Get(
         $container->get('note_repository'),
         $container->get('redis_service')
     );

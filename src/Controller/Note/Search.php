@@ -11,7 +11,7 @@ final class Search extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $notes = $this->getServiceGetNote()->search($args['query']);
+        $notes = $this->getServiceFindNote()->search($args['query']);
 
         return $this->jsonResponse($response, 'success', $notes, 200);
     }
