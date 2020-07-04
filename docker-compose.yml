@@ -9,8 +9,6 @@ services:
     volumes:
       - ./:/var/www/html
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
-    networks:
-      - testingnetwork
 
   php-fpm:
     build: ./docker/php7
@@ -30,16 +28,12 @@ services:
 
     volumes:
       - ./:/var/www/html
-    networks:
-      - testingnetwork
 
   redis:
     image: redis:4.0.5-alpine
     ports:
       - 63790:6379
     hostname: redis
-    networks:
-      - testingnetwork
     volumes:
       - redis-data:/data
 
@@ -53,16 +47,9 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: 
       MYSQL_ROOT_PASSWORD: 
-    networks:
-      - testingnetwork
     volumes:
       - my-data:/var/lib/mysql
       - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
-
-networks:
-  testingnetwork:
-    external:
-      name: testingnetwork
 
 volumes:
   redis-data:  
