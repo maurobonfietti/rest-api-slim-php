@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Controller\Note;
 
 use App\Controller\BaseController;
-use App\Service\Note\NoteService;
 use App\Service\Note;
 
 abstract class Base extends BaseController
 {
-    protected function getNoteService(): NoteService
+    protected function getServiceGetNote(): Note\Get
     {
-        return $this->container->get('note_service');
+        return $this->container->get('get_note_service');
     }
 
     protected function getServiceCreateNote(): Note\Create
@@ -28,10 +27,5 @@ abstract class Base extends BaseController
     protected function getServiceDeleteNote(): Note\Delete
     {
         return $this->container->get('delete_note_service');
-    }
-
-    protected function getServiceGetNote(): Note\Get
-    {
-        return $this->container->get('get_note_service');
     }
 }
