@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-final class Get extends Base
+final class Find extends Base
 {
     public function getAll(): array
     {

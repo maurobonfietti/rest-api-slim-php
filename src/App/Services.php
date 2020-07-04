@@ -25,10 +25,10 @@ $container['task_service'] = static function (
     );
 };
 
-$container['get_note_service'] = static function (
+$container['find_note_service'] = static function (
     ContainerInterface $container
-): Note\Get {
-    return new Note\Get(
+): Note\Find {
+    return new Note\Find(
         $container->get('note_repository'),
         $container->get('redis_service')
     );
