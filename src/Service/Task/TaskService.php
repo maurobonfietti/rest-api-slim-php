@@ -71,15 +71,13 @@ final class TaskService extends Base
         return $task;
     }
 
-    public function delete(int $taskId, int $userId): string
+    public function delete(int $taskId, int $userId): void
     {
         $this->getTaskFromDb($taskId, $userId);
-        $data = $this->getTaskRepository()->delete($taskId, $userId);
+        $this->getTaskRepository()->delete($taskId, $userId);
         if (self::isRedisEnabled() === true) {
             $this->deleteFromCache($taskId, $userId);
         }
-
-        return $data;
     }
 
     private function validateTask(array $input, int $taskId): object

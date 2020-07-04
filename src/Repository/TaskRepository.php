@@ -8,14 +8,11 @@ use App\Exception\Task;
 
 final class TaskRepository extends BaseRepository
 {
-    public function __construct(\PDO $database)
-    {
-        $this->database = $database;
-    }
-
     public function checkAndGetTask(int $taskId, int $userId): object
     {
-        $query = 'SELECT * FROM `tasks` WHERE `id` = :id AND `userId` = :userId';
+        $query = '
+            SELECT * FROM `tasks` WHERE `id` = :id AND `userId` = :userId
+        ';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->bindParam('userId', $userId);
@@ -100,15 +97,13 @@ final class TaskRepository extends BaseRepository
         return $this->checkAndGetTask((int) $task->id, (int) $task->userId);
     }
 
-    public function delete(int $taskId, int $userId): string
+    public function delete(int $taskId, int $userId): void
     {
         $query = 'DELETE FROM `tasks` WHERE `id` = :id AND `userId` = :userId';
         $statement = $this->getDb()->prepare($query);
         $statement->bindParam('id', $taskId);
         $statement->bindParam('userId', $userId);
         $statement->execute();
-
-        return 'The task was deleted.';
     }
 
     private function getSearchTasksQuery(?int $status): string
