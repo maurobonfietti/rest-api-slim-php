@@ -11,7 +11,7 @@ final class GetAll extends Base
 {
     public function __invoke(Request $request, Response $response): Response
     {
-        $notes = $this->getNoteService()->getAll();
+        $notes = $this->getServiceFindNote()->getAll();
 
         return $this->jsonResponse($response, 'success', $notes, 200);
     }

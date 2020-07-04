@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Service\Note\NoteService;
+use App\Service\Note;
 use App\Service\Task\TaskService;
 use App\Service\User\UserService;
 use Psr\Container\ContainerInterface;
@@ -25,10 +25,37 @@ $container['task_service'] = static function (
     );
 };
 
-$container['note_service'] = static function (
+$container['find_note_service'] = static function (
     ContainerInterface $container
-): NoteService {
-    return new NoteService(
+): Note\Find {
+    return new Note\Find(
+        $container->get('note_repository'),
+        $container->get('redis_service')
+    );
+};
+
+$container['create_note_service'] = static function (
+    ContainerInterface $container
+): Note\Create {
+    return new Note\Create(
+        $container->get('note_repository'),
+        $container->get('redis_service')
+    );
+};
+
+$container['update_note_service'] = static function (
+    ContainerInterface $container
+): Note\Update {
+    return new Note\Update(
+        $container->get('note_repository'),
+        $container->get('redis_service')
+    );
+};
+
+$container['delete_note_service'] = static function (
+    ContainerInterface $container
+): Note\Delete {
+    return new Note\Delete(
         $container->get('note_repository'),
         $container->get('redis_service')
     );
