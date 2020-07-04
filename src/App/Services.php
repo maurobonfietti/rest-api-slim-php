@@ -61,3 +61,12 @@ $container['delete_note_service'] = static function (
         $container->get('redis_service')
     );
 };
+
+$container['get_note_service'] = static function (
+    ContainerInterface $container
+): Note\Get {
+    return new Note\Get(
+        $container->get('note_repository'),
+        $container->get('redis_service')
+    );
+};
