@@ -51,6 +51,15 @@ services:
       - my-data:/var/lib/mysql
       - ./database/database.sql:/docker-entrypoint-initdb.d/database.sql
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mysql
+    ports:
+        - 8888:80
+    environment:
+        PMA_HOST: mysql
+
 volumes:
-  redis-data:  
+  redis-data:
   my-data:
