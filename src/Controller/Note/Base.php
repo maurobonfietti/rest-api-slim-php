@@ -24,4 +24,9 @@ abstract class Base extends BaseController
     {
         return $this->container->get('update_note_service');
     }
+
+    protected function getServiceDeleteNote(): Note\Delete
+    {
+        return $this->container->get('delete_note_service');
+    }
 }

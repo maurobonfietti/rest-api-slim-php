@@ -52,3 +52,12 @@ $container['update_note_service'] = static function (
         $container->get('redis_service')
     );
 };
+
+$container['delete_note_service'] = static function (
+    ContainerInterface $container
+): Note\Delete {
+    return new Note\Delete(
+        $container->get('note_repository'),
+        $container->get('redis_service')
+    );
+};

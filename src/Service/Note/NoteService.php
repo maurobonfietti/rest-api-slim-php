@@ -26,13 +26,4 @@ final class NoteService extends Base
     {
         return $this->noteRepository->searchNotes($notesName);
     }
-
-    public function delete(int $noteId): void
-    {
-        $this->getOneFromDb($noteId);
-        $this->noteRepository->deleteNote($noteId);
-        if (self::isRedisEnabled() === true) {
-            $this->deleteFromCache($noteId);
-        }
-    }
 }
