@@ -12,9 +12,10 @@ final class GetAll extends Base
     public function __invoke(Request $request, Response $response): Response
     {
         $page = $request->getQueryParam('page', null);
+        $perPage = $request->getQueryParam('perPage', 5);
 
         if ($page) {
-            $notes = $this->getServiceFindNote()->getNotesByPage((int) $page);
+            $notes = $this->getServiceFindNote()->getNotesByPage((int) $page, (int) $perPage);
         } else {
             $notes = $this->getServiceFindNote()->getAll();
         }

@@ -11,9 +11,9 @@ final class Find extends Base
         return $this->noteRepository->getNotes();
     }
 
-    public function getNotesByPage($page): array
+    public function getNotesByPage($page, $perPage): array
     {
-        return $this->noteRepository->getNotesByPage($page);
+        return $this->noteRepository->getNotesByPage($page, $perPage);
     }
 
     public function getOne(int $noteId): object
