@@ -29,15 +29,6 @@ final class NoteRepository extends BaseRepository
         $statement->execute();
 
         return $statement->fetchAll();
-//        return [
-//            'pagination' => [
-//                'totalRows' => $statement->rowCount(),
-//                'totalPages' => 1,
-////                'currentPage' => 1,
-////                'perPage' => $total,
-//            ],
-//            'data' => $statement->fetchAll(),
-//        ];
     }
 
     public function getNotesByPage($page, $perPage): array
@@ -54,19 +45,8 @@ final class NoteRepository extends BaseRepository
                 'currentPage' => $page,
                 'perPage' => $perPage,
             ],
-            'data' => $this->withLimits($query, $page, $perPage),
+            'data' => $this->getPaginationResult($query, $page, $perPage),
         ];
-    }
-
-    private function withLimits($query, $page, $perPage)
-    {
-        $offset = (int) ($page - 1) * $perPage;
-
-        $query2 = "$query LIMIT $perPage OFFSET $offset";
-        $statement2 = $this->database->prepare($query2);
-        $statement2->execute();
-    
-        return $statement2->fetchAll();
     }
 
     public function searchNotes(string $strNotes): array

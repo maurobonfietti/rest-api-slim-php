@@ -17,4 +17,14 @@ abstract class BaseRepository
     {
         return $this->database;
     }
+
+    protected function getPaginationResult($query, $page, $perPage)
+    {
+        $offset = ($page - 1) * $perPage;
+        $query = $query . " LIMIT $perPage OFFSET $offset";
+        $statement = $this->database->prepare($query);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }
