@@ -12,7 +12,7 @@ final class GetAll extends Base
     public function __invoke(Request $request, Response $response): Response
     {
         $page = $request->getQueryParam('page', null);
-        $perPage = $request->getQueryParam('perPage', 5);
+        $perPage = $request->getQueryParam('perPage', self::DEFAULT_PER_PAGE_PAGINATION);
 
         if ($page) {
             $notes = $this->getServiceFindNote()->getNotesByPage((int) $page, (int) $perPage);

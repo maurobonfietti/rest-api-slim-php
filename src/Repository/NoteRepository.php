@@ -45,7 +45,7 @@ final class NoteRepository extends BaseRepository
                 'currentPage' => $page,
                 'perPage' => $perPage,
             ],
-            'data' => $this->getPaginationResult($query, $page, $perPage),
+            'data' => $this->getResultByPage($query, $page, $perPage),
         ];
     }
 

@@ -11,6 +11,8 @@ abstract class BaseController
 {
     protected $container;
 
+    protected const DEFAULT_PER_PAGE_PAGINATION = 5;
+
     public function __construct(Container $container)
     {
         $this->container = $container;
