@@ -11,6 +11,11 @@ final class Find extends Base
         return $this->noteRepository->getNotes();
     }
 
+    public function getNotesByPage($page): array
+    {
+        return $this->noteRepository->getNotesByPage($page);
+    }
+
     public function getOne(int $noteId): object
     {
         if (self::isRedisEnabled() === true) {

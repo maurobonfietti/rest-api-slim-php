@@ -11,7 +11,13 @@ final class GetAll extends Base
 {
     public function __invoke(Request $request, Response $response): Response
     {
-        $notes = $this->getServiceFindNote()->getAll();
+        $page = $request->getQueryParam('page', null);
+
+        if ($page) {
+            $notes = $this->getServiceFindNote()->getNotesByPage((int) $page);
+        } else {
+            $notes = $this->getServiceFindNote()->getAll();
+        }
 
         return $this->jsonResponse($response, 'success', $notes, 200);
     }
