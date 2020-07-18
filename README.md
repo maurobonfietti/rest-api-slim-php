@@ -48,6 +48,8 @@ $ composer test
 $ composer start
 ```
 
+[![How to install](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/Zp_vod5wWWk)
+
 
 ### With Git:
 
@@ -61,8 +63,6 @@ $ composer restart-db
 $ composer test
 $ composer start
 ```
-
-[![How to install](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/Zp_vod5wWWk)
 
 
 ### With Docker:
