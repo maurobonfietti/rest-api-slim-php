@@ -62,7 +62,7 @@ $ composer test
 $ composer start
 ```
 
-[![How to install](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/xQfTcKbD7NI)
+[![How to install](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/Zp_vod5wWWk)
 
 
 ### With Docker:
@@ -104,13 +104,17 @@ Mini-series of videos about Slim PHP (Spanish Audio :sound: :es: :argentina:).
 
 ### :video_camera: VIDEO #1
 
-[How to use JWT for Authentication.](https://youtu.be/TPnoPLBgZTg)
+[How to install and configure this API.](https://youtu.be/Zp_vod5wWWk)
 
 ### :movie_camera: VIDEO #2
 
-[Using Redis Cache.](https://youtu.be/qX_TVjxEZSc)
+[How to use JWT for Authentication.](https://youtu.be/TPnoPLBgZTg)
 
 ### :video_camera: VIDEO #3
+
+[Using Redis Cache.](https://youtu.be/qX_TVjxEZSc)
+
+### :movie_camera: VIDEO #4
 
 [Deploy Slim PHP on Heroku.](https://youtu.be/-F09LCgNuGg)
 

@@ -61,7 +61,7 @@ $ composer test
 $ composer start
 ```
 
-[![How to install](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/xQfTcKbD7NI)
+[![How to install](https://cdn.loom.com/sessions/thumbnails/0ca3648baa674de2ba2f4180e781eb21-with-play.gif)](https://youtu.be/Zp_vod5wWWk)
 
 
 ### Usando Docker:
@@ -103,13 +103,17 @@ Mini serie de videos acerca de Slim PHP.
 
 ### :video_camera: VIDEO #1
 
-[Ejemplo de cómo utilizar esta API con JWT para autenticación.](https://youtu.be/TPnoPLBgZTg)
+[Cómo instalar y configurar esta API.](https://youtu.be/Zp_vod5wWWk)
 
 ### :movie_camera: VIDEO #2
 
-[Cómo usar Redis en esta API con Slim PHP.](https://youtu.be/qX_TVjxEZSc)
+[Ejemplo de cómo utilizar esta API con JWT para autenticación.](https://youtu.be/TPnoPLBgZTg)
 
 ### :video_camera: VIDEO #3
+
+[Cómo usar Redis en esta API con Slim PHP.](https://youtu.be/qX_TVjxEZSc)
+
+### :movie_camera: VIDEO #4
 
 [Cómo hacer el despliegue de una API con Slim PHP usando Heroku.](https://youtu.be/-F09LCgNuGg)
 
