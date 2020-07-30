@@ -35,7 +35,7 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
         }
 
         $baseDir = __DIR__ . '/../../';
-        $dotenv = new \Dotenv\Dotenv($baseDir);
+        $dotenv = \Dotenv\Dotenv::createUnsafeImmutable($baseDir);
         $envFile = $baseDir . '.env';
         if (file_exists($envFile)) {
             $dotenv->load();
