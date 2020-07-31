@@ -32,7 +32,7 @@
         "vlucas/phpdotenv": "^5.1"
     },
     "require-dev": {
-        "nunomaduro/phpinsights": "^1.13",
+        "nunomaduro/phpinsights": "^1.14",
         "pestphp/pest": "^0.1.5",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^9.0",
@@ -40,7 +40,10 @@
     },
     "config": {
         "sort-packages": true,
-        "process-timeout": 0
+        "process-timeout": 0,
+        "platform": {
+            "php": "7.3.20"
+        }
     },
     "autoload": {
         "psr-4": {
