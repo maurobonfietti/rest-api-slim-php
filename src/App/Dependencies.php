@@ -5,14 +5,10 @@ declare(strict_types=1);
 use App\Handler\ApiError;
 use App\Service\RedisService;
 
-$container['db'] = static function ($c): PDO {
-    $db = $c->get('settings')['db'];
-    $hostname = $db['hostname'];
-    $database = $db['database'];
-    $username = $db['username'];
-    $password = $db['password'];
-    $dsn = sprintf('mysql:host=%s;dbname=%s', $hostname, $database);
-    $pdo = new PDO($dsn, $username, $password);
+$container['db'] = static function ($container): PDO {
+    $db = $container->get('settings')['db'];
+    $dsn = sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']);
+    $pdo = new PDO($dsn, $db['username'], $db['password']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
