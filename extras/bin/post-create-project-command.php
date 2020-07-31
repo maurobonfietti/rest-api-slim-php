@@ -2,11 +2,7 @@
 
 declare(strict_types=1);
 
-final class PostCreateProjectCommand
-{
-    public static function showIntro(): void
-    {
-        echo <<<EOF
+echo <<<EOF
                 _                 _     
                | |               (_)    
   _ __ ___  ___| |_    __ _ _ __  _     
@@ -23,25 +19,11 @@ final class PostCreateProjectCommand
                      | |         | |    
                      |_|         |_|    
 
-EOF;
-    }
-
-    public static function showSuccessMessage(): void
-    {
-        echo <<<EOF
-
 *************************************************************
 Project: https://github.com/maurobonfietti/rest-api-slim-php
 *************************************************************
 
 Successfully created project!
-
-EOF;
-    }
-
-    public static function showFinalMessage(): void
-    {
-        echo <<<EOF
 
 Get started with the following commands:
 
@@ -57,9 +39,3 @@ Thanks for installing this project!
 Now go build a cool RESTful API ;-)
 
 EOF;
-    }
-}
-
-PostCreateProjectCommand::showIntro();
-PostCreateProjectCommand::showSuccessMessage();
-PostCreateProjectCommand::showFinalMessage();

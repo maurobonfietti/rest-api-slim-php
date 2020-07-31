@@ -1,10 +1,8 @@
 # REST API IN SLIM PHP
 
-Example of REST API with [Slim PHP micro framework](https://www.slimframework.com).
+Example of RESTful API with [Slim PHP micro framework](https://www.slimframework.com).
 
-![alt text](extras/img/slim-logo.png "Slim PHP micro framework")
-
-This simple RESTful API, allows CRUD operations to manage resources like: Users, Tasks and Notes.
+This simple API allows you to manage resources such as: users, tasks and notes.
 
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
