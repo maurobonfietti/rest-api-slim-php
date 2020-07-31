@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../../vendor/autoload.php';
 $baseDir = __DIR__ . '/../../';
-$dotenv = new Dotenv\Dotenv($baseDir);
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable($baseDir);
 $envFile = $baseDir . '.env';
 if (file_exists($envFile)) {
     $dotenv->load();
