@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f91898cf1e53747b9ca178e85f0ef184",
+    "content-hash": "84b2c594ec81f4cc6f561da82b8f3932",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -2588,6 +2588,20 @@
                 "php",
                 "quality",
                 "source"
+            ],
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/nunomaduro",
+                    "type": "patreon"
+                }
             ],
             "time": "2020-03-10T20:43:15+00:00"
         },

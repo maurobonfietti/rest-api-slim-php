@@ -32,7 +32,7 @@
         "vlucas/phpdotenv": "^5.1"
     },
     "require-dev": {
-        "nunomaduro/phpinsights": "^1.14",
+        "nunomaduro/phpinsights": "^1.13",
         "pestphp/pest": "^0.1.5",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^9.0",
