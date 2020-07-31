@@ -9,8 +9,11 @@ use Slim\Http\Response;
 
 final class GetAll extends Base
 {
-    public function __invoke(Request $request, Response $response): Response
-    {
+    public function __invoke(
+        Request $request,
+        Response $response,
+        array $args
+    ): Response {
         $page = $request->getQueryParam('page', null);
         $perPage = $request->getQueryParam('perPage', self::DEFAULT_PER_PAGE_PAGINATION);
 

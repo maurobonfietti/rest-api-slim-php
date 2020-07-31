@@ -9,8 +9,11 @@ use Slim\Http\Response;
 
 final class GetOne extends Base
 {
-    public function __invoke(Request $request, Response $response, array $args): Response
-    {
+    public function __invoke(
+        Request $request,
+        Response $response,
+        array $args
+    ): Response {
         $note = $this->getServiceFindNote()->getOne((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', $note, 200);

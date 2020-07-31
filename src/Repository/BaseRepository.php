@@ -21,7 +21,7 @@ abstract class BaseRepository
     protected function getResultByPage($query, $page, $perPage)
     {
         $offset = ($page - 1) * $perPage;
-        $query = $query . " LIMIT ${perPage} OFFSET ${offset}";
+        $query .= " LIMIT ${perPage} OFFSET ${offset}";
         $statement = $this->database->prepare($query);
         $statement->execute();
 

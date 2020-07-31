@@ -9,8 +9,11 @@ use Slim\Http\Response;
 
 final class Update extends Base
 {
-    public function __invoke(Request $request, Response $response, array $args): Response
-    {
+    public function __invoke(
+        Request $request,
+        Response $response,
+        array $args
+    ): Response {
         $input = (array) $request->getParsedBody();
         $note = $this->getServiceUpdateNote()->update($input, (int) $args['id']);
 

@@ -9,8 +9,11 @@ use Slim\Http\Response;
 
 final class Delete extends Base
 {
-    public function __invoke(Request $request, Response $response, array $args): Response
-    {
+    public function __invoke(
+        Request $request,
+        Response $response,
+        array $args
+    ): Response {
         $this->getServiceDeleteNote()->delete((int) $args['id']);
 
         return $this->jsonResponse($response, 'success', null, 204);
