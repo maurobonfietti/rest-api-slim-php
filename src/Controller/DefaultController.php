@@ -13,7 +13,7 @@ final class DefaultController extends BaseController
 
     public function getHelp(Request $request, Response $response): Response
     {
-        $url = getenv('APP_DOMAIN');
+        $url = $_SERVER['APP_DOMAIN'];
         $endpoints = [
             'tasks' => $url . '/api/v1/tasks',
             'users' => $url . '/api/v1/users',

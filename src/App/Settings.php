@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 return [
     'settings' => [
-        'displayErrorDetails' => getenv('DISPLAY_ERROR_DETAILS'),
+        'displayErrorDetails' => $_SERVER['DISPLAY_ERROR_DETAILS'],
     ],
 ];
