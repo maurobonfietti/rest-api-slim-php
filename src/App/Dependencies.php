@@ -20,6 +20,8 @@ $container['errorHandler'] = static function (): ApiError {
     return new ApiError();
 };
 
-$container['redis_service'] = static function (): RedisService {
-    return new RedisService(new \Predis\Client($_SERVER['REDIS_URL']));
+$container['redis_service'] = static function ($container): RedisService {
+    $redis = $container->get('settings')['redis'];
+
+    return new RedisService(new \Predis\Client($redis['url']));
 };

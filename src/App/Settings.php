@@ -11,5 +11,9 @@ return [
             'username' => $_SERVER['DB_USERNAME'],
             'password' => $_SERVER['DB_PASSWORD'],
         ],
+        'redis' => [
+            'enabled' => $_SERVER['REDIS_ENABLED'],
+            'url' => $_SERVER['REDIS_URL'],
+        ],
     ],
 ];
