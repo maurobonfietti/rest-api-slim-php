@@ -9,11 +9,12 @@ use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '1.13.0';
+    public const API_VERSION = '1.14.0';
 
     public function getHelp(Request $request, Response $response): Response
     {
-        $url = getenv('APP_DOMAIN');
+        $app = $this->container->get('settings')['app'];
+        $url = $app['domain'];
         $endpoints = [
             'tasks' => $url . '/api/v1/tasks',
             'users' => $url . '/api/v1/users',
