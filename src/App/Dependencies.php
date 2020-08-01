@@ -4,8 +4,9 @@ declare(strict_types=1);
 
 use App\Handler\ApiError;
 use App\Service\RedisService;
+use Psr\Container\ContainerInterface;
 
-$container['db'] = static function ($container): PDO {
+$container['db'] = static function (ContainerInterface $container): PDO {
     $db = $container->get('settings')['db'];
     $dsn = sprintf('mysql:host=%s;dbname=%s', $db['hostname'], $db['database']);
     $pdo = new PDO($dsn, $db['username'], $db['password']);
