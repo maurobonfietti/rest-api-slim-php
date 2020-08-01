@@ -13,7 +13,8 @@ final class DefaultController extends BaseController
 
     public function getHelp(Request $request, Response $response): Response
     {
-        $url = $_SERVER['APP_DOMAIN'];
+        $app = $this->container->get('settings')['app'];
+        $url = $app['domain'];
         $endpoints = [
             'tasks' => $url . '/api/v1/tasks',
             'users' => $url . '/api/v1/users',
