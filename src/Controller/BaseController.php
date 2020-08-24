@@ -9,8 +9,6 @@ use Slim\Http\Response;
 
 abstract class BaseController
 {
-    protected const DEFAULT_PER_PAGE_PAGINATION = 5;
-
     protected $container;
 
     public function __construct(Container $container)

@@ -11,17 +11,15 @@ final class GetAll extends Base
 {
     public function __invoke(
         Request $request,
-        Response $response,
-        array $args
+        Response $response
     ): Response {
         $page = $request->getQueryParam('page', null);
-        $perPage = $request->getQueryParam('perPage', self::DEFAULT_PER_PAGE_PAGINATION);
+        $perPage = $request->getQueryParam('perPage', null);
+        $name = $request->getQueryParam('name', null);
+        $description = $request->getQueryParam('description', null);
 
-        if ($page) {
-            $notes = $this->getServiceFindNote()->getNotesByPage((int) $page, (int) $perPage);
-        } else {
-            $notes = $this->getServiceFindNote()->getAll();
-        }
+        $notes = $this->getServiceFindNote()
+            ->getNotesByPage((int) $page, (int) $perPage, $name, $description);
 
         return $this->jsonResponse($response, 'success', $notes, 200);
     }
