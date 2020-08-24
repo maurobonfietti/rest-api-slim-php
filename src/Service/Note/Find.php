@@ -13,16 +13,18 @@ final class Find extends Base
         return $this->noteRepository->getNotes();
     }
 
-    public function getNotesByPage($page, $perPage): array
+    public function getNotesByPage($page, $perPage, $name, $description): array
     {
         if (! is_numeric($page) || $page < 1) {
-            throw new Note('Invalid page value.', 400);
+            $page = 1;
+//            throw new Note('Invalid page value.', 400);
         }
         if (! is_numeric($perPage) || $perPage < 1) {
-            throw new Note('Invalid perPage value.', 400);
+            $perPage = 6; // self::DEFAULT_PER_PAGE_PAGINATION
+//            throw new Note('Invalid perPage value.', 400);
         }
 
-        return $this->noteRepository->getNotesByPage($page, $perPage);
+        return $this->noteRepository->getNotesByPage($page, $perPage, $name, $description);
     }
 
     public function getOne(int $noteId): object

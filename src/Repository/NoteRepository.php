@@ -31,12 +31,28 @@ final class NoteRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function getNotesByPage($page, $perPage): array
+    public function getNotesByPage($page, $perPage, $name, $description): array
     {
-        $query = 'SELECT * FROM `notes`';
+        $query = "
+            SELECT *
+            FROM `notes`
+            WHERE `name` LIKE CONCAT('%',:name,'%')
+            AND `description` LIKE CONCAT('%',:description,'%')
+            ORDER BY `id`
+        ";
+
+        $name = '%' . $name . '%';
+        $description = '%' . $description . '%';
         $statement = $this->database->prepare($query);
+        $statement->bindParam('name', $name);
+        $statement->bindParam('description', $description);
         $statement->execute();
         $total = $statement->rowCount();
+
+        $params = [
+            'name' => $name,
+            'description' => $description,
+        ];
 
         return [
             'pagination' => [
@@ -45,7 +61,7 @@ final class NoteRepository extends BaseRepository
                 'currentPage' => $page,
                 'perPage' => $perPage,
             ],
-            'data' => $this->getResultByPage($query, $page, $perPage),
+            'data' => $this->getResultByPage($query, $page, $perPage, $params),
         ];
     }
 

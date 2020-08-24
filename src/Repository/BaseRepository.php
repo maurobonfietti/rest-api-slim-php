@@ -18,12 +18,12 @@ abstract class BaseRepository
         return $this->database;
     }
 
-    protected function getResultByPage($query, $page, $perPage)
+    protected function getResultByPage($query, $page, $perPage, $params)
     {
         $offset = ($page - 1) * $perPage;
         $query .= " LIMIT ${perPage} OFFSET ${offset}";
         $statement = $this->database->prepare($query);
-        $statement->execute();
+        $statement->execute($params);
 
         return $statement->fetchAll();
     }
