@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Exception\Note;
-
 final class Find extends Base
 {
     public function getAll(): array
@@ -17,11 +15,9 @@ final class Find extends Base
     {
         if (! is_numeric($page) || $page < 1) {
             $page = 1;
-//            throw new Note('Invalid page value.', 400);
         }
         if (! is_numeric($perPage) || $perPage < 1) {
-            $perPage = 6; // self::DEFAULT_PER_PAGE_PAGINATION
-//            throw new Note('Invalid perPage value.', 400);
+            $perPage = self::DEFAULT_PER_PAGE_PAGINATION;
         }
 
         return $this->noteRepository->getNotesByPage($page, $perPage, $name, $description);
