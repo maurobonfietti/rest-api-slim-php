@@ -18,6 +18,19 @@ abstract class BaseRepository
         return $this->database;
     }
 
+    protected function getResultsWithPagination($query, $page, $perPage, $params, $total)
+    {
+        return [
+            'pagination' => [
+                'totalRows' => $total,
+                'totalPages' => ceil($total / $perPage),
+                'currentPage' => $page,
+                'perPage' => $perPage,
+            ],
+            'data' => $this->getResultByPage($query, $page, $perPage, $params),
+        ];
+    }
+
     protected function getResultByPage($query, $page, $perPage, $params)
     {
         $offset = ($page - 1) * $perPage;
