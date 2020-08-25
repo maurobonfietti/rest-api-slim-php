@@ -90,6 +90,39 @@ class NoteTest extends BaseTestCase
     }
 
     /**
+     * Test Search Notes.
+     */
+    public function testSearchNotes(): void
+    {
+        $response = $this->runApp('GET', '/api/v1/notes/search/n');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('description', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Search Note Not Found.
+     */
+    public function testSearchNoteNotFound(): void
+    {
+        $response = $this->runApp('GET', '/api/v1/notes/search/123456789');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('id', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
      * Test Create Note.
      */
     public function testCreateNote(): void

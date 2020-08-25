@@ -33,6 +33,7 @@ $app->group('/api/v1', function () use ($app): void {
     $app->group('/notes', function () use ($app): void {
         $app->get('', Note\GetAll::class);
         $app->post('', Note\Create::class);
+        $app->get('/search/[{query}]', Note\Search::class);
         $app->get('/{id}', Note\GetOne::class);
         $app->put('/{id}', Note\Update::class);
         $app->delete('/{id}', Note\Delete::class);
