@@ -34,6 +34,33 @@ final class UserRepository extends BaseRepository
         }
     }
 
+    public function getUsersByPage($page, $perPage, $name, $email): array
+    {
+        $params = [
+            'name' => '%' . $name . '%',
+            'email' => '%' . $email . '%',
+        ];
+        $query = $this->getQueryUsersByPage();
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('name', $params['name']);
+        $statement->bindParam('email', $params['email']);
+        $statement->execute();
+        $total = $statement->rowCount();
+
+        return $this->getResultsWithPagination($query, $page, $perPage, $params, $total);
+    }
+
+    public function getQueryUsersByPage(): string
+    {
+        return "
+            SELECT `id`, `name`, `email`
+            FROM `users`
+            WHERE `name` LIKE CONCAT('%',:name,'%')
+            AND `email` LIKE CONCAT('%',:email,'%')
+            ORDER BY `id`
+        ";
+    }
+
     public function getAll(): array
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` ORDER BY `id`';

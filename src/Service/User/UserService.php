@@ -9,6 +9,18 @@ use Firebase\JWT\JWT;
 
 final class UserService extends Base
 {
+    public function getUsersByPage($page, $perPage, $name, $email): array
+    {
+        if (! is_numeric($page) || $page < 1) {
+            $page = 1;
+        }
+        if (! is_numeric($perPage) || $perPage < 1) {
+            $perPage = self::DEFAULT_PER_PAGE_PAGINATION;
+        }
+
+        return $this->userRepository->getUsersByPage($page, $perPage, $name, $email);
+    }
+
     public function getAll(): array
     {
         return $this->userRepository->getAll();
