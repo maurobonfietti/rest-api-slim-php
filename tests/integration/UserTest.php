@@ -30,6 +30,25 @@ class UserTest extends BaseTestCase
     }
 
     /**
+     * Test Get Users By Page.
+     */
+    public function testGetUsersByPage(): void
+    {
+        $response = $this->runApp('GET', '/api/v1/users?page=1&perPage=3');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('pagination', $result);
+        $this->assertStringContainsString('id', $result);
+        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('email', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
      * Test Get One User.
      */
     public function testGetUser(): void
