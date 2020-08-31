@@ -11,7 +11,13 @@ final class GetAll extends Base
 {
     public function __invoke(Request $request, Response $response): Response
     {
-        $users = $this->getUserService()->getAll();
+        $page = $request->getQueryParam('page', null);
+        $perPage = $request->getQueryParam('perPage', null);
+        $name = $request->getQueryParam('name', null);
+        $email = $request->getQueryParam('email', null);
+
+        $users = $this->getUserService()
+            ->getUsersByPage((int) $page, (int) $perPage, $name, $email);
 
         return $this->jsonResponse($response, 'success', $users, 200);
     }
