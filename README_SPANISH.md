@@ -135,6 +135,7 @@ Mini serie de videos acerca de Slim PHP.
 - [pestphp/pest](https://github.com/pestphp/pest): Pest es un elegante PHP Testing Framework con un enfoque en la simplicidad.
 - [nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights): Comprobaciones instantáneas de calidad PHP desde su consola.
 - [rector/rector](https://github.com/rectorphp/rector): Actualizaciones instantáneas y refactorización instantánea de cualquier código PHP 5.3+.
+- [vimeo/psalm](https://github.com/vimeo/psalm): Una herramienta de análisis estático para encontrar errores en aplicaciones PHP.
 
 
 ## :traffic_light: TESTING:

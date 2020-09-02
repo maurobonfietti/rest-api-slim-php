@@ -14,8 +14,8 @@ final class Delete extends Base
         $input = $request->getParsedBody();
         $userIdLogged = $input['decoded']->sub;
         $this->checkUserPermissions((int) $args['id'], (int) $userIdLogged);
-        $user = $this->getUserService()->delete((int) $args['id']);
+        $this->getUserService()->delete((int) $args['id']);
 
-        return $this->jsonResponse($response, 'success', $user, 204);
+        return $this->jsonResponse($response, 'success', null, 204);
     }
 }
