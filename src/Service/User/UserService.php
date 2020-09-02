@@ -9,8 +9,12 @@ use Firebase\JWT\JWT;
 
 final class UserService extends Base
 {
-    public function getUsersByPage($page, $perPage, $name, $email): array
-    {
+    public function getUsersByPage(
+        int $page,
+        int $perPage,
+        ?string $name,
+        ?string $email
+    ): array {
         if (! is_numeric($page) || $page < 1) {
             $page = 1;
         }

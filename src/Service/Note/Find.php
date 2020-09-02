@@ -11,8 +11,12 @@ final class Find extends Base
         return $this->noteRepository->getNotes();
     }
 
-    public function getNotesByPage($page, $perPage, $name, $description): array
-    {
+    public function getNotesByPage(
+        int $page,
+        int $perPage,
+        ?string $name,
+        ?string $description
+    ): array {
         if (! is_numeric($page) || $page < 1) {
             $page = 1;
         }

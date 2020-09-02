@@ -34,8 +34,12 @@ final class UserRepository extends BaseRepository
         }
     }
 
-    public function getUsersByPage($page, $perPage, $name, $email): array
-    {
+    public function getUsersByPage(
+        int $page,
+        int $perPage,
+        ?string $name,
+        ?string $email
+    ): array {
         $params = [
             'name' => '%' . $name . '%',
             'email' => '%' . $email . '%',

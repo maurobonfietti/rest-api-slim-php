@@ -42,8 +42,12 @@ final class NoteRepository extends BaseRepository
         ";
     }
 
-    public function getNotesByPage($page, $perPage, $name, $description): array
-    {
+    public function getNotesByPage(
+        int $page,
+        int $perPage,
+        ?string $name,
+        ?string $description
+    ): array {
         $params = [
             'name' => '%' . $name . '%',
             'description' => '%' . $description . '%',
