@@ -11,9 +11,9 @@ final class GetOne extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
         $taskId = (int) $args['id'];
-        $userId = (int) $input['decoded']->sub;
+        $userId = $this->getAndValidateUserId($input);
         $task = $this->getTaskService()->getOne($taskId, $userId);
 
         return $this->jsonResponse($response, 'success', $task, 200);

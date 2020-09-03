@@ -15,14 +15,19 @@ final class UserService extends Base
         ?string $name,
         ?string $email
     ): array {
-        if (! is_numeric($page) || $page < 1) {
+        if ($page < 1) {
             $page = 1;
         }
-        if (! is_numeric($perPage) || $perPage < 1) {
+        if ($perPage < 1) {
             $perPage = self::DEFAULT_PER_PAGE_PAGINATION;
         }
 
-        return $this->userRepository->getUsersByPage($page, $perPage, $name, $email);
+        return $this->userRepository->getUsersByPage(
+            $page,
+            $perPage,
+            $name,
+            $email
+        );
     }
 
     public function getAll(): array

@@ -11,9 +11,9 @@ final class Delete extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $input = $request->getParsedBody();
+        $input = (array) $request->getParsedBody();
         $taskId = (int) $args['id'];
-        $userId = (int) $input['decoded']->sub;
+        $userId = $this->getAndValidateUserId($input);
         $this->getTaskService()->delete($taskId, $userId);
 
         return $this->jsonResponse($response, 'success', null, 204);

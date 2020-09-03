@@ -17,14 +17,19 @@ final class Find extends Base
         ?string $name,
         ?string $description
     ): array {
-        if (! is_numeric($page) || $page < 1) {
+        if ($page < 1) {
             $page = 1;
         }
-        if (! is_numeric($perPage) || $perPage < 1) {
+        if ($perPage < 1) {
             $perPage = self::DEFAULT_PER_PAGE_PAGINATION;
         }
 
-        return $this->noteRepository->getNotesByPage($page, $perPage, $name, $description);
+        return $this->noteRepository->getNotesByPage(
+            $page,
+            $perPage,
+            $name,
+            $description
+        );
     }
 
     public function getOne(int $noteId): object

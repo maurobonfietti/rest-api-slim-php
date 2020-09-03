@@ -11,8 +11,8 @@ final class Search extends Base
 {
     public function __invoke(Request $request, Response $response, array $args): Response
     {
-        $input = $request->getParsedBody();
-        $userId = (int) $input['decoded']->sub;
+        $input = (array) $request->getParsedBody();
+        $userId = $this->getAndValidateUserId($input);
         $query = '';
         if (isset($args['query'])) {
             $query = $args['query'];
