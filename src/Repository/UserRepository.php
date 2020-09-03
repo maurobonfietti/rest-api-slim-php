@@ -41,8 +41,8 @@ final class UserRepository extends BaseRepository
         ?string $email
     ): array {
         $params = [
-            'name' => '%' . $name . '%',
-            'email' => '%' . $email . '%',
+            'name' => is_null($name) ? '' : '%' . $name . '%',
+            'email' => is_null($email) ? '' : '%' . $email . '%',
         ];
         $query = $this->getQueryUsersByPage();
         $statement = $this->database->prepare($query);
@@ -51,7 +51,13 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $total = $statement->rowCount();
 
-        return $this->getResultsWithPagination($query, $page, $perPage, $params, $total);
+        return $this->getResultsWithPagination(
+            $query,
+            $page,
+            $perPage,
+            $params,
+            $total
+        );
     }
 
     public function getQueryUsersByPage(): string

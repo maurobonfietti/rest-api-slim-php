@@ -25,7 +25,7 @@ final class Auth extends Base
             throw new \App\Exception\Auth('JWT Token invalid.', 400);
         }
         $decoded = $this->checkToken($jwt[1]);
-        $object = $request->getParsedBody();
+        $object = (array) $request->getParsedBody();
         $object['decoded'] = $decoded;
 
         return $next($request->withParsedBody($object), $response);

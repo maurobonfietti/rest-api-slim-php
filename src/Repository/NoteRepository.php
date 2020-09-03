@@ -49,8 +49,8 @@ final class NoteRepository extends BaseRepository
         ?string $description
     ): array {
         $params = [
-            'name' => '%' . $name . '%',
-            'description' => '%' . $description . '%',
+            'name' => is_null($name) ? '' : '%' . $name . '%',
+            'description' => is_null($description) ? '' : '%'.$description.'%',
         ];
         $query = $this->getQueryNotesByPage();
         $statement = $this->database->prepare($query);
@@ -59,7 +59,13 @@ final class NoteRepository extends BaseRepository
         $statement->execute();
         $total = $statement->rowCount();
 
-        return $this->getResultsWithPagination($query, $page, $perPage, $params, $total);
+        return $this->getResultsWithPagination(
+            $query,
+            $page,
+            $perPage,
+            $params,
+            $total
+        );
     }
 
     public function searchNotes(string $strNotes): array
