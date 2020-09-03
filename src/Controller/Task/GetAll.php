@@ -11,8 +11,8 @@ final class GetAll extends Base
 {
     public function __invoke(Request $request, Response $response): Response
     {
-        $input = $request->getParsedBody();
-        $userId = (int) $input['decoded']->sub;
+        $input = (array) $request->getParsedBody();
+        $userId = $this->getAndValidateUserId($input);
         $tasks = $this->getTaskService()->getAll($userId);
 
         return $this->jsonResponse($response, 'success', $tasks, 200);

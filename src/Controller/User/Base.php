@@ -21,4 +21,13 @@ abstract class Base extends BaseController
             throw new User('User permission failed.', 400);
         }
     }
+
+    protected function getAndValidateUserId(array $input): int
+    {
+        if (isset($input['decoded']) && isset($input['decoded']->sub)) {
+            return (int) $input['decoded']->sub;
+        }
+
+        throw new User('Invalid user. Permission failed.', 400);
+    }
 }
