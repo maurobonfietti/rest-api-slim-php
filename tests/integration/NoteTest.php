@@ -27,8 +27,8 @@ class NoteTest extends BaseTestCase
         $this->assertStringContainsString('id', $result);
         $this->assertStringContainsString('name', $result);
         $this->assertStringContainsString('description', $result);
-        $this->assertMatchesRegularExpression('{"code":200,"status":"success"}', $value);
-        $this->assertMatchesRegularExpression('{"name":"[A-Za-z0-9_. ]+","description":"[A-Za-z0-9_. ]+"}', $value);
+        $this->assertMatchesRegularExpression('{"code":200,"status":"success"}', (string) $value);
+        $this->assertMatchesRegularExpression('{"name":"[A-Za-z0-9_. ]+","description":"[A-Za-z0-9_. ]+"}', (string) $value);
         $this->assertStringNotContainsString('error', $result);
     }
 
@@ -40,7 +40,7 @@ class NoteTest extends BaseTestCase
         $response = $this->runApp('GET', '/api/v1/notes?page=1&perPage=3');
 
         $result = (string) $response->getBody();
-        $value = json_encode(json_decode($result));
+        $value = (string) json_encode(json_decode($result));
 
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));

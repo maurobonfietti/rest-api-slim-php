@@ -23,7 +23,7 @@ final class ApiError extends \Slim\Handlers\Error
             'code' => $statusCode,
         ];
         $body = json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-        $response->getBody()->write($body);
+        $response->getBody()->write((string) $body);
 
         return $response
             ->withStatus($statusCode)
