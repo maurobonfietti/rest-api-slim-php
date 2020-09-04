@@ -8,15 +8,20 @@ use App\Exception\Note;
 
 final class Create extends Base
 {
-    public function create(array $input): object
+    public function create(array $input): \App\Entity\Note
     {
         $data = json_decode(json_encode($input), false);
         if (! isset($data->name)) {
             throw new Note('Invalid data: name is required.', 400);
         }
-        self::validateNoteName($data->name);
-        $data->description = $data->description ?? null;
-        $note = $this->noteRepository->createNote($data);
+//        self::validateNoteName($data->name);
+//        $data->description = $data->description ?? null;
+//        $note = $this->noteRepository->createNote($data);
+        $mynote = new \App\Entity\Note();
+        $mynote->setName(self::validateNoteName($data->name));
+        $mynote->setDescription($data->description ?? null);
+        /** var \App\Entity\Note $note */
+        $note = $this->noteRepository->createNote($mynote);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($note->id, $note);
         }

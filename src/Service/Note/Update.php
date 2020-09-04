@@ -6,7 +6,7 @@ namespace App\Service\Note;
 
 final class Update extends Base
 {
-    public function update(array $input, int $noteId): object
+    public function update(array $input, int $noteId): \App\Entity\Note
     {
         $note = $this->getOneFromDb($noteId);
         $data = json_decode(json_encode($input), false);

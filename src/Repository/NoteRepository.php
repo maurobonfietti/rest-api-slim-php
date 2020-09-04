@@ -4,19 +4,20 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\Note;
+use App\Entity\Note;
+use App\Exception;
 
 final class NoteRepository extends BaseRepository
 {
-    public function checkAndGetNote(int $noteId): object
+    public function checkAndGetNote(int $noteId): Note
     {
         $query = 'SELECT * FROM `notes` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
-        $note = $statement->fetchObject(\App\Entity\Note::class);
+        $note = $statement->fetchObject(Note::class);
         if (! $note) {
-            throw new Note('Note not found.', 404);
+            throw new Exception\Note('Note not found.', 404);
         }
 
         return $note;
@@ -28,7 +29,8 @@ final class NoteRepository extends BaseRepository
         $statement = $this->database->prepare($query);
         $statement->execute();
 
-        return $statement->fetchAll();
+//        return $statement->fetchAll();
+        return $statement->fetchAll(\PDO::FETCH_CLASS, Note::class);
     }
 
     public function getQueryNotesByPage(): string
@@ -85,13 +87,13 @@ final class NoteRepository extends BaseRepository
         $notes = $statement->fetchAll();
         if (! $notes) {
             $message = 'No notes were found with that name or description.';
-            throw new Note($message, 404);
+            throw new Exception\Note($message, 404);
         }
 
         return $notes;
     }
 
-    public function createNote(object $data): object
+    public function createNote(Note $note): Note
     {
         $query = '
             INSERT INTO `notes`
@@ -100,14 +102,14 @@ final class NoteRepository extends BaseRepository
                 (:name, :description)
         ';
         $statement = $this->database->prepare($query);
-        $statement->bindParam(':name', $data->name);
-        $statement->bindParam(':description', $data->description);
+        $statement->bindParam(':name', $note->getName());
+        $statement->bindParam(':description', $note->getDescription());
         $statement->execute();
 
         return $this->checkAndGetNote((int) $this->database->lastInsertId());
     }
 
-    public function updateNote(object $note): object
+    public function updateNote(object $note): Note
     {
         $query = '
             UPDATE `notes`

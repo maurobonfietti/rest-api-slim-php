@@ -6,11 +6,14 @@ namespace App\Entity;
 
 final class Note
 {
-    public $id;
+    /** var int $id */
+    protected $id;
 
-    public $name;
+    /** var string $id */
+    protected $name;
 
-    public $description;
+    /** var string $id */
+    protected $description;
 
     public function getId(): int
     {
@@ -35,5 +38,29 @@ final class Note
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    public function getData()
+    {
+        return $this;
+    }
+
+    public function getData2()
+    {
+        $note = new \stdClass;
+        $note->id = $this->getId();
+        $note->name = $this->getName();
+        $note->description = $this->getDescription();
+
+        return $note;
+    }
+
+    public function getData3()
+    {
+        return [
+            'id' => $this->getId(),
+            'name' => $this->getName(),
+            'description' => $this->getDescription(),
+        ];
     }
 }

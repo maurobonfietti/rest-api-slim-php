@@ -48,5 +48,6 @@ abstract class BaseRepository
         $statement->execute($params);
 
         return $statement->fetchAll();
+//        return $statement->fetchAll(\PDO::FETCH_CLASS, \App\Entity\Note::class);
     }
 }

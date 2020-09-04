@@ -21,6 +21,8 @@ final class GetAll extends Base
         $notes = $this->getServiceFindNote()
             ->getNotesByPage((int) $page, (int) $perPage, $name, $description);
 
+//        var_dump($notes); exit;
+
         return $this->jsonResponse($response, 'success', $notes, 200);
     }
 }

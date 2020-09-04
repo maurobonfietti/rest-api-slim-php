@@ -16,6 +16,9 @@ abstract class BaseController
         $this->container = $container;
     }
 
+    /**
+     * @param array|null|object $message
+     */
     protected function jsonResponse(
         Response $response,
         string $status,
