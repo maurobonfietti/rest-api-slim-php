@@ -10,7 +10,7 @@ final class Create extends Base
 {
     public function create(array $input): object
     {
-        $data = json_decode(json_encode($input), false);
+        $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name)) {
             throw new Note('Invalid data: name is required.', 400);
         }
