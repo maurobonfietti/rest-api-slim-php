@@ -29,8 +29,11 @@ final class TaskService extends Base
         return $task;
     }
 
-    public function search(string $tasksName, int $userId, $status): array
-    {
+    public function search(
+        string $tasksName,
+        int $userId,
+        ?string $status
+    ): array {
         if ($status !== null) {
             $status = (int) $status;
         }
