@@ -14,7 +14,7 @@ final class NoteRepository extends BaseRepository
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
-        $note = $statement->fetchObject();
+        $note = $statement->fetchObject(\App\Entity\Note::class);
         if (! $note) {
             throw new Note('Note not found.', 404);
         }
