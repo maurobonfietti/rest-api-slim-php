@@ -102,8 +102,8 @@ final class NoteRepository extends BaseRepository
                 (:name, :description)
         ';
         $statement = $this->database->prepare($query);
-        $statement->bindParam(':name', $note->getName());
-        $statement->bindParam(':description', $note->getDescription());
+        $statement->bindParam(':name', $note->name);
+        $statement->bindParam(':description', $note->description);
         $statement->execute();
 
         return $this->checkAndGetNote((int) $this->database->lastInsertId());

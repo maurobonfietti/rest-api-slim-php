@@ -7,13 +7,13 @@ namespace App\Entity;
 final class Note
 {
     /** var int $id */
-    protected $id;
+    public $id;
 
     /** var string $id */
-    protected $name;
+    public $name;
 
     /** var string $id */
-    protected $description;
+    public $description;
 
     public function getId(): int
     {
@@ -30,12 +30,12 @@ final class Note
         $this->name = $name;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): void
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
