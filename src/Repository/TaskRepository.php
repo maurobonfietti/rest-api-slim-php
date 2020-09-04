@@ -31,7 +31,7 @@ final class TaskRepository extends BaseRepository
         $statement = $this->getDb()->prepare($query);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return (array) $statement->fetchAll();
     }
 
     public function getAll(int $userId): array
@@ -41,7 +41,7 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('userId', $userId);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return (array) $statement->fetchAll();
     }
 
     public function search(string $tasksName, int $userId, ?int $status): array
@@ -56,7 +56,7 @@ final class TaskRepository extends BaseRepository
         }
         $statement->execute();
 
-        return $statement->fetchAll();
+        return (array) $statement->fetchAll();
     }
 
     public function create(object $task): object

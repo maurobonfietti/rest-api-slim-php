@@ -42,7 +42,7 @@ abstract class Base extends BaseService
             throw new User('Invalid email', 400);
         }
 
-        return $email;
+        return (string) $email;
     }
 
     protected function getUserFromCache(int $userId): object
@@ -51,7 +51,7 @@ abstract class Base extends BaseService
         $key = $this->redisService->generateKey($redisKey);
         if ($this->redisService->exists($key)) {
             $data = $this->redisService->get($key);
-            $user = json_decode(json_encode($data), false);
+            $user = json_decode((string) json_encode($data), false);
         } else {
             $user = $this->getUserFromDb($userId);
             $this->redisService->setex($key, $user);

@@ -65,7 +65,7 @@ final class UserService extends Base
     public function update(array $input, int $userId): object
     {
         $user = $this->getUserFromDb($userId);
-        $data = json_decode(json_encode($input), false);
+        $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name) && ! isset($data->email)) {
             throw new User('Enter the data to update the user.', 400);
         }
@@ -95,7 +95,7 @@ final class UserService extends Base
 
     public function login(array $input): string
     {
-        $data = json_decode(json_encode($input), false);
+        $data = json_decode((string) json_encode($input), false);
         if (! isset($data->email)) {
             throw new User('The field "email" is required.', 400);
         }
@@ -117,7 +117,7 @@ final class UserService extends Base
 
     private function validateUserData(array $input): object
     {
-        $user = json_decode(json_encode($input), false);
+        $user = json_decode((string) json_encode($input), false);
         if (! isset($user->name)) {
             throw new User('The field "name" is required.', 400);
         }
