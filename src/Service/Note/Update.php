@@ -12,10 +12,10 @@ final class Update extends Base
         $data = json_decode((string) json_encode($input), false);
         if (isset($data->name)) {
 //            $note->name = self::validateNoteName($data->name);
-            $note->setName(self::validateNoteName($data->name));
+            $note->updateName(self::validateNoteName($data->name));
         }
         if (isset($data->description)) {
-            $note->setDescription($data->description);
+            $note->updateDescription($data->description);
         }
         $notes = $this->noteRepository->updateNote($note)->getData3();
         if (self::isRedisEnabled() === true) {

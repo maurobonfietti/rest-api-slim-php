@@ -18,9 +18,9 @@ final class Create extends Base
 //        $data->description = $data->description ?? null;
 //        $note = $this->noteRepository->createNote($data);
         $mynote = new \App\Entity\Note();
-        $mynote->setName(self::validateNoteName($data->name));
+        $mynote->updateName(self::validateNoteName($data->name));
         $desc = isset($data->description) ? $data->description : null;
-        $mynote->setDescription($desc);
+        $mynote->updateDescription($desc);
 //        $mynote->setDescription($data->description ?? null);
         /** var \App\Entity\Note $note */
         $note = $this->noteRepository->createNote($mynote)->getData3();

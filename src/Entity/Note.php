@@ -7,13 +7,19 @@ namespace App\Entity;
 final class Note
 {
     /** @var int $id */
-    public $id;
+    private $id;
 
     /** @var string $name */
-    protected $name;
+    private $name;
 
     /** @var string|null $description */
-    public $description;
+    private $description;
+
+//    public function __construct($name = null, $description = null)
+//    {
+//        $this->name = $name;
+//        $this->description = $description;
+//    }
 
     public function getId(): int
     {
@@ -25,9 +31,11 @@ final class Note
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function updateName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
     }
 
     public function getDescription(): ?string
@@ -35,14 +43,21 @@ final class Note
         return $this->description;
     }
 
-    public function setDescription(?string $description): void
+    public function updateDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
     }
 
     public function getData(): self
     {
         return $this;
+    }
+
+    public function setlalala(): string
+    {
+        return 'lalala';
     }
 
     public function getData2(): object

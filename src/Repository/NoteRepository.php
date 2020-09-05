@@ -15,7 +15,9 @@ final class NoteRepository extends BaseRepository
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
+//        var_dump(123); exit;
         $note = $statement->fetchObject(Note::class);
+//        var_dump(123); exit;
         if (! $note) {
             throw new Exception\Note('Note not found.', 404);
         }
@@ -132,7 +134,7 @@ final class NoteRepository extends BaseRepository
 //        $statement->bindParam(':description', $note->description);
         $statement->execute();
 
-        return $this->checkAndGetNote((int) $note->id);
+        return $this->checkAndGetNote((int) $id);
     }
 
     public function deleteNote(int $noteId): void
