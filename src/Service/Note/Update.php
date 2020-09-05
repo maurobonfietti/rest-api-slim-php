@@ -9,7 +9,7 @@ final class Update extends Base
     public function update(array $input, int $noteId): \App\Entity\Note
     {
         $note = $this->getOneFromDb($noteId);
-        $data = json_decode(json_encode($input), false);
+        $data = json_decode((string) json_encode($input), false);
         if (isset($data->name)) {
             $note->name = self::validateNoteName($data->name);
         }

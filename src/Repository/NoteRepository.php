@@ -109,7 +109,7 @@ final class NoteRepository extends BaseRepository
         return $this->checkAndGetNote((int) $this->database->lastInsertId());
     }
 
-    public function updateNote(object $note): Note
+    public function updateNote(Note $note): Note
     {
         $query = '
             UPDATE `notes`

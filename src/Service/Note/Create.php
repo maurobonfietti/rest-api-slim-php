@@ -10,7 +10,7 @@ final class Create extends Base
 {
     public function create(array $input): \App\Entity\Note
     {
-        $data = json_decode(json_encode($input), false);
+        $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name)) {
             throw new Note('Invalid data: name is required.', 400);
         }
@@ -19,7 +19,9 @@ final class Create extends Base
 //        $note = $this->noteRepository->createNote($data);
         $mynote = new \App\Entity\Note();
         $mynote->setName(self::validateNoteName($data->name));
-        $mynote->setDescription($data->description ?? null);
+        $desc = isset($data->description) ? $data->description : null;
+        $mynote->setDescription($desc);
+//        $mynote->setDescription($data->description ?? null);
         /** var \App\Entity\Note $note */
         $note = $this->noteRepository->createNote($mynote);
         if (self::isRedisEnabled() === true) {

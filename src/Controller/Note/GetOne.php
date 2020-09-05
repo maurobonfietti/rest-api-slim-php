@@ -18,6 +18,6 @@ final class GetOne extends Base
 //        var_dump($note->getData2()); exit;
 //        var_dump($note, $note->getData(), $note->getData2()); exit;
 
-        return $this->jsonResponse($response, 'success', $note->getData3(), 200);
+        return $this->jsonResponse($response, 'success', $note, 200);
     }
 }

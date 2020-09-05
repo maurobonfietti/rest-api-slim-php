@@ -6,13 +6,13 @@ namespace App\Entity;
 
 final class Note
 {
-    /** var int $id */
+    /** @var int $id */
     public $id;
 
-    /** var string $id */
+    /** @var string $name */
     public $name;
 
-    /** var string $id */
+    /** @var string|null $description */
     public $description;
 
     public function getId(): int
@@ -40,14 +40,14 @@ final class Note
         $this->description = $description;
     }
 
-    public function getData()
+    public function getData(): self
     {
         return $this;
     }
 
-    public function getData2()
+    public function getData2(): object
     {
-        $note = new \stdClass;
+        $note = new \stdClass();
         $note->id = $this->getId();
         $note->name = $this->getName();
         $note->description = $this->getDescription();
@@ -55,7 +55,7 @@ final class Note
         return $note;
     }
 
-    public function getData3()
+    public function getData3(): array
     {
         return [
             'id' => $this->getId(),
