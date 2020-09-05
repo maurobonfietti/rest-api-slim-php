@@ -6,7 +6,7 @@ namespace App\Service\Note;
 
 final class Update extends Base
 {
-    public function update(array $input, int $noteId): array
+    public function update(array $input, int $noteId): object
     {
         $note = $this->getOneFromDb($noteId);
         $data = json_decode((string) json_encode($input), false);
@@ -17,7 +17,7 @@ final class Update extends Base
         if (isset($data->description)) {
             $note->updateDescription($data->description);
         }
-        $notes = $this->noteRepository->updateNote($note)->getData3();
+        $notes = $this->noteRepository->updateNote($note)->getData2();
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($notes->id, $notes);
         }

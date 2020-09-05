@@ -39,6 +39,7 @@ final class Find extends Base
         } else {
             $note = $this->getOneFromDb($noteId)->getData2();
         }
+//        var_dump($note); exit;
 
         return $note;
     }

@@ -8,7 +8,7 @@ use App\Exception\Note;
 
 final class Create extends Base
 {
-    public function create(array $input): array
+    public function create(array $input): object
     {
         $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name)) {
@@ -23,7 +23,8 @@ final class Create extends Base
         $mynote->updateDescription($desc);
 //        $mynote->setDescription($data->description ?? null);
         /** var \App\Entity\Note $note */
-        $note = $this->noteRepository->createNote($mynote)->getData3();
+        $note = $this->noteRepository->createNote($mynote)->getData2();
+//        var_dump($note->id); exit;
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($note->id, $note);
         }
