@@ -10,7 +10,7 @@ final class Note
     public $id;
 
     /** @var string $name */
-    public $name;
+    protected $name;
 
     /** @var string|null $description */
     public $description;
@@ -62,5 +62,15 @@ final class Note
             'name' => $this->getName(),
             'description' => $this->getDescription(),
         ];
+    }
+
+    public function getData4(): object
+    {
+//        $note = new Note();
+        $this->id = $this->getId();
+        $this->name = $this->getName();
+        $this->description = $this->getDescription();
+
+        return $this;
     }
 }
