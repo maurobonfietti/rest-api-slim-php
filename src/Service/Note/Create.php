@@ -30,7 +30,7 @@ final class Create extends Base
 //        var_dump($note['id']); exit;
         if (self::isRedisEnabled() === true) {
 //            $this->saveInCache($note['id'], $note);
-            $this->saveInCache($note->getId(), $note);
+            $this->saveInCache($note->getId(), $note->getData2());
         }
 
         return $note->getData2();

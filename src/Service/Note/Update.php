@@ -22,7 +22,7 @@ final class Update extends Base
 //        $notes = $this->noteRepository->updateNote($note)->getData2();
         if (self::isRedisEnabled() === true) {
 //            $this->saveInCache($notes->id, $notes);
-            $this->saveInCache($notes->getId(), $notes);
+            $this->saveInCache($notes->getId(), $notes->getData2());
         }
 
         return $notes->getData2();
