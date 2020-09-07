@@ -23,8 +23,9 @@ final class Create extends Base
         $mynote->updateDescription($desc);
 //        $mynote->setDescription($data->description ?? null);
         /** @var \App\Entity\Note $note */
-        $note = $this->noteRepository->createNote($mynote)->getData2();
-        var_dump($note, $note->getId()); exit;
+        $note = $this->noteRepository->createNote($mynote);
+//        $note = $this->noteRepository->createNote($mynote)->getData2();
+//        var_dump($note, $note->getId(), $note->getData2()); exit;
 //        var_dump($note->getId()); exit;
 //        var_dump($note['id']); exit;
         if (self::isRedisEnabled() === true) {
@@ -32,6 +33,7 @@ final class Create extends Base
             $this->saveInCache($note->getId(), $note);
         }
 
-        return $note;
+        return $note->getData2();
+//        return $note;
     }
 }
