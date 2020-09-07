@@ -21,6 +21,13 @@ final class Note
 //        $this->description = $description;
 //    }
 
+//    public function __construct()
+//    {
+//        $this->id = 0;
+//        $this->name = '';
+//        $this->description = null;
+//    }
+
     public function getId(): int
     {
         return $this->id;
@@ -81,11 +88,11 @@ final class Note
 
     public function getData4(): object
     {
-//        $note = new Note();
-        $this->id = $this->getId();
-        $this->name = $this->getName();
-        $this->description = $this->getDescription();
+        $note = new Note();
+        $note->id = $this->getId();
+        $note->name = $this->getName();
+        $note->description = $this->getDescription();
 
-        return $this;
+        return $note;
     }
 }
