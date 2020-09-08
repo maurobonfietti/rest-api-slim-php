@@ -19,9 +19,9 @@ final class Update extends Base
         /** @var \App\Entity\Note $notes */
         $notes = $this->noteRepository->updateNote($note);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($notes->getId(), $notes->getData2());
+            $this->saveInCache($notes->getId(), $notes->getData());
         }
 
-        return $notes->getData2();
+        return $notes->getData();
     }
 }

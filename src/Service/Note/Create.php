@@ -21,9 +21,9 @@ final class Create extends Base
         /** @var \App\Entity\Note $note */
         $note = $this->noteRepository->createNote($mynote);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($note->getId(), $note->getData2());
+            $this->saveInCache($note->getId(), $note->getData());
         }
 
-        return $note->getData2();
+        return $note->getData();
     }
 }

@@ -37,7 +37,7 @@ final class Find extends Base
         if (self::isRedisEnabled() === true) {
             $note = $this->getOneFromCache($noteId);
         } else {
-            $note = $this->getOneFromDb($noteId)->getData2();
+            $note = $this->getOneFromDb($noteId)->getData();
         }
 
         return $note;

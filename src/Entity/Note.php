@@ -44,7 +44,7 @@ final class Note
         return $this;
     }
 
-    public function getData2(): object
+    public function getData(): object
     {
         $note = new \stdClass();
         $note->id = $this->getId();
