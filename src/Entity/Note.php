@@ -2,72 +2,55 @@
 
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\Entity;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-
-final class DefaultController extends BaseController
+final class Note
 {
-    public const API_VERSION = '1.22.0';
+    /** @var int $id */
+    private $id;
 
-    public function getHelp(Request $request, Response $response): Response
+    /** @var string $name */
+    private $name;
+
+    /** @var string|null $description */
+    private $description;
+
+    public function getId(): int
     {
-        $app = $this->container->get('settings')['app'];
-        $url = $app['domain'];
-        $endpoints = [
-            'tasks' => $url . '/api/v1/tasks',
-            'users' => $url . '/api/v1/users',
-            'notes' => $url . '/api/v1/notes',
-            'docs' => $url . '/docs/index.html',
-            'status' => $url . '/status',
-            'this help' => $url . '',
-        ];
-        $message = [
-            'endpoints' => $endpoints,
-            'version' => self::API_VERSION,
-            'timestamp' => time(),
-        ];
-
-        return $this->jsonResponse($response, 'success', $message, 200);
+        return $this->id;
     }
 
-    public function getStatus(Request $request, Response $response): Response
+    public function getName(): string
     {
-        $status = [
-            'stats' => $this->getDbStats(),
-            'MySQL' => 'OK',
-            'Redis' => $this->checkRedisConnection(),
-            'version' => self::API_VERSION,
-            'timestamp' => time(),
-        ];
-
-        return $this->jsonResponse($response, 'success', $status, 200);
+        return $this->name;
     }
 
-    private function getDbStats(): array
+    public function updateName(string $name): self
     {
-        $userService = $this->container->get('user_service');
-        $taskService = $this->container->get('task_service');
-        $noteService = $this->container->get('find_note_service');
+        $this->name = $name;
 
-        return [
-            'users' => count($userService->getAll()),
-            'tasks' => count($taskService->getAllTasks()),
-            'notes' => count($noteService->getAll()),
-        ];
+        return $this;
     }
 
-    private function checkRedisConnection(): string
+    public function getDescription(): ?string
     {
-        $redis = 'Disabled';
-        if (self::isRedisEnabled() === true) {
-            $redisService = $this->container->get('redis_service');
-            $key = $redisService->generateKey('test:status');
-            $redisService->set($key, new \stdClass());
-            $redis = 'OK';
-        }
+        return $this->description;
+    }
 
-        return $redis;
+    public function updateDescription(?string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getData2(): object
+    {
+        $note = new \stdClass();
+        $note->id = $this->getId();
+        $note->name = $this->getName();
+        $note->description = $this->getDescription();
+
+        return $note;
     }
 }
