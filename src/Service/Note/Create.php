@@ -21,19 +21,12 @@ final class Create extends Base
         $mynote->updateName(self::validateNoteName($data->name));
         $desc = isset($data->description) ? $data->description : null;
         $mynote->updateDescription($desc);
-//        $mynote->setDescription($data->description ?? null);
         /** @var \App\Entity\Note $note */
         $note = $this->noteRepository->createNote($mynote);
-//        $note = $this->noteRepository->createNote($mynote)->getData2();
-//        var_dump($note, $note->getId(), $note->getData2()); exit;
-//        var_dump($note->getId()); exit;
-//        var_dump($note['id']); exit;
         if (self::isRedisEnabled() === true) {
-//            $this->saveInCache($note['id'], $note);
             $this->saveInCache($note->getId(), $note->getData2());
         }
 
         return $note->getData2();
-//        return $note;
     }
 }

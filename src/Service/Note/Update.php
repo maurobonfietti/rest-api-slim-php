@@ -11,7 +11,6 @@ final class Update extends Base
         $note = $this->getOneFromDb($noteId);
         $data = json_decode((string) json_encode($input), false);
         if (isset($data->name)) {
-//            $note->name = self::validateNoteName($data->name);
             $note->updateName(self::validateNoteName($data->name));
         }
         if (isset($data->description)) {
@@ -19,13 +18,10 @@ final class Update extends Base
         }
         /** @var \App\Entity\Note $notes */
         $notes = $this->noteRepository->updateNote($note);
-//        $notes = $this->noteRepository->updateNote($note)->getData2();
         if (self::isRedisEnabled() === true) {
-//            $this->saveInCache($notes->id, $notes);
             $this->saveInCache($notes->getId(), $notes->getData2());
         }
 
         return $notes->getData2();
-//        return $notes;
     }
 }
