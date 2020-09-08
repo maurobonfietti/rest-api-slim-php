@@ -14,13 +14,16 @@ final class Create extends Base
         if (! isset($data->name)) {
             throw new Note('Invalid data: name is required.', 400);
         }
-        self::validateNoteName($data->name);
-        $data->description = $data->description ?? null;
-        $note = $this->noteRepository->createNote($data);
+        $mynote = new \App\Entity\Note();
+        $mynote->updateName(self::validateNoteName($data->name));
+        $desc = isset($data->description) ? $data->description : null;
+        $mynote->updateDescription($desc);
+        /** @var \App\Entity\Note $note */
+        $note = $this->noteRepository->createNote($mynote);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($note->id, $note);
+            $this->saveInCache($note->getId(), $note->getData());
         }
 
-        return $note;
+        return $note->getData();
     }
 }

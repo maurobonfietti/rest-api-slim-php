@@ -8,13 +8,13 @@ use App\Exception\Note;
 
 final class NoteRepository extends BaseRepository
 {
-    public function checkAndGetNote(int $noteId): object
+    public function checkAndGetNote(int $noteId): \App\Entity\Note
     {
         $query = 'SELECT * FROM `notes` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
-        $note = $statement->fetchObject();
+        $note = $statement->fetchObject(\App\Entity\Note::class);
         if (! $note) {
             throw new Note('Note not found.', 404);
         }
@@ -91,7 +91,7 @@ final class NoteRepository extends BaseRepository
         return $notes;
     }
 
-    public function createNote(object $data): object
+    public function createNote(\App\Entity\Note $note): \App\Entity\Note
     {
         $query = '
             INSERT INTO `notes`
@@ -100,14 +100,16 @@ final class NoteRepository extends BaseRepository
                 (:name, :description)
         ';
         $statement = $this->database->prepare($query);
-        $statement->bindParam(':name', $data->name);
-        $statement->bindParam(':description', $data->description);
+        $name = $note->getName();
+        $desc = $note->getDescription();
+        $statement->bindParam(':name', $name);
+        $statement->bindParam(':description', $desc);
         $statement->execute();
 
         return $this->checkAndGetNote((int) $this->database->lastInsertId());
     }
 
-    public function updateNote(object $note): object
+    public function updateNote(\App\Entity\Note $note): \App\Entity\Note
     {
         $query = '
             UPDATE `notes`
@@ -115,12 +117,15 @@ final class NoteRepository extends BaseRepository
             WHERE `id` = :id
         ';
         $statement = $this->database->prepare($query);
-        $statement->bindParam(':id', $note->id);
-        $statement->bindParam(':name', $note->name);
-        $statement->bindParam(':description', $note->description);
+        $id = $note->getId();
+        $name = $note->getName();
+        $desc = $note->getDescription();
+        $statement->bindParam(':id', $id);
+        $statement->bindParam(':name', $name);
+        $statement->bindParam(':description', $desc);
         $statement->execute();
 
-        return $this->checkAndGetNote((int) $note->id);
+        return $this->checkAndGetNote((int) $id);
     }
 
     public function deleteNote(int $noteId): void
