@@ -8,6 +8,47 @@ use App\Exception\Task;
 
 final class TaskRepository extends BaseRepository
 {
+    public function getQueryTasksByPage(): string
+    {
+        return "
+            SELECT *
+            FROM `tasks`
+            WHERE `userId` = :userId
+            AND `name` LIKE CONCAT('%', :name, '%')
+            AND `description` LIKE CONCAT('%', :description, '%')
+            ORDER BY `id`
+        ";
+    }
+
+    public function getTasksByPage(
+        int $userId,
+        int $page,
+        int $perPage,
+        ?string $name,
+        ?string $description
+    ): array {
+        $params = [
+            'userId' => $userId,
+            'name' => is_null($name) ? '' : $name,
+            'description' => is_null($description) ? '' : $description,
+        ];
+        $query = $this->getQueryTasksByPage();
+        $statement = $this->database->prepare($query);
+        $statement->bindParam('userId', $params['userId']);
+        $statement->bindParam('name', $params['name']);
+        $statement->bindParam('description', $params['description']);
+        $statement->execute();
+        $total = $statement->rowCount();
+
+        return $this->getResultsWithPagination(
+            $query,
+            $page,
+            $perPage,
+            $params,
+            $total
+        );
+    }
+
     public function checkAndGetTask(int $taskId, int $userId): object
     {
         $query = '
