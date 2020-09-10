@@ -14,8 +14,10 @@ abstract class Base extends BaseService
 {
     private const REDIS_KEY = 'user:%s';
 
+    /** @var UserRepository */
     protected $userRepository;
 
+    /** @var RedisService */
     protected $redisService;
 
     public function __construct(

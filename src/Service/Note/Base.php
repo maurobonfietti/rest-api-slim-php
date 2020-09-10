@@ -17,6 +17,7 @@ abstract class Base extends BaseService
     /** @var NoteRepository */
     protected $noteRepository;
 
+    /** @var RedisService */
     protected $redisService;
 
     public function __construct(
