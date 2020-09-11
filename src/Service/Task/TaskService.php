@@ -13,7 +13,8 @@ final class TaskService extends Base
         int $page,
         int $perPage,
         ?string $name,
-        ?string $description
+        ?string $description,
+        ?string $status
     ): array {
         if ($page < 1) {
             $page = 1;
@@ -27,7 +28,8 @@ final class TaskService extends Base
             $page,
             $perPage,
             $name,
-            $description
+            $description,
+            $status
         );
     }
 

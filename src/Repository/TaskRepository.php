@@ -16,6 +16,7 @@ final class TaskRepository extends BaseRepository
             WHERE `userId` = :userId
             AND `name` LIKE CONCAT('%', :name, '%')
             AND `description` LIKE CONCAT('%', :description, '%')
+            AND `status` LIKE CONCAT('%', :status, '%')
             ORDER BY `id`
         ";
     }
@@ -25,18 +26,21 @@ final class TaskRepository extends BaseRepository
         int $page,
         int $perPage,
         ?string $name,
-        ?string $description
+        ?string $description,
+        ?string $status
     ): array {
         $params = [
             'userId' => $userId,
             'name' => is_null($name) ? '' : $name,
             'description' => is_null($description) ? '' : $description,
+            'status' => is_null($status) ? '' : $status,
         ];
         $query = $this->getQueryTasksByPage();
         $statement = $this->database->prepare($query);
         $statement->bindParam('userId', $params['userId']);
         $statement->bindParam('name', $params['name']);
         $statement->bindParam('description', $params['description']);
+        $statement->bindParam('status', $params['status']);
         $statement->execute();
         $total = $statement->rowCount();
 
