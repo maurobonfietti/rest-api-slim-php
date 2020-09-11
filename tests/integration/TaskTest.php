@@ -23,8 +23,25 @@ class TaskTest extends BaseTestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
         $this->assertStringContainsString('success', $result);
-        $this->assertStringContainsString('id', $result);
-        $this->assertStringContainsString('name', $result);
+        $this->assertStringContainsString('pagination', $result);
+        $this->assertStringContainsString('data', $result);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
+     * Test Get Tasks By Page.
+     */
+    public function testGetTasksByPage(): void
+    {
+        $response = $this->runApp('GET', '/api/v1/tasks?page=1&perPage=3');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringContainsString('success', $result);
+        $this->assertStringContainsString('pagination', $result);
+        $this->assertStringContainsString('data', $result);
         $this->assertStringContainsString('status', $result);
         $this->assertStringNotContainsString('error', $result);
     }

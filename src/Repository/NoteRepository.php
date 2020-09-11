@@ -36,8 +36,8 @@ final class NoteRepository extends BaseRepository
         return "
             SELECT *
             FROM `notes`
-            WHERE `name` LIKE CONCAT('%',:name,'%')
-            AND `description` LIKE CONCAT('%',:description,'%')
+            WHERE `name` LIKE CONCAT('%', :name, '%')
+            AND `description` LIKE CONCAT('%', :description, '%')
             ORDER BY `id`
         ";
     }
@@ -49,8 +49,8 @@ final class NoteRepository extends BaseRepository
         ?string $description
     ): array {
         $params = [
-            'name' => is_null($name) ? '' : '%' . $name . '%',
-            'description' => is_null($description) ? '' : '%'.$description.'%',
+            'name' => is_null($name) ? '' : $name,
+            'description' => is_null($description) ? '' : $description,
         ];
         $query = $this->getQueryNotesByPage();
         $statement = $this->database->prepare($query);

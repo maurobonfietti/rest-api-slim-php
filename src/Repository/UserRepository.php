@@ -41,8 +41,8 @@ final class UserRepository extends BaseRepository
         ?string $email
     ): array {
         $params = [
-            'name' => is_null($name) ? '' : '%' . $name . '%',
-            'email' => is_null($email) ? '' : '%' . $email . '%',
+            'name' => is_null($name) ? '' : $name,
+            'email' => is_null($email) ? '' : $email,
         ];
         $query = $this->getQueryUsersByPage();
         $statement = $this->database->prepare($query);
@@ -65,8 +65,8 @@ final class UserRepository extends BaseRepository
         return "
             SELECT `id`, `name`, `email`
             FROM `users`
-            WHERE `name` LIKE CONCAT('%',:name,'%')
-            AND `email` LIKE CONCAT('%',:email,'%')
+            WHERE `name` LIKE CONCAT('%', :name, '%')
+            AND `email` LIKE CONCAT('%', :email, '%')
             ORDER BY `id`
         ";
     }

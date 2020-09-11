@@ -8,6 +8,31 @@ use App\Exception\Task;
 
 final class TaskService extends Base
 {
+    public function getTasksByPage(
+        int $userId,
+        int $page,
+        int $perPage,
+        ?string $name,
+        ?string $description,
+        ?string $status
+    ): array {
+        if ($page < 1) {
+            $page = 1;
+        }
+        if ($perPage < 1) {
+            $perPage = self::DEFAULT_PER_PAGE_PAGINATION;
+        }
+
+        return $this->getTaskRepository()->getTasksByPage(
+            $userId,
+            $page,
+            $perPage,
+            $name,
+            $description,
+            $status
+        );
+    }
+
     public function getAllTasks(): array
     {
         return $this->getTaskRepository()->getAllTasks();

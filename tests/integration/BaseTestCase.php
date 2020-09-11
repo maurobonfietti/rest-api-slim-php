@@ -12,6 +12,7 @@ use Psr\Http\Message\ResponseInterface;
 
 class BaseTestCase extends \PHPUnit\Framework\TestCase
 {
+    /** @var string */
     public static $jwt = '';
 
     public function runApp(
