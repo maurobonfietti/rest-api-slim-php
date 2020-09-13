@@ -62,7 +62,7 @@ abstract class Base extends BaseService
         return $user;
     }
 
-    protected function getUserFromDb(int $userId): object
+    protected function getUserFromDb(int $userId): \App\Entity\User
     {
         return $this->userRepository->getUser($userId);
     }

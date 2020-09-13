@@ -71,11 +71,9 @@ final class UserService extends Base
             throw new User('Enter the data to update the user.', 400);
         }
         if (isset($data->name)) {
-//            $user->name = self::validateUserName($data->name);
             $user->updateName(self::validateUserName($data->name));
         }
         if (isset($data->email)) {
-//            $user->email = self::validateEmail($data->email);
             $user->updateEmail(self::validateEmail($data->email));
         }
         /** @var \App\Entity\User $users */
@@ -109,9 +107,9 @@ final class UserService extends Base
         $password = hash('sha512', $data->password);
         $user = $this->userRepository->loginUser($data->email, $password);
         $token = [
-            'sub' => $user->id,
-            'email' => $user->email,
-            'name' => $user->name,
+            'sub' => $user->getId(),
+            'email' => $user->getEmail(),
+            'name' => $user->getName(),
             'iat' => time(),
             'exp' => time() + (7 * 24 * 60 * 60),
         ];
@@ -119,7 +117,7 @@ final class UserService extends Base
         return JWT::encode($token, $_SERVER['SECRET_KEY']);
     }
 
-    private function validateUserData(array $input): object
+    private function validateUserData(array $input): \App\Entity\User
     {
         $user = json_decode((string) json_encode($input), false);
         if (! isset($user->name)) {
