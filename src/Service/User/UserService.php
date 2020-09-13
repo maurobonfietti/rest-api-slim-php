@@ -40,7 +40,7 @@ final class UserService extends Base
         if (self::isRedisEnabled() === true) {
             $user = $this->getUserFromCache($userId);
         } else {
-            $user = $this->getUserFromDb($userId);
+            $user = $this->getUserFromDb($userId)->getData();
         }
 
         return $user;
@@ -54,12 +54,13 @@ final class UserService extends Base
     public function create(array $input): object
     {
         $data = $this->validateUserData($input);
+        /** @var \App\Entity\User $user */
         $user = $this->userRepository->create($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $user->id, $user);
+            $this->saveInCache((int) $user->getId(), $user->getData());
         }
 
-        return $user;
+        return $user->getData();
     }
 
     public function update(array $input, int $userId): object
@@ -70,17 +71,20 @@ final class UserService extends Base
             throw new User('Enter the data to update the user.', 400);
         }
         if (isset($data->name)) {
-            $user->name = self::validateUserName($data->name);
+//            $user->name = self::validateUserName($data->name);
+            $user->updateName(self::validateUserName($data->name));
         }
         if (isset($data->email)) {
-            $user->email = self::validateEmail($data->email);
+//            $user->email = self::validateEmail($data->email);
+            $user->updateEmail(self::validateEmail($data->email));
         }
+        /** @var \App\Entity\User $users */
         $users = $this->userRepository->update($user);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $users->id, $users);
+            $this->saveInCache((int) $users->getId(), $users->getData());
         }
 
-        return $users;
+        return $users->getData();
     }
 
     public function delete(int $userId): void

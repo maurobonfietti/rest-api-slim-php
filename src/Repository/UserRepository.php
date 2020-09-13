@@ -14,7 +14,7 @@ final class UserRepository extends BaseRepository
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();
-        $user = $statement->fetchObject();
+        $user = $statement->fetchObject(\App\Entity\User::class);
         if (! $user) {
             throw new User('User not found.', 404);
         }
@@ -143,12 +143,15 @@ final class UserRepository extends BaseRepository
             UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id
         ';
         $statement = $this->database->prepare($query);
-        $statement->bindParam('id', $user->id);
-        $statement->bindParam('name', $user->name);
-        $statement->bindParam('email', $user->email);
+        $id = $user->getId();
+        $name = $user->getName();
+        $email = $user->getEmail();
+        $statement->bindParam('id', $id);
+        $statement->bindParam('name', $name);
+        $statement->bindParam('email', $email);
         $statement->execute();
 
-        return $this->getUser((int) $user->id);
+        return $this->getUser((int) $id);
     }
 
     public function delete(int $userId): void
