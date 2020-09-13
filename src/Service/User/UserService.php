@@ -40,7 +40,7 @@ final class UserService extends Base
         if (self::isRedisEnabled() === true) {
             $user = $this->getUserFromCache($userId);
         } else {
-            $user = $this->getUserFromDb($userId);
+            $user = $this->getUserFromDb($userId)->getData();
         }
 
         return $user;
@@ -54,12 +54,13 @@ final class UserService extends Base
     public function create(array $input): object
     {
         $data = $this->validateUserData($input);
+        /** @var \App\Entity\User $user */
         $user = $this->userRepository->create($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $user->id, $user);
+            $this->saveInCache((int) $user->getId(), $user->getData());
         }
 
-        return $user;
+        return $user->getData();
     }
 
     public function update(array $input, int $userId): object
@@ -70,17 +71,18 @@ final class UserService extends Base
             throw new User('Enter the data to update the user.', 400);
         }
         if (isset($data->name)) {
-            $user->name = self::validateUserName($data->name);
+            $user->updateName(self::validateUserName($data->name));
         }
         if (isset($data->email)) {
-            $user->email = self::validateEmail($data->email);
+            $user->updateEmail(self::validateEmail($data->email));
         }
+        /** @var \App\Entity\User $users */
         $users = $this->userRepository->update($user);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $users->id, $users);
+            $this->saveInCache((int) $users->getId(), $users->getData());
         }
 
-        return $users;
+        return $users->getData();
     }
 
     public function delete(int $userId): void
@@ -105,9 +107,9 @@ final class UserService extends Base
         $password = hash('sha512', $data->password);
         $user = $this->userRepository->loginUser($data->email, $password);
         $token = [
-            'sub' => $user->id,
-            'email' => $user->email,
-            'name' => $user->name,
+            'sub' => $user->getId(),
+            'email' => $user->getEmail(),
+            'name' => $user->getName(),
             'iat' => time(),
             'exp' => time() + (7 * 24 * 60 * 60),
         ];
@@ -115,7 +117,7 @@ final class UserService extends Base
         return JWT::encode($token, $_SERVER['SECRET_KEY']);
     }
 
-    private function validateUserData(array $input): object
+    private function validateUserData(array $input): \App\Entity\User
     {
         $user = json_decode((string) json_encode($input), false);
         if (! isset($user->name)) {
@@ -127,11 +129,12 @@ final class UserService extends Base
         if (! isset($user->password)) {
             throw new User('The field "password" is required.', 400);
         }
-        $user->name = self::validateUserName($user->name);
-        $user->email = self::validateEmail($user->email);
-        $user->password = hash('sha512', $user->password);
+        $myuser = new \App\Entity\User();
+        $myuser->updateName(self::validateUserName($user->name));
+        $myuser->updateEmail(self::validateEmail($user->email));
+        $myuser->updatePassword(hash('sha512', $user->password));
         $this->userRepository->checkUserByEmail($user->email);
 
-        return $user;
+        return $myuser;
     }
 }
