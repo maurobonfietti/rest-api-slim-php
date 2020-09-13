@@ -131,11 +131,12 @@ final class UserService extends Base
         if (! isset($user->password)) {
             throw new User('The field "password" is required.', 400);
         }
-        $user->name = self::validateUserName($user->name);
-        $user->email = self::validateEmail($user->email);
-        $user->password = hash('sha512', $user->password);
+        $myuser = new \App\Entity\User();
+        $myuser->updateName(self::validateUserName($user->name));
+        $myuser->updateEmail(self::validateEmail($user->email));
+        $myuser->updatePassword(hash('sha512', $user->password));
         $this->userRepository->checkUserByEmail($user->email);
 
-        return $user;
+        return $myuser;
     }
 }

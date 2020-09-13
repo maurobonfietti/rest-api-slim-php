@@ -8,7 +8,7 @@ use App\Exception\User;
 
 final class UserRepository extends BaseRepository
 {
-    public function getUser(int $userId): object
+    public function getUser(int $userId): \App\Entity\User
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
@@ -120,7 +120,7 @@ final class UserRepository extends BaseRepository
         return $user;
     }
 
-    public function create(object $user): object
+    public function create(object $user): \App\Entity\User
     {
         $query = '
             INSERT INTO `users`
@@ -129,15 +129,18 @@ final class UserRepository extends BaseRepository
                 (:name, :email, :password)
         ';
         $statement = $this->database->prepare($query);
-        $statement->bindParam('name', $user->name);
-        $statement->bindParam('email', $user->email);
-        $statement->bindParam('password', $user->password);
+        $name = $user->getName();
+        $email = $user->getEmail();
+        $password = $user->getPassword();
+        $statement->bindParam('name', $name);
+        $statement->bindParam('email', $email);
+        $statement->bindParam('password', $password);
         $statement->execute();
 
         return $this->getUser((int) $this->database->lastInsertId());
     }
 
-    public function update(object $user): object
+    public function update(\App\Entity\User $user): \App\Entity\User
     {
         $query = '
             UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id
