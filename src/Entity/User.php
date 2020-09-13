@@ -15,6 +15,9 @@ final class User
     /** @var string $email */
     private $email;
 
+    /** @var string $password */
+    private $password;
+
     public function getId(): int
     {
         return $this->id;
@@ -40,6 +43,18 @@ final class User
     public function updateEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function updatePassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }
