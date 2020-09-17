@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-final class Note
+final class Task
 {
     /** @var int */
     private $id;
@@ -14,6 +14,12 @@ final class Note
 
     /** @var string|null */
     private $description;
+
+    /** @var int */
+    private $status;
+
+    /** @var int */
+    private $userId;
 
     public function getId(): int
     {
@@ -44,13 +50,39 @@ final class Note
         return $this;
     }
 
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    public function updateStatus(int $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    public function updateUserId(int $userId): self
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
     public function getData(): object
     {
-        $note = new \stdClass();
-        $note->id = $this->getId();
-        $note->name = $this->getName();
-        $note->description = $this->getDescription();
+        $task = new \stdClass();
+        $task->id = $this->getId();
+        $task->name = $this->getName();
+        $task->description = $this->getDescription();
+        $task->status = $this->getStatus();
+        $task->userId = $this->getUserId();
 
-        return $note;
+        return $task;
     }
 }
