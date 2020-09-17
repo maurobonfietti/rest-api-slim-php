@@ -6,16 +6,16 @@ namespace App\Entity;
 
 final class User
 {
-    /** @var int $id */
+    /** @var int */
     private $id;
 
-    /** @var string $name */
+    /** @var string */
     private $name;
 
-    /** @var string $email */
+    /** @var string */
     private $email;
 
-    /** @var string $password */
+    /** @var string */
     private $password;
 
     public function getId(): int

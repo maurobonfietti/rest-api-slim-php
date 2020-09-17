@@ -58,14 +58,14 @@ abstract class Base extends BaseService
         if ($this->redisService->exists($key)) {
             $task = $this->redisService->get($key);
         } else {
-            $task = $this->getTaskFromDb($taskId, $userId);
+            $task = $this->getTaskFromDb($taskId, $userId)->getData();
             $this->redisService->setex($key, $task);
         }
 
         return $task;
     }
 
-    protected function getTaskFromDb(int $taskId, int $userId): object
+    protected function getTaskFromDb(int $taskId, int $userId): \App\Entity\Task
     {
         return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }
