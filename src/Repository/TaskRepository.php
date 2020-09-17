@@ -53,7 +53,7 @@ final class TaskRepository extends BaseRepository
         );
     }
 
-    public function checkAndGetTask(int $taskId, int $userId): object
+    public function checkAndGetTask(int $taskId, int $userId): \App\Entity\Task
     {
         $query = '
             SELECT * FROM `tasks` WHERE `id` = :id AND `userId` = :userId
@@ -104,7 +104,7 @@ final class TaskRepository extends BaseRepository
         return (array) $statement->fetchAll();
     }
 
-    public function create(object $task): object
+    public function create(\App\Entity\Task $task): \App\Entity\Task
     {
         $query = '
             INSERT INTO `tasks`
@@ -113,18 +113,22 @@ final class TaskRepository extends BaseRepository
                 (:name, :description, :status, :userId)
         ';
         $statement = $this->getDb()->prepare($query);
-        $statement->bindParam('name', $task->name);
-        $statement->bindParam('description', $task->description);
-        $statement->bindParam('status', $task->status);
-        $statement->bindParam('userId', $task->userId);
+        $name = $task->getName();
+        $desc = $task->getDescription();
+        $status = $task->getStatus();
+        $userId = $task->getUserId();
+        $statement->bindParam('name', $name);
+        $statement->bindParam('description', $desc);
+        $statement->bindParam('status', $status);
+        $statement->bindParam('userId', $userId);
         $statement->execute();
 
         $taskId = (int) $this->database->lastInsertId();
 
-        return $this->checkAndGetTask($taskId, (int) $task->userId);
+        return $this->checkAndGetTask($taskId, (int) $userId);
     }
 
-    public function update(object $task): object
+    public function update(\App\Entity\Task $task): \App\Entity\Task
     {
         $query = '
             UPDATE `tasks`

@@ -72,15 +72,16 @@ final class TaskService extends Base
         if (! isset($data->name)) {
             throw new Task('The field "name" is required.', 400);
         }
-        self::validateTaskName($data->name);
-        $data->description = $data->description ?? null;
+        $mytask = new \App\Entity\Task();
+        $mytask->updateName(self::validateTaskName($data->name));
+        $mytask->updateDescription($data->description ?? null);
         $status = 0;
         if (isset($data->status)) {
             $status = self::validateTaskStatus($data->status);
         }
-        $data->status = $status;
-        $data->userId = (int) $data->decoded->sub;
-        $task = $this->getTaskRepository()->create($data);
+        $mytask->updateStatus($status);
+        $mytask->updateUserId((int) $data->decoded->sub);
+        $task = $this->getTaskRepository()->create($mytask);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($task->getId(), $task->getUserId(), $task->getData());
         }
