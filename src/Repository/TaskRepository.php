@@ -62,7 +62,7 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('id', $taskId);
         $statement->bindParam('userId', $userId);
         $statement->execute();
-        $task = $statement->fetchObject();
+        $task = $statement->fetchObject(\App\Entity\Task::class);
         if (! $task) {
             throw new Task('Task not found.', 404);
         }
@@ -132,14 +132,19 @@ final class TaskRepository extends BaseRepository
             WHERE `id` = :id AND `userId` = :userId
         ';
         $statement = $this->getDb()->prepare($query);
-        $statement->bindParam('id', $task->id);
-        $statement->bindParam('name', $task->name);
-        $statement->bindParam('description', $task->description);
-        $statement->bindParam('status', $task->status);
-        $statement->bindParam('userId', $task->userId);
+        $id = $task->getId();
+        $name = $task->getName();
+        $desc = $task->getDescription();
+        $status = $task->getStatus();
+        $userId = $task->getUserId();
+        $statement->bindParam('id', $id);
+        $statement->bindParam('name', $name);
+        $statement->bindParam('description', $desc);
+        $statement->bindParam('status', $status);
+        $statement->bindParam('userId', $userId);
         $statement->execute();
 
-        return $this->checkAndGetTask((int) $task->id, (int) $task->userId);
+        return $this->checkAndGetTask((int) $id, (int) $userId);
     }
 
     public function delete(int $taskId, int $userId): void

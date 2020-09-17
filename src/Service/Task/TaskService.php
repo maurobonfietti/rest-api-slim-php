@@ -48,7 +48,7 @@ final class TaskService extends Base
         if (self::isRedisEnabled() === true) {
             $task = $this->getTaskFromCache($taskId, $userId);
         } else {
-            $task = $this->getTaskFromDb($taskId, $userId);
+            $task = $this->getTaskFromDb($taskId, $userId)->getData();
         }
 
         return $task;
@@ -82,10 +82,10 @@ final class TaskService extends Base
         $data->userId = (int) $data->decoded->sub;
         $task = $this->getTaskRepository()->create($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($task->id, $task->userId, $task);
+            $this->saveInCache($task->getId(), $task->getUserId(), $task->getData());
         }
 
-        return $task;
+        return $task->getData();
     }
 
     public function update(array $input, int $taskId): object
@@ -93,10 +93,10 @@ final class TaskService extends Base
         $data = $this->validateTask($input, $taskId);
         $task = $this->getTaskRepository()->update($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($task->id, (int) $data->userId, $task);
+            $this->saveInCache($task->getId(), (int) $data->getUserId(), $task->getData());
         }
 
-        return $task;
+        return $task->getData();
     }
 
     public function delete(int $taskId, int $userId): void
@@ -116,15 +116,15 @@ final class TaskService extends Base
             throw new Task('Enter the data to update the task.', 400);
         }
         if (isset($data->name)) {
-            $task->name = self::validateTaskName($data->name);
+            $task->updateName(self::validateTaskName($data->name));
         }
         if (isset($data->description)) {
-            $task->description = $data->description;
+            $task->updateDescription($data->description);
         }
         if (isset($data->status)) {
-            $task->status = self::validateTaskStatus($data->status);
+            $task->updateStatus(self::validateTaskStatus($data->status));
         }
-        $task->userId = (int) $data->decoded->sub;
+        $task->updateUserId((int) $data->decoded->sub);
 
         return $task;
     }
