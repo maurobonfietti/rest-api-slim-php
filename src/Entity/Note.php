@@ -6,13 +6,13 @@ namespace App\Entity;
 
 final class Note
 {
-    /** @var int $id */
+    /** @var int */
     private $id;
 
-    /** @var string $name */
+    /** @var string */
     private $name;
 
-    /** @var string|null $description */
+    /** @var string|null */
     private $description;
 
     public function getId(): int
