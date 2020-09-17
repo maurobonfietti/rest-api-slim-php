@@ -65,7 +65,7 @@ abstract class Base extends BaseService
         return $task;
     }
 
-    protected function getTaskFromDb(int $taskId, int $userId): object
+    protected function getTaskFromDb(int $taskId, int $userId): \App\Entity\Task
     {
         return $this->getTaskRepository()->checkAndGetTask($taskId, $userId);
     }

@@ -74,13 +74,15 @@ final class TaskService extends Base
         }
         $mytask = new \App\Entity\Task();
         $mytask->updateName(self::validateTaskName($data->name));
-        $mytask->updateDescription($data->description ?? null);
+        $desc = isset($data->description) ? $data->description : null;
+        $mytask->updateDescription($desc);
         $status = 0;
         if (isset($data->status)) {
             $status = self::validateTaskStatus($data->status);
         }
         $mytask->updateStatus($status);
         $mytask->updateUserId((int) $data->decoded->sub);
+        /** @var \App\Entity\Task $task */
         $task = $this->getTaskRepository()->create($mytask);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($task->getId(), $task->getUserId(), $task->getData());
@@ -92,6 +94,7 @@ final class TaskService extends Base
     public function update(array $input, int $taskId): object
     {
         $data = $this->validateTask($input, $taskId);
+        /** @var \App\Entity\Task $task */
         $task = $this->getTaskRepository()->update($data);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($task->getId(), (int) $data->getUserId(), $task->getData());
@@ -109,7 +112,7 @@ final class TaskService extends Base
         }
     }
 
-    private function validateTask(array $input, int $taskId): object
+    private function validateTask(array $input, int $taskId): \App\Entity\Task
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode((string) json_encode($input), false);
