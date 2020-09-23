@@ -228,6 +228,17 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 
 
 
+***Query params:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| page | 1 |  |
+| name |  |  |
+| description |  |  |
+| perPage | 10 |  |
+
+
+
 ### 2. Get One Note
 
 
@@ -329,7 +340,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
 ```bash
 Method: DELETE
 Type: FORMDATA
-URL: {{domain-api-rest-slimphp}}/api/v1/notes/38
+URL: {{domain-api-rest-slimphp}}/api/v1/notes/22
 ```
 
 
@@ -362,6 +373,18 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 
 
 
+***Query params:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| page | 1 |  |
+| perPage | 5 |  |
+| name |  |  |
+| description |  |  |
+| status |  |  |
+
+
+
 ### 2. Get One Task
 
 
@@ -373,7 +396,7 @@ Get one task of a user.
 ```bash
 Method: GET
 Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/7
+URL: {{domain-api-rest-slimphp}}/api/v1/tasks/13
 ```
 
 
@@ -539,6 +562,17 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users
 
 
 
+***Query params:***
+
+| Key | Value | Description |
+| --- | ------|-------------|
+| page | 1 |  |
+| name |  |  |
+| email |  |  |
+| perPage | 10 |  |
+
+
+
 ### 2. Get One User
 
 
@@ -627,7 +661,7 @@ Update a user.
 ```bash
 Method: PUT
 Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/users/4
+URL: {{domain-api-rest-slimphp}}/api/v1/users/9
 ```
 
 
@@ -644,8 +678,9 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/4
 
 ```js        
 {
-  "name": "Jhon R",
-  "email": "ram@hotmail.com"
+  "name": "John The User 22",
+  "email": "super.email@host.com",
+  "password": "OnePass1"
 }
 ```
 
@@ -676,4 +711,4 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/112
 
 ---
 [Back to top](#rest-api-slim-php)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-04-17 15:40:38 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-09-23 20:16:43 by [docgen](https://github.com/thedevsaddam/docgen)

@@ -366,7 +366,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c99e2f66-7cb0-41c1-ab55-dd3e0c40ebd8",
+								"id": "b14c0382-9875-4a65-afd5-7c598598f9a8",
 								"exec": [
 									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
@@ -391,7 +391,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/users",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/users?page=1&name=&email=&perPage=10",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -399,6 +399,24 @@
 								"api",
 								"v1",
 								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": ""
+								},
+								{
+									"key": "email",
+									"value": ""
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -579,10 +597,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Jhon R\",\n  \"email\": \"ram@hotmail.com\"\n}"
+							"raw": "{\n  \"name\": \"John The User 22\",\n  \"email\": \"super.email@host.com\",\n  \"password\": \"OnePass1\"\n}"
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/4",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/9",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -590,7 +608,7 @@
 								"api",
 								"v1",
 								"users",
-								"4"
+								"9"
 							]
 						},
 						"description": "Update a user."
@@ -680,7 +698,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks?page=1&perPage=5&name=&description=&status=",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -688,6 +706,28 @@
 								"api",
 								"v1",
 								"tasks"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "perPage",
+									"value": "5"
+								},
+								{
+									"key": "name",
+									"value": ""
+								},
+								{
+									"key": "description",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": ""
+								}
 							]
 						},
 						"description": "Get all tasks of a user."
@@ -725,7 +765,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/7",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/13",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -733,7 +773,7 @@
 								"api",
 								"v1",
 								"tasks",
-								"7"
+								"13"
 							]
 						},
 						"description": "Get one task of a user."
@@ -960,7 +1000,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3c909b9a-3b09-40e4-ac19-2cb0e8996922",
+								"id": "6e14b6b6-33dc-4c48-883e-2e4fd6a53b58",
 								"exec": [
 									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
 									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
@@ -979,7 +1019,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes?page=1&name=&description=&perPage=10",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -987,6 +1027,24 @@
 								"api",
 								"v1",
 								"notes"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": ""
+								},
+								{
+									"key": "description",
+									"value": ""
+								},
+								{
+									"key": "perPage",
+									"value": "10"
+								}
 							]
 						}
 					},
@@ -1190,7 +1248,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/38",
+							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/22",
 							"host": [
 								"{{domain-api-rest-slimphp}}"
 							],
@@ -1198,7 +1256,7 @@
 								"api",
 								"v1",
 								"notes",
-								"38"
+								"22"
 							]
 						}
 					},
