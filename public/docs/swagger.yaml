@@ -16,7 +16,6 @@ servers:
 
 - url: http://localhost:8081
   description: My localhost server using docker and docker compose.
-
 paths:
   /:
     get:
@@ -232,6 +231,42 @@ paths:
       summary: Get All Users
       operationId: GetAllUsers
       parameters:
+      - name: page
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      - name: name
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: perPage
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 10
       - name: Authorization
         in: header
         description: ''
@@ -311,7 +346,7 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /api/v1/users/4:
+  /api/v1/users/9:
     put:
       tags:
       - Users
@@ -334,8 +369,9 @@ paths:
             schema:
               $ref: '#/components/schemas/UpdateUserRequest'
             example:
-              name: Jhon R
-              email: ram@hotmail.com
+              name: John The User 22
+              email: super.email@host.com
+              password: OnePass1
         required: true
       responses:
         200:
@@ -373,6 +409,50 @@ paths:
       description: Get all tasks of a user.
       operationId: GetAllTasks
       parameters:
+      - name: page
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      - name: perPage
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 5
+      - name: name
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: description
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
       - name: Authorization
         in: header
         description: ''
@@ -419,7 +499,7 @@ paths:
           headers: {}
       deprecated: false
       security: []
-  /api/v1/tasks/7:
+  /api/v1/tasks/13:
     get:
       tags:
       - Tasks
@@ -533,7 +613,43 @@ paths:
       - Notes
       summary: Get All Notes
       operationId: GetAllNotes
-      parameters: []
+      parameters:
+      - name: page
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 1
+      - name: name
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: description
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: perPage
+        in: query
+        description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 10
       responses:
         200:
           description: ''
@@ -606,7 +722,7 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-  /api/v1/notes/38:
+  /api/v1/notes/22:
     delete:
       tags:
       - Notes
@@ -855,15 +971,19 @@ components:
       required:
       - name
       - email
+      - password
       type: object
       properties:
         name:
           type: string
         email:
           type: string
+        password:
+          type: string
       example:
-        name: Jhon R
-        email: ram@hotmail.com
+        name: John The User 22
+        email: super.email@host.com
+        password: OnePass1
     CreateTaskRequest:
       title: CreateTaskRequest
       required:
