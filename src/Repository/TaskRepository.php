@@ -89,21 +89,6 @@ final class TaskRepository extends BaseRepository
         return (array) $statement->fetchAll();
     }
 
-    public function search(string $tasksName, int $userId, ?int $status): array
-    {
-        $query = $this->getSearchTasksQuery($status);
-        $name = '%' . $tasksName . '%';
-        $statement = $this->getDb()->prepare($query);
-        $statement->bindParam('name', $name);
-        $statement->bindParam('userId', $userId);
-        if ($status === 0 || $status === 1) {
-            $statement->bindParam('status', $status);
-        }
-        $statement->execute();
-
-        return (array) $statement->fetchAll();
-    }
-
     public function create(\App\Entity\Task $task): \App\Entity\Task
     {
         $query = '
@@ -158,19 +143,5 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('id', $taskId);
         $statement->bindParam('userId', $userId);
         $statement->execute();
-    }
-
-    private function getSearchTasksQuery(?int $status): string
-    {
-        $statusQuery = '';
-        if ($status === 0 || $status === 1) {
-            $statusQuery = 'AND `status` = :status';
-        }
-
-        return "
-            SELECT * FROM `tasks`
-            WHERE `name` LIKE :name AND `userId` = :userId ${statusQuery}
-            ORDER BY `id`
-        ";
     }
 }

@@ -85,41 +85,6 @@ class UserTest extends BaseTestCase
     }
 
     /**
-     * Test Search Users.
-     */
-    public function testSearchUsers(): void
-    {
-        $response = $this->runApp('GET', '/api/v1/users/search/j');
-
-        $result = (string) $response->getBody();
-
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
-        $this->assertStringContainsString('success', $result);
-        $this->assertStringContainsString('id', $result);
-        $this->assertStringContainsString('name', $result);
-        $this->assertStringContainsString('email', $result);
-        $this->assertStringNotContainsString('error', $result);
-    }
-
-    /**
-     * Test Search User Not Found.
-     */
-    public function testSearchUserNotFound(): void
-    {
-        $response = $this->runApp('GET', '/api/v1/users/search/123456789');
-
-        $result = (string) $response->getBody();
-
-        $this->assertEquals(404, $response->getStatusCode());
-        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
-        $this->assertStringNotContainsString('success', $result);
-        $this->assertStringNotContainsString('id', $result);
-        $this->assertStringNotContainsString('email', $result);
-        $this->assertStringContainsString('error', $result);
-    }
-
-    /**
      * Test Create User.
      */
     public function testCreateUser(): void

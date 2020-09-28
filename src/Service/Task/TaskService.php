@@ -54,18 +54,6 @@ final class TaskService extends Base
         return $task;
     }
 
-    public function search(
-        string $tasksName,
-        int $userId,
-        ?string $status
-    ): array {
-        if ($status !== null) {
-            $status = (int) $status;
-        }
-
-        return $this->getTaskRepository()->search($tasksName, $userId, $status);
-    }
-
     public function create(array $input): object
     {
         $data = json_decode((string) json_encode($input), false);

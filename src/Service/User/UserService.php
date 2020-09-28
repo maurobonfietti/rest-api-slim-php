@@ -46,11 +46,6 @@ final class UserService extends Base
         return $user;
     }
 
-    public function search(string $usersName): array
-    {
-        return $this->userRepository->search($usersName);
-    }
-
     public function create(array $input): object
     {
         $data = $this->validateUserData($input);
