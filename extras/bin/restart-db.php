@@ -11,7 +11,7 @@ try {
     $username = $db['username'];
     $password = $db['password'];
 
-    $pdo = new PDO("mysql:host=${hostname};charset=UTF8", $username, $password);
+    $pdo = new PDO("mysql:host=${hostname};charset=utf8", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $pdo->exec("DROP DATABASE IF EXISTS ${database}");
