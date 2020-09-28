@@ -21,28 +21,25 @@ This simple RESTful API made in Slim version 3, allows CRUD operations to manage
 
   * [Get All Notes](#1-get-all-notes)
   * [Get One Note](#2-get-one-note)
-  * [Search Notes](#3-search-notes)
-  * [Create Note](#4-create-note)
-  * [Update Note](#5-update-note)
-  * [Delete Note](#6-delete-note)
+  * [Create Note](#3-create-note)
+  * [Update Note](#4-update-note)
+  * [Delete Note](#5-delete-note)
 
 * [Tasks](#tasks)
 
   * [Get All Tasks](#1-get-all-tasks)
   * [Get One Task](#2-get-one-task)
-  * [Search Tasks](#3-search-tasks)
-  * [Create Task](#4-create-task)
-  * [Update Task](#5-update-task)
-  * [Delete Task](#6-delete-task)
+  * [Create Task](#3-create-task)
+  * [Update Task](#4-update-task)
+  * [Delete Task](#5-delete-task)
 
 * [Users](#users)
 
   * [Get All Users](#1-get-all-users)
   * [Get One User](#2-get-one-user)
-  * [Search Users](#3-search-users)
-  * [Create User](#4-create-user)
-  * [Update User](#5-update-user)
-  * [Delete User](#6-delete-user)
+  * [Create User](#3-create-user)
+  * [Update User](#4-update-user)
+  * [Delete User](#5-delete-user)
 
 
 --------
@@ -253,21 +250,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/3
 
 
 
-### 3. Search Notes
-
-
-
-***Endpoint:***
-
-```bash
-Method: GET
-Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/notes/search/note
-```
-
-
-
-### 4. Create Note
+### 3. Create Note
 
 
 
@@ -299,7 +282,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 
 
 
-### 5. Update Note
+### 4. Update Note
 
 
 
@@ -331,7 +314,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes/4
 
 
 
-### 6. Delete Note
+### 5. Delete Note
 
 
 
@@ -408,38 +391,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/13
 
 
 
-### 3. Search Tasks
-
-
-Search tasks of a user.
-
-
-***Endpoint:***
-
-```bash
-Method: GET
-Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/tasks/search/
-```
-
-
-***Headers:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| Authorization | {{jwt}} |  |
-
-
-
-***Query params:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| statuss | 0 |  |
-
-
-
-### 4. Create Task
+### 3. Create Task
 
 
 Create a task.
@@ -476,7 +428,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 
 
 
-### 5. Update Task
+### 4. Update Task
 
 
 Update a task of a user.
@@ -513,7 +465,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks/29
 
 
 
-### 6. Delete Task
+### 5. Delete Task
 
 
 Delete a task of a user.
@@ -594,28 +546,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/8
 
 
 
-### 3. Search Users
-
-
-
-***Endpoint:***
-
-```bash
-Method: GET
-Type: 
-URL: {{domain-api-rest-slimphp}}/api/v1/users/search/d
-```
-
-
-***Headers:***
-
-| Key | Value | Description |
-| --- | ------|-------------|
-| Authorization | {{jwt}} |  |
-
-
-
-### 4. Create User
+### 3. Create User
 
 
 Register a new user.
@@ -650,7 +581,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users
 
 
 
-### 5. Update User
+### 4. Update User
 
 
 Update a user.
@@ -686,7 +617,7 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/9
 
 
 
-### 6. Delete User
+### 5. Delete User
 
 
 Delete a user.
@@ -711,4 +642,4 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/112
 
 ---
 [Back to top](#rest-api-slim-php)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-09-23 20:16:43 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-09-28 18:14:11 by [docgen](https://github.com/thedevsaddam/docgen)

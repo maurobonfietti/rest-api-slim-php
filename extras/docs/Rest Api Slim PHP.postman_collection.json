@@ -468,52 +468,6 @@
 					"response": []
 				},
 				{
-					"name": "Search Users",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "de759f84-9479-4420-994d-77d4d47581f2",
-								"exec": [
-									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
-									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
-									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
-									"tests[\"Body matches user\"] = responseBody.has(\"name\");",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/users/search/d",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"users",
-								"search",
-								"d"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Create User",
 					"event": [
 						{
@@ -781,59 +735,6 @@
 					"response": []
 				},
 				{
-					"name": "Search Tasks",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "dc79d2ad-4b80-4ba7-b190-66dc5a92e3bd",
-								"exec": [
-									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
-									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
-									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
-									"tests[\"Body matches task\"] = responseBody.has(\"name\");",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/tasks/search/?statuss=0",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"tasks",
-								"search",
-								""
-							],
-							"query": [
-								{
-									"key": "statuss",
-									"value": "0"
-								}
-							]
-						},
-						"description": "Search tasks of a user."
-					},
-					"response": []
-				},
-				{
 					"name": "Create Task",
 					"event": [
 						{
@@ -1084,46 +985,6 @@
 								"v1",
 								"notes",
 								"3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Search Notes",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "f825830a-b3ad-474a-9f5f-b619a8db6b6c",
-								"exec": [
-									"tests[\"Response time is less than 250ms\"] = responseTime < 250;",
-									"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
-									"tests[\"Status code is 200\"] = responseCode.code === 200;",
-									"tests[\"Status code name has string\"] = responseCode.name.has(\"OK\");",
-									"tests[\"Body matches success\"] = responseBody.has(\"success\");",
-									"tests[\"Body matches message\"] = responseBody.has(\"message\");",
-									"tests[\"Body matches user\"] = responseBody.has(\"name\");",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{domain-api-rest-slimphp}}/api/v1/notes/search/note",
-							"host": [
-								"{{domain-api-rest-slimphp}}"
-							],
-							"path": [
-								"api",
-								"v1",
-								"notes",
-								"search",
-								"note"
 							]
 						}
 					},

@@ -80,26 +80,6 @@ final class UserRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function search(string $usersName): array
-    {
-        $query = '
-            SELECT `id`, `name`, `email`
-            FROM `users`
-            WHERE `name` LIKE :name
-            ORDER BY `id`
-        ';
-        $name = '%' . $usersName . '%';
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('name', $name);
-        $statement->execute();
-        $users = $statement->fetchAll();
-        if (! $users) {
-            throw new User('User name not found.', 404);
-        }
-
-        return $users;
-    }
-
     public function loginUser(string $email, string $password): \App\Entity\User
     {
         $query = '
