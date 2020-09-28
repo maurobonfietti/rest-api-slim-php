@@ -68,29 +68,6 @@ final class NoteRepository extends BaseRepository
         );
     }
 
-    public function searchNotes(string $strNotes): array
-    {
-        $query = '
-            SELECT *
-            FROM `notes`
-            WHERE `name` LIKE :name OR `description` LIKE :description
-            ORDER BY `id`
-        ';
-        $name = '%' . $strNotes . '%';
-        $description = '%' . $strNotes . '%';
-        $statement = $this->database->prepare($query);
-        $statement->bindParam('name', $name);
-        $statement->bindParam('description', $description);
-        $statement->execute();
-        $notes = $statement->fetchAll();
-        if (! $notes) {
-            $message = 'No notes were found with that name or description.';
-            throw new Note($message, 404);
-        }
-
-        return $notes;
-    }
-
     public function createNote(\App\Entity\Note $note): \App\Entity\Note
     {
         $query = '

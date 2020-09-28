@@ -42,9 +42,4 @@ final class Find extends Base
 
         return $note;
     }
-
-    public function search(string $notesName): array
-    {
-        return $this->noteRepository->searchNotes($notesName);
-    }
 }
