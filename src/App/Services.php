@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Service\Note;
 use App\Service\Task\TaskService;
+use App\Service\User\Find;
 use App\Service\User\UserService;
 use Psr\Container\ContainerInterface;
 
@@ -11,6 +12,15 @@ $container['user_service'] = static function (
     ContainerInterface $container
 ): UserService {
     return new UserService(
+        $container->get('user_repository'),
+        $container->get('redis_service')
+    );
+};
+
+$container['find_user_service'] = static function (
+    ContainerInterface $container
+): Find {
+    return new Find(
         $container->get('user_repository'),
         $container->get('redis_service')
     );
