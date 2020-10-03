@@ -47,8 +47,8 @@ final class DefaultController extends BaseController
 
     private function getDbStats(): array
     {
-        $userService = $this->container->get('find_user_service');
         $taskService = $this->container->get('task_service');
+        $userService = $this->container->get('find_user_service');
         $noteService = $this->container->get('find_note_service');
 
         return [

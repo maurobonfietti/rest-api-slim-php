@@ -7,7 +7,7 @@ namespace App\Service\User;
 use App\Exception\User;
 use Firebase\JWT\JWT;
 
-final class UserService extends Base
+final class Login extends Base
 {
     public function login(array $input): string
     {

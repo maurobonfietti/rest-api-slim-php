@@ -5,17 +5,7 @@ declare(strict_types=1);
 use App\Service\Note;
 use App\Service\Task\TaskService;
 use App\Service\User;
-use App\Service\User\UserService;
 use Psr\Container\ContainerInterface;
-
-$container['user_service'] = static function (
-    ContainerInterface $container
-): UserService {
-    return new UserService(
-        $container->get('user_repository'),
-        $container->get('redis_service')
-    );
-};
 
 $container['find_user_service'] = static function (
     ContainerInterface $container
@@ -48,6 +38,15 @@ $container['delete_user_service'] = static function (
     ContainerInterface $container
 ): User\Delete {
     return new User\Delete(
+        $container->get('user_repository'),
+        $container->get('redis_service')
+    );
+};
+
+$container['login_user_service'] = static function (
+    ContainerInterface $container
+): User\Login {
+    return new User\Login(
         $container->get('user_repository'),
         $container->get('redis_service')
     );
