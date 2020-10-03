@@ -16,7 +16,7 @@ final class GetAll extends Base
         $name = $request->getQueryParam('name', null);
         $email = $request->getQueryParam('email', null);
 
-        $users = $this->getUserService()
+        $users = $this->getFindUserService()
             ->getUsersByPage((int) $page, (int) $perPage, $name, $email);
 
         return $this->jsonResponse($response, 'success', $users, 200);

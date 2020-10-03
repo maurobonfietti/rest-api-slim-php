@@ -9,7 +9,7 @@ use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '2.0.0';
+    public const API_VERSION = '2.1.0';
 
     public function getHelp(Request $request, Response $response): Response
     {
@@ -47,8 +47,8 @@ final class DefaultController extends BaseController
 
     private function getDbStats(): array
     {
-        $userService = $this->container->get('user_service');
         $taskService = $this->container->get('task_service');
+        $userService = $this->container->get('find_user_service');
         $noteService = $this->container->get('find_note_service');
 
         return [
