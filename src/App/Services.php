@@ -35,6 +35,24 @@ $container['create_user_service'] = static function (
     );
 };
 
+$container['update_user_service'] = static function (
+    ContainerInterface $container
+): User\Update {
+    return new User\Update(
+        $container->get('user_repository'),
+        $container->get('redis_service')
+    );
+};
+
+$container['delete_user_service'] = static function (
+    ContainerInterface $container
+): User\Delete {
+    return new User\Delete(
+        $container->get('user_repository'),
+        $container->get('redis_service')
+    );
+};
+
 $container['task_service'] = static function (
     ContainerInterface $container
 ): TaskService {
