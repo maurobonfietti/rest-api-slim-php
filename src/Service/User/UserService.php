@@ -9,29 +9,6 @@ use Firebase\JWT\JWT;
 
 final class UserService extends Base
 {
-    public function getOne(int $userId): object
-    {
-        if (self::isRedisEnabled() === true) {
-            $user = $this->getUserFromCache($userId);
-        } else {
-            $user = $this->getUserFromDb($userId)->getData();
-        }
-
-        return $user;
-    }
-
-    public function create(array $input): object
-    {
-        $data = $this->validateUserData($input);
-        /** @var \App\Entity\User $user */
-        $user = $this->userRepository->create($data);
-        if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $user->getId(), $user->getData());
-        }
-
-        return $user->getData();
-    }
-
     public function update(array $input, int $userId): object
     {
         $user = $this->getUserFromDb($userId);

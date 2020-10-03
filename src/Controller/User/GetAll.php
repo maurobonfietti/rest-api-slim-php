@@ -16,9 +16,6 @@ final class GetAll extends Base
         $name = $request->getQueryParam('name', null);
         $email = $request->getQueryParam('email', null);
 
-//        $users = $this->getUserService()
-//            ->getUsersByPage((int) $page, (int) $perPage, $name, $email);
-
         $users = $this->getFindUserService()
             ->getUsersByPage((int) $page, (int) $perPage, $name, $email);
 
