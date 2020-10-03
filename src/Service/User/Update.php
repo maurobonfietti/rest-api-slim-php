@@ -10,6 +10,18 @@ final class Update extends Base
 {
     public function update(array $input, int $userId): object
     {
+        $user = $this->validateUserData($input, $userId);
+        /** @var \App\Entity\User $users */
+        $users = $this->userRepository->update($user);
+        if (self::isRedisEnabled() === true) {
+            $this->saveInCache((int) $users->getId(), $users->getData());
+        }
+
+        return $users->getData();
+    }
+
+    public function validateUserData(array $input, int $userId): object
+    {
         $user = $this->getUserFromDb($userId);
         $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name) && ! isset($data->email)) {
@@ -21,12 +33,7 @@ final class Update extends Base
         if (isset($data->email)) {
             $user->updateEmail(self::validateEmail($data->email));
         }
-        /** @var \App\Entity\User $users */
-        $users = $this->userRepository->update($user);
-        if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $users->getId(), $users->getData());
-        }
 
-        return $users->getData();
+        return $user;
     }
 }
