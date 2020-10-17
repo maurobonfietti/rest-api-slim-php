@@ -38,11 +38,6 @@ final class TaskService extends Base
         return $this->getTaskRepository()->getAllTasks();
     }
 
-    public function getAll(int $userId): array
-    {
-        return $this->getTaskRepository()->getAll($userId);
-    }
-
     public function getOne(int $taskId, int $userId): object
     {
         if (self::isRedisEnabled() === true) {
