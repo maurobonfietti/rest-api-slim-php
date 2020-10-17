@@ -79,16 +79,6 @@ final class TaskRepository extends BaseRepository
         return (array) $statement->fetchAll();
     }
 
-    public function getAll(int $userId): array
-    {
-        $query = 'SELECT * FROM `tasks` WHERE `userId` = :userId ORDER BY `id`';
-        $statement = $this->getDb()->prepare($query);
-        $statement->bindParam('userId', $userId);
-        $statement->execute();
-
-        return (array) $statement->fetchAll();
-    }
-
     public function create(\App\Entity\Task $task): \App\Entity\Task
     {
         $query = '
