@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\Note;
+use App\Entity\Note;
 
 final class NoteRepository extends BaseRepository
 {
-    public function checkAndGetNote(int $noteId): \App\Entity\Note
+    public function checkAndGetNote(int $noteId): Note
     {
         $query = 'SELECT * FROM `notes` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam(':id', $noteId);
         $statement->execute();
-        $note = $statement->fetchObject(\App\Entity\Note::class);
+        $note = $statement->fetchObject(Note::class);
         if (! $note) {
-            throw new Note('Note not found.', 404);
+            throw new \App\Exception\Note('Note not found.', 404);
         }
 
         return $note;
@@ -68,7 +68,7 @@ final class NoteRepository extends BaseRepository
         );
     }
 
-    public function createNote(\App\Entity\Note $note): \App\Entity\Note
+    public function createNote(Note $note): Note
     {
         $query = '
             INSERT INTO `notes`
@@ -86,7 +86,7 @@ final class NoteRepository extends BaseRepository
         return $this->checkAndGetNote((int) $this->database->lastInsertId());
     }
 
-    public function updateNote(\App\Entity\Note $note): \App\Entity\Note
+    public function updateNote(Note $note): Note
     {
         $query = '
             UPDATE `notes`
