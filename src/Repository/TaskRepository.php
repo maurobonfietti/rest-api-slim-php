@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\Task;
+use App\Entity\Task;
 
 final class TaskRepository extends BaseRepository
 {
@@ -53,7 +53,7 @@ final class TaskRepository extends BaseRepository
         );
     }
 
-    public function checkAndGetTask(int $taskId, int $userId): \App\Entity\Task
+    public function checkAndGetTask(int $taskId, int $userId): Task
     {
         $query = '
             SELECT * FROM `tasks` WHERE `id` = :id AND `userId` = :userId
@@ -62,9 +62,9 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('id', $taskId);
         $statement->bindParam('userId', $userId);
         $statement->execute();
-        $task = $statement->fetchObject(\App\Entity\Task::class);
+        $task = $statement->fetchObject(Task::class);
         if (! $task) {
-            throw new Task('Task not found.', 404);
+            throw new \App\Exception\Task('Task not found.', 404);
         }
 
         return $task;
@@ -79,7 +79,7 @@ final class TaskRepository extends BaseRepository
         return (array) $statement->fetchAll();
     }
 
-    public function create(\App\Entity\Task $task): \App\Entity\Task
+    public function create(Task $task): Task
     {
         $query = '
             INSERT INTO `tasks`
@@ -103,7 +103,7 @@ final class TaskRepository extends BaseRepository
         return $this->checkAndGetTask($taskId, (int) $userId);
     }
 
-    public function update(\App\Entity\Task $task): \App\Entity\Task
+    public function update(Task $task): Task
     {
         $query = '
             UPDATE `tasks`

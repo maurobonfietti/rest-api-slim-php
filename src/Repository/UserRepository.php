@@ -4,19 +4,19 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Exception\User;
+use App\Entity\User;
 
 final class UserRepository extends BaseRepository
 {
-    public function getUser(int $userId): \App\Entity\User
+    public function getUser(int $userId): User
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` WHERE `id` = :id';
         $statement = $this->database->prepare($query);
         $statement->bindParam('id', $userId);
         $statement->execute();
-        $user = $statement->fetchObject(\App\Entity\User::class);
+        $user = $statement->fetchObject(User::class);
         if (! $user) {
-            throw new User('User not found.', 404);
+            throw new \App\Exception\User('User not found.', 404);
         }
 
         return $user;
@@ -30,7 +30,7 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject();
         if ($user) {
-            throw new User('Email already exists.', 400);
+            throw new \App\Exception\User('Email already exists.', 400);
         }
     }
 
@@ -80,7 +80,7 @@ final class UserRepository extends BaseRepository
         return $statement->fetchAll();
     }
 
-    public function loginUser(string $email, string $password): \App\Entity\User
+    public function loginUser(string $email, string $password): User
     {
         $query = '
             SELECT *
@@ -92,15 +92,15 @@ final class UserRepository extends BaseRepository
         $statement->bindParam('email', $email);
         $statement->bindParam('password', $password);
         $statement->execute();
-        $user = $statement->fetchObject(\App\Entity\User::class);
+        $user = $statement->fetchObject(User::class);
         if (! $user) {
-            throw new User('Login failed: Email or password incorrect.', 400);
+            throw new \App\Exception\User('Login failed: Email or password incorrect.', 400);
         }
 
         return $user;
     }
 
-    public function create(\App\Entity\User $user): \App\Entity\User
+    public function create(User $user): User
     {
         $query = '
             INSERT INTO `users`
@@ -120,7 +120,7 @@ final class UserRepository extends BaseRepository
         return $this->getUser((int) $this->database->lastInsertId());
     }
 
-    public function update(\App\Entity\User $user): \App\Entity\User
+    public function update(User $user): User
     {
         $query = '
             UPDATE `users` SET `name` = :name, `email` = :email WHERE `id` = :id
