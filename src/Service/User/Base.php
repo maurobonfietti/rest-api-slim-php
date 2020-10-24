@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\User;
 
-use App\Exception\User;
+use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Service\BaseService;
 use App\Service\RedisService;
@@ -31,7 +31,7 @@ abstract class Base extends BaseService
     protected static function validateUserName(string $name): string
     {
         if (! v::alnum('ÁÉÍÓÚÑáéíóúñ.')->length(1, 100)->validate($name)) {
-            throw new User('Invalid name.', 400);
+            throw new \App\Exception\User('Invalid name.', 400);
         }
 
         return $name;
@@ -41,7 +41,7 @@ abstract class Base extends BaseService
     {
         $email = filter_var($emailValue, FILTER_SANITIZE_EMAIL);
         if (! v::email()->validate($email)) {
-            throw new User('Invalid email', 400);
+            throw new \App\Exception\User('Invalid email', 400);
         }
 
         return (string) $email;
@@ -62,7 +62,7 @@ abstract class Base extends BaseService
         return $user;
     }
 
-    protected function getUserFromDb(int $userId): \App\Entity\User
+    protected function getUserFromDb(int $userId): User
     {
         return $this->userRepository->getUser($userId);
     }

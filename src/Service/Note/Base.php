@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Exception\Note;
+use App\Entity\Note;
 use App\Repository\NoteRepository;
 use App\Service\BaseService;
 use App\Service\RedisService;
@@ -31,7 +31,7 @@ abstract class Base extends BaseService
     protected static function validateNoteName(string $name): string
     {
         if (! v::length(1, 50)->validate($name)) {
-            throw new Note('The name of the note is invalid.', 400);
+            throw new \App\Exception\Note('The name of the note is invalid.', 400);
         }
 
         return $name;
@@ -51,7 +51,7 @@ abstract class Base extends BaseService
         return $note;
     }
 
-    protected function getOneFromDb(int $noteId): \App\Entity\Note
+    protected function getOneFromDb(int $noteId): Note
     {
         return $this->noteRepository->checkAndGetNote($noteId);
     }
