@@ -9,7 +9,7 @@ use Slim\Http\Response;
 
 final class DefaultController extends BaseController
 {
-    public const API_VERSION = '2.2.0';
+    private const API_VERSION = '2.3.0';
 
     public function getHelp(Request $request, Response $response): Response
     {
@@ -52,8 +52,8 @@ final class DefaultController extends BaseController
         $noteService = $this->container->get('find_note_service');
 
         return [
-            'users' => count($userService->getAll()),
             'tasks' => count($taskService->getAllTasks()),
+            'users' => count($userService->getAll()),
             'notes' => count($noteService->getAll()),
         ];
     }

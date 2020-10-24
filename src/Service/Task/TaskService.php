@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Task;
 
-use App\Exception\Task;
+use App\Entity\Task;
 
 final class TaskService extends Base
 {
@@ -53,9 +53,9 @@ final class TaskService extends Base
     {
         $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name)) {
-            throw new Task('The field "name" is required.', 400);
+            throw new \App\Exception\Task('The field "name" is required.', 400);
         }
-        $mytask = new \App\Entity\Task();
+        $mytask = new Task();
         $mytask->updateName(self::validateTaskName($data->name));
         $desc = isset($data->description) ? $data->description : null;
         $mytask->updateDescription($desc);
@@ -65,7 +65,7 @@ final class TaskService extends Base
         }
         $mytask->updateStatus($status);
         $mytask->updateUserId((int) $data->decoded->sub);
-        /** @var \App\Entity\Task $task */
+        /** @var Task $task */
         $task = $this->getTaskRepository()->create($mytask);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($task->getId(), $task->getUserId(), $task->getData());
@@ -77,7 +77,7 @@ final class TaskService extends Base
     public function update(array $input, int $taskId): object
     {
         $data = $this->validateTask($input, $taskId);
-        /** @var \App\Entity\Task $task */
+        /** @var Task $task */
         $task = $this->getTaskRepository()->update($data);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($task->getId(), (int) $data->getUserId(), $task->getData());
@@ -95,12 +95,12 @@ final class TaskService extends Base
         }
     }
 
-    private function validateTask(array $input, int $taskId): \App\Entity\Task
+    private function validateTask(array $input, int $taskId): Task
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name) && ! isset($data->status)) {
-            throw new Task('Enter the data to update the task.', 400);
+            throw new \App\Exception\Task('Enter the data to update the task.', 400);
         }
         if (isset($data->name)) {
             $task->updateName(self::validateTaskName($data->name));

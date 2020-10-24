@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Exception\Note;
+use App\Entity\Note;
 
 final class Create extends Base
 {
@@ -12,13 +12,13 @@ final class Create extends Base
     {
         $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name)) {
-            throw new Note('Invalid data: name is required.', 400);
+            throw new \App\Exception\Note('Invalid data: name is required.', 400);
         }
-        $mynote = new \App\Entity\Note();
+        $mynote = new Note();
         $mynote->updateName(self::validateNoteName($data->name));
         $desc = isset($data->description) ? $data->description : null;
         $mynote->updateDescription($desc);
-        /** @var \App\Entity\Note $note */
+        /** @var Note $note */
         $note = $this->noteRepository->createNote($mynote);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache($note->getId(), $note->getData());

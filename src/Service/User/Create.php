@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Service\User;
 
-use App\Exception\User;
+use App\Entity\User;
 
 final class Create extends Base
 {
     public function create(array $input): object
     {
         $data = $this->validateUserData($input);
-        /** @var \App\Entity\User $user */
+        /** @var User $user */
         $user = $this->userRepository->create($data);
         if (self::isRedisEnabled() === true) {
             $this->saveInCache((int) $user->getId(), $user->getData());
@@ -20,19 +20,19 @@ final class Create extends Base
         return $user->getData();
     }
 
-    private function validateUserData(array $input): \App\Entity\User
+    private function validateUserData(array $input): User
     {
         $user = json_decode((string) json_encode($input), false);
         if (! isset($user->name)) {
-            throw new User('The field "name" is required.', 400);
+            throw new \App\Exception\User('The field "name" is required.', 400);
         }
         if (! isset($user->email)) {
-            throw new User('The field "email" is required.', 400);
+            throw new \App\Exception\User('The field "email" is required.', 400);
         }
         if (! isset($user->password)) {
-            throw new User('The field "password" is required.', 400);
+            throw new \App\Exception\User('The field "password" is required.', 400);
         }
-        $myuser = new \App\Entity\User();
+        $myuser = new User();
         $myuser->updateName(self::validateUserName($user->name));
         $myuser->updateEmail(self::validateEmail($user->email));
         $myuser->updatePassword(hash('sha512', $user->password));
