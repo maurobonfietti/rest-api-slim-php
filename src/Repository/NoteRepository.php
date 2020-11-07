@@ -28,7 +28,7 @@ final class NoteRepository extends BaseRepository
         $statement = $this->database->prepare($query);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return (array) $statement->fetchAll();
     }
 
     public function getQueryNotesByPage(): string
