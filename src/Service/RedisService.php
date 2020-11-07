@@ -28,7 +28,7 @@ final class RedisService
 
     public function get(string $key): object
     {
-        return json_decode($this->redis->get($key));
+        return json_decode((string) $this->redis->get($key));
     }
 
     public function set(string $key, object $value): void

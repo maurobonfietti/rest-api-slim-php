@@ -48,6 +48,6 @@ abstract class BaseRepository
         $statement = $this->database->prepare($query);
         $statement->execute($params);
 
-        return $statement->fetchAll();
+        return (array) $statement->fetchAll();
     }
 }

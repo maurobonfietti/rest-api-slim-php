@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Note;
 
-use App\Entoty\Note;
+use App\Entity\Note;
 
 final class Update extends Base
 {

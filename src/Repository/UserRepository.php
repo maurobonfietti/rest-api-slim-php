@@ -77,7 +77,7 @@ final class UserRepository extends BaseRepository
         $statement = $this->database->prepare($query);
         $statement->execute();
 
-        return $statement->fetchAll();
+        return (array) $statement->fetchAll();
     }
 
     public function loginUser(string $email, string $password): User
