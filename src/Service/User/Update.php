@@ -14,10 +14,10 @@ final class Update extends Base
         /** @var User $user */
         $user = $this->userRepository->update($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $user->getId(), $user->getData());
+            $this->saveInCache((int) $user->getId(), $user->toJson());
         }
 
-        return $user->getData();
+        return $user->toJson();
     }
 
     private function validateUserData(array $input, int $userId): User

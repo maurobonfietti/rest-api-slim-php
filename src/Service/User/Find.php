@@ -37,7 +37,7 @@ final class Find extends Base
         if (self::isRedisEnabled() === true) {
             $user = $this->getUserFromCache($userId);
         } else {
-            $user = $this->getUserFromDb($userId)->getData();
+            $user = $this->getUserFromDb($userId)->toJson();
         }
 
         return $user;

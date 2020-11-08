@@ -55,7 +55,7 @@ abstract class Base extends BaseService
             $data = $this->redisService->get($key);
             $user = json_decode((string) json_encode($data), false);
         } else {
-            $user = $this->getUserFromDb($userId)->getData();
+            $user = $this->getUserFromDb($userId)->toJson();
             $this->redisService->setex($key, $user);
         }
 
