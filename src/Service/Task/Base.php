@@ -58,7 +58,7 @@ abstract class Base extends BaseService
         if ($this->redisService->exists($key)) {
             $task = $this->redisService->get($key);
         } else {
-            $task = $this->getTaskFromDb($taskId, $userId)->getData();
+            $task = $this->getTaskFromDb($taskId, $userId)->toJson();
             $this->redisService->setex($key, $task);
         }
 
