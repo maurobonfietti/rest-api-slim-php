@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Traits\ArrayOrJsonResponse;
+
 final class User
 {
+    use ArrayOrJsonResponse;
+
     /** @var int */
     private $id;
 
@@ -57,15 +61,5 @@ final class User
         $this->password = $password;
 
         return $this;
-    }
-
-    public function getData(): object
-    {
-        $user = new \stdClass();
-        $user->id = $this->getId();
-        $user->name = $this->getName();
-        $user->email = $this->getEmail();
-
-        return $user;
     }
 }

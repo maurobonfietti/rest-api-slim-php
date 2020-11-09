@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Traits\ArrayOrJsonResponse;
+
 final class Note
 {
+    use ArrayOrJsonResponse;
+
     /** @var int */
     private $id;
 
@@ -42,15 +46,5 @@ final class Note
         $this->description = $description;
 
         return $this;
-    }
-
-    public function getData(): object
-    {
-        $note = new \stdClass();
-        $note->id = $this->getId();
-        $note->name = $this->getName();
-        $note->description = $this->getDescription();
-
-        return $note;
     }
 }

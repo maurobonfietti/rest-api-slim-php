@@ -44,7 +44,7 @@ abstract class Base extends BaseService
         if ($this->redisService->exists($key)) {
             $note = $this->redisService->get($key);
         } else {
-            $note = $this->getOneFromDb($noteId)->getData();
+            $note = $this->getOneFromDb($noteId)->toJson();
             $this->redisService->setex($key, $note);
         }
 

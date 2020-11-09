@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Traits\ArrayOrJsonResponse;
+
 final class Task
 {
+    use ArrayOrJsonResponse;
+
     /** @var int */
     private $id;
 
@@ -72,17 +76,5 @@ final class Task
         $this->userId = $userId;
 
         return $this;
-    }
-
-    public function getData(): object
-    {
-        $task = new \stdClass();
-        $task->id = $this->getId();
-        $task->name = $this->getName();
-        $task->description = $this->getDescription();
-        $task->status = $this->getStatus();
-        $task->userId = $this->getUserId();
-
-        return $task;
     }
 }
