@@ -6,10 +6,10 @@ return [
     'settings' => [
         'displayErrorDetails' => $_SERVER['DISPLAY_ERROR_DETAILS'],
         'db' => [
-            'hostname' => $_SERVER['DB_HOSTNAME'],
-            'database' => $_SERVER['DB_DATABASE'],
-            'username' => $_SERVER['DB_USERNAME'],
-            'password' => $_SERVER['DB_PASSWORD'],
+            'host' => $_SERVER['DB_HOST'],
+            'name' => $_SERVER['DB_NAME'],
+            'user' => $_SERVER['DB_USER'],
+            'pass' => $_SERVER['DB_PASS'],
             'port' => $_SERVER['DB_PORT'],
         ],
         'redis' => [
