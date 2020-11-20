@@ -11,10 +11,11 @@ services:
 env:
   global:
     - CC_TEST_REPORTER_ID=5acc45b5f48d4ca2a5baa0d22ee9a10890b29a76b3ef34a936fdd0ba8c5d7ba8
-    - DB_HOSTNAME=127.0.0.1
-    - DB_DATABASE=rest_api_slim_php
-    - DB_USERNAME=root
-    - DB_PASSWORD=
+    - DB_HOST=127.0.0.1
+    - DB_NAME=rest_api_slim_php
+    - DB_USER=root
+    - DB_PASS=
+    - DB_PORT=3306
     - DISPLAY_ERROR_DETAILS=true
     - APP_DOMAIN='https://www.awesome.com.ar'
     - SECRET_KEY=YourSuperSecret-KeY
