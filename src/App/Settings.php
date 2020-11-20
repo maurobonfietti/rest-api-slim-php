@@ -10,6 +10,7 @@ return [
             'database' => $_SERVER['DB_DATABASE'],
             'username' => $_SERVER['DB_USERNAME'],
             'password' => $_SERVER['DB_PASSWORD'],
+            'port' => $_SERVER['DB_PORT'],
         ],
         'redis' => [
             'enabled' => $_SERVER['REDIS_ENABLED'],
