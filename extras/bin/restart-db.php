@@ -6,21 +6,22 @@ require __DIR__ . '/../../src/App/App.php';
 
 try {
     $db = $container->get('settings')['db'];
-    $hostname = $db['hostname'];
-    $database = $db['database'];
-    $username = $db['username'];
-    $password = $db['password'];
+    $host = $db['host'];
+    $name = $db['name'];
+    $user = $db['user'];
+    $pass = $db['pass'];
+    $port = $db['port'];
 
-    $pdo = new PDO("mysql:host=${hostname};charset=utf8", $username, $password);
+    $pdo = new PDO("mysql:host=${host};port=$port;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $pdo->exec("DROP DATABASE IF EXISTS ${database}");
+    $pdo->exec("DROP DATABASE IF EXISTS ${name}");
     echo '[OK] Database droped successfully' . PHP_EOL;
 
-    $pdo->exec("CREATE DATABASE ${database}");
+    $pdo->exec("CREATE DATABASE ${name}");
     echo '[OK] Database created successfully' . PHP_EOL;
 
-    $pdo->exec("USE ${database}");
+    $pdo->exec("USE ${name}");
     echo '[OK] Database selected successfully' . PHP_EOL;
 
     $sql = file_get_contents(__DIR__ . '/../../database/database.sql');

@@ -38,10 +38,11 @@ $ mysql rest_api_slim_php < database/database.sql
 Edit and complete configuration file: `.env`. For example:
 
 ```
-DB_HOSTNAME='127.0.0.1'
-DB_DATABASE='rest_api_slim_php'
-DB_USERNAME='root'
-DB_PASSWORD=''
+DB_HOST='127.0.0.1'
+DB_NAME='rest_api_slim_php'
+DB_USER='root'
+DB_PASS=''
+DB_PORT='3306'
 ```
 
 

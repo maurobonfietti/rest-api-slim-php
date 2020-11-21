@@ -9,7 +9,7 @@ $envFile = $baseDir . '.env';
 if (file_exists($envFile)) {
     $dotenv->load();
 }
-$dotenv->required(['DB_HOSTNAME', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD']);
+$dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'DB_PORT']);
 $settings = require __DIR__ . '/Settings.php';
 $app = new \Slim\App($settings);
 $app->add(new \CorsSlim\CorsSlim());

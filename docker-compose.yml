@@ -21,10 +21,11 @@ services:
       - PHP_FPM_SERVER_ADDR=php
       - PHP_FPM_SERVER_PORT=9000
       - PHP_FPM_TIMEOUT=${HTTPD_TIMEOUT_TO_PHP_FPM:-180}
-      - DB_HOSTNAME=mysql
-      - DB_DATABASE=rest_api_slim_php
-      - DB_USERNAME=root
-      - DB_PASSWORD=
+      - DB_HOST=mysql
+      - DB_NAME=rest_api_slim_php
+      - DB_USER=root
+      - DB_PASS=
+      - DB_PORT=3306
 
     volumes:
       - ./:/var/www/html

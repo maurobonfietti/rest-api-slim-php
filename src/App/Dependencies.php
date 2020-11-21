@@ -8,8 +8,13 @@ use Psr\Container\ContainerInterface;
 
 $container['db'] = static function (ContainerInterface $container): PDO {
     $db = $container->get('settings')['db'];
-    $dsn = sprintf('mysql:host=%s;dbname=%s;charset=utf8', $db['hostname'], $db['database']);
-    $pdo = new PDO($dsn, $db['username'], $db['password']);
+    $dsn = sprintf(
+        'mysql:host=%s;dbname=%s;port=%s;charset=utf8',
+        $db['host'],
+        $db['name'],
+        $db['port']
+    );
+    $pdo = new PDO($dsn, $db['user'], $db['pass']);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
