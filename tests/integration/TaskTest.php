@@ -6,10 +6,7 @@ namespace Tests\integration;
 
 class TaskTest extends BaseTestCase
 {
-    /**
-     * @var int
-     */
-    private static $id;
+    private static int $id;
 
     /**
      * Test Get All Tasks.
