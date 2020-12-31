@@ -13,12 +13,13 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     // Define what rule sets will be applied
     $parameters->set(Option::SETS, [
-        SetList::DEAD_CODE,
+//        SetList::DEAD_CODE,
+        SetList::PHP_74,
     ]);
 
     // get services (needed for register a single rule)
-    // $services = $containerConfigurator->services();
+//     $services = $containerConfigurator->services();
 
     // register a single rule
-    // $services->set(TypedPropertyRector::class);
+//     $services->set(TypedPropertyRector::class);
 };
