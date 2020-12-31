@@ -28,7 +28,7 @@ I implemented this API in [this project](https://github.com/maurobonfietti/rest-
 
 - Git.
 - Composer.
-- PHP 7.3+.
+- PHP 7.4+.
 - MySQL/MariaDB.
 - Redis (Optional).
 - or Docker.
@@ -145,11 +145,11 @@ Run all PHPUnit tests with `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 9.4.1 by Sebastian Bergmann and contributors.
+PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
 
 .......................................................           55 / 55 (100%)
 
-Time: 00:00.249, Memory: 16.00 MB
+Time: 00:00.184, Memory: 16.00 MB
 
 OK (55 tests, 340 assertions)
 ```
