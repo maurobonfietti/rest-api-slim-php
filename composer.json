@@ -36,7 +36,7 @@
         "pestphp/pest": "^0.1.5",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^9.0",
-        "rector/rector": "^0.7.26",
+        "rector/rector": "^0.8",
         "vimeo/psalm": "^3.15"
     },
     "config": {
