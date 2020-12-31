@@ -10,14 +10,11 @@ final class Note
 {
     use ArrayOrJsonResponse;
 
-    /** @var int */
-    private $id;
+    private int $id;
 
-    /** @var string */
-    private $name;
+    private ?string $name = null;
 
-    /** @var string|null */
-    private $description;
+    private ?string $description = null;
 
     public function getId(): int
     {

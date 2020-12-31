@@ -10,20 +10,15 @@ final class Task
 {
     use ArrayOrJsonResponse;
 
-    /** @var int */
-    private $id;
+    private int $id;
 
-    /** @var string */
-    private $name;
+    private ?string $name = null;
 
-    /** @var string|null */
-    private $description;
+    private ?string $description = null;
 
-    /** @var int */
-    private $status;
+    private ?int $status = null;
 
-    /** @var int */
-    private $userId;
+    private ?int $userId = null;
 
     public function getId(): int
     {
