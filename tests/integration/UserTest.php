@@ -6,10 +6,7 @@ namespace Tests\integration;
 
 class UserTest extends BaseTestCase
 {
-    /**
-     * @var int
-     */
-    private static $id;
+    private static int $id;
 
     /**
      * Test Get All Users.

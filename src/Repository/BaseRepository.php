@@ -6,8 +6,7 @@ namespace App\Repository;
 
 abstract class BaseRepository
 {
-    /** @var \PDO */
-    protected $database;
+    protected \PDO $database;
 
     public function __construct(\PDO $database)
     {

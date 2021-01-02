@@ -10,17 +10,13 @@ final class User
 {
     use ArrayOrJsonResponse;
 
-    /** @var int */
-    private $id;
+    private int $id;
 
-    /** @var string */
-    private $name;
+    private ?string $name = null;
 
-    /** @var string */
-    private $email;
+    private ?string $email = null;
 
-    /** @var string */
-    private $password;
+    private ?string $password = null;
 
     public function getId(): int
     {

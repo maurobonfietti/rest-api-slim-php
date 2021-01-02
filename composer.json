@@ -23,7 +23,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.3",
+        "php": "^7.4",
         "firebase/php-jwt": "^5.0",
         "palanik/corsslim": "dev-slim3",
         "predis/predis": "^1.1",
@@ -32,18 +32,17 @@
         "vlucas/phpdotenv": "^5.1"
     },
     "require-dev": {
-        "nunomaduro/phpinsights": "^1.14",
         "pestphp/pest": "^0.1.5",
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^9.0",
-        "rector/rector": "^0.8",
+        "rector/rector": "^0.9.3",
         "vimeo/psalm": "^3.15"
     },
     "config": {
         "sort-packages": true,
         "process-timeout": 0,
         "platform": {
-            "php": "7.3.20"
+            "php": "7.4.0"
         }
     },
     "autoload": {
