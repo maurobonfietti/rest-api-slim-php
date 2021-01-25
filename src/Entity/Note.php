@@ -12,7 +12,7 @@ final class Note
 
     private int $id;
 
-    private ?string $name = null;
+    private string $name = '';
 
     private ?string $description = null;
 
