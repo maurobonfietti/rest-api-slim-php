@@ -134,7 +134,6 @@ Mini serie de videos acerca de Slim PHP.
 - [phpstan/phpstan](https://github.com/phpstan/phpstan): PHPStan, herramienta de análisis estático para PHP.
 - [pestphp/pest](https://github.com/pestphp/pest): Pest es un elegante PHP Testing Framework con un enfoque en la simplicidad.
 - [nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights): Comprobaciones instantáneas de calidad PHP desde su consola.
-- [rector/rector](https://github.com/rectorphp/rector): Actualizaciones instantáneas y refactorización instantánea de cualquier código PHP 5.3+.
 - [vimeo/psalm](https://github.com/vimeo/psalm): Una herramienta de análisis estático para encontrar errores en aplicaciones PHP.
 
 
@@ -145,11 +144,11 @@ Ejecutar los tests PHPUnit con `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 9.5.0 by Sebastian Bergmann and contributors.
+PHPUnit 9.5.1 by Sebastian Bergmann and contributors.
 
 .......................................................           55 / 55 (100%)
 
-Time: 00:00.184, Memory: 16.00 MB
+Time: 00:00.194, Memory: 16.00 MB
 
 OK (55 tests, 340 assertions)
 ```
