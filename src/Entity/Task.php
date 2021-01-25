@@ -12,13 +12,13 @@ final class Task
 
     private int $id;
 
-    private string $name = '';
+    private string $name;
 
-    private ?string $description = null;
+    private ?string $description;
 
-    private int $status = 0;
+    private int $status;
 
-    private int $userId = 0;
+    private int $userId;
 
     public function getId(): int
     {

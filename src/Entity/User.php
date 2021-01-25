@@ -12,11 +12,11 @@ final class User
 
     private int $id;
 
-    private string $name = '';
+    private string $name;
 
-    private string $email = '';
+    private string $email;
 
-    private string $password = '';
+    private string $password;
 
     public function getId(): int
     {

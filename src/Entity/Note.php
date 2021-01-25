@@ -12,9 +12,9 @@ final class Note
 
     private int $id;
 
-    private string $name = '';
+    private string $name;
 
-    private ?string $description = null;
+    private ?string $description;
 
     public function getId(): int
     {

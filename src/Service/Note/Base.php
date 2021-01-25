@@ -14,9 +14,9 @@ abstract class Base extends BaseService
 {
     private const REDIS_KEY = 'note:%s';
 
-    protected \App\Repository\NoteRepository $noteRepository;
+    protected NoteRepository $noteRepository;
 
-    protected \App\Service\RedisService $redisService;
+    protected RedisService $redisService;
 
     public function __construct(
         NoteRepository $noteRepository,
