@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 return [
     'settings' => [
-        'displayErrorDetails' => $_SERVER['DISPLAY_ERROR_DETAILS'],
+        'displayErrorDetails' => filter_var($_SERVER['DISPLAY_ERROR_DETAILS'], FILTER_VALIDATE_BOOLEAN),
         'db' => [
             'host' => $_SERVER['DB_HOST'],
             'name' => $_SERVER['DB_NAME'],
