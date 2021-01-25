@@ -19,7 +19,6 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
         string $requestUri,
         array $requestData = null
     ): ResponseInterface {
-
         $environment = Environment::mock(
             [
                 'REQUEST_METHOD' => $requestMethod,

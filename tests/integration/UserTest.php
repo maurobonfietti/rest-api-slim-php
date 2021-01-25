@@ -87,7 +87,8 @@ class UserTest extends BaseTestCase
     public function testCreateUser(): void
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
+            'POST',
+            '/api/v1/users',
             ['name' => 'Esteban', 'email' => 'estu@gmail.com', 'password' => 'AnyPass1000']
         );
 
@@ -161,7 +162,8 @@ class UserTest extends BaseTestCase
     public function testCreateUserWithInvalidName(): void
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
+            'POST',
+            '/api/v1/users',
             ['name' => 'z', 'email' => 'email@example.com']
         );
 
@@ -180,7 +182,8 @@ class UserTest extends BaseTestCase
     public function testCreateUserWithInvalidEmail(): void
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
+            'POST',
+            '/api/v1/users',
             ['name' => 'Esteban', 'email' => 'email.incorrecto', 'password' => 'AnyPass1000']
         );
 
@@ -198,7 +201,8 @@ class UserTest extends BaseTestCase
     public function testCreateUserWithEmailAlreadyExists(): void
     {
         $response = $this->runApp(
-            'POST', '/api/v1/users',
+            'POST',
+            '/api/v1/users',
             ['name' => 'Esteban', 'email' => 'estu@gmail.com', 'password' => 'AnyPass1000']
         );
 
@@ -255,7 +259,9 @@ class UserTest extends BaseTestCase
     public function testUpdateUserPermissionsFailed(): void
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/users/1', ['name' => 'Victor']
+            'PUT',
+            '/api/v1/users/1',
+            ['name' => 'Victor']
         );
 
         $result = (string) $response->getBody();
@@ -273,7 +279,8 @@ class UserTest extends BaseTestCase
     public function testUpdateUserWithInvalidData(): void
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/users/' . self::$id,
+            'PUT',
+            '/api/v1/users/' . self::$id,
             ['name' => '', 'email' => 'email-incorrecto...']
         );
 

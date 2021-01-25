@@ -22,7 +22,7 @@ $container['db'] = static function (ContainerInterface $container): PDO {
     return $pdo;
 };
 
-$container['errorHandler'] = static fn(): ApiError => new ApiError();
+$container['errorHandler'] = static fn (): ApiError => new ApiError();
 
 $container['redis_service'] = static function ($container): RedisService {
     $redis = $container->get('settings')['redis'];
