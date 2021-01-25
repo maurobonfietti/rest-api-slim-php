@@ -29,3 +29,9 @@ $container['redis_service'] = static function ($container): RedisService {
 
     return new RedisService(new \Predis\Client($redis['url']));
 };
+
+$container['notFoundHandler'] = function ($c) {
+    return function ($request, $response) use ($c) {
+        throw new \Exception('Route Not Found.', 404);
+    };
+};
