@@ -22,10 +22,16 @@ $container['db'] = static function (ContainerInterface $container): PDO {
     return $pdo;
 };
 
-$container['errorHandler'] = static fn(): ApiError => new ApiError();
+$container['errorHandler'] = static fn (): ApiError => new ApiError();
 
 $container['redis_service'] = static function ($container): RedisService {
     $redis = $container->get('settings')['redis'];
 
     return new RedisService(new \Predis\Client($redis['url']));
+};
+
+$container['notFoundHandler'] = function ($c) {
+    return function ($request, $response) use ($c) {
+        throw new \Exception('Route Not Found.', 404);
+    };
 };

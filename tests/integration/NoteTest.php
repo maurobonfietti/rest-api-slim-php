@@ -92,7 +92,8 @@ class NoteTest extends BaseTestCase
     public function testCreateNote(): void
     {
         $response = $this->runApp(
-            'POST', '/api/v1/notes',
+            'POST',
+            '/api/v1/notes',
             ['name' => 'My Test Note', 'description' => 'New Note...']
         );
 
@@ -149,7 +150,8 @@ class NoteTest extends BaseTestCase
     public function testCreateNoteWithInvalidName(): void
     {
         $response = $this->runApp(
-            'POST', '/api/v1/notes',
+            'POST',
+            '/api/v1/notes',
             ['name' => '']
         );
 
@@ -168,7 +170,8 @@ class NoteTest extends BaseTestCase
     public function testUpdateNote(): void
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/notes/' . self::$id,
+            'PUT',
+            '/api/v1/notes/' . self::$id,
             ['name' => 'Victor Notes', 'description' => 'Pep.']
         );
 
@@ -207,7 +210,9 @@ class NoteTest extends BaseTestCase
     public function testUpdateNoteNotFound(): void
     {
         $response = $this->runApp(
-            'PUT', '/api/v1/notes/123456789', ['name' => 'Note']
+            'PUT',
+            '/api/v1/notes/123456789',
+            ['name' => 'Note']
         );
 
         $result = (string) $response->getBody();
