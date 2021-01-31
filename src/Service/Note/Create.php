@@ -16,7 +16,7 @@ final class Create extends Base
         }
         $mynote = new Note();
         $mynote->updateName(self::validateNoteName($data->name));
-        $desc = isset($data->description) ? $data->description : null;
+        $desc = $data->description ?? null;
         $mynote->updateDescription($desc);
         /** @var Note $note */
         $note = $this->noteRepository->createNote($mynote);
