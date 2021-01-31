@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Traits\ArrayOrJsonResponse;
-
 final class Note
 {
-    use ArrayOrJsonResponse;
-
     private int $id;
 
     private string $name;
 
     private ?string $description;
+
+    public function toJson(): object
+    {
+        return json_decode((string) json_encode(get_object_vars($this)), false);
+    }
 
     public function getId(): int
     {
