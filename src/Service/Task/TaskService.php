@@ -57,7 +57,7 @@ final class TaskService extends Base
         }
         $mytask = new Task();
         $mytask->updateName(self::validateTaskName($data->name));
-        $desc = isset($data->description) ? $data->description : null;
+        $desc = $data->description ?? null;
         $mytask->updateDescription($desc);
         $status = 0;
         if (isset($data->status)) {

@@ -4,12 +4,8 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Traits\ArrayOrJsonResponse;
-
 final class Task
 {
-    use ArrayOrJsonResponse;
-
     private int $id;
 
     private string $name;
@@ -19,6 +15,11 @@ final class Task
     private int $status;
 
     private int $userId;
+
+    public function toJson(): object
+    {
+        return json_decode((string) json_encode(get_object_vars($this)), false);
+    }
 
     public function getId(): int
     {

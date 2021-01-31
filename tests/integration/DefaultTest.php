@@ -49,4 +49,18 @@ class DefaultTest extends BaseTestCase
         $this->assertStringNotContainsString('error', $result);
         $this->assertStringNotContainsString('Failed', $result);
     }
+
+    /**
+     * Test Route Not Found.
+     */
+    public function testRouteNotFound(): void
+    {
+        $response = $this->runApp('GET', '/route-not-found');
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringContainsString('error', $result);
+    }
 }

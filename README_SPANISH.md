@@ -146,11 +146,11 @@ $ composer test
 > phpunit
 PHPUnit 9.5.1 by Sebastian Bergmann and contributors.
 
-.......................................................           55 / 55 (100%)
+........................................................          56 / 56 (100%)
 
-Time: 00:00.194, Memory: 16.00 MB
+Time: 00:00.277, Memory: 16.00 MB
 
-OK (55 tests, 340 assertions)
+OK (56 tests, 343 assertions)
 ```
 
 
