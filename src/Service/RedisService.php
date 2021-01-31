@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service;
 
-use \Predis\Client;
+use Predis\Client;
 
 final class RedisService
 {
