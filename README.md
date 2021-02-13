@@ -12,7 +12,7 @@ This simple API allows you to manage resources such as: users, tasks and notes.
 [![Packagist Version](https://img.shields.io/packagist/v/maurobonfietti/rest-api-slim-php)](https://packagist.org/packages/maurobonfietti/rest-api-slim-php)
 
 
-![alt text](https://repository-images.githubusercontent.com/79254982/32dacc80-6daa-11eb-9935-3bc77b32d2d4 "Example of RESTful API with Slim PHP micro framework")
+![alt text](https://ibb.co/VmyFcXF "Example of RESTful API with Slim PHP micro framework")
 
 
 You can also read this [README IN SPANISH](README_SPANISH.md).
