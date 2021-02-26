@@ -5,19 +5,14 @@ declare(strict_types=1);
 require __DIR__ . '/../../src/App/App.php';
 
 try {
-    $database = $container->get('settings')['db'];
-    $host = $database['host'];
-    $name = $database['name'];
-    $user = $database['user'];
-    $pass = $database['pass'];
-    $port = $database['port'];
+    $db = $container->get('settings')['db'];
+    $host = $db['host'];
+    $name = $db['name'];
+    $user = $db['user'];
+    $pass = $db['pass'];
+    $port = $db['port'];
 
-    $dsn = sprintf(
-        'mysql:host=%s;port=%s;charset=utf8',
-        getenv('DB_HOST'),
-        getenv('DB_PORT')
-    );
-    $pdo = new PDO($dsn, getenv('DB_USER'), getenv('DB_PASS'));
+    $pdo = new PDO("mysql:host=${host};port=$port;charset=utf8", $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $pdo->exec("DROP DATABASE IF EXISTS ${name}");
