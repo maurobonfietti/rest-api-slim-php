@@ -11,6 +11,10 @@ Esta simple API permite administrar recursos tales como: usuarios, tareas y nota
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Packagist Version](https://img.shields.io/packagist/v/maurobonfietti/rest-api-slim-php)](https://packagist.org/packages/maurobonfietti/rest-api-slim-php)
 
+
+<div style="text-align:center"><img src="https://i.ibb.co/KwZtpCt/REST-API-SLIM-PHP.png" alt="Example of RESTful API with Slim PHP micro framework" /></div>
+
+
 También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 Principales tecnologías utilizadas: `PHP 7, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
