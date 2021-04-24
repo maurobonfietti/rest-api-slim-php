@@ -32,7 +32,7 @@ Implementé esta API en [este proyecto](https://github.com/maurobonfietti/rest-a
 
 - Git.
 - Composer.
-- PHP 7.4+.
+- PHP 7.4+ o 8.0+.
 - MySQL/MariaDB.
 - Redis (Opcional).
 - O simplemente Docker.
