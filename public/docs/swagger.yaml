@@ -275,7 +275,7 @@ paths:
       - name: page
         in: query
         description: Number of the page
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -285,7 +285,7 @@ paths:
       - name: perPage
         in: query
         description: Quantity of items per page
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -295,7 +295,7 @@ paths:
       - name: name
         in: query
         description: Search by name
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -303,7 +303,7 @@ paths:
       - name: email
         in: query
         description: Search by email
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -431,7 +431,7 @@ paths:
       - name: page
         in: query
         description: Number of the page
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -441,7 +441,7 @@ paths:
       - name: perPage
         in: query
         description: Quantity of items per page
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -451,7 +451,7 @@ paths:
       - name: name
         in: query
         description: Search by name
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -459,7 +459,7 @@ paths:
       - name: description
         in: query
         description: Search by description
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -467,7 +467,7 @@ paths:
       - name: status
         in: query
         description: Search by status
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -604,7 +604,7 @@ paths:
       - name: page
         in: query
         description: Number of the page
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -614,7 +614,7 @@ paths:
       - name: perPage
         in: query
         description: Quantity of items per page
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -624,7 +624,7 @@ paths:
       - name: name
         in: query
         description: Search by name
-        required: true
+        required: false
         style: form
         explode: true
         schema:
@@ -632,7 +632,7 @@ paths:
       - name: description
         in: query
         description: Search by description
-        required: true
+        required: false
         style: form
         explode: true
         schema:
