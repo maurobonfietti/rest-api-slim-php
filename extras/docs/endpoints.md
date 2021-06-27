@@ -3,8 +3,7 @@
 
 [Example of REST API](https://github.com/maurobonfietti/rest-api-slim-php) with Slim PHP micro framework.
 
-This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
-
+This simple API allows you to manage resources such as: users, tasks and notes.
 
 ## Indices
 
@@ -82,11 +81,12 @@ Status: Get Help | Code: 200
             "tasks": "http://localhost:8080/api/v1/tasks",
             "users": "http://localhost:8080/api/v1/users",
             "notes": "http://localhost:8080/api/v1/notes",
+            "docs": "http://localhost:8080/docs/index.html",
             "status": "http://localhost:8080/status",
             "this help": "http://localhost:8080"
         },
-        "version": "0.22.2",
-        "timestamp": 1560897542
+        "version": "2.13.0",
+        "timestamp": 1624812953
     }
 }
 ```
@@ -121,13 +121,15 @@ Status: Get Status | Code: 200
     "code": 200,
     "status": "success",
     "message": {
-        "db": {
-            "users": 9,
-            "tasks": 10,
-            "notes": 5
+        "stats": {
+            "tasks": 8,
+            "users": 42,
+            "notes": 63
         },
-        "version": "0.22.2",
-        "timestamp": 1560897579
+        "MySQL": "OK",
+        "Redis": "Disabled",
+        "version": "2.12.0",
+        "timestamp": 1624808196
     }
 }
 ```
@@ -175,21 +177,6 @@ URL: {{domain-api-rest-slimphp}}/login
 ***Responses:***
 
 
-Status: Login Failed | Code: 400
-
-
-
-```js
-{
-    "message": "Login failed: Email or password incorrect.",
-    "class": "UserException",
-    "status": "error",
-    "code": 400
-}
-```
-
-
-
 Status: Login OK | Code: 200
 
 
@@ -201,6 +188,21 @@ Status: Login OK | Code: 200
     "message": {
         "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsImVtYWlsIjoibUBiLmNvbS5hciIsIm5hbWUiOiJNTkIiLCJpYXQiOjE1NTg1NTMwNTIsImV4cCI6MTU1OTE1Nzg1Mn0.OQyICWlGW0oSUB-ANrYL2OJTdC2v0OQQO3RQQ3W_KLo"
     }
+}
+```
+
+
+
+Status: Login Failed | Code: 400
+
+
+
+```js
+{
+    "message": "Login failed: Email or password incorrect.",
+    "class": "UserException",
+    "status": "error",
+    "code": 400
 }
 ```
 
@@ -229,10 +231,10 @@ URL: {{domain-api-rest-slimphp}}/api/v1/notes
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| page | 1 |  |
-| name |  |  |
-| description |  |  |
-| perPage | 10 |  |
+| page | 1 | Number of the page |
+| perPage | 10 | Quantity of items per page |
+| name |  | Search by name |
+| description |  | Search by description |
 
 
 
@@ -360,11 +362,11 @@ URL: {{domain-api-rest-slimphp}}/api/v1/tasks
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| page | 1 |  |
-| perPage | 5 |  |
-| name |  |  |
-| description |  |  |
-| status |  |  |
+| page | 1 | Number of the page |
+| perPage | 5 | Quantity of items per page |
+| name |  | Search by name |
+| description |  | Search by description |
+| status |  | Search by status |
 
 
 
@@ -518,10 +520,10 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users
 
 | Key | Value | Description |
 | --- | ------|-------------|
-| page | 1 |  |
-| name |  |  |
-| email |  |  |
-| perPage | 10 |  |
+| page | 1 | Number of the page |
+| perPage | 10 | Quantity of items per page |
+| name |  | Search by name |
+| email |  | Search by email |
 
 
 
@@ -592,7 +594,7 @@ Update a user.
 ```bash
 Method: PUT
 Type: RAW
-URL: {{domain-api-rest-slimphp}}/api/v1/users/9
+URL: {{domain-api-rest-slimphp}}/api/v1/users/12
 ```
 
 
@@ -609,9 +611,8 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/9
 
 ```js        
 {
-  "name": "John The User 22",
-  "email": "super.email@host.com",
-  "password": "OnePass1"
+    "name": "John The User 22",
+    "email": "super.email@host.com.br"
 }
 ```
 
@@ -642,4 +643,4 @@ URL: {{domain-api-rest-slimphp}}/api/v1/users/112
 
 ---
 [Back to top](#rest-api-slim-php)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2020-09-28 18:14:11 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-06-27 14:36:22 by [docgen](https://github.com/thedevsaddam/docgen)
