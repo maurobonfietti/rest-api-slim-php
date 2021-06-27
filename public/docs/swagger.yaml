@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
   title: Rest Api Slim PHP
-  description: >
+  description: >-
     [Example of REST API](https://github.com/maurobonfietti/rest-api-slim-php) with Slim PHP micro framework.
 
-    This simple RESTful API made in Slim version 3, allows CRUD operations to manage entities like: Users, Tasks and Notes :-)
+    This simple API allows you to manage resources such as: users, tasks and notes.
   contact: {}
   version: '1.0'
 servers:
@@ -27,8 +27,8 @@ paths:
       operationId: GetHelp
       parameters: []
       responses:
-        200:
-          description: ''
+        '200':
+          description: OK
           headers:
             Host:
               content:
@@ -65,7 +65,7 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                  example: 463
+                  example: '463'
           content:
             application/json:
               schema:
@@ -78,10 +78,11 @@ paths:
                     tasks: http://localhost:8080/api/v1/tasks
                     users: http://localhost:8080/api/v1/users
                     notes: http://localhost:8080/api/v1/notes
+                    docs: http://localhost:8080/docs/index.html
                     status: http://localhost:8080/status
                     this help: http://localhost:8080
-                  version: 0.22.2
-                  timestamp: 1560897542
+                  version: 2.13.0
+                  timestamp: 1624812953
       deprecated: false
   /status:
     get:
@@ -92,8 +93,8 @@ paths:
       operationId: GetStatus
       parameters: []
       responses:
-        200:
-          description: ''
+        '200':
+          description: OK
           headers:
             Host:
               content:
@@ -130,7 +131,7 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                  example: 228
+                  example: '228'
           content:
             application/json:
               schema:
@@ -139,12 +140,14 @@ paths:
                 code: 200
                 status: success
                 message:
-                  db:
-                    users: 9
-                    tasks: 10
-                    notes: 5
-                  version: 0.22.2
-                  timestamp: 1560897579
+                  stats:
+                    tasks: 8
+                    users: 42
+                    notes: 63
+                  MySQL: OK
+                  Redis: Disabled
+                  version: 2.12.0
+                  timestamp: 1624808196
       deprecated: false
   /login:
     post:
@@ -165,8 +168,8 @@ paths:
               password: OnePass1
         required: true
       responses:
-        200:
-          description: ''
+        '200':
+          description: OK
           headers:
             Host:
               content:
@@ -203,7 +206,7 @@ paths:
                 text/plain:
                   schema:
                     type: string
-                  example: 291
+                  example: '291'
           content:
             application/json:
               schema:
@@ -213,12 +216,49 @@ paths:
                 status: success
                 message:
                   Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsImVtYWlsIjoibUBiLmNvbS5hciIsIm5hbWUiOiJNTkIiLCJpYXQiOjE1NTg1NTMwNTIsImV4cCI6MTU1OTE1Nzg1Mn0.OQyICWlGW0oSUB-ANrYL2OJTdC2v0OQQO3RQQ3W_KLo
-        400:
+        '400':
           description: Bad Request
+          headers:
+            Host:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: localhost:8080
+            Date:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: Wed, 22 May 2019 19:25:28 +0000
+            Connection:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: close
+            X-Powered-By:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: PHP/7.3.4
+            Content-type:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: application/json
+            Content-Length:
+              content:
+                text/plain:
+                  schema:
+                    type: string
+                  example: '133'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LoginFailed'
+                $ref: '#/components/schemas/LoginFailed1'
               example:
                 message: 'Login failed: Email or password incorrect.'
                 class: UserException
@@ -277,7 +317,7 @@ paths:
           type: string
           example: '{{jwt}}'
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -301,7 +341,7 @@ paths:
               password: OnePass1
         required: true
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -321,12 +361,12 @@ paths:
           type: string
           example: '{{jwt}}'
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
       security: []
-  /api/v1/users/9:
+  /api/v1/users/12:
     put:
       tags:
       - Users
@@ -350,11 +390,10 @@ paths:
               $ref: '#/components/schemas/UpdateUserRequest'
             example:
               name: John The User 22
-              email: super.email@host.com
-              password: OnePass1
+              email: super.email@host.com.br
         required: true
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -376,7 +415,7 @@ paths:
           type: string
           example: '{{jwt}}'
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -442,7 +481,7 @@ paths:
           type: string
           example: '{{jwt}}'
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -474,7 +513,7 @@ paths:
               status: 0
         required: true
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -496,7 +535,7 @@ paths:
           type: string
           example: '{{jwt}}'
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -529,7 +568,7 @@ paths:
               status: 1
         required: true
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -550,7 +589,7 @@ paths:
           type: string
           example: '{{jwt}}'
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -564,7 +603,7 @@ paths:
       parameters:
       - name: page
         in: query
-        description: ''
+        description: '{Optional} Number of the page'
         required: true
         style: form
         explode: true
@@ -572,25 +611,9 @@ paths:
           type: integer
           format: int32
           example: 1
-      - name: name
-        in: query
-        description: ''
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: description
-        in: query
-        description: ''
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
       - name: perPage
         in: query
-        description: ''
+        description: '{Optional} Quantity of items per page'
         required: true
         style: form
         explode: true
@@ -598,8 +621,24 @@ paths:
           type: integer
           format: int32
           example: 10
+      - name: name
+        in: query
+        description: '{Optional} Search by name'
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: description
+        in: query
+        description: '{Optional} Search by description'
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -620,7 +659,7 @@ paths:
               description: Magic Goal...
         required: true
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -632,7 +671,7 @@ paths:
       operationId: GetOneNote
       parameters: []
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -654,7 +693,7 @@ paths:
               description: Free Note?!?!?!
         required: true
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -666,7 +705,7 @@ paths:
       operationId: DeleteNote
       parameters: []
       responses:
-        200:
+        '200':
           description: ''
           headers: {}
       deprecated: false
@@ -695,10 +734,11 @@ components:
             tasks: http://localhost:8080/api/v1/tasks
             users: http://localhost:8080/api/v1/users
             notes: http://localhost:8080/api/v1/notes
+            docs: http://localhost:8080/docs/index.html
             status: http://localhost:8080/status
             this help: http://localhost:8080
-          version: 0.22.2
-          timestamp: 1560897542
+          version: 2.13.0
+          timestamp: 1624812953
     Message:
       title: Message
       required:
@@ -719,16 +759,18 @@ components:
           tasks: http://localhost:8080/api/v1/tasks
           users: http://localhost:8080/api/v1/users
           notes: http://localhost:8080/api/v1/notes
+          docs: http://localhost:8080/docs/index.html
           status: http://localhost:8080/status
           this help: http://localhost:8080
-        version: 0.22.2
-        timestamp: 1560897542
+        version: 2.13.0
+        timestamp: 1624812953
     Endpoints:
       title: Endpoints
       required:
       - tasks
       - users
       - notes
+      - docs
       - status
       - this help
       type: object
@@ -739,6 +781,8 @@ components:
           type: string
         notes:
           type: string
+        docs:
+          type: string
         status:
           type: string
         this help:
@@ -747,6 +791,7 @@ components:
         tasks: http://localhost:8080/api/v1/tasks
         users: http://localhost:8080/api/v1/users
         notes: http://localhost:8080/api/v1/notes
+        docs: http://localhost:8080/docs/index.html
         status: http://localhost:8080/status
         this help: http://localhost:8080
     GetStatus:
@@ -768,55 +813,65 @@ components:
         code: 200
         status: success
         message:
-          db:
-            users: 9
-            tasks: 10
-            notes: 5
-          version: 0.22.2
-          timestamp: 1560897579
+          stats:
+            tasks: 8
+            users: 42
+            notes: 63
+          MySQL: OK
+          Redis: Disabled
+          version: 2.12.0
+          timestamp: 1624808196
     Message1:
       title: Message1
       required:
-      - db
+      - stats
+      - MySQL
+      - Redis
       - version
       - timestamp
       type: object
       properties:
-        db:
-          $ref: '#/components/schemas/Db'
+        stats:
+          $ref: '#/components/schemas/Stats'
+        MySQL:
+          type: string
+        Redis:
+          type: string
         version:
           type: string
         timestamp:
           type: integer
           format: int32
       example:
-        db:
-          users: 9
-          tasks: 10
-          notes: 5
-        version: 0.22.2
-        timestamp: 1560897579
-    Db:
-      title: Db
+        stats:
+          tasks: 8
+          users: 42
+          notes: 63
+        MySQL: OK
+        Redis: Disabled
+        version: 2.12.0
+        timestamp: 1624808196
+    Stats:
+      title: Stats
       required:
-      - users
       - tasks
+      - users
       - notes
       type: object
       properties:
-        users:
+        tasks:
           type: integer
           format: int32
-        tasks:
+        users:
           type: integer
           format: int32
         notes:
           type: integer
           format: int32
       example:
-        users: 9
-        tasks: 10
-        notes: 5
+        tasks: 8
+        users: 42
+        notes: 63
     LoginRequest:
       title: LoginRequest
       required:
@@ -831,29 +886,6 @@ components:
       example:
         email: super.email@host.com
         password: OnePass1
-    LoginFailed:
-      title: LoginFailed
-      required:
-      - message
-      - class
-      - status
-      - code
-      type: object
-      properties:
-        message:
-          type: string
-        class:
-          type: string
-        status:
-          type: string
-        code:
-          type: integer
-          format: int32
-      example:
-        message: 'Login failed: Email or password incorrect.'
-        class: UserException
-        status: error
-        code: 400
     LoginOK:
       title: LoginOK
       required:
@@ -884,6 +916,29 @@ components:
           type: string
       example:
         Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMSIsImVtYWlsIjoibUBiLmNvbS5hciIsIm5hbWUiOiJNTkIiLCJpYXQiOjE1NTg1NTMwNTIsImV4cCI6MTU1OTE1Nzg1Mn0.OQyICWlGW0oSUB-ANrYL2OJTdC2v0OQQO3RQQ3W_KLo
+    LoginFailed1:
+      title: LoginFailed1
+      required:
+      - message
+      - class
+      - status
+      - code
+      type: object
+      properties:
+        message:
+          type: string
+        class:
+          type: string
+        status:
+          type: string
+        code:
+          type: integer
+          format: int32
+      example:
+        message: 'Login failed: Email or password incorrect.'
+        class: UserException
+        status: error
+        code: 400
     CreateUserRequest:
       title: CreateUserRequest
       required:
@@ -907,19 +962,15 @@ components:
       required:
       - name
       - email
-      - password
       type: object
       properties:
         name:
           type: string
         email:
           type: string
-        password:
-          type: string
       example:
         name: John The User 22
-        email: super.email@host.com
-        password: OnePass1
+        email: super.email@host.com.br
     CreateTaskRequest:
       title: CreateTaskRequest
       required:
