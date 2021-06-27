@@ -274,7 +274,7 @@ paths:
       parameters:
       - name: page
         in: query
-        description: ''
+        description: Number of the page
         required: true
         style: form
         explode: true
@@ -282,25 +282,9 @@ paths:
           type: integer
           format: int32
           example: 1
-      - name: name
-        in: query
-        description: ''
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: email
-        in: query
-        description: ''
-        required: true
-        style: form
-        explode: true
-        schema:
-          type: string
       - name: perPage
         in: query
-        description: ''
+        description: Quantity of items per page
         required: true
         style: form
         explode: true
@@ -308,6 +292,22 @@ paths:
           type: integer
           format: int32
           example: 10
+      - name: name
+        in: query
+        description: Search by name
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: email
+        in: query
+        description: Search by email
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
       - name: Authorization
         in: header
         description: ''
@@ -430,7 +430,7 @@ paths:
       parameters:
       - name: page
         in: query
-        description: ''
+        description: Number of the page
         required: true
         style: form
         explode: true
@@ -440,7 +440,7 @@ paths:
           example: 1
       - name: perPage
         in: query
-        description: ''
+        description: Quantity of items per page
         required: true
         style: form
         explode: true
@@ -450,7 +450,7 @@ paths:
           example: 5
       - name: name
         in: query
-        description: ''
+        description: Search by name
         required: true
         style: form
         explode: true
@@ -458,7 +458,7 @@ paths:
           type: string
       - name: description
         in: query
-        description: ''
+        description: Search by description
         required: true
         style: form
         explode: true
@@ -466,7 +466,7 @@ paths:
           type: string
       - name: status
         in: query
-        description: ''
+        description: Search by status
         required: true
         style: form
         explode: true
@@ -603,7 +603,7 @@ paths:
       parameters:
       - name: page
         in: query
-        description: '{Optional} Number of the page'
+        description: Number of the page
         required: true
         style: form
         explode: true
@@ -613,7 +613,7 @@ paths:
           example: 1
       - name: perPage
         in: query
-        description: '{Optional} Quantity of items per page'
+        description: Quantity of items per page
         required: true
         style: form
         explode: true
@@ -623,7 +623,7 @@ paths:
           example: 10
       - name: name
         in: query
-        description: '{Optional} Search by name'
+        description: Search by name
         required: true
         style: form
         explode: true
@@ -631,7 +631,7 @@ paths:
           type: string
       - name: description
         in: query
-        description: '{Optional} Search by description'
+        description: Search by description
         required: true
         style: form
         explode: true
