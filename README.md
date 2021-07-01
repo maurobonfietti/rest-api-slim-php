@@ -208,6 +208,17 @@ OK (56 tests, 343 assertions)
 Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
 
 
+### SCREENSHOOTS:
+
+<img width="493" alt="Screen Shot 2021-06-11 at 19 42 29" src="https://user-images.githubusercontent.com/24535949/121755366-58c07580-caed-11eb-9688-28183f80ab2a.png">
+
+----
+
+<img width="902" alt="Screen Shot 2021-06-11 at 19 43 23" src="https://user-images.githubusercontent.com/24535949/121755370-5b22cf80-caed-11eb-8d82-bf1de5a9fa83.png">
+
+----
+
+
 ### HELP AND DOCS:
 
 For more information on how to use the REST API, see the following documentation available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
