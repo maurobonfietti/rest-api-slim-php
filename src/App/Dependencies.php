@@ -32,6 +32,6 @@ $container['redis_service'] = static function ($container): RedisService {
 
 $container['notFoundHandler'] = static function () {
     return static function ($request, $response): void {
-        throw new \Exception('Route Not Found.', 404);
+        throw new \App\Exception\NotFound('Route Not Found.', 404);
     };
 };
