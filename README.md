@@ -148,14 +148,25 @@ Run all PHPUnit tests with `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 9.5.1 by Sebastian Bergmann and contributors.
+PHPUnit 9.5.8 by Sebastian Bergmann and contributors.
 
 ........................................................          56 / 56 (100%)
 
-Time: 00:00.277, Memory: 16.00 MB
+Time: 00:00.408, Memory: 18.00 MB
 
 OK (56 tests, 343 assertions)
 ```
+
+
+## SCREENSHOOTS:
+
+<img width="493" alt="Screen Shot API using Browser" src="https://user-images.githubusercontent.com/24535949/121755366-58c07580-caed-11eb-9688-28183f80ab2a.png">
+
+----
+
+<img width="902" alt="Screen Shot API using Postman" src="https://user-images.githubusercontent.com/24535949/121755370-5b22cf80-caed-11eb-8d82-bf1de5a9fa83.png">
+
+----
 
 
 ## :books: DOCUMENTATION:
@@ -206,17 +217,6 @@ OK (56 tests, 343 assertions)
 - Delete Note: `DELETE /api/v1/notes/{id}`
 
 Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
-
-
-### SCREENSHOOTS:
-
-<img width="493" alt="Screen Shot 2021-06-11 at 19 42 29" src="https://user-images.githubusercontent.com/24535949/121755366-58c07580-caed-11eb-9688-28183f80ab2a.png">
-
-----
-
-<img width="902" alt="Screen Shot 2021-06-11 at 19 43 23" src="https://user-images.githubusercontent.com/24535949/121755370-5b22cf80-caed-11eb-8d82-bf1de5a9fa83.png">
-
-----
 
 
 ### HELP AND DOCS:
