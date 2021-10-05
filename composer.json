@@ -24,7 +24,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^7.4 || ^8.0",
-        "composer/composer": "1.10.22",
+        "composer/composer": "1.10.23",
         "firebase/php-jwt": "^5.0",
         "palanik/corsslim": "dev-slim3",
         "predis/predis": "^1.1",
