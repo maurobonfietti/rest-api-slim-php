@@ -17,7 +17,7 @@ This simple API allows you to manage resources such as: users, tasks and notes.
 
 You can also read this [README IN SPANISH](README_SPANISH.md).
 
-Main technologies used: `PHP 7, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
+Main technologies used: `PHP 8, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
 
 Also, I use other aditional tools like: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku and CORS.`
 
