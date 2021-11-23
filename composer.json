@@ -34,8 +34,9 @@
     "require-dev": {
         "nunomaduro/phpinsights": "^2.0",
         "pestphp/pest": "^1.7",
-        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan": "^1.2",
         "phpunit/phpunit": "^9.0",
+        "rector/rector": "^0.12.4",
         "vimeo/psalm": "^3.15"
     },
     "config": {
