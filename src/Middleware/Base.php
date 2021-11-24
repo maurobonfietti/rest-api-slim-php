@@ -13,7 +13,7 @@ abstract class Base
     {
         try {
             return JWT::decode($token, $_SERVER['SECRET_KEY'], ['HS256']);
-        } catch (\UnexpectedValueException $exception) {
+        } catch (\UnexpectedValueException) {
             throw new Auth('Forbidden: you are not authorized.', 403);
         }
     }
