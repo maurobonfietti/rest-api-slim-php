@@ -15,7 +15,7 @@ final class ApiError extends \Slim\Handlers\Error
         \Exception $exception
     ): Response {
         $statusCode = $this->getStatusCode($exception);
-        $className = new \ReflectionClass(get_class($exception));
+        $className = new \ReflectionClass($exception::class);
         $data = [
             'message' => $exception->getMessage(),
             'class' => $className->getName(),

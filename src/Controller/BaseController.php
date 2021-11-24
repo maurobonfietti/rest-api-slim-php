@@ -9,11 +9,8 @@ use Slim\Http\Response;
 
 abstract class BaseController
 {
-    protected Container $container;
-
-    public function __construct(Container $container)
+    public function __construct(protected Container $container)
     {
-        $this->container = $container;
     }
 
     /**

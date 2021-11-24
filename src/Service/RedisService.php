@@ -10,11 +10,8 @@ final class RedisService
 {
     public const PROJECT_NAME = 'rest-api-slim-php';
 
-    private Client $redis;
-
-    public function __construct(Client $redis)
+    public function __construct(private Client $redis)
     {
-        $this->redis = $redis;
     }
 
     public function generateKey(string $value): string

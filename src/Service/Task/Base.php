@@ -14,16 +14,8 @@ abstract class Base extends BaseService
 {
     private const REDIS_KEY = 'task:%s:user:%s';
 
-    protected TaskRepository $taskRepository;
-
-    protected RedisService $redisService;
-
-    public function __construct(
-        TaskRepository $taskRepository,
-        RedisService $redisService
-    ) {
-        $this->taskRepository = $taskRepository;
-        $this->redisService = $redisService;
+    public function __construct(protected TaskRepository $taskRepository, protected RedisService $redisService)
+    {
     }
 
     protected function getTaskRepository(): TaskRepository
