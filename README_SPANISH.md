@@ -149,11 +149,11 @@ Ejecutar los tests PHPUnit con `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 9.5.8 by Sebastian Bergmann and contributors.
+PHPUnit 9.5.10 by Sebastian Bergmann and contributors.
 
 ........................................................          56 / 56 (100%)
 
-Time: 00:00.408, Memory: 18.00 MB
+Time: 00:00.628, Memory: 18.00 MB
 
 OK (56 tests, 343 assertions)
 ```
