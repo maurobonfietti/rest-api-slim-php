@@ -24,6 +24,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.0",
+        "composer/composer": "2.1.9",
         "firebase/php-jwt": "^5.0",
         "palanik/corsslim": "dev-slim3",
         "predis/predis": "^1.1",
@@ -36,8 +37,7 @@
         "pestphp/pest": "^1.7",
         "phpstan/phpstan": "^1.2",
         "phpunit/phpunit": "^9.0",
-        "rector/rector": "^0.12.4",
-        "vimeo/psalm": "^3.15"
+        "rector/rector": "^0.12.4"
     },
     "config": {
         "sort-packages": true,
