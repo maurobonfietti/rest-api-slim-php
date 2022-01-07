@@ -45,7 +45,7 @@ final class DefaultController extends BaseController
     }
 
     /**
-     * @return array<string>
+     * @return array<int>
      */
     private function getDbStats(): array
     {

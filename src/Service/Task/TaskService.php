@@ -119,9 +119,6 @@ final class TaskService extends Base
         }
     }
 
-    /**
-     * @param array<string> $input
-     */
     private function validateTask(array $input, int $taskId): Task
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);

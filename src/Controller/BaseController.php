@@ -14,7 +14,7 @@ abstract class BaseController
     }
 
     /**
-     * @param array<string> $input
+     * @param array|object|null $message
      */
     protected function jsonResponse(
         Response $response,
