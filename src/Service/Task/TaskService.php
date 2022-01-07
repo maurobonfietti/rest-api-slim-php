@@ -81,7 +81,11 @@ final class TaskService extends Base
         /** @var Task $task */
         $task = $this->getTaskRepository()->create($mytask);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($task->getId(), $task->getUserId(), $task->toJson());
+            $this->saveInCache(
+                $task->getId(),
+                $task->getUserId(),
+                $task->toJson()
+            );
         }
 
         return $task->toJson();
@@ -96,7 +100,11 @@ final class TaskService extends Base
         /** @var Task $task */
         $task = $this->getTaskRepository()->update($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($task->getId(), (int) $data->getUserId(), $task->toJson());
+            $this->saveInCache(
+                $task->getId(),
+                (int) $data->getUserId(),
+                $task->toJson()
+            );
         }
 
         return $task->toJson();
