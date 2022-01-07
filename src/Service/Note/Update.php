@@ -8,6 +8,9 @@ use App\Entity\Note;
 
 final class Update extends Base
 {
+    /**
+     * @param array<string> $input
+     */
     public function update(array $input, int $noteId): object
     {
         $note = $this->getOneFromDb($noteId);

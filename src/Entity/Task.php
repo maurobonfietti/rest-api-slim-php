@@ -67,7 +67,7 @@ final class Task
         return $this->userId;
     }
 
-    public function updateUserId(int $userId): self
+    public function updateUserId(?int $userId): self
     {
         $this->userId = $userId;
 

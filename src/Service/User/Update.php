@@ -8,18 +8,24 @@ use App\Entity\User;
 
 final class Update extends Base
 {
+    /**
+     * @param array<string> $input
+     */
     public function update(array $input, int $userId): object
     {
         $data = $this->validateUserData($input, $userId);
         /** @var User $user */
         $user = $this->userRepository->update($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $user->getId(), $user->toJson());
+            $this->saveInCache($user->getId(), $user->toJson());
         }
 
         return $user->toJson();
     }
 
+    /**
+     * @param array<string> $input
+     */
     private function validateUserData(array $input, int $userId): User
     {
         $user = $this->getUserFromDb($userId);
@@ -32,8 +38,6 @@ final class Update extends Base
         }
         if (isset($data->email) && $data->email !== $user->getEmail()) {
             $this->userRepository->checkUserByEmail($data->email);
-        }
-        if (isset($data->email)) {
             $user->updateEmail(self::validateEmail($data->email));
         }
 

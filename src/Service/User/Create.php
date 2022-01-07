@@ -8,18 +8,24 @@ use App\Entity\User;
 
 final class Create extends Base
 {
+    /**
+     * @param array<string> $input
+     */
     public function create(array $input): object
     {
         $data = $this->validateUserData($input);
         /** @var User $user */
         $user = $this->userRepository->create($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $user->getId(), $user->toJson());
+            $this->saveInCache($user->getId(), $user->toJson());
         }
 
         return $user->toJson();
     }
 
+    /**
+     * @param array<string> $input
+     */
     private function validateUserData(array $input): User
     {
         $user = json_decode((string) json_encode($input), false);

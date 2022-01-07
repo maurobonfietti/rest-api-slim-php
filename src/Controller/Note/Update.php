@@ -9,13 +9,17 @@ use Slim\Http\Response;
 
 final class Update extends Base
 {
+    /**
+     * @param array<string> $args
+     */
     public function __invoke(
         Request $request,
         Response $response,
         array $args
     ): Response {
         $input = (array) $request->getParsedBody();
-        $note = $this->getServiceUpdateNote()->update($input, (int) $args['id']);
+        $id = (int) $args['id'];
+        $note = $this->getServiceUpdateNote()->update($input, $id);
 
         return $this->jsonResponse($response, 'success', $note, 200);
     }

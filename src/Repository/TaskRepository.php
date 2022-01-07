@@ -21,6 +21,9 @@ final class TaskRepository extends BaseRepository
         ";
     }
 
+    /**
+     * @return array<string>
+     */
     public function getTasksByPage(
         int $userId,
         int $page,
@@ -70,6 +73,9 @@ final class TaskRepository extends BaseRepository
         return $task;
     }
 
+    /**
+     * @return array<string>
+     */
     public function getAllTasks(): array
     {
         $query = 'SELECT * FROM `tasks` ORDER BY `id`';

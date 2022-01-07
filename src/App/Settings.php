@@ -17,7 +17,7 @@ return [
             'url' => $_SERVER['REDIS_URL'],
         ],
         'app' => [
-            'domain' => $_SERVER['APP_DOMAIN'],
+            'domain' => $_SERVER['APP_DOMAIN'] ?? '',
             'secret' => $_SERVER['SECRET_KEY'],
         ],
     ],

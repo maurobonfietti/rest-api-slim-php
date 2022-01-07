@@ -34,6 +34,9 @@ final class UserRepository extends BaseRepository
         }
     }
 
+    /**
+     * @return array<string>
+     */
     public function getUsersByPage(
         int $page,
         int $perPage,
@@ -71,6 +74,9 @@ final class UserRepository extends BaseRepository
         ";
     }
 
+    /**
+     * @return array<string>
+     */
     public function getAll(): array
     {
         $query = 'SELECT `id`, `name`, `email` FROM `users` ORDER BY `id`';

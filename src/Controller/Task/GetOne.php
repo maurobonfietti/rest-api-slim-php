@@ -9,8 +9,14 @@ use Slim\Http\Response;
 
 final class GetOne extends Base
 {
-    public function __invoke(Request $request, Response $response, array $args): Response
-    {
+    /**
+     * @param array<string> $args
+     */
+    public function __invoke(
+        Request $request,
+        Response $response,
+        array $args
+    ): Response {
         $input = (array) $request->getParsedBody();
         $taskId = (int) $args['id'];
         $userId = $this->getAndValidateUserId($input);

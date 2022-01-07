@@ -22,6 +22,9 @@ final class NoteRepository extends BaseRepository
         return $note;
     }
 
+    /**
+     * @return array<string>
+     */
     public function getNotes(): array
     {
         $query = 'SELECT * FROM `notes` ORDER BY `id`';
@@ -42,6 +45,9 @@ final class NoteRepository extends BaseRepository
         ";
     }
 
+    /**
+     * @return array<string>
+     */
     public function getNotesByPage(
         int $page,
         int $perPage,

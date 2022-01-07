@@ -50,6 +50,7 @@ class BaseTestCase extends \PHPUnit\Framework\TestCase
         require __DIR__ . '/../../src/App/Services.php';
         require __DIR__ . '/../../src/App/Repositories.php';
         require __DIR__ . '/../../src/App/Routes.php';
+        (require __DIR__ . '/../../src/App/Routes.php')($app);
 
         return $app->process($request, new Response());
     }

@@ -9,6 +9,9 @@ use Slim\Http\Response;
 
 final class GetOne extends Base
 {
+    /**
+     * @param array<string> $args
+     */
     public function __invoke(
         Request $request,
         Response $response,
