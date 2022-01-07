@@ -17,7 +17,7 @@ final class Update extends Base
         /** @var User $user */
         $user = $this->userRepository->update($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $user->getId(), $user->toJson());
+            $this->saveInCache($user->getId(), $user->toJson());
         }
 
         return $user->toJson();

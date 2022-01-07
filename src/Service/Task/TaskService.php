@@ -102,7 +102,7 @@ final class TaskService extends Base
         if (self::isRedisEnabled() === true) {
             $this->saveInCache(
                 $task->getId(),
-                (int) $data->getUserId(),
+                $data->getUserId(),
                 $task->toJson()
             );
         }

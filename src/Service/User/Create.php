@@ -17,7 +17,7 @@ final class Create extends Base
         /** @var User $user */
         $user = $this->userRepository->create($data);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache((int) $user->getId(), $user->toJson());
+            $this->saveInCache($user->getId(), $user->toJson());
         }
 
         return $user->toJson();

@@ -20,7 +20,7 @@ final class Update extends Base
         $input = (array) $request->getParsedBody();
         $id = (int) $args['id'];
         $userIdLogged = $this->getAndValidateUserId($input);
-        $this->checkUserPermissions($id, (int) $userIdLogged);
+        $this->checkUserPermissions($id, $userIdLogged);
         $user = $this->getUpdateUserService()->update($input, $id);
 
         return $this->jsonResponse($response, 'success', $user, 200);
