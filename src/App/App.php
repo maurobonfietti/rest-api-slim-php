@@ -17,4 +17,4 @@ $container = $app->getContainer();
 require __DIR__ . '/Dependencies.php';
 require __DIR__ . '/Services.php';
 require __DIR__ . '/Repositories.php';
-require __DIR__ . '/Routes.php';
+(require __DIR__ . '/Routes.php')($app);
