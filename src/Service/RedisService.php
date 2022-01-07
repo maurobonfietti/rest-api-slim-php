@@ -39,6 +39,9 @@ final class RedisService
         $this->redis->setex($key, $ttl, json_encode($value));
     }
 
+    /**
+     * @param array<string> $keys
+     */
     public function del(array $keys): void
     {
         $this->redis->del($keys);

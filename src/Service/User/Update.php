@@ -8,6 +8,9 @@ use App\Entity\User;
 
 final class Update extends Base
 {
+    /**
+     * @param array<string> $input
+     */
     public function update(array $input, int $userId): object
     {
         $data = $this->validateUserData($input, $userId);
@@ -20,6 +23,9 @@ final class Update extends Base
         return $user->toJson();
     }
 
+    /**
+     * @param array<string> $input
+     */
     private function validateUserData(array $input, int $userId): User
     {
         $user = $this->getUserFromDb($userId);

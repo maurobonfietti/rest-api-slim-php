@@ -49,6 +49,9 @@ final class TaskService extends Base
         return $task;
     }
 
+    /**
+     * @param array<string> $input
+     */
     public function create(array $input): object
     {
         $data = json_decode((string) json_encode($input), false);
@@ -78,6 +81,9 @@ final class TaskService extends Base
         return $task->toJson();
     }
 
+    /**
+     * @param array<string> $input
+     */
     public function update(array $input, int $taskId): object
     {
         $data = $this->validateTask($input, $taskId);
@@ -99,6 +105,9 @@ final class TaskService extends Base
         }
     }
 
+    /**
+     * @param array<string> $input
+     */
     private function validateTask(array $input, int $taskId): Task
     {
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
