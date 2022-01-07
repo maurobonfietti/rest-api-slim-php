@@ -46,6 +46,9 @@ abstract class Base extends BaseController
         }
     }
 
+    /**
+     * @param array<string> $input
+     */
     protected function getAndValidateUserId(array $input): int
     {
         if (isset($input['decoded']) && isset($input['decoded']->sub)) {

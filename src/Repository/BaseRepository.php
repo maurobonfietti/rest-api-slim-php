@@ -15,6 +15,9 @@ abstract class BaseRepository
         return $this->database;
     }
 
+    /**
+     * @param array<string> $params
+     */
     protected function getResultsWithPagination(
         string $query,
         int $page,
@@ -33,6 +36,9 @@ abstract class BaseRepository
         ];
     }
 
+    /**
+     * @param array<string> $params
+     */
     protected function getResultByPage(
         string $query,
         int $page,
