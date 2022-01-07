@@ -15,10 +15,6 @@ abstract class BaseRepository
         return $this->database;
     }
 
-    /**
-     * @param array<string> $params
-     * @return array<string|array>
-     */
     protected function getResultsWithPagination(
         string $query,
         int $page,
