@@ -44,6 +44,9 @@ final class DefaultController extends BaseController
         return $this->jsonResponse($response, 'success', $status, 200);
     }
 
+    /**
+     * @return array<string>
+     */
     private function getDbStats(): array
     {
         $taskService = $this->container->get('task_service');

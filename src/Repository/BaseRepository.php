@@ -17,6 +17,7 @@ abstract class BaseRepository
 
     /**
      * @param array<string> $params
+     * @return array<string>
      */
     protected function getResultsWithPagination(
         string $query,
@@ -38,6 +39,7 @@ abstract class BaseRepository
 
     /**
      * @param array<string> $params
+     * @return array<string>
      */
     protected function getResultByPage(
         string $query,

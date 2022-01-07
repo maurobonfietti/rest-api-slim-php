@@ -6,11 +6,17 @@ namespace App\Service\Note;
 
 final class Find extends Base
 {
+    /**
+     * @return array<string>
+     */
     public function getAll(): array
     {
         return $this->noteRepository->getNotes();
     }
 
+    /**
+     * @return array<string>
+     */
     public function getNotesByPage(
         int $page,
         int $perPage,

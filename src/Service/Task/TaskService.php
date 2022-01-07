@@ -8,6 +8,9 @@ use App\Entity\Task;
 
 final class TaskService extends Base
 {
+    /**
+     * @return array<string>
+     */
     public function getTasksByPage(
         int $userId,
         int $page,
@@ -33,6 +36,9 @@ final class TaskService extends Base
         );
     }
 
+    /**
+     * @return array<string>
+     */
     public function getAllTasks(): array
     {
         return $this->getTaskRepository()->getAllTasks();
