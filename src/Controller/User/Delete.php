@@ -9,8 +9,14 @@ use Slim\Http\Response;
 
 final class Delete extends Base
 {
-    public function __invoke(Request $request, Response $response, array $args): Response
-    {
+    /**
+     * @param array<string> $args
+     */
+    public function __invoke(
+        Request $request,
+        Response $response,
+        array $args
+    ): Response {
         $input = (array) $request->getParsedBody();
         $userIdLogged = $this->getAndValidateUserId($input);
         $this->checkUserPermissions((int) $args['id'], (int) $userIdLogged);

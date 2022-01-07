@@ -8,6 +8,9 @@ use App\Entity\Note;
 
 final class Create extends Base
 {
+    /**
+     * @param array<string> $input
+     */
     public function create(array $input): object
     {
         $data = json_decode((string) json_encode($input), false);

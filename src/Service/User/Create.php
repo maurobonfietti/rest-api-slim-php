@@ -8,6 +8,9 @@ use App\Entity\User;
 
 final class Create extends Base
 {
+    /**
+     * @param array<string> $input
+     */
     public function create(array $input): object
     {
         $data = $this->validateUserData($input);
@@ -20,6 +23,9 @@ final class Create extends Base
         return $user->toJson();
     }
 
+    /**
+     * @param array<string> $input
+     */
     private function validateUserData(array $input): User
     {
         $user = json_decode((string) json_encode($input), false);

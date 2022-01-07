@@ -9,6 +9,9 @@ use Firebase\JWT\JWT;
 
 final class Login extends Base
 {
+    /**
+     * @param array<string> $input
+     */
     public function login(array $input): string
     {
         $data = json_decode((string) json_encode($input), false);
