@@ -57,14 +57,18 @@ final class TaskService extends Base
         }
         $mytask = new Task();
         $mytask->updateName(self::validateTaskName($data->name));
-        $desc = $data->description ?? null;
-        $mytask->updateDescription($desc);
+        $description = isset($data->description) ? $data->description : null;
+        $mytask->updateDescription($description);
         $status = 0;
         if (isset($data->status)) {
             $status = self::validateTaskStatus($data->status);
         }
         $mytask->updateStatus($status);
-        $mytask->updateUserId((int) $data->decoded->sub);
+        $userId = null;
+        if (isset($data->decoded) && isset($data->decoded->sub)) {
+            $userId = (int) $data->decoded->sub;
+        }
+        $mytask->updateUserId($userId);
         /** @var Task $task */
         $task = $this->getTaskRepository()->create($mytask);
         if (self::isRedisEnabled() === true) {
@@ -111,7 +115,11 @@ final class TaskService extends Base
         if (isset($data->status)) {
             $task->updateStatus(self::validateTaskStatus($data->status));
         }
-        $task->updateUserId((int) $data->decoded->sub);
+        $userId = null;
+        if (isset($data->decoded) && isset($data->decoded->sub)) {
+            $userId = (int) $data->decoded->sub;
+        }
+        $task->updateUserId($userId);
 
         return $task;
     }

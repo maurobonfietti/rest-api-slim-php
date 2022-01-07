@@ -16,8 +16,8 @@ final class Create extends Base
         }
         $mynote = new Note();
         $mynote->updateName(self::validateNoteName($data->name));
-        $desc = $data->description ?? null;
-        $mynote->updateDescription($desc);
+        $description = isset($data->description) ? $data->description : null;
+        $mynote->updateDescription($description);
         /** @var Note $note */
         $note = $this->noteRepository->createNote($mynote);
         if (self::isRedisEnabled() === true) {
