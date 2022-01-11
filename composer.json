@@ -42,7 +42,12 @@
     },
     "config": {
         "sort-packages": true,
-        "process-timeout": 0
+        "process-timeout": 0,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "composer/package-versions-deprecated": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "autoload": {
         "psr-4": {
