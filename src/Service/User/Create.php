@@ -41,7 +41,8 @@ final class Create extends Base
         $myuser = new User();
         $myuser->updateName(self::validateUserName($user->name));
         $myuser->updateEmail(self::validateEmail($user->email));
-        $myuser->updatePassword(hash('sha512', $user->password));
+        $hash = password_hash($user->password, PASSWORD_BCRYPT);
+        $myuser->updatePassword($hash);
         $this->userRepository->checkUserByEmail($user->email);
 
         return $myuser;
