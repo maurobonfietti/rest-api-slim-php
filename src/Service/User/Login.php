@@ -21,8 +21,7 @@ final class Login extends Base
         if (! isset($data->password)) {
             throw new User('The field "password" is required.', 400);
         }
-        $password = hash('sha512', $data->password);
-        $user = $this->userRepository->loginUser($data->email, $password);
+        $user = $this->userRepository->loginUser($data->email, $data->password);
         $token = [
             'sub' => $user->getId(),
             'email' => $user->getEmail(),
