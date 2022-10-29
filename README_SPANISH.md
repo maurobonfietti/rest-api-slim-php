@@ -244,11 +244,6 @@ Puedes hacer deploy de esta API usando Heroku Free.
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
-## :video_game: VER ONLINE:
-
-Probar [DEMO](http://bit.ly/2DdwKkd).
-
-
 ## :heart: ¿TE GUSTA EL PROYECTO?
 
 Puedes apoyar este proyecto invitándome un café :coffee: :yum: o dando una estrella a este repo :star: :sunglasses:.
