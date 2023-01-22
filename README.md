@@ -220,11 +220,6 @@ OK (56 tests, 343 assertions)
 Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
 
 
-### HELP AND DOCS:
-
-For more information on how to use the REST API, see the following documentation available on [Postman Documenter](https://documenter.getpostman.com/view/1915278/RztfwByr).
-
-
 ### IMPORT WITH POSTMAN:
 
 All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
