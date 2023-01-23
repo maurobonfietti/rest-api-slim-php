@@ -12,7 +12,11 @@ try {
     $pass = $db['pass'];
     $port = $db['port'];
 
-    $pdo = new PDO("mysql:host=${host};port=${port};charset=utf8", $user, $pass);
+    $pdo = new PDO(
+        "mysql:host=${host};port=${port};charset=utf8",
+        $user,
+        $pass
+    );
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $pdo->exec("DROP DATABASE IF EXISTS ${name}");
