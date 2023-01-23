@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service\Task;
 
 use App\Entity\Task;
+use App\Exception\Task as TaskException;
 
 final class TaskService extends Base
 {
@@ -68,7 +69,11 @@ final class TaskService extends Base
         /** @var Task $task */
         $task = $this->getTaskRepository()->create($mytask);
         if (self::isRedisEnabled() === true) {
-            $this->saveInCache($task->getId(), $task->getUserId(), $task->toJson());
+            $this->saveInCache(
+                $task->getId(),
+                $task->getUserId(),
+                $task->toJson()
+            );
         }
 
         return $task->toJson();
@@ -127,7 +132,7 @@ final class TaskService extends Base
         $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode((string) json_encode($input), false);
         if (! isset($data->name) && ! isset($data->status)) {
-            throw new \App\Exception\Task('Enter the data to update the task.', 400);
+            throw new TaskException('Enter the data to update the task.', 400);
         }
         if (isset($data->name)) {
             $task->updateName(self::validateTaskName($data->name));

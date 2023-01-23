@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service\User;
 
 use App\Entity\User;
+use App\Exception\User as UserException;
 
 final class Create extends Base
 {
@@ -30,13 +31,13 @@ final class Create extends Base
     {
         $user = json_decode((string) json_encode($input), false);
         if (! isset($user->name)) {
-            throw new \App\Exception\User('The field "name" is required.', 400);
+            throw new UserException('The field "name" is required.', 400);
         }
         if (! isset($user->email)) {
-            throw new \App\Exception\User('The field "email" is required.', 400);
+            throw new UserException('The field "email" is required.', 400);
         }
         if (! isset($user->password)) {
-            throw new \App\Exception\User('The field "password" is required.', 400);
+            throw new UserException('The field "password" is required.', 400);
         }
         $myuser = new User();
         $myuser->updateName(self::validateUserName($user->name));
