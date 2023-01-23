@@ -100,10 +100,16 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject(User::class);
         if (! $user) {
-            throw new UserException('Login failed: Email or password incorrect.', 400);
+            throw new UserException(
+                'Login failed: Email or password incorrect.',
+                400
+            );
         }
         if (! password_verify($password, $user->getPassword())) {
-            throw new UserException('Login failed: Email or password incorrect.', 400);
+            throw new UserException(
+                'Login failed: Email or password incorrect.',
+                400
+            );
         }
 
         return $user;
