@@ -39,13 +39,18 @@ abstract class Base extends BaseController
         return $this->container->get('login_user_service');
     }
 
-    protected function checkUserPermissions(int $userId, int $userIdLogged): void
-    {
+    protected function checkUserPermissions(
+        int $userId,
+        int $userIdLogged
+    ): void {
         if ($userId !== $userIdLogged) {
             throw new User('User permission failed.', 400);
         }
     }
 
+    /**
+     * @param array<object> $input
+     */
     protected function getAndValidateUserId(array $input): int
     {
         if (isset($input['decoded']) && isset($input['decoded']->sub)) {

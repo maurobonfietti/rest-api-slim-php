@@ -15,6 +15,9 @@ abstract class Base extends BaseController
         return $this->container->get('task_service');
     }
 
+    /**
+     * @param array<object> $input
+     */
     protected function getAndValidateUserId(array $input): int
     {
         if (isset($input['decoded']) && isset($input['decoded']->sub)) {

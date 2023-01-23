@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\User;
+use App\Exception\User as UserException;
 
 final class UserRepository extends BaseRepository
 {
@@ -99,10 +100,16 @@ final class UserRepository extends BaseRepository
         $statement->execute();
         $user = $statement->fetchObject(User::class);
         if (! $user) {
-            throw new \App\Exception\User('Login failed: Email or password incorrect.', 400);
+            throw new UserException(
+                'Login failed: Email or password incorrect.',
+                400
+            );
         }
         if (! password_verify($password, $user->getPassword())) {
-            throw new \App\Exception\User('Login failed: Email or password incorrect.', 400);
+            throw new UserException(
+                'Login failed: Email or password incorrect.',
+                400
+            );
         }
 
         return $user;

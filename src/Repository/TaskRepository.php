@@ -45,14 +45,13 @@ final class TaskRepository extends BaseRepository
         $statement->bindParam('description', $params['description']);
         $statement->bindParam('status', $params['status']);
         $statement->execute();
-        $total = $statement->rowCount();
 
         return $this->getResultsWithPagination(
             $query,
             $page,
             $perPage,
             $params,
-            $total
+            $statement->rowCount()
         );
     }
 
