@@ -6,7 +6,6 @@ This simple API allows you to manage resources such as: users, tasks and notes.
 
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=maurobonfietti_rest-api-slim-php&metric=alert_status)](https://sonarcloud.io/dashboard?id=maurobonfietti_rest-api-slim-php)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Packagist Version](https://img.shields.io/packagist/v/maurobonfietti/rest-api-slim-php)](https://packagist.org/packages/maurobonfietti/rest-api-slim-php)
@@ -225,11 +224,6 @@ Also, you can see the API documentation with the [full list of endpoints](extras
 All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
-
-
-### OPEN API SPEC:
-
-Also, you can view the OpenAPI Specification, using [Swagger UI](https://rest-api-slim-php.herokuapp.com/docs/index.html).
 
 
 ## :rocket: DEPLOY:
