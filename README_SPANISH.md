@@ -1,6 +1,6 @@
 # API REST EN SLIM PHP
 
-Ejemplo de API RESTful con micro framework [Slim PHP](https://www.slimframework.com).
+Este es un ejemplo de una API RESTful construida con el micro framework [Slim PHP](https://www.slimframework.com).
 
 Esta simple API permite administrar recursos tales como: usuarios, tareas y notas.
 
@@ -96,12 +96,12 @@ $ make down
 
 ## :wrench: INSTALACIÓN PASO A PASO:
 
-Si tuviste alguna duda o problema, puedes consultar [esta guía paso a paso](TROUBLESHOOTING.md).
+Si tuviste alguna duda o problema, puedes consultar [esta guía](TROUBLESHOOTING.md) paso a paso.
 
 
 ## :cinema: TUTORIALS:
 
-Mini serie de videos acerca de Slim PHP.
+Mira esta mini serie de videos acerca de Slim PHP.
 
 ### :video_camera: VIDEO #1
 
