@@ -4,6 +4,9 @@ Este es un ejemplo de una API RESTful construida con el micro framework [Slim PH
 
 Esta simple API permite administrar recursos tales como: usuarios, tareas y notas.
 
+También puedes leerlo en inglés [README IN ENGLISH](README.md).
+
+
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
@@ -14,11 +17,34 @@ Esta simple API permite administrar recursos tales como: usuarios, tareas y nota
 ![alt text](https://i.ibb.co/KwZtpCt/REST-API-SLIM-PHP.png "Example of RESTful API with Slim PHP micro framework")
 
 
-También puedes leerlo en inglés [README IN ENGLISH](README.md).
+## TECNOLOGÍAS UTILIZADAS:
 
-Principales tecnologías utilizadas: `PHP 8, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
+Las principales tecnologías utilizadas en este proyecto son:
 
-Además, utilizo otras herramientas adicionales como: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku and CORS.`
+- PHP 8
+- Slim 3
+- MySQL
+- Redis
+- dotenv
+- PHPUnit
+- JSON Web Tokens (JWT)
+
+
+### Herramientas Adicionales:
+
+Además, utilizo otras herramientas adicionales como por ejemplo:
+
+- Docker & Docker Compose
+- Travis CI
+- Swagger
+- Code Climate
+- Scrutinizer
+- Sonar Cloud
+- PHPStan
+- PHP Insights
+- Heroku
+- CORS
+
 
 Más información sobre este proyecto en mi publicación: [Cómo crear una API REST con Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 

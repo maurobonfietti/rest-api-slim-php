@@ -4,6 +4,8 @@ This is an example of a RESTful API built using the [Slim PHP micro framework](h
 
 The API allows you to manage resources such as users, tasks, and notes.
 
+You can also read this [README IN SPANISH](README_SPANISH.md).
+
 
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
@@ -15,11 +17,34 @@ The API allows you to manage resources such as users, tasks, and notes.
 ![alt text](https://i.ibb.co/KwZtpCt/REST-API-SLIM-PHP.png "Example of RESTful API with Slim PHP micro framework")
 
 
-You can also read this [README IN SPANISH](README_SPANISH.md).
+## TECHNOLOGIES USED:
 
-Main technologies used: `PHP 8, Slim 3, MySQL, Redis, dotenv, PHPUnit and JSON Web Tokens.`
+The main technologies used in this project are:
 
-Also, I use other aditional tools like: `Docker & Docker Compose, Travis CI, Swagger, Code Climate, Scrutinizer, Sonar Cloud, PHPStan, PHP Insights, Heroku and CORS.`
+- PHP 8
+- Slim 3
+- MySQL
+- Redis
+- dotenv
+- PHPUnit
+- JSON Web Tokens (JWT)
+
+
+### Additional tools:
+
+Also, I use other aditional tools like:
+
+- Docker & Docker Compose
+- Travis CI
+- Swagger
+- Code Climate
+- Scrutinizer
+- Sonar Cloud
+- PHPStan
+- PHP Insights
+- Heroku
+- CORS
+
 
 More info about this project in my post: [How to create a REST API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
