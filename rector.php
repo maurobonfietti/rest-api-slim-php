@@ -7,6 +7,6 @@ use Rector\Set\ValueObject\SetList;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->sets([
-        SetList::PHP_80
+        SetList::PHP_80,
     ]);
 };
