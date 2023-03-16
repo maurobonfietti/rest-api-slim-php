@@ -17,7 +17,7 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 ![alt text](https://i.ibb.co/KwZtpCt/REST-API-SLIM-PHP.png "Example of RESTful API with Slim PHP micro framework")
 
 
-## TECNOLOGÍAS UTILIZADAS:
+## :computer: TECNOLOGÍAS UTILIZADAS:
 
 Las principales tecnologías utilizadas en este proyecto son:
 
@@ -44,11 +44,6 @@ Además, utilizo otras herramientas adicionales como por ejemplo:
 - PHP Insights
 - Heroku
 - CORS
-
-
-Más información sobre este proyecto en mi publicación: [Cómo crear una API REST con Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
-
-Implementé esta API en [este proyecto](https://github.com/maurobonfietti/rest-api-slim-php-web-app). Es una aplicación web tipo lista de tareas, desarrollada en Angular.
 
 
 ## :gear: INSTALACIÓN RÁPIDA:
@@ -257,6 +252,18 @@ Toda la información de la API, preparada para descargar y utilizar como colecci
 Puedes hacer deploy de esta API usando Heroku Free.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+
+## :information_source: MAS INFORMACIÓN:
+
+Para obtener más información sobre este proyecto, consulta mi publicación: [Cómo crear una API REST con Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
+
+También puede echar un vistazo a la [aplicación web de la lista de tareas](https://github.com/maurobonfietti/rest-api-slim-php-web-app) que desarrollé usando esta API en Angular.
+
+
+## :speech_balloon: CONTRIBUCIONES:
+
+Si desea contribuir al proyecto, abra un isse o envíe una solicitud de extracción (PR). ¡Las contribuciones son siempre bienvenidas!
 
 
 ## :heart: ¿TE GUSTA EL PROYECTO?
