@@ -365,6 +365,25 @@ class UserTest extends BaseTestCase
     }
 
     /**
+     * Test login endpoint with valid user but wrong password.
+     */
+    public function testLoginUserWithWrongPass(): void
+    {
+        $response = $this->runApp('POST', '/login', ['email' => 'test@user.com', 'password' => 'u2notKnowMe321']);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringContainsString('Login failed', $result);
+        $this->assertStringContainsString('Exception', $result);
+        $this->assertStringContainsString('error', $result);
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringNotContainsString('Authorization', $result);
+        $this->assertStringNotContainsString('Bearer', $result);
+    }
+
+    /**
      * Test login endpoint without send required field email.
      */
     public function testLoginWithoutEmailField(): void
