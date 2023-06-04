@@ -87,14 +87,19 @@ final class UserRepository extends BaseRepository
         return (array) $statement->fetchAll();
     }
 
-    public function loginUser(string $email, string $password): User
+    public function getQueryLoginUser(): string
     {
-        $query = '
+        return '
             SELECT *
             FROM `users`
             WHERE `email` = :email
             ORDER BY `id`
         ';
+    }
+
+    public function loginUser(string $email, string $password): User
+    {
+        $query = $this->getQueryLoginUser();
         $statement = $this->database->prepare($query);
         $statement->bindParam('email', $email);
         $statement->execute();

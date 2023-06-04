@@ -7,7 +7,7 @@ use App\Controller\Task;
 use App\Controller\User;
 use App\Middleware\Auth;
 
-return function ($app) {
+return static function ($app) {
     $app->get('/', 'App\Controller\DefaultController:getHelp');
     $app->get('/status', 'App\Controller\DefaultController:getStatus');
     $app->post('/login', \App\Controller\User\Login::class);
