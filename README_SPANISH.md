@@ -1,6 +1,6 @@
 # API REST EN SLIM PHP
 
-Este es un ejemplo de una API RESTful construida con el micro framework [Slim PHP](https://www.slimframework.com).
+Este es un ejemplo de una API RESTful construida con el micro-framework [Slim PHP](https://www.slimframework.com).
 
 Esta simple API permite administrar recursos tales como: usuarios, tareas y notas.
 
@@ -50,12 +50,12 @@ Además, utilizo otras herramientas adicionales como por ejemplo:
 
 ### Requerimientos:
 
-- Git.
-- Composer.
+- Git
+- Composer
 - PHP >= 8.0
-- MySQL/MariaDB.
-- Redis (Opcional).
-- O simplemente Docker.
+- MySQL/MariaDB
+- Redis (Opcional)
+- O simplemente Docker
 
 
 ### Usando Composer:
@@ -249,7 +249,7 @@ Toda la información de la API, preparada para descargar y utilizar como colecci
 
 ## :rocket: DESPIEGLE:
 
-Puedes hacer deploy de esta API usando Heroku Free.
+Puedes hacer deploy de esta API usando Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 

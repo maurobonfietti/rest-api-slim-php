@@ -1,6 +1,6 @@
 # REST API IN SLIM PHP
 
-This is an example of a RESTful API built using the [Slim PHP micro framework](https://www.slimframework.com).
+This is an example of a RESTful API built using the [Slim PHP micro-framework](https://www.slimframework.com).
 
 The API allows you to manage resources such as users, tasks, and notes.
 
@@ -19,7 +19,7 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 
 ## :computer: TECHNOLOGIES USED:
 
-The main technologies used in this project are:
+The leading technologies used in this project are:
 
 - PHP 8
 - Slim 3
@@ -32,7 +32,7 @@ The main technologies used in this project are:
 
 ### Additional tools:
 
-Also, I use other aditional tools like:
+Also, I use other additional tools like:
 
 - Docker & Docker Compose
 - Travis CI
@@ -50,12 +50,12 @@ Also, I use other aditional tools like:
 
 ### Requirements:
 
-- Git.
-- Composer.
+- Git
+- Composer
 - PHP >= 8.0
-- MySQL/MariaDB.
-- Redis (Optional).
-- or Docker.
+- MySQL/MariaDB
+- Redis (Optional)
+- or Docker
 
 
 ### With Composer:
@@ -75,7 +75,7 @@ $ composer start
 
 ### With Git:
 
-In your terminal execute this commands:
+In your terminal, execute these commands:
 
 ```bash
 $ git clone https://github.com/maurobonfietti/rest-api-slim-php.git && cd rest-api-slim-php
@@ -237,19 +237,19 @@ OK (56 tests, 343 assertions)
 
 - Delete Note: `DELETE /api/v1/notes/{id}`
 
-Also, you can see the API documentation with the [full list of endpoints](extras/docs/endpoints.md).
+Also, you can see the API documentation with the [complete list of endpoints](extras/docs/endpoints.md).
 
 
 ### IMPORT WITH POSTMAN:
 
-All the information of the API, prepared to download and use as postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
+All the API information is prepared for download and use as Postman collection: [Import Collection](https://www.getpostman.com/collections/b8493a923ab81ef53ebb).
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
 
 
 ## :rocket: DEPLOY:
 
-You can deploy this API with Heroku Free.
+You can deploy this API with Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -258,7 +258,7 @@ You can deploy this API with Heroku Free.
 
 For more information about this project, check out my blog post: [How to create a REST API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
-You can also take a look at the [todo list web app](https://github.com/maurobonfietti/rest-api-slim-php-web-app) I developed using this API in Angular.
+You can also look at the [to-do list web app](https://github.com/maurobonfietti/rest-api-slim-php-web-app) I developed using this API in Angular.
 
 
 ## :speech_balloon: CONTRIBUTING:
@@ -268,7 +268,7 @@ If you would like to contribute to the project, please open an issue or submit a
 
 ## :heart: DO YOU LIKE THE PROJECT?
 
-You can support this project inviting me a coffee :coffee: :yum: or giving a **star** to this repo :star: :sunglasses:.
+You can support this project by inviting me a coffee :coffee: :yum: or giving a **star** to this repo :star: :sunglasses:.
 
 <a href='https://ko-fi.com/maurobonfietti' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
