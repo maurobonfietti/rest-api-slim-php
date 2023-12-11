@@ -17,7 +17,7 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 ![alt text](https://i.ibb.co/KwZtpCt/REST-API-SLIM-PHP.png "Example of RESTful API with Slim PHP micro framework")
 
 
-## :computer: TECHNOLOGIES USED:
+## 🖥️ TECHNOLOGIES USED:
 
 The leading technologies used in this project are:
 
@@ -46,7 +46,7 @@ Also, I use other additional tools like:
 - CORS
 
 
-## :gear: QUICK INSTALL:
+## ⚙️ QUICK INSTALL:
 
 ### Requirements:
 
@@ -115,12 +115,12 @@ $ make down
 ```
 
 
-## :wrench: TROUBLESHOOTING:
+## 🛠️ TROUBLESHOOTING:
 
 If you get stuck, you can try [this guide](TROUBLESHOOTING.md) step by step.
 
 
-## :cinema: TUTORIALS:
+## 🎦 TUTORIALS:
 
 Watch this mini-series of videos about Slim PHP (Spanish Audio :sound: :es: :argentina:).
 
@@ -141,7 +141,7 @@ Watch this mini-series of videos about Slim PHP (Spanish Audio :sound: :es: :arg
 [Deploy Slim PHP on Heroku.](https://youtu.be/-F09LCgNuGg)
 
 
-## :package: DEPENDENCIES:
+## 📦 DEPENDENCIES:
 
 ### LIST OF REQUIRE DEPENDENCIES:
 
@@ -162,7 +162,7 @@ Watch this mini-series of videos about Slim PHP (Spanish Audio :sound: :es: :arg
 - [rector/rector](https://github.com/rectorphp/rector): Instant Upgrades and Instant Refactoring of any PHP 5.3+ code.
 
 
-## :traffic_light: TESTING:
+## 🚥 TESTING:
 
 Run all PHPUnit tests with `composer test`.
 
@@ -190,7 +190,7 @@ OK (56 tests, 343 assertions)
 ----
 
 
-## :books: DOCUMENTATION:
+## 📚 DOCUMENTATION:
 
 ### ENDPOINTS:
 
@@ -247,21 +247,21 @@ All the API information is prepared for download and use as Postman collection: 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
 
 
-## :rocket: DEPLOY:
+## 🚀 DEPLOY:
 
 You can deploy this API with Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
-## :information_source: MORE INFORMATION:
+## ℹ️ MORE INFORMATION:
 
 For more information about this project, check out my blog post: [How to create a REST API using Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
 You can also look at the [to-do list web app](https://github.com/maurobonfietti/rest-api-slim-php-web-app) I developed using this API in Angular.
 
 
-## :speech_balloon: CONTRIBUTING:
+## 💬 CONTRIBUTING:
 
 If you would like to contribute to the project, please open an issue or submit a pull request. Contributions are always welcome!
 

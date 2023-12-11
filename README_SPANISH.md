@@ -17,7 +17,7 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 ![alt text](https://i.ibb.co/KwZtpCt/REST-API-SLIM-PHP.png "Example of RESTful API with Slim PHP micro framework")
 
 
-## :computer: TECNOLOGÍAS UTILIZADAS:
+## 🖥️ TECNOLOGÍAS UTILIZADAS:
 
 Las principales tecnologías utilizadas en este proyecto son:
 
@@ -46,7 +46,7 @@ Además, utilizo otras herramientas adicionales como por ejemplo:
 - CORS
 
 
-## :gear: INSTALACIÓN RÁPIDA:
+## ⚙️ INSTALACIÓN RÁPIDA:
 
 ### Requerimientos:
 
@@ -115,12 +115,12 @@ $ make down
 ```
 
 
-## :wrench: INSTALACIÓN PASO A PASO:
+## 🛠️ INSTALACIÓN PASO A PASO:
 
 Si tuviste alguna duda o problema, puedes consultar [esta guía](TROUBLESHOOTING.md) paso a paso.
 
 
-## :cinema: TUTORIALS:
+## 🎦 TUTORIALS:
 
 Mira esta mini serie de videos acerca de Slim PHP.
 
@@ -141,7 +141,7 @@ Mira esta mini serie de videos acerca de Slim PHP.
 [Cómo hacer el despliegue de una API con Slim PHP usando Heroku.](https://youtu.be/-F09LCgNuGg)
 
 
-## :package: DEPENDENCIAS:
+## 📦 DEPENDENCIAS:
 
 ### LISTA DE DEPENDENCIAS REQUERIDAS:
 
@@ -162,7 +162,7 @@ Mira esta mini serie de videos acerca de Slim PHP.
 - [rector/rector](https://github.com/rectorphp/rector): Actualizaciones y refactorización instantánea de cualquier código PHP 5.3+.
 
 
-## :traffic_light: TESTING:
+## 🚥 TESTING:
 
 Ejecutar los tests PHPUnit con `composer test`.
 
@@ -190,7 +190,7 @@ OK (56 tests, 343 assertions)
 ----
 
 
-## :books: DOCUMENTACIÓN:
+## 📚 DOCUMENTACIÓN:
 
 ### ENDPOINTS:
 
@@ -247,21 +247,21 @@ Toda la información de la API, preparada para descargar y utilizar como colecci
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b8493a923ab81ef53ebb)
 
 
-## :rocket: DESPIEGLE:
+## 🚀 DESPIEGLE:
 
 Puedes hacer deploy de esta API usando Heroku.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 
-## :information_source: MAS INFORMACIÓN:
+## ℹ️ MAS INFORMACIÓN:
 
 Para obtener más información sobre este proyecto, consulta mi publicación: [Cómo crear una API REST con Slim PHP](https://maurobonfietti.github.io/2019-06-03-rest-api-slim-php/).
 
 También puede echar un vistazo a la [aplicación web de la lista de tareas](https://github.com/maurobonfietti/rest-api-slim-php-web-app) que desarrollé usando esta API en Angular.
 
 
-## :speech_balloon: CONTRIBUCIONES:
+## 💬 CONTRIBUCIONES:
 
 Si desea contribuir al proyecto, abra un isse o envíe una solicitud de extracción (PR). ¡Las contribuciones son siempre bienvenidas!
 
