@@ -179,7 +179,7 @@ OK (56 tests, 343 assertions)
 ```
 
 
-## CAPTURA DE PANTALLA:
+## 📸 CAPTURA DE PANTALLA:
 
 <img width="493" alt="Screen Shot API using Browser" src="https://user-images.githubusercontent.com/24535949/121755366-58c07580-caed-11eb-9688-28183f80ab2a.png">
 
