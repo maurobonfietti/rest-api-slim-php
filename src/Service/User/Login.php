@@ -30,6 +30,6 @@ final class Login extends Base
             'exp' => time() + (7 * 24 * 60 * 60),
         ];
 
-        return JWT::encode($token, $_SERVER['SECRET_KEY']);
+        return JWT::encode($token, $_SERVER['SECRET_KEY'], 'HS256');
     }
 }
