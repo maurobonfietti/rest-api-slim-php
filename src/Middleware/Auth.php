@@ -18,11 +18,11 @@ final class Auth extends Base
     ): ResponseInterface {
         $jwtHeader = $request->getHeaderLine('Authorization');
         if (! $jwtHeader) {
-            throw new \App\Exception\Auth('JWT Token required.', 400);
+            throw new \App\Exception\Auth('JWT Token required.', 401);
         }
         $jwt = explode('Bearer ', $jwtHeader);
         if (! isset($jwt[1])) {
-            throw new \App\Exception\Auth('JWT Token invalid.', 400);
+            throw new \App\Exception\Auth('JWT Token invalid.', 401);
         }
         $decoded = $this->checkToken($jwt[1]);
         $object = (array) $request->getParsedBody();

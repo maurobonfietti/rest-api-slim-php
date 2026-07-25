@@ -189,7 +189,7 @@ class TaskTest extends BaseTestCase
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals(401, $response->getStatusCode());
         $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringContainsString('error', $result);
@@ -211,7 +211,7 @@ class TaskTest extends BaseTestCase
 
         $result = (string) $response->getBody();
 
-        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals(401, $response->getStatusCode());
         $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
         $this->assertStringNotContainsString('success', $result);
         $this->assertStringContainsString('error', $result);
