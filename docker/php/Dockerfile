@@ -1,7 +1,7 @@
 FROM php:8.5-fpm
 
 RUN apt-get -y update
-RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.org/composer.phar
+RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.org/download/latest-stable/composer.phar
 RUN chmod 755 /usr/local/bin/composer
 RUN apt-get install -y git mc
 RUN docker-php-ext-install pdo_mysql mysqli
