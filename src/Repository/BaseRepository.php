@@ -48,7 +48,7 @@ abstract class BaseRepository
         array $params
     ): array {
         $offset = ($page - 1) * $perPage;
-        $query .= " LIMIT ${perPage} OFFSET ${offset}";
+        $query .= " LIMIT {$perPage} OFFSET {$offset}";
         $statement = $this->database->prepare($query);
         $statement->execute($params);
 

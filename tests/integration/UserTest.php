@@ -237,6 +237,22 @@ class UserTest extends BaseTestCase
     }
 
     /**
+     * Test Update User With Space In Name.
+     */
+    public function testUpdateUserWithSpaceInName(): void
+    {
+        $response = $this->runApp('PUT', '/api/v1/users/' . self::$id, ['name' => 'Stu Pérez', 'email' => 'estu@gmail.com']);
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertEquals('application/json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringContainsString('success', $result);
+        $this->assertEquals('Stu Pérez', json_decode($result)->message->name);
+        $this->assertStringNotContainsString('error', $result);
+    }
+
+    /**
      * Test Update User Without Send Data.
      */
     public function testUpdateUserWithOutSendData(): void
