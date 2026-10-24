@@ -17,7 +17,7 @@ env:
     - DB_PORT=3306
     - DISPLAY_ERROR_DETAILS=true
     - APP_DOMAIN='https://www.awesome.com.ar'
-    - SECRET_KEY=YourSuperSecret-KeY
+    - SECRET_KEY=YourSuperSecret-KeY-Min-32-Bytes-Long
     - REDIS_ENABLED=true
     - REDIS_URL=localhost
 

@@ -240,6 +240,50 @@ class TaskTest extends BaseTestCase
     }
 
     /**
+     * Test Create Task With Malformed JWT.
+     */
+    public function testCreateTaskWithMalformedJWT(): void
+    {
+        $auth = self::$jwt;
+        self::$jwt = 'Bearer abc.def.ghi';
+        $response = $this->runApp(
+            'POST',
+            '/api/v1/tasks',
+            ['name' => 'my task', 'status' => 0]
+        );
+        self::$jwt = $auth;
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(403, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringContainsString('error', $result);
+    }
+
+    /**
+     * Test Create Task With Too Short Secret Key.
+     */
+    public function testCreateTaskWithTooShortSecretKey(): void
+    {
+        $secretKey = $_SERVER['SECRET_KEY'];
+        $_SERVER['SECRET_KEY'] = 'TooShortSecretKey';
+        $response = $this->runApp(
+            'POST',
+            '/api/v1/tasks',
+            ['name' => 'my task', 'status' => 0]
+        );
+        $_SERVER['SECRET_KEY'] = $secretKey;
+
+        $result = (string) $response->getBody();
+
+        $this->assertEquals(500, $response->getStatusCode());
+        $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
+        $this->assertStringNotContainsString('success', $result);
+        $this->assertStringContainsString('invalid JWT configuration', $result);
+    }
+
+    /**
      * Test Update Task.
      */
     public function testUpdateTask(): void

@@ -24,7 +24,7 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.5",
-        "firebase/php-jwt": "^6.0",
+        "firebase/php-jwt": "^7.2",
         "palanik/corsslim": "dev-slim3",
         "predis/predis": "^3.0",
         "respect/validation": "^2.4",

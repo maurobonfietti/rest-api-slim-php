@@ -54,8 +54,10 @@ For example:
 DISPLAY_ERROR_DETAILS=true
 APP_DOMAIN='https://www.yourdomain.com'
 REDIS_URL=''
-SECRET_KEY='YourSuperSecret-KeY'
+SECRET_KEY='YourSuperSecret-KeY-Min-32-Bytes-Long'
 ```
+
+> `SECRET_KEY` signs the JWT tokens with HS256 and must be at least 32 bytes long (required by `firebase/php-jwt` v7+). You can generate one with `openssl rand -base64 48`.
 
 
 ## LOCAL SERVER:
