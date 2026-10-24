@@ -21,7 +21,7 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 
 The leading technologies used in this project are:
 
-- PHP 8
+- PHP 8.5
 - Slim 3
 - MySQL
 - Redis
@@ -52,7 +52,7 @@ Also, I use other additional tools like:
 
 - Git
 - Composer
-- PHP >= 8.0
+- PHP >= 8.5
 - MySQL/MariaDB
 - Redis (Optional)
 - or Docker

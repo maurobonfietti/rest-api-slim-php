@@ -13,7 +13,7 @@ services:
       - php-fpm
 
   php-fpm:
-    build: ./docker/php7
+    build: ./docker/php
     container_name: rest-api-slim-php-php-container
     links:
       - mysql

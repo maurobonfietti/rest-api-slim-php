@@ -21,7 +21,7 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 Las principales tecnologías utilizadas en este proyecto son:
 
-- PHP 8
+- PHP 8.5
 - Slim 3
 - MySQL
 - Redis
@@ -52,7 +52,7 @@ Además, utilizo otras herramientas adicionales como por ejemplo:
 
 - Git
 - Composer
-- PHP >= 8.0
+- PHP >= 8.5
 - MySQL/MariaDB
 - Redis (Opcional)
 - O simplemente Docker

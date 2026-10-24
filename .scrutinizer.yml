@@ -14,7 +14,7 @@ build:
             REDIS_ENABLED: true
             REDIS_URL: 'localhost'
         php:
-            version: 7.4
+            version: 8.5
     project_setup:
         before:
             - mysql -e "CREATE DATABASE rest_api_slim_php"
