@@ -10,7 +10,7 @@ build:
             DB_USER: 'root'
             DB_PASS: ''
             DB_PORT: '3306'
-            SECRET_KEY: 'YourSuperSecret-KeY'
+            SECRET_KEY: 'YourSuperSecret-KeY-Min-32-Bytes-Long'
             REDIS_ENABLED: true
             REDIS_URL: 'localhost'
         php:
