@@ -36,7 +36,7 @@ abstract class Base extends BaseService
 
     protected static function validateTaskStatus(int $status): int
     {
-        if (! v::numeric()->between(0, 1)->validate($status)) {
+        if (! v::numericVal()->between(0, 1)->validate($status)) {
             throw new \App\Exception\Task('Invalid status', 400);
         }
 
