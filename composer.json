@@ -36,7 +36,7 @@
         "phpstan/phpstan": "^1.2",
         "phpunit/phpunit": "^9.0",
         "rector/rector": "^0.12.4",
-        "vimeo/psalm": "^6.0"
+        "vimeo/psalm": "^7.11"
     },
     "config": {
         "sort-packages": true,
