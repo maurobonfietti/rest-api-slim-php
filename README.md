@@ -8,7 +8,6 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 
 
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Packagist Version](https://img.shields.io/packagist/v/maurobonfietti/rest-api-slim-php)](https://packagist.org/packages/maurobonfietti/rest-api-slim-php)
@@ -21,7 +20,7 @@ You can also read this [README IN SPANISH](README_SPANISH.md).
 
 The leading technologies used in this project are:
 
-- PHP 8.5
+- PHP 8.6
 - Slim 3
 - MySQL
 - Redis
@@ -35,7 +34,6 @@ The leading technologies used in this project are:
 Also, I use other additional tools like:
 
 - Docker & Docker Compose
-- Travis CI
 - Swagger
 - Code Climate
 - Scrutinizer
@@ -52,7 +50,7 @@ Also, I use other additional tools like:
 
 - Git
 - Composer
-- PHP >= 8.5
+- PHP >= 8.6
 - MySQL/MariaDB
 - Redis (Optional)
 - or Docker

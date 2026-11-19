@@ -23,7 +23,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.5",
+        "php": "^8.6",
         "firebase/php-jwt": "^7.2",
         "palanik/corsslim": "dev-slim3",
         "predis/predis": "^3.0",

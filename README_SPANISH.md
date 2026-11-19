@@ -8,7 +8,6 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status](https://travis-ci.org/maurobonfietti/rest-api-slim-php.svg?branch=master)](https://travis-ci.org/maurobonfietti/rest-api-slim-php)
 [![Code Quality](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/maurobonfietti/api-rest-slimphp/?branch=master)
 [![Test Coverage](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/badges/coverage.svg)](https://codeclimate.com/github/maurobonfietti/api-rest-slimphp/coverage)
 [![Packagist Version](https://img.shields.io/packagist/v/maurobonfietti/rest-api-slim-php)](https://packagist.org/packages/maurobonfietti/rest-api-slim-php)
@@ -21,7 +20,7 @@ También puedes leerlo en inglés [README IN ENGLISH](README.md).
 
 Las principales tecnologías utilizadas en este proyecto son:
 
-- PHP 8.5
+- PHP 8.6
 - Slim 3
 - MySQL
 - Redis
@@ -35,7 +34,6 @@ Las principales tecnologías utilizadas en este proyecto son:
 Además, utilizo otras herramientas adicionales como por ejemplo:
 
 - Docker & Docker Compose
-- Travis CI
 - Swagger
 - Code Climate
 - Scrutinizer
@@ -52,7 +50,7 @@ Además, utilizo otras herramientas adicionales como por ejemplo:
 
 - Git
 - Composer
-- PHP >= 8.5
+- PHP >= 8.6
 - MySQL/MariaDB
 - Redis (Opcional)
 - O simplemente Docker

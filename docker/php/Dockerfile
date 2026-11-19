@@ -1,4 +1,4 @@
-FROM php:8.5-fpm
+FROM php:8.6-fpm
 
 RUN apt-get -y update
 RUN curl -L -C - --progress-bar -o /usr/local/bin/composer https://getcomposer.org/download/latest-stable/composer.phar
