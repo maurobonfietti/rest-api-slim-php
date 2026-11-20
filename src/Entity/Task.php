@@ -6,11 +6,11 @@ namespace App\Entity;
 
 final class Task
 {
-    private int $id;
+    private readonly int $id;
 
     private string $name;
 
-    private ?string $description;
+    private ?string $description = null;
 
     private int $status;
 

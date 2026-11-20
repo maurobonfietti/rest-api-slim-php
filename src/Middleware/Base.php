@@ -11,7 +11,7 @@ use Firebase\JWT\Key;
 abstract class Base
 {
     /** HS256 requires a secret key of at least 256 bits (32 bytes). */
-    private const SECRET_KEY_MIN_LENGTH = 32;
+    private const int SECRET_KEY_MIN_LENGTH = 32;
 
     protected function checkToken(string $token): object
     {

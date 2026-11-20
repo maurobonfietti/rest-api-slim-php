@@ -30,8 +30,6 @@ $container['redis_service'] = static function ($container): RedisService {
     return new RedisService(new \Predis\Client($redis['url']));
 };
 
-$container['notFoundHandler'] = static function () {
-    return static function ($request, $response): void {
-        throw new \App\Exception\NotFound('Route Not Found.', 404);
-    };
-};
+$container['notFoundHandler'] = (static fn() => static function ($request, $response): void {
+    throw new \App\Exception\NotFound('Route Not Found.', 404);
+});

@@ -34,9 +34,9 @@ final class TaskRepository extends BaseRepository
     ): array {
         $params = [
             'userId' => $userId,
-            'name' => is_null($name) ? '' : $name,
-            'description' => is_null($description) ? '' : $description,
-            'status' => is_null($status) ? '' : $status,
+            'name' => $name ?? '',
+            'description' => $description ?? '',
+            'status' => $status ?? '',
         ];
         $query = $this->getQueryTasksByPage();
         $statement = $this->database->prepare($query);

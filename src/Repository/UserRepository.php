@@ -45,8 +45,8 @@ final class UserRepository extends BaseRepository
         ?string $email
     ): array {
         $params = [
-            'name' => is_null($name) ? '' : $name,
-            'email' => is_null($email) ? '' : $email,
+            'name' => $name ?? '',
+            'email' => $email ?? '',
         ];
         $query = $this->getQueryUsersByPage();
         $statement = $this->database->prepare($query);

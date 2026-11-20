@@ -12,7 +12,7 @@ use Respect\Validation\Validator as v;
 
 abstract class Base extends BaseService
 {
-    private const REDIS_KEY = 'user:%s';
+    private const string REDIS_KEY = 'user:%s';
 
     public function __construct(
         protected UserRepository $userRepository,

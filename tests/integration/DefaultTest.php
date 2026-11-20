@@ -55,10 +55,10 @@ class DefaultTest extends BaseTestCase
      */
     public function testApiVersionMatchesController(): void
     {
-        $expected = (new \ReflectionClassConstant(
+        $expected = new \ReflectionClassConstant(
             \App\Controller\DefaultController::class,
             'API_VERSION'
-        ))->getValue();
+        )->getValue();
 
         $help = json_decode((string) $this->runApp('GET', '/')->getBody(), true);
         $status = json_decode((string) $this->runApp('GET', '/status')->getBody(), true);

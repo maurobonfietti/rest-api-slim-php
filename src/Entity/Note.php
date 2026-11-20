@@ -6,11 +6,11 @@ namespace App\Entity;
 
 final class Note
 {
-    private int $id;
+    private readonly int $id;
 
     private string $name;
 
-    private ?string $description;
+    private ?string $description = null;
 
     public function toJson(): object
     {

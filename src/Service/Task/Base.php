@@ -12,7 +12,7 @@ use Respect\Validation\Validator as v;
 
 abstract class Base extends BaseService
 {
-    private const REDIS_KEY = 'task:%s:user:%s';
+    private const string REDIS_KEY = 'task:%s:user:%s';
 
     public function __construct(
         protected TaskRepository $taskRepository,

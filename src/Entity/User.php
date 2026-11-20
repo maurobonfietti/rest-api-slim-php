@@ -6,7 +6,7 @@ namespace App\Entity;
 
 final class User
 {
-    private int $id;
+    private readonly int $id;
 
     private string $name;
 
