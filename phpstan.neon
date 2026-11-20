@@ -1,2 +1,4 @@
 parameters:
-    checkMissingIterableValueType: false
+    ignoreErrors:
+        -
+            identifier: missingType.iterableValue
