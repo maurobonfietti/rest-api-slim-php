@@ -51,6 +51,24 @@ class DefaultTest extends BaseTestCase
     }
 
     /**
+     * Test that the help and status endpoints report the controller's API version.
+     */
+    public function testApiVersionMatchesController(): void
+    {
+        $expected = (new \ReflectionClassConstant(
+            \App\Controller\DefaultController::class,
+            'API_VERSION'
+        ))->getValue();
+
+        $help = json_decode((string) $this->runApp('GET', '/')->getBody(), true);
+        $status = json_decode((string) $this->runApp('GET', '/status')->getBody(), true);
+
+        $this->assertMatchesRegularExpression('/^\d+\.\d+\.\d+$/', $expected);
+        $this->assertSame($expected, $help['message']['version']);
+        $this->assertSame($expected, $status['message']['version']);
+    }
+
+    /**
      * Test Route Not Found.
      */
     public function testRouteNotFound(): void
