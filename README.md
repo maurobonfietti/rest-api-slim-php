@@ -166,13 +166,13 @@ Run all PHPUnit tests with `composer test`.
 ```bash
 $ composer test
 > phpunit
-PHPUnit 9.5.28 by Sebastian Bergmann and contributors.
+PHPUnit 9.6.38 by Sebastian Bergmann and contributors.
 
-........................................................          56 / 56 (100%)
+............................................................      60 / 60 (100%)
 
-Time: 00:00.697, Memory: 18.00 MB
+Time: 00:00.821, Memory: 16.00 MB
 
-OK (56 tests, 343 assertions)
+OK (60 tests, 364 assertions)
 ```
 
 
