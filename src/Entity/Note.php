@@ -6,7 +6,7 @@ namespace App\Entity;
 
 final class Note
 {
-    private readonly int $id;
+    private int $id;
 
     private string $name;
 
