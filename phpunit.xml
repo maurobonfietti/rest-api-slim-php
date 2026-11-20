@@ -15,4 +15,8 @@
       <directory>tests</directory>
     </testsuite>
   </testsuites>
+  <php>
+    <!-- E_ALL & ~E_DEPRECATED: Slim 3 uses is_integer(), deprecated since PHP 8.6 -->
+    <ini name="error_reporting" value="24575"/>
+  </php>
 </phpunit>

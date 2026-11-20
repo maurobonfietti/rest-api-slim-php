@@ -6,9 +6,9 @@ namespace App\Service;
 
 use Predis\Client;
 
-final class RedisService
+final readonly class RedisService
 {
-    public const PROJECT_NAME = 'rest-api-slim-php';
+    public const string PROJECT_NAME = 'rest-api-slim-php';
 
     public function __construct(private Client $redis)
     {

@@ -10,7 +10,7 @@ final class Note
 
     private string $name;
 
-    private ?string $description;
+    private ?string $description = null;
 
     public function toJson(): object
     {

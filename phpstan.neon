@@ -1,2 +1,7 @@
+includes:
+    - phpstan-baseline.neon
+
 parameters:
-    checkMissingIterableValueType: false
+    ignoreErrors:
+        -
+            identifier: missingType.iterableValue

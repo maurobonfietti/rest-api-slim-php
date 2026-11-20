@@ -90,11 +90,7 @@ final class TaskService extends Base
             $status = self::validateTaskStatus($data->status);
         }
         $task->updateStatus($status);
-        $userId = null;
-        if (isset($data->decoded) && isset($data->decoded->sub)) {
-            $userId = (int) $data->decoded->sub;
-        }
-        $task->updateUserId($userId);
+        $task->updateUserId(self::getUserIdFromToken($data));
 
         return $task;
     }
@@ -129,8 +125,9 @@ final class TaskService extends Base
 
     private function validateTask(array $input, int $taskId): Task
     {
-        $task = $this->getTaskFromDb($taskId, (int) $input['decoded']->sub);
         $data = json_decode((string) json_encode($input), false);
+        $userId = self::getUserIdFromToken($data);
+        $task = $this->getTaskFromDb($taskId, $userId);
         if (! isset($data->name) && ! isset($data->status)) {
             throw new TaskException('Enter the data to update the task.', 400);
         }
@@ -143,12 +140,21 @@ final class TaskService extends Base
         if (isset($data->status)) {
             $task->updateStatus(self::validateTaskStatus($data->status));
         }
-        $userId = null;
-        if (isset($data->decoded) && isset($data->decoded->sub)) {
-            $userId = (int) $data->decoded->sub;
-        }
         $task->updateUserId($userId);
 
         return $task;
+    }
+
+    /**
+     * Tasks belong to a user (tasks.userId is NOT NULL), so a token without "sub" is rejected,
+     * matching Controller\Task\Base::getAndValidateUserId().
+     */
+    private static function getUserIdFromToken(object $data): int
+    {
+        if (isset($data->decoded) && isset($data->decoded->sub)) {
+            return (int) $data->decoded->sub;
+        }
+
+        throw new TaskException('Invalid user. Permission failed.', 400);
     }
 }

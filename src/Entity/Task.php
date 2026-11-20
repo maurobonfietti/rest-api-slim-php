@@ -10,7 +10,7 @@ final class Task
 
     private string $name;
 
-    private ?string $description;
+    private ?string $description = null;
 
     private int $status;
 
@@ -67,7 +67,7 @@ final class Task
         return $this->userId;
     }
 
-    public function updateUserId(?int $userId): self
+    public function updateUserId(int $userId): self
     {
         $this->userId = $userId;
 

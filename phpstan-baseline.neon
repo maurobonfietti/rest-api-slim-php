@@ -1,0 +1,1093 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Parameter \#1 \$container of class Slim\\App constructor expects array\|Psr\\Container\\ContainerInterface, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/App.php
+
+		-
+			message: '#^Trying to invoke mixed but it''s not a callable\.$#'
+			identifier: callable.nonCallable
+			count: 1
+			path: src/App/App.php
+
+		-
+			message: '#^Cannot access offset ''db'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''errorHandler'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''host'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''name'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''notFoundHandler'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''pass'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''port'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''redis'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''redis_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''url'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''user'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot call method get\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Parameter \#2 \$username of class PDO constructor expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Parameter \#2 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Parameter \#3 \$password of class PDO constructor expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Parameter \#3 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Parameter \#4 \.\.\.\$values of function sprintf expects bool\|float\|int\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Dependencies.php
+
+		-
+			message: '#^Cannot access offset ''note_repository'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Repositories.php
+
+		-
+			message: '#^Cannot access offset ''task_repository'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Repositories.php
+
+		-
+			message: '#^Cannot access offset ''user_repository'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Repositories.php
+
+		-
+			message: '#^Parameter \#1 \$database of class App\\Repository\\NoteRepository constructor expects PDO, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Repositories.php
+
+		-
+			message: '#^Parameter \#1 \$database of class App\\Repository\\TaskRepository constructor expects PDO, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Repositories.php
+
+		-
+			message: '#^Parameter \#1 \$database of class App\\Repository\\UserRepository constructor expects PDO, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Repositories.php
+
+		-
+			message: '#^Cannot call method add\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 5
+			path: src/App/Routes.php
+
+		-
+			message: '#^Cannot call method delete\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: src/App/Routes.php
+
+		-
+			message: '#^Cannot call method get\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 8
+			path: src/App/Routes.php
+
+		-
+			message: '#^Cannot call method group\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 4
+			path: src/App/Routes.php
+
+		-
+			message: '#^Cannot call method post\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 4
+			path: src/App/Routes.php
+
+		-
+			message: '#^Cannot call method put\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: src/App/Routes.php
+
+		-
+			message: '#^Cannot access offset ''create_note_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''create_user_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''delete_note_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''delete_user_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''find_note_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''find_user_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''login_user_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''task_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''update_note_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Cannot access offset ''update_user_service'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$noteRepository of class App\\Service\\Note\\Create constructor expects App\\Repository\\NoteRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$noteRepository of class App\\Service\\Note\\Delete constructor expects App\\Repository\\NoteRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$noteRepository of class App\\Service\\Note\\Find constructor expects App\\Repository\\NoteRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$noteRepository of class App\\Service\\Note\\Update constructor expects App\\Repository\\NoteRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$taskRepository of class App\\Service\\Task\\TaskService constructor expects App\\Repository\\TaskRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$userRepository of class App\\Service\\User\\Create constructor expects App\\Repository\\UserRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$userRepository of class App\\Service\\User\\Delete constructor expects App\\Repository\\UserRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$userRepository of class App\\Service\\User\\Find constructor expects App\\Repository\\UserRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$userRepository of class App\\Service\\User\\Login constructor expects App\\Repository\\UserRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#1 \$userRepository of class App\\Service\\User\\Update constructor expects App\\Repository\\UserRepository, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\Note\\Create constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\Note\\Delete constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\Note\\Find constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\Note\\Update constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\Task\\TaskService constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\User\\Create constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\User\\Delete constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\User\\Find constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\User\\Login constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Parameter \#2 \$redisService of class App\\Service\\User\\Update constructor expects App\\Service\\RedisService, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/App/Services.php
+
+		-
+			message: '#^Method App\\Controller\\BaseController\:\:jsonResponse\(\) has parameter \$message with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: src/Controller/BaseController.php
+
+		-
+			message: '#^Binary operation "\." between mixed and '''' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/api/v1/notes'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/api/v1/tasks'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/api/v1/users'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/docs/index\.html'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Binary operation "\." between mixed and ''/status'' results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Cannot access offset ''app'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Cannot access offset ''domain'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Cannot call method generateKey\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Cannot call method getAll\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Cannot call method getAllTasks\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Cannot call method set\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Parameter \#1 \$value of function count expects array\|Countable, mixed given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/Controller/DefaultController.php
+
+		-
+			message: '#^Method App\\Controller\\Note\\Base\:\:getServiceCreateNote\(\) should return App\\Service\\Note\\Create but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/Note/Base.php
+
+		-
+			message: '#^Method App\\Controller\\Note\\Base\:\:getServiceDeleteNote\(\) should return App\\Service\\Note\\Delete but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/Note/Base.php
+
+		-
+			message: '#^Method App\\Controller\\Note\\Base\:\:getServiceFindNote\(\) should return App\\Service\\Note\\Find but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/Note/Base.php
+
+		-
+			message: '#^Method App\\Controller\\Note\\Base\:\:getServiceUpdateNote\(\) should return App\\Service\\Note\\Update but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/Note/Base.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Service\\Note\\Create\:\:create\(\) expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Note/Create.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: src/Controller/Note/GetAll.php
+
+		-
+			message: '#^Parameter \#3 \$name of method App\\Service\\Note\\Find\:\:getNotesByPage\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Note/GetAll.php
+
+		-
+			message: '#^Parameter \#4 \$description of method App\\Service\\Note\\Find\:\:getNotesByPage\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Note/GetAll.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Service\\Note\\Update\:\:update\(\) expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Note/Update.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: src/Controller/Task/Base.php
+
+		-
+			message: '#^Method App\\Controller\\Task\\Base\:\:getTaskService\(\) should return App\\Service\\Task\\TaskService but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/Task/Base.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Service\\Task\\TaskService\:\:create\(\) expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Task/Create.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Controller\\Task\\Base\:\:getAndValidateUserId\(\) expects array\<object\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Task/Delete.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: src/Controller/Task/GetAll.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Controller\\Task\\Base\:\:getAndValidateUserId\(\) expects array\<object\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Task/GetAll.php
+
+		-
+			message: '#^Parameter \#4 \$name of method App\\Service\\Task\\TaskService\:\:getTasksByPage\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Task/GetAll.php
+
+		-
+			message: '#^Parameter \#5 \$description of method App\\Service\\Task\\TaskService\:\:getTasksByPage\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Task/GetAll.php
+
+		-
+			message: '#^Parameter \#6 \$status of method App\\Service\\Task\\TaskService\:\:getTasksByPage\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Task/GetAll.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Controller\\Task\\Base\:\:getAndValidateUserId\(\) expects array\<object\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Task/GetOne.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Service\\Task\\TaskService\:\:update\(\) expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Task/Update.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: src/Controller/User/Base.php
+
+		-
+			message: '#^Method App\\Controller\\User\\Base\:\:getCreateUserService\(\) should return App\\Service\\User\\Create but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/User/Base.php
+
+		-
+			message: '#^Method App\\Controller\\User\\Base\:\:getDeleteUserService\(\) should return App\\Service\\User\\Delete but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/User/Base.php
+
+		-
+			message: '#^Method App\\Controller\\User\\Base\:\:getFindUserService\(\) should return App\\Service\\User\\Find but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/User/Base.php
+
+		-
+			message: '#^Method App\\Controller\\User\\Base\:\:getLoginUserService\(\) should return App\\Service\\User\\Login but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/User/Base.php
+
+		-
+			message: '#^Method App\\Controller\\User\\Base\:\:getUpdateUserService\(\) should return App\\Service\\User\\Update but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Controller/User/Base.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Service\\User\\Create\:\:create\(\) expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/User/Create.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Controller\\User\\Base\:\:getAndValidateUserId\(\) expects array\<object\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/User/Delete.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 2
+			path: src/Controller/User/GetAll.php
+
+		-
+			message: '#^Parameter \#3 \$name of method App\\Service\\User\\Find\:\:getUsersByPage\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/User/GetAll.php
+
+		-
+			message: '#^Parameter \#4 \$email of method App\\Service\\User\\Find\:\:getUsersByPage\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/User/GetAll.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Service\\User\\Login\:\:login\(\) expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/User/Login.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Controller\\User\\Base\:\:getAndValidateUserId\(\) expects array\<object\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/User/Update.php
+
+		-
+			message: '#^Parameter \#1 \$input of method App\\Service\\User\\Update\:\:update\(\) expects array\<string\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/User/Update.php
+
+		-
+			message: '#^Method App\\Entity\\Note\:\:toJson\(\) should return object but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Entity/Note.php
+
+		-
+			message: '#^Property App\\Entity\\Note\:\:\$id is never written, only read\.$#'
+			identifier: property.onlyRead
+			count: 1
+			path: src/Entity/Note.php
+
+		-
+			message: '#^Method App\\Entity\\Task\:\:toJson\(\) should return object but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Entity/Task.php
+
+		-
+			message: '#^Property App\\Entity\\Task\:\:\$id is never written, only read\.$#'
+			identifier: property.onlyRead
+			count: 1
+			path: src/Entity/Task.php
+
+		-
+			message: '#^Method App\\Entity\\User\:\:toJson\(\) should return object but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: '#^Property App\\Entity\\User\:\:\$id is never written, only read\.$#'
+			identifier: property.onlyRead
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/Middleware/Base.php
+
+		-
+			message: '#^Method App\\Repository\\BaseRepository\:\:getResultByPage\(\) should return array\<float\|int\|string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/BaseRepository.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: src/Repository/NoteRepository.php
+
+		-
+			message: '#^Method App\\Repository\\NoteRepository\:\:getNotes\(\) should return array\<string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/NoteRepository.php
+
+		-
+			message: '#^Method App\\Repository\\NoteRepository\:\:getNotesByPage\(\) should return array\<string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/NoteRepository.php
+
+		-
+			message: '#^Parameter \#4 \$params of method App\\Repository\\BaseRepository\:\:getResultsWithPagination\(\) expects array\<string, int\|string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Repository/NoteRepository.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 3
+			path: src/Repository/TaskRepository.php
+
+		-
+			message: '#^Method App\\Repository\\TaskRepository\:\:getAllTasks\(\) should return array\<string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/TaskRepository.php
+
+		-
+			message: '#^Method App\\Repository\\TaskRepository\:\:getTasksByPage\(\) should return array\<string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/TaskRepository.php
+
+		-
+			message: '#^Parameter \#4 \$params of method App\\Repository\\BaseRepository\:\:getResultsWithPagination\(\) expects array\<string, int\|string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Repository/TaskRepository.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Method App\\Repository\\UserRepository\:\:getAll\(\) should return array\<string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Method App\\Repository\\UserRepository\:\:getUsersByPage\(\) should return array\<string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Parameter \#4 \$params of method App\\Repository\\BaseRepository\:\:getResultsWithPagination\(\) expects array\<string, int\|string\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/Note/Create.php
+
+		-
+			message: '#^Parameter \#1 \$description of method App\\Entity\\Note\:\:updateDescription\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Note/Create.php
+
+		-
+			message: '#^Parameter \#1 \$name of static method App\\Service\\Note\\Base\:\:validateNoteName\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Note/Create.php
+
+		-
+			message: '#^Cannot access property \$description on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/Note/Update.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/Note/Update.php
+
+		-
+			message: '#^Parameter \#1 \$description of method App\\Entity\\Note\:\:updateDescription\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Note/Update.php
+
+		-
+			message: '#^Parameter \#1 \$name of static method App\\Service\\Note\\Base\:\:validateNoteName\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Note/Update.php
+
+		-
+			message: '#^Method App\\Service\\RedisService\:\:get\(\) should return object but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Service/RedisService.php
+
+		-
+			message: '#^Access to an undefined property object\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Cannot access property \$status on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Cannot access property \$sub on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Cannot cast mixed to int\.$#'
+			identifier: cast.int
+			count: 1
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Parameter \#1 \$data of static method App\\Service\\Task\\TaskService\:\:getUserIdFromToken\(\) expects object, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Parameter \#1 \$description of method App\\Entity\\Task\:\:updateDescription\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Parameter \#1 \$name of static method App\\Service\\Task\\Base\:\:validateTaskName\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Parameter \#1 \$status of static method App\\Service\\Task\\Base\:\:validateTaskStatus\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Service/Task/TaskService.php
+
+		-
+			message: '#^Method App\\Service\\User\\Base\:\:getUserFromCache\(\) should return object but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Service/User/Base.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/User/Create.php
+
+		-
+			message: '#^Parameter \#1 \$email of method App\\Repository\\UserRepository\:\:checkUserByEmail\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Create.php
+
+		-
+			message: '#^Parameter \#1 \$emailValue of static method App\\Service\\User\\Base\:\:validateEmail\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Create.php
+
+		-
+			message: '#^Parameter \#1 \$name of static method App\\Service\\User\\Base\:\:validateUserName\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Create.php
+
+		-
+			message: '#^Parameter \#1 \$password of function password_hash expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Create.php
+
+		-
+			message: '#^Cannot access property \$email on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/User/Login.php
+
+		-
+			message: '#^Parameter \#1 \$email of method App\\Repository\\UserRepository\:\:loginUser\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Login.php
+
+		-
+			message: '#^Parameter \#2 \$key of static method Firebase\\JWT\\JWT\:\:encode\(\) expects OpenSSLAsymmetricKey\|OpenSSLCertificate\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Login.php
+
+		-
+			message: '#^Parameter \#2 \$password of method App\\Repository\\UserRepository\:\:loginUser\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Login.php
+
+		-
+			message: '#^Cannot access property \$email on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/User/Update.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: src/Service/User/Update.php
+
+		-
+			message: '#^Parameter \#1 \$email of method App\\Repository\\UserRepository\:\:checkUserByEmail\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Update.php
+
+		-
+			message: '#^Parameter \#1 \$emailValue of static method App\\Service\\User\\Base\:\:validateEmail\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Update.php
+
+		-
+			message: '#^Parameter \#1 \$name of static method App\\Service\\User\\Base\:\:validateUserName\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Service/User/Update.php
+
+		-
+			message: '#^Cannot access property \$Authorization on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/AuthLoginTest.php
+
+		-
+			message: '#^Cannot access property \$message on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/AuthLoginTest.php
+
+		-
+			message: '#^Static property Tests\\integration\\BaseTestCase\:\:\$jwt \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/integration/AuthLoginTest.php
+
+		-
+			message: '#^Parameter \#1 \$container of class Slim\\App constructor expects array\|Psr\\Container\\ContainerInterface, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/integration/BaseTestCase.php
+
+		-
+			message: '#^Trying to invoke mixed but it''s not a callable\.$#'
+			identifier: callable.nonCallable
+			count: 1
+			path: tests/integration/BaseTestCase.php
+
+		-
+			message: '#^Cannot access offset ''message'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: tests/integration/DefaultTest.php
+
+		-
+			message: '#^Cannot access offset ''version'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: tests/integration/DefaultTest.php
+
+		-
+			message: '#^Parameter \#2 \$string of method PHPUnit\\Framework\\Assert\:\:assertMatchesRegularExpression\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/integration/DefaultTest.php
+
+		-
+			message: '#^Cannot access property \$id on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/NoteTest.php
+
+		-
+			message: '#^Cannot access property \$message on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/NoteTest.php
+
+		-
+			message: '#^Static property Tests\\integration\\NoteTest\:\:\$id \(int\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/integration/NoteTest.php
+
+		-
+			message: '#^Cannot access property \$id on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/TaskTest.php
+
+		-
+			message: '#^Cannot access property \$message on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/TaskTest.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: tests/integration/TaskTest.php
+
+		-
+			message: '#^Static property Tests\\integration\\TaskTest\:\:\$id \(int\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/integration/TaskTest.php
+
+		-
+			message: '#^Cannot access property \$Authorization on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/UserTest.php
+
+		-
+			message: '#^Cannot access property \$id on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/UserTest.php
+
+		-
+			message: '#^Cannot access property \$message on mixed\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: tests/integration/UserTest.php
+
+		-
+			message: '#^Cannot access property \$name on mixed\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: tests/integration/UserTest.php
+
+		-
+			message: '#^Static property Tests\\integration\\BaseTestCase\:\:\$jwt \(string\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/integration/UserTest.php
+
+		-
+			message: '#^Static property Tests\\integration\\UserTest\:\:\$id \(int\) does not accept mixed\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: tests/integration/UserTest.php

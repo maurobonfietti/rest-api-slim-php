@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="7.11.0@9e0d0f88bc0a4233357a9aeb4b32da060644e196">
+  <file src="src/Controller/BaseController.php">
+    <UnusedClass>
+      <code><![CDATA[BaseController]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/DefaultController.php">
+    <UnusedClass>
+      <code><![CDATA[DefaultController]]></code>
+    </UnusedClass>
+    <UnusedParam>
+      <code><![CDATA[$request]]></code>
+      <code><![CDATA[$request]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Controller/Note/Base.php">
+    <UnusedClass>
+      <code><![CDATA[Base]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Note/Create.php">
+    <UnusedClass>
+      <code><![CDATA[Create]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Note/Delete.php">
+    <UnusedClass>
+      <code><![CDATA[Delete]]></code>
+    </UnusedClass>
+    <UnusedParam>
+      <code><![CDATA[$request]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Controller/Note/GetAll.php">
+    <UnusedClass>
+      <code><![CDATA[GetAll]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Note/GetOne.php">
+    <UnusedClass>
+      <code><![CDATA[GetOne]]></code>
+    </UnusedClass>
+    <UnusedParam>
+      <code><![CDATA[$request]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Controller/Note/Update.php">
+    <UnusedClass>
+      <code><![CDATA[Update]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Task/Base.php">
+    <UnusedClass>
+      <code><![CDATA[Base]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Task/Create.php">
+    <UnusedClass>
+      <code><![CDATA[Create]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Task/Delete.php">
+    <UnusedClass>
+      <code><![CDATA[Delete]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Task/GetAll.php">
+    <UnusedClass>
+      <code><![CDATA[GetAll]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Task/GetOne.php">
+    <UnusedClass>
+      <code><![CDATA[GetOne]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/Task/Update.php">
+    <UnusedClass>
+      <code><![CDATA[Update]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/User/Base.php">
+    <UnusedClass>
+      <code><![CDATA[Base]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/User/Create.php">
+    <UnusedClass>
+      <code><![CDATA[Create]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/User/Delete.php">
+    <UnusedClass>
+      <code><![CDATA[Delete]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/User/GetAll.php">
+    <UnusedClass>
+      <code><![CDATA[GetAll]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/User/GetOne.php">
+    <UnusedClass>
+      <code><![CDATA[GetOne]]></code>
+    </UnusedClass>
+    <UnusedParam>
+      <code><![CDATA[$request]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Controller/User/Login.php">
+    <UnusedClass>
+      <code><![CDATA[Login]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Controller/User/Update.php">
+    <UnusedClass>
+      <code><![CDATA[Update]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Entity/Note.php">
+    <UnusedClass>
+      <code><![CDATA[Note]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Entity/Task.php">
+    <UnusedClass>
+      <code><![CDATA[Task]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Entity/User.php">
+    <UnusedClass>
+      <code><![CDATA[User]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Exception/Auth.php">
+    <UnusedClass>
+      <code><![CDATA[Auth]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Exception/Base.php">
+    <UnusedClass>
+      <code><![CDATA[Base]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Exception/NotFound.php">
+    <UnusedClass>
+      <code><![CDATA[NotFound]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Exception/Note.php">
+    <UnusedClass>
+      <code><![CDATA[Note]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Exception/Task.php">
+    <UnusedClass>
+      <code><![CDATA[Task]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Exception/User.php">
+    <UnusedClass>
+      <code><![CDATA[User]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Handler/ApiError.php">
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[ApiError]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Middleware/Auth.php">
+    <UnusedClass>
+      <code><![CDATA[Auth]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Middleware/Base.php">
+    <UnusedClass>
+      <code><![CDATA[Base]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Repository/BaseRepository.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+      <code><![CDATA[getDb]]></code>
+      <code><![CDATA[getResultByPage]]></code>
+      <code><![CDATA[getResultsWithPagination]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$database]]></code>
+    </PossiblyUnusedProperty>
+  </file>
+  <file src="src/Repository/NoteRepository.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[checkAndGetNote]]></code>
+      <code><![CDATA[createNote]]></code>
+      <code><![CDATA[deleteNote]]></code>
+      <code><![CDATA[getNotes]]></code>
+      <code><![CDATA[getNotesByPage]]></code>
+      <code><![CDATA[getQueryNotesByPage]]></code>
+      <code><![CDATA[updateNote]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Repository/TaskRepository.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[checkAndGetTask]]></code>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[getAllTasks]]></code>
+      <code><![CDATA[getQueryTasksByPage]]></code>
+      <code><![CDATA[getTasksByPage]]></code>
+      <code><![CDATA[update]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Repository/UserRepository.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[checkUserByEmail]]></code>
+      <code><![CDATA[create]]></code>
+      <code><![CDATA[delete]]></code>
+      <code><![CDATA[deleteUserTasks]]></code>
+      <code><![CDATA[getAll]]></code>
+      <code><![CDATA[getQueryLoginUser]]></code>
+      <code><![CDATA[getQueryUsersByPage]]></code>
+      <code><![CDATA[getUser]]></code>
+      <code><![CDATA[getUsersByPage]]></code>
+      <code><![CDATA[loginUser]]></code>
+      <code><![CDATA[update]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Service/BaseService.php">
+    <UnusedClass>
+      <code><![CDATA[BaseService]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/Note/Base.php">
+    <UnusedClass>
+      <code><![CDATA[Base]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/Note/Create.php">
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[Note]]></code>
+    </UnnecessaryVarAnnotation>
+    <UnusedClass>
+      <code><![CDATA[Create]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/Note/Delete.php">
+    <UnusedClass>
+      <code><![CDATA[Delete]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/Note/Find.php">
+    <UnusedClass>
+      <code><![CDATA[Find]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/Note/Update.php">
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[Note]]></code>
+    </UnnecessaryVarAnnotation>
+    <UnusedClass>
+      <code><![CDATA[Update]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/RedisService.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+      <code><![CDATA[del]]></code>
+      <code><![CDATA[exists]]></code>
+      <code><![CDATA[generateKey]]></code>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[set]]></code>
+      <code><![CDATA[setex]]></code>
+    </PossiblyUnusedMethod>
+    <UnusedProperty>
+      <code><![CDATA[$redis]]></code>
+    </UnusedProperty>
+  </file>
+  <file src="src/Service/Task/Base.php">
+    <UnusedClass>
+      <code><![CDATA[Base]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/Task/TaskService.php">
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[Task]]></code>
+      <code><![CDATA[Task]]></code>
+    </UnnecessaryVarAnnotation>
+    <UnusedClass>
+      <code><![CDATA[TaskService]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/User/Base.php">
+    <UnusedClass>
+      <code><![CDATA[Base]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/User/Create.php">
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[User]]></code>
+    </UnnecessaryVarAnnotation>
+    <UnusedClass>
+      <code><![CDATA[Create]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/User/Delete.php">
+    <UnusedClass>
+      <code><![CDATA[Delete]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/User/Find.php">
+    <UnusedClass>
+      <code><![CDATA[Find]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/User/Login.php">
+    <UnusedClass>
+      <code><![CDATA[Login]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Service/User/Update.php">
+    <UnnecessaryVarAnnotation>
+      <code><![CDATA[User]]></code>
+    </UnnecessaryVarAnnotation>
+    <UnusedClass>
+      <code><![CDATA[Update]]></code>
+    </UnusedClass>
+  </file>
+</files>

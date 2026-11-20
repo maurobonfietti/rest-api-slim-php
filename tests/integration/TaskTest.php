@@ -262,6 +262,34 @@ class TaskTest extends BaseTestCase
     }
 
     /**
+     * Test Create and Update Task With a valid JWT that has no user (no "sub" claim).
+     */
+    public function testCreateAndUpdateTaskWithJWTWithoutUser(): void
+    {
+        \Dotenv\Dotenv::createUnsafeImmutable(__DIR__ . '/../../')->safeLoad();
+        $token = \Firebase\JWT\JWT::encode(
+            ['email' => 'nobody@example.com', 'iat' => time(), 'exp' => time() + 60],
+            (string) $_SERVER['SECRET_KEY'],
+            'HS256'
+        );
+
+        $auth = self::$jwt;
+        self::$jwt = 'Bearer ' . $token;
+        $create = $this->runApp('POST', '/api/v1/tasks', ['name' => 'my task', 'status' => 0]);
+        $update = $this->runApp('PUT', '/api/v1/tasks/1', ['name' => 'my task']);
+        self::$jwt = $auth;
+
+        foreach ([$create, $update] as $response) {
+            $result = (string) $response->getBody();
+
+            $this->assertEquals(400, $response->getStatusCode());
+            $this->assertEquals('application/problem+json', $response->getHeaderLine('Content-Type'));
+            $this->assertStringContainsString('Invalid user. Permission failed.', $result);
+            $this->assertStringNotContainsString('success', $result);
+        }
+    }
+
+    /**
      * Test Create Task With Too Short Secret Key.
      */
     public function testCreateTaskWithTooShortSecretKey(): void
